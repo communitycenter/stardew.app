@@ -1,0 +1,2655 @@
+{
+  "UndergroundMine": {
+    "spring": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "156": {
+          "fish_name": "Ghostfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "156": {
+          "fish_name": "Ghostfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "156": {
+          "fish_name": "Ghostfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "156": {
+          "fish_name": "Ghostfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "Desert": {
+    "spring": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "164": {
+          "fish_name": "Sandfish",
+          "zoneNumber": "-1"
+        },
+        "165": {
+          "fish_name": "Scorpion Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Coconut": {
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "chance": ".5"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "164": {
+          "fish_name": "Sandfish",
+          "zoneNumber": "-1"
+        },
+        "165": {
+          "fish_name": "Scorpion Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Coconut": {
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "chance": ".5"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "164": {
+          "fish_name": "Sandfish",
+          "zoneNumber": "-1"
+        },
+        "165": {
+          "fish_name": "Scorpion Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Coconut": {
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "chance": ".5"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "164": {
+          "fish_name": "Sandfish",
+          "zoneNumber": "-1"
+        },
+        "165": {
+          "fish_name": "Scorpion Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Coconut": {
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "BusStop": {
+    "spring": {
+      "fish": {},
+      "foraging": {
+        "Daffodil": {
+          "chance": ".9"
+        },
+        "Leek": {
+          "chance": ".4"
+        },
+        "Dandelion": {
+          "chance": ".7"
+        }
+      }
+    },
+    "summer": {
+      "fish": {},
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".4"
+        },
+        "Grape": {
+          "chance": ".4"
+        },
+        "Sweet Pea": {
+          "chance": ".7"
+        }
+      }
+    },
+    "fall": {
+      "fish": {},
+      "foraging": {
+        "Wild Plum": {
+          "chance": ".6"
+        },
+        "Hazelnut": {
+          "chance": ".4"
+        }
+      }
+    },
+    "winter": {
+      "fish": {},
+      "foraging": {
+        "Crystal Fruit": {
+          "chance": ".33"
+        },
+        "Crocus": {
+          "chance": ".6"
+        },
+        "Holly": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Forest": {
+    "spring": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "0"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "0"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "0"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "0"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "0"
+        }
+      },
+      "foraging": {
+        "Wild Horseradish": {
+          "chance": ".9"
+        },
+        "Dandelion": {
+          "chance": ".9"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "0"
+        },
+        "144": {
+          "fish_name": "Pike",
+          "zoneNumber": "-1"
+        },
+        "138": {
+          "fish_name": "Rainbow Trout",
+          "zoneNumber": "0"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "0"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "0"
+        },
+        "704": {
+          "fish_name": "Dorado",
+          "zoneNumber": "0"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "0"
+        }
+      },
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".6"
+        },
+        "Sweet Pea": {
+          "chance": ".9"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "0"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "139": {
+          "fish_name": "Salmon",
+          "zoneNumber": "0"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "0"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "0"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "0"
+        },
+        "699": {
+          "fish_name": "Tiger Trout",
+          "zoneNumber": "0"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "1"
+        }
+      },
+      "foraging": {
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Blackberry": {
+          "chance": ".9"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "699": {
+          "fish_name": "Tiger Trout",
+          "zoneNumber": "0"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "0"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "144": {
+          "fish_name": "Pike",
+          "zoneNumber": "-1"
+        },
+        "141": {
+          "fish_name": "Perch",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "0"
+        },
+        "707": {
+          "fish_name": "Lingcod",
+          "zoneNumber": "0"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "0"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "1"
+        }
+      },
+      "foraging": {
+        "Crocus": {
+          "chance": ".9"
+        },
+        "Crystal Fruit": {
+          "chance": ".9"
+        },
+        "Holly": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Town": {
+    "spring": {
+      "fish": {
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Daffodil": {
+          "chance": ".9"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "138": {
+          "fish_name": "Rainbow Trout",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "144": {
+          "fish_name": "Pike",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Sweet Pea": {
+          "chance": ".9"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "139": {
+          "fish_name": "Salmon",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "699": {
+          "fish_name": "Tiger Trout",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Blackberry": {
+          "chance": ".6"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "141": {
+          "fish_name": "Perch",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "144": {
+          "fish_name": "Pike",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "707": {
+          "fish_name": "Lingcod",
+          "zoneNumber": "-1"
+        },
+        "699": {
+          "fish_name": "Tiger Trout",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Crocus": {
+          "chance": ".7"
+        },
+        "Crystal Fruit": {
+          "chance": ".1"
+        },
+        "Holly": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Mountain": {
+    "spring": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Leek": {
+          "chance": ".7"
+        },
+        "Wild Horseradish": {
+          "chance": ".5"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "138": {
+          "fish_name": "Rainbow Trout",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "698": {
+          "fish_name": "Sturgeon",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".5"
+        },
+        "Grape": {
+          "chance": ".8"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Common Mushroom": {
+          "chance": ".4"
+        },
+        "Wild Plum": {
+          "chance": ".4"
+        },
+        "Hazelnut": {
+          "chance": ".9"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "141": {
+          "fish_name": "Perch",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "707": {
+          "fish_name": "Lingcod",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "698": {
+          "fish_name": "Sturgeon",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Crystal Fruit": {
+          "chance": ".85"
+        },
+        "Crocus": {
+          "chance": ".9"
+        },
+        "Holly": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Backwoods": {
+    "spring": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "163": {
+          "fish_name": "Legend",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Leek": {
+          "chance": ".7"
+        },
+        "Wild Horseradish": {
+          "chance": ".5"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "138": {
+          "fish_name": "Rainbow Trout",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "698": {
+          "fish_name": "Sturgeon",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".5"
+        },
+        "Grape": {
+          "chance": ".8"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Common Mushroom": {
+          "chance": ".4"
+        },
+        "Wild Plum": {
+          "chance": ".4"
+        },
+        "Hazelnut": {
+          "chance": ".9"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "136": {
+          "fish_name": "Largemouth Bass",
+          "zoneNumber": "-1"
+        },
+        "140": {
+          "fish_name": "Walleye",
+          "zoneNumber": "-1"
+        },
+        "141": {
+          "fish_name": "Perch",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "707": {
+          "fish_name": "Lingcod",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        },
+        "700": {
+          "fish_name": "Bullhead",
+          "zoneNumber": "-1"
+        },
+        "698": {
+          "fish_name": "Sturgeon",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Crystal Fruit": {
+          "chance": ".25"
+        },
+        "Crocus": {
+          "chance": ".4"
+        },
+        "Holly": {
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Railroad": {
+    "spring": {
+      "fish": {},
+      "foraging": {
+        "Daffodil": {
+          "chance": ".9"
+        },
+        "Leek": {
+          "chance": ".4"
+        },
+        "Dandelion": {
+          "chance": ".7"
+        }
+      }
+    },
+    "summer": {
+      "fish": {},
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".4"
+        },
+        "Grape": {
+          "chance": ".4"
+        },
+        "Sweet Pea": {
+          "chance": ".7"
+        }
+      }
+    },
+    "fall": {
+      "fish": {},
+      "foraging": {
+        "Wild Plum": {
+          "chance": ".6"
+        },
+        "Hazelnut": {
+          "chance": ".4"
+        },
+        "Blackberry": {
+          "chance": ".6"
+        }
+      }
+    },
+    "winter": {
+      "fish": {},
+      "foraging": {
+        "Crystal Fruit": {
+          "chance": ".8"
+        },
+        "Crocus": {
+          "chance": ".8"
+        }
+      }
+    }
+  },
+  "Beach": {
+    "spring": {
+      "fish": {
+        "129": {
+          "fish_name": "Anchovy",
+          "zoneNumber": "-1"
+        },
+        "131": {
+          "fish_name": "Sardine",
+          "zoneNumber": "-1"
+        },
+        "147": {
+          "fish_name": "Herring",
+          "zoneNumber": "-1"
+        },
+        "148": {
+          "fish_name": "Eel",
+          "zoneNumber": "-1"
+        },
+        "152": {
+          "fish_name": "Seaweed",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".9"
+        },
+        "Cockle": {
+          "chance": ".1"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "149": {
+          "fish_name": "Octopus",
+          "zoneNumber": "-1"
+        },
+        "150": {
+          "fish_name": "Red Snapper",
+          "zoneNumber": "-1"
+        },
+        "152": {
+          "fish_name": "Seaweed",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".9"
+        },
+        "Rainbow Shell": {
+          "chance": ".5"
+        },
+        "Cockle": {
+          "chance": ".1"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "129": {
+          "fish_name": "Anchovy",
+          "zoneNumber": "-1"
+        },
+        "131": {
+          "fish_name": "Sardine",
+          "zoneNumber": "-1"
+        },
+        "148": {
+          "fish_name": "Eel",
+          "zoneNumber": "-1"
+        },
+        "150": {
+          "fish_name": "Red Snapper",
+          "zoneNumber": "-1"
+        },
+        "152": {
+          "fish_name": "Seaweed",
+          "zoneNumber": "-1"
+        },
+        "154": {
+          "fish_name": "Sea Cucumber",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "705": {
+          "fish_name": "Albacore",
+          "zoneNumber": "-1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".9"
+        },
+        "Cockle": {
+          "chance": ".1"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "131": {
+          "fish_name": "Sardine",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "147": {
+          "fish_name": "Herring",
+          "zoneNumber": "-1"
+        },
+        "150": {
+          "fish_name": "Red Snapper",
+          "zoneNumber": "-1"
+        },
+        "151": {
+          "fish_name": "Squid",
+          "zoneNumber": "-1"
+        },
+        "152": {
+          "fish_name": "Seaweed",
+          "zoneNumber": "-1"
+        },
+        "154": {
+          "fish_name": "Sea Cucumber",
+          "zoneNumber": "-1"
+        },
+        "705": {
+          "fish_name": "Albacore",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".4"
+        },
+        "Nautilus Shell": {
+          "chance": ".8"
+        },
+        "Cockle": {
+          "chance": ".05"
+        },
+        "Mussel": {
+          "chance": ".2"
+        },
+        "Oyster": {
+          "chance": ".2"
+        }
+      }
+    }
+  },
+  "Woods": {
+    "spring": {
+      "fish": {
+        "734": {
+          "fish_name": "Woodskip",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Morel": {
+          "chance": ".5"
+        },
+        "Common Mushroom": {
+          "chance": ".25"
+        },
+        "Wild Horseradish": {
+          "chance": ".8"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "734": {
+          "fish_name": "Woodskip",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Fiddlehead Fern": {
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "chance": ".25"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "734": {
+          "fish_name": "Woodskip",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Chanterelle": {
+          "chance": ".5"
+        },
+        "Common Mushroom": {
+          "chance": ".6"
+        },
+        "Red Mushroom": {
+          "chance": ".2"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "734": {
+          "fish_name": "Woodskip",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Holly": {
+          "chance": ".9"
+        }
+      }
+    }
+  },
+  "Sewer": {
+    "spring": {
+      "fish": {
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "BugLand": {
+    "spring": {
+      "fish": {
+        "796": {
+          "fish_name": "Slimejack",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "796": {
+          "fish_name": "Slimejack",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "796": {
+          "fish_name": "Slimejack",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "796": {
+          "fish_name": "Slimejack",
+          "zoneNumber": "-1"
+        },
+        "142": {
+          "fish_name": "Carp",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "WitchSwamp": {
+    "spring": {
+      "fish": {
+        "795": {
+          "fish_name": "Void Salmon",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "795": {
+          "fish_name": "Void Salmon",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "795": {
+          "fish_name": "Void Salmon",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "795": {
+          "fish_name": "Void Salmon",
+          "zoneNumber": "-1"
+        },
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "157": {
+          "fish_name": "White Algae",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "fishingGame": {
+    "spring": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "Temp": {
+    "spring": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Wild Horseradish": {
+          "chance": ".9"
+        },
+        "Dandelion": {
+          "chance": ".9"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Spice Berry": {
+          "chance": ".6"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Blackberry": {
+          "chance": ".9"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "153": {
+          "fish_name": "Green Algae",
+          "zoneNumber": "-1"
+        },
+        "145": {
+          "fish_name": "Sunfish",
+          "zoneNumber": "-1"
+        },
+        "143": {
+          "fish_name": "Catfish",
+          "zoneNumber": "-1"
+        },
+        "137": {
+          "fish_name": "Smallmouth Bass",
+          "zoneNumber": "-1"
+        },
+        "132": {
+          "fish_name": "Bream",
+          "zoneNumber": "-1"
+        },
+        "706": {
+          "fish_name": "Shad",
+          "zoneNumber": "-1"
+        },
+        "702": {
+          "fish_name": "Chub",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Crocus": {
+          "chance": ".5"
+        },
+        "Crystal Fruit": {
+          "chance": ".2"
+        }
+      }
+    }
+  },
+  "IslandNorth": {
+    "spring": {
+      "fish": {
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "-1"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "-1"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "IslandSouth": {
+    "spring": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "IslandWest": {
+    "spring": {
+      "fish": {
+        "149": {
+          "fish_name": "Octopus",
+          "zoneNumber": "1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "2"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "2"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "2"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "149": {
+          "fish_name": "Octopus",
+          "zoneNumber": "1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "2"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "2"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "2"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "149": {
+          "fish_name": "Octopus",
+          "zoneNumber": "1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "2"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "2"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "2"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "149": {
+          "fish_name": "Octopus",
+          "zoneNumber": "1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "1"
+        },
+        "701": {
+          "fish_name": "Tilapia",
+          "zoneNumber": "2"
+        },
+        "838": {
+          "fish_name": "Blue Discus",
+          "zoneNumber": "2"
+        },
+        "269": {
+          "fish_name": "Midnight Carp",
+          "zoneNumber": "2"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "IslandSouthEast": {
+    "spring": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "837": {
+          "fish_name": "Lionfish",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "IslandSouthEastCave": {
+    "spring": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "summer": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "fall": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    },
+    "winter": {
+      "fish": {
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        },
+        "128": {
+          "fish_name": "Pufferfish",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {}
+    }
+  },
+  "IslandSecret": {
+    "spring": {
+      "fish": {
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "151": {
+          "fish_name": "Squid",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "chance": ".5"
+        },
+        "Coral": {
+          "chance": ".3"
+        },
+        "Cockle": {
+          "chance": ".2"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "summer": {
+      "fish": {
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "151": {
+          "fish_name": "Squid",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "chance": ".5"
+        },
+        "Coral": {
+          "chance": ".3"
+        },
+        "Cockle": {
+          "chance": ".2"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "fall": {
+      "fish": {
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "151": {
+          "fish_name": "Squid",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "chance": ".5"
+        },
+        "Coral": {
+          "chance": ".3"
+        },
+        "Cockle": {
+          "chance": ".2"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    },
+    "winter": {
+      "fish": {
+        "836": {
+          "fish_name": "Stingray",
+          "zoneNumber": "-1"
+        },
+        "267": {
+          "fish_name": "Flounder",
+          "zoneNumber": "-1"
+        },
+        "151": {
+          "fish_name": "Squid",
+          "zoneNumber": "-1"
+        },
+        "708": {
+          "fish_name": "Halibut",
+          "zoneNumber": "-1"
+        },
+        "146": {
+          "fish_name": "Red Mullet",
+          "zoneNumber": "-1"
+        },
+        "155": {
+          "fish_name": "Super Cucumber",
+          "zoneNumber": "-1"
+        },
+        "130": {
+          "fish_name": "Tuna",
+          "zoneNumber": "-1"
+        }
+      },
+      "foraging": {
+        "Clam": {
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "chance": ".5"
+        },
+        "Coral": {
+          "chance": ".3"
+        },
+        "Cockle": {
+          "chance": ".2"
+        },
+        "Mussel": {
+          "chance": ".3"
+        },
+        "Oyster": {
+          "chance": ".3"
+        }
+      }
+    }
+  },
+  "IslandNorthCave1": {
+    "spring": {
+      "fish": {},
+      "foraging": {
+        "Chanterelle": {
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "chance": ".5"
+        },
+        "Purple Mushroom": {
+          "chance": ".5"
+        }
+      }
+    },
+    "summer": {
+      "fish": {},
+      "foraging": {
+        "Chanterelle": {
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "chance": ".9"
+        }
+      }
+    },
+    "fall": {
+      "fish": {},
+      "foraging": {
+        "Chanterelle": {
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "chance": ".9"
+        }
+      }
+    },
+    "winter": {
+      "fish": {},
+      "foraging": {
+        "Chanterelle": {
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "chance": ".9"
+        }
+      }
+    }
+  }
+}
