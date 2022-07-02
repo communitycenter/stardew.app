@@ -1,5 +1,4 @@
 import json
-from readline import set_pre_input_hook
 
 
 content = {
@@ -30,104 +29,60 @@ content = {
 
 with open("../data/ObjectInformation.json", "r") as f:
      ObjInfo = json.load(f)
+     
+     
+seasons_map = {
+    0: "Spring",
+    1: "Summer",
+    2: "Fall",
+    3: "Winter"
+}
+
     
 locations = {}
 for key, value in content.items():    
     if key == "Farm": continue
+    locations[key] = {}
+
+    locations[key]["Spring"] = {}
+    locations[key]["Spring"]["Fish"] = {}
+    locations[key]["Spring"]["Foraging"] = {}
+    locations[key]["Summer"] = {}
+    locations[key]["Summer"]["Fish"] = {}
+    locations[key]["Summer"]["Foraging"] = {}
+    locations[key]["Fall"] = {}
+    locations[key]["Fall"]["Fish"] = {}
+    locations[key]["Fall"]["Foraging"] = {}
+    locations[key]["Winter"] = {}
+    locations[key]["Winter"]["Fish"] = {}
+    locations[key]["Winter"]["Foraging"] = {}
     
     # spring forage items
-    locations[key] = {}
-    
-    locations[key]["spring"] = {}
-    locations[key]["spring"]["fish"] = {}
-    locations[key]["spring"]["foraging"] = {}
-    locations[key]["summer"] = {}
-    locations[key]["summer"]["fish"] = {}
-    locations[key]["summer"]["foraging"] = {}
-    locations[key]["fall"] = {}
-    locations[key]["fall"]["fish"] = {}
-    locations[key]["fall"]["foraging"] = {}
-    locations[key]["winter"] = {}
-    locations[key]["winter"]["fish"] = {}
-    locations[key]["winter"]["foraging"] = {}
     
     entries = value.split("/")
     
-    spring_forage = entries[0]
-    if not spring_forage == "-1":
-        i = iter(spring_forage.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            forage_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["spring"]["foraging"][forage_name] = {"chance": pair.split(" ")[1]}
-            
-    summer_forage = entries[1]
-    if not summer_forage == "-1":
-        i = iter(summer_forage.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            forage_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["summer"]["foraging"][forage_name] = {"chance": pair.split(" ")[1]}
-            
-    fall_forage = entries[2]
-    if not fall_forage == "-1":
-        i = iter(fall_forage.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            forage_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["fall"]["foraging"][forage_name] = {"chance": pair.split(" ")[1]}
-            
-    winter_forage = entries[3]
-    if not winter_forage == "-1":
-        i = iter(winter_forage.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            forage_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["winter"]["foraging"][forage_name] = {"chance": pair.split(" ")[1]}
-            
-    spring_fish = entries[4]
-    if not spring_fish == "-1":
-        i = iter(spring_fish.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            fish_id, fish_zone = pair.split(" ")[0], pair.split(" ")[1]
-            fish_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["spring"]["fish"][fish_id] = {"fish_name": fish_name, "zoneNumber": fish_zone}
-
-    summer_fish = entries[5]
-    if not summer_fish == "-1":
-        i = iter(summer_fish.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            fish_id, fish_zone = pair.split(" ")[0], pair.split(" ")[1]
-            fish_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["summer"]["fish"][fish_id] = {"fish_name": fish_name, "zoneNumber": fish_zone}
-
-    fall_fish = entries[6]
-    if not fall_fish == "-1":
-        i = iter(fall_fish.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            fish_id, fish_zone = pair.split(" ")[0], pair.split(" ")[1]
-            fish_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["fall"]["fish"][fish_id] = {"fish_name": fish_name, "zoneNumber": fish_zone}
-
-    winter_fish = entries[7]
-    if not winter_fish == "-1":
-        i = iter(winter_fish.split(" "))
-        pairs = map(" ".join, zip(i, i))
-        for pair in pairs:
-            fish_id, fish_zone = pair.split(" ")[0], pair.split(" ")[1]
-            fish_name = ObjInfo["content"][pair.split(" ")[0]].split("/")[0]
-            
-            locations[key]["winter"]["fish"][fish_id] = {"fish_name": fish_name, "zoneNumber": fish_zone}
+    for idx in range(0, 8): # index 0 - 3 are foraging, index 4 - 7 are fish
+        items = entries[idx]
+        if not items == "-1": # no foragable/fish items
+            i = iter(items.split(" "))
+            pairs = map(" ".join, zip(i, i))
+            for pair in pairs:
+                item_id = pair.split(" ")[0]
+                # item_info is either the chance for foragables or the zoneNumber for fish
+                item_info = pair.split(" ")[1] 
+                item_name = ObjInfo["content"][item_id].split("/")[0]
+                
+                # get the season
+                season = seasons_map[idx % 4]
+                
+                # zoneNumber if fish, chance if foragable
+                ItemInfo = {
+                    "itemID": item_id,
+                    "chance" if idx < 4 else "zoneNumber": item_info
+                }
+                
+                # enter the information into the dictionary
+                locations[key][season]["Foraging" if idx < 4 else "Fish"][item_name] = ItemInfo
 
 
 
