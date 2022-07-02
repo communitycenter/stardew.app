@@ -57,8 +57,6 @@ for key, value in content.items():
     locations[key]["Winter"]["Fish"] = {}
     locations[key]["Winter"]["Foraging"] = {}
     
-    # spring forage items
-    
     entries = value.split("/")
     
     for idx in range(0, 8): # index 0 - 3 are foraging, index 4 - 7 are fish
