@@ -20,6 +20,17 @@ def processTypeOfObject(bundleRewardType, bundleRewardItemID):
         return itemMapping[bundleRewardType][bundleRewardItemID]
 
 
+def processQualityOfItem(itemQuality):
+    if itemQuality == "0":
+        return "Common"
+    elif itemQuality == "1":
+        return "Silver"
+    elif itemQuality == "2":
+        return "Gold"
+    elif itemQuality == "3":
+        return "Iridium"
+
+
 bundles = {}
 for key, value in ObjInfo["content"].items():
     bundleLocation = key.split("/")[0]
@@ -36,6 +47,35 @@ for key, value in ObjInfo["content"].items():
 
     bundles[bundleLocation][bundleName] = {}
 
+    bundles[bundleLocation][bundleName]["items"] = {}
+    bundleRequiredItemArray = [
+        x for x in re.split(r"(.*?\s.*?\s.*?)\s", value.split("/")[2]) if x
+    ]
+    try:
+        bundleRequiredItemCount = value.split("/")[4]
+    except:
+        bundleRequiredItemCount = len(bundleRequiredItemArray)
+    bundles[bundleLocation][bundleName]["items"]["count"] = bundleRequiredItemCount
+
+    for item in bundleRequiredItemArray:
+        itemID = item.split(" ")[0]
+        itemQuantity = item.split(" ")[1]
+        itemQuality = item.split(" ")[2]
+
+        try:
+            itemName = itemMapping["O"][itemID]
+
+            bundles[bundleLocation][bundleName]["items"][itemName] = {}
+            bundles[bundleLocation][bundleName]["items"][itemName]["itemID"] = itemID
+            bundles[bundleLocation][bundleName]["items"][itemName][
+                "itemQuantity"
+            ] = itemQuantity
+            bundles[bundleLocation][bundleName]["items"][itemName][
+                "itemQuality"
+            ] = processQualityOfItem(itemQuality)
+        except:
+            pass
+
     bundles[bundleLocation][bundleName]["reward"] = {}
     bundles[bundleLocation][bundleName]["reward"]["itemType"] = bundleRewardType
 
@@ -46,42 +86,6 @@ for key, value in ObjInfo["content"].items():
     bundles[bundleLocation][bundleName]["reward"][
         "itemQuantity"
     ] = bundleRewardItemQuantity
-
-    bundles[bundleLocation][bundleName]["itemsRequired"] = {}
-    bundleRequiredItemArray = [
-        x for x in re.split(r"(.*?\s.*?\s.*?)\s", value.split("/")[2]) if x
-    ]
-    try:
-        bundleRequiredItemCount = value.split("/")[4]
-    except:
-        bundleRequiredItemCount = len(bundleRequiredItemArray)
-    bundles[bundleLocation][bundleName]["itemsRequired"][
-        "count"
-    ] = bundleRequiredItemCount
-
-    for item in bundleRequiredItemArray:
-        itemID = item.split(" ")[0]
-        itemQuantity = item.split(" ")[1]
-        itemQuality = item.split(" ")[2]
-
-        bundles[bundleLocation][bundleName]["itemsRequired"][
-            bundleRequiredItemArray.index(item)
-        ] = {}
-        bundles[bundleLocation][bundleName]["itemsRequired"][
-            bundleRequiredItemArray.index(item)
-        ]["itemID"] = itemID
-        bundles[bundleLocation][bundleName]["itemsRequired"][
-            bundleRequiredItemArray.index(item)
-        ]["itemQuantity"] = itemQuantity
-        bundles[bundleLocation][bundleName]["itemsRequired"][
-            bundleRequiredItemArray.index(item)
-        ]["itemQuality"] = itemQuality
-        try:
-            bundles[bundleLocation][bundleName]["itemsRequired"][
-                bundleRequiredItemArray.index(item)
-            ]["itemName"] = itemMapping["O"][itemID]
-        except:
-            pass
 
 
 with open("bundles.json", "w") as f:
