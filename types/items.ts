@@ -5,4 +5,7 @@ export type Fish = {
   iconUrl: string;
   location: string[];
   season: string[];
+  time: string;
+  weather: string;
+  difficulty: string;
 };

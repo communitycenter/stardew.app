@@ -1,6 +1,8 @@
 import { Fragment, Dispatch, SetStateAction } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
+import { XIcon, CheckIcon } from "@heroicons/react/outline";
+
+import Image from "next/image";
 
 import type { Fish } from "../types";
 
@@ -8,6 +10,11 @@ type Props = {
   isOpen: boolean;
   selectedFish: Fish;
   setOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+// iterate through a list and return a comma separated string
+const printLocations = (locations: string[]) => {
+  return locations.join(", ");
 };
 
 const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
@@ -41,11 +48,7 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
-                      <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
-                          {" "}
-                          {selectedFish.name}{" "}
-                        </Dialog.Title>
+                      <div className="flex items-start justify-end">
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
@@ -59,14 +62,71 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                       </div>
                     </div>
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                      {/* Replace with your content */}
-                      <div className="absolute inset-0 px-4 sm:px-6">
-                        <div
-                          className="h-full border-2 border-dashed border-gray-200"
-                          aria-hidden="true"
-                        />
+                      {/* Fish Content */}
+                      <div>
+                        {/* Header with Image */}
+                        <div className="flex justify-center">
+                          <div>
+                            <div className="flex justify-center">
+                              <Image
+                                src={selectedFish.iconUrl}
+                                alt={selectedFish.name}
+                                width={80}
+                                height={80}
+                                quality={100}
+                              />
+                            </div>
+                            <h3 className="mt-6 text-xl font-semibold">
+                              {selectedFish.name}
+                            </h3>
+                          </div>
+                        </div>
+                        {/* End Header with Image */}
                       </div>
-                      {/* /End replace */}
+
+                      {/* Fish Information Section */}
+                      <div className="mt-8 space-y-8">
+                        <div>
+                          <h4 className="text-lg font-semibold">Location</h4>
+                          <p className="mt-1">
+                            {printLocations(selectedFish.location)}
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold">Time</h4>
+                          <p className="mt-1">{selectedFish.time}</p>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold">Season</h4>
+                          <p className="mt-1">
+                            {printLocations(selectedFish.season)}
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold">Weather</h4>
+                          <p className="mt-1">{selectedFish.weather}</p>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold">Difficulty</h4>
+                          <p className="mt-1">{selectedFish.difficulty}</p>
+                        </div>
+
+                        {/* Mark as Caught Button */}
+                        <button
+                          // "absolute inset-x-0 bottom-0" is used to position the button at the bottom of the screen, but
+                          // it gets rid of the padding on the left and right and becomes scrollable when you try and add it to the button.
+                          className="flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 hover:bg-gray-200"
+                          onClick={() => setOpen(false)}
+                          // TODO: when you mark as caught, set the local storage to a list of all marked fish?
+                          // when you first render the page it would have to fetch from local storage to see what you've already caught
+                        >
+                          <CheckIcon className="h-6 w-6" aria-hidden="true" />
+                          <p className="">Mark as caught</p>
+                        </button>
+                      </div>
+                      {/* End Fish Info Section */}
+
+                      {/* End Fish Content */}
                     </div>
                   </div>
                 </Dialog.Panel>

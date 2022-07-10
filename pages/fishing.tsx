@@ -35,6 +35,9 @@ const fishes: Fish[] = [
       "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
     location: ["Ocean", "Ginger Island Oceans"],
     season: ["Summer"],
+    time: "12PM - 4PM",
+    weather: "Sunny",
+    difficulty: "80 Floater",
   },
   {
     name: "Anchovy",
@@ -43,6 +46,9 @@ const fishes: Fish[] = [
     iconUrl: "https://stardewvalleywiki.com/mediawiki/images/7/79/Anchovy.png",
     location: ["Ocean"],
     season: ["Spring", "Fall"],
+    time: "12PM - 4PM",
+    weather: "Sunny",
+    difficulty: "80 Floater",
   },
   {
     name: "Tuna",
@@ -51,6 +57,9 @@ const fishes: Fish[] = [
     iconUrl: "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
     location: ["Ocean", "Ginger Island Oceans"],
     season: ["Summer", "Winter"],
+    time: "12PM - 4PM",
+    weather: "Sunny",
+    difficulty: "80 Floater",
   },
   {
     name: "Largemouth Bass",
@@ -60,6 +69,9 @@ const fishes: Fish[] = [
       "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
     location: ["Mountain Lake"],
     season: ["All Seasons"],
+    time: "12PM - 4PM",
+    weather: "Sunny",
+    difficulty: "80 Floater",
   },
   {
     name: "Red Mullet",
@@ -69,6 +81,9 @@ const fishes: Fish[] = [
       "https://stardewvalleywiki.com/mediawiki/images/f/f2/Red_Mullet.png",
     location: ["Ocean"],
     season: ["Summer", "Fall"],
+    time: "12PM - 4PM",
+    weather: "Sunny",
+    difficulty: "80 Floater",
   },
 ];
 
