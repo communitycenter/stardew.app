@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import type { Fish } from "../types";
 
 import FishCard from "../components/FishCard";
+import FishSlideOver from "../components/FishSlideOver";
 import Head from "next/head";
 
 import { Fragment, useState } from "react";
@@ -77,6 +78,8 @@ function classNames(...classes: string[]) {
 
 const Fishing: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [showFish, setShowFish] = useState<boolean>(false);
+  const [selectedFish, setSelectedFish] = useState<Fish>(fishes[0]);
 
   return (
     <>
@@ -247,6 +250,8 @@ const Fishing: NextPage = () => {
                       key={fish.itemID}
                       fish={fish}
                       isChecked={index % 2 === 0}
+                      setSelectedFish={setSelectedFish}
+                      setShowFish={setShowFish}
                     />
                   ))}
                 </div>
@@ -255,6 +260,11 @@ const Fishing: NextPage = () => {
           </main>
         </div>
       </div>
+      <FishSlideOver
+        isOpen={showFish}
+        selectedFish={selectedFish}
+        setOpen={setShowFish}
+      />
     </>
   );
 };
