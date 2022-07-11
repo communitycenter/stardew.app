@@ -1,0 +1,1143 @@
+{
+    "Pufferfish": {
+        "itemID": 128,
+        "name": "Pufferfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "1",
+        "maxInch": "36",
+        "difficulty": "80 floater",
+        "time": "12PM - 4PM",
+        "seasons": [
+            "Summer"
+        ],
+        "weather": "Sunny",
+        "minLevel": "0"
+    },
+    "Anchovy": {
+        "itemID": 129,
+        "name": "Anchovy",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "1",
+        "maxInch": "16",
+        "difficulty": "30 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Fall"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Tuna": {
+        "itemID": 130,
+        "name": "Tuna",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "60",
+        "difficulty": "70 smooth",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Sardine": {
+        "itemID": 131,
+        "name": "Sardine",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "1",
+        "maxInch": "12",
+        "difficulty": "30 dart",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Bream": {
+        "itemID": 132,
+        "name": "Bream",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "30",
+        "difficulty": "35 smooth",
+        "time": "6PM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Largemouth Bass": {
+        "itemID": 136,
+        "name": "Largemouth Bass",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "11",
+        "maxInch": "30",
+        "difficulty": "50 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Smallmouth Bass": {
+        "itemID": 137,
+        "name": "Smallmouth Bass",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "24",
+        "difficulty": "28 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Fall"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Rainbow Trout": {
+        "itemID": 138,
+        "name": "Rainbow Trout",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "25",
+        "difficulty": "45 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer"
+        ],
+        "weather": "Sunny",
+        "minLevel": "0"
+    },
+    "Salmon": {
+        "itemID": 139,
+        "name": "Salmon",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "24",
+        "maxInch": "65",
+        "difficulty": "50 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Fall"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Walleye": {
+        "itemID": 140,
+        "name": "Walleye",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "40",
+        "difficulty": "45 smooth",
+        "time": "12PM - 2AM",
+        "seasons": [
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Rainy",
+        "minLevel": "0"
+    },
+    "Perch": {
+        "itemID": 141,
+        "name": "Perch",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "24",
+        "difficulty": "35 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Carp": {
+        "itemID": 142,
+        "name": "Carp",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "15",
+        "maxInch": "50",
+        "difficulty": "15 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Catfish": {
+        "itemID": 143,
+        "name": "Catfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "72",
+        "difficulty": "75 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Rainy",
+        "minLevel": "0"
+    },
+    "Pike": {
+        "itemID": 144,
+        "name": "Pike",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "15",
+        "maxInch": "60",
+        "difficulty": "60 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Sunfish": {
+        "itemID": 145,
+        "name": "Sunfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "5",
+        "maxInch": "15",
+        "difficulty": "30 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Spring",
+            "Summer"
+        ],
+        "weather": "Sunny",
+        "minLevel": "0"
+    },
+    "Red Mullet": {
+        "itemID": 146,
+        "name": "Red Mullet",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "22",
+        "difficulty": "55 smooth",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Herring": {
+        "itemID": 147,
+        "name": "Herring",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "20",
+        "difficulty": "25 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Eel": {
+        "itemID": 148,
+        "name": "Eel",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "80",
+        "difficulty": "70 smooth",
+        "time": "4PM - 2AM",
+        "seasons": [
+            "Spring",
+            "Fall"
+        ],
+        "weather": "Rainy",
+        "minLevel": "0"
+    },
+    "Octopus": {
+        "itemID": 149,
+        "name": "Octopus",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "48",
+        "difficulty": "95 sinker",
+        "time": "6AM - 1PM",
+        "seasons": [
+            "Summer"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Red Snapper": {
+        "itemID": 150,
+        "name": "Red Snapper",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8sec",
+        "maxInch": "25",
+        "difficulty": "40 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Rainy",
+        "minLevel": "0"
+    },
+    "Squid": {
+        "itemID": 151,
+        "name": "Squid",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "48",
+        "difficulty": "75 sinker",
+        "time": "6PM - 2AM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Seaweed": {
+        "itemID": 152,
+        "name": "Seaweed",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "5",
+        "maxInch": "30",
+        "difficulty": "5 floater",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Green Algae": {
+        "itemID": 153,
+        "name": "Green Algae",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "5",
+        "maxInch": "30",
+        "difficulty": "5 floater",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Sea Cucumber": {
+        "itemID": 154,
+        "name": "Sea Cucumber",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "3",
+        "maxInch": "20",
+        "difficulty": "40 sinker",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Super Cucumber": {
+        "itemID": 155,
+        "name": "Super Cucumber",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "36",
+        "difficulty": "80 sinker",
+        "time": "6PM - 2AM",
+        "seasons": [
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Ghostfish": {
+        "itemID": 156,
+        "name": "Ghostfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "35",
+        "difficulty": "50 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "White Algae": {
+        "itemID": 157,
+        "name": "White Algae",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "5",
+        "maxInch": "30",
+        "difficulty": "5 floater",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Stonefish": {
+        "itemID": 158,
+        "name": "Stonefish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "15",
+        "maxInch": "15",
+        "difficulty": "65 sinker",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "3"
+    },
+    "Crimsonfish": {
+        "itemID": 159,
+        "name": "Crimsonfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "20",
+        "maxInch": "20",
+        "difficulty": "95 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "5"
+    },
+    "Angler": {
+        "itemID": 160,
+        "name": "Angler",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "18",
+        "maxInch": "18",
+        "difficulty": "85 smooth",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "3"
+    },
+    "Ice Pip": {
+        "itemID": 161,
+        "name": "Ice Pip",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "8",
+        "difficulty": "85 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "5"
+    },
+    "Lava Eel": {
+        "itemID": 162,
+        "name": "Lava Eel",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "32",
+        "maxInch": "32",
+        "difficulty": "90 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "7"
+    },
+    "Legend": {
+        "itemID": 163,
+        "name": "Legend",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "50",
+        "maxInch": "50",
+        "difficulty": "110 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Rainy",
+        "minLevel": "10"
+    },
+    "Sandfish": {
+        "itemID": 164,
+        "name": "Sandfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "24",
+        "difficulty": "65 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Scorpion Carp": {
+        "itemID": 165,
+        "name": "Scorpion Carp",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "32",
+        "difficulty": "90 dart",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "4"
+    },
+    "Flounder": {
+        "itemID": 267,
+        "name": "Flounder",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "4",
+        "maxInch": "16",
+        "difficulty": "50 sinker",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Spring",
+            "Summer"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Midnight Carp": {
+        "itemID": 269,
+        "name": "Midnight Carp",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "52",
+        "difficulty": "55 mixed",
+        "time": "10PM - 2AM",
+        "seasons": [
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Clam": {
+        "itemID": 372,
+        "name": "Clam",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "5"
+    },
+    "Mutant Carp": {
+        "itemID": 682,
+        "name": "Mutant Carp",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "36",
+        "maxInch": "36",
+        "difficulty": "80 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Sturgeon": {
+        "itemID": 698,
+        "name": "Sturgeon",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "60",
+        "difficulty": "78 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Tiger Trout": {
+        "itemID": 699,
+        "name": "Tiger Trout",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "20",
+        "difficulty": "60 dart",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Bullhead": {
+        "itemID": 700,
+        "name": "Bullhead",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "30",
+        "difficulty": "46 smooth",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Tilapia": {
+        "itemID": 701,
+        "name": "Tilapia",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "11",
+        "maxInch": "30",
+        "difficulty": "50 mixed",
+        "time": "6AM - 2PM",
+        "seasons": [
+            "Summer",
+            "Fall"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Chub": {
+        "itemID": 702,
+        "name": "Chub",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "12",
+        "maxInch": "24",
+        "difficulty": "35 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Dorado": {
+        "itemID": 704,
+        "name": "Dorado",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "24",
+        "maxInch": "32",
+        "difficulty": "78 mixed",
+        "time": "6AM - 7PM",
+        "seasons": [
+            "Summer"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Albacore": {
+        "itemID": 705,
+        "name": "Albacore",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "20",
+        "maxInch": "40",
+        "difficulty": "60 mixed",
+        "time": "6AM - 11AM",
+        "seasons": [
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Shad": {
+        "itemID": 706,
+        "name": "Shad",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "20",
+        "maxInch": "48",
+        "difficulty": "45 smooth",
+        "time": "9AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall"
+        ],
+        "weather": "Rainy",
+        "minLevel": "0"
+    },
+    "Lingcod": {
+        "itemID": 707,
+        "name": "Lingcod",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "30",
+        "maxInch": "50",
+        "difficulty": "85 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Halibut": {
+        "itemID": 708,
+        "name": "Halibut",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "10",
+        "maxInch": "33",
+        "difficulty": "50 sinker",
+        "time": "6AM - 11AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Lobster": {
+        "itemID": 715,
+        "name": "Lobster",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "2",
+        "maxInch": "20"
+    },
+    "Crayfish": {
+        "itemID": 716,
+        "name": "Crayfish",
+        "trapFish": true,
+        "location": "Freshwater",
+        "minInch": "1",
+        "maxInch": "8"
+    },
+    "Crab": {
+        "itemID": 717,
+        "name": "Crab",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "20"
+    },
+    "Cockle": {
+        "itemID": 718,
+        "name": "Cockle",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "5"
+    },
+    "Mussel": {
+        "itemID": 719,
+        "name": "Mussel",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "5"
+    },
+    "Shrimp": {
+        "itemID": 720,
+        "name": "Shrimp",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "3"
+    },
+    "Snail": {
+        "itemID": 721,
+        "name": "Snail",
+        "trapFish": true,
+        "location": "Freshwater",
+        "minInch": "1",
+        "maxInch": "5"
+    },
+    "Periwinkle": {
+        "itemID": 722,
+        "name": "Periwinkle",
+        "trapFish": true,
+        "location": "Freshwater",
+        "minInch": "1",
+        "maxInch": "3"
+    },
+    "Oyster": {
+        "itemID": 723,
+        "name": "Oyster",
+        "trapFish": true,
+        "location": "Ocean",
+        "minInch": "1",
+        "maxInch": "5"
+    },
+    "Woodskip": {
+        "itemID": 734,
+        "name": "Woodskip",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "11",
+        "maxInch": "30",
+        "difficulty": "50 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Glacierfish": {
+        "itemID": 775,
+        "name": "Glacierfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "27",
+        "maxInch": "27",
+        "difficulty": "100 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Sunny",
+        "minLevel": "7"
+    },
+    "Void Salmon": {
+        "itemID": 795,
+        "name": "Void Salmon",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "24",
+        "maxInch": "65",
+        "difficulty": "80 mixed",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Slimejack": {
+        "itemID": 796,
+        "name": "Slimejack",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "25",
+        "difficulty": "55 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Midnight Squid": {
+        "itemID": 798,
+        "name": "Midnight Squid",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "25",
+        "difficulty": "55 sinker",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Spook Fish": {
+        "itemID": 799,
+        "name": "Spook Fish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "25",
+        "difficulty": "60 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Blobfish": {
+        "itemID": 800,
+        "name": "Blobfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "8",
+        "maxInch": "25",
+        "difficulty": "75 floater",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Stingray": {
+        "itemID": 836,
+        "name": "Stingray",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "18",
+        "maxInch": "60",
+        "difficulty": "80 sinker",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Lionfish": {
+        "itemID": 837,
+        "name": "Lionfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "3",
+        "maxInch": "12",
+        "difficulty": "50 smooth",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Blue Discus": {
+        "itemID": 838,
+        "name": "Blue Discus",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "2",
+        "maxInch": "9",
+        "difficulty": "60 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Son of Crimsonfish": {
+        "itemID": 898,
+        "name": "Son of Crimsonfish",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "20",
+        "maxInch": "20",
+        "difficulty": "95 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "5"
+    },
+    "Ms. Angler": {
+        "itemID": 899,
+        "name": "Ms. Angler",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "18",
+        "maxInch": "18",
+        "difficulty": "85 smooth",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "3"
+    },
+    "Legend II": {
+        "itemID": 900,
+        "name": "Legend II",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "50",
+        "maxInch": "50",
+        "difficulty": "110 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Rainy",
+        "minLevel": "10"
+    },
+    "Radioactive Carp": {
+        "itemID": 901,
+        "name": "Radioactive Carp",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "36",
+        "maxInch": "36",
+        "difficulty": "80 dart",
+        "time": "6AM - 2AM",
+        "seasons": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+        ],
+        "weather": "Both",
+        "minLevel": "0"
+    },
+    "Glacierfish Jr.": {
+        "itemID": 902,
+        "name": "Glacierfish Jr.",
+        "trapFish": false,
+        "locations": "wip",
+        "minInch": "27",
+        "maxInch": "27",
+        "difficulty": "100 mixed",
+        "time": "6AM - 8PM",
+        "seasons": [
+            "Winter"
+        ],
+        "weather": "Sunny",
+        "minLevel": "7"
+    }
+}

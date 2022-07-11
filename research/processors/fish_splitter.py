@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 content = {
     "128": "Pufferfish/80/floater/1/36/1200 1600/summer/sunny/690 .4 685 .1/4/.3/.5/0",
@@ -76,21 +77,58 @@ content = {
     "902": "Glacierfish Jr./100/mixed/27/27/600 2000/winter/sunny/688 .1/5/0/.02/7",
 }
 
-n = {}
+fish = {}
 
-for x, y in content.items():
-    i = y.split("/")
-    t1 = i[5].split(" ")[0]
-    t2 = i[5].split(" ")[1]
-    n[i[0]] = {
-        "name": i[0],
-        "diff": f"{i[1]} {i[2]}",
-        "min_inch": i[3],
-        "max_inch": int(i[4]) + 1,
-        "time": f'{datetime.strptime(str(t1), "%H%M").strftime("%-I%p").lower()} - {datetime.strptime(str(t2), "%H%M").strftime("%-I%p").lower()}',
-        "seasons": i[6].split(" "),
-        "min_level": i[12],
+trap_fish = set(["Clam", "Lobster", "Crayfish", "Crab", "Cockle", "Mussel", "Shrimp", "Snail", "Periwinkle", "Oyster"])
+
+def upper_first(s: str) -> str:
+    return s[0].upper() + s[1:]
+
+def convert_time(time: str) -> str:
+    return datetime.strptime(time, "%H%M%S").strftime("%-I%p")
+
+for key, value in content.items():
+    
+    fields = value.split("/")
+    name = fields[0]
+    
+    if name in trap_fish:
+        location, min_size, max_size = fields[4], fields[5], fields[6]
+        fish[name] = {
+            "itemID": int(key),
+            "name": name,
+            "trapFish": True,
+            "location": upper_first(location),
+            "minInch": min_size,
+            "maxInch": max_size
+        }
+        continue
+
+    start_time = convert_time(fields[5].split(" ")[0])
+    end_time = convert_time(fields[5].split(" ")[1])
+    
+    difficulty = f"{fields[1]} {fields[2]}"
+    min_inch, max_inch = fields[3], fields[4]
+    time = f"{start_time} - {end_time}"
+    seasons = fields[6].split(" ")
+    weather = fields[7]
+    min_level = fields[12]
+
+    
+    fish[name] = {
+        "itemID": int(key),
+        "name": name,
+        "trapFish": False,
+        #!TODO: Add locations
+        "locations": "wip",
+        "minInch": min_inch,
+        "maxInch": max_inch,
+        "difficulty": difficulty,
+        "time": time,
+        "seasons": [upper_first(season) for season in seasons],
+        "weather": upper_first(weather),
+        "minLevel": min_level
     }
-    print(n[i[0]])
 
-print(n)
+with open("fish.json", "w") as f:
+    json.dump(fish, f, indent=4)
