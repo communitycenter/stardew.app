@@ -1,7 +1,9 @@
-from datetime import datetime
 import json
 import bs4
 import requests
+import time
+
+from datetime import datetime
 
 content = {
     "128": "Pufferfish/80/floater/1/36/1200 1600/summer/sunny/690 .4 685 .1/4/.3/.5/0",
@@ -106,6 +108,15 @@ for key, value in content.items():
     soup = bs4.BeautifulSoup(r.text, "html.parser")
     iconURL = soup.find("div", {"class": "fullImageLink"}).find("img")["src"]
     
+    # find the locations by scraping the wiki article
+    wiki_url = f"https://stardewvalleywiki.com/{name}"
+    r = requests.get(wiki_url)
+    soup = bs4.BeautifulSoup(r.text, "html.parser")
+    if name in trap_fish:
+        locations = soup.find_all("td", {"id": "infoboxdetail"})[1].text.strip().split("\n")
+    else:
+        locations = soup.find_all("td", {"id": "infoboxdetail"})[1].text.strip().split(" • ")
+    
     if name in trap_fish:
         location, min_size, max_size = fields[4], fields[5], fields[6]
         fish[name] = {
@@ -114,7 +125,7 @@ for key, value in content.items():
             "iconURL": "https://stardewvalleywiki.com" + iconURL,
             "trapFish": True,
             "description": description,
-            "location": upper_first(location),
+            "locations": locations,
             "minInch": min_size,
             "maxInch": max_size
         }
@@ -136,8 +147,7 @@ for key, value in content.items():
         "iconURL": "https://stardewvalleywiki.com" + iconURL,
         "trapFish": False,
         "description": description,
-        #!TODO: Add locations
-        "locations": "wip",
+        "locations": locations,
         "minInch": min_inch,
         "maxInch": max_inch,
         "difficulty": difficulty,

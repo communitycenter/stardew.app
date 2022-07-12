@@ -5,7 +5,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
         "trapFish": false,
         "description": "Inflates when threatened.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island"
+        ],
         "minInch": "1",
         "maxInch": "36",
         "difficulty": "80 floater",
@@ -22,7 +25,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Anchovy.png",
         "trapFish": false,
         "description": "A small silver fish found in the ocean.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "1",
         "maxInch": "16",
         "difficulty": "30 dart",
@@ -40,7 +45,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
         "trapFish": false,
         "description": "A large fish that lives in the ocean.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island"
+        ],
         "minInch": "12",
         "maxInch": "60",
         "difficulty": "70 smooth",
@@ -58,7 +66,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
         "trapFish": false,
         "description": "A common ocean fish.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "1",
         "maxInch": "12",
         "difficulty": "30 dart",
@@ -78,7 +88,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/82/Bream.png",
         "trapFish": false,
         "description": "A fairly common river fish that becomes active at night.",
-        "locations": "wip",
+        "locations": [
+            "River"
+        ],
         "minInch": "12",
         "maxInch": "30",
         "difficulty": "35 smooth",
@@ -98,7 +110,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
         "trapFish": false,
         "description": "A popular fish that lives in lakes.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake",
+            "Wilderness Farm"
+        ],
         "minInch": "11",
         "maxInch": "30",
         "difficulty": "50 mixed",
@@ -118,7 +133,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a5/Smallmouth_Bass.png",
         "trapFish": false,
         "description": "A freshwater fish that is very sensitive to pollution.",
-        "locations": "wip",
+        "locations": [
+            "Town River",
+            "Forest Pond"
+        ],
         "minInch": "12",
         "maxInch": "24",
         "difficulty": "28 mixed",
@@ -136,7 +154,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/14/Rainbow_Trout.png",
         "trapFish": false,
         "description": "A freshwater trout with colorful markings.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Mountain Lake"
+        ],
         "minInch": "10",
         "maxInch": "25",
         "difficulty": "45 mixed",
@@ -153,7 +174,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Salmon.png",
         "trapFish": false,
         "description": "Swims upstream to lay its eggs.",
-        "locations": "wip",
+        "locations": [
+            "River"
+        ],
         "minInch": "24",
         "maxInch": "65",
         "difficulty": "50 mixed",
@@ -170,7 +193,12 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/05/Walleye.png",
         "trapFish": false,
         "description": "A freshwater fish caught at night.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Mountain Lake",
+            "Forest Pond",
+            "Forest Farm Pond"
+        ],
         "minInch": "10",
         "maxInch": "40",
         "difficulty": "45 smooth",
@@ -188,7 +216,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/43/Perch.png",
         "trapFish": false,
         "description": "A freshwater fish of the winter.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Mountain Lake",
+            "Forest Pond"
+        ],
         "minInch": "10",
         "maxInch": "24",
         "difficulty": "35 dart",
@@ -205,7 +237,12 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Carp.png",
         "trapFish": false,
         "description": "A common pond fish.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake",
+            "Secret Woods",
+            "The Sewers",
+            "Mutant Bug Lair"
+        ],
         "minInch": "15",
         "maxInch": "50",
         "difficulty": "15 mixed",
@@ -224,7 +261,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/99/Catfish.png",
         "trapFish": false,
         "description": "An uncommon fish found in streams.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Secret Woods",
+            "Witch's Swamp"
+        ],
         "minInch": "12",
         "maxInch": "72",
         "difficulty": "75 mixed",
@@ -243,7 +284,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Pike.png",
         "trapFish": false,
         "description": "A freshwater fish that's difficult to catch.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Forest Pond"
+        ],
         "minInch": "15",
         "maxInch": "60",
         "difficulty": "60 dart",
@@ -261,7 +305,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/56/Sunfish.png",
         "trapFish": false,
         "description": "A common river fish.",
-        "locations": "wip",
+        "locations": [
+            "River"
+        ],
         "minInch": "5",
         "maxInch": "15",
         "difficulty": "30 mixed",
@@ -279,7 +325,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Red_Mullet.png",
         "trapFish": false,
         "description": "Long ago these were kept as pets.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "8",
         "maxInch": "22",
         "difficulty": "55 smooth",
@@ -297,7 +345,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Herring.png",
         "trapFish": false,
         "description": "A common ocean fish.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "8",
         "maxInch": "20",
         "difficulty": "25 dart",
@@ -315,7 +365,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Eel.png",
         "trapFish": false,
         "description": "A long, slippery little fish.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "12",
         "maxInch": "80",
         "difficulty": "70 smooth",
@@ -333,7 +385,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5a/Octopus.png",
         "trapFish": false,
         "description": "A mysterious and intelligent creature.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island",
+            "Submarine at Night Market"
+        ],
         "minInch": "12",
         "maxInch": "48",
         "difficulty": "95 sinker",
@@ -350,7 +406,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d3/Red_Snapper.png",
         "trapFish": false,
         "description": "A popular fish with a nice red color.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Beach Farm"
+        ],
         "minInch": "8sec",
         "maxInch": "25",
         "difficulty": "40 mixed",
@@ -369,7 +428,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Squid.png",
         "trapFish": false,
         "description": "A deep sea creature that can grow to enormous size.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "12",
         "maxInch": "48",
         "difficulty": "75 sinker",
@@ -386,7 +447,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/13/Seaweed.png",
         "trapFish": false,
         "description": "It can be used in cooking.",
-        "locations": "wip",
+        "locations": [
+            "Fishing Pole: Ocean\nForaging: The Beach\nGarbage Cans\nFish Pond"
+        ],
         "minInch": "5",
         "maxInch": "30",
         "difficulty": "5 floater",
@@ -406,7 +469,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Green_Algae.png",
         "trapFish": false,
         "description": "It's really slimy.",
-        "locations": "wip",
+        "locations": [
+            "Fishing Pole: freshwater\nGreen Slimes\nGarbage Cans\nFish Pond"
+        ],
         "minInch": "5",
         "maxInch": "30",
         "difficulty": "5 floater",
@@ -426,7 +491,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a9/Sea_Cucumber.png",
         "trapFish": false,
         "description": "A slippery, slimy creature found on the ocean floor.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Submarine at Night Market"
+        ],
         "minInch": "3",
         "maxInch": "20",
         "difficulty": "40 sinker",
@@ -444,7 +512,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Super_Cucumber.png",
         "trapFish": false,
         "description": "A rare, purple variety of sea cucumber.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island",
+            "Submarine at Night Market"
+        ],
         "minInch": "12",
         "maxInch": "36",
         "difficulty": "80 sinker",
@@ -462,7 +534,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Ghostfish.png",
         "trapFish": false,
         "description": "A pale, blind fish found in underground lakes.",
-        "locations": "wip",
+        "locations": [
+            "The Mines"
+        ],
         "minInch": "10",
         "maxInch": "35",
         "difficulty": "50 mixed",
@@ -482,7 +556,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f7/White_Algae.png",
         "trapFish": false,
         "description": "It's super slimy.",
-        "locations": "wip",
+        "locations": [
+            "Fishing Pole",
+            "Monster drops",
+            "Fish Pond (Ghostfish)"
+        ],
         "minInch": "5",
         "maxInch": "30",
         "difficulty": "5 floater",
@@ -502,7 +580,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/03/Stonefish.png",
         "trapFish": false,
         "description": "A bizarre fish that's shaped like a brick.",
-        "locations": "wip",
+        "locations": [
+            "Level 20 of The Mines"
+        ],
         "minInch": "15",
         "maxInch": "15",
         "difficulty": "65 sinker",
@@ -522,7 +602,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dc/Crimsonfish.png",
         "trapFish": false,
         "description": "Lives deep in the ocean but likes to lay its eggs in the warm summer water.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "20",
         "maxInch": "20",
         "difficulty": "95 mixed",
@@ -539,7 +621,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bf/Angler.png",
         "trapFish": false,
         "description": "Uses a bioluminescent dangler to attract prey.",
-        "locations": "wip",
+        "locations": [
+            "Pelican Town"
+        ],
         "minInch": "18",
         "maxInch": "18",
         "difficulty": "85 smooth",
@@ -559,7 +643,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Ice_Pip.png",
         "trapFish": false,
         "description": "A rare fish that thrives in extremely cold conditions.",
-        "locations": "wip",
+        "locations": [
+            "The Mines, Level 60"
+        ],
         "minInch": "8",
         "maxInch": "8",
         "difficulty": "85 dart",
@@ -579,7 +665,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Lava_Eel.png",
         "trapFish": false,
         "description": "It can somehow survive in pools of red-hot lava.",
-        "locations": "wip",
+        "locations": [
+            "Level 100 of The Mines",
+            "Volcano Caldera"
+        ],
         "minInch": "32",
         "maxInch": "32",
         "difficulty": "90 mixed",
@@ -599,7 +688,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/10/Legend.png",
         "trapFish": false,
         "description": "The king of all fish! They said he'd never be caught.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake"
+        ],
         "minInch": "50",
         "maxInch": "50",
         "difficulty": "110 mixed",
@@ -619,7 +710,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Sandfish.png",
         "trapFish": false,
         "description": "It tries to hide using camouflage.",
-        "locations": "wip",
+        "locations": [
+            "The Desert"
+        ],
         "minInch": "8",
         "maxInch": "24",
         "difficulty": "65 mixed",
@@ -639,7 +732,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Scorpion_Carp.png",
         "trapFish": false,
         "description": "It's like a regular carp but with a sharp stinger.",
-        "locations": "wip",
+        "locations": [
+            "The Desert"
+        ],
         "minInch": "12",
         "maxInch": "32",
         "difficulty": "90 dart",
@@ -659,7 +754,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Flounder.png",
         "trapFish": false,
         "description": "It lives on the bottom, so both eyes are on top of its head.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island"
+        ],
         "minInch": "4",
         "maxInch": "16",
         "difficulty": "50 sinker",
@@ -677,7 +775,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/33/Midnight_Carp.png",
         "trapFish": false,
         "description": "This shy fish only feels comfortable at night.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake",
+            "Forest Pond",
+            "Ginger Island North & West (freshwater)"
+        ],
         "minInch": "12",
         "maxInch": "52",
         "difficulty": "55 mixed",
@@ -695,7 +797,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Clam.png",
         "trapFish": true,
         "description": "Someone lived here once.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater",
+            "Foraging: The Beach"
+        ],
         "minInch": "1",
         "maxInch": "5"
     },
@@ -705,7 +810,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cb/Mutant_Carp.png",
         "trapFish": false,
         "description": "The strange waters of the sewer turned this carp into a monstrosity.",
-        "locations": "wip",
+        "locations": [
+            "The Sewers"
+        ],
         "minInch": "36",
         "maxInch": "36",
         "difficulty": "80 dart",
@@ -725,7 +832,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/42/Sturgeon.png",
         "trapFish": false,
         "description": "An ancient bottom-feeder with a dwindling population. Females can live up to 150 years.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake"
+        ],
         "minInch": "12",
         "maxInch": "60",
         "difficulty": "78 mixed",
@@ -743,7 +852,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Tiger_Trout.png",
         "trapFish": false,
         "description": "A rare hybrid trout that cannot bear offspring of its own.",
-        "locations": "wip",
+        "locations": [
+            "River"
+        ],
         "minInch": "10",
         "maxInch": "20",
         "difficulty": "60 dart",
@@ -763,7 +874,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Bullhead.png",
         "trapFish": false,
         "description": "A relative of the catfish that eats a variety of foods off the lake bottom.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake"
+        ],
         "minInch": "12",
         "maxInch": "30",
         "difficulty": "46 smooth",
@@ -783,7 +896,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/73/Tilapia.png",
         "trapFish": false,
         "description": "A primarily vegetarian fish that prefers warm water.",
-        "locations": "wip",
+        "locations": [
+            "Ocean",
+            "Ginger Island"
+        ],
         "minInch": "11",
         "maxInch": "30",
         "difficulty": "50 mixed",
@@ -801,7 +917,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Chub.png",
         "trapFish": false,
         "description": "A common freshwater fish known for its voracious appetite.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake",
+            "Forest River"
+        ],
         "minInch": "12",
         "maxInch": "24",
         "difficulty": "35 dart",
@@ -821,7 +940,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/18/Dorado.png",
         "trapFish": false,
         "description": "A fierce carnivore with brilliant orange scales.",
-        "locations": "wip",
+        "locations": [
+            "Forest River"
+        ],
         "minInch": "24",
         "maxInch": "32",
         "difficulty": "78 mixed",
@@ -838,7 +959,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Albacore.png",
         "trapFish": false,
         "description": "Prefers temperature \"edges\" where cool and warm water meet.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "20",
         "maxInch": "40",
         "difficulty": "60 mixed",
@@ -856,7 +979,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Shad.png",
         "trapFish": false,
         "description": "Lives in a school at sea, but returns to the rivers to spawn.",
-        "locations": "wip",
+        "locations": [
+            "River"
+        ],
         "minInch": "20",
         "maxInch": "48",
         "difficulty": "45 smooth",
@@ -875,7 +1000,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Lingcod.png",
         "trapFish": false,
         "description": "A fearsome predator that will eat almost anything it can cram into its mouth.",
-        "locations": "wip",
+        "locations": [
+            "River",
+            "Mountain Lake"
+        ],
         "minInch": "30",
         "maxInch": "50",
         "difficulty": "85 mixed",
@@ -892,7 +1020,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Halibut.png",
         "trapFish": false,
         "description": "A flat fish that lives on the ocean floor.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "10",
         "maxInch": "33",
         "difficulty": "50 sinker",
@@ -911,7 +1041,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Lobster.png",
         "trapFish": true,
         "description": "A large ocean-dwelling crustacean with a strong tail.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater"
+        ],
         "minInch": "2",
         "maxInch": "20"
     },
@@ -921,7 +1053,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Crayfish.png",
         "trapFish": true,
         "description": "A small freshwater relative of the lobster.",
-        "location": "Freshwater",
+        "locations": [
+            "Crab Pot: Freshwater"
+        ],
         "minInch": "1",
         "maxInch": "8"
     },
@@ -931,7 +1065,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crab.png",
         "trapFish": true,
         "description": "A marine crustacean with two powerful pincers.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater",
+            "Monster Drops: Rock Crab \u2022 Lava Crab"
+        ],
         "minInch": "1",
         "maxInch": "20"
     },
@@ -941,7 +1078,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Cockle.png",
         "trapFish": true,
         "description": "A common saltwater clam.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater",
+            "Foraging: The Beach"
+        ],
         "minInch": "1",
         "maxInch": "5"
     },
@@ -951,7 +1091,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Mussel.png",
         "trapFish": true,
         "description": "A common bivalve that often lives in clusters.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater",
+            "Foraging: The Beach",
+            "Mussel Node"
+        ],
         "minInch": "1",
         "maxInch": "5"
     },
@@ -961,7 +1105,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Shrimp.png",
         "trapFish": true,
         "description": "A scavenger that feeds off the ocean floor. Widely prized for its meat.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater"
+        ],
         "minInch": "1",
         "maxInch": "3"
     },
@@ -971,7 +1117,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Snail.png",
         "trapFish": true,
         "description": "A wide-ranging mollusc that lives in a spiral shell.",
-        "location": "Freshwater",
+        "locations": [
+            "Crab Pot: Freshwater"
+        ],
         "minInch": "1",
         "maxInch": "5"
     },
@@ -981,7 +1129,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Periwinkle.png",
         "trapFish": true,
         "description": "A tiny freshwater snail that lives in a blue shell.",
-        "location": "Freshwater",
+        "locations": [
+            "Crab Pot: Freshwater"
+        ],
         "minInch": "1",
         "maxInch": "3"
     },
@@ -991,7 +1141,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/54/Oyster.png",
         "trapFish": true,
         "description": "Constantly filters water to find food. In the process, it removes dangerous toxins from the environment.",
-        "location": "Ocean",
+        "locations": [
+            "Crab Pot: Saltwater",
+            "Foraging: The Beach"
+        ],
         "minInch": "1",
         "maxInch": "5"
     },
@@ -1001,7 +1154,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Woodskip.png",
         "trapFish": false,
         "description": "A very sensitive fish that can only live in pools deep in the forest.",
-        "locations": "wip",
+        "locations": [
+            "Secret Woods",
+            "Forest Farm"
+        ],
         "minInch": "11",
         "maxInch": "30",
         "difficulty": "50 mixed",
@@ -1021,7 +1177,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fd/Glacierfish.png",
         "trapFish": false,
         "description": "Builds a nest on the underside of glaciers.",
-        "locations": "wip",
+        "locations": [
+            "Cindersap Forest"
+        ],
         "minInch": "27",
         "maxInch": "27",
         "difficulty": "100 mixed",
@@ -1038,7 +1196,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Void_Salmon.png",
         "trapFish": false,
         "description": "A salmon, twisted by void energy. The fresh meat is jet black, but rapidly turns pink when exposed to air.",
-        "locations": "wip",
+        "locations": [
+            "Witch's Swamp"
+        ],
         "minInch": "24",
         "maxInch": "65",
         "difficulty": "80 mixed",
@@ -1058,7 +1218,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Slimejack.png",
         "trapFish": false,
         "description": "He's coated in a very thick layer of slime. He keeps slipping out of your hands!",
-        "locations": "wip",
+        "locations": [
+            "Mutant Bug Lair"
+        ],
         "minInch": "8",
         "maxInch": "25",
         "difficulty": "55 dart",
@@ -1078,7 +1240,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/83/Midnight_Squid.png",
         "trapFish": false,
         "description": "A strange and mysterious denizen of the ocean's twilight depths.",
-        "locations": "wip",
+        "locations": [
+            "Submarine at Night Market"
+        ],
         "minInch": "8",
         "maxInch": "25",
         "difficulty": "55 sinker",
@@ -1098,7 +1262,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Spook_Fish.png",
         "trapFish": false,
         "description": "The huge eyes can detect the faint silhouettes of prey.",
-        "locations": "wip",
+        "locations": [
+            "Submarine at Night Market"
+        ],
         "minInch": "8",
         "maxInch": "25",
         "difficulty": "60 dart",
@@ -1118,7 +1284,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Blobfish.png",
         "trapFish": false,
         "description": "This odd creature floats above the ocean floor, consuming any edible material in its path.",
-        "locations": "wip",
+        "locations": [
+            "Submarine at Night Market"
+        ],
         "minInch": "8",
         "maxInch": "25",
         "difficulty": "75 floater",
@@ -1138,7 +1306,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3a/Stingray.png",
         "trapFish": false,
         "description": "Despite having a toxic stinger, these fish are shy and prefer to avoid humans.",
-        "locations": "wip",
+        "locations": [
+            "Pirate Cove"
+        ],
         "minInch": "18",
         "maxInch": "60",
         "difficulty": "80 sinker",
@@ -1158,7 +1328,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Lionfish.png",
         "trapFish": false,
         "description": "An aggressive, predatory fish with venomous spines.",
-        "locations": "wip",
+        "locations": [
+            "Ginger Island"
+        ],
         "minInch": "3",
         "maxInch": "12",
         "difficulty": "50 smooth",
@@ -1178,7 +1350,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Blue_Discus.png",
         "trapFish": false,
         "description": "A brightly colored tropical fish that is popular in aquariums.",
-        "locations": "wip",
+        "locations": [
+            "Ginger Island"
+        ],
         "minInch": "2",
         "maxInch": "9",
         "difficulty": "60 dart",
@@ -1198,7 +1372,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Son_of_Crimsonfish.png",
         "trapFish": false,
         "description": "He hatched in the warm summer water, and followed in the footsteps of his father.",
-        "locations": "wip",
+        "locations": [
+            "Ocean"
+        ],
         "minInch": "20",
         "maxInch": "20",
         "difficulty": "95 mixed",
@@ -1215,7 +1391,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Ms._Angler.png",
         "trapFish": false,
         "description": "Uses a bioluminescent dangler to attract prey.",
-        "locations": "wip",
+        "locations": [
+            "Pelican Town"
+        ],
         "minInch": "18",
         "maxInch": "18",
         "difficulty": "85 smooth",
@@ -1235,7 +1413,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7a/Legend_II.png",
         "trapFish": false,
         "description": "The successor to the original Legend.",
-        "locations": "wip",
+        "locations": [
+            "Mountain Lake"
+        ],
         "minInch": "50",
         "maxInch": "50",
         "difficulty": "110 mixed",
@@ -1255,7 +1435,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/57/Radioactive_Carp.png",
         "trapFish": false,
         "description": "A carp that spent one too many years in toxic sludge.",
-        "locations": "wip",
+        "locations": [
+            "The Sewers"
+        ],
         "minInch": "36",
         "maxInch": "36",
         "difficulty": "80 dart",
@@ -1275,7 +1457,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Glacierfish_Jr..png",
         "trapFish": false,
         "description": "The original Glacierfish had a son...",
-        "locations": "wip",
+        "locations": [
+            "Cindersap Forest"
+        ],
         "minInch": "27",
         "maxInch": "27",
         "difficulty": "100 mixed",
