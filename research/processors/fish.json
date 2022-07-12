@@ -9,8 +9,8 @@
             "Ocean",
             "Ginger Island"
         ],
-        "minInch": "1",
-        "maxInch": "36",
+        "minInch": 1,
+        "maxInch": 36,
         "difficulty": "80 floater",
         "time": "12PM - 4PM",
         "seasons": [
@@ -28,8 +28,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "1",
-        "maxInch": "16",
+        "minInch": 1,
+        "maxInch": 16,
         "difficulty": "30 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -49,8 +49,8 @@
             "Ocean",
             "Ginger Island"
         ],
-        "minInch": "12",
-        "maxInch": "60",
+        "minInch": 12,
+        "maxInch": 60,
         "difficulty": "70 smooth",
         "time": "6AM - 7PM",
         "seasons": [
@@ -69,8 +69,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "1",
-        "maxInch": "12",
+        "minInch": 1,
+        "maxInch": 12,
         "difficulty": "30 dart",
         "time": "6AM - 7PM",
         "seasons": [
@@ -91,8 +91,8 @@
         "locations": [
             "River"
         ],
-        "minInch": "12",
-        "maxInch": "30",
+        "minInch": 12,
+        "maxInch": 30,
         "difficulty": "35 smooth",
         "time": "6PM - 2AM",
         "seasons": [
@@ -114,8 +114,8 @@
             "Mountain Lake",
             "Wilderness Farm"
         ],
-        "minInch": "11",
-        "maxInch": "30",
+        "minInch": 11,
+        "maxInch": 30,
         "difficulty": "50 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -137,8 +137,8 @@
             "Town River",
             "Forest Pond"
         ],
-        "minInch": "12",
-        "maxInch": "24",
+        "minInch": 12,
+        "maxInch": 24,
         "difficulty": "28 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -158,8 +158,8 @@
             "River",
             "Mountain Lake"
         ],
-        "minInch": "10",
-        "maxInch": "25",
+        "minInch": 10,
+        "maxInch": 25,
         "difficulty": "45 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -177,8 +177,8 @@
         "locations": [
             "River"
         ],
-        "minInch": "24",
-        "maxInch": "65",
+        "minInch": 24,
+        "maxInch": 65,
         "difficulty": "50 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -199,8 +199,8 @@
             "Forest Pond",
             "Forest Farm Pond"
         ],
-        "minInch": "10",
-        "maxInch": "40",
+        "minInch": 10,
+        "maxInch": 40,
         "difficulty": "45 smooth",
         "time": "12PM - 2AM",
         "seasons": [
@@ -221,8 +221,8 @@
             "Mountain Lake",
             "Forest Pond"
         ],
-        "minInch": "10",
-        "maxInch": "24",
+        "minInch": 10,
+        "maxInch": 24,
         "difficulty": "35 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -243,8 +243,8 @@
             "The Sewers",
             "Mutant Bug Lair"
         ],
-        "minInch": "15",
-        "maxInch": "50",
+        "minInch": 15,
+        "maxInch": 50,
         "difficulty": "15 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -266,8 +266,8 @@
             "Secret Woods",
             "Witch's Swamp"
         ],
-        "minInch": "12",
-        "maxInch": "72",
+        "minInch": 12,
+        "maxInch": 72,
         "difficulty": "75 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -288,8 +288,8 @@
             "River",
             "Forest Pond"
         ],
-        "minInch": "15",
-        "maxInch": "60",
+        "minInch": 15,
+        "maxInch": 60,
         "difficulty": "60 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -308,8 +308,8 @@
         "locations": [
             "River"
         ],
-        "minInch": "5",
-        "maxInch": "15",
+        "minInch": 5,
+        "maxInch": 15,
         "difficulty": "30 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -328,8 +328,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "8",
-        "maxInch": "22",
+        "minInch": 8,
+        "maxInch": 22,
         "difficulty": "55 smooth",
         "time": "6AM - 7PM",
         "seasons": [
@@ -348,8 +348,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "8",
-        "maxInch": "20",
+        "minInch": 8,
+        "maxInch": 20,
         "difficulty": "25 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -368,8 +368,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "12",
-        "maxInch": "80",
+        "minInch": 12,
+        "maxInch": 80,
         "difficulty": "70 smooth",
         "time": "4PM - 2AM",
         "seasons": [
@@ -390,8 +390,8 @@
             "Ginger Island",
             "Submarine at Night Market"
         ],
-        "minInch": "12",
-        "maxInch": "48",
+        "minInch": 12,
+        "maxInch": 48,
         "difficulty": "95 sinker",
         "time": "6AM - 1PM",
         "seasons": [
@@ -410,8 +410,8 @@
             "Ocean",
             "Beach Farm"
         ],
-        "minInch": "8sec",
-        "maxInch": "25",
+        "minInch": 8,
+        "maxInch": 25,
         "difficulty": "40 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -431,8 +431,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "12",
-        "maxInch": "48",
+        "minInch": 12,
+        "maxInch": 48,
         "difficulty": "75 sinker",
         "time": "6PM - 2AM",
         "seasons": [
@@ -450,8 +450,8 @@
         "locations": [
             "Fishing Pole: Ocean\nForaging: The Beach\nGarbage Cans\nFish Pond"
         ],
-        "minInch": "5",
-        "maxInch": "30",
+        "minInch": 5,
+        "maxInch": 30,
         "difficulty": "5 floater",
         "time": "6AM - 2AM",
         "seasons": [
@@ -472,8 +472,8 @@
         "locations": [
             "Fishing Pole: freshwater\nGreen Slimes\nGarbage Cans\nFish Pond"
         ],
-        "minInch": "5",
-        "maxInch": "30",
+        "minInch": 5,
+        "maxInch": 30,
         "difficulty": "5 floater",
         "time": "6AM - 2AM",
         "seasons": [
@@ -495,8 +495,8 @@
             "Ocean",
             "Submarine at Night Market"
         ],
-        "minInch": "3",
-        "maxInch": "20",
+        "minInch": 3,
+        "maxInch": 20,
         "difficulty": "40 sinker",
         "time": "6AM - 7PM",
         "seasons": [
@@ -517,8 +517,8 @@
             "Ginger Island",
             "Submarine at Night Market"
         ],
-        "minInch": "12",
-        "maxInch": "36",
+        "minInch": 12,
+        "maxInch": 36,
         "difficulty": "80 sinker",
         "time": "6PM - 2AM",
         "seasons": [
@@ -537,8 +537,8 @@
         "locations": [
             "The Mines"
         ],
-        "minInch": "10",
-        "maxInch": "35",
+        "minInch": 10,
+        "maxInch": 35,
         "difficulty": "50 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -561,8 +561,8 @@
             "Monster drops",
             "Fish Pond (Ghostfish)"
         ],
-        "minInch": "5",
-        "maxInch": "30",
+        "minInch": 5,
+        "maxInch": 30,
         "difficulty": "5 floater",
         "time": "6AM - 2AM",
         "seasons": [
@@ -583,8 +583,8 @@
         "locations": [
             "Level 20 of The Mines"
         ],
-        "minInch": "15",
-        "maxInch": "15",
+        "minInch": 15,
+        "maxInch": 15,
         "difficulty": "65 sinker",
         "time": "6AM - 2AM",
         "seasons": [
@@ -605,8 +605,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "20",
-        "maxInch": "20",
+        "minInch": 20,
+        "maxInch": 20,
         "difficulty": "95 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -624,8 +624,8 @@
         "locations": [
             "Pelican Town"
         ],
-        "minInch": "18",
-        "maxInch": "18",
+        "minInch": 18,
+        "maxInch": 18,
         "difficulty": "85 smooth",
         "time": "6AM - 2AM",
         "seasons": [
@@ -646,8 +646,8 @@
         "locations": [
             "The Mines, Level 60"
         ],
-        "minInch": "8",
-        "maxInch": "8",
+        "minInch": 8,
+        "maxInch": 8,
         "difficulty": "85 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -669,8 +669,8 @@
             "Level 100 of The Mines",
             "Volcano Caldera"
         ],
-        "minInch": "32",
-        "maxInch": "32",
+        "minInch": 32,
+        "maxInch": 32,
         "difficulty": "90 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -691,8 +691,8 @@
         "locations": [
             "Mountain Lake"
         ],
-        "minInch": "50",
-        "maxInch": "50",
+        "minInch": 50,
+        "maxInch": 50,
         "difficulty": "110 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -713,8 +713,8 @@
         "locations": [
             "The Desert"
         ],
-        "minInch": "8",
-        "maxInch": "24",
+        "minInch": 8,
+        "maxInch": 24,
         "difficulty": "65 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -735,8 +735,8 @@
         "locations": [
             "The Desert"
         ],
-        "minInch": "12",
-        "maxInch": "32",
+        "minInch": 12,
+        "maxInch": 32,
         "difficulty": "90 dart",
         "time": "6AM - 8PM",
         "seasons": [
@@ -758,8 +758,8 @@
             "Ocean",
             "Ginger Island"
         ],
-        "minInch": "4",
-        "maxInch": "16",
+        "minInch": 4,
+        "maxInch": 16,
         "difficulty": "50 sinker",
         "time": "6AM - 8PM",
         "seasons": [
@@ -780,8 +780,8 @@
             "Forest Pond",
             "Ginger Island North & West (freshwater)"
         ],
-        "minInch": "12",
-        "maxInch": "52",
+        "minInch": 12,
+        "maxInch": 52,
         "difficulty": "55 mixed",
         "time": "10PM - 2AM",
         "seasons": [
@@ -801,8 +801,8 @@
             "Crab Pot: Saltwater",
             "Foraging: The Beach"
         ],
-        "minInch": "1",
-        "maxInch": "5"
+        "minInch": 1,
+        "maxInch": 5
     },
     "Mutant Carp": {
         "itemID": 682,
@@ -813,8 +813,8 @@
         "locations": [
             "The Sewers"
         ],
-        "minInch": "36",
-        "maxInch": "36",
+        "minInch": 36,
+        "maxInch": 36,
         "difficulty": "80 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -835,8 +835,8 @@
         "locations": [
             "Mountain Lake"
         ],
-        "minInch": "12",
-        "maxInch": "60",
+        "minInch": 12,
+        "maxInch": 60,
         "difficulty": "78 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -855,8 +855,8 @@
         "locations": [
             "River"
         ],
-        "minInch": "10",
-        "maxInch": "20",
+        "minInch": 10,
+        "maxInch": 20,
         "difficulty": "60 dart",
         "time": "6AM - 7PM",
         "seasons": [
@@ -877,8 +877,8 @@
         "locations": [
             "Mountain Lake"
         ],
-        "minInch": "12",
-        "maxInch": "30",
+        "minInch": 12,
+        "maxInch": 30,
         "difficulty": "46 smooth",
         "time": "6AM - 2AM",
         "seasons": [
@@ -900,8 +900,8 @@
             "Ocean",
             "Ginger Island"
         ],
-        "minInch": "11",
-        "maxInch": "30",
+        "minInch": 11,
+        "maxInch": 30,
         "difficulty": "50 mixed",
         "time": "6AM - 2PM",
         "seasons": [
@@ -921,8 +921,8 @@
             "Mountain Lake",
             "Forest River"
         ],
-        "minInch": "12",
-        "maxInch": "24",
+        "minInch": 12,
+        "maxInch": 24,
         "difficulty": "35 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -943,8 +943,8 @@
         "locations": [
             "Forest River"
         ],
-        "minInch": "24",
-        "maxInch": "32",
+        "minInch": 24,
+        "maxInch": 32,
         "difficulty": "78 mixed",
         "time": "6AM - 7PM",
         "seasons": [
@@ -962,8 +962,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "20",
-        "maxInch": "40",
+        "minInch": 20,
+        "maxInch": 40,
         "difficulty": "60 mixed",
         "time": "6AM - 11AM",
         "seasons": [
@@ -982,8 +982,8 @@
         "locations": [
             "River"
         ],
-        "minInch": "20",
-        "maxInch": "48",
+        "minInch": 20,
+        "maxInch": 48,
         "difficulty": "45 smooth",
         "time": "9AM - 2AM",
         "seasons": [
@@ -1004,8 +1004,8 @@
             "River",
             "Mountain Lake"
         ],
-        "minInch": "30",
-        "maxInch": "50",
+        "minInch": 30,
+        "maxInch": 50,
         "difficulty": "85 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1023,8 +1023,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "10",
-        "maxInch": "33",
+        "minInch": 10,
+        "maxInch": 33,
         "difficulty": "50 sinker",
         "time": "6AM - 11AM",
         "seasons": [
@@ -1044,8 +1044,8 @@
         "locations": [
             "Crab Pot: Saltwater"
         ],
-        "minInch": "2",
-        "maxInch": "20"
+        "minInch": 2,
+        "maxInch": 20
     },
     "Crayfish": {
         "itemID": 716,
@@ -1056,8 +1056,8 @@
         "locations": [
             "Crab Pot: Freshwater"
         ],
-        "minInch": "1",
-        "maxInch": "8"
+        "minInch": 1,
+        "maxInch": 8
     },
     "Crab": {
         "itemID": 717,
@@ -1069,8 +1069,8 @@
             "Crab Pot: Saltwater",
             "Monster Drops: Rock Crab \u2022 Lava Crab"
         ],
-        "minInch": "1",
-        "maxInch": "20"
+        "minInch": 1,
+        "maxInch": 20
     },
     "Cockle": {
         "itemID": 718,
@@ -1082,8 +1082,8 @@
             "Crab Pot: Saltwater",
             "Foraging: The Beach"
         ],
-        "minInch": "1",
-        "maxInch": "5"
+        "minInch": 1,
+        "maxInch": 5
     },
     "Mussel": {
         "itemID": 719,
@@ -1096,8 +1096,8 @@
             "Foraging: The Beach",
             "Mussel Node"
         ],
-        "minInch": "1",
-        "maxInch": "5"
+        "minInch": 1,
+        "maxInch": 5
     },
     "Shrimp": {
         "itemID": 720,
@@ -1108,8 +1108,8 @@
         "locations": [
             "Crab Pot: Saltwater"
         ],
-        "minInch": "1",
-        "maxInch": "3"
+        "minInch": 1,
+        "maxInch": 3
     },
     "Snail": {
         "itemID": 721,
@@ -1120,8 +1120,8 @@
         "locations": [
             "Crab Pot: Freshwater"
         ],
-        "minInch": "1",
-        "maxInch": "5"
+        "minInch": 1,
+        "maxInch": 5
     },
     "Periwinkle": {
         "itemID": 722,
@@ -1132,8 +1132,8 @@
         "locations": [
             "Crab Pot: Freshwater"
         ],
-        "minInch": "1",
-        "maxInch": "3"
+        "minInch": 1,
+        "maxInch": 3
     },
     "Oyster": {
         "itemID": 723,
@@ -1145,8 +1145,8 @@
             "Crab Pot: Saltwater",
             "Foraging: The Beach"
         ],
-        "minInch": "1",
-        "maxInch": "5"
+        "minInch": 1,
+        "maxInch": 5
     },
     "Woodskip": {
         "itemID": 734,
@@ -1158,8 +1158,8 @@
             "Secret Woods",
             "Forest Farm"
         ],
-        "minInch": "11",
-        "maxInch": "30",
+        "minInch": 11,
+        "maxInch": 30,
         "difficulty": "50 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1180,8 +1180,8 @@
         "locations": [
             "Cindersap Forest"
         ],
-        "minInch": "27",
-        "maxInch": "27",
+        "minInch": 27,
+        "maxInch": 27,
         "difficulty": "100 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -1199,8 +1199,8 @@
         "locations": [
             "Witch's Swamp"
         ],
-        "minInch": "24",
-        "maxInch": "65",
+        "minInch": 24,
+        "maxInch": 65,
         "difficulty": "80 mixed",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1221,8 +1221,8 @@
         "locations": [
             "Mutant Bug Lair"
         ],
-        "minInch": "8",
-        "maxInch": "25",
+        "minInch": 8,
+        "maxInch": 25,
         "difficulty": "55 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1243,8 +1243,8 @@
         "locations": [
             "Submarine at Night Market"
         ],
-        "minInch": "8",
-        "maxInch": "25",
+        "minInch": 8,
+        "maxInch": 25,
         "difficulty": "55 sinker",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1265,8 +1265,8 @@
         "locations": [
             "Submarine at Night Market"
         ],
-        "minInch": "8",
-        "maxInch": "25",
+        "minInch": 8,
+        "maxInch": 25,
         "difficulty": "60 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1287,8 +1287,8 @@
         "locations": [
             "Submarine at Night Market"
         ],
-        "minInch": "8",
-        "maxInch": "25",
+        "minInch": 8,
+        "maxInch": 25,
         "difficulty": "75 floater",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1309,8 +1309,8 @@
         "locations": [
             "Pirate Cove"
         ],
-        "minInch": "18",
-        "maxInch": "60",
+        "minInch": 18,
+        "maxInch": 60,
         "difficulty": "80 sinker",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1331,8 +1331,8 @@
         "locations": [
             "Ginger Island"
         ],
-        "minInch": "3",
-        "maxInch": "12",
+        "minInch": 3,
+        "maxInch": 12,
         "difficulty": "50 smooth",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1353,8 +1353,8 @@
         "locations": [
             "Ginger Island"
         ],
-        "minInch": "2",
-        "maxInch": "9",
+        "minInch": 2,
+        "maxInch": 9,
         "difficulty": "60 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1375,8 +1375,8 @@
         "locations": [
             "Ocean"
         ],
-        "minInch": "20",
-        "maxInch": "20",
+        "minInch": 20,
+        "maxInch": 20,
         "difficulty": "95 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -1394,8 +1394,8 @@
         "locations": [
             "Pelican Town"
         ],
-        "minInch": "18",
-        "maxInch": "18",
+        "minInch": 18,
+        "maxInch": 18,
         "difficulty": "85 smooth",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1416,8 +1416,8 @@
         "locations": [
             "Mountain Lake"
         ],
-        "minInch": "50",
-        "maxInch": "50",
+        "minInch": 50,
+        "maxInch": 50,
         "difficulty": "110 mixed",
         "time": "6AM - 8PM",
         "seasons": [
@@ -1438,8 +1438,8 @@
         "locations": [
             "The Sewers"
         ],
-        "minInch": "36",
-        "maxInch": "36",
+        "minInch": 36,
+        "maxInch": 36,
         "difficulty": "80 dart",
         "time": "6AM - 2AM",
         "seasons": [
@@ -1460,8 +1460,8 @@
         "locations": [
             "Cindersap Forest"
         ],
-        "minInch": "27",
-        "maxInch": "27",
+        "minInch": 27,
+        "maxInch": 27,
         "difficulty": "100 mixed",
         "time": "6AM - 8PM",
         "seasons": [

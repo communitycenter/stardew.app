@@ -1,7 +1,6 @@
 import json
 import bs4
 import requests
-import time
 
 from datetime import datetime
 
@@ -25,7 +24,7 @@ content = {
     "147": "Herring/25/dart/8/20/600 2600/spring winter/both/685 .2/1/.45/.1/0",
     "148": "Eel/70/smooth/12/80/1600 2600/spring fall/rainy/689 .35 680 .1/3/.55/.1/0",
     "149": "Octopus/95/sinker/12/48/600 1300/summer/both/688 .6 684 .1/5/.1/.08/0",
-    "150": "Red Snapper/40/mixed/8sec/25/600 1900/summer fall winter/rainy/682 .25/2/.45/.1/0",
+    "150": "Red Snapper/40/mixed/8/25/600 1900/summer fall winter/rainy/682 .25/2/.45/.1/0",
     "151": "Squid/75/sinker/12/48/1800 2600/winter/both/690 .35 680 .1/3/.35/.3/0",
     "152": "Seaweed/5/floater/5/30/600 2600/spring summer fall winter/both/-1/0/.3/0/0",
     "153": "Green Algae/5/floater/5/30/600 2600/spring summer fall winter/both/-1/0/.3/0/0",
@@ -126,8 +125,8 @@ for key, value in content.items():
             "trapFish": True,
             "description": description,
             "locations": locations,
-            "minInch": min_size,
-            "maxInch": max_size
+            "minInch": int(min_size),
+            "maxInch": int(max_size)
         }
         continue
 
@@ -148,8 +147,8 @@ for key, value in content.items():
         "trapFish": False,
         "description": description,
         "locations": locations,
-        "minInch": min_inch,
-        "maxInch": max_inch,
+        "minInch": int(min_inch),
+        "maxInch": int(max_inch),
         "difficulty": difficulty,
         "time": time,
         "seasons": [upper_first(season) for season in seasons],
