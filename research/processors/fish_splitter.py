@@ -87,10 +87,14 @@ def upper_first(s: str) -> str:
 def convert_time(time: str) -> str:
     return datetime.strptime(time, "%H%M%S").strftime("%-I%p")
 
+with open("../data/ObjectInformation.json", "r") as f:
+    ObjInfo = json.load(f)
+
 for key, value in content.items():
     
     fields = value.split("/")
     name = fields[0]
+    description = ObjInfo["content"][key].split("/")[5]
     
     if name in trap_fish:
         location, min_size, max_size = fields[4], fields[5], fields[6]
@@ -98,6 +102,7 @@ for key, value in content.items():
             "itemID": int(key),
             "name": name,
             "trapFish": True,
+            "description": description,
             "location": upper_first(location),
             "minInch": min_size,
             "maxInch": max_size
@@ -113,12 +118,12 @@ for key, value in content.items():
     seasons = fields[6].split(" ")
     weather = fields[7]
     min_level = fields[12]
-
     
     fish[name] = {
         "itemID": int(key),
         "name": name,
         "trapFish": False,
+        "description": description,
         #!TODO: Add locations
         "locations": "wip",
         "minInch": min_inch,
