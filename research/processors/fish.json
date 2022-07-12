@@ -2,6 +2,7 @@
     "Pufferfish": {
         "itemID": 128,
         "name": "Pufferfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
         "trapFish": false,
         "description": "Inflates when threatened.",
         "locations": "wip",
@@ -18,6 +19,7 @@
     "Anchovy": {
         "itemID": 129,
         "name": "Anchovy",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Anchovy.png",
         "trapFish": false,
         "description": "A small silver fish found in the ocean.",
         "locations": "wip",
@@ -35,6 +37,7 @@
     "Tuna": {
         "itemID": 130,
         "name": "Tuna",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
         "trapFish": false,
         "description": "A large fish that lives in the ocean.",
         "locations": "wip",
@@ -52,6 +55,7 @@
     "Sardine": {
         "itemID": 131,
         "name": "Sardine",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
         "trapFish": false,
         "description": "A common ocean fish.",
         "locations": "wip",
@@ -71,6 +75,7 @@
     "Bream": {
         "itemID": 132,
         "name": "Bream",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/82/Bream.png",
         "trapFish": false,
         "description": "A fairly common river fish that becomes active at night.",
         "locations": "wip",
@@ -90,6 +95,7 @@
     "Largemouth Bass": {
         "itemID": 136,
         "name": "Largemouth Bass",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
         "trapFish": false,
         "description": "A popular fish that lives in lakes.",
         "locations": "wip",
@@ -109,6 +115,7 @@
     "Smallmouth Bass": {
         "itemID": 137,
         "name": "Smallmouth Bass",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a5/Smallmouth_Bass.png",
         "trapFish": false,
         "description": "A freshwater fish that is very sensitive to pollution.",
         "locations": "wip",
@@ -126,6 +133,7 @@
     "Rainbow Trout": {
         "itemID": 138,
         "name": "Rainbow Trout",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/14/Rainbow_Trout.png",
         "trapFish": false,
         "description": "A freshwater trout with colorful markings.",
         "locations": "wip",
@@ -142,6 +150,7 @@
     "Salmon": {
         "itemID": 139,
         "name": "Salmon",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Salmon.png",
         "trapFish": false,
         "description": "Swims upstream to lay its eggs.",
         "locations": "wip",
@@ -158,6 +167,7 @@
     "Walleye": {
         "itemID": 140,
         "name": "Walleye",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/05/Walleye.png",
         "trapFish": false,
         "description": "A freshwater fish caught at night.",
         "locations": "wip",
@@ -175,6 +185,7 @@
     "Perch": {
         "itemID": 141,
         "name": "Perch",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/43/Perch.png",
         "trapFish": false,
         "description": "A freshwater fish of the winter.",
         "locations": "wip",
@@ -191,6 +202,7 @@
     "Carp": {
         "itemID": 142,
         "name": "Carp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Carp.png",
         "trapFish": false,
         "description": "A common pond fish.",
         "locations": "wip",
@@ -209,6 +221,7 @@
     "Catfish": {
         "itemID": 143,
         "name": "Catfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/99/Catfish.png",
         "trapFish": false,
         "description": "An uncommon fish found in streams.",
         "locations": "wip",
@@ -227,6 +240,7 @@
     "Pike": {
         "itemID": 144,
         "name": "Pike",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Pike.png",
         "trapFish": false,
         "description": "A freshwater fish that's difficult to catch.",
         "locations": "wip",
@@ -244,6 +258,7 @@
     "Sunfish": {
         "itemID": 145,
         "name": "Sunfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/56/Sunfish.png",
         "trapFish": false,
         "description": "A common river fish.",
         "locations": "wip",
@@ -261,6 +276,7 @@
     "Red Mullet": {
         "itemID": 146,
         "name": "Red Mullet",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Red_Mullet.png",
         "trapFish": false,
         "description": "Long ago these were kept as pets.",
         "locations": "wip",
@@ -278,6 +294,7 @@
     "Herring": {
         "itemID": 147,
         "name": "Herring",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Herring.png",
         "trapFish": false,
         "description": "A common ocean fish.",
         "locations": "wip",
@@ -295,6 +312,7 @@
     "Eel": {
         "itemID": 148,
         "name": "Eel",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Eel.png",
         "trapFish": false,
         "description": "A long, slippery little fish.",
         "locations": "wip",
@@ -312,6 +330,7 @@
     "Octopus": {
         "itemID": 149,
         "name": "Octopus",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5a/Octopus.png",
         "trapFish": false,
         "description": "A mysterious and intelligent creature.",
         "locations": "wip",
@@ -328,6 +347,7 @@
     "Red Snapper": {
         "itemID": 150,
         "name": "Red Snapper",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d3/Red_Snapper.png",
         "trapFish": false,
         "description": "A popular fish with a nice red color.",
         "locations": "wip",
@@ -346,6 +366,7 @@
     "Squid": {
         "itemID": 151,
         "name": "Squid",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Squid.png",
         "trapFish": false,
         "description": "A deep sea creature that can grow to enormous size.",
         "locations": "wip",
@@ -362,6 +383,7 @@
     "Seaweed": {
         "itemID": 152,
         "name": "Seaweed",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/13/Seaweed.png",
         "trapFish": false,
         "description": "It can be used in cooking.",
         "locations": "wip",
@@ -381,6 +403,7 @@
     "Green Algae": {
         "itemID": 153,
         "name": "Green Algae",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Green_Algae.png",
         "trapFish": false,
         "description": "It's really slimy.",
         "locations": "wip",
@@ -400,6 +423,7 @@
     "Sea Cucumber": {
         "itemID": 154,
         "name": "Sea Cucumber",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a9/Sea_Cucumber.png",
         "trapFish": false,
         "description": "A slippery, slimy creature found on the ocean floor.",
         "locations": "wip",
@@ -417,6 +441,7 @@
     "Super Cucumber": {
         "itemID": 155,
         "name": "Super Cucumber",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Super_Cucumber.png",
         "trapFish": false,
         "description": "A rare, purple variety of sea cucumber.",
         "locations": "wip",
@@ -434,6 +459,7 @@
     "Ghostfish": {
         "itemID": 156,
         "name": "Ghostfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Ghostfish.png",
         "trapFish": false,
         "description": "A pale, blind fish found in underground lakes.",
         "locations": "wip",
@@ -453,6 +479,7 @@
     "White Algae": {
         "itemID": 157,
         "name": "White Algae",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f7/White_Algae.png",
         "trapFish": false,
         "description": "It's super slimy.",
         "locations": "wip",
@@ -472,6 +499,7 @@
     "Stonefish": {
         "itemID": 158,
         "name": "Stonefish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/03/Stonefish.png",
         "trapFish": false,
         "description": "A bizarre fish that's shaped like a brick.",
         "locations": "wip",
@@ -491,6 +519,7 @@
     "Crimsonfish": {
         "itemID": 159,
         "name": "Crimsonfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dc/Crimsonfish.png",
         "trapFish": false,
         "description": "Lives deep in the ocean but likes to lay its eggs in the warm summer water.",
         "locations": "wip",
@@ -507,6 +536,7 @@
     "Angler": {
         "itemID": 160,
         "name": "Angler",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bf/Angler.png",
         "trapFish": false,
         "description": "Uses a bioluminescent dangler to attract prey.",
         "locations": "wip",
@@ -526,6 +556,7 @@
     "Ice Pip": {
         "itemID": 161,
         "name": "Ice Pip",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Ice_Pip.png",
         "trapFish": false,
         "description": "A rare fish that thrives in extremely cold conditions.",
         "locations": "wip",
@@ -545,6 +576,7 @@
     "Lava Eel": {
         "itemID": 162,
         "name": "Lava Eel",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Lava_Eel.png",
         "trapFish": false,
         "description": "It can somehow survive in pools of red-hot lava.",
         "locations": "wip",
@@ -564,6 +596,7 @@
     "Legend": {
         "itemID": 163,
         "name": "Legend",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/10/Legend.png",
         "trapFish": false,
         "description": "The king of all fish! They said he'd never be caught.",
         "locations": "wip",
@@ -583,6 +616,7 @@
     "Sandfish": {
         "itemID": 164,
         "name": "Sandfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Sandfish.png",
         "trapFish": false,
         "description": "It tries to hide using camouflage.",
         "locations": "wip",
@@ -602,6 +636,7 @@
     "Scorpion Carp": {
         "itemID": 165,
         "name": "Scorpion Carp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Scorpion_Carp.png",
         "trapFish": false,
         "description": "It's like a regular carp but with a sharp stinger.",
         "locations": "wip",
@@ -621,6 +656,7 @@
     "Flounder": {
         "itemID": 267,
         "name": "Flounder",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Flounder.png",
         "trapFish": false,
         "description": "It lives on the bottom, so both eyes are on top of its head.",
         "locations": "wip",
@@ -638,6 +674,7 @@
     "Midnight Carp": {
         "itemID": 269,
         "name": "Midnight Carp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/33/Midnight_Carp.png",
         "trapFish": false,
         "description": "This shy fish only feels comfortable at night.",
         "locations": "wip",
@@ -655,6 +692,7 @@
     "Clam": {
         "itemID": 372,
         "name": "Clam",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Clam.png",
         "trapFish": true,
         "description": "Someone lived here once.",
         "location": "Ocean",
@@ -664,6 +702,7 @@
     "Mutant Carp": {
         "itemID": 682,
         "name": "Mutant Carp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cb/Mutant_Carp.png",
         "trapFish": false,
         "description": "The strange waters of the sewer turned this carp into a monstrosity.",
         "locations": "wip",
@@ -683,6 +722,7 @@
     "Sturgeon": {
         "itemID": 698,
         "name": "Sturgeon",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/42/Sturgeon.png",
         "trapFish": false,
         "description": "An ancient bottom-feeder with a dwindling population. Females can live up to 150 years.",
         "locations": "wip",
@@ -700,6 +740,7 @@
     "Tiger Trout": {
         "itemID": 699,
         "name": "Tiger Trout",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Tiger_Trout.png",
         "trapFish": false,
         "description": "A rare hybrid trout that cannot bear offspring of its own.",
         "locations": "wip",
@@ -719,6 +760,7 @@
     "Bullhead": {
         "itemID": 700,
         "name": "Bullhead",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Bullhead.png",
         "trapFish": false,
         "description": "A relative of the catfish that eats a variety of foods off the lake bottom.",
         "locations": "wip",
@@ -738,6 +780,7 @@
     "Tilapia": {
         "itemID": 701,
         "name": "Tilapia",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/73/Tilapia.png",
         "trapFish": false,
         "description": "A primarily vegetarian fish that prefers warm water.",
         "locations": "wip",
@@ -755,6 +798,7 @@
     "Chub": {
         "itemID": 702,
         "name": "Chub",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Chub.png",
         "trapFish": false,
         "description": "A common freshwater fish known for its voracious appetite.",
         "locations": "wip",
@@ -774,6 +818,7 @@
     "Dorado": {
         "itemID": 704,
         "name": "Dorado",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/18/Dorado.png",
         "trapFish": false,
         "description": "A fierce carnivore with brilliant orange scales.",
         "locations": "wip",
@@ -790,6 +835,7 @@
     "Albacore": {
         "itemID": 705,
         "name": "Albacore",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Albacore.png",
         "trapFish": false,
         "description": "Prefers temperature \"edges\" where cool and warm water meet.",
         "locations": "wip",
@@ -807,6 +853,7 @@
     "Shad": {
         "itemID": 706,
         "name": "Shad",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Shad.png",
         "trapFish": false,
         "description": "Lives in a school at sea, but returns to the rivers to spawn.",
         "locations": "wip",
@@ -825,6 +872,7 @@
     "Lingcod": {
         "itemID": 707,
         "name": "Lingcod",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Lingcod.png",
         "trapFish": false,
         "description": "A fearsome predator that will eat almost anything it can cram into its mouth.",
         "locations": "wip",
@@ -841,6 +889,7 @@
     "Halibut": {
         "itemID": 708,
         "name": "Halibut",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Halibut.png",
         "trapFish": false,
         "description": "A flat fish that lives on the ocean floor.",
         "locations": "wip",
@@ -859,6 +908,7 @@
     "Lobster": {
         "itemID": 715,
         "name": "Lobster",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Lobster.png",
         "trapFish": true,
         "description": "A large ocean-dwelling crustacean with a strong tail.",
         "location": "Ocean",
@@ -868,6 +918,7 @@
     "Crayfish": {
         "itemID": 716,
         "name": "Crayfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Crayfish.png",
         "trapFish": true,
         "description": "A small freshwater relative of the lobster.",
         "location": "Freshwater",
@@ -877,6 +928,7 @@
     "Crab": {
         "itemID": 717,
         "name": "Crab",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crab.png",
         "trapFish": true,
         "description": "A marine crustacean with two powerful pincers.",
         "location": "Ocean",
@@ -886,6 +938,7 @@
     "Cockle": {
         "itemID": 718,
         "name": "Cockle",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Cockle.png",
         "trapFish": true,
         "description": "A common saltwater clam.",
         "location": "Ocean",
@@ -895,6 +948,7 @@
     "Mussel": {
         "itemID": 719,
         "name": "Mussel",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Mussel.png",
         "trapFish": true,
         "description": "A common bivalve that often lives in clusters.",
         "location": "Ocean",
@@ -904,6 +958,7 @@
     "Shrimp": {
         "itemID": 720,
         "name": "Shrimp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Shrimp.png",
         "trapFish": true,
         "description": "A scavenger that feeds off the ocean floor. Widely prized for its meat.",
         "location": "Ocean",
@@ -913,6 +968,7 @@
     "Snail": {
         "itemID": 721,
         "name": "Snail",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Snail.png",
         "trapFish": true,
         "description": "A wide-ranging mollusc that lives in a spiral shell.",
         "location": "Freshwater",
@@ -922,6 +978,7 @@
     "Periwinkle": {
         "itemID": 722,
         "name": "Periwinkle",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Periwinkle.png",
         "trapFish": true,
         "description": "A tiny freshwater snail that lives in a blue shell.",
         "location": "Freshwater",
@@ -931,6 +988,7 @@
     "Oyster": {
         "itemID": 723,
         "name": "Oyster",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/54/Oyster.png",
         "trapFish": true,
         "description": "Constantly filters water to find food. In the process, it removes dangerous toxins from the environment.",
         "location": "Ocean",
@@ -940,6 +998,7 @@
     "Woodskip": {
         "itemID": 734,
         "name": "Woodskip",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Woodskip.png",
         "trapFish": false,
         "description": "A very sensitive fish that can only live in pools deep in the forest.",
         "locations": "wip",
@@ -959,6 +1018,7 @@
     "Glacierfish": {
         "itemID": 775,
         "name": "Glacierfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fd/Glacierfish.png",
         "trapFish": false,
         "description": "Builds a nest on the underside of glaciers.",
         "locations": "wip",
@@ -975,6 +1035,7 @@
     "Void Salmon": {
         "itemID": 795,
         "name": "Void Salmon",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Void_Salmon.png",
         "trapFish": false,
         "description": "A salmon, twisted by void energy. The fresh meat is jet black, but rapidly turns pink when exposed to air.",
         "locations": "wip",
@@ -994,6 +1055,7 @@
     "Slimejack": {
         "itemID": 796,
         "name": "Slimejack",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Slimejack.png",
         "trapFish": false,
         "description": "He's coated in a very thick layer of slime. He keeps slipping out of your hands!",
         "locations": "wip",
@@ -1013,6 +1075,7 @@
     "Midnight Squid": {
         "itemID": 798,
         "name": "Midnight Squid",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/83/Midnight_Squid.png",
         "trapFish": false,
         "description": "A strange and mysterious denizen of the ocean's twilight depths.",
         "locations": "wip",
@@ -1032,6 +1095,7 @@
     "Spook Fish": {
         "itemID": 799,
         "name": "Spook Fish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Spook_Fish.png",
         "trapFish": false,
         "description": "The huge eyes can detect the faint silhouettes of prey.",
         "locations": "wip",
@@ -1051,6 +1115,7 @@
     "Blobfish": {
         "itemID": 800,
         "name": "Blobfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Blobfish.png",
         "trapFish": false,
         "description": "This odd creature floats above the ocean floor, consuming any edible material in its path.",
         "locations": "wip",
@@ -1070,6 +1135,7 @@
     "Stingray": {
         "itemID": 836,
         "name": "Stingray",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3a/Stingray.png",
         "trapFish": false,
         "description": "Despite having a toxic stinger, these fish are shy and prefer to avoid humans.",
         "locations": "wip",
@@ -1089,6 +1155,7 @@
     "Lionfish": {
         "itemID": 837,
         "name": "Lionfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Lionfish.png",
         "trapFish": false,
         "description": "An aggressive, predatory fish with venomous spines.",
         "locations": "wip",
@@ -1108,6 +1175,7 @@
     "Blue Discus": {
         "itemID": 838,
         "name": "Blue Discus",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Blue_Discus.png",
         "trapFish": false,
         "description": "A brightly colored tropical fish that is popular in aquariums.",
         "locations": "wip",
@@ -1127,6 +1195,7 @@
     "Son of Crimsonfish": {
         "itemID": 898,
         "name": "Son of Crimsonfish",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Son_of_Crimsonfish.png",
         "trapFish": false,
         "description": "He hatched in the warm summer water, and followed in the footsteps of his father.",
         "locations": "wip",
@@ -1143,6 +1212,7 @@
     "Ms. Angler": {
         "itemID": 899,
         "name": "Ms. Angler",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Ms._Angler.png",
         "trapFish": false,
         "description": "Uses a bioluminescent dangler to attract prey.",
         "locations": "wip",
@@ -1162,6 +1232,7 @@
     "Legend II": {
         "itemID": 900,
         "name": "Legend II",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7a/Legend_II.png",
         "trapFish": false,
         "description": "The successor to the original Legend.",
         "locations": "wip",
@@ -1181,6 +1252,7 @@
     "Radioactive Carp": {
         "itemID": 901,
         "name": "Radioactive Carp",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/57/Radioactive_Carp.png",
         "trapFish": false,
         "description": "A carp that spent one too many years in toxic sludge.",
         "locations": "wip",
@@ -1200,6 +1272,7 @@
     "Glacierfish Jr.": {
         "itemID": 902,
         "name": "Glacierfish Jr.",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Glacierfish_Jr..png",
         "trapFish": false,
         "description": "The original Glacierfish had a son...",
         "locations": "wip",

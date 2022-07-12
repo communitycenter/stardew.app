@@ -1,5 +1,7 @@
 from datetime import datetime
 import json
+import bs4
+import requests
 
 content = {
     "128": "Pufferfish/80/floater/1/36/1200 1600/summer/sunny/690 .4 685 .1/4/.3/.5/0",
@@ -94,13 +96,22 @@ for key, value in content.items():
     
     fields = value.split("/")
     name = fields[0]
+    
+    # look up the fish description from ObjectInformation.json
     description = ObjInfo["content"][key].split("/")[5]
+    
+    # find the icon url using BS4
+    wiki_url = f"https://stardewvalleywiki.com/File:{name}.png"
+    r = requests.get(wiki_url)
+    soup = bs4.BeautifulSoup(r.text, "html.parser")
+    iconURL = soup.find("div", {"class": "fullImageLink"}).find("img")["src"]
     
     if name in trap_fish:
         location, min_size, max_size = fields[4], fields[5], fields[6]
         fish[name] = {
             "itemID": int(key),
             "name": name,
+            "iconURL": "https://stardewvalleywiki.com" + iconURL,
             "trapFish": True,
             "description": description,
             "location": upper_first(location),
@@ -122,6 +133,7 @@ for key, value in content.items():
     fish[name] = {
         "itemID": int(key),
         "name": name,
+        "iconURL": "https://stardewvalleywiki.com" + iconURL,
         "trapFish": False,
         "description": description,
         #!TODO: Add locations
