@@ -155,7 +155,7 @@ const Fishing: NextPage = () => {
 
         {/* Desktop sidebar */}
         <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#0C0C0C] dark:bg-[#111111]">
+          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#111111]">
             <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
               <div className="flex flex-shrink-0 items-center justify-between px-4">
                 <h1 className="font-semibold dark:text-white">stardew.app</h1>
@@ -171,7 +171,7 @@ const Fishing: NextPage = () => {
                 </div>
                 {/* end file input section */}
               </div>
-              <div className="mx-4 mt-4 border border-gray-200 dark:border-[#0C0C0C]" />
+              <div className="mx-4 mt-4 border border-gray-200 dark:border-[#2a2a2a]" />
               <nav className="mt-4 flex-1 space-y-2 bg-white px-2 dark:bg-[#111111] ">
                 {navigation.map((item) => (
                   <a
