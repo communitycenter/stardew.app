@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import type { Fish } from "../types";
 
+import fishes from "../research/processors/fish.json";
+
 import FishCard from "../components/FishCard";
 import FishSlideOver from "../components/FishSlideOver";
 import Head from "next/head";
@@ -17,6 +19,7 @@ import {
   XIcon,
   UploadIcon,
 } from "@heroicons/react/solid";
+import { useLocalStorageState } from "../hooks/use-local-storage";
 
 const navigation = [
   { name: "Bundles", href: "#", icon: ArchiveIcon, current: false },
@@ -26,75 +29,27 @@ const navigation = [
   { name: "Crafting", href: "#", icon: BeakerIcon, current: false },
 ];
 
-const fishes: Fish[] = [
-  {
-    name: "Pufferfish",
-    description: "Inflates when threatened.",
-    itemID: 1,
-    iconUrl:
-      "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
-    location: ["Ocean", "Ginger Island Oceans"],
-    season: ["Summer"],
-    time: "12PM - 4PM",
-    weather: "Sunny",
-    difficulty: "80 Floater",
-  },
-  {
-    name: "Anchovy",
-    description: "A small silver fish found in the ocean.",
-    itemID: 2,
-    iconUrl: "https://stardewvalleywiki.com/mediawiki/images/7/79/Anchovy.png",
-    location: ["Ocean"],
-    season: ["Spring", "Fall"],
-    time: "12PM - 4PM",
-    weather: "Sunny",
-    difficulty: "80 Floater",
-  },
-  {
-    name: "Tuna",
-    description: "A large fish that lives in the ocean.",
-    itemID: 3,
-    iconUrl: "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
-    location: ["Ocean", "Ginger Island Oceans"],
-    season: ["Summer", "Winter"],
-    time: "12PM - 4PM",
-    weather: "Sunny",
-    difficulty: "80 Floater",
-  },
-  {
-    name: "Largemouth Bass",
-    description: "A popular fish that lives in lakes.",
-    itemID: 4,
-    iconUrl:
-      "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
-    location: ["Mountain Lake"],
-    season: ["All Seasons"],
-    time: "12PM - 4PM",
-    weather: "Sunny",
-    difficulty: "80 Floater",
-  },
-  {
-    name: "Red Mullet",
-    description: "Long ago these were kept as pets.",
-    itemID: 5,
-    iconUrl:
-      "https://stardewvalleywiki.com/mediawiki/images/f/f2/Red_Mullet.png",
-    location: ["Ocean"],
-    season: ["Summer", "Fall"],
-    time: "12PM - 4PM",
-    weather: "Sunny",
-    difficulty: "80 Floater",
-  },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+const initialCheckedFish = Object.fromEntries(
+  Object.values(fishes).map((fish) => {
+    return [fish.itemID, null];
+  })
+) as Record<number, boolean | null>;
+
 const Fishing: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showFish, setShowFish] = useState<boolean>(false);
-  const [selectedFish, setSelectedFish] = useState<Fish>(fishes[0]);
+  const [selectedFish, setSelectedFish] = useState<Fish>(
+    Object.values(fishes)[0]
+  );
+
+  const [checkedFish, setCheckedFish] = useLocalStorageState(
+    "fish",
+    initialCheckedFish
+  );
 
   return (
     <>
@@ -200,13 +155,13 @@ const Fishing: NextPage = () => {
 
         {/* Desktop sidebar */}
         <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
+          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#0C0C0C] dark:bg-[#111111]">
             <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
               <div className="flex flex-shrink-0 items-center justify-between px-4">
-                <h1 className="font-semibold">stardew.app</h1>
+                <h1 className="font-semibold dark:text-white">stardew.app</h1>
                 {/* File Input, not sure how to process file yet but it lets you upload a file */}
                 <div>
-                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7]  p-1 text-white hover:bg-gray-200 ">
                     <UploadIcon
                       className="h-5 w-5 text-black"
                       aria-hidden="true"
@@ -216,21 +171,25 @@ const Fishing: NextPage = () => {
                 </div>
                 {/* end file input section */}
               </div>
-              <div className="mx-4 mt-4 border border-gray-200" />
-              <nav className="mt-4 flex-1 space-y-4 bg-white px-2">
+              <div className="mx-4 mt-4 border border-gray-200 dark:border-[#0C0C0C]" />
+              <nav className="mt-4 flex-1 space-y-2 bg-white px-2 dark:bg-[#111111] ">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
                     className={classNames(
                       item.current
-                        ? "bg-gray-100 text-sky-500"
-                        : "text-black hover:bg-gray-50 hover:text-gray-900",
+                        ? "border bg-gray-100 text-sky-500 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                        : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
                       "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                     )}
                   >
                     <item.icon
-                      className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
+                      className={classNames(
+                        item.current
+                          ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                      )}
                       aria-hidden="true"
                     />
                     {item.name}
@@ -240,8 +199,9 @@ const Fishing: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 flex-col md:pl-64">
-          <div className="sticky top-0 z-10 bg-gray-100 pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
+
+        <div className="flex flex-1 flex-col dark:bg-[#141414] md:pl-64">
+          <div className="sticky top-0 z-10 pl-1 pt-1   sm:pl-3 sm:pt-3 md:hidden">
             <button
               type="button"
               className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -254,19 +214,30 @@ const Fishing: NextPage = () => {
           <main className="flex-1">
             <div className="py-6">
               <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
-                <h1 className="text-2xl font-semibold text-gray-900">
+                <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                   All Fish
                 </h1>
               </div>
               <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-                  {fishes.map((fish, index) => (
+                  {Object.values(fishes).map((fish) => (
                     <FishCard
                       key={fish.itemID}
                       fish={fish}
-                      isChecked={index % 2 === 0}
                       setSelectedFish={setSelectedFish}
                       setShowFish={setShowFish}
+                      checked={checkedFish[fish.itemID]}
+                      setChecked={(value) => {
+                        setCheckedFish((old) => {
+                          return {
+                            ...old,
+                            [fish.itemID]:
+                              value instanceof Function
+                                ? value(old[fish.itemID])
+                                : value,
+                          };
+                        });
+                      }}
                     />
                   ))}
                 </div>
@@ -275,10 +246,23 @@ const Fishing: NextPage = () => {
           </main>
         </div>
       </div>
+
       <FishSlideOver
         isOpen={showFish}
         selectedFish={selectedFish}
         setOpen={setShowFish}
+        checked={checkedFish[selectedFish.itemID]}
+        setChecked={(value) => {
+          setCheckedFish((old) => {
+            return {
+              ...old,
+              [selectedFish.itemID]:
+                value instanceof Function
+                  ? value(old[selectedFish.itemID])
+                  : value,
+            };
+          });
+        }}
       />
     </>
   );
