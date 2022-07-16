@@ -20,6 +20,7 @@ import {
   UploadIcon,
 } from "@heroicons/react/solid";
 import { useLocalStorageState } from "../hooks/use-local-storage";
+import { FilterIcon } from "@heroicons/react/outline";
 
 const navigation = [
   { name: "Bundles", href: "#", icon: ArchiveIcon, current: false },
@@ -213,10 +214,21 @@ const Fishing: NextPage = () => {
           </div>
           <main className="flex-1">
             <div className="py-6">
-              <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
+              <div className="mx-auto flex max-w-screen-2xl flex-shrink-0 items-center justify-between px-4 sm:px-6 md:px-8">
                 <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                   All Fish
                 </h1>
+                <div>
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7]  p-1 text-white hover:bg-gray-200 ">
+                    <span className="flex- flex justify-between">
+                      {" "}
+                      <FilterIcon
+                        className="h-5 w-5 text-black"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </label>
+                </div>
               </div>
               <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
