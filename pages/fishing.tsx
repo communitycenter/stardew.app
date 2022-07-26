@@ -3,8 +3,8 @@ import type { Fish } from "../types";
 
 import fishes from "../research/processors/fish.json";
 
-import FishCard from "../components/FishCard";
-import FishSlideOver from "../components/FishSlideOver";
+import FishCard from "../components/fishcard";
+import FishSlideOver from "../components/fishslideover";
 import Head from "next/head";
 
 import { Fragment, useState } from "react";
