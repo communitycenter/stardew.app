@@ -162,9 +162,9 @@ const Fishing: NextPage = () => {
                 <h1 className="font-semibold dark:text-white">stardew.app</h1>
                 {/* File Input, not sure how to process file yet but it lets you upload a file */}
                 <div>
-                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7]  p-1 text-white hover:bg-gray-200 ">
-                    <UploadIcon
-                      className="h-5 w-5 text-black"
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                    <UploadIcon // Desktop version of the upload icon
+                      className="h-5 w-5 text-black dark:text-white"
                       aria-hidden="true"
                     />
                     <input type="file" className="hidden" />
@@ -219,11 +219,11 @@ const Fishing: NextPage = () => {
                   All Fish
                 </h1>
                 <div>
-                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7]  p-1 text-white hover:bg-gray-200 ">
-                    <span className="flex- flex justify-between">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
+                    <span className="flex justify-between">
                       {" "}
                       <FilterIcon
-                        className="h-5 w-5 text-black"
+                        className="h-5 w-5 text-black dark:bg-[#1F1F1F] dark:text-white"
                         aria-hidden="true"
                       />
                     </span>
