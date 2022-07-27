@@ -34,7 +34,7 @@ const FishSlideOver = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity dark:bg-gray-900 dark:bg-opacity-75 " />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-sm transition-opacity dark:bg-[#0C0C0C] dark:bg-opacity-75" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -150,7 +150,11 @@ const FishSlideOver = ({
                           // TODO: when you mark as caught, set the local storage to a list of all marked fish?
                           // when you first render the page it would have to fetch from local storage to see what you've already caught
                         >
-                          <CheckIcon className="h-6 w-6" aria-hidden="true" />
+                          {!checked ? (
+                            <CheckIcon className="h-6 w-6" aria-hidden="true" />
+                          ) : (
+                            <XIcon className="h-6 w-6" aria-hidden="true" />
+                          )}
                           <p className="">
                             Mark as {checked ? "un" : null}caught
                           </p>
