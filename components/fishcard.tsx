@@ -42,7 +42,7 @@ const FishCard = ({
   setChecked,
   checked,
 }: Props) => {
-  const className = "h-5 w-5 " + (checked ? "text-green-500" : "text-gray-300");
+  const className = "h-5 w-5 " + (checked ? "text-green-500" : "hidden");
 
   function oneClick() {
     setSelectedFish(fish);
