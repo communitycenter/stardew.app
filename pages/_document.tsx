@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="bg-[#f7f7f7]">
+        <body className="bg-[#f7f7f7] dark:bg-[#111111]">
           <Main />
           <NextScript />
         </body>

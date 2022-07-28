@@ -14,8 +14,8 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 const navigation = [
-  { name: "Bundles", href: "#", icon: ArchiveIcon },
-  { name: "Fishing", href: "#", icon: SparklesIcon },
+  { name: "Bundles", href: "/bundles", icon: ArchiveIcon },
+  { name: "Fishing", href: "/fishing", icon: SparklesIcon },
   { name: "Perfection", href: "#", icon: SparklesIcon },
   { name: "Cooking", href: "#", icon: FireIcon },
   { name: "Crafting", href: "#", icon: BeakerIcon },
