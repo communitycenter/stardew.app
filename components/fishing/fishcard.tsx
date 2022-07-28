@@ -56,7 +56,7 @@ const FishCard = ({
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (
     <div
-      className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+      className="relative select-none flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
       onClick={click}
     >
       <div className="flex-shrink-0">

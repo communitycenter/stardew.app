@@ -1,8 +1,7 @@
-import { Bundle, CommunityCenterRoom } from "../../types/bundles";
+import { Bundle, BundleItem, CommunityCenterRoom } from "../../types/bundles";
 import itemIds from "../../research/processors/items.json";
-import BundleItem from "./bundleCell";
 import BundleCell from "./bundleCell";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useLocalStorageState } from "../../hooks/use-local-storage";
 import bundles from "../../pages/bundles";
 
@@ -16,12 +15,30 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
   const [selectedItem, setSelectedItem] = useState<CommunityCenterRoom>(
     Object.values(bundles)[0]
   );
-  const [checkedItem, setCheckedItem] = useLocalStorageState("item", {});
+  
+  const [checkedItems, setCheckedItems] = useLocalStorageState<Record<string, Record<string, boolean>>>("items", {});
+
+  const setChecked = useCallback((item: BundleItem, value: boolean) => {
+    setCheckedItems((old) => {
+      return {
+        ...old,
+        [bundleName]: {
+          ...old[bundleName],
+          [item.itemID]: value,
+        },
+      };
+    });
+  }, [setCheckedItems, bundleName]);
+
+  const hasItemCount = useMemo(() => {
+    if (!(bundleName in checkedItems)) return 0
+    return Object.values(checkedItems[bundleName]).filter((item) => item == true).length
+  }, [checkedItems, bundleName])
 
   return (
     <div className="relative space-y-2 rounded-lg bg-white py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
       <div className="text-gray-900 dark:text-white">
-        {bundleName} (0/{bundle.itemsRequired})
+        {bundleName} ({hasItemCount}/{bundle.itemsRequired})
       </div>
       <div className="grid grid-flow-dense gap-4">
         {bundle.items.map((item, index) => (
@@ -30,17 +47,8 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
             item={item}
             setSelectedItem={setSelectedItem}
             setShowItem={setShowItem}
-            checked={false}
-            setChecked={(value) => {
-              setCheckedItem((old) => {
-                return {
-                  ...old,
-                  bundleName: {
-                    [item.itemID]: true,
-                  },
-                };
-              });
-            }}
+            checked={checkedItems[bundleName]?.[item.itemID] === true}
+            setChecked={setChecked}
           />
         ))}
       </div>
