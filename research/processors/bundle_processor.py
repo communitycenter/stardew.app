@@ -55,7 +55,9 @@ for key, value in ObjInfo["content"].items():
         bundleRequiredItemCount = value.split("/")[4]
     except:
         bundleRequiredItemCount = len(bundleRequiredItemArray)
-    bundles[bundleLocation][bundleName]["items"]["count"] = bundleRequiredItemCount
+    bundles[bundleLocation][bundleName]["itemsRequired"] = bundleRequiredItemCount
+
+    bundles[bundleLocation][bundleName]["items"] = []
 
     for item in bundleRequiredItemArray:
         itemID = item.split(" ")[0]
@@ -65,27 +67,26 @@ for key, value in ObjInfo["content"].items():
         try:
             itemName = itemMapping["O"][itemID]
 
-            bundles[bundleLocation][bundleName]["items"][itemName] = {}
-            bundles[bundleLocation][bundleName]["items"][itemName]["itemID"] = int(
-                itemID
-            )
-            bundles[bundleLocation][bundleName]["items"][itemName][
-                "itemQuantity"
-            ] = int(itemQuantity)
-            bundles[bundleLocation][bundleName]["items"][itemName][
-                "itemQuality"
-            ] = processQualityOfItem(itemQuality)
+            item = {}
+
+            item["itemID"] = int(itemID)
+            item["itemQuantity"] = int(itemQuantity)
+            item["itemQuality"] = processQualityOfItem(itemQuality)
+
+            bundles[bundleLocation][bundleName]["items"].append(item)
         except:
             pass
 
-    bundles[bundleLocation][bundleName]["reward"] = {}
-    bundles[bundleLocation][bundleName]["reward"]["itemType"] = bundleRewardType
+    bundles[bundleLocation][bundleName]["bundleReward"] = {}
+    bundles[bundleLocation][bundleName]["bundleReward"]["itemType"] = bundleRewardType
 
-    bundles[bundleLocation][bundleName]["reward"]["itemName"] = processTypeOfObject(
-        ~bundleRewardType, bundleRewardItemID
+    bundles[bundleLocation][bundleName]["bundleReward"][
+        "itemName"
+    ] = processTypeOfObject(bundleRewardType, bundleRewardItemID)
+    bundles[bundleLocation][bundleName]["bundleReward"]["itemID"] = int(
+        bundleRewardItemID
     )
-    bundles[bundleLocation][bundleName]["reward"]["itemID"] = int(bundleRewardItemID)
-    bundles[bundleLocation][bundleName]["reward"]["itemQuantity"] = int(
+    bundles[bundleLocation][bundleName]["bundleReward"]["itemQuantity"] = int(
         bundleRewardItemQuantity
     )
 
