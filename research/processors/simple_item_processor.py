@@ -1,5 +1,4 @@
 import json
-from unicodedata import name
 
 # 0: name
 # 1: price
@@ -8,19 +7,19 @@ from unicodedata import name
 
 # ConcernedApe is my #1 enemy.
 
-with open("../data/ObjectInformation.json", "r") as f:
+with open("../raw_data/ObjectInformation.json", "r") as f:
     objects = json.load(f)
 
-with open("../data/BigCraftablesInformation.json", "r") as f:
+with open("../raw_data/BigCraftablesInformation.json", "r") as f:
     bigObjects = json.load(f)
 
-with open("../data/Furniture.json", "r") as f:
+with open("../raw_data/Furniture.json", "r") as f:
     furniture = json.load(f)
 
-with open("../data/hats.json", "r") as f:
+with open("../raw_data/hats.json", "r") as f:
     hats = json.load(f)
 
-with open("../data/ClothingInformation.json", "r") as f:
+with open("../raw_data/ClothingInformation.json", "r") as f:
     clothing = json.load(f)
 
 items = {}
@@ -46,5 +45,5 @@ for key, value in hats["content"].items():
 for key, value in clothing["content"].items():
     items["C"][key] = value.split("/")[0]
 
-with open("items.json", "w") as f:
+with open("./data/items.json", "w") as f:
     json.dump(items, f, indent=4)

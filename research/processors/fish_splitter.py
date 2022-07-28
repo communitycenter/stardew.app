@@ -90,7 +90,7 @@ def upper_first(s: str) -> str:
 def convert_time(time: str) -> str:
     return datetime.strptime(time, "%H%M%S").strftime("%-I%p")
 
-with open("../data/ObjectInformation.json", "r") as f:
+with open("../raw_data/ObjectInformation.json", "r") as f:
     ObjInfo = json.load(f)
 
 for key, value in content.items():
@@ -156,5 +156,5 @@ for key, value in content.items():
         "minLevel": min_level
     }
 
-with open("fish.json", "w") as f:
+with open("./data/fish.json", "w") as f:
     json.dump(fish, f, indent=4)

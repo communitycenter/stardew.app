@@ -1,10 +1,9 @@
 import json, re
-from operator import indexOf
 
-with open("../data/Bundles.json", "r") as f:
+with open("../raw_data/Bundles.json", "r") as f:
     ObjInfo = json.load(f)
 
-with open("./items.json", "r") as f:
+with open("./data/items.json", "r") as f:
     itemMapping = json.load(f)
 
 

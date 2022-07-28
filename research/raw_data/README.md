@@ -11,3 +11,5 @@
 - ## [Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
 
 - ## [Locations.json](https://stardewvalleywiki.com/Modding:Location_data)
+
+- ## [ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)

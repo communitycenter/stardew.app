@@ -1,6 +1,5 @@
 import json
 
-
 content = {
     "Farm": "-1/-1/-1/-1/-1/-1/-1/-1/382 .05 770 .1 390 .25 330 1",
     "UndergroundMine": "-1/-1/-1/-1/153 -1 156 -1 157 -1/153 -1 156 -1 157 -1/153 -1 156 -1 157 -1/153 -1 156 -1 157 -1/107 .01",
@@ -27,7 +26,7 @@ content = {
     "IslandNorthCave1": "281 .9 404 .9 420 .5 422 .5/281 .9 404 .9 420 .9 422 .9/281 .9 404 .9 420 .9 422 .9/281 .9 404 .9 420 .9 422 .9/-1/-1/-1/-1/107 .01"
 }
 
-with open("../data/ObjectInformation.json", "r") as f:
+with open("../raw_data/ObjectInformation.json", "r") as f:
      ObjInfo = json.load(f)
      
      
@@ -84,6 +83,6 @@ for key, value in content.items():
 
 
 
-with open("locations.json", "w") as f:
+with open("./data/locations.json", "w") as f:
     json.dump(locations, f, indent=4)
     
