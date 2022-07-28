@@ -23,12 +23,11 @@ with open("../raw_data/ClothingInformation.json", "r") as f:
     clothing = json.load(f)
 
 items = {}
-items["O"] = {}
-items["BO"] = {}
-items["F"] = {}
-items["H"] = {}
-items["C"] = {}
-items["R"] = {}
+items["O"] = {}     # Object        (The default type for items in inventories or placed in the world.)
+items["BO"] = {}    # Big Object    (Craftable items which can be placed in the world and are two tiles tall.)
+items["F"] = {}     # Furniture     (Decorative items which can be placed in the world, including chairs which the player can sit on.)
+items["H"] = {}     # Hats          (Items that can be equipped in the player's hat slot)
+items["C"] = {}     # Clothing      (Cosmetic items that can be equipped in the player's pants and shirt slots)
 
 for key, value in objects["content"].items():
     items["O"][key] = value.split("/")[0]
