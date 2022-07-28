@@ -55,7 +55,7 @@ for key, value in ObjInfo["content"].items():
         bundleRequiredItemCount = value.split("/")[4]
     except:
         bundleRequiredItemCount = len(bundleRequiredItemArray)
-    bundles[bundleLocation][bundleName]["itemsRequired"] = bundleRequiredItemCount
+    bundles[bundleLocation][bundleName]["itemsRequired"] = int(bundleRequiredItemCount)
 
     bundles[bundleLocation][bundleName]["items"] = []
 
@@ -70,6 +70,7 @@ for key, value in ObjInfo["content"].items():
             item = {}
 
             item["itemID"] = int(itemID)
+            item["itemName"] = itemMapping["O"][itemID]
             item["itemQuantity"] = int(itemQuantity)
             item["itemQuality"] = processQualityOfItem(itemQuality)
 
