@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState, useEffect, useCallback } from "react";
 import { BundleItem, CommunityCenterRoom } from "../../types/bundles";
+import classnames from 'classnames'
 import { CheckCircleIcon } from "@heroicons/react/outline"
 
 type Props = {
@@ -61,17 +62,24 @@ const BundleCell = ({
     <div
       key={item.itemID}
       onClick={click}
-      className="relative select-none flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+      className={classnames(
+        "p-2 border rounded-lg cursor-pointer select-none relative transition-colors",
+        {"border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200": checked},
+        {"border-gray-100 hover:border-gray-300 hover:bg-gray-50": !checked},
+      )}
     >
-      {/* <div className="flex-shrink-0">
-                  <img
-                    className="h-8 w-8"
-                    src="https://stardewvalleywiki.com/mediawiki/images/1/10/Gold.png"
-                    alt="wtf"
-                  />
-                </div> */}
+      <div className="flex-shrink-0">
+        <img
+          className="h-12 w-12 md:h-6 md:w-6"
+          src="https://stardewvalleywiki.com/mediawiki/images/f/f8/Corn.png"
+          alt="wtf"
+        />
+      </div>
+      {item.itemQuantity > 1 &&<span className="absolute -bottom-1.5 -right-1.5 text-sm md:text-xs bg-white border border-gray-100 px-1 rounded-md">
+          {item.itemQuantity}x{" "}
+      </span>}
 
-      <div className="min-w-0 flex-1">
+      {/* <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">
           {item.itemName}
         </p>
@@ -81,7 +89,7 @@ const BundleCell = ({
         </p>
       </div>
       
-      {checked !== null && <CheckCircleIcon className={className} />}
+      {checked !== null && <CheckCircleIcon className={className} />} */}
     </div>
   );
 };
