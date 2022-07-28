@@ -4,7 +4,6 @@ import type { Fish } from "../types";
 import fishes from "../research/processors/fish.json";
 
 import FishCard from "../components/fishing/fishcard";
-import FishSlideOver from "../components/fishslideover";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
@@ -12,6 +11,7 @@ import { useLocalStorageState } from "../hooks/use-local-storage";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
+import FishSlideOver from "../components/fishing/fishslideover";
 
 const initialCheckedFish = Object.fromEntries(
   Object.values(fishes).map((fish) => {

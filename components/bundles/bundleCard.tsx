@@ -1,75 +1,92 @@
-import * as RawBundles from "../../research/processors/bundles.json";
+import { Bundle, BundleItem, CommunityCenterRoom } from "../../types/bundles";
+import itemIds from "../../research/processors/items.json";
+import BundleCell from "./bundleCell";
+import { useCallback, useMemo, useState } from "react";
+import { useLocalStorageState } from "../../hooks/use-local-storage";
+import bundles from "../../pages/bundles";
+import classnames from 'classnames'
+import { CheckCircleIcon } from "@heroicons/react/outline";
 
-const BundleCard = ({ bundle }: Props) => {
-  <div className="relative space-y-2 rounded-lg bg-white py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-    <div className="text-gray-900 dark:text-white">Vault</div>
-    <div className="grid grid-cols-2 gap-2">
-      <div className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-        <div className="flex-shrink-0">
+type Props = {
+  bundleName: string;
+  bundle: Bundle;
+};
+
+const BundleCard = ({ bundleName, bundle }: Props) => {
+  const [showItem, setShowItem] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<CommunityCenterRoom>(
+    Object.values(bundles)[0]
+  );
+  
+  const [checkedItems, setCheckedItems] = useLocalStorageState<Record<string, Record<string, boolean>>>("items", {});
+
+  const setChecked = useCallback((item: BundleItem, value: boolean) => {
+    setCheckedItems((old) => {
+      return {
+        ...old,
+        [bundleName]: {
+          ...old[bundleName],
+          [item.itemID]: value,
+        },
+      };
+    });
+  }, [setCheckedItems, bundleName]);
+
+  const hasItemCount = useMemo(() => {
+    if (!(bundleName in checkedItems)) return 0
+    return Object.values(checkedItems[bundleName]).filter((item) => item == true).length
+  }, [checkedItems, bundleName])
+
+  const bundleFinished = hasItemCount === bundle.itemsRequired
+
+  return (
+    <div className={classnames(
+      "flex flex-col md:flex-row border rounded-xl p-2 md:items-center items-start",
+      {"border-green-300 bg-green-50": bundleFinished},
+      {"border-gray-100 bg-white": !bundleFinished}
+    )}>
+      <div className="flex items-center flex-1">
+        <div className="mt-3 md:mt-0 ml-1 mr-4 md:mr-2">
           <img
-            className="h-8 w-8"
-            src="https://stardewvalleywiki.com/mediawiki/images/1/10/Gold.png"
+            className="h-14 w-14 md:h-7 md:w-7"
+            src="https://stardewvalleywiki.com/mediawiki/images/b/b3/Bundle_Green.png"
             alt="wtf"
           />
         </div>
-
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-gray-900 dark:text-white">
-            Gold
-          </p>
-          <p className="truncate text-sm text-gray-400">2,500g</p>
+        <div className="text-gray-900 dark:text-white text-xl md:text-lg">
+          {bundleName} {/*({hasItemCount}/{bundle.itemsRequired})*/}
         </div>
       </div>
-      <div className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-        <div className="flex-shrink-0">
-          <img
-            className="h-8 w-8"
-            src="https://stardewvalleywiki.com/mediawiki/images/1/10/Gold.png"
-            alt="wtf"
-          />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-gray-900 dark:text-white">
-            Gold
-          </p>
-          <p className="truncate text-sm text-gray-400">5,000g</p>
-        </div>
-      </div>
-      <div className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-        <div className="flex-shrink-0">
-          <img
-            className="h-8 w-8"
-            src="https://stardewvalleywiki.com/mediawiki/images/1/10/Gold.png"
-            alt="wtf"
-          />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-gray-900 dark:text-white">
-            Gold
-          </p>
-          <p className="truncate text-sm text-gray-400">10,000g</p>
-        </div>
-      </div>
-      <div className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-        <div className="flex-shrink-0">
-          <img
-            className="h-8 w-8"
-            src="https://stardewvalleywiki.com/mediawiki/images/1/10/Gold.png"
-            alt="wtf"
-          />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-gray-900 dark:text-white">
-            Gold
-          </p>
-          <p className="truncate text-sm text-gray-400">25,000g</p>
-        </div>
+      <div className="flex flex-wrap mt-4 md:mt-0 md:grid grid-flow-col grid-rows-2 lg:grid-rows-1 grid-cols-none md:direction-rtl gap-1">
+        {bundle.items
+          .filter(item => checkedItems[bundleName]?.[item.itemID] === true)
+          .sort((a, b) => b.itemQuantity - a.itemQuantity)
+          .map((item, index) => (
+            <BundleCell
+              key={`${item.itemID}-${index}`}
+              item={item}
+              setSelectedItem={setSelectedItem}
+              setShowItem={setShowItem}
+              checked={checkedItems[bundleName]?.[item.itemID] === true}
+              setChecked={setChecked}
+            />
+        ))}
+        {bundle.items
+          .filter(item => checkedItems[bundleName]?.[item.itemID] !== true)
+          .sort((a, b) => b.itemQuantity - a.itemQuantity)
+          .map((item, index) => (
+            <BundleCell
+              key={`${item.itemID}-${index}`}
+              item={item}
+              setSelectedItem={setSelectedItem}
+              setShowItem={setShowItem}
+              checked={checkedItems[bundleName]?.[item.itemID] === true}
+              setChecked={setChecked}
+            />
+        ))}
       </div>
     </div>
-  </div>;
+  );
 };
 
 export default BundleCard;

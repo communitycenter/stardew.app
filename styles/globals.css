@@ -18,3 +18,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer utilities {
+  .direction-rtl {
+    direction: rtl;
+  }
+}

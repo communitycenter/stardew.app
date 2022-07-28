@@ -17,15 +17,15 @@ export function useLocalStorageState<T = any>(
       localStorage.getItem(key) || JSON.stringify(defaultValue)
     );
     setValue(loaded);
-  }, [key, defaultValue]);
+  }, [key, setValue, defaultValue]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
-    reload();
-  }, [reload]);
+    if (value === null) reload();
+  }, [reload, value]);
 
   const setter = useCallback(
     (newValue: SetStateAction<T>) => {

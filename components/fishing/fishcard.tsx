@@ -1,7 +1,7 @@
 import type { Fish } from "../../types";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
 
 type Props = {
   fish: Fish;
@@ -44,19 +44,19 @@ const FishCard = ({
 }: Props) => {
   const className = "h-5 w-5 " + (checked ? "text-green-500" : "hidden");
 
-  function oneClick() {
+  const oneClick = useCallback(() => {
     setSelectedFish(fish);
     setShowFish(true);
-  }
+  }, [fish, setSelectedFish, setShowFish]);
 
-  function twoClick() {
+  const twoClick = useCallback(() => {
     setChecked((old) => !old);
-  }
+  }, [setChecked]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (
     <div
-      className="relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+      className="relative select-none flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
       onClick={click}
     >
       <div className="flex-shrink-0">

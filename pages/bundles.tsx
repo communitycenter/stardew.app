@@ -2,22 +2,33 @@ import { FilterIcon } from "@heroicons/react/outline";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
+import BundleCard from "../components/bundles/bundleCard";
 import SidebarLayout from "../components/sidebarlayout";
+import { useLocalStorageState } from "../hooks/use-local-storage";
 
 import bundles from "../research/processors/bundles.json";
+import {
+  Bundle,
+  BundleItem,
+  communityCenter,
+  CommunityCenterRoom,
+} from "../types/bundles";
+
 const Bundles: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  //   const [showFish, setShowFish] = useState<boolean>(false);
-  //   const [selectedFish, setSelectedFish] = useState<Fish>(
-  //     Object.values(fishes)[0]
-  //   );
-  //   const [checkedFish, setCheckedFish] = useLocalStorageState(
-  //     "fish",
-  //     initialCheckedFish
-  //   );
 
-  const bundlesData = Object.entries(bundles);
-  console.log(bundlesData);
+  // Object.entries(communityCenter).map(([roomName, room]) => {
+  //   const roomItems = Object.entries(room).map(([itemName, item]) => {
+  //     const { itemsRequired, bundleReward } = item;
+  //     return {
+  //       roomName,
+  //       itemName,
+  //       itemsRequired,
+  //       bundleReward,
+  //     };
+  //   });
+  //   return roomItems;
+  // });
 
   return (
     <>
@@ -30,7 +41,7 @@ const Bundles: NextPage = () => {
         setSidebarOpen={setSidebarOpen}
       >
         <div className="mx-auto flex max-w-screen-2xl flex-shrink-0 items-center justify-between px-4 sm:px-6 md:px-8">
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+          <h1 className="text-3xl md:text-2xl font-semibold text-gray-900 dark:text-white">
             All Bundles
           </h1>
           <div>
@@ -46,17 +57,25 @@ const Bundles: NextPage = () => {
           </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 ">
-            {bundlesData.map(([room, bundles]) => {
-              return (
-                <div key={room}>
-                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {room}
-                  </h2>
-                  {bundles.map((bundle: any) => {})}
+          <div className="grid grid-cols-1 gap-4 py-4">
+            {Object.entries(communityCenter).map(([roomName, room]) => (
+              <div key={roomName} className="space-y-2">
+                <div className="text-2xl md:text-xl text-gray-900 dark:text-white mb-2 mt-4 ml-1">
+                  {roomName}
                 </div>
-              );
-            })}
+                <div className="grid grid-cols-1 gap-4">
+                  {Object.entries(room).map(([bundleName, bundle]) => {
+                    return (
+                      <BundleCard
+                        key={`${roomName}-${bundleName}`}
+                        bundleName={bundleName}
+                        bundle={bundle}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </SidebarLayout>

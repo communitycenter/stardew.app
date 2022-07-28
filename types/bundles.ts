@@ -1,3 +1,26 @@
-import type bundles from "../research/processors/bundles.json";
+import bundlesJson from "../research/processors/bundles.json";
 
-export type Bundles = typeof bundles[keyof typeof bundles];
+export type Bundle = {
+  items: BundleItem[];
+  itemsRequired: number;
+  bundleReward: BundleReward;
+};
+
+export type BundleItem = {
+  itemID: number;
+  itemQuantity: number;
+  itemQuality: string;
+  itemName: string;
+};
+
+export type BundleReward = {
+  itemType: string;
+  itemName: string;
+  itemID: number;
+  itemQuantity: number;
+};
+
+export type CommunityCenter = Record<string, CommunityCenterRoom>;
+export type CommunityCenterRoom = Record<string, Bundle>;
+
+export const communityCenter: CommunityCenter = bundlesJson;
