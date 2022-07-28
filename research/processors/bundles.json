@@ -4,231 +4,231 @@
             "items": {
                 "count": 4,
                 "Parsnip": {
-                    "itemID": "24",
-                    "itemQuantity": "1",
+                    "itemID": 24,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Green Bean": {
-                    "itemID": "188",
-                    "itemQuantity": "1",
+                    "itemID": 188,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cauliflower": {
-                    "itemID": "190",
-                    "itemQuantity": "1",
+                    "itemID": 190,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Potato": {
-                    "itemID": "192",
-                    "itemQuantity": "1",
+                    "itemID": 192,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Speed-Gro",
-                "itemID": "465",
-                "itemQuantity": "20"
+                "itemID": 465,
+                "itemQuantity": 20
             }
         },
         "Summer Crops": {
             "items": {
                 "count": 4,
                 "Tomato": {
-                    "itemID": "256",
-                    "itemQuantity": "1",
+                    "itemID": 256,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Hot Pepper": {
-                    "itemID": "260",
-                    "itemQuantity": "1",
+                    "itemID": 260,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Blueberry": {
-                    "itemID": "258",
-                    "itemQuantity": "1",
+                    "itemID": 258,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Melon": {
-                    "itemID": "254",
-                    "itemQuantity": "1",
+                    "itemID": 254,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Quality Sprinkler",
-                "itemID": "621",
-                "itemQuantity": "1"
+                "itemID": 621,
+                "itemQuantity": 1
             }
         },
         "Fall Crops": {
             "items": {
                 "count": 4,
                 "Corn": {
-                    "itemID": "270",
-                    "itemQuantity": "1",
+                    "itemID": 270,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Eggplant": {
-                    "itemID": "272",
-                    "itemQuantity": "1",
+                    "itemID": 272,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Pumpkin": {
-                    "itemID": "276",
-                    "itemQuantity": "1",
+                    "itemID": 276,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Yam": {
-                    "itemID": "280",
-                    "itemQuantity": "1",
+                    "itemID": 280,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Bee House",
-                "itemID": "10",
-                "itemQuantity": "1"
+                "itemID": 10,
+                "itemQuantity": 1
             }
         },
         "Quality Crops": {
             "items": {
                 "count": "3",
                 "Parsnip": {
-                    "itemID": "24",
-                    "itemQuantity": "5",
+                    "itemID": 24,
+                    "itemQuantity": 5,
                     "itemQuality": "Gold"
                 },
                 "Melon": {
-                    "itemID": "254",
-                    "itemQuantity": "5",
+                    "itemID": 254,
+                    "itemQuantity": 5,
                     "itemQuality": "Gold"
                 },
                 "Pumpkin": {
-                    "itemID": "276",
-                    "itemQuantity": "5",
+                    "itemID": 276,
+                    "itemQuantity": 5,
                     "itemQuality": "Gold"
                 },
                 "Corn": {
-                    "itemID": "270",
-                    "itemQuantity": "5",
+                    "itemID": 270,
+                    "itemQuantity": 5,
                     "itemQuality": "Gold"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Preserves Jar",
-                "itemID": "15",
-                "itemQuantity": "1"
+                "itemID": 15,
+                "itemQuantity": 1
             }
         },
         "Animal": {
             "items": {
                 "count": "5",
                 "Large Milk": {
-                    "itemID": "186",
-                    "itemQuantity": "1",
+                    "itemID": 186,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Large Egg": {
-                    "itemID": "174",
-                    "itemQuantity": "1",
+                    "itemID": 174,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "L. Goat Milk": {
-                    "itemID": "438",
-                    "itemQuantity": "1",
+                    "itemID": 438,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Wool": {
-                    "itemID": "440",
-                    "itemQuantity": "1",
+                    "itemID": 440,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Duck Egg": {
-                    "itemID": "442",
-                    "itemQuantity": "1",
+                    "itemID": 442,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Cheese Press",
-                "itemID": "16",
-                "itemQuantity": "1"
+                "itemID": 16,
+                "itemQuantity": 1
             }
         },
         "Artisan": {
             "items": {
                 "count": "6",
                 "Truffle Oil": {
-                    "itemID": "432",
-                    "itemQuantity": "1",
+                    "itemID": 432,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cloth": {
-                    "itemID": "428",
-                    "itemQuantity": "1",
+                    "itemID": 428,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Goat Cheese": {
-                    "itemID": "426",
-                    "itemQuantity": "1",
+                    "itemID": 426,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cheese": {
-                    "itemID": "424",
-                    "itemQuantity": "1",
+                    "itemID": 424,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Honey": {
-                    "itemID": "340",
-                    "itemQuantity": "1",
+                    "itemID": 340,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Jelly": {
-                    "itemID": "344",
-                    "itemQuantity": "1",
+                    "itemID": 344,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Apple": {
-                    "itemID": "613",
-                    "itemQuantity": "1",
+                    "itemID": 613,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Apricot": {
-                    "itemID": "634",
-                    "itemQuantity": "1",
+                    "itemID": 634,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Orange": {
-                    "itemID": "635",
-                    "itemQuantity": "1",
+                    "itemID": 635,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Peach": {
-                    "itemID": "636",
-                    "itemQuantity": "1",
+                    "itemID": 636,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Pomegranate": {
-                    "itemID": "637",
-                    "itemQuantity": "1",
+                    "itemID": 637,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cherry": {
-                    "itemID": "638",
-                    "itemQuantity": "1",
+                    "itemID": 638,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Keg",
-                "itemID": "12",
-                "itemQuantity": "1"
+                "itemID": 12,
+                "itemQuantity": 1
             }
         }
     },
@@ -237,201 +237,201 @@
             "items": {
                 "count": 4,
                 "Wild Horseradish": {
-                    "itemID": "16",
-                    "itemQuantity": "1",
+                    "itemID": 16,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Daffodil": {
-                    "itemID": "18",
-                    "itemQuantity": "1",
+                    "itemID": 18,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Leek": {
-                    "itemID": "20",
-                    "itemQuantity": "1",
+                    "itemID": 20,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Dandelion": {
-                    "itemID": "22",
-                    "itemQuantity": "1",
+                    "itemID": 22,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Spring Seeds",
-                "itemID": "495",
-                "itemQuantity": "30"
+                "itemID": 495,
+                "itemQuantity": 30
             }
         },
         "Summer Foraging": {
             "items": {
                 "count": 3,
                 "Spice Berry": {
-                    "itemID": "396",
-                    "itemQuantity": "1",
+                    "itemID": 396,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Grape": {
-                    "itemID": "398",
-                    "itemQuantity": "1",
+                    "itemID": 398,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Sweet Pea": {
-                    "itemID": "402",
-                    "itemQuantity": "1",
+                    "itemID": 402,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Summer Seeds",
-                "itemID": "496",
-                "itemQuantity": "30"
+                "itemID": 496,
+                "itemQuantity": 30
             }
         },
         "Fall Foraging": {
             "items": {
                 "count": 4,
                 "Common Mushroom": {
-                    "itemID": "404",
-                    "itemQuantity": "1",
+                    "itemID": 404,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Wild Plum": {
-                    "itemID": "406",
-                    "itemQuantity": "1",
+                    "itemID": 406,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Hazelnut": {
-                    "itemID": "408",
-                    "itemQuantity": "1",
+                    "itemID": 408,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Blackberry": {
-                    "itemID": "410",
-                    "itemQuantity": "1",
+                    "itemID": 410,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Fall Seeds",
-                "itemID": "497",
-                "itemQuantity": "30"
+                "itemID": 497,
+                "itemQuantity": 30
             }
         },
         "Winter Foraging": {
             "items": {
                 "count": 4,
                 "Winter Root": {
-                    "itemID": "412",
-                    "itemQuantity": "1",
+                    "itemID": 412,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Crystal Fruit": {
-                    "itemID": "414",
-                    "itemQuantity": "1",
+                    "itemID": 414,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Snow Yam": {
-                    "itemID": "416",
-                    "itemQuantity": "1",
+                    "itemID": 416,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Crocus": {
-                    "itemID": "418",
-                    "itemQuantity": "1",
+                    "itemID": 418,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Winter Seeds",
-                "itemID": "498",
-                "itemQuantity": "30"
+                "itemID": 498,
+                "itemQuantity": 30
             }
         },
         "Construction": {
             "items": {
                 "count": 4,
                 "Wood": {
-                    "itemID": "388",
-                    "itemQuantity": "99",
+                    "itemID": 388,
+                    "itemQuantity": 99,
                     "itemQuality": "Common"
                 },
                 "Stone": {
-                    "itemID": "390",
-                    "itemQuantity": "99",
+                    "itemID": 390,
+                    "itemQuantity": 99,
                     "itemQuality": "Common"
                 },
                 "Hardwood": {
-                    "itemID": "709",
-                    "itemQuantity": "10",
+                    "itemID": 709,
+                    "itemQuantity": 10,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Charcoal Kiln",
-                "itemID": "114",
-                "itemQuantity": "1"
+                "itemID": 114,
+                "itemQuantity": 1
             }
         },
         "Exotic Foraging": {
             "items": {
                 "count": "5",
                 "Coconut": {
-                    "itemID": "88",
-                    "itemQuantity": "1",
+                    "itemID": 88,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cactus Fruit": {
-                    "itemID": "90",
-                    "itemQuantity": "1",
+                    "itemID": 90,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cave Carrot": {
-                    "itemID": "78",
-                    "itemQuantity": "1",
+                    "itemID": 78,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Red Mushroom": {
-                    "itemID": "420",
-                    "itemQuantity": "1",
+                    "itemID": 420,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Purple Mushroom": {
-                    "itemID": "422",
-                    "itemQuantity": "1",
+                    "itemID": 422,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Maple Syrup": {
-                    "itemID": "724",
-                    "itemQuantity": "1",
+                    "itemID": 724,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Oak Resin": {
-                    "itemID": "725",
-                    "itemQuantity": "1",
+                    "itemID": 725,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Pine Tar": {
-                    "itemID": "726",
-                    "itemQuantity": "1",
+                    "itemID": 726,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Morel": {
-                    "itemID": "257",
-                    "itemQuantity": "1",
+                    "itemID": 257,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Autumn's Bounty",
-                "itemID": "235",
-                "itemQuantity": "5"
+                "itemID": 235,
+                "itemQuantity": 5
             }
         }
     },
@@ -440,211 +440,211 @@
             "items": {
                 "count": 4,
                 "Sunfish": {
-                    "itemID": "145",
-                    "itemQuantity": "1",
+                    "itemID": 145,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Catfish": {
-                    "itemID": "143",
-                    "itemQuantity": "1",
+                    "itemID": 143,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Shad": {
-                    "itemID": "706",
-                    "itemQuantity": "1",
+                    "itemID": 706,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Tiger Trout": {
-                    "itemID": "699",
-                    "itemQuantity": "1",
+                    "itemID": 699,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Bait",
-                "itemID": "685",
-                "itemQuantity": "30"
+                "itemID": 685,
+                "itemQuantity": 30
             }
         },
         "Lake Fish": {
             "items": {
                 "count": 4,
                 "Largemouth Bass": {
-                    "itemID": "136",
-                    "itemQuantity": "1",
+                    "itemID": 136,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Carp": {
-                    "itemID": "142",
-                    "itemQuantity": "1",
+                    "itemID": 142,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Bullhead": {
-                    "itemID": "700",
-                    "itemQuantity": "1",
+                    "itemID": 700,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Sturgeon": {
-                    "itemID": "698",
-                    "itemQuantity": "1",
+                    "itemID": 698,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Dressed Spinner",
-                "itemID": "687",
-                "itemQuantity": "1"
+                "itemID": 687,
+                "itemQuantity": 1
             }
         },
         "Ocean Fish": {
             "items": {
                 "count": 4,
                 "Sardine": {
-                    "itemID": "131",
-                    "itemQuantity": "1",
+                    "itemID": 131,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Tuna": {
-                    "itemID": "130",
-                    "itemQuantity": "1",
+                    "itemID": 130,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Red Snapper": {
-                    "itemID": "150",
-                    "itemQuantity": "1",
+                    "itemID": 150,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Tilapia": {
-                    "itemID": "701",
-                    "itemQuantity": "1",
+                    "itemID": 701,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Warp Totem: Beach",
-                "itemID": "690",
-                "itemQuantity": "5"
+                "itemID": 690,
+                "itemQuantity": 5
             }
         },
         "Night Fishing": {
             "items": {
                 "count": 3,
                 "Walleye": {
-                    "itemID": "140",
-                    "itemQuantity": "1",
+                    "itemID": 140,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Bream": {
-                    "itemID": "132",
-                    "itemQuantity": "1",
+                    "itemID": 132,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Eel": {
-                    "itemID": "148",
-                    "itemQuantity": "1",
+                    "itemID": 148,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "R",
                 "itemName": "Small Glow Ring",
-                "itemID": "516",
-                "itemQuantity": "1"
+                "itemID": 516,
+                "itemQuantity": 1
             }
         },
         "Specialty Fish": {
             "items": {
                 "count": 4,
                 "Pufferfish": {
-                    "itemID": "128",
-                    "itemQuantity": "1",
+                    "itemID": 128,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Ghostfish": {
-                    "itemID": "156",
-                    "itemQuantity": "1",
+                    "itemID": 156,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Sandfish": {
-                    "itemID": "164",
-                    "itemQuantity": "1",
+                    "itemID": 164,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Woodskip": {
-                    "itemID": "734",
-                    "itemQuantity": "1",
+                    "itemID": 734,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Dish O' The Sea",
-                "itemID": "242",
-                "itemQuantity": "5"
+                "itemID": 242,
+                "itemQuantity": 5
             }
         },
         "Crab Pot": {
             "items": {
                 "count": "5",
                 "Lobster": {
-                    "itemID": "715",
-                    "itemQuantity": "1",
+                    "itemID": 715,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Crayfish": {
-                    "itemID": "716",
-                    "itemQuantity": "1",
+                    "itemID": 716,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Crab": {
-                    "itemID": "717",
-                    "itemQuantity": "1",
+                    "itemID": 717,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Cockle": {
-                    "itemID": "718",
-                    "itemQuantity": "1",
+                    "itemID": 718,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Mussel": {
-                    "itemID": "719",
-                    "itemQuantity": "1",
+                    "itemID": 719,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Shrimp": {
-                    "itemID": "720",
-                    "itemQuantity": "1",
+                    "itemID": 720,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Snail": {
-                    "itemID": "721",
-                    "itemQuantity": "1",
+                    "itemID": 721,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Periwinkle": {
-                    "itemID": "722",
-                    "itemQuantity": "1",
+                    "itemID": 722,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Oyster": {
-                    "itemID": "723",
-                    "itemQuantity": "1",
+                    "itemID": 723,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Clam": {
-                    "itemID": "372",
-                    "itemQuantity": "1",
+                    "itemID": 372,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Crab Pot",
-                "itemID": "710",
-                "itemQuantity": "3"
+                "itemID": 710,
+                "itemQuantity": 3
             }
         }
     },
@@ -653,88 +653,88 @@
             "items": {
                 "count": 3,
                 "Copper Bar": {
-                    "itemID": "334",
-                    "itemQuantity": "1",
+                    "itemID": 334,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Iron Bar": {
-                    "itemID": "335",
-                    "itemQuantity": "1",
+                    "itemID": 335,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Gold Bar": {
-                    "itemID": "336",
-                    "itemQuantity": "1",
+                    "itemID": 336,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Furnace",
-                "itemID": "13",
-                "itemQuantity": "1"
+                "itemID": 13,
+                "itemQuantity": 1
             }
         },
         "Geologist's": {
             "items": {
                 "count": 4,
                 "Quartz": {
-                    "itemID": "80",
-                    "itemQuantity": "1",
+                    "itemID": 80,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Earth Crystal": {
-                    "itemID": "86",
-                    "itemQuantity": "1",
+                    "itemID": 86,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Frozen Tear": {
-                    "itemID": "84",
-                    "itemQuantity": "1",
+                    "itemID": 84,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Fire Quartz": {
-                    "itemID": "82",
-                    "itemQuantity": "1",
+                    "itemID": 82,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Omni Geode",
-                "itemID": "749",
-                "itemQuantity": "5"
+                "itemID": 749,
+                "itemQuantity": 5
             }
         },
         "Adventurer's": {
             "items": {
                 "count": "2",
                 "Slime": {
-                    "itemID": "766",
-                    "itemQuantity": "99",
+                    "itemID": 766,
+                    "itemQuantity": 99,
                     "itemQuality": "Common"
                 },
                 "Bat Wing": {
-                    "itemID": "767",
-                    "itemQuantity": "10",
+                    "itemID": 767,
+                    "itemQuantity": 10,
                     "itemQuality": "Common"
                 },
                 "Solar Essence": {
-                    "itemID": "768",
-                    "itemQuantity": "1",
+                    "itemID": 768,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Void Essence": {
-                    "itemID": "769",
-                    "itemQuantity": "1",
+                    "itemID": 769,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "R",
                 "itemName": "Small Magnet Ring",
-                "itemID": "518",
-                "itemQuantity": "1"
+                "itemID": 518,
+                "itemQuantity": 1
             }
         }
     },
@@ -746,8 +746,8 @@
             "reward": {
                 "itemType": "O",
                 "itemName": "Chocolate Cake",
-                "itemID": "220",
-                "itemQuantity": "3"
+                "itemID": 220,
+                "itemQuantity": 3
             }
         },
         "5,000g": {
@@ -757,8 +757,8 @@
             "reward": {
                 "itemType": "O",
                 "itemName": "Quality Fertilizer",
-                "itemID": "369",
-                "itemQuantity": "30"
+                "itemID": 369,
+                "itemQuantity": 30
             }
         },
         "10,000g": {
@@ -768,8 +768,8 @@
             "reward": {
                 "itemType": "BO",
                 "itemName": "Lightning Rod",
-                "itemID": "9",
-                "itemQuantity": "1"
+                "itemID": 9,
+                "itemQuantity": 1
             }
         },
         "25,000g": {
@@ -779,8 +779,8 @@
             "reward": {
                 "itemType": "BO",
                 "itemName": "Crystalarium",
-                "itemID": "21",
-                "itemQuantity": "1"
+                "itemID": 21,
+                "itemQuantity": 1
             }
         }
     },
@@ -789,170 +789,170 @@
             "items": {
                 "count": 6,
                 "Maple Syrup": {
-                    "itemID": "724",
-                    "itemQuantity": "1",
+                    "itemID": 724,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Fiddlehead Fern": {
-                    "itemID": "259",
-                    "itemQuantity": "1",
+                    "itemID": 259,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Truffle": {
-                    "itemID": "430",
-                    "itemQuantity": "1",
+                    "itemID": 430,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Poppy": {
-                    "itemID": "376",
-                    "itemQuantity": "1",
+                    "itemID": 376,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Maki Roll": {
-                    "itemID": "228",
-                    "itemQuantity": "1",
+                    "itemID": 228,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Fried Egg": {
-                    "itemID": "194",
-                    "itemQuantity": "1",
+                    "itemID": 194,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Pink Cake",
-                "itemID": "221",
-                "itemQuantity": "3"
+                "itemID": 221,
+                "itemQuantity": 3
             }
         },
         "Field Research": {
             "items": {
                 "count": 4,
                 "Purple Mushroom": {
-                    "itemID": "422",
-                    "itemQuantity": "1",
+                    "itemID": 422,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Nautilus Shell": {
-                    "itemID": "392",
-                    "itemQuantity": "1",
+                    "itemID": 392,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Chub": {
-                    "itemID": "702",
-                    "itemQuantity": "1",
+                    "itemID": 702,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Frozen Geode": {
-                    "itemID": "536",
-                    "itemQuantity": "1",
+                    "itemID": 536,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Recycling Machine",
-                "itemID": "20",
-                "itemQuantity": "1"
+                "itemID": 20,
+                "itemQuantity": 1
             }
         },
         "Enchanter's": {
             "items": {
                 "count": 4,
                 "Oak Resin": {
-                    "itemID": "725",
-                    "itemQuantity": "1",
+                    "itemID": 725,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Wine": {
-                    "itemID": "348",
-                    "itemQuantity": "1",
+                    "itemID": 348,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Rabbit's Foot": {
-                    "itemID": "446",
-                    "itemQuantity": "1",
+                    "itemID": 446,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Pomegranate": {
-                    "itemID": "637",
-                    "itemQuantity": "1",
+                    "itemID": 637,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "O",
                 "itemName": "Gold Bar",
-                "itemID": "336",
-                "itemQuantity": "5"
+                "itemID": 336,
+                "itemQuantity": 5
             }
         },
         "Dye": {
             "items": {
                 "count": 6,
                 "Red Mushroom": {
-                    "itemID": "420",
-                    "itemQuantity": "1",
+                    "itemID": 420,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Sea Urchin": {
-                    "itemID": "397",
-                    "itemQuantity": "1",
+                    "itemID": 397,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Sunflower": {
-                    "itemID": "421",
-                    "itemQuantity": "1",
+                    "itemID": 421,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Duck Feather": {
-                    "itemID": "444",
-                    "itemQuantity": "1",
+                    "itemID": 444,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Aquamarine": {
-                    "itemID": "62",
-                    "itemQuantity": "1",
+                    "itemID": 62,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Red Cabbage": {
-                    "itemID": "266",
-                    "itemQuantity": "1",
+                    "itemID": 266,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Seed Maker",
-                "itemID": "25",
-                "itemQuantity": "1"
+                "itemID": 25,
+                "itemQuantity": 1
             }
         },
         "Fodder": {
             "items": {
                 "count": 3,
                 "Wheat": {
-                    "itemID": "262",
-                    "itemQuantity": "10",
+                    "itemID": 262,
+                    "itemQuantity": 10,
                     "itemQuality": "Common"
                 },
                 "Hay": {
-                    "itemID": "178",
-                    "itemQuantity": "10",
+                    "itemID": 178,
+                    "itemQuantity": 10,
                     "itemQuality": "Common"
                 },
                 "Apple": {
-                    "itemID": "613",
-                    "itemQuantity": "3",
+                    "itemID": 613,
+                    "itemQuantity": 3,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "Heater",
-                "itemID": "104",
-                "itemQuantity": "1"
+                "itemID": 104,
+                "itemQuantity": 1
             }
         }
     },
@@ -961,41 +961,41 @@
             "items": {
                 "count": "5",
                 "Wine": {
-                    "itemID": "348",
-                    "itemQuantity": "1",
+                    "itemID": 348,
+                    "itemQuantity": 1,
                     "itemQuality": "Silver"
                 },
                 "Dinosaur Mayonnaise": {
-                    "itemID": "807",
-                    "itemQuantity": "1",
+                    "itemID": 807,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Prismatic Shard": {
-                    "itemID": "74",
-                    "itemQuantity": "1",
+                    "itemID": 74,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 },
                 "Ancient Fruit": {
-                    "itemID": "454",
-                    "itemQuantity": "5",
+                    "itemID": 454,
+                    "itemQuantity": 5,
                     "itemQuality": "Gold"
                 },
                 "Void Salmon": {
-                    "itemID": "795",
-                    "itemQuantity": "1",
+                    "itemID": 795,
+                    "itemQuantity": 1,
                     "itemQuality": "Gold"
                 },
                 "Caviar": {
-                    "itemID": "445",
-                    "itemQuantity": "1",
+                    "itemID": 445,
+                    "itemQuantity": 1,
                     "itemQuality": "Common"
                 }
             },
             "reward": {
                 "itemType": "BO",
                 "itemName": "House Plant",
-                "itemID": "0",
-                "itemQuantity": "0"
+                "itemID": 0,
+                "itemQuantity": 0
             }
         }
     }

@@ -1,4 +1,4 @@
-import type { Fish } from "../types";
+import type { Fish } from "../../types";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";

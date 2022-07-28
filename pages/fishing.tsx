@@ -3,7 +3,7 @@ import type { Fish } from "../types";
 
 import fishes from "../research/processors/fish.json";
 
-import FishCard from "../components/fishcard";
+import FishCard from "../components/fishing/fishcard";
 import FishSlideOver from "../components/fishslideover";
 import SidebarLayout from "../components/sidebarlayout";
 

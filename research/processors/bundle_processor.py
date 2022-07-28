@@ -66,10 +66,12 @@ for key, value in ObjInfo["content"].items():
             itemName = itemMapping["O"][itemID]
 
             bundles[bundleLocation][bundleName]["items"][itemName] = {}
-            bundles[bundleLocation][bundleName]["items"][itemName]["itemID"] = itemID
+            bundles[bundleLocation][bundleName]["items"][itemName]["itemID"] = int(
+                itemID
+            )
             bundles[bundleLocation][bundleName]["items"][itemName][
                 "itemQuantity"
-            ] = itemQuantity
+            ] = int(itemQuantity)
             bundles[bundleLocation][bundleName]["items"][itemName][
                 "itemQuality"
             ] = processQualityOfItem(itemQuality)
@@ -80,12 +82,12 @@ for key, value in ObjInfo["content"].items():
     bundles[bundleLocation][bundleName]["reward"]["itemType"] = bundleRewardType
 
     bundles[bundleLocation][bundleName]["reward"]["itemName"] = processTypeOfObject(
-        bundleRewardType, bundleRewardItemID
+        ~bundleRewardType, bundleRewardItemID
     )
-    bundles[bundleLocation][bundleName]["reward"]["itemID"] = bundleRewardItemID
-    bundles[bundleLocation][bundleName]["reward"][
-        "itemQuantity"
-    ] = bundleRewardItemQuantity
+    bundles[bundleLocation][bundleName]["reward"]["itemID"] = int(bundleRewardItemID)
+    bundles[bundleLocation][bundleName]["reward"]["itemQuantity"] = int(
+        bundleRewardItemQuantity
+    )
 
 
 with open("bundles.json", "w") as f:
