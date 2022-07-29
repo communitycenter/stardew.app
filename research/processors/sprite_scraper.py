@@ -19,7 +19,7 @@ for a in soup.find_all("a", {"class": "image"}):
     # some items are empty so we'll just set these to null, the IDs that
     # are empty are just hardcoded by looking at the sprite sheet
     while i in empty_ids:
-        sprites[f"{i:03}"] = None
+        sprites[f"{i}"] = None
         i += 1
     
     # so the <a> tag gives the url to the page which contains a link to the 
@@ -29,14 +29,13 @@ for a in soup.find_all("a", {"class": "image"}):
     # Just need to slightly change the thumbnail url and we can get the 48x48
     # version URL without having to make a request for each sprite.
 
-    
     # Ex: src="/mediawiki/images/thumb/1/1d/Green_Slime_Egg.png/24px-Green_Slime_Egg.png"
     # we need to convert that to "/mediawiki/images/1/1d/Green_Slime_Egg.png"
     
     thumbnail_url: str = a.find("img")["src"] 
     iconURL = thumbnail_url.split(".png/")[0].replace("/thumb","") + ".png"
     
-    sprites[f"{i:03}"] = "https://stardewcommunitywiki.com" + iconURL # {i:03} zero pads the number
+    sprites[f"{i}"] = "https://stardewcommunitywiki.com" + iconURL
     i += 1
 
 if not DEBUG:    
