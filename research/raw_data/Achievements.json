@@ -1,0 +1,54 @@
+{
+    "header": {
+        "target": "w",
+        "formatVersion": 5,
+        "hidef": true,
+        "compressed": 128
+    },
+    "readers": [
+        {
+            "type": "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]",
+            "version": 0
+        },
+        {
+            "type": "Microsoft.Xna.Framework.Content.Int32Reader",
+            "version": 0
+        },
+        {
+            "type": "Microsoft.Xna.Framework.Content.StringReader",
+            "version": 0
+        }
+    ],
+    "content": {
+        "0": "Greenhorn (15k)^Earn 15,000g^true^-1^18",
+        "1": "Cowpoke (50k)^Earn 50,000g^true^0^21",
+        "2": "Homesteader (250k)^Earn 250,000g^true^1^20",
+        "3": "Millionaire (1mil)^Earn 1,000,000g^true^2^1",
+        "4": "Legend (10mil)^Earn 10,000,000g^false^-1^3",
+        "5": "A Complete Collection^Complete the museum collection.^true^28^0",
+        "6": "A New Friend^Reach a 5-heart friend level with someone.^true^-1^14",
+        "7": "Best Friends^Reach a 10-heart friend level with someone.^true^6^31",
+        "9": "The Beloved Farmer^Reach a 10-heart friend level with 8 people.^true^7^32",
+        "11": "Cliques^Reach a 5-heart friend level with 4 people.^true^6^26",
+        "12": "Networking^Reach a 5-heart friend level with 10 people.^true^11^25",
+        "13": "Popular^Reach a 5-heart friend level with 20 people.^true^12^11",
+        "15": "Cook^Cook 10 different recipes.^true^18^12",
+        "16": "Sous Chef^Cook 25 different recipes.^true^15^7",
+        "17": "Gourmet Chef^Cook every recipe.^true^16^35",
+        "18": "Moving Up^Upgrade your house.^true^-1^13",
+        "19": "Living Large^Upgrade your house to the maximum size.^true^18^15",
+        "20": "D.I.Y.^Craft 15 different items.^true^-1^29",
+        "21": "Artisan^Craft 30 different items.^true^20^16",
+        "22": "Craft Master^Craft every item.^true^21^23",
+        "24": "Fisherman^Catch 10 different fish.^true^-1^28",
+        "25": "Ol' Mariner^Catch 24 different fish.^true^24^5",
+        "26": "Master Angler^Catch every fish.^true^25^24",
+        "27": "Mother Catch^Catch 100 fish.^true^64^30",
+        "28": "Treasure Trove^Donate 40 different items to the museum.^true^-1^6",
+        "29": "Gofer^Complete 10 'Help Wanted' requests.^true^-1^22",
+        "30": "A Big Help^Complete 40 'Help Wanted' requests.^true^29^10",
+        "31": "Polyculture^Ship 15 of each crop.^true^-1^34",
+        "32": "Monoculture^Ship 300 of one crop.^true^-1^33",
+        "34": "Full Shipment^Ship every item.^true^-1^9"
+    }
+}

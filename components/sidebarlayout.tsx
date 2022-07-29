@@ -1,4 +1,4 @@
-import { Fragment, Dispatch, SetStateAction } from "react";
+import { Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   ArchiveIcon,
@@ -8,12 +8,16 @@ import {
   MenuIcon,
   XIcon,
   UploadIcon,
+  UserCircleIcon,
 } from "@heroicons/react/solid";
+
+import { parseMoney, parseGeneral } from "../utils";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 const navigation = [
+  { name: "Farmer", href: "/farmer", icon: UserCircleIcon },
   { name: "Bundles", href: "/bundles", icon: ArchiveIcon },
   { name: "Fishing", href: "/fishing", icon: SparklesIcon },
   { name: "Perfection", href: "#", icon: SparklesIcon },
@@ -28,12 +32,37 @@ interface LayoutProps {
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+const { XMLParser } = require("fast-xml-parser");
+
 const SidebarLayout = ({
   children,
   activeTab,
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
+  function handleFile(event: ChangeEvent<HTMLInputElement>) {
+    // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
+    const file = event.target!.files![0];
+    const reader = new FileReader();
+
+    // We can check the progress of the upload with a couple events from the reader
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
+
+    reader.onload = function (event) {
+      // console.log(event.target?.result);
+      const parser = new XMLParser();
+      const jsonObj = parser.parse(event.target?.result as string);
+
+      const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
+      console.log(name, timePlayed, farmInfo);
+      const { moneyEarned, balance } = parseMoney(jsonObj);
+      console.log(moneyEarned, balance);
+    };
+
+    reader.readAsText(file!);
+  }
+
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -98,7 +127,13 @@ const SidebarLayout = ({
                           className="h-5 w-5 text-black"
                           aria-hidden="true"
                         />
-                        <input type="file" className="hidden" />
+                        <input
+                          type="file"
+                          className="hidden"
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            handleFile(e)
+                          }
+                        />
                       </label>
                     </div>
                     {/* end file input section */}
@@ -111,7 +146,7 @@ const SidebarLayout = ({
                         href={item.href}
                         className={classNames(
                           item.name === activeTab
-                            ? "bg-gray-100 text-sky-500"
+                            ? "bg-gray-100 text-black"
                             : "text-black hover:bg-gray-50 hover:text-gray-900",
                           "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                         )}
@@ -145,7 +180,13 @@ const SidebarLayout = ({
                     className="h-5 w-5 text-black dark:text-white"
                     aria-hidden="true"
                   />
-                  <input type="file" className="hidden" />
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      handleFile(e)
+                    }
+                  />
                 </label>
               </div>
               {/* end file input section */}
@@ -158,7 +199,7 @@ const SidebarLayout = ({
                   href={item.href}
                   className={classNames(
                     item.name === activeTab
-                      ? "border bg-gray-100 text-sky-500 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                      ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
                       : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
                     "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                   )}
