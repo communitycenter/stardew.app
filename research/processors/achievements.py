@@ -33,6 +33,7 @@ for key, value in rawData["content"].items():
     
     Achievements[name] = {
         "id": int(key),
+        "name": name,
         "iconURL": "https://stardewvalleywiki.com" + iconURL,
         "description": description,
         "isSecret": isSecret,

@@ -1,6 +1,7 @@
 {
     "Greenhorn": {
         "id": 0,
+        "name": "Greenhorn",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg",
         "description": "Earn 15,000g",
         "isSecret": false,
@@ -8,6 +9,7 @@
     },
     "Cowpoke": {
         "id": 1,
+        "name": "Cowpoke",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/24/Achievement_Cowpoke.jpg",
         "description": "Earn 50,000g",
         "isSecret": false,
@@ -15,6 +17,7 @@
     },
     "Homesteader": {
         "id": 2,
+        "name": "Homesteader",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fb/Achievement_Homesteader.jpg",
         "description": "Earn 250,000g",
         "isSecret": false,
@@ -22,6 +25,7 @@
     },
     "Millionaire": {
         "id": 3,
+        "name": "Millionaire",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Achievement_Millionaire.jpg",
         "description": "Earn 1,000,000g",
         "isSecret": false,
@@ -29,6 +33,7 @@
     },
     "Legend": {
         "id": 4,
+        "name": "Legend",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Achievement_Legend.jpg",
         "description": "Earn 10,000,000g",
         "isSecret": false,
@@ -36,6 +41,7 @@
     },
     "A Complete Collection": {
         "id": 5,
+        "name": "A Complete Collection",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_A_Complete_Collection.jpg",
         "description": "Complete the museum collection.",
         "isSecret": false,
@@ -43,6 +49,7 @@
     },
     "A New Friend": {
         "id": 6,
+        "name": "A New Friend",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Achievement_A_New_Friend.jpg",
         "description": "Reach a 5-heart friend level with someone.",
         "isSecret": false,
@@ -50,6 +57,7 @@
     },
     "Best Friends": {
         "id": 7,
+        "name": "Best Friends",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e8/Achievement_Best_Friends.jpg",
         "description": "Reach a 10-heart friend level with someone.",
         "isSecret": false,
@@ -57,6 +65,7 @@
     },
     "The Beloved Farmer": {
         "id": 9,
+        "name": "The Beloved Farmer",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Achievement_The_Beloved_Farmer.jpg",
         "description": "Reach a 10-heart friend level with 8 people.",
         "isSecret": false,
@@ -64,6 +73,7 @@
     },
     "Cliques": {
         "id": 11,
+        "name": "Cliques",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Achievement_Cliques.jpg",
         "description": "Reach a 5-heart friend level with 4 people.",
         "isSecret": false,
@@ -71,6 +81,7 @@
     },
     "Networking": {
         "id": 12,
+        "name": "Networking",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Achievement_Networking.jpg",
         "description": "Reach a 5-heart friend level with 10 people.",
         "isSecret": false,
@@ -78,6 +89,7 @@
     },
     "Popular": {
         "id": 13,
+        "name": "Popular",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Achievement_Popular.jpg",
         "description": "Reach a 5-heart friend level with 20 people.",
         "isSecret": false,
@@ -85,6 +97,7 @@
     },
     "Cook": {
         "id": 15,
+        "name": "Cook",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_Cook.jpg",
         "description": "Cook 10 different recipes.",
         "isSecret": false,
@@ -92,6 +105,7 @@
     },
     "Sous Chef": {
         "id": 16,
+        "name": "Sous Chef",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/44/Achievement_Sous_Chef.jpg",
         "description": "Cook 25 different recipes.",
         "isSecret": false,
@@ -99,6 +113,7 @@
     },
     "Gourmet Chef": {
         "id": 17,
+        "name": "Gourmet Chef",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dd/Achievement_Gourmet_Chef.jpg",
         "description": "Cook every recipe.",
         "isSecret": false,
@@ -106,6 +121,7 @@
     },
     "Moving Up": {
         "id": 18,
+        "name": "Moving Up",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Achievement_Moving_Up.jpg",
         "description": "Upgrade your house.",
         "isSecret": false,
@@ -113,6 +129,7 @@
     },
     "Living Large": {
         "id": 19,
+        "name": "Living Large",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Living_Large.jpg",
         "description": "Upgrade your house to the maximum size.",
         "isSecret": false,
@@ -120,6 +137,7 @@
     },
     "D.I.Y.": {
         "id": 20,
+        "name": "D.I.Y.",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Achievement_DIY.jpg",
         "description": "Craft 15 different items.",
         "isSecret": false,
@@ -127,6 +145,7 @@
     },
     "Artisan": {
         "id": 21,
+        "name": "Artisan",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/20/Achievement_Artisan.jpg",
         "description": "Craft 30 different items.",
         "isSecret": false,
@@ -134,6 +153,7 @@
     },
     "Craft Master": {
         "id": 22,
+        "name": "Craft Master",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/60/Achievement_Master_Craft.jpg",
         "description": "Craft every item.",
         "isSecret": false,
@@ -141,6 +161,7 @@
     },
     "Fisherman": {
         "id": 24,
+        "name": "Fisherman",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/00/Achievement_Fisherman.jpg",
         "description": "Catch 10 different fish.",
         "isSecret": false,
@@ -148,6 +169,7 @@
     },
     "Ol' Mariner": {
         "id": 25,
+        "name": "Ol' Mariner",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Achievement_Ol_Mariner.jpg",
         "description": "Catch 24 different fish.",
         "isSecret": false,
@@ -155,6 +177,7 @@
     },
     "Master Angler": {
         "id": 26,
+        "name": "Master Angler",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Master_Angler.jpg",
         "description": "Catch every fish.",
         "isSecret": false,
@@ -162,6 +185,7 @@
     },
     "Mother Catch": {
         "id": 27,
+        "name": "Mother Catch",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Achievement_Mother_Catch.jpg",
         "description": "Catch 100 fish.",
         "isSecret": false,
@@ -169,6 +193,7 @@
     },
     "Treasure Trove": {
         "id": 28,
+        "name": "Treasure Trove",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/55/Achievement_Treasure_Trove.jpg",
         "description": "Donate 40 different items to the museum.",
         "isSecret": false,
@@ -176,6 +201,7 @@
     },
     "Gofer": {
         "id": 29,
+        "name": "Gofer",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/27/Achievement_Gofer.jpg",
         "description": "Complete 10 'Help Wanted' requests.",
         "isSecret": false,
@@ -183,6 +209,7 @@
     },
     "A Big Help": {
         "id": 30,
+        "name": "A Big Help",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Achievement_A_Big_Help.jpg",
         "description": "Complete 40 'Help Wanted' requests.",
         "isSecret": false,
@@ -190,6 +217,7 @@
     },
     "Polyculture": {
         "id": 31,
+        "name": "Polyculture",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Achievement_Polyculture.jpg",
         "description": "Ship 15 of each crop.",
         "isSecret": false,
@@ -197,6 +225,7 @@
     },
     "Monoculture": {
         "id": 32,
+        "name": "Monoculture",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Achievement_Monoculture.jpg",
         "description": "Ship 300 of one crop.",
         "isSecret": false,
@@ -204,6 +233,7 @@
     },
     "Full Shipment": {
         "id": 34,
+        "name": "Full Shipment",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b8/Achievement_Full_Shipment.jpg",
         "description": "Ship every item.",
         "isSecret": false,
