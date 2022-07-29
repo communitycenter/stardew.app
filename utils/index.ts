@@ -1,2 +1,2 @@
-export * from "./parsers/name";
+export * from "./parsers/general";
 export * from "./parsers/money";
