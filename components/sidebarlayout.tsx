@@ -10,6 +10,8 @@ import {
   UploadIcon,
 } from "@heroicons/react/solid";
 
+import { parseMoney, parseName } from "../utils";
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -45,7 +47,11 @@ const SidebarLayout = ({
     // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
     
     reader.onload = function (event) {
-      console.log(event.target?.result);
+      // console.log(event.target?.result);
+      console.log("Save file name: ", parseName(event.target?.result as string))
+      let { moneyEarned, balance } = parseMoney(event.target?.result as string);
+      console.log("Save file money earned: ", moneyEarned);
+      console.log("Balance: ", balance);
     };
 
     reader.readAsText(file!);
