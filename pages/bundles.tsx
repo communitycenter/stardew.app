@@ -6,7 +6,7 @@ import BundleCard from "../components/bundles/bundleCard";
 import SidebarLayout from "../components/sidebarlayout";
 import { useLocalStorageState } from "../hooks/use-local-storage";
 
-import bundles from "../research/processors/bundles.json";
+import bundles from "../research/processors/data/bundles.json";
 import {
   Bundle,
   BundleItem,
@@ -41,7 +41,7 @@ const Bundles: NextPage = () => {
         setSidebarOpen={setSidebarOpen}
       >
         <div className="mx-auto flex max-w-screen-2xl flex-shrink-0 items-center justify-between px-4 sm:px-6 md:px-8">
-          <h1 className="text-3xl md:text-2xl font-semibold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-semibold text-gray-900 dark:text-white md:text-2xl">
             All Bundles
           </h1>
           <div>
@@ -60,7 +60,7 @@ const Bundles: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 py-4">
             {Object.entries(communityCenter).map(([roomName, room]) => (
               <div key={roomName} className="space-y-2">
-                <div className="text-2xl md:text-xl text-gray-900 dark:text-white mb-2 mt-4 ml-1">
+                <div className="mb-2 mt-4 ml-1 text-2xl text-gray-900 dark:text-white md:text-xl">
                   {roomName}
                 </div>
                 <div className="grid grid-cols-1 gap-4">

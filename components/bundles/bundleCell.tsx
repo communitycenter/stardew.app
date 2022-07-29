@@ -1,7 +1,16 @@
-import { Dispatch, SetStateAction, useState, useEffect, useCallback } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { BundleItem, CommunityCenterRoom } from "../../types/bundles";
-import classnames from 'classnames'
-import { CheckCircleIcon } from "@heroicons/react/outline"
+import { CheckCircleIcon } from "@heroicons/react/outline";
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 type Props = {
   item: BundleItem;
@@ -29,7 +38,7 @@ function useSingleAndDoubleClick(
     // is less than the value of delay = double-click
     if (click === 2) {
       actionDoubleClick();
-      setClick(0)
+      setClick(0);
     }
 
     return () => clearTimeout(timer);
@@ -53,7 +62,7 @@ const BundleCell = ({
   }, [setShowItem]);
 
   const twoClick = useCallback(() => {
-    setChecked(item, !checked)
+    setChecked(item, !checked);
   }, [item, checked, setChecked]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
@@ -62,10 +71,11 @@ const BundleCell = ({
     <div
       key={item.itemID}
       onClick={click}
-      className={classnames(
-        "p-2 border rounded-lg cursor-pointer select-none relative transition-colors",
-        {"border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200": checked},
-        {"border-gray-100 hover:border-gray-300 hover:bg-gray-50": !checked},
+      className={classNames(
+        "relative cursor-pointer select-none rounded-lg border p-2 transition-colors",
+        checked
+          ? "border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200"
+          : "border-gray-100 hover:border-gray-300 hover:bg-gray-50"
       )}
     >
       <div className="flex-shrink-0">
@@ -75,9 +85,11 @@ const BundleCell = ({
           alt="wtf"
         />
       </div>
-      {item.itemQuantity > 1 &&<span className="absolute -bottom-1.5 -right-1.5 text-sm md:text-xs bg-white border border-gray-100 px-1 rounded-md">
+      {item.itemQuantity > 1 && (
+        <span className="absolute -bottom-1.5 -right-1.5 rounded-md border border-gray-100 bg-white px-1 text-sm md:text-xs">
           {item.itemQuantity}x{" "}
-      </span>}
+        </span>
+      )}
 
       {/* <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">

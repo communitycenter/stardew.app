@@ -1,4 +1,4 @@
-import bundlesJson from "../research/processors/bundles.json";
+import bundlesJson from "../research/processors/data/bundles.json";
 
 export type Bundle = {
   items: BundleItem[];
