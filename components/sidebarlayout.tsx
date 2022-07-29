@@ -1,4 +1,4 @@
-import { Fragment, Dispatch, SetStateAction } from "react";
+import { Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   ArchiveIcon,
@@ -34,6 +34,23 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
+
+  function handleFile(event: ChangeEvent<HTMLInputElement>) {
+    // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
+    const file = event.target!.files![0];
+    const reader = new FileReader();
+
+    // We can check the progress of the upload with a couple events from the reader
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
+    
+    reader.onload = function (event) {
+      console.log(event.target?.result);
+    };
+
+    reader.readAsText(file!);
+  }
+
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -98,7 +115,7 @@ const SidebarLayout = ({
                           className="h-5 w-5 text-black"
                           aria-hidden="true"
                         />
-                        <input type="file" className="hidden" />
+                        <input type="file" className="hidden" onChange={(e: any) => handleFile(e)} />
                       </label>
                     </div>
                     {/* end file input section */}
@@ -145,7 +162,7 @@ const SidebarLayout = ({
                     className="h-5 w-5 text-black dark:text-white"
                     aria-hidden="true"
                   />
-                  <input type="file" className="hidden" />
+                  <input type="file" className="hidden" onChange={(e: ChangeEvent<HTMLInputElement>) => handleFile(e)}/>
                 </label>
               </div>
               {/* end file input section */}

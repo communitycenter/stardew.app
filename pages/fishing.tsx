@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import type { Fish } from "../types";
 
-import fishes from "../research/processors/fish.json";
+import fishes from "../research/processors/data/fish.json";
 
 import FishCard from "../components/fishing/fishcard";
 import SidebarLayout from "../components/sidebarlayout";
