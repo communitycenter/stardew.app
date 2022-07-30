@@ -1,6 +1,11 @@
 interface ReturnType {
   moneyEarned: number;
-  balance: number;
+  // balance: number;
+  Greenhorn: boolean;
+  Cowpoke: boolean;
+  Homesteader: boolean;
+  Millionaire: boolean;
+  Legend: boolean;
 }
 
 export function parseMoney(json: any): ReturnType {
@@ -13,7 +18,14 @@ export function parseMoney(json: any): ReturnType {
       - Legend:       Earned 10,000,000g
   */
   const moneyEarned: number = json.SaveGame.player.totalMoneyEarned;
-  const balance: number = json.SaveGame.player.money;
+  // const balance: number = json.SaveGame.player.money;
 
-  return { moneyEarned, balance };
+  return {
+    moneyEarned,
+    Greenhorn: moneyEarned >= 15000,
+    Cowpoke: moneyEarned >= 50000,
+    Homesteader: moneyEarned >= 250000,
+    Millionaire: moneyEarned >= 1000000,
+    Legend: moneyEarned >= 10000000,
+  };
 }

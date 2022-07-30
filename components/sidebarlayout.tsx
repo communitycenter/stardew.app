@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/solid";
 
 import { parseMoney, parseGeneral } from "../utils";
+import { parseSkills } from "../utils/parsers/skills";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -32,7 +33,7 @@ interface LayoutProps {
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const { XMLParser } = require("fast-xml-parser");
+import { XMLParser } from "fast-xml-parser";
 
 const SidebarLayout = ({
   children,
@@ -56,8 +57,10 @@ const SidebarLayout = ({
 
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
       console.log(name, timePlayed, farmInfo);
-      const { moneyEarned, balance } = parseMoney(jsonObj);
-      console.log(moneyEarned, balance);
+      const { moneyEarned } = parseMoney(jsonObj);
+      console.log(moneyEarned);
+      const { playerLevel } = parseSkills(jsonObj);
+      console.log("playerLevel: ", playerLevel);
     };
 
     reader.readAsText(file!);

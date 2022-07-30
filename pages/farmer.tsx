@@ -9,6 +9,7 @@ import {
   ClockIcon,
   UserIcon,
   CurrencyDollarIcon,
+  ChartBarIcon,
 } from "@heroicons/react/solid";
 
 import Head from "next/head";
@@ -104,6 +105,19 @@ const Farmer: NextPage = () => {
             </div>
             {/* Money Stats */}
             {/* Skills Information */}
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Skills
+              </div>
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+                <div className="col-span-2 xl:col-span-3">
+                  <InfoCard
+                    title="clem's farmer level is 23."
+                    Icon={ChartBarIcon}
+                  />
+                </div>
+              </div>
+            </div>
             {/* Skills Information */}
             {/* Quests Information */}
             {/* Quests Information */}
