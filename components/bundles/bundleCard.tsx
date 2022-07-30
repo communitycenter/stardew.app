@@ -52,10 +52,10 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
   return (
     <div
       className={classNames(
-        "flex flex-col items-start rounded-xl border p-2 md:flex-row md:items-center",
+        "flex flex-col items-start rounded-xl border p-2 md:flex-row md:items-center ",
         bundleFinished
-          ? "border-green-300 bg-green-50"
-          : "border-gray-100 bg-white"
+          ? "border-green-300 light:bg-green-50 dark:bg-[#0E1D14]"
+          : "border-gray-100 bg-white dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
       )}
     >
       <div className="flex flex-1 items-center">
