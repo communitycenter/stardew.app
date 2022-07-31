@@ -8,6 +8,8 @@ import {
 import { BundleItem, CommunityCenterRoom } from "../../types/bundles";
 import { CheckCircleIcon } from "@heroicons/react/outline";
 
+import * as sprites from "../../research/processors/data/sprites.json";
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -72,16 +74,16 @@ const BundleCell = ({
       key={item.itemID}
       onClick={click}
       className={classNames(
-        "relative cursor-pointer select-none rounded-lg border p-2 transition-colors",
+        "relative cursor-pointer select-none rounded-lg border p-2 transition-colors dark:border-[#2A2A2A]",
         checked
-          ? "border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200"
+          ? "border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200 dark:bg-[#0E1D14] "
           : "border-gray-100 hover:border-gray-300 hover:bg-gray-50"
       )}
     >
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 ">
         <img
-          className="h-12 w-12 md:h-6 md:w-6"
-          src="https://stardewvalleywiki.com/mediawiki/images/f/f8/Corn.png"
+          className="h-12 w-12 md:h-6 md:w-6 "
+          src={sprites[item.itemID.toString() as keyof typeof sprites]}
           alt="wtf"
         />
       </div>
