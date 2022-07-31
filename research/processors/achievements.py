@@ -1,6 +1,10 @@
 # Parsing all Achievement data from game files
 # https://stardewvalleywiki.com/Modding:Achievement_data
 
+# looks like some of the achievements are missing from the game data like the
+# ones with no hat reward (i.e, Mystery Of The Stardrops) so i'll have to 
+# hardcode those 🙂
+
 import json
 import bs4
 import requests
@@ -16,7 +20,8 @@ for key, value in rawData["content"].items():
     name = fields[0]
     description = fields[1]
     # in the game files the boolean represent whether to show the item or not
-    isSecret = not fields[2] # so fields that are `true` are not secret
+    # so fields that are `true` are not secret
+    isSecret = False if fields[2] == "true" else True 
     rewardID = int(fields[4])
     
     if int(key) in range(5): # money achievements
