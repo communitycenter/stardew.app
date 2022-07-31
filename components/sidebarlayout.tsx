@@ -11,7 +11,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/solid";
 
-import { parseMoney, parseGeneral, parseSkills } from "../utils";
+import { parseMoney, parseGeneral, parseSkills, parseStardrops } from "../utils";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -55,11 +55,9 @@ const SidebarLayout = ({
       const jsonObj = parser.parse(event.target?.result as string);
 
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
-      console.log(name, timePlayed, farmInfo);
-      const { moneyEarned } = parseMoney(jsonObj);
-      console.log(moneyEarned);
-      const { playerLevel } = parseSkills(jsonObj);
-      console.log("playerLevel: ", playerLevel);
+      const { stardropsCount, stardropsNeeded } = parseStardrops(jsonObj);
+      console.log("stardropsCount", stardropsCount);
+      console.log("stardropsNeeded", stardropsNeeded);
     };
 
     reader.readAsText(file!);

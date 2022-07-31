@@ -111,7 +111,7 @@ const Farmer: NextPage = () => {
               <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
                 Skills
               </div>
-              <div className="grid grid-cols-5 gap-y-4 gap-x-1">
+              <div className="grid grid-cols-5 gap-4 gap-y-2">
                 <div className="col-span-5">
                   <InfoCard
                     title="clem's farmer level is 23."
