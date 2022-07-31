@@ -446,6 +446,7 @@
     "Protector Of The Valley": {
         "id": 38,
         "name": "Protector Of The Valley",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/66/Achievement_Protector_Of_The_Valley.jpg",
         "description": "Complete all of the Adventure Guild Monster Slayer goals.",
         "isSecret": false,
         "category": "monsters",
@@ -454,6 +455,7 @@
     "Fector's Challenge": {
         "id": 39,
         "name": "Fector's Challenge",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Achievement_Fector%27s_Challenge.jpg",
         "description": "Beat 'Journey of the Prairie King' without dying",
         "isSecret": true,
         "category": "misc",

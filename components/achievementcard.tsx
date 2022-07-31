@@ -68,7 +68,7 @@ const AchievementCard = ({
         className="rounded-sm"
       />
       <div className="min-w-0 flex-1">
-        <p className="font-medium text-gray-900 dark:text-white">{title}</p>
+        <p className="font-medium text-gray-900 dark:text-white truncate">{title}</p>
         <p className="truncate text-sm text-gray-400">{description}</p>
       </div>
       {checked !== null && (
