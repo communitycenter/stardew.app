@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarLayout from "../components/sidebarlayout";
+import { KVProvider } from "../contexts/KVContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           exit={{ opacity: 0 }}
           className="content"
         >
-          <Component {...pageProps} />
+          <KVProvider>
+            <Component {...pageProps} />
+          </KVProvider>
         </motion.div>
       </AnimatePresence>
     </main>
