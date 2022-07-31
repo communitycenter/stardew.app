@@ -11,8 +11,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/solid";
 
-import { parseMoney, parseGeneral } from "../utils";
-import { parseSkills } from "../utils/parsers/skills";
+import { parseMoney, parseGeneral, parseSkills } from "../utils";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");

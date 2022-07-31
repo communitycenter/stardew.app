@@ -13,7 +13,6 @@ import {
 } from "@heroicons/react/solid";
 
 import Head from "next/head";
-import Image from "next/image";
 
 import InfoCard from "../components/infocard";
 import SkillDisplay from "../components/skilldisplay";
