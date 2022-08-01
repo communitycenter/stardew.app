@@ -1,16 +1,13 @@
 import { Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  ArchiveIcon,
-  SparklesIcon,
-  FireIcon,
-  BeakerIcon,
-  MenuIcon,
-  XIcon,
-  UploadIcon,
-  UserCircleIcon,
-  QuestionMarkCircleIcon,
-} from "@heroicons/react/solid";
+import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
+import { HiSparkles } from "react-icons/hi";
+import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
+import { FaUserCircle, FaFish, FaHammer } from "react-icons/fa";
+import { BiMenu } from "react-icons/bi";
+import { FiUpload } from "react-icons/fi";
+import { GiCookingPot, GiIsland } from "react-icons/gi";
+import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
 import {
   parseMoney,
@@ -26,16 +23,16 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 const navigation = [
-  { name: "Farmer", href: "/farmer", icon: UserCircleIcon },
-  { name: "Bundles", href: "/bundles", icon: ArchiveIcon },
-  { name: "Fishing", href: "/fishing", icon: SparklesIcon },
-  { name: "Perfection", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Cooking", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Crafting", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Shipping", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Museum & Artifacts", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Secret Notes", href: "#", icon: QuestionMarkCircleIcon }, // Maybe put under Farmer tab?
-  { name: "Ginger Island", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Farmer", href: "/farmer", icon: FaUserCircle },
+  { name: "Bundles", href: "/bundles", icon: IoIosArchive },
+  { name: "Fishing", href: "/fishing", icon: FaFish },
+  { name: "Perfection", href: "#", icon: HiSparkles },
+  { name: "Cooking", href: "#", icon: GiCookingPot },
+  { name: "Crafting", href: "#", icon: FaHammer },
+  { name: "Shipping", href: "#", icon: MdLocalShipping },
+  { name: "Museum & Artifacts", href: "#", icon: MdMuseum },
+  { name: "Secret Notes", href: "#", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
+  { name: "Ginger Island", href: "#", icon: GiIsland },
 ];
 
 interface LayoutProps {
@@ -140,7 +137,7 @@ const SidebarLayout = ({
                       onClick={() => setSidebarOpen(false)}
                     >
                       <span className="sr-only">Close sidebar</span>
-                      <XIcon
+                      <IoMdCloseCircle
                         className="h-6 w-6 text-white"
                         aria-hidden="true"
                       />
@@ -153,7 +150,7 @@ const SidebarLayout = ({
                     {/* File Input, not sure how to process file yet but it lets you upload a file */}
                     <div>
                       <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
-                        <UploadIcon
+                        <FiUpload
                           className="h-5 w-5 text-black"
                           aria-hidden="true"
                         />
@@ -206,7 +203,7 @@ const SidebarLayout = ({
               {/* File Input, not sure how to process file yet but it lets you upload a file */}
               <div>
                 <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
-                  <UploadIcon // Desktop version of the upload icon
+                  <FiUpload // Desktop version of the upload icon
                     className="h-5 w-5 text-black dark:text-white"
                     aria-hidden="true"
                   />
@@ -258,7 +255,7 @@ const SidebarLayout = ({
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>
-            <MenuIcon className="h-6 w-6" aria-hidden="true" />
+            <BiMenu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
         <main className="flex-1">
