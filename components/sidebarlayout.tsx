@@ -9,6 +9,7 @@ import {
   XIcon,
   UploadIcon,
   UserCircleIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/solid";
 
 import {
@@ -28,9 +29,13 @@ const navigation = [
   { name: "Farmer", href: "/farmer", icon: UserCircleIcon },
   { name: "Bundles", href: "/bundles", icon: ArchiveIcon },
   { name: "Fishing", href: "/fishing", icon: SparklesIcon },
-  { name: "Perfection", href: "#", icon: SparklesIcon },
-  { name: "Cooking", href: "#", icon: FireIcon },
-  { name: "Crafting", href: "#", icon: BeakerIcon },
+  { name: "Perfection", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Cooking", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Crafting", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Shipping", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Museum & Artifacts", href: "#", icon: QuestionMarkCircleIcon },
+  { name: "Secret Notes", href: "#", icon: QuestionMarkCircleIcon }, // Maybe put under Farmer tab?
+  { name: "Ginger Island", href: "#", icon: QuestionMarkCircleIcon },
 ];
 
 interface LayoutProps {
