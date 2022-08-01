@@ -5,19 +5,21 @@ interface ReturnType {
 }
 
 type Relationship = {
-  name: {
-    friendshipPoints: number;
-    hearts: number;
-    isDateable: boolean;
-  };
+  name: string;
+  friendshipPoints: number;
+  hearts: number;
+  isDateable: boolean;
 };
 
 export function parseSocial(json: any): ReturnType {
   const dateableNPCs = new Set<string>();
   // loop through every game location and check each NPC to see if they are datable 😵‍💫
   for (const location of json.SaveGame.locations.GameLocation) {
-    for (const NPCs of location.characters.NPC ? location.characters.NPC : []) {
-      if (NPCs.datable == "true") dateableNPCs.add(NPCs.name);
+    for (const NPC in location.characters) {
+      const foundNPC = location.characters[NPC];
+      if (foundNPC.datable) {
+        dateableNPCs.add(foundNPC.name);
+      }
     }
   }
 
@@ -33,11 +35,10 @@ export function parseSocial(json: any): ReturnType {
     if (friendshipPts >= 2500) tenHeartCount++;
 
     relationships.push({
-      name: {
-        friendshipPoints: friendshipPts,
-        hearts: Math.floor(friendshipPts / 250),
-        isDateable: dateableNPCs.has(name),
-      },
+      name,
+      friendshipPoints: friendshipPts,
+      hearts: Math.floor(friendshipPts / 250),
+      isDateable: dateableNPCs.has(name),
     });
   }
 
