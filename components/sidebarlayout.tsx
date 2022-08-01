@@ -17,6 +17,7 @@ import {
   parseSkills,
   parseStardrops,
   parseMonsters,
+  parseFamily,
 } from "../utils";
 
 function classNames(...classes: string[]) {
@@ -57,7 +58,7 @@ const SidebarLayout = ({
 
     reader.onload = function (event) {
       // console.log(event.target?.result);
-      const parser = new XMLParser();
+      const parser = new XMLParser({ ignoreAttributes: false });
       const jsonObj = parser.parse(event.target?.result as string);
 
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
@@ -69,13 +70,14 @@ const SidebarLayout = ({
         goalsNeeded,
       } = parseMonsters(jsonObj);
 
+      const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       console.log(
-        `${name} has reached level ${deepestMineLevel} in the mines.`
+        `${houseUpgradeLevel}:\n\t- Moving Up: ${
+          houseUpgradeLevel >= 1
+        }\n\t- Living Large: ${houseUpgradeLevel >= 2}`
       );
-      console.log(
-        `${name} has reached level ${deepestSkullCavernLevel} in the skull cavern.`
-      );
-      console.log(goalsNeeded);
+      console.log(`Spouse: ${spouse ? spouse : "Not Married"}`);
+      console.log(`Children: ${children ? children : "No Kids"}`);
     };
 
     reader.readAsText(file!);

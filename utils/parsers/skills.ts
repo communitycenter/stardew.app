@@ -5,6 +5,7 @@ interface ReturnType {
   foragingLevel: number;
   miningLevel: number;
   combatLevel: number;
+  maxLevelCount: number;
   SingularTalent: boolean; // true if Singular Talent is unlocked
   MasterOfTheFiveWays: boolean; // true if Master of the Five Ways is unlocked
 }
@@ -50,6 +51,7 @@ export function parseSkills(json: any): ReturnType {
     foragingLevel: levels[2],
     miningLevel: levels[3],
     combatLevel: levels[4],
+    maxLevelCount: count,
     SingularTalent: count >= 1,
     MasterOfTheFiveWays: count >= 5,
   };
