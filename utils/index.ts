@@ -5,3 +5,4 @@ export * from "./parsers/quests";
 export * from "./parsers/stardrops";
 export * from "./parsers/monsters";
 export * from "./parsers/family";
+export * from "./parsers/social";

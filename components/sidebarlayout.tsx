@@ -18,6 +18,7 @@ import {
   parseStardrops,
   parseMonsters,
   parseFamily,
+  parseSocial,
 } from "../utils";
 
 function classNames(...classes: string[]) {
@@ -71,13 +72,17 @@ const SidebarLayout = ({
       } = parseMonsters(jsonObj);
 
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
-      console.log(
-        `${houseUpgradeLevel}:\n\t- Moving Up: ${
-          houseUpgradeLevel >= 1
-        }\n\t- Living Large: ${houseUpgradeLevel >= 2}`
-      );
-      console.log(`Spouse: ${spouse ? spouse : "Not Married"}`);
-      console.log(`Children: ${children ? children : "No Kids"}`);
+      const { fiveHeartCount, tenHeartCount, relationships } =
+        parseSocial(jsonObj);
+
+      console.log(`A New Friend: ${fiveHeartCount >= 1}`);
+      console.log(`Cliques: ${fiveHeartCount >= 4}`);
+      console.log(`Networking: ${fiveHeartCount >= 10}`);
+      console.log(`Popular: ${fiveHeartCount >= 20}`);
+      console.log("---");
+      console.log(`Best Friends: ${tenHeartCount >= 1}`);
+      console.log(`The Beloved Farmer: ${tenHeartCount >= 8}`);
+      console.log(relationships);
     };
 
     reader.readAsText(file!);
