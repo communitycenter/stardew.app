@@ -2,6 +2,7 @@ import type { Fish } from "../../types";
 
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
+import { useKV } from "../../hooks/useKV";
 
 type Props = {
   fish: Fish;
@@ -39,9 +40,8 @@ const FishCard = ({
   fish,
   setSelectedFish,
   setShowFish,
-  setChecked,
-  checked,
 }: Props) => {
+  const [checked, setChecked] = useKV<boolean>('fish', fish.itemID.toString(), false)
   const className = "h-5 w-5 " + (checked ? "text-green-500" : "hidden");
 
   const oneClick = useCallback(() => {
