@@ -14,8 +14,6 @@ type Props = {
   fish: Fish;
   setSelectedFish: (fish: Fish) => void;
   setShowFish: Dispatch<SetStateAction<boolean>>;
-  setChecked: Dispatch<SetStateAction<boolean | null>>;
-  checked: boolean | null;
 };
 
 function useSingleAndDoubleClick(

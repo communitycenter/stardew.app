@@ -25,10 +25,6 @@ const Fishing: NextPage = () => {
   const [selectedFish, setSelectedFish] = useState<Fish>(
     Object.values(fishes)[0]
   );
-  const [checkedFish, setCheckedFish] = useLocalStorageState(
-    "fish",
-    initialCheckedFish
-  );
 
   return (
     <>
@@ -64,18 +60,6 @@ const Fishing: NextPage = () => {
                 fish={fish}
                 setSelectedFish={setSelectedFish}
                 setShowFish={setShowFish}
-                checked={checkedFish[fish.itemID]}
-                setChecked={(value) => {
-                  setCheckedFish((old) => {
-                    return {
-                      ...old,
-                      [fish.itemID]:
-                        value instanceof Function
-                          ? value(old[fish.itemID])
-                          : value,
-                    };
-                  });
-                }}
               />
             ))}
           </div>
@@ -86,18 +70,6 @@ const Fishing: NextPage = () => {
         isOpen={showFish}
         selectedFish={selectedFish}
         setOpen={setShowFish}
-        checked={checkedFish[selectedFish.itemID]}
-        setChecked={(value) => {
-          setCheckedFish((old) => {
-            return {
-              ...old,
-              [selectedFish.itemID]:
-                value instanceof Function
-                  ? value(old[selectedFish.itemID])
-                  : value,
-            };
-          });
-        }}
       />
     </>
   );

@@ -1,27 +1,25 @@
 import { Fragment, Dispatch, SetStateAction } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, CheckIcon } from "@heroicons/react/outline";
+import { useKV } from "../../hooks/useKV";
 
 import Image from "next/image";
-import { Fish } from "../types/items";
+import { Fish } from "../../types";
 
 type Props = {
   isOpen: boolean;
   selectedFish: Fish;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  setChecked: Dispatch<SetStateAction<boolean | null>>;
-  checked: boolean | null;
 };
 
 // iterate through a list and return a comma separated string
 
-const FishSlideOver = ({
-  isOpen,
-  selectedFish,
-  setChecked,
-  setOpen,
-  checked,
-}: Props) => {
+const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
+  const [checked, setChecked] = useKV(
+    "fish",
+    selectedFish.itemID.toString(),
+    false
+  );
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
