@@ -1,5 +1,5 @@
 {
-    "Fried Egg": {
+    "194": {
         "name": "Fried Egg",
         "itemID": 194,
         "unlockConditions": "default",
@@ -10,7 +10,7 @@
             }
         ]
     },
-    "Omelet": {
+    "195": {
         "name": "Omelet",
         "itemID": 195,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -25,7 +25,7 @@
             }
         ]
     },
-    "Salad": {
+    "196": {
         "name": "Salad",
         "itemID": 196,
         "unlockConditions": "Reach 3 hearts with Emily.",
@@ -44,7 +44,7 @@
             }
         ]
     },
-    "Cheese Cauliflower": {
+    "197": {
         "name": "Cheese Cauliflower",
         "itemID": 197,
         "unlockConditions": "Reach 3 hearts with Pam.",
@@ -59,7 +59,7 @@
             }
         ]
     },
-    "Baked Fish": {
+    "198": {
         "name": "Baked Fish",
         "itemID": 198,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -78,7 +78,7 @@
             }
         ]
     },
-    "Parsnip Soup": {
+    "199": {
         "name": "Parsnip Soup",
         "itemID": 199,
         "unlockConditions": "Reach 3 hearts with Caroline.",
@@ -97,7 +97,7 @@
             }
         ]
     },
-    "Vegetable Medley": {
+    "200": {
         "name": "Vegetable Medley",
         "itemID": 200,
         "unlockConditions": "Reach 7 hearts with Caroline.",
@@ -112,7 +112,7 @@
             }
         ]
     },
-    "Complete Breakfast": {
+    "201": {
         "name": "Complete Breakfast",
         "itemID": 201,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -135,7 +135,7 @@
             }
         ]
     },
-    "Fried Calamari": {
+    "202": {
         "name": "Fried Calamari",
         "itemID": 202,
         "unlockConditions": "Reach 3 hearts with Jodi.",
@@ -154,7 +154,7 @@
             }
         ]
     },
-    "Strange Bun": {
+    "203": {
         "name": "Strange Bun",
         "itemID": 203,
         "unlockConditions": "Reach 7 hearts with Shane.",
@@ -173,7 +173,7 @@
             }
         ]
     },
-    "Lucky Lunch": {
+    "204": {
         "name": "Lucky Lunch",
         "itemID": 204,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -192,7 +192,7 @@
             }
         ]
     },
-    "Fried Mushroom": {
+    "205": {
         "name": "Fried Mushroom",
         "itemID": 205,
         "unlockConditions": "Reach 3 hearts with Demetrius.",
@@ -211,7 +211,7 @@
             }
         ]
     },
-    "Pizza": {
+    "206": {
         "name": "Pizza",
         "itemID": 206,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -230,7 +230,7 @@
             }
         ]
     },
-    "Bean Hotpot": {
+    "207": {
         "name": "Bean Hotpot",
         "itemID": 207,
         "unlockConditions": "Reach 7 hearts with Clint.",
@@ -241,7 +241,7 @@
             }
         ]
     },
-    "Glazed Yams": {
+    "208": {
         "name": "Glazed Yams",
         "itemID": 208,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -256,7 +256,7 @@
             }
         ]
     },
-    "Carp Surprise": {
+    "209": {
         "name": "Carp Surprise",
         "itemID": 209,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -267,7 +267,7 @@
             }
         ]
     },
-    "Hashbrowns": {
+    "210": {
         "name": "Hashbrowns",
         "itemID": 210,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -282,7 +282,7 @@
             }
         ]
     },
-    "Pancakes": {
+    "211": {
         "name": "Pancakes",
         "itemID": 211,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -297,7 +297,7 @@
             }
         ]
     },
-    "Salmon Dinner": {
+    "212": {
         "name": "Salmon Dinner",
         "itemID": 212,
         "unlockConditions": "Reach 3 hearts with Gus.",
@@ -316,7 +316,7 @@
             }
         ]
     },
-    "Fish Taco": {
+    "213": {
         "name": "Fish Taco",
         "itemID": 213,
         "unlockConditions": "Reach 7 hearts with Linus.",
@@ -339,7 +339,7 @@
             }
         ]
     },
-    "Crispy Bass": {
+    "214": {
         "name": "Crispy Bass",
         "itemID": 214,
         "unlockConditions": "Reach 3 hearts with Kent.",
@@ -358,7 +358,7 @@
             }
         ]
     },
-    "Pepper Poppers": {
+    "215": {
         "name": "Pepper Poppers",
         "itemID": 215,
         "unlockConditions": "Reach 3 hearts with Shane.",
@@ -373,7 +373,7 @@
             }
         ]
     },
-    "Bread": {
+    "216": {
         "name": "Bread",
         "itemID": 216,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -384,7 +384,7 @@
             }
         ]
     },
-    "Tom Kha Soup": {
+    "218": {
         "name": "Tom Kha Soup",
         "itemID": 218,
         "unlockConditions": "Reach 7 hearts with Sandy.",
@@ -403,7 +403,7 @@
             }
         ]
     },
-    "Trout Soup": {
+    "219": {
         "name": "Trout Soup",
         "itemID": 219,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -418,7 +418,7 @@
             }
         ]
     },
-    "Chocolate Cake": {
+    "220": {
         "name": "Chocolate Cake",
         "itemID": 220,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -437,7 +437,7 @@
             }
         ]
     },
-    "Pink Cake": {
+    "221": {
         "name": "Pink Cake",
         "itemID": 221,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -460,7 +460,7 @@
             }
         ]
     },
-    "Rhubarb Pie": {
+    "222": {
         "name": "Rhubarb Pie",
         "itemID": 222,
         "unlockConditions": "Reach 7 hearts with Marnie.",
@@ -479,7 +479,7 @@
             }
         ]
     },
-    "Cookie": {
+    "223": {
         "name": "Cookie",
         "itemID": 223,
         "unlockConditions": "unknown",
@@ -498,7 +498,7 @@
             }
         ]
     },
-    "Spaghetti": {
+    "224": {
         "name": "Spaghetti",
         "itemID": 224,
         "unlockConditions": "Reach 3 hearts with Lewis.",
@@ -513,7 +513,7 @@
             }
         ]
     },
-    "Fried Eel": {
+    "225": {
         "name": "Fried Eel",
         "itemID": 225,
         "unlockConditions": "Reach 3 hearts with George.",
@@ -528,7 +528,7 @@
             }
         ]
     },
-    "Spicy Eel": {
+    "226": {
         "name": "Spicy Eel",
         "itemID": 226,
         "unlockConditions": "Reach 7 hearts with George.",
@@ -543,7 +543,7 @@
             }
         ]
     },
-    "Sashimi": {
+    "227": {
         "name": "Sashimi",
         "itemID": 227,
         "unlockConditions": "Reach 3 hearts with Linus.",
@@ -554,7 +554,7 @@
             }
         ]
     },
-    "Maki Roll": {
+    "228": {
         "name": "Maki Roll",
         "itemID": 228,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -573,7 +573,7 @@
             }
         ]
     },
-    "Tortilla": {
+    "229": {
         "name": "Tortilla",
         "itemID": 229,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -584,7 +584,7 @@
             }
         ]
     },
-    "Red Plate": {
+    "230": {
         "name": "Red Plate",
         "itemID": 230,
         "unlockConditions": "Reach 7 hearts with Emily.",
@@ -599,7 +599,7 @@
             }
         ]
     },
-    "Eggplant Parmesan": {
+    "231": {
         "name": "Eggplant Parmesan",
         "itemID": 231,
         "unlockConditions": "Reach 7 hearts with Lewis.",
@@ -614,7 +614,7 @@
             }
         ]
     },
-    "Rice Pudding": {
+    "232": {
         "name": "Rice Pudding",
         "itemID": 232,
         "unlockConditions": "Reach 7 hearts with Evelyn.",
@@ -633,7 +633,7 @@
             }
         ]
     },
-    "Ice Cream": {
+    "233": {
         "name": "Ice Cream",
         "itemID": 233,
         "unlockConditions": "Reach 7 hearts with Jodi.",
@@ -648,7 +648,7 @@
             }
         ]
     },
-    "Blueberry Tart": {
+    "234": {
         "name": "Blueberry Tart",
         "itemID": 234,
         "unlockConditions": "Reach 3 hearts with Pierre.",
@@ -671,7 +671,7 @@
             }
         ]
     },
-    "Autumn's Bounty": {
+    "235": {
         "name": "Autumn's Bounty",
         "itemID": 235,
         "unlockConditions": "Reach 7 hearts with Demetrius.",
@@ -686,7 +686,7 @@
             }
         ]
     },
-    "Pumpkin Soup": {
+    "236": {
         "name": "Pumpkin Soup",
         "itemID": 236,
         "unlockConditions": "Reach 7 hearts with Robin.",
@@ -701,7 +701,7 @@
             }
         ]
     },
-    "Super Meal": {
+    "237": {
         "name": "Super Meal",
         "itemID": 237,
         "unlockConditions": "Reach 7 hearts with Kent.",
@@ -720,7 +720,7 @@
             }
         ]
     },
-    "Cranberry Sauce": {
+    "238": {
         "name": "Cranberry Sauce",
         "itemID": 238,
         "unlockConditions": "Reach 7 hearts with Gus.",
@@ -735,7 +735,7 @@
             }
         ]
     },
-    "Stuffing": {
+    "239": {
         "name": "Stuffing",
         "itemID": 239,
         "unlockConditions": "Reach 7 hearts with Pam.",
@@ -754,7 +754,7 @@
             }
         ]
     },
-    "Farmer's Lunch": {
+    "240": {
         "name": "Farmer's Lunch",
         "itemID": 240,
         "unlockConditions": "Reach level 3 in Farming.",
@@ -769,7 +769,7 @@
             }
         ]
     },
-    "Survival Burger": {
+    "241": {
         "name": "Survival Burger",
         "itemID": 241,
         "unlockConditions": "Reach level 2 in Foraging.",
@@ -788,7 +788,7 @@
             }
         ]
     },
-    "Dish O' The Sea": {
+    "242": {
         "name": "Dish O' The Sea",
         "itemID": 242,
         "unlockConditions": "Reach level 3 in Fishing.",
@@ -803,7 +803,7 @@
             }
         ]
     },
-    "Miner's Treat": {
+    "243": {
         "name": "Miner's Treat",
         "itemID": 243,
         "unlockConditions": "Reach level 3 in Mining.",
@@ -822,7 +822,7 @@
             }
         ]
     },
-    "Roots Platter": {
+    "244": {
         "name": "Roots Platter",
         "itemID": 244,
         "unlockConditions": "Reach level 3 in Combat.",
@@ -837,7 +837,7 @@
             }
         ]
     },
-    "Algae Soup": {
+    "456": {
         "name": "Algae Soup",
         "itemID": 456,
         "unlockConditions": "Reach 3 hearts with Clint.",
@@ -848,7 +848,7 @@
             }
         ]
     },
-    "Pale Broth": {
+    "457": {
         "name": "Pale Broth",
         "itemID": 457,
         "unlockConditions": "Reach 3 hearts with Marnie.",
@@ -859,7 +859,7 @@
             }
         ]
     },
-    "Plum Pudding": {
+    "604": {
         "name": "Plum Pudding",
         "itemID": 604,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -878,7 +878,7 @@
             }
         ]
     },
-    "Artichoke Dip": {
+    "605": {
         "name": "Artichoke Dip",
         "itemID": 605,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -893,7 +893,7 @@
             }
         ]
     },
-    "Stir Fry": {
+    "606": {
         "name": "Stir Fry",
         "itemID": 606,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -916,7 +916,7 @@
             }
         ]
     },
-    "Roasted Hazelnuts": {
+    "607": {
         "name": "Roasted Hazelnuts",
         "itemID": 607,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -927,7 +927,7 @@
             }
         ]
     },
-    "Pumpkin Pie": {
+    "608": {
         "name": "Pumpkin Pie",
         "itemID": 608,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -950,7 +950,7 @@
             }
         ]
     },
-    "Radish Salad": {
+    "609": {
         "name": "Radish Salad",
         "itemID": 609,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -969,7 +969,7 @@
             }
         ]
     },
-    "Fruit Salad": {
+    "610": {
         "name": "Fruit Salad",
         "itemID": 610,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -988,7 +988,7 @@
             }
         ]
     },
-    "Blackberry Cobbler": {
+    "611": {
         "name": "Blackberry Cobbler",
         "itemID": 611,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1007,7 +1007,7 @@
             }
         ]
     },
-    "Cranberry Candy": {
+    "612": {
         "name": "Cranberry Candy",
         "itemID": 612,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1026,7 +1026,7 @@
             }
         ]
     },
-    "Bruschetta": {
+    "618": {
         "name": "Bruschetta",
         "itemID": 618,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1045,7 +1045,7 @@
             }
         ]
     },
-    "Coleslaw": {
+    "648": {
         "name": "Coleslaw",
         "itemID": 648,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1064,7 +1064,7 @@
             }
         ]
     },
-    "Fiddlehead Risotto": {
+    "649": {
         "name": "Fiddlehead Risotto",
         "itemID": 649,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1083,7 +1083,7 @@
             }
         ]
     },
-    "Poppyseed Muffin": {
+    "651": {
         "name": "Poppyseed Muffin",
         "itemID": 651,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1102,7 +1102,7 @@
             }
         ]
     },
-    "Chowder": {
+    "727": {
         "name": "Chowder",
         "itemID": 727,
         "unlockConditions": "Reach 3 hearts with Willy.",
@@ -1117,7 +1117,7 @@
             }
         ]
     },
-    "Lobster Bisque": {
+    "730": {
         "name": "Lobster Bisque",
         "itemID": 730,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1132,7 +1132,7 @@
             }
         ]
     },
-    "Fish Stew": {
+    "728": {
         "name": "Fish Stew",
         "itemID": 728,
         "unlockConditions": "Reach 7 hearts with Willy.",
@@ -1155,7 +1155,7 @@
             }
         ]
     },
-    "Escargot": {
+    "729": {
         "name": "Escargot",
         "itemID": 729,
         "unlockConditions": "Reach 5 hearts with Willy.",
@@ -1170,7 +1170,7 @@
             }
         ]
     },
-    "Maple Bar": {
+    "731": {
         "name": "Maple Bar",
         "itemID": 731,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1189,7 +1189,7 @@
             }
         ]
     },
-    "Crab Cakes": {
+    "732": {
         "name": "Crab Cakes",
         "itemID": 732,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1212,7 +1212,7 @@
             }
         ]
     },
-    "Triple Shot Espresso": {
+    "253": {
         "name": "Triple Shot Espresso",
         "itemID": 253,
         "unlockConditions": "Reach farmer level 100.",
@@ -1223,7 +1223,7 @@
             }
         ]
     },
-    "Shrimp Cocktail": {
+    "733": {
         "name": "Shrimp Cocktail",
         "itemID": 733,
         "unlockConditions": "Unlocked through Queen of Sauce TV.",
@@ -1242,7 +1242,7 @@
             }
         ]
     },
-    "Seafoam Pudding": {
+    "265": {
         "name": "Seafoam Pudding",
         "itemID": 265,
         "unlockConditions": "Reach level 9 in Fishing.",
@@ -1261,7 +1261,7 @@
             }
         ]
     },
-    "Ginger Ale": {
+    "903": {
         "name": "Ginger Ale",
         "itemID": 903,
         "unlockConditions": "Reach farmer level 100.",
@@ -1276,7 +1276,7 @@
             }
         ]
     },
-    "Banana Pudding": {
+    "904": {
         "name": "Banana Pudding",
         "itemID": 904,
         "unlockConditions": "Reach farmer level 100.",
@@ -1295,7 +1295,7 @@
             }
         ]
     },
-    "Mango Sticky Rice": {
+    "905": {
         "name": "Mango Sticky Rice",
         "itemID": 905,
         "unlockConditions": "Reach 7 hearts with Leo.",
@@ -1314,7 +1314,7 @@
             }
         ]
     },
-    "Poi": {
+    "906": {
         "name": "Poi",
         "itemID": 906,
         "unlockConditions": "Reach 3 hearts with Leo.",
@@ -1325,7 +1325,7 @@
             }
         ]
     },
-    "Tropical Curry": {
+    "907": {
         "name": "Tropical Curry",
         "itemID": 907,
         "unlockConditions": "Reach farmer level 100.",
@@ -1344,7 +1344,7 @@
             }
         ]
     },
-    "Squid Ink Ravioli": {
+    "921": {
         "name": "Squid Ink Ravioli",
         "itemID": 921,
         "unlockConditions": "Reach level 9 in Combat.",
