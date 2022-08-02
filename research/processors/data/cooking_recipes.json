@@ -1,0 +1,1366 @@
+{
+    "Fried Egg": {
+        "name": "Fried Egg",
+        "itemID": 194,
+        "unlockConditions": "default",
+        "ingredients": [
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Omelet": {
+        "name": "Omelet",
+        "itemID": 195,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Any Egg",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Salad": {
+        "name": "Salad",
+        "itemID": 196,
+        "unlockConditions": "Reach 3 hearts with Emily.",
+        "ingredients": [
+            {
+                "item": "Leek",
+                "amount": 1
+            },
+            {
+                "item": "Dandelion",
+                "amount": 1
+            },
+            {
+                "item": "Vinegar",
+                "amount": 1
+            }
+        ]
+    },
+    "Cheese Cauliflower": {
+        "name": "Cheese Cauliflower",
+        "itemID": 197,
+        "unlockConditions": "Reach 3 hearts with Pam.",
+        "ingredients": [
+            {
+                "item": "Cauliflower",
+                "amount": 1
+            },
+            {
+                "item": "Cheese",
+                "amount": 1
+            }
+        ]
+    },
+    "Baked Fish": {
+        "name": "Baked Fish",
+        "itemID": 198,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Sunfish",
+                "amount": 1
+            },
+            {
+                "item": "Bream",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            }
+        ]
+    },
+    "Parsnip Soup": {
+        "name": "Parsnip Soup",
+        "itemID": 199,
+        "unlockConditions": "Reach 3 hearts with Caroline.",
+        "ingredients": [
+            {
+                "item": "Parsnip",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Vinegar",
+                "amount": 1
+            }
+        ]
+    },
+    "Vegetable Medley": {
+        "name": "Vegetable Medley",
+        "itemID": 200,
+        "unlockConditions": "Reach 7 hearts with Caroline.",
+        "ingredients": [
+            {
+                "item": "Tomato",
+                "amount": 1
+            },
+            {
+                "item": "Beet",
+                "amount": 1
+            }
+        ]
+    },
+    "Complete Breakfast": {
+        "name": "Complete Breakfast",
+        "itemID": 201,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Fried Egg",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Hashbrowns",
+                "amount": 1
+            },
+            {
+                "item": "Pancakes",
+                "amount": 1
+            }
+        ]
+    },
+    "Fried Calamari": {
+        "name": "Fried Calamari",
+        "itemID": 202,
+        "unlockConditions": "Reach 3 hearts with Jodi.",
+        "ingredients": [
+            {
+                "item": "Squid",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Strange Bun": {
+        "name": "Strange Bun",
+        "itemID": 203,
+        "unlockConditions": "Reach 7 hearts with Shane.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Periwinkle",
+                "amount": 1
+            },
+            {
+                "item": "Void Mayonnaise",
+                "amount": 1
+            }
+        ]
+    },
+    "Lucky Lunch": {
+        "name": "Lucky Lunch",
+        "itemID": 204,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Sea Cucumber",
+                "amount": 1
+            },
+            {
+                "item": "Tortilla",
+                "amount": 1
+            },
+            {
+                "item": "Blue Jazz",
+                "amount": 1
+            }
+        ]
+    },
+    "Fried Mushroom": {
+        "name": "Fried Mushroom",
+        "itemID": 205,
+        "unlockConditions": "Reach 3 hearts with Demetrius.",
+        "ingredients": [
+            {
+                "item": "Common Mushroom",
+                "amount": 1
+            },
+            {
+                "item": "Morel",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Pizza": {
+        "name": "Pizza",
+        "itemID": 206,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            },
+            {
+                "item": "Cheese",
+                "amount": 1
+            }
+        ]
+    },
+    "Bean Hotpot": {
+        "name": "Bean Hotpot",
+        "itemID": 207,
+        "unlockConditions": "Reach 7 hearts with Clint.",
+        "ingredients": [
+            {
+                "item": "Green Bean",
+                "amount": 2
+            }
+        ]
+    },
+    "Glazed Yams": {
+        "name": "Glazed Yams",
+        "itemID": 208,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Yam",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Carp Surprise": {
+        "name": "Carp Surprise",
+        "itemID": 209,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Carp",
+                "amount": 4
+            }
+        ]
+    },
+    "Hashbrowns": {
+        "name": "Hashbrowns",
+        "itemID": 210,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Potato",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Pancakes": {
+        "name": "Pancakes",
+        "itemID": 211,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Salmon Dinner": {
+        "name": "Salmon Dinner",
+        "itemID": 212,
+        "unlockConditions": "Reach 3 hearts with Gus.",
+        "ingredients": [
+            {
+                "item": "Salmon",
+                "amount": 1
+            },
+            {
+                "item": "Amaranth",
+                "amount": 1
+            },
+            {
+                "item": "Kale",
+                "amount": 1
+            }
+        ]
+    },
+    "Fish Taco": {
+        "name": "Fish Taco",
+        "itemID": 213,
+        "unlockConditions": "Reach 7 hearts with Linus.",
+        "ingredients": [
+            {
+                "item": "Tuna",
+                "amount": 1
+            },
+            {
+                "item": "Tortilla",
+                "amount": 1
+            },
+            {
+                "item": "Red Cabbage",
+                "amount": 1
+            },
+            {
+                "item": "Mayonnaise",
+                "amount": 1
+            }
+        ]
+    },
+    "Crispy Bass": {
+        "name": "Crispy Bass",
+        "itemID": 214,
+        "unlockConditions": "Reach 3 hearts with Kent.",
+        "ingredients": [
+            {
+                "item": "Largemouth Bass",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Pepper Poppers": {
+        "name": "Pepper Poppers",
+        "itemID": 215,
+        "unlockConditions": "Reach 3 hearts with Shane.",
+        "ingredients": [
+            {
+                "item": "Hot Pepper",
+                "amount": 1
+            },
+            {
+                "item": "Cheese",
+                "amount": 1
+            }
+        ]
+    },
+    "Bread": {
+        "name": "Bread",
+        "itemID": 216,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            }
+        ]
+    },
+    "Tom Kha Soup": {
+        "name": "Tom Kha Soup",
+        "itemID": 218,
+        "unlockConditions": "Reach 7 hearts with Sandy.",
+        "ingredients": [
+            {
+                "item": "Coconut",
+                "amount": 1
+            },
+            {
+                "item": "Shrimp",
+                "amount": 1
+            },
+            {
+                "item": "Common Mushroom",
+                "amount": 1
+            }
+        ]
+    },
+    "Trout Soup": {
+        "name": "Trout Soup",
+        "itemID": 219,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Rainbow Trout",
+                "amount": 1
+            },
+            {
+                "item": "Green Algae",
+                "amount": 1
+            }
+        ]
+    },
+    "Chocolate Cake": {
+        "name": "Chocolate Cake",
+        "itemID": 220,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Pink Cake": {
+        "name": "Pink Cake",
+        "itemID": 221,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Melon",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Rhubarb Pie": {
+        "name": "Rhubarb Pie",
+        "itemID": 222,
+        "unlockConditions": "Reach 7 hearts with Marnie.",
+        "ingredients": [
+            {
+                "item": "Rhubarb",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Cookie": {
+        "name": "Cookie",
+        "itemID": 223,
+        "unlockConditions": "unknown",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Spaghetti": {
+        "name": "Spaghetti",
+        "itemID": 224,
+        "unlockConditions": "Reach 3 hearts with Lewis.",
+        "ingredients": [
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            }
+        ]
+    },
+    "Fried Eel": {
+        "name": "Fried Eel",
+        "itemID": 225,
+        "unlockConditions": "Reach 3 hearts with George.",
+        "ingredients": [
+            {
+                "item": "Eel",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Spicy Eel": {
+        "name": "Spicy Eel",
+        "itemID": 226,
+        "unlockConditions": "Reach 7 hearts with George.",
+        "ingredients": [
+            {
+                "item": "Eel",
+                "amount": 1
+            },
+            {
+                "item": "Hot Pepper",
+                "amount": 1
+            }
+        ]
+    },
+    "Sashimi": {
+        "name": "Sashimi",
+        "itemID": 227,
+        "unlockConditions": "Reach 3 hearts with Linus.",
+        "ingredients": [
+            {
+                "item": "Any Fish",
+                "amount": 1
+            }
+        ]
+    },
+    "Maki Roll": {
+        "name": "Maki Roll",
+        "itemID": 228,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Any Fish",
+                "amount": 1
+            },
+            {
+                "item": "Seaweed",
+                "amount": 1
+            },
+            {
+                "item": "Rice",
+                "amount": 1
+            }
+        ]
+    },
+    "Tortilla": {
+        "name": "Tortilla",
+        "itemID": 229,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Corn",
+                "amount": 1
+            }
+        ]
+    },
+    "Red Plate": {
+        "name": "Red Plate",
+        "itemID": 230,
+        "unlockConditions": "Reach 7 hearts with Emily.",
+        "ingredients": [
+            {
+                "item": "Red Cabbage",
+                "amount": 1
+            },
+            {
+                "item": "Radish",
+                "amount": 1
+            }
+        ]
+    },
+    "Eggplant Parmesan": {
+        "name": "Eggplant Parmesan",
+        "itemID": 231,
+        "unlockConditions": "Reach 7 hearts with Lewis.",
+        "ingredients": [
+            {
+                "item": "Eggplant",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            }
+        ]
+    },
+    "Rice Pudding": {
+        "name": "Rice Pudding",
+        "itemID": 232,
+        "unlockConditions": "Reach 7 hearts with Evelyn.",
+        "ingredients": [
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Rice",
+                "amount": 1
+            }
+        ]
+    },
+    "Ice Cream": {
+        "name": "Ice Cream",
+        "itemID": 233,
+        "unlockConditions": "Reach 7 hearts with Jodi.",
+        "ingredients": [
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Blueberry Tart": {
+        "name": "Blueberry Tart",
+        "itemID": 234,
+        "unlockConditions": "Reach 3 hearts with Pierre.",
+        "ingredients": [
+            {
+                "item": "Blueberry",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            }
+        ]
+    },
+    "Autumn's Bounty": {
+        "name": "Autumn's Bounty",
+        "itemID": 235,
+        "unlockConditions": "Reach 7 hearts with Demetrius.",
+        "ingredients": [
+            {
+                "item": "Yam",
+                "amount": 1
+            },
+            {
+                "item": "Pumpkin",
+                "amount": 1
+            }
+        ]
+    },
+    "Pumpkin Soup": {
+        "name": "Pumpkin Soup",
+        "itemID": 236,
+        "unlockConditions": "Reach 7 hearts with Robin.",
+        "ingredients": [
+            {
+                "item": "Pumpkin",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Super Meal": {
+        "name": "Super Meal",
+        "itemID": 237,
+        "unlockConditions": "Reach 7 hearts with Kent.",
+        "ingredients": [
+            {
+                "item": "Bok Choy",
+                "amount": 1
+            },
+            {
+                "item": "Cranberries",
+                "amount": 1
+            },
+            {
+                "item": "Artichoke",
+                "amount": 1
+            }
+        ]
+    },
+    "Cranberry Sauce": {
+        "name": "Cranberry Sauce",
+        "itemID": 238,
+        "unlockConditions": "Reach 7 hearts with Gus.",
+        "ingredients": [
+            {
+                "item": "Cranberries",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Stuffing": {
+        "name": "Stuffing",
+        "itemID": 239,
+        "unlockConditions": "Reach 7 hearts with Pam.",
+        "ingredients": [
+            {
+                "item": "Bread",
+                "amount": 1
+            },
+            {
+                "item": "Cranberries",
+                "amount": 1
+            },
+            {
+                "item": "Hazelnut",
+                "amount": 1
+            }
+        ]
+    },
+    "Farmer's Lunch": {
+        "name": "Farmer's Lunch",
+        "itemID": 240,
+        "unlockConditions": "Reach level 3 in Farming.",
+        "ingredients": [
+            {
+                "item": "Omelet",
+                "amount": 1
+            },
+            {
+                "item": "Parsnip",
+                "amount": 1
+            }
+        ]
+    },
+    "Survival Burger": {
+        "name": "Survival Burger",
+        "itemID": 241,
+        "unlockConditions": "Reach level 2 in Foraging.",
+        "ingredients": [
+            {
+                "item": "Bread",
+                "amount": 1
+            },
+            {
+                "item": "Cave Carrot",
+                "amount": 1
+            },
+            {
+                "item": "Eggplant",
+                "amount": 1
+            }
+        ]
+    },
+    "Dish O' The Sea": {
+        "name": "Dish O' The Sea",
+        "itemID": 242,
+        "unlockConditions": "Reach level 3 in Fishing.",
+        "ingredients": [
+            {
+                "item": "Sardine",
+                "amount": 2
+            },
+            {
+                "item": "Hashbrowns",
+                "amount": 1
+            }
+        ]
+    },
+    "Miner's Treat": {
+        "name": "Miner's Treat",
+        "itemID": 243,
+        "unlockConditions": "Reach level 3 in Mining.",
+        "ingredients": [
+            {
+                "item": "Cave Carrot",
+                "amount": 2
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Roots Platter": {
+        "name": "Roots Platter",
+        "itemID": 244,
+        "unlockConditions": "Reach level 3 in Combat.",
+        "ingredients": [
+            {
+                "item": "Cave Carrot",
+                "amount": 1
+            },
+            {
+                "item": "Winter Root",
+                "amount": 1
+            }
+        ]
+    },
+    "Algae Soup": {
+        "name": "Algae Soup",
+        "itemID": 456,
+        "unlockConditions": "Reach 3 hearts with Clint.",
+        "ingredients": [
+            {
+                "item": "Green Algae",
+                "amount": 4
+            }
+        ]
+    },
+    "Pale Broth": {
+        "name": "Pale Broth",
+        "itemID": 457,
+        "unlockConditions": "Reach 3 hearts with Marnie.",
+        "ingredients": [
+            {
+                "item": "White Algae",
+                "amount": 2
+            }
+        ]
+    },
+    "Plum Pudding": {
+        "name": "Plum Pudding",
+        "itemID": 604,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Wild Plum",
+                "amount": 2
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Artichoke Dip": {
+        "name": "Artichoke Dip",
+        "itemID": 605,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Artichoke",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Stir Fry": {
+        "name": "Stir Fry",
+        "itemID": 606,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Cave Carrot",
+                "amount": 1
+            },
+            {
+                "item": "Common Mushroom",
+                "amount": 1
+            },
+            {
+                "item": "Kale",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Roasted Hazelnuts": {
+        "name": "Roasted Hazelnuts",
+        "itemID": 607,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Hazelnut",
+                "amount": 3
+            }
+        ]
+    },
+    "Pumpkin Pie": {
+        "name": "Pumpkin Pie",
+        "itemID": 608,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Pumpkin",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Radish Salad": {
+        "name": "Radish Salad",
+        "itemID": 609,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Oil",
+                "amount": 1
+            },
+            {
+                "item": "Vinegar",
+                "amount": 1
+            },
+            {
+                "item": "Radish",
+                "amount": 1
+            }
+        ]
+    },
+    "Fruit Salad": {
+        "name": "Fruit Salad",
+        "itemID": 610,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Blueberry",
+                "amount": 1
+            },
+            {
+                "item": "Melon",
+                "amount": 1
+            },
+            {
+                "item": "Apricot",
+                "amount": 1
+            }
+        ]
+    },
+    "Blackberry Cobbler": {
+        "name": "Blackberry Cobbler",
+        "itemID": 611,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Blackberry",
+                "amount": 2
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            }
+        ]
+    },
+    "Cranberry Candy": {
+        "name": "Cranberry Candy",
+        "itemID": 612,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Cranberries",
+                "amount": 1
+            },
+            {
+                "item": "Apple",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Bruschetta": {
+        "name": "Bruschetta",
+        "itemID": 618,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Bread",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            }
+        ]
+    },
+    "Coleslaw": {
+        "name": "Coleslaw",
+        "itemID": 648,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Red Cabbage",
+                "amount": 1
+            },
+            {
+                "item": "Vinegar",
+                "amount": 1
+            },
+            {
+                "item": "Mayonnaise",
+                "amount": 1
+            }
+        ]
+    },
+    "Fiddlehead Risotto": {
+        "name": "Fiddlehead Risotto",
+        "itemID": 649,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Oil",
+                "amount": 1
+            },
+            {
+                "item": "Fiddlehead Fern",
+                "amount": 1
+            },
+            {
+                "item": "Garlic",
+                "amount": 1
+            }
+        ]
+    },
+    "Poppyseed Muffin": {
+        "name": "Poppyseed Muffin",
+        "itemID": 651,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Poppy",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Chowder": {
+        "name": "Chowder",
+        "itemID": 727,
+        "unlockConditions": "Reach 3 hearts with Willy.",
+        "ingredients": [
+            {
+                "item": "Clam",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Lobster Bisque": {
+        "name": "Lobster Bisque",
+        "itemID": 730,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Lobster",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            }
+        ]
+    },
+    "Fish Stew": {
+        "name": "Fish Stew",
+        "itemID": 728,
+        "unlockConditions": "Reach 7 hearts with Willy.",
+        "ingredients": [
+            {
+                "item": "Crayfish",
+                "amount": 1
+            },
+            {
+                "item": "Mussel",
+                "amount": 1
+            },
+            {
+                "item": "Periwinkle",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            }
+        ]
+    },
+    "Escargot": {
+        "name": "Escargot",
+        "itemID": 729,
+        "unlockConditions": "Reach 5 hearts with Willy.",
+        "ingredients": [
+            {
+                "item": "Snail",
+                "amount": 1
+            },
+            {
+                "item": "Garlic",
+                "amount": 1
+            }
+        ]
+    },
+    "Maple Bar": {
+        "name": "Maple Bar",
+        "itemID": 731,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Maple Syrup",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            }
+        ]
+    },
+    "Crab Cakes": {
+        "name": "Crab Cakes",
+        "itemID": 732,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Crab",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Any Egg",
+                "amount": 1
+            },
+            {
+                "item": "Oil",
+                "amount": 1
+            }
+        ]
+    },
+    "Triple Shot Espresso": {
+        "name": "Triple Shot Espresso",
+        "itemID": 253,
+        "unlockConditions": "Reach farmer level 100.",
+        "ingredients": [
+            {
+                "item": "Coffee",
+                "amount": 3
+            }
+        ]
+    },
+    "Shrimp Cocktail": {
+        "name": "Shrimp Cocktail",
+        "itemID": 733,
+        "unlockConditions": "Unlocked through Queen of Sauce TV.",
+        "ingredients": [
+            {
+                "item": "Shrimp",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            },
+            {
+                "item": "Wild Horseradish",
+                "amount": 1
+            }
+        ]
+    },
+    "Seafoam Pudding": {
+        "name": "Seafoam Pudding",
+        "itemID": 265,
+        "unlockConditions": "Reach level 9 in Fishing.",
+        "ingredients": [
+            {
+                "item": "Flounder",
+                "amount": 1
+            },
+            {
+                "item": "Midnight Carp",
+                "amount": 1
+            },
+            {
+                "item": "Squid Ink",
+                "amount": 1
+            }
+        ]
+    },
+    "Ginger Ale": {
+        "name": "Ginger Ale",
+        "itemID": 903,
+        "unlockConditions": "Reach farmer level 100.",
+        "ingredients": [
+            {
+                "item": "Ginger",
+                "amount": 3
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Banana Pudding": {
+        "name": "Banana Pudding",
+        "itemID": 904,
+        "unlockConditions": "Reach farmer level 100.",
+        "ingredients": [
+            {
+                "item": "Banana",
+                "amount": 1
+            },
+            {
+                "item": "Any Milk",
+                "amount": 1
+            },
+            {
+                "item": "Sugar",
+                "amount": 1
+            }
+        ]
+    },
+    "Mango Sticky Rice": {
+        "name": "Mango Sticky Rice",
+        "itemID": 905,
+        "unlockConditions": "Reach 7 hearts with Leo.",
+        "ingredients": [
+            {
+                "item": "Mango",
+                "amount": 1
+            },
+            {
+                "item": "Coconut",
+                "amount": 1
+            },
+            {
+                "item": "Rice",
+                "amount": 1
+            }
+        ]
+    },
+    "Poi": {
+        "name": "Poi",
+        "itemID": 906,
+        "unlockConditions": "Reach 3 hearts with Leo.",
+        "ingredients": [
+            {
+                "item": "Taro Root",
+                "amount": 4
+            }
+        ]
+    },
+    "Tropical Curry": {
+        "name": "Tropical Curry",
+        "itemID": 907,
+        "unlockConditions": "Reach farmer level 100.",
+        "ingredients": [
+            {
+                "item": "Coconut",
+                "amount": 1
+            },
+            {
+                "item": "Pineapple",
+                "amount": 1
+            },
+            {
+                "item": "Hot Pepper",
+                "amount": 1
+            }
+        ]
+    },
+    "Squid Ink Ravioli": {
+        "name": "Squid Ink Ravioli",
+        "itemID": 921,
+        "unlockConditions": "Reach level 9 in Combat.",
+        "ingredients": [
+            {
+                "item": "Squid Ink",
+                "amount": 1
+            },
+            {
+                "item": "Wheat Flour",
+                "amount": 1
+            },
+            {
+                "item": "Tomato",
+                "amount": 1
+            }
+        ]
+    }
+}
