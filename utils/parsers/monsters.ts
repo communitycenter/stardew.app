@@ -2,12 +2,12 @@ interface ReturnType {
   deepestMineLevel: number;
   deepestSkullCavernLevel: number;
   monstersKilled: Record<category, number>;
-  goalsNeeded: string[] | null;
 }
 
 type MonsterName = string;
 type category =
   | "slimes"
+  | "void spirits"
   | "bats"
   | "skeletons"
   | "cave insects"
@@ -25,6 +25,8 @@ const categories: Record<MonsterName, category> = {
   "Frost Jelly": "slimes",
   Sludge: "slimes",
   "Tiger Slime": "slimes",
+  "Shadow Shaman": "void spirits",
+  "Shadow Brute": "void spirits",
   Bat: "bats",
   "Frost Bat": "bats",
   "Lava Bat": "bats",
@@ -51,6 +53,7 @@ const categories: Record<MonsterName, category> = {
 // These are the goals that are listed at the Adventure Guild
 const goals: Record<category, number> = {
   slimes: 1000,
+  "void spirits": 150,
   bats: 200,
   skeletons: 50,
   "cave insects": 125,
@@ -69,15 +72,17 @@ export function parseMonsters(json: any): ReturnType {
       - The Bottom (reach mine level 120).
       - Protector of the Valley (complete all monster slayer goals)
   */
+
   let deepestMineLevel = json.SaveGame.player.deepestMineLevel;
-  // the deepestMineLevel goes past 120 when you enter skull caverns.
-  // so if deepestMineLevel is 125, that means the player has reached level 5 in the mines.
+  // deepestMineLevel goes past 120 when you enter skull caverns.
+  // so if deepestMineLevel is 125, that means the player has reached level 5 in skull cavern.
   let deepestSkullCavernLevel = Math.max(120, deepestMineLevel) - 120;
   // now that we found the skull cavern level, we can set deepestMineLevel to 120 or if its lower, that value.
   deepestMineLevel = Math.min(120, deepestMineLevel);
 
-  const monstersKilled: Record<category, number> = {
+  const monstersKilled = {
     slimes: 0,
+    "void spirits": 0,
     bats: 0,
     skeletons: 0,
     "cave insects": 0,
@@ -89,17 +94,47 @@ export function parseMonsters(json: any): ReturnType {
     serpents: 0,
     "magma sprites": 0,
   };
-  let goalsNeeded: string[] = [];
 
-  // loop through all the monsters killed and tally their totals for the categories
-  for (const monster of json.SaveGame.player.stats.specificMonstersKilled
-    .item) {
-    let monsterName: string = monster.key.string;
-    let amountKilled: number = monster.value.int;
+  // empty meaning no monsters have been killed
+  if (json.SaveGame.player.stats.specificMonstersKilled === "")
+    return {
+      deepestMineLevel,
+      deepestSkullCavernLevel,
+      monstersKilled,
+    };
+
+  // if this is undefined then `item` is a list which means multiple monsters have been killed
+  if (
+    typeof json.SaveGame.player.stats.specificMonstersKilled.item.key ===
+    "undefined"
+  ) {
+    // loop through all the monsters killed and tally their totals for the categories
+    for (const idx in json.SaveGame.player.stats.specificMonstersKilled.item) {
+      let monsterName =
+        json.SaveGame.player.stats.specificMonstersKilled.item[idx].key.string;
+      if (typeof categories[monsterName] === "undefined") continue;
+      let amountKilled =
+        json.SaveGame.player.stats.specificMonstersKilled.item[idx].value.int;
+
+      monstersKilled[categories[monsterName]] += amountKilled;
+    }
+  } else {
+    // only one monster has been killed
+    let monsterName =
+      json.SaveGame.player.stats.specificMonstersKilled.item.key.string;
+    if (typeof categories[monsterName] === "undefined")
+      return {
+        deepestMineLevel,
+        deepestSkullCavernLevel,
+        monstersKilled,
+      };
+    let amountKilled =
+      json.SaveGame.player.stats.specificMonstersKilled.item.value.int;
 
     monstersKilled[categories[monsterName]] += amountKilled;
   }
 
+  /* We should do this on the frontend and just save the monster kills per category
   // now we'll iterate through the amounts and see which goals are still needed
   for (const entry in monstersKilled) {
     if (monstersKilled[entry as category] < goals[entry as category]) {
@@ -115,11 +150,11 @@ export function parseMonsters(json: any): ReturnType {
       );
     }
   }
+  */
 
   return {
     deepestMineLevel,
     deepestSkullCavernLevel,
     monstersKilled,
-    goalsNeeded: goalsNeeded.length > 0 ? goalsNeeded : null,
   };
 }

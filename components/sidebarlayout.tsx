@@ -72,12 +72,8 @@ const SidebarLayout = ({
       const { levels, maxLevelCount } = parseSkills(jsonObj);
       const questsCompleted = parseQuests(jsonObj);
       const { stardropsCount, stardropsNeeded } = parseStardrops(jsonObj);
-      const {
-        deepestMineLevel,
-        deepestSkullCavernLevel,
-        monstersKilled,
-        goalsNeeded,
-      } = parseMonsters(jsonObj);
+      const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
+        parseMonsters(jsonObj);
 
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       const { fiveHeartCount, tenHeartCount, relationships } =
