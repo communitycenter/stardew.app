@@ -1,7 +1,7 @@
 interface ReturnType {
   houseUpgradeLevel: number;
-  spouse: string | null;
-  children: string[] | null;
+  spouse?: string;
+  children?: string[];
 }
 
 export function parseFamily(json: any): ReturnType {
@@ -12,26 +12,36 @@ export function parseFamily(json: any): ReturnType {
       - Full House (married + 2 kids)
   */
 
-  let houseUpgradeLevel = json.SaveGame.player.houseUpgradeLevel;
-
-  let children = [];
-  let spouse = json.SaveGame.player.spouse;
-  if (typeof spouse === "undefined") spouse = null;
+  let houseUpgradeLevel: number = json.SaveGame.player.houseUpgradeLevel;
 
   let FarmHouse = json.SaveGame.locations.GameLocation.find(
     (obj: any) => obj["@_xsi:type"] === "FarmHouse"
   );
 
-  // characters could be undefined hence the check
-  for (const NPCs of FarmHouse.characters.NPC ? FarmHouse.characters.NPC : []) {
-    if (NPCs["@_xsi:type"] === "Child") {
-      children.push(NPCs.name);
+  // if no NPCs are in the house, then we can just return houseUpgradeLevel
+  if (typeof FarmHouse.characters === "string") return { houseUpgradeLevel };
+
+  let children: string[] = [];
+  let spouse: string = json.SaveGame.player.spouse;
+  // if there are NPCs in the house, then we need to find the children
+  // but we also check if theres only one NPC in the house bc then the NPC type is not a list
+  if (typeof FarmHouse.characters.NPC.name === "undefined") {
+    // NPC is a list so we can iterate through it
+    for (const idx in FarmHouse.characters.NPC) {
+      let NPC = FarmHouse.characters.NPC[idx];
+      if (NPC["@_xsi:type"] === "Child") {
+        children.push(NPC.name);
+      }
     }
+  } else {
+    // NPC is not a list so we can just check if it is a child
+    if (FarmHouse.characters.NPC["@_xsi:type"] === "Child")
+      children.push(FarmHouse.characters.NPC.name);
   }
 
   return {
     houseUpgradeLevel,
     spouse,
-    children: children.length > 0 ? children : null,
+    children: children.length > 0 ? children : undefined,
   };
 }
