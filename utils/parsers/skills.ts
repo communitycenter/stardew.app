@@ -1,13 +1,6 @@
 interface ReturnType {
-  playerLevel: number;
-  farmingLevel: number;
-  fishingLevel: number;
-  foragingLevel: number;
-  miningLevel: number;
-  combatLevel: number;
-  maxLevelCount: number;
-  SingularTalent: boolean; // true if Singular Talent is unlocked
-  MasterOfTheFiveWays: boolean; // true if Master of the Five Ways is unlocked
+  levels: { [key: string]: number };
+  maxLevelCount: number; // can be used for determining achievement completion
 }
 
 export function parseSkills(json: any): ReturnType {
@@ -22,7 +15,7 @@ export function parseSkills(json: any): ReturnType {
   // so we're not going to use the skill XP for now since it would
   // complicate how to allow the same functionality when a user changes
   // their skill levels manually instead of by save file.
-  const levels = [
+  const skillLevels = [
     json.SaveGame.player.farmingLevel,
     json.SaveGame.player.fishingLevel,
     json.SaveGame.player.foragingLevel,
@@ -36,7 +29,7 @@ export function parseSkills(json: any): ReturnType {
   let count: number = 0;
   // since we're looping through all the levels already, we can also track the count of levels that are 10 or higher
   const playerLevel = Math.floor(
-    levels.reduce((prev, curr) => {
+    skillLevels.reduce((prev, curr) => {
       if (curr >= 10) {
         count++;
       }
@@ -44,15 +37,18 @@ export function parseSkills(json: any): ReturnType {
     }, 0) / 2
   );
 
+  const levels = {
+    Player: playerLevel,
+    Farming: skillLevels[0],
+    Fishing: skillLevels[1],
+    Foraging: skillLevels[2],
+    Mining: skillLevels[3],
+    Combat: skillLevels[4],
+    Luck: skillLevels[5],
+  };
+
   return {
-    playerLevel,
-    farmingLevel: levels[0],
-    fishingLevel: levels[1],
-    foragingLevel: levels[2],
-    miningLevel: levels[3],
-    combatLevel: levels[4],
+    levels,
     maxLevelCount: count,
-    SingularTalent: count >= 1,
-    MasterOfTheFiveWays: count >= 5,
   };
 }

@@ -1,14 +1,4 @@
-interface ReturnType {
-  moneyEarned: number;
-  // balance: number;
-  Greenhorn: boolean;
-  Cowpoke: boolean;
-  Homesteader: boolean;
-  Millionaire: boolean;
-  Legend: boolean;
-}
-
-export function parseMoney(json: any): ReturnType {
+export function parseMoney(json: any): number {
   /*
     Achievements Relevant:
       - Greenhorn:    Earned 15,000g.
@@ -20,12 +10,5 @@ export function parseMoney(json: any): ReturnType {
   const moneyEarned: number = json.SaveGame.player.totalMoneyEarned;
   // const balance: number = json.SaveGame.player.money;
 
-  return {
-    moneyEarned,
-    Greenhorn: moneyEarned >= 15000,
-    Cowpoke: moneyEarned >= 50000,
-    Homesteader: moneyEarned >= 250000,
-    Millionaire: moneyEarned >= 1000000,
-    Legend: moneyEarned >= 10000000,
-  };
+  return moneyEarned;
 }

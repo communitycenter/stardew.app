@@ -13,10 +13,12 @@ import {
   parseMoney,
   parseGeneral,
   parseSkills,
+  parseQuests,
   parseStardrops,
   parseMonsters,
   parseFamily,
   parseSocial,
+  parseCooking,
 } from "../utils";
 
 function classNames(...classes: string[]) {
@@ -63,8 +65,12 @@ const SidebarLayout = ({
       // console.log(event.target?.result);
       const parser = new XMLParser({ ignoreAttributes: false });
       const jsonObj = parser.parse(event.target?.result as string);
+      console.log(JSON.stringify(jsonObj, null, 2));
 
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
+      const moneyEarned = parseMoney(jsonObj);
+      const { levels, maxLevelCount } = parseSkills(jsonObj);
+      const questsCompleted = parseQuests(jsonObj);
       const { stardropsCount, stardropsNeeded } = parseStardrops(jsonObj);
       const {
         deepestMineLevel,
@@ -77,14 +83,13 @@ const SidebarLayout = ({
       const { fiveHeartCount, tenHeartCount, relationships } =
         parseSocial(jsonObj);
 
-      console.log(`A New Friend: ${fiveHeartCount >= 1}`);
-      console.log(`Cliques: ${fiveHeartCount >= 4}`);
-      console.log(`Networking: ${fiveHeartCount >= 10}`);
-      console.log(`Popular: ${fiveHeartCount >= 20}`);
-      console.log("---");
-      console.log(`Best Friends: ${tenHeartCount >= 1}`);
-      console.log(`The Beloved Farmer: ${tenHeartCount >= 8}`);
-      console.log(relationships);
+      const {
+        allRecipesCount,
+        cookedRecipesCount,
+        knownRecipesCount,
+        uncookedRecipes,
+        unknownRecipes,
+      } = parseCooking(jsonObj);
     };
 
     reader.readAsText(file!);
