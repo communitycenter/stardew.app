@@ -10,3 +10,4 @@ export * from "./parsers/cooking";
 export * from "./parsers/crafting";
 export * from "./parsers/fishing";
 export * from "./parsers/shipping";
+export * from "./parsers/museum";
