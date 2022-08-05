@@ -9,3 +9,4 @@ export * from "./parsers/social";
 export * from "./parsers/cooking";
 export * from "./parsers/crafting";
 export * from "./parsers/fishing";
+export * from "./parsers/shipping";
