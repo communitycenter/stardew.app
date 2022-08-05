@@ -83,6 +83,7 @@ content = {
 fish = {}
 
 trap_fish = set(["Clam", "Lobster", "Crayfish", "Crab", "Cockle", "Mussel", "Shrimp", "Snail", "Periwinkle", "Oyster"])
+ignore = set(["Clam", "Son of Crimsonfish", "Legend II", "Radioactive Carp", "Glacierfish Jr.", "Ms. Angler"])
 
 def upper_first(s: str) -> str:
     return s[0].upper() + s[1:]
@@ -97,6 +98,7 @@ for key, value in content.items():
     
     fields = value.split("/")
     name = fields[0]
+    if name in ignore: continue
     
     # look up the fish description from ObjectInformation.json
     description = ObjInfo["content"][key].split("/")[5]

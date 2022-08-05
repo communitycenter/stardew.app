@@ -448,7 +448,7 @@
         "trapFish": false,
         "description": "It can be used in cooking.",
         "locations": [
-            "Fishing Pole: Ocean\nForaging: The Beach\nGarbage Cans\nFish Pond"
+            "Fishing Pole: Ocean\nForaging: The Beach\nGarbage Cans\nFish Pond\nThe \"Dangerous Mines\""
         ],
         "minInch": 5,
         "maxInch": 30,
@@ -790,19 +790,6 @@
         ],
         "weather": "Both",
         "minLevel": "0"
-    },
-    "Clam": {
-        "itemID": 372,
-        "name": "Clam",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Clam.png",
-        "trapFish": true,
-        "description": "Someone lived here once.",
-        "locations": [
-            "Crab Pot: Saltwater",
-            "Foraging: The Beach"
-        ],
-        "minInch": 1,
-        "maxInch": 5
     },
     "Mutant Carp": {
         "itemID": 682,
@@ -1365,109 +1352,5 @@
         ],
         "weather": "Both",
         "minLevel": "0"
-    },
-    "Son of Crimsonfish": {
-        "itemID": 898,
-        "name": "Son of Crimsonfish",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Son_of_Crimsonfish.png",
-        "trapFish": false,
-        "description": "He hatched in the warm summer water, and followed in the footsteps of his father.",
-        "locations": [
-            "Ocean"
-        ],
-        "minInch": 20,
-        "maxInch": 20,
-        "difficulty": "95 mixed",
-        "time": "6AM - 8PM",
-        "seasons": [
-            "Winter"
-        ],
-        "weather": "Both",
-        "minLevel": "5"
-    },
-    "Ms. Angler": {
-        "itemID": 899,
-        "name": "Ms. Angler",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Ms._Angler.png",
-        "trapFish": false,
-        "description": "Uses a bioluminescent dangler to attract prey.",
-        "locations": [
-            "Pelican Town"
-        ],
-        "minInch": 18,
-        "maxInch": 18,
-        "difficulty": "85 smooth",
-        "time": "6AM - 2AM",
-        "seasons": [
-            "Spring",
-            "Summer",
-            "Fall",
-            "Winter"
-        ],
-        "weather": "Both",
-        "minLevel": "3"
-    },
-    "Legend II": {
-        "itemID": 900,
-        "name": "Legend II",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7a/Legend_II.png",
-        "trapFish": false,
-        "description": "The successor to the original Legend.",
-        "locations": [
-            "Mountain Lake"
-        ],
-        "minInch": 50,
-        "maxInch": 50,
-        "difficulty": "110 mixed",
-        "time": "6AM - 8PM",
-        "seasons": [
-            "Spring",
-            "Summer",
-            "Fall",
-            "Winter"
-        ],
-        "weather": "Rainy",
-        "minLevel": "10"
-    },
-    "Radioactive Carp": {
-        "itemID": 901,
-        "name": "Radioactive Carp",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/57/Radioactive_Carp.png",
-        "trapFish": false,
-        "description": "A carp that spent one too many years in toxic sludge.",
-        "locations": [
-            "The Sewers"
-        ],
-        "minInch": 36,
-        "maxInch": 36,
-        "difficulty": "80 dart",
-        "time": "6AM - 2AM",
-        "seasons": [
-            "Spring",
-            "Summer",
-            "Fall",
-            "Winter"
-        ],
-        "weather": "Both",
-        "minLevel": "0"
-    },
-    "Glacierfish Jr.": {
-        "itemID": 902,
-        "name": "Glacierfish Jr.",
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Glacierfish_Jr..png",
-        "trapFish": false,
-        "description": "The original Glacierfish had a son...",
-        "locations": [
-            "Cindersap Forest"
-        ],
-        "minInch": 27,
-        "maxInch": 27,
-        "difficulty": "100 mixed",
-        "time": "6AM - 8PM",
-        "seasons": [
-            "Winter"
-        ],
-        "weather": "Sunny",
-        "minLevel": "7"
     }
 }
