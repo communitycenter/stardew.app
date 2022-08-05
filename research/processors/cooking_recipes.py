@@ -51,14 +51,10 @@ for recipe_name, value in rawData["content"].items():
     pairs = map(" ".join, zip(i, i))
     for pair in pairs:
         item_id = pair.split(" ")[0]
-        if (item_id in categories):
-            item_id = categories[item_id]
-        else:
-            item_id = objects[item_id]["name"]
-        
+
         amount = pair.split(" ")[1]
         ingredients.append({
-            "item": item_id,
+            "itemID": int(item_id),
             "amount": int(amount)
         })
     

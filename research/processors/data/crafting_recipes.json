@@ -1,0 +1,2097 @@
+{
+    "322": {
+        "name": "Wood Fence",
+        "itemID": 322,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 2
+            }
+        ]
+    },
+    "323": {
+        "name": "Stone Fence",
+        "itemID": 323,
+        "unlockConditions": "Reach level 2 in Farming.",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 2
+            }
+        ]
+    },
+    "324": {
+        "name": "Iron Fence",
+        "itemID": 324,
+        "unlockConditions": "Reach level 4 in Farming.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            }
+        ]
+    },
+    "298": {
+        "name": "Hardwood Fence",
+        "itemID": 298,
+        "unlockConditions": "Reach level 6 in Farming.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 1
+            }
+        ]
+    },
+    "297": {
+        "name": "Grass Starter",
+        "itemID": 297,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 771,
+                "amount": 10
+            }
+        ]
+    },
+    "325": {
+        "name": "Gate",
+        "itemID": 325,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 10
+            }
+        ]
+    },
+    "130": {
+        "name": "Chest",
+        "itemID": 130,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            }
+        ]
+    },
+    "93": {
+        "name": "Torch",
+        "itemID": 93,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            },
+            {
+                "itemID": 92,
+                "amount": 2
+            }
+        ]
+    },
+    "8": {
+        "name": "Scarecrow",
+        "itemID": 8,
+        "unlockConditions": "Reach level 1 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 20
+            }
+        ]
+    },
+    "167": {
+        "name": "Deluxe Scarecrow",
+        "itemID": 167,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            },
+            {
+                "itemID": 386,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 40
+            }
+        ]
+    },
+    "10": {
+        "name": "Bee House",
+        "itemID": 10,
+        "unlockConditions": "Reach level 3 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 40
+            },
+            {
+                "itemID": 382,
+                "amount": 8
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 724,
+                "amount": 1
+            }
+        ]
+    },
+    "12": {
+        "name": "Keg",
+        "itemID": 12,
+        "unlockConditions": "Reach level 8 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 30
+            },
+            {
+                "itemID": 334,
+                "amount": 1
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 725,
+                "amount": 1
+            }
+        ]
+    },
+    "163": {
+        "name": "Cask",
+        "itemID": 163,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 20
+            },
+            {
+                "itemID": 709,
+                "amount": 1
+            }
+        ]
+    },
+    "13": {
+        "name": "Furnace",
+        "itemID": 13,
+        "unlockConditions": "Reach farmer level 2.",
+        "materials": [
+            {
+                "itemID": 378,
+                "amount": 20
+            },
+            {
+                "itemID": 390,
+                "amount": 25
+            }
+        ]
+    },
+    "62": {
+        "name": "Garden Pot",
+        "itemID": 62,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 330,
+                "amount": 1
+            },
+            {
+                "itemID": 390,
+                "amount": 10
+            },
+            {
+                "itemID": 338,
+                "amount": 1
+            }
+        ]
+    },
+    "37": {
+        "name": "Wood Sign",
+        "itemID": 37,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 25
+            }
+        ]
+    },
+    "38": {
+        "name": "Stone Sign",
+        "itemID": 38,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 25
+            }
+        ]
+    },
+    "16": {
+        "name": "Cheese Press",
+        "itemID": 16,
+        "unlockConditions": "Reach level 6 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 45
+            },
+            {
+                "itemID": 390,
+                "amount": 45
+            },
+            {
+                "itemID": 709,
+                "amount": 10
+            },
+            {
+                "itemID": 334,
+                "amount": 1
+            }
+        ]
+    },
+    "24": {
+        "name": "Mayonnaise Machine",
+        "itemID": 24,
+        "unlockConditions": "Reach level 2 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 15
+            },
+            {
+                "itemID": 390,
+                "amount": 15
+            },
+            {
+                "itemID": 86,
+                "amount": 1
+            },
+            {
+                "itemID": 334,
+                "amount": 1
+            }
+        ]
+    },
+    "25": {
+        "name": "Seed Maker",
+        "itemID": 25,
+        "unlockConditions": "Reach level 9 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 25
+            },
+            {
+                "itemID": 382,
+                "amount": 10
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            }
+        ]
+    },
+    "17": {
+        "name": "Loom",
+        "itemID": 17,
+        "unlockConditions": "Reach level 7 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 60
+            },
+            {
+                "itemID": 771,
+                "amount": 30
+            },
+            {
+                "itemID": 726,
+                "amount": 1
+            }
+        ]
+    },
+    "19": {
+        "name": "Oil Maker",
+        "itemID": 19,
+        "unlockConditions": "Reach level 8 in Farming.",
+        "materials": [
+            {
+                "itemID": 766,
+                "amount": 50
+            },
+            {
+                "itemID": 709,
+                "amount": 20
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            }
+        ]
+    },
+    "20": {
+        "name": "Recycling Machine",
+        "itemID": 20,
+        "unlockConditions": "Reach level 4 in Fishing.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 25
+            },
+            {
+                "itemID": 390,
+                "amount": 25
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            }
+        ]
+    },
+    "154": {
+        "name": "Worm Bin",
+        "itemID": 154,
+        "unlockConditions": "Reach level 8 in Fishing.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 25
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 50
+            }
+        ]
+    },
+    "15": {
+        "name": "Preserves Jar",
+        "itemID": 15,
+        "unlockConditions": "Reach level 4 in Farming.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            },
+            {
+                "itemID": 390,
+                "amount": 40
+            },
+            {
+                "itemID": 382,
+                "amount": 8
+            }
+        ]
+    },
+    "114": {
+        "name": "Charcoal Kiln",
+        "itemID": 114,
+        "unlockConditions": "Reach level 4 in Foraging.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 20
+            },
+            {
+                "itemID": 334,
+                "amount": 2
+            }
+        ]
+    },
+    "105": {
+        "name": "Tapper",
+        "itemID": 105,
+        "unlockConditions": "Reach level 3 in Foraging.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 40
+            },
+            {
+                "itemID": 334,
+                "amount": 2
+            }
+        ]
+    },
+    "9": {
+        "name": "Lightning Rod",
+        "itemID": 9,
+        "unlockConditions": "Reach level 6 in Foraging.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 338,
+                "amount": 1
+            },
+            {
+                "itemID": 767,
+                "amount": 5
+            }
+        ]
+    },
+    "156": {
+        "name": "Slime Incubator",
+        "itemID": 156,
+        "unlockConditions": "Reach level 8 in Combat.",
+        "materials": [
+            {
+                "itemID": 337,
+                "amount": 2
+            },
+            {
+                "itemID": 766,
+                "amount": 100
+            }
+        ]
+    },
+    "158": {
+        "name": "Slime Egg-Press",
+        "itemID": 158,
+        "unlockConditions": "Reach level 6 in Combat.",
+        "materials": [
+            {
+                "itemID": 382,
+                "amount": 25
+            },
+            {
+                "itemID": 82,
+                "amount": 1
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "21": {
+        "name": "Crystalarium",
+        "itemID": 21,
+        "unlockConditions": "Reach level 9 in Mining.",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 99
+            },
+            {
+                "itemID": 336,
+                "amount": 5
+            },
+            {
+                "itemID": 337,
+                "amount": 2
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "209": {
+        "name": "Mini-Jukebox",
+        "itemID": 209,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 2
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "599": {
+        "name": "Sprinkler",
+        "itemID": 599,
+        "unlockConditions": "Reach level 2 in Farming.",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 1
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            }
+        ]
+    },
+    "621": {
+        "name": "Quality Sprinkler",
+        "itemID": 621,
+        "unlockConditions": "Reach level 6 in Farming.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            },
+            {
+                "itemID": 338,
+                "amount": 1
+            }
+        ]
+    },
+    "645": {
+        "name": "Iridium Sprinkler",
+        "itemID": 645,
+        "unlockConditions": "Reach level 9 in Farming.",
+        "materials": [
+            {
+                "itemID": 336,
+                "amount": 1
+            },
+            {
+                "itemID": 337,
+                "amount": 1
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "71": {
+        "name": "Staircase",
+        "itemID": 71,
+        "unlockConditions": "Reach level 2 in Mining.",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 99
+            }
+        ]
+    },
+    "464": {
+        "name": "Flute Block",
+        "itemID": 464,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 10
+            },
+            {
+                "itemID": 378,
+                "amount": 2
+            },
+            {
+                "itemID": 771,
+                "amount": 20
+            }
+        ]
+    },
+    "463": {
+        "name": "Drum Block",
+        "itemID": 463,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 10
+            },
+            {
+                "itemID": 378,
+                "amount": 2
+            },
+            {
+                "itemID": 771,
+                "amount": 20
+            }
+        ]
+    },
+    "368": {
+        "name": "Basic Fertilizer",
+        "itemID": 368,
+        "unlockConditions": "Reach level 1 in Farming.",
+        "materials": [
+            {
+                "itemID": 92,
+                "amount": 2
+            }
+        ]
+    },
+    "805": {
+        "name": "Tree Fertilizer",
+        "itemID": 805,
+        "unlockConditions": "Reach level 7 in Foraging.",
+        "materials": [
+            {
+                "itemID": 771,
+                "amount": 5
+            },
+            {
+                "itemID": 390,
+                "amount": 5
+            }
+        ]
+    },
+    "369": {
+        "name": "Quality Fertilizer",
+        "itemID": 369,
+        "unlockConditions": "Reach level 9 in Farming.",
+        "materials": [
+            {
+                "itemID": 92,
+                "amount": 2
+            },
+            {
+                "itemID": -4,
+                "amount": 1
+            }
+        ]
+    },
+    "370": {
+        "name": "Basic Retaining Soil",
+        "itemID": 370,
+        "unlockConditions": "Reach level 4 in Farming.",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 2
+            }
+        ]
+    },
+    "371": {
+        "name": "Quality Retaining Soil",
+        "itemID": 371,
+        "unlockConditions": "Reach level 7 in Farming.",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 3
+            },
+            {
+                "itemID": 330,
+                "amount": 1
+            }
+        ]
+    },
+    "465": {
+        "name": "Speed-Gro",
+        "itemID": 465,
+        "unlockConditions": "Reach level 3 in Farming.",
+        "materials": [
+            {
+                "itemID": 726,
+                "amount": 1
+            },
+            {
+                "itemID": 372,
+                "amount": 1
+            }
+        ]
+    },
+    "466": {
+        "name": "Deluxe Speed-Gro",
+        "itemID": 466,
+        "unlockConditions": "Reach level 8 in Farming.",
+        "materials": [
+            {
+                "itemID": 725,
+                "amount": 1
+            },
+            {
+                "itemID": 393,
+                "amount": 1
+            }
+        ]
+    },
+    "918": {
+        "name": "Hyper Speed-Gro",
+        "itemID": 918,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 909,
+                "amount": 1
+            },
+            {
+                "itemID": 881,
+                "amount": 3
+            },
+            {
+                "itemID": 768,
+                "amount": 1
+            }
+        ]
+    },
+    "919": {
+        "name": "Deluxe Fertilizer",
+        "itemID": 919,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 337,
+                "amount": 1
+            },
+            {
+                "itemID": 92,
+                "amount": 40
+            }
+        ]
+    },
+    "920": {
+        "name": "Deluxe Retaining Soil",
+        "itemID": 920,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 5
+            },
+            {
+                "itemID": 771,
+                "amount": 3
+            },
+            {
+                "itemID": 330,
+                "amount": 1
+            }
+        ]
+    },
+    "286": {
+        "name": "Cherry Bomb",
+        "itemID": 286,
+        "unlockConditions": "Reach level 1 in Mining.",
+        "materials": [
+            {
+                "itemID": 378,
+                "amount": 4
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            }
+        ]
+    },
+    "287": {
+        "name": "Bomb",
+        "itemID": 287,
+        "unlockConditions": "Reach level 6 in Mining.",
+        "materials": [
+            {
+                "itemID": 380,
+                "amount": 4
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            }
+        ]
+    },
+    "288": {
+        "name": "Mega Bomb",
+        "itemID": 288,
+        "unlockConditions": "Reach level 8 in Mining.",
+        "materials": [
+            {
+                "itemID": 384,
+                "amount": 4
+            },
+            {
+                "itemID": 768,
+                "amount": 1
+            },
+            {
+                "itemID": 769,
+                "amount": 1
+            }
+        ]
+    },
+    "441": {
+        "name": "Explosive Ammo",
+        "itemID": 441,
+        "unlockConditions": "Reach level 8 in Combat.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 382,
+                "amount": 2
+            }
+        ]
+    },
+    "335": {
+        "name": "Transmute (Fe)",
+        "itemID": 335,
+        "unlockConditions": "Reach level 4 in Mining.",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 3
+            }
+        ]
+    },
+    "336": {
+        "name": "Transmute (Au)",
+        "itemID": 336,
+        "unlockConditions": "Reach level 7 in Mining.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 2
+            }
+        ]
+    },
+    "499": {
+        "name": "Ancient Seeds",
+        "itemID": 499,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 114,
+                "amount": 1
+            }
+        ]
+    },
+    "495": {
+        "name": "Wild Seeds (Sp)",
+        "itemID": 495,
+        "unlockConditions": "Reach level 1 in Foraging.",
+        "materials": [
+            {
+                "itemID": 16,
+                "amount": 1
+            },
+            {
+                "itemID": 18,
+                "amount": 1
+            },
+            {
+                "itemID": 20,
+                "amount": 1
+            },
+            {
+                "itemID": 22,
+                "amount": 1
+            }
+        ]
+    },
+    "496": {
+        "name": "Wild Seeds (Su)",
+        "itemID": 496,
+        "unlockConditions": "Reach level 4 in Foraging.",
+        "materials": [
+            {
+                "itemID": 396,
+                "amount": 1
+            },
+            {
+                "itemID": 398,
+                "amount": 1
+            },
+            {
+                "itemID": 402,
+                "amount": 1
+            }
+        ]
+    },
+    "497": {
+        "name": "Wild Seeds (Fa)",
+        "itemID": 497,
+        "unlockConditions": "Reach level 6 in Foraging.",
+        "materials": [
+            {
+                "itemID": 404,
+                "amount": 1
+            },
+            {
+                "itemID": 406,
+                "amount": 1
+            },
+            {
+                "itemID": 408,
+                "amount": 1
+            },
+            {
+                "itemID": 410,
+                "amount": 1
+            }
+        ]
+    },
+    "498": {
+        "name": "Wild Seeds (Wi)",
+        "itemID": 498,
+        "unlockConditions": "Reach level 7 in Foraging.",
+        "materials": [
+            {
+                "itemID": 412,
+                "amount": 1
+            },
+            {
+                "itemID": 414,
+                "amount": 1
+            },
+            {
+                "itemID": 416,
+                "amount": 1
+            },
+            {
+                "itemID": 418,
+                "amount": 1
+            }
+        ]
+    },
+    "885": {
+        "name": "Fiber Seeds",
+        "itemID": 885,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 770,
+                "amount": 1
+            },
+            {
+                "itemID": 92,
+                "amount": 5
+            },
+            {
+                "itemID": 330,
+                "amount": 1
+            }
+        ]
+    },
+    "251": {
+        "name": "Tea Sapling",
+        "itemID": 251,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": -777,
+                "amount": 2
+            },
+            {
+                "itemID": 771,
+                "amount": 5
+            },
+            {
+                "itemID": 388,
+                "amount": 5
+            }
+        ]
+    },
+    "688": {
+        "name": "Warp Totem: Farm",
+        "itemID": 688,
+        "unlockConditions": "Reach level 8 in Foraging.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 1
+            },
+            {
+                "itemID": 340,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 20
+            }
+        ]
+    },
+    "689": {
+        "name": "Warp Totem: Mountains",
+        "itemID": 689,
+        "unlockConditions": "Reach level 7 in Foraging.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 1
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 390,
+                "amount": 25
+            }
+        ]
+    },
+    "690": {
+        "name": "Warp Totem: Beach",
+        "itemID": 690,
+        "unlockConditions": "Reach level 6 in Foraging.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 1
+            },
+            {
+                "itemID": 393,
+                "amount": 2
+            },
+            {
+                "itemID": 771,
+                "amount": 10
+            }
+        ]
+    },
+    "261": {
+        "name": "Warp Totem: Desert",
+        "itemID": 261,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 2
+            },
+            {
+                "itemID": 88,
+                "amount": 1
+            },
+            {
+                "itemID": 386,
+                "amount": 4
+            }
+        ]
+    },
+    "886": {
+        "name": "Warp Totem: Island",
+        "itemID": 886,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 5
+            },
+            {
+                "itemID": 852,
+                "amount": 1
+            },
+            {
+                "itemID": 829,
+                "amount": 1
+            }
+        ]
+    },
+    "681": {
+        "name": "Rain Totem",
+        "itemID": 681,
+        "unlockConditions": "Reach level 9 in Foraging.",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 1
+            },
+            {
+                "itemID": 432,
+                "amount": 1
+            },
+            {
+                "itemID": 726,
+                "amount": 5
+            }
+        ]
+    },
+    "926": {
+        "name": "Cookout Kit",
+        "itemID": 926,
+        "unlockConditions": "Reach level 9 in Foraging.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 15
+            },
+            {
+                "itemID": 771,
+                "amount": 10
+            },
+            {
+                "itemID": 382,
+                "amount": 3
+            }
+        ]
+    },
+    "403": {
+        "name": "Field Snack",
+        "itemID": 403,
+        "unlockConditions": "Reach level 1 in Foraging.",
+        "materials": [
+            {
+                "itemID": 309,
+                "amount": 1
+            },
+            {
+                "itemID": 310,
+                "amount": 1
+            },
+            {
+                "itemID": 311,
+                "amount": 1
+            }
+        ]
+    },
+    "746": {
+        "name": "Jack-O-Lantern",
+        "itemID": 746,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 276,
+                "amount": 1
+            },
+            {
+                "itemID": 93,
+                "amount": 1
+            }
+        ]
+    },
+    "328": {
+        "name": "Wood Floor",
+        "itemID": 328,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            }
+        ]
+    },
+    "401": {
+        "name": "Straw Floor",
+        "itemID": 401,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 1
+            }
+        ]
+    },
+    "331": {
+        "name": "Weathered Floor",
+        "itemID": 331,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            }
+        ]
+    },
+    "840": {
+        "name": "Rustic Plank Floor",
+        "itemID": 840,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            }
+        ]
+    },
+    "333": {
+        "name": "Crystal Floor",
+        "itemID": 333,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 338,
+                "amount": 1
+            }
+        ]
+    },
+    "329": {
+        "name": "Stone Floor",
+        "itemID": 329,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 1
+            }
+        ]
+    },
+    "841": {
+        "name": "Stone Walkway Floor",
+        "itemID": 841,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 1
+            }
+        ]
+    },
+    "293": {
+        "name": "Brick Floor",
+        "itemID": 293,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 330,
+                "amount": 2
+            },
+            {
+                "itemID": 390,
+                "amount": 5
+            }
+        ]
+    },
+    "405": {
+        "name": "Wood Path",
+        "itemID": 405,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 1
+            }
+        ]
+    },
+    "407": {
+        "name": "Gravel Path",
+        "itemID": 407,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 1
+            }
+        ]
+    },
+    "411": {
+        "name": "Cobblestone Path",
+        "itemID": 411,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 1
+            }
+        ]
+    },
+    "415": {
+        "name": "Stepping Stone Path",
+        "itemID": 415,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 1
+            }
+        ]
+    },
+    "409": {
+        "name": "Crystal Path",
+        "itemID": 409,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 338,
+                "amount": 1
+            }
+        ]
+    },
+    "774": {
+        "name": "Wild Bait",
+        "itemID": 774,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 771,
+                "amount": 10
+            },
+            {
+                "itemID": 684,
+                "amount": 5
+            },
+            {
+                "itemID": 766,
+                "amount": 5
+            }
+        ]
+    },
+    "685": {
+        "name": "Bait",
+        "itemID": 685,
+        "unlockConditions": "Reach level 2 in Fishing.",
+        "materials": [
+            {
+                "itemID": 684,
+                "amount": 1
+            }
+        ]
+    },
+    "686": {
+        "name": "Spinner",
+        "itemID": 686,
+        "unlockConditions": "Reach level 6 in Fishing.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 2
+            }
+        ]
+    },
+    "703": {
+        "name": "Magnet",
+        "itemID": 703,
+        "unlockConditions": "Reach level 9 in Fishing.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            }
+        ]
+    },
+    "694": {
+        "name": "Trap Bobber",
+        "itemID": 694,
+        "unlockConditions": "Reach level 6 in Fishing.",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 1
+            },
+            {
+                "itemID": 92,
+                "amount": 10
+            }
+        ]
+    },
+    "695": {
+        "name": "Cork Bobber",
+        "itemID": 695,
+        "unlockConditions": "Reach level 7 in Fishing.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 10
+            },
+            {
+                "itemID": 709,
+                "amount": 5
+            },
+            {
+                "itemID": 766,
+                "amount": 10
+            }
+        ]
+    },
+    "687": {
+        "name": "Dressed Spinner",
+        "itemID": 687,
+        "unlockConditions": "Reach level 8 in Fishing.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 2
+            },
+            {
+                "itemID": 428,
+                "amount": 1
+            }
+        ]
+    },
+    "693": {
+        "name": "Treasure Hunter",
+        "itemID": 693,
+        "unlockConditions": "Reach level 7 in Fishing.",
+        "materials": [
+            {
+                "itemID": 336,
+                "amount": 2
+            }
+        ]
+    },
+    "691": {
+        "name": "Barbed Hook",
+        "itemID": 691,
+        "unlockConditions": "Reach level 8 in Fishing.",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 1
+            },
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            }
+        ]
+    },
+    "772": {
+        "name": "Oil of Garlic",
+        "itemID": 772,
+        "unlockConditions": "Reach level 6 in Combat.",
+        "materials": [
+            {
+                "itemID": 248,
+                "amount": 10
+            },
+            {
+                "itemID": 247,
+                "amount": 1
+            }
+        ]
+    },
+    "773": {
+        "name": "Life Elixir",
+        "itemID": 773,
+        "unlockConditions": "Reach level 2 in Combat.",
+        "materials": [
+            {
+                "itemID": 420,
+                "amount": 1
+            },
+            {
+                "itemID": 422,
+                "amount": 1
+            },
+            {
+                "itemID": 257,
+                "amount": 1
+            },
+            {
+                "itemID": 281,
+                "amount": 1
+            }
+        ]
+    },
+    "710": {
+        "name": "Crab Pot",
+        "itemID": 710,
+        "unlockConditions": "Reach level 3 in Fishing.",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 40
+            },
+            {
+                "itemID": 335,
+                "amount": 3
+            }
+        ]
+    },
+    "527": {
+        "name": "Iridium Band",
+        "itemID": 527,
+        "unlockConditions": "Reach level 9 in Combat.",
+        "materials": [
+            {
+                "itemID": 337,
+                "amount": 5
+            },
+            {
+                "itemID": 768,
+                "amount": 50
+            },
+            {
+                "itemID": 769,
+                "amount": 50
+            }
+        ]
+    },
+    "524": {
+        "name": "Ring of Yoba",
+        "itemID": 524,
+        "unlockConditions": "Reach level 7 in Combat.",
+        "materials": [
+            {
+                "itemID": 336,
+                "amount": 5
+            },
+            {
+                "itemID": 335,
+                "amount": 5
+            },
+            {
+                "itemID": 72,
+                "amount": 1
+            }
+        ]
+    },
+    "525": {
+        "name": "Sturdy Ring",
+        "itemID": 525,
+        "unlockConditions": "Reach level 1 in Combat.",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 2
+            },
+            {
+                "itemID": 684,
+                "amount": 25
+            },
+            {
+                "itemID": 766,
+                "amount": 25
+            }
+        ]
+    },
+    "521": {
+        "name": "Warrior Ring",
+        "itemID": 521,
+        "unlockConditions": "Reach level 4 in Combat.",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 10
+            },
+            {
+                "itemID": 382,
+                "amount": 25
+            },
+            {
+                "itemID": 84,
+                "amount": 10
+            }
+        ]
+    },
+    "108": {
+        "name": "Tub o' Flowers",
+        "itemID": 108,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 15
+            },
+            {
+                "itemID": 427,
+                "amount": 1
+            },
+            {
+                "itemID": 429,
+                "amount": 1
+            },
+            {
+                "itemID": 453,
+                "amount": 1
+            },
+            {
+                "itemID": 455,
+                "amount": 1
+            }
+        ]
+    },
+    "143": {
+        "name": "Wooden Brazier",
+        "itemID": 143,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 10
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 5
+            }
+        ]
+    },
+    "83": {
+        "name": "Wicked Statue",
+        "itemID": 83,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 382,
+                "amount": 5
+            },
+            {
+                "itemID": 390,
+                "amount": 25
+            }
+        ]
+    },
+    "144": {
+        "name": "Stone Brazier",
+        "itemID": 144,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 10
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 5
+            }
+        ]
+    },
+    "145": {
+        "name": "Gold Brazier",
+        "itemID": 145,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 336,
+                "amount": 1
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            },
+            {
+                "itemID": 771,
+                "amount": 5
+            }
+        ]
+    },
+    "146": {
+        "name": "Campfire",
+        "itemID": 146,
+        "unlockConditions": "default",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 10
+            },
+            {
+                "itemID": 388,
+                "amount": 10
+            },
+            {
+                "itemID": 771,
+                "amount": 10
+            }
+        ]
+    },
+    "147": {
+        "name": "Stump Brazier",
+        "itemID": 147,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 5
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            }
+        ]
+    },
+    "148": {
+        "name": "Carved Brazier",
+        "itemID": 148,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 10
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            }
+        ]
+    },
+    "149": {
+        "name": "Skull Brazier",
+        "itemID": 149,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 881,
+                "amount": 10
+            }
+        ]
+    },
+    "150": {
+        "name": "Barrel Brazier",
+        "itemID": 150,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            },
+            {
+                "itemID": 768,
+                "amount": 1
+            },
+            {
+                "itemID": 382,
+                "amount": 1
+            }
+        ]
+    },
+    "151": {
+        "name": "Marble Brazier",
+        "itemID": 151,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 567,
+                "amount": 1
+            },
+            {
+                "itemID": 62,
+                "amount": 1
+            },
+            {
+                "itemID": 390,
+                "amount": 100
+            }
+        ]
+    },
+    "152": {
+        "name": "Wood Lamp-post",
+        "itemID": 152,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 388,
+                "amount": 50
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "153": {
+        "name": "Iron Lamp-post",
+        "itemID": 153,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 335,
+                "amount": 1
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            }
+        ]
+    },
+    "872": {
+        "name": "Fairy Dust",
+        "itemID": 872,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 72,
+                "amount": 1
+            },
+            {
+                "itemID": 595,
+                "amount": 1
+            }
+        ]
+    },
+    "874": {
+        "name": "Bug Steak",
+        "itemID": 874,
+        "unlockConditions": "Reach level 1 in Combat.",
+        "materials": [
+            {
+                "itemID": 684,
+                "amount": 10
+            }
+        ]
+    },
+    "39": {
+        "name": "Dark Sign",
+        "itemID": 39,
+        "unlockConditions": "Reach 3 hearts with Krobus.",
+        "materials": [
+            {
+                "itemID": 767,
+                "amount": 5
+            },
+            {
+                "itemID": 881,
+                "amount": 5
+            }
+        ]
+    },
+    "877": {
+        "name": "Quality Bobber",
+        "itemID": 877,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 334,
+                "amount": 1
+            },
+            {
+                "itemID": 92,
+                "amount": 20
+            },
+            {
+                "itemID": 768,
+                "amount": 5
+            }
+        ]
+    },
+    "232": {
+        "name": "Stone Chest",
+        "itemID": 232,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 390,
+                "amount": 50
+            }
+        ]
+    },
+    "879": {
+        "name": "Monster Musk",
+        "itemID": 879,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 767,
+                "amount": 30
+            },
+            {
+                "itemID": 766,
+                "amount": 30
+            }
+        ]
+    },
+    "238": {
+        "name": "Mini-Obelisk",
+        "itemID": 238,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 30
+            },
+            {
+                "itemID": 768,
+                "amount": 20
+            },
+            {
+                "itemID": 336,
+                "amount": 3
+            }
+        ]
+    },
+    "239": {
+        "name": "Farm Computer",
+        "itemID": 239,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 122,
+                "amount": 1
+            },
+            {
+                "itemID": 787,
+                "amount": 1
+            },
+            {
+                "itemID": 338,
+                "amount": 10
+            }
+        ]
+    },
+    "254": {
+        "name": "Ostrich Incubator",
+        "itemID": 254,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 881,
+                "amount": 50
+            },
+            {
+                "itemID": 709,
+                "amount": 50
+            },
+            {
+                "itemID": 848,
+                "amount": 20
+            }
+        ]
+    },
+    "182": {
+        "name": "Geode Crusher",
+        "itemID": 182,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 336,
+                "amount": 2
+            },
+            {
+                "itemID": 390,
+                "amount": 50
+            },
+            {
+                "itemID": 72,
+                "amount": 1
+            }
+        ]
+    },
+    "231": {
+        "name": "Solar Panel",
+        "itemID": 231,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 338,
+                "amount": 10
+            },
+            {
+                "itemID": 335,
+                "amount": 5
+            },
+            {
+                "itemID": 336,
+                "amount": 5
+            }
+        ]
+    },
+    "90": {
+        "name": "Bone Mill",
+        "itemID": 90,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 881,
+                "amount": 10
+            },
+            {
+                "itemID": 330,
+                "amount": 3
+            },
+            {
+                "itemID": 390,
+                "amount": 20
+            }
+        ]
+    },
+    "839": {
+        "name": "Thorns Ring",
+        "itemID": 839,
+        "unlockConditions": "Reach level 7 in Combat.",
+        "materials": [
+            {
+                "itemID": 881,
+                "amount": 50
+            },
+            {
+                "itemID": 390,
+                "amount": 50
+            },
+            {
+                "itemID": 336,
+                "amount": 1
+            }
+        ]
+    },
+    "888": {
+        "name": "Glowstone Ring",
+        "itemID": 888,
+        "unlockConditions": "Reach level 4 in Mining.",
+        "materials": [
+            {
+                "itemID": 768,
+                "amount": 5
+            },
+            {
+                "itemID": 335,
+                "amount": 5
+            }
+        ]
+    },
+    "264": {
+        "name": "Heavy Tapper",
+        "itemID": 264,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 30
+            },
+            {
+                "itemID": 910,
+                "amount": 1
+            }
+        ]
+    },
+    "275": {
+        "name": "Hopper",
+        "itemID": 275,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 709,
+                "amount": 10
+            },
+            {
+                "itemID": 337,
+                "amount": 1
+            },
+            {
+                "itemID": 910,
+                "amount": 1
+            }
+        ]
+    },
+    "908": {
+        "name": "Magic Bait",
+        "itemID": 908,
+        "unlockConditions": "unknown",
+        "materials": [
+            {
+                "itemID": 909,
+                "amount": 1
+            },
+            {
+                "itemID": 684,
+                "amount": 3
+            }
+        ]
+    }
+}
