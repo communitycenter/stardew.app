@@ -114,7 +114,7 @@ const Farmer: NextPage = () => {
               <div className="grid grid-cols-2 gap-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5">
                 <div className="col-span-2 lg:col-span-3 xl:col-span-5 2xl:col-span-5">
                   <InfoCard
-                    title="clem's farmer level is 23."
+                    title="clem is farmer level 23."
                     Icon={ChartBarIcon}
                   />
                 </div>
