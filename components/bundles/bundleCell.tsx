@@ -77,12 +77,12 @@ const BundleCell = ({
         "relative cursor-pointer select-none rounded-lg border p-2 transition-colors dark:border-[#2A2A2A]",
         checked
           ? "border-green-300 bg-green-100 hover:border-green-500 hover:bg-green-200 dark:bg-[#0E1D14] "
-          : "border-gray-100 hover:border-gray-300 hover:bg-gray-50"
+          : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
       )}
     >
       <div className="flex-shrink-0 ">
         <img
-          className="h-12 w-12 md:h-6 md:w-6 "
+          className="h-8 w-8"
           src={sprites[item.itemID.toString() as keyof typeof sprites]}
           alt="wtf"
         />

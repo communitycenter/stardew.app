@@ -60,7 +60,7 @@ const Bundles: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 py-4">
             {Object.entries(communityCenter).map(([roomName, room]) => (
               <div key={roomName} className="space-y-2">
-                <div className="mb-2 mt-4 ml-1 text-2xl text-gray-900 dark:text-white md:text-xl">
+                <div className="mb-2 mt-4 ml-1 text-xl font-semibold text-gray-900 dark:text-white md:text-xl">
                   {roomName}
                 </div>
                 <div className="grid grid-cols-1 gap-4">
