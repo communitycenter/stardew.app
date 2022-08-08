@@ -63,31 +63,31 @@
         "name": "Emerald",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6a/Emerald.png",
         "description": "A precious stone with a brilliant green color.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "62": {
         "name": "Aquamarine",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a2/Aquamarine.png",
         "description": "A shimmery blue-green gem.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "64": {
         "name": "Ruby",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a9/Ruby.png",
         "description": "A precious stone that is sought after for its rich color and beautiful luster.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "66": {
         "name": "Amethyst",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2e/Amethyst.png",
         "description": "A purple variant of quartz.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "68": {
         "name": "Topaz",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a5/Topaz.png",
         "description": "Fairly common but still prized for its beauty.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "69": {
         "name": "Banana Sapling",
@@ -99,7 +99,7 @@
         "name": "Jade",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7e/Jade.png",
         "description": "A pale green ornamental stone.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "71": {
         "name": "Trimmed Lucky Purple Shorts",
@@ -111,7 +111,7 @@
         "name": "Diamond",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ea/Diamond.png",
         "description": "A rare and valuable gem.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "73": {
         "name": "Golden Walnut",
@@ -123,7 +123,7 @@
         "name": "Prismatic Shard",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/56/Prismatic_Shard.png",
         "description": "A very rare and powerful substance with unknown origins.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "75": {
         "name": "Stone",
@@ -159,25 +159,25 @@
         "name": "Quartz",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/cf/Quartz.png",
         "description": "A clear crystal commonly found in caves and mines.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "82": {
         "name": "Fire Quartz",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5b/Fire_Quartz.png",
         "description": "A glowing red crystal commonly found near hot lava.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "84": {
         "name": "Frozen Tear",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ec/Frozen_Tear.png",
         "description": "A crystal fabled to be the frozen tears of a yeti.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "86": {
         "name": "Earth Crystal",
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/74/Earth_Crystal.png",
         "description": "A resinous substance found near the surface.",
-        "category": "Minerals, Gems"
+        "category": "Minerals"
     },
     "88": {
         "name": "Coconut",

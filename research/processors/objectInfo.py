@@ -12,7 +12,7 @@ ObjectInformation = {}
 DEBUG = False
 
 cmap = { # categories map from https://stardewvalleywiki.com/Modding:Items#Categories
-    "-2": "Minerals, Gems",
+    "-2": "Minerals",
     "-4": "Fish",
     "-5": "Animal Products, Eggs",
     "-6": "Animal Product, Milks",

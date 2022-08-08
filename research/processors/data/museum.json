@@ -1,0 +1,576 @@
+{
+    "artifacts": {
+        "96": {
+            "name": "Dwarf Scroll I",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b9/Dwarf_Scroll_I.png",
+            "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a red bow.",
+            "category": "Arch"
+        },
+        "97": {
+            "name": "Dwarf Scroll II",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/ca/Dwarf_Scroll_II.png",
+            "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a green ribbon.",
+            "category": "Arch"
+        },
+        "98": {
+            "name": "Dwarf Scroll III",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ec/Dwarf_Scroll_III.png",
+            "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a blue rope.",
+            "category": "Arch"
+        },
+        "99": {
+            "name": "Dwarf Scroll IV",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/85/Dwarf_Scroll_IV.png",
+            "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a golden chain.",
+            "category": "Arch"
+        },
+        "100": {
+            "name": "Chipped Amphora",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png",
+            "description": "An ancient vessel made of ceramic material. Used to transport both dry and wet goods.",
+            "category": "Arch"
+        },
+        "101": {
+            "name": "Arrowhead",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d1/Arrowhead.png",
+            "description": "A crudely fashioned point used for hunting.",
+            "category": "Arch"
+        },
+        "103": {
+            "name": "Ancient Doll",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c0/Ancient_Doll.png",
+            "description": "An ancient doll covered in grime. This doll may have been used as a toy, a decoration, or a prop in some kind of ritual.",
+            "category": "Arch"
+        },
+        "104": {
+            "name": "Elvish Jewelry",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9d/Elvish_Jewelry.png",
+            "description": "Dirty but still beautiful. On the side is a flowing script thought by some to be the ancient language of the elves. No Elvish bones have ever been found.",
+            "category": "Arch"
+        },
+        "105": {
+            "name": "Chewing Stick",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d2/Chewing_Stick.png",
+            "description": "Ancient people chewed on these to keep their teeth clean.",
+            "category": "Arch"
+        },
+        "106": {
+            "name": "Ornamental Fan",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/ab/Ornamental_Fan.png",
+            "description": "This exquisute fan most likely belonged to a noblewoman. Historians believe that the valley was a popular sixth-era vacation spot for the wealthy.",
+            "category": "Arch"
+        },
+        "107": {
+            "name": "Dinosaur Egg",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a1/Dinosaur_Egg.png",
+            "description": "A giant dino egg... The entire shell is still intact!",
+            "category": "Arch"
+        },
+        "108": {
+            "name": "Rare Disc",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e0/Rare_Disc.png",
+            "description": "A heavy black disc studded with peculiar red stones. When you hold it, you're overwhelmed with a feeling of dread.",
+            "category": "Arch"
+        },
+        "109": {
+            "name": "Ancient Sword",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/76/Ancient_Sword.png",
+            "description": "It's the remains of an ancient sword. Most of the blade has turned to rust, but the hilt is very finely crafted.",
+            "category": "Arch"
+        },
+        "110": {
+            "name": "Rusty Spoon",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Rusty_Spoon.png",
+            "description": "A plain old spoon, probably ten years old. Not very interesting.",
+            "category": "Arch"
+        },
+        "111": {
+            "name": "Rusty Spur",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/cd/Rusty_Spur.png",
+            "description": "An old spur that was once attached to a cowboy's boot. People must have been raising animals in this area for many generations.",
+            "category": "Arch"
+        },
+        "112": {
+            "name": "Rusty Cog",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/74/Rusty_Cog.png",
+            "description": "A well preserved cog that must have been part of some ancient machine. This could be dwarven technology.",
+            "category": "Arch"
+        },
+        "113": {
+            "name": "Chicken Statue",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/af/Chicken_Statue.png",
+            "description": "It's a statue of a chicken on a bronze base. The ancient people of this area must have been very fond of chickens.",
+            "category": "Arch"
+        },
+        "114": {
+            "name": "Ancient Seed",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Springobjects114.png",
+            "description": "It's a dry old seed from some ancient plant. By all appearances it's long since dead...",
+            "category": "Arch"
+        },
+        "115": {
+            "name": "Prehistoric Tool",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/26/Prehistoric_Tool.png",
+            "description": "Some kind of gnarly old digging tool.",
+            "category": "Arch"
+        },
+        "116": {
+            "name": "Dried Starfish",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/df/Dried_Starfish.png",
+            "description": "A starfish from the primordial ocean. It's an unusually pristine specimen!",
+            "category": "Arch"
+        },
+        "117": {
+            "name": "Anchor",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c0/Anchor.png",
+            "description": "It may have belonged to ancient pirates.",
+            "category": "Arch"
+        },
+        "118": {
+            "name": "Glass Shards",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b9/Glass_Shards.png",
+            "description": "A mixture of glass shards smoothed by centuries of ocean surf. These could have belonged to an ancient mosaic or necklace.",
+            "category": "Arch"
+        },
+        "119": {
+            "name": "Bone Flute",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/fc/Bone_Flute.png",
+            "description": "It's a prehistoric wind instrument carved from an animal's bone. It produces an eerie tone.",
+            "category": "Arch"
+        },
+        "120": {
+            "name": "Prehistoric Handaxe",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/07/Prehistoric_Handaxe.png",
+            "description": "One of the earliest tools employed by humans. This \"crude\" tool was created by striking one rock with another to form a sharp edge.",
+            "category": "Arch"
+        },
+        "121": {
+            "name": "Dwarvish Helm",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/8b/Dwarvish_Helm.png",
+            "description": "It's one of the helmets commonly worn by dwarves. The thick metal plating protects them from falling debris and stalactites.",
+            "category": "Arch"
+        },
+        "122": {
+            "name": "Dwarf Gadget",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Dwarf_Gadget.png",
+            "description": "It's a piece of the advanced technology once known to the dwarves. It's still glowing and humming, but you're unable to understand how it works.",
+            "category": "Arch"
+        },
+        "123": {
+            "name": "Ancient Drum",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1e/Ancient_Drum.png",
+            "description": "It's a drum made from wood and animal skin. It has a low, reverberating tone.",
+            "category": "Arch"
+        },
+        "124": {
+            "name": "Golden Mask",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7e/Golden_Mask.png",
+            "description": "A creepy golden mask probably used in an ancient magic ritual. A socket in the forehead contains a large purple gemstone.",
+            "category": "Arch"
+        },
+        "125": {
+            "name": "Golden Relic",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/37/Golden_Relic.png",
+            "description": "It's a golden slab with heiroglyphs and pictures emblazoned onto the front.",
+            "category": "Arch"
+        },
+        "126": {
+            "name": "Strange Doll",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/39/Strange_Doll_%28green%29.png",
+            "description": "???",
+            "category": "Arch"
+        },
+        "127": {
+            "name": "Strange Doll",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ef/Strange_Doll_%28yellow%29.png",
+            "description": "???",
+            "category": "Arch"
+        },
+        "579": {
+            "name": "Prehistoric Scapula",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ee/Prehistoric_Scapula.png",
+            "description": "Commonly known as a \"shoulder blade\"... It's unclear what species it belonged to.",
+            "category": "Arch"
+        },
+        "580": {
+            "name": "Prehistoric Tibia",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/ce/Prehistoric_Tibia.png",
+            "description": "A thick and sturdy leg bone.",
+            "category": "Arch"
+        },
+        "581": {
+            "name": "Prehistoric Skull",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Prehistoric_Skull.png",
+            "description": "This is definitely a mammalian skull.",
+            "category": "Arch"
+        },
+        "582": {
+            "name": "Skeletal Hand",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/da/Skeletal_Hand.png",
+            "description": "It's a wonder all these ancient little pieces lasted so long.",
+            "category": "Arch"
+        },
+        "583": {
+            "name": "Prehistoric Rib",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/62/Prehistoric_Rib.png",
+            "description": "Little gouge marks on the side suggest that this rib was someone's dinner.",
+            "category": "Arch"
+        },
+        "584": {
+            "name": "Prehistoric Vertebra",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e9/Prehistoric_Vertebra.png",
+            "description": "A segment of some prehistoric creature's spine.",
+            "category": "Arch"
+        },
+        "585": {
+            "name": "Skeletal Tail",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/29/Skeletal_Tail.png",
+            "description": "It's pretty short for a tail.",
+            "category": "Arch"
+        },
+        "586": {
+            "name": "Nautilus Fossil",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3b/Nautilus_Fossil.png",
+            "description": "This must've washed up ages ago from an ancient coral reef. ",
+            "category": "Arch"
+        },
+        "587": {
+            "name": "Amphibian Fossil",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/cf/Amphibian_Fossil.png",
+            "description": "The relatively short hind legs suggest some kind of primordial toad.",
+            "category": "Arch"
+        },
+        "588": {
+            "name": "Palm Fossil",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e1/Palm_Fossil.png",
+            "description": "Palm Fossils are relatively common, but this happens to be a particularly well-preserved specimen.",
+            "category": "Arch"
+        },
+        "589": {
+            "name": "Trilobite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2b/Trilobite.png",
+            "description": "A long extinct relative of the crab.",
+            "category": "Arch"
+        }
+    },
+    "minerals": {
+        "60": {
+            "name": "Emerald",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6a/Emerald.png",
+            "description": "A precious stone with a brilliant green color.",
+            "category": "Minerals"
+        },
+        "62": {
+            "name": "Aquamarine",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a2/Aquamarine.png",
+            "description": "A shimmery blue-green gem.",
+            "category": "Minerals"
+        },
+        "64": {
+            "name": "Ruby",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a9/Ruby.png",
+            "description": "A precious stone that is sought after for its rich color and beautiful luster.",
+            "category": "Minerals"
+        },
+        "66": {
+            "name": "Amethyst",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2e/Amethyst.png",
+            "description": "A purple variant of quartz.",
+            "category": "Minerals"
+        },
+        "68": {
+            "name": "Topaz",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a5/Topaz.png",
+            "description": "Fairly common but still prized for its beauty.",
+            "category": "Minerals"
+        },
+        "70": {
+            "name": "Jade",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7e/Jade.png",
+            "description": "A pale green ornamental stone.",
+            "category": "Minerals"
+        },
+        "72": {
+            "name": "Diamond",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ea/Diamond.png",
+            "description": "A rare and valuable gem.",
+            "category": "Minerals"
+        },
+        "74": {
+            "name": "Prismatic Shard",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/56/Prismatic_Shard.png",
+            "description": "A very rare and powerful substance with unknown origins.",
+            "category": "Minerals"
+        },
+        "80": {
+            "name": "Quartz",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/cf/Quartz.png",
+            "description": "A clear crystal commonly found in caves and mines.",
+            "category": "Minerals"
+        },
+        "82": {
+            "name": "Fire Quartz",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5b/Fire_Quartz.png",
+            "description": "A glowing red crystal commonly found near hot lava.",
+            "category": "Minerals"
+        },
+        "84": {
+            "name": "Frozen Tear",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ec/Frozen_Tear.png",
+            "description": "A crystal fabled to be the frozen tears of a yeti.",
+            "category": "Minerals"
+        },
+        "86": {
+            "name": "Earth Crystal",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/74/Earth_Crystal.png",
+            "description": "A resinous substance found near the surface.",
+            "category": "Minerals"
+        },
+        "538": {
+            "name": "Alamite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7c/Alamite.png",
+            "description": "Its distinctive fluorescence makes it a favorite among rock collectors.",
+            "category": "Minerals"
+        },
+        "539": {
+            "name": "Bixite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/98/Bixite.png",
+            "description": "A dark metallic Mineral sought after for its cubic structure.",
+            "category": "Minerals"
+        },
+        "540": {
+            "name": "Baryte",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/aa/Baryte.png",
+            "description": "The best specimens resemble a desert rose.",
+            "category": "Minerals"
+        },
+        "541": {
+            "name": "Aerinite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6b/Aerinite.png",
+            "description": "These crystals are curiously light.",
+            "category": "Minerals"
+        },
+        "542": {
+            "name": "Calcite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/97/Calcite.png",
+            "description": "This yellow crystal is speckled with shimmering nodules.",
+            "category": "Minerals"
+        },
+        "543": {
+            "name": "Dolomite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d4/Dolomite.png",
+            "description": "It can occur in coral reefs, often near an underwater volcano.",
+            "category": "Minerals"
+        },
+        "544": {
+            "name": "Esperite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/aa/Esperite.png",
+            "description": "The crystals glow bright green when stimulated.",
+            "category": "Minerals"
+        },
+        "545": {
+            "name": "Fluorapatite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4a/Fluorapatite.png",
+            "description": "Small amounts are found in human teeth.",
+            "category": "Minerals"
+        },
+        "546": {
+            "name": "Geminite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/54/Geminite.png",
+            "description": "Occurs in brilliant clusters.",
+            "category": "Minerals"
+        },
+        "547": {
+            "name": "Helvite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3f/Helvite.png",
+            "description": "It grows in a triangular column.",
+            "category": "Minerals"
+        },
+        "548": {
+            "name": "Jamborite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4b/Jamborite.png",
+            "description": "The crystals are so tightly packed it almost looks fuzzy.",
+            "category": "Minerals"
+        },
+        "549": {
+            "name": "Jagoite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c3/Jagoite.png",
+            "description": "A high volume of tiny crystals makes it very glittery.",
+            "category": "Minerals"
+        },
+        "550": {
+            "name": "Kyanite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e4/Kyanite.png",
+            "description": "The geometric faces are as smooth as glass.",
+            "category": "Minerals"
+        },
+        "551": {
+            "name": "Lunarite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/06/Lunarite.png",
+            "description": "The cratered white orbs form a tight cluster.",
+            "category": "Minerals"
+        },
+        "552": {
+            "name": "Malachite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/ad/Malachite.png",
+            "description": "A popular ornamental stone, used in sculpture and to make green paint.",
+            "category": "Minerals"
+        },
+        "553": {
+            "name": "Neptunite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/05/Neptunite.png",
+            "description": "A jet-black crystal that is unusually reflective.",
+            "category": "Minerals"
+        },
+        "554": {
+            "name": "Lemon Stone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/31/Lemon_Stone.png",
+            "description": "Some claim the powdered crystal is a dwarvish delicacy.",
+            "category": "Minerals"
+        },
+        "555": {
+            "name": "Nekoite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/53/Nekoite.png",
+            "description": "The delicate shards form a tiny pink meadow.",
+            "category": "Minerals"
+        },
+        "556": {
+            "name": "Orpiment",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/41/Orpiment.png",
+            "description": "Despite its high toxicity, this Mineral is widely used in manufacturing and folk medicine.",
+            "category": "Minerals"
+        },
+        "557": {
+            "name": "Petrified Slime",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/24/Petrified_Slime.png",
+            "description": "This little guy may be 100,000 years old.",
+            "category": "Minerals"
+        },
+        "558": {
+            "name": "Thunder Egg",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/14/Thunder_Egg.png",
+            "description": "According to legend, angry thunder spirits would throw these stones at one another.",
+            "category": "Minerals"
+        },
+        "559": {
+            "name": "Pyrite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/64/Pyrite.png",
+            "description": "Commonly known as \"Fool's Gold\".",
+            "category": "Minerals"
+        },
+        "560": {
+            "name": "Ocean Stone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/f1/Ocean_Stone.png",
+            "description": "An old legend claims these stones are the mosaics of ancient mermaids.",
+            "category": "Minerals"
+        },
+        "561": {
+            "name": "Ghost Crystal",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d0/Ghost_Crystal.png",
+            "description": "There is an aura of coldness around this crystal.",
+            "category": "Minerals"
+        },
+        "562": {
+            "name": "Tigerseye",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6e/Tigerseye.png",
+            "description": "A stripe of shimmering gold gives this gem a warm luster.",
+            "category": "Minerals"
+        },
+        "563": {
+            "name": "Jasper",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Jasper.png",
+            "description": "When polished, this stone becomes attractively luminous. Prized by ancient peoples for thousands of years.",
+            "category": "Minerals"
+        },
+        "564": {
+            "name": "Opal",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3c/Opal.png",
+            "description": "Its internal structure causes it to reflect a rainbow of light.",
+            "category": "Minerals"
+        },
+        "565": {
+            "name": "Fire Opal",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/60/Fire_Opal.png",
+            "description": "A rare variety of opal, named for its red spots.",
+            "category": "Minerals"
+        },
+        "566": {
+            "name": "Celestine",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/19/Celestine.png",
+            "description": "Some early life forms had bones made from this.",
+            "category": "Minerals"
+        },
+        "567": {
+            "name": "Marble",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/82/Marble.png",
+            "description": "A very popular material for sculptures and construction.",
+            "category": "Minerals"
+        },
+        "568": {
+            "name": "Sandstone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d6/Sandstone.png",
+            "description": "A common type of stone with red and brown striations.",
+            "category": "Minerals"
+        },
+        "569": {
+            "name": "Granite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4a/Granite.png",
+            "description": "A speckled Mineral that is commonly used in construction.",
+            "category": "Minerals"
+        },
+        "570": {
+            "name": "Basalt",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/22/Basalt.png",
+            "description": "Forms near searing hot magma.",
+            "category": "Minerals"
+        },
+        "571": {
+            "name": "Limestone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Limestone.png",
+            "description": "A very common type of stone. It's not worth very much.",
+            "category": "Minerals"
+        },
+        "572": {
+            "name": "Soapstone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/81/Soapstone.png",
+            "description": "Because of its relatively soft consistency, this stone is very popular for carving.",
+            "category": "Minerals"
+        },
+        "573": {
+            "name": "Hematite",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b1/Hematite.png",
+            "description": "An iron-based Mineral with interesting magnetic properties.",
+            "category": "Minerals"
+        },
+        "574": {
+            "name": "Mudstone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/52/Mudstone.png",
+            "description": "A fine-grained rock made from ancient clay or mud.",
+            "category": "Minerals"
+        },
+        "575": {
+            "name": "Obsidian",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/23/Obsidian.png",
+            "description": "A volcanic glass that forms when lava cools rapidly.",
+            "category": "Minerals"
+        },
+        "576": {
+            "name": "Slate",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/97/Slate.png",
+            "description": "It's extremely resistant to water, making it a good roofing material.",
+            "category": "Minerals"
+        },
+        "577": {
+            "name": "Fairy Stone",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d9/Fairy_Stone.png",
+            "description": "An old miner's song suggests these are made from the bones of ancient fairies.",
+            "category": "Minerals"
+        },
+        "578": {
+            "name": "Star Shards",
+            "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3f/Star_Shards.png",
+            "description": "No one knows how these form. Some scientists claim that the microscopic structure displays unnatural regularity.",
+            "category": "Minerals"
+        }
+    }
+}
