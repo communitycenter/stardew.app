@@ -7,17 +7,10 @@ import FishCard from "../components/fishing/fishcard";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
-import { useLocalStorageState } from "../hooks/use-local-storage";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
 import FishSlideOver from "../components/fishing/fishslideover";
-
-const initialCheckedFish = Object.fromEntries(
-  Object.values(fishes).map((fish) => {
-    return [fish.itemID, null];
-  })
-) as Record<number, boolean | null>;
 
 const Fishing: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);

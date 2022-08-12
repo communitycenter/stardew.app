@@ -79,7 +79,7 @@ const Farmer: NextPage = () => {
   const [timePlayed] = useKV<string>("general", "timePlayed", "0h 0m");
   const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
   const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
-  const [stardropsCount] = useKV<number>("stardrops", "stardropsCount", 0);
+  const [stardropsCount] = useKV<number>("stardrops", "count", 0);
 
   return (
     <>
@@ -147,13 +147,29 @@ const Farmer: NextPage = () => {
               <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
                 Skills
               </div>
-              <div className="grid grid-cols-2 gap-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5">
-                <div className="col-span-2 lg:col-span-3 xl:col-span-5 2xl:col-span-5">
-                  <InfoCard
-                    title={`${name} is level ${farmerLevel}.`}
-                    Icon={ChartBarIcon}
-                  />
-                </div>
+
+              <InfoCard
+                title={`${name} is level ${farmerLevel}.`}
+                Icon={ChartBarIcon}
+              />
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {Object.values(achievements)
+                  .filter((achievement) => achievement.category === "skills")
+                  .map((achievement) => (
+                    <AchievementCard
+                      id={achievement.id}
+                      tag={"achievements"}
+                      key={achievement.id}
+                      title={achievement.name}
+                      description={achievement.description}
+                      sourceURL={achievement.iconURL}
+                      initialChecked={
+                        maxLevelCount >= requirements[achievement.name]
+                      }
+                    />
+                  ))}
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
                 <SkillDisplay
                   skill="Farming"
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
@@ -175,23 +191,6 @@ const Farmer: NextPage = () => {
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
                 />
               </div>
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                {Object.values(achievements)
-                  .filter((achievement) => achievement.category === "skills")
-                  .map((achievement) => (
-                    <AchievementCard
-                      id={achievement.id}
-                      tag={"achievements"}
-                      key={achievement.id}
-                      title={achievement.name}
-                      description={achievement.description}
-                      sourceURL={achievement.iconURL}
-                      initialChecked={
-                        maxLevelCount >= requirements[achievement.name]
-                      }
-                    />
-                  ))}
-              </div>
             </div>
             {/* Skills Information */}
             {/* Quests Information */}
@@ -200,7 +199,7 @@ const Farmer: NextPage = () => {
                 Quests
               </div>
               <InfoCard
-                title={`${name} has completed ${questsCompleted} quests.`}
+                title={`${name} has completed ${questsCompleted} quest(s).`}
                 Icon={BriefcaseIcon}
               />
               <div className="mt-4 grid grid-cols-2 gap-4">
@@ -231,7 +230,21 @@ const Farmer: NextPage = () => {
                 title={`${name} has found ${stardropsCount} stardrop(s).`}
                 Icon={StarIcon}
               />
-              <div className=" mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5">
+              <div className="mt-4">
+                <AchievementCard
+                  id={34}
+                  tag={"achievements"}
+                  title={"Mystery Of The Stardrops"}
+                  description={"Find every stardrop."}
+                  sourceURL={
+                    "https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg"
+                  }
+                  initialChecked={
+                    stardropsCount >= Object.keys(STARDROPS).length
+                  }
+                />
+              </div>
+              <div className=" mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                 {Object.keys(STARDROPS).map((stardrop) => (
                   <AchievementCard
                     id={stardrop}

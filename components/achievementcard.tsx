@@ -47,16 +47,20 @@ const AchievementCard = ({
   tag,
   size,
 }: Props) => {
+  const [truncate, setTruncate] = useState(true);
   const [checked, setChecked] = useKV<boolean>(
     tag,
     id.toString(),
     initialChecked ?? false
   );
+  const oneClick = useCallback(() => {
+    setTruncate((old) => !old);
+  }, [truncate]);
   const twoClick = useCallback(() => {
     setChecked((old) => !old);
   }, [setChecked]);
 
-  const click = useSingleAndDoubleClick(() => {}, twoClick); // we don't need to do anything on a single click (? i think ?)
+  const click = useSingleAndDoubleClick(oneClick, twoClick); // we don't need to do anything on a single click (? i think ?)
 
   return (
     <div
@@ -76,7 +80,9 @@ const AchievementCard = ({
         <p className="truncate font-medium text-gray-900 dark:text-white">
           {title}
         </p>
-        <p className="truncate text-sm text-gray-400">{description}</p>
+        <p className={"text-sm text-gray-400" + (truncate ? " truncate" : "")}>
+          {description}
+        </p>
       </div>
       {checked !== null && (
         <CheckCircleIcon
