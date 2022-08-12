@@ -47,26 +47,28 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
     ).length;
   }, [checkedItems, bundleName]);
 
-  const bundleFinished = hasItemCount === bundle.itemsRequired;
+  // UI shows not finished if more than 3 are clicked.
+  // Instead of having this be >=, it should be ===
+  // but until we add some type of way to disable adding more items to a bundle
+  // once completed, we'll leave it like this.
+  const bundleFinished = hasItemCount >= bundle.itemsRequired;
 
   return (
     <div
       className={classNames(
-        "flex flex-col items-start rounded-xl border p-2 md:flex-row md:items-center ",
-        bundleFinished
-          ? "border-green-300 light:bg-green-50 dark:bg-[#0E1D14]"
-          : "border-gray-100 bg-white dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+        "flex flex-col items-start space-x-3 rounded-xl border border-solid border-gray-300 bg-white p-2 py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] md:flex-row md:items-center",
+        bundleFinished ? "border-green-300 bg-green-50" : ""
       )}
     >
-      <div className="flex flex-1 items-center">
-        <div className="mt-3 ml-1 mr-4 md:mt-0 md:mr-2">
+      <div className="flex flex-1 items-center space-x-3">
+        <div>
           <img
-            className="h-14 w-14 md:h-7 md:w-7"
+            className="mt-1 h-8 w-8"
             src="https://stardewvalleywiki.com/mediawiki/images/b/b3/Bundle_Green.png"
             alt="wtf"
           />
         </div>
-        <div className="text-xl text-gray-900 dark:text-white md:text-lg">
+        <div className="font-medium text-gray-900 dark:text-white md:text-lg">
           {bundleName} {/*({hasItemCount}/{bundle.itemsRequired})*/}
         </div>
       </div>
