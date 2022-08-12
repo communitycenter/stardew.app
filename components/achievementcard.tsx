@@ -1,20 +1,17 @@
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import Image from "next/image";
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useKV } from "../hooks/useKV";
 
 interface Props {
-  id: number;
+  id: number | string;
   title: string;
   description: string;
   sourceURL: string;
+  tag: string;
+  initialChecked?: boolean;
+  size?: number;
 }
 
 function useSingleAndDoubleClick(
@@ -41,11 +38,19 @@ function useSingleAndDoubleClick(
   return () => setClick((prev) => prev + 1);
 }
 
-const AchievementCard = ({ title, sourceURL, description, id }: Props) => {
+const AchievementCard = ({
+  title,
+  sourceURL,
+  description,
+  id,
+  initialChecked,
+  tag,
+  size,
+}: Props) => {
   const [checked, setChecked] = useKV<boolean>(
-    "achievements",
+    tag,
     id.toString(),
-    false
+    initialChecked ?? false
   );
   const twoClick = useCallback(() => {
     setChecked((old) => !old);
@@ -63,8 +68,8 @@ const AchievementCard = ({ title, sourceURL, description, id }: Props) => {
       <Image
         src={sourceURL}
         alt={title}
-        width={42}
-        height={42}
+        width={size ?? 42}
+        height={size ?? 42}
         className="rounded-sm"
       />
       <div className="min-w-0 flex-1">

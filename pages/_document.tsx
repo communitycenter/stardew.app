@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta
             name="description"
-            content="Keep track of your stardew progression."
+            content="Keep track of your Stardew Valley progression."
           />
           <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -71,7 +71,7 @@ const SidebarLayout = ({
       const moneyEarned = parseMoney(jsonObj);
       const { levels, maxLevelCount } = parseSkills(jsonObj);
       const questsCompleted = parseQuests(jsonObj);
-      const { stardrops } = parseStardrops(jsonObj);
+      const { stardrops, stardropsCount } = parseStardrops(jsonObj);
       const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
         parseMonsters(jsonObj);
 
@@ -87,19 +87,6 @@ const SidebarLayout = ({
         unknownRecipes,
       } = parseCooking(jsonObj);
 
-      // TODO: this probably needs a rewrite at somepoint
-      const achievements: Record<string, boolean> = {};
-      // set the money achievements
-      achievements["0"] = moneyEarned >= 15000; // Greenhorn
-      achievements["1"] = moneyEarned >= 50000; // Cowpoke
-      achievements["2"] = moneyEarned >= 250000; // Homesteader
-      achievements["3"] = moneyEarned >= 1000000; // Millionaire
-      achievements["4"] = moneyEarned >= 10000000; // Legend
-
-      // set the skills achievements
-      achievements["36"] = maxLevelCount >= 1;
-      achievements["37"] = maxLevelCount >= 5;
-
       let response = await fetch("/api/kv", {
         method: "PATCH",
         body: JSON.stringify({
@@ -107,13 +94,11 @@ const SidebarLayout = ({
             name,
             timePlayed,
             farmInfo,
-            money: moneyEarned,
+            moneyEarned,
             questsCompleted,
           },
-          achievements: {
-            ...achievements,
-          },
           stardrops: {
+            count: stardropsCount,
             CF_Fair: stardrops.CF_Fair,
             CF_Fish: stardrops.CF_Fish,
             CF_Mines: stardrops.CF_Mines,
@@ -129,6 +114,7 @@ const SidebarLayout = ({
             foraging: levels["Foraging"],
             mining: levels["Mining"],
             combat: levels["Combat"],
+            maxLevelCount,
           },
           mining: {
             deepestMineLevel,

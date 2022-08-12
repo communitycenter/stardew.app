@@ -9,6 +9,8 @@ import {
   UserIcon,
   CurrencyDollarIcon,
   ChartBarIcon,
+  BriefcaseIcon,
+  StarIcon,
 } from "@heroicons/react/solid";
 
 import Head from "next/head";
@@ -20,13 +22,64 @@ import AchievementCard from "../components/achievementcard";
 import achievements from "../research/processors/data/achievements.json";
 import { useKV } from "../hooks/useKV";
 
+// a mapping of money achievements and their required amount
+const requirements: Record<string, number> = {
+  Greenhorn: 15000, // money needed to be earned
+  Cowpoke: 50000,
+  Homesteader: 250000,
+  Millionaire: 1000000,
+  Legend: 10000000,
+  Gofer: 10, // quests to complete
+  "A Big Help": 40,
+  "Singular Talent": 1,
+  "Master Of The Five Ways": 5,
+};
+
+const STARDROPS = {
+  CF_Fair: {
+    title: "Fair Star",
+    description:
+      "Can be purchased at the Stardew Valley Fair for 2,000 star tokens.",
+  },
+  CF_Fish: {
+    title: "Fishing Star",
+    description:
+      "Received in mail from Willy after completing the Master Angler Achievement.",
+  },
+  CF_Mines: {
+    title: "Mines Star",
+    description: "Obtained from the treasure chest on floor 100 in The Mines.",
+  },
+  CF_Sewer: {
+    title: "Krobus Star",
+    description: "Can be purchased from Krobus for 20,000g in The Sewers.",
+  },
+  CF_Spouse: {
+    title: "Spouse Star",
+    description:
+      "Obtained from spouse after reaching a friendship level of 12.5 hearts.",
+  },
+  CF_Statue: {
+    title: "Secret Woods Star",
+    description:
+      "Obtained from Old Master Cannoli in the Secret Woods after giving him a Sweet Gem Berry.",
+  },
+  museumComplete: {
+    title: "Museum Star",
+    description: "Reward for donating all 95 items to the Museum.",
+  },
+};
+
 const Farmer: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [farmerLevel] = useKV<number>("levels", "player", 0);
+  const [maxLevelCount] = useKV<number>("levels", "maxLevelCount", 0);
   const [name] = useKV<string>("general", "name", "Farmer");
   const [farmInfo] = useKV<string>("general", "farmInfo", "No farm info");
   const [timePlayed] = useKV<string>("general", "timePlayed", "0h 0m");
-  const [money] = useKV<number>("general", "money", 0);
+  const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
+  const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
+  const [stardropsCount] = useKV<number>("stardrops", "stardropsCount", 0);
 
   return (
     <>
@@ -55,7 +108,7 @@ const Farmer: NextPage = () => {
                   <InfoCard title={name} Icon={UserIcon} />
                 </div>
                 <InfoCard title={farmInfo} Icon={HomeIcon} />
-                <InfoCard title={timePlayed} Icon={ClockIcon} />
+                <InfoCard title={`Played for ${timePlayed}`} Icon={ClockIcon} />
               </div>
             </div>
             {/* General Farmer Info */}
@@ -67,7 +120,7 @@ const Farmer: NextPage = () => {
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 <div className="col-span-2 xl:col-span-3">
                   <InfoCard
-                    title={`Earned ${money.toLocaleString()}g in total.`}
+                    title={`Earned ${moneyEarned.toLocaleString()}g in total.`}
                     Icon={CurrencyDollarIcon}
                   />
                 </div>
@@ -76,10 +129,14 @@ const Farmer: NextPage = () => {
                   .map((achievement) => (
                     <AchievementCard
                       id={achievement.id}
+                      tag={"achievements"}
                       key={achievement.id}
                       title={achievement.name}
                       description={achievement.description}
                       sourceURL={achievement.iconURL}
+                      initialChecked={
+                        moneyEarned >= requirements[achievement.name]
+                      }
                     />
                   ))}
               </div>
@@ -119,23 +176,80 @@ const Farmer: NextPage = () => {
                 />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4">
-                <AchievementCard
-                  id={36}
-                  title="Singular Talent"
-                  description="Reach level 10 in a skill."
-                  sourceURL="https://stardewvalleywiki.com/mediawiki/images/6/6f/Achievement_Singular_Talent.jpg"
-                />
-                <AchievementCard
-                  id={37}
-                  title="Master Of The Five Ways"
-                  description="Reach level 10 in every skill."
-                  sourceURL="https://stardewvalleywiki.com/mediawiki/images/4/49/Achievement_Master_Of_The_Five_Ways.jpg"
-                />
+                {Object.values(achievements)
+                  .filter((achievement) => achievement.category === "skills")
+                  .map((achievement) => (
+                    <AchievementCard
+                      id={achievement.id}
+                      tag={"achievements"}
+                      key={achievement.id}
+                      title={achievement.name}
+                      description={achievement.description}
+                      sourceURL={achievement.iconURL}
+                      initialChecked={
+                        maxLevelCount >= requirements[achievement.name]
+                      }
+                    />
+                  ))}
               </div>
             </div>
             {/* Skills Information */}
             {/* Quests Information */}
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Quests
+              </div>
+              <InfoCard
+                title={`${name} has completed ${questsCompleted} quests.`}
+                Icon={BriefcaseIcon}
+              />
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {Object.values(achievements)
+                  .filter((achievement) => achievement.category === "quests")
+                  .map((achievement) => (
+                    <AchievementCard
+                      id={achievement.id}
+                      tag={"achievements"}
+                      key={achievement.id}
+                      title={achievement.name}
+                      description={achievement.description}
+                      sourceURL={achievement.iconURL}
+                      initialChecked={
+                        questsCompleted >= requirements[achievement.name]
+                      }
+                    />
+                  ))}
+              </div>
+            </div>
             {/* Quests Information */}
+            {/* Stardrop Information */}
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Stardrops
+              </div>
+              <InfoCard
+                title={`${name} has found ${stardropsCount} stardrop(s).`}
+                Icon={StarIcon}
+              />
+              <div className=" mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5">
+                {Object.keys(STARDROPS).map((stardrop) => (
+                  <AchievementCard
+                    id={stardrop}
+                    tag={"stardrops"}
+                    key={stardrop}
+                    size={24}
+                    sourceURL={
+                      "https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
+                    }
+                    title={STARDROPS[stardrop as keyof typeof STARDROPS].title}
+                    description={
+                      STARDROPS[stardrop as keyof typeof STARDROPS].description
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Stardrop Information */}
           </div>
         </div>
       </SidebarLayout>
