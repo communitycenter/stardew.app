@@ -19,11 +19,25 @@ async function get(req: NextApiRequest, res: NextApiResponse<Data>) {
     variables.reduce<Record<string, any>>((acc, v) => {
       const [_, tag, key] = v.id.split(";");
       if (key) {
-        acc[tag] = Object.assign(acc[tag] || {}, {
-          [key]: JSON.parse(v.value),
-        });
+        try {
+          acc[tag] = Object.assign(acc[tag] || {}, {
+            [key]: JSON.parse(v.value),
+          });
+        } catch (e) {
+          if (e instanceof SyntaxError) {
+            acc[tag] = Object.assign(acc[tag] || {}, {
+              [key]: v.value,
+            });
+          }
+        }
       } else {
-        acc[tag] = JSON.parse(v.value);
+        try {
+          acc[tag] = JSON.parse(v.value);
+        } catch (e) {
+          if (e instanceof SyntaxError) {
+            acc[tag] = v.value;
+          }
+        }
       }
       return acc;
     }, {})
@@ -46,6 +60,8 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
     },
     {}
   );
+
+  console.log(flatBody);
   const upserts = Object.keys(flatBody).map((key) => {
     return {
       where: {
@@ -63,11 +79,15 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
     };
   });
 
-  console.log(upserts);
+  // console.log(upserts);
 
-  await prisma.$transaction(
-    upserts.map((opts) => prisma.trackedVariables.upsert(opts))
-  );
+  try {
+    await prisma.$transaction(
+      upserts.map((opts) => prisma.trackedVariables.upsert(opts))
+    );
+  } catch (e) {
+    console.log(e);
+  }
 
   res.status(200).send(upserts);
 }
