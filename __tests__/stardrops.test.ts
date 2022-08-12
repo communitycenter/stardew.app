@@ -18,25 +18,42 @@ const STARDROPS = {
 
 describe("Parse Stardrops", () => {
   it("Parses Stardrops Collected and Returns a list of needed stardrops to collect.", () => {
-    const { stardropsCount, stardropsNeeded } = parseStardrops(year3);
+    const { stardropsCount, stardrops } = parseStardrops(year3);
     expect(stardropsCount).toBe(5);
-    expect(stardropsNeeded).toEqual([
-      STARDROPS["CF_Fish"],
-      STARDROPS["museumComplete"],
-    ]);
+    expect(stardrops).toEqual({
+      CF_Fair: true,
+      CF_Fish: false,
+      CF_Mines: true,
+      CF_Sewer: true,
+      CF_Spouse: true,
+      CF_Statue: true,
+      museumComplete: false,
+    });
 
-    const {
-      stardropsCount: stardropsCount2,
-      stardropsNeeded: stardropsNeeded2,
-    } = parseStardrops(new_file);
+    const { stardropsCount: stardropsCount2, stardrops: stardrops2 } =
+      parseStardrops(new_file);
     expect(stardropsCount2).toBe(0);
-    expect(stardropsNeeded2).toEqual(Object.values(STARDROPS));
+    expect(stardrops2).toEqual({
+      CF_Fair: false,
+      CF_Fish: false,
+      CF_Mines: false,
+      CF_Sewer: false,
+      CF_Spouse: false,
+      CF_Statue: false,
+      museumComplete: false,
+    });
 
-    const {
-      stardropsCount: stardropsCount3,
-      stardropsNeeded: stardropsNeeded3,
-    } = parseStardrops(max_file);
+    const { stardropsCount: stardropsCount3, stardrops: stardrops3 } =
+      parseStardrops(max_file);
     expect(stardropsCount3).toBe(7);
-    expect(stardropsNeeded3).toBeUndefined();
+    expect(stardrops3).toEqual({
+      CF_Fair: true,
+      CF_Fish: true,
+      CF_Mines: true,
+      CF_Sewer: true,
+      CF_Spouse: true,
+      CF_Statue: true,
+      museumComplete: true,
+    });
   });
 });
