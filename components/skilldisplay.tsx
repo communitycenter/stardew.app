@@ -1,12 +1,13 @@
 import Image from "next/image";
+import { useKV } from "../hooks/useKV";
 
 interface Props {
   skill: string;
-  level: number;
   iconURL: string;
 }
 
-const SkillDisplay = ({ skill, level, iconURL }: Props) => {
+const SkillDisplay = ({ skill, iconURL }: Props) => {
+  const [level, setLevel] = useKV("skills", skill.toLowerCase(), 0);
   return (
     <div className="flex items-center space-x-3 truncate rounded-lg border border-gray-300 bg-white py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
       <Image

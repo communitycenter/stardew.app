@@ -8,12 +8,13 @@ import {
   useState,
 } from "react";
 
+import { useKV } from "../hooks/useKV";
+
 interface Props {
+  id: number;
   title: string;
   description: string;
   sourceURL: string;
-  setChecked: Dispatch<SetStateAction<boolean | null>>;
-  checked: boolean | null;
 }
 
 function useSingleAndDoubleClick(
@@ -40,13 +41,12 @@ function useSingleAndDoubleClick(
   return () => setClick((prev) => prev + 1);
 }
 
-const AchievementCard = ({
-  title,
-  sourceURL,
-  checked,
-  description,
-  setChecked,
-}: Props) => {
+const AchievementCard = ({ title, sourceURL, description, id }: Props) => {
+  const [checked, setChecked] = useKV<boolean>(
+    "achievements",
+    id.toString(),
+    false
+  );
   const twoClick = useCallback(() => {
     setChecked((old) => !old);
   }, [setChecked]);
@@ -68,7 +68,9 @@ const AchievementCard = ({
         className="rounded-sm"
       />
       <div className="min-w-0 flex-1">
-        <p className="font-medium text-gray-900 dark:text-white truncate">{title}</p>
+        <p className="truncate font-medium text-gray-900 dark:text-white">
+          {title}
+        </p>
         <p className="truncate text-sm text-gray-400">{description}</p>
       </div>
       {checked !== null && (

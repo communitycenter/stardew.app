@@ -4,7 +4,7 @@ import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import { FaUserCircle, FaFish, FaHammer } from "react-icons/fa";
-import { BiMenu } from "react-icons/bi";
+import { BiMenu, BiMessageSquareX } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
@@ -52,7 +52,7 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
-  function handleFile(event: ChangeEvent<HTMLInputElement>) {
+  async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     const file = event.target!.files![0];
     const reader = new FileReader();
@@ -61,17 +61,17 @@ const SidebarLayout = ({
     // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
 
-    reader.onload = function (event) {
+    reader.onload = async function (event) {
       // console.log(event.target?.result);
       const parser = new XMLParser({ ignoreAttributes: false });
       const jsonObj = parser.parse(event.target?.result as string);
-      console.log(JSON.stringify(jsonObj, null, 2));
 
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
+
       const moneyEarned = parseMoney(jsonObj);
       const { levels, maxLevelCount } = parseSkills(jsonObj);
       const questsCompleted = parseQuests(jsonObj);
-      const { stardropsCount, stardropsNeeded } = parseStardrops(jsonObj);
+      const { stardrops } = parseStardrops(jsonObj);
       const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
         parseMonsters(jsonObj);
 
@@ -86,6 +86,70 @@ const SidebarLayout = ({
         uncookedRecipes,
         unknownRecipes,
       } = parseCooking(jsonObj);
+
+      // TODO: this probably needs a rewrite at somepoint
+      const achievements: Record<string, boolean> = {};
+      // set the money achievements
+      achievements["0"] = moneyEarned >= 15000; // Greenhorn
+      achievements["1"] = moneyEarned >= 50000; // Cowpoke
+      achievements["2"] = moneyEarned >= 250000; // Homesteader
+      achievements["3"] = moneyEarned >= 1000000; // Millionaire
+      achievements["4"] = moneyEarned >= 10000000; // Legend
+
+      // set the skills achievements
+      achievements["36"] = maxLevelCount >= 1;
+      achievements["37"] = maxLevelCount >= 5;
+
+      let response = await fetch("/api/kv", {
+        method: "PATCH",
+        body: JSON.stringify({
+          general: {
+            name,
+            timePlayed,
+            farmInfo,
+            money: moneyEarned,
+            questsCompleted,
+          },
+          achievements: {
+            ...achievements,
+          },
+          stardrops: {
+            CF_Fair: stardrops.CF_Fair,
+            CF_Fish: stardrops.CF_Fish,
+            CF_Mines: stardrops.CF_Mines,
+            CF_Sewer: stardrops.CF_Sewer,
+            CF_Spouse: stardrops.CF_Spouse,
+            CF_Statue: stardrops.CF_Statue,
+            museumComplete: stardrops.museumComplete,
+          },
+          levels: {
+            player: levels["Player"],
+            farming: levels["Farming"],
+            fishing: levels["Fishing"],
+            foraging: levels["Foraging"],
+            mining: levels["Mining"],
+            combat: levels["Combat"],
+          },
+          mining: {
+            deepestMineLevel,
+            deepestSkullCavernLevel, // TODO: map through monstersKilled and add entry into DB for each
+          },
+          family: {
+            houseUpgradeLevel,
+            spouse: spouse ? spouse : "No spouse",
+            childrenLength: children ? children.length : 0,
+          },
+          social: {
+            fiveHeartCount,
+            tenHeartCount, // TODO: map through relationships and add entry into DB for each
+          },
+          cooking: {
+            allRecipesCount,
+            cookedRecipesCount,
+            knownRecipesCount, // TODO: map through uncookedRecipes and unknownRecipes and add entry into DB for each
+          },
+        }),
+      });
     };
 
     reader.readAsText(file!);

@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
-import { useLocalStorageState } from "../hooks/use-local-storage";
 import {
   HomeIcon,
   ClockIcon,
@@ -19,21 +18,15 @@ import SkillDisplay from "../components/skilldisplay";
 import AchievementCard from "../components/achievementcard";
 
 import achievements from "../research/processors/data/achievements.json";
-
-const initialCheckedAchievements = Object.fromEntries(
-  Object.values(achievements).map((achievement) => {
-    return [achievement.id, null];
-  })
-) as Record<number, boolean | null>;
+import { useKV } from "../hooks/useKV";
 
 const Farmer: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [checkedAchievements, setCheckedAchievements] = useLocalStorageState(
-    "achievements",
-    initialCheckedAchievements
-  );
-
-  //todo: get data from local storage or fetch from db if we're doing auth.
+  const [farmerLevel] = useKV<number>("levels", "player", 0);
+  const [name] = useKV<string>("general", "name", "Farmer");
+  const [farmInfo] = useKV<string>("general", "farmInfo", "No farm info");
+  const [timePlayed] = useKV<string>("general", "timePlayed", "0h 0m");
+  const [money] = useKV<number>("general", "money", 0);
 
   return (
     <>
@@ -59,13 +52,10 @@ const Farmer: NextPage = () => {
               </div>
               <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
                 <div className="col-span-2 xl:col-span-1">
-                  <InfoCard title="clem" Icon={UserIcon} />
+                  <InfoCard title={name} Icon={UserIcon} />
                 </div>
-                <InfoCard
-                  title="No Onion Farm (Four Corners)"
-                  Icon={HomeIcon}
-                />
-                <InfoCard title="Played for 74h 5m" Icon={ClockIcon} />
+                <InfoCard title={farmInfo} Icon={HomeIcon} />
+                <InfoCard title={timePlayed} Icon={ClockIcon} />
               </div>
             </div>
             {/* General Farmer Info */}
@@ -77,7 +67,7 @@ const Farmer: NextPage = () => {
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 <div className="col-span-2 xl:col-span-3">
                   <InfoCard
-                    title="Earned 282,847g in total."
+                    title={`Earned ${money.toLocaleString()}g in total.`}
                     Icon={CurrencyDollarIcon}
                   />
                 </div>
@@ -85,22 +75,11 @@ const Farmer: NextPage = () => {
                   .filter((achievement) => achievement.id <= 4)
                   .map((achievement) => (
                     <AchievementCard
+                      id={achievement.id}
                       key={achievement.id}
                       title={achievement.name}
                       description={achievement.description}
                       sourceURL={achievement.iconURL}
-                      checked={checkedAchievements[achievement.id]}
-                      setChecked={(value) => {
-                        setCheckedAchievements((old) => {
-                          return {
-                            ...old,
-                            [achievement.id]:
-                              value instanceof Function
-                                ? value(old[achievement.id])
-                                : value,
-                          };
-                        });
-                      }}
                     />
                   ))}
               </div>
@@ -114,50 +93,43 @@ const Farmer: NextPage = () => {
               <div className="grid grid-cols-2 gap-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5">
                 <div className="col-span-2 lg:col-span-3 xl:col-span-5 2xl:col-span-5">
                   <InfoCard
-                    title="clem is farmer level 23."
+                    title={`${name} is level ${farmerLevel}.`}
                     Icon={ChartBarIcon}
                   />
                 </div>
                 <SkillDisplay
                   skill="Farming"
-                  level={10}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
                 />
                 <SkillDisplay
                   skill="Fishing"
-                  level={9}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
                 />
                 <SkillDisplay
                   skill="Foraging"
-                  level={10}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
                 />
                 <SkillDisplay
                   skill="Mining"
-                  level={10}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
                 />
                 <SkillDisplay
                   skill="Combat"
-                  level={10}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
                 />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <AchievementCard
+                  id={36}
                   title="Singular Talent"
                   description="Reach level 10 in a skill."
                   sourceURL="https://stardewvalleywiki.com/mediawiki/images/6/6f/Achievement_Singular_Talent.jpg"
-                  checked={false}
-                  setChecked={() => {}}
                 />
                 <AchievementCard
+                  id={37}
                   title="Master Of The Five Ways"
                   description="Reach level 10 in every skill."
                   sourceURL="https://stardewvalleywiki.com/mediawiki/images/4/49/Achievement_Master_Of_The_Five_Ways.jpg"
-                  checked={false}
-                  setChecked={() => {}}
                 />
               </div>
             </div>
