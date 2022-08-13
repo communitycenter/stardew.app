@@ -19,6 +19,7 @@ import {
   parseFamily,
   parseSocial,
   parseCooking,
+  parseFishing,
 } from "../utils";
 
 function classNames(...classes: string[]) {
@@ -63,9 +64,12 @@ const SidebarLayout = ({
 
     reader.onload = async function (event) {
       // console.log(event.target?.result);
+      console.log("Parsing XML...");
+      const start = performance.now();
       const parser = new XMLParser({ ignoreAttributes: false });
       const jsonObj = parser.parse(event.target?.result as string);
-
+      console.log("Parsed XML!");
+      console.log("Parsing information...");
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
 
       const moneyEarned = parseMoney(jsonObj);
@@ -86,6 +90,21 @@ const SidebarLayout = ({
         uncookedRecipes,
         unknownRecipes,
       } = parseCooking(jsonObj);
+
+      const {
+        fishCaught: allFish,
+        totalFishCaught,
+        uniqueCaught,
+      } = parseFishing(jsonObj);
+      console.log("Parsed information!");
+      console.log("Uploading values to DB");
+      // TODO: probably a cleaner way to do this with a filter or something.
+      let fishCaught = {} as any;
+      for (const fish_id in allFish) {
+        if (allFish[fish_id] === true) {
+          fishCaught[fish_id] = true;
+        }
+      }
 
       let response = await fetch("/api/kv", {
         method: "PATCH",
@@ -116,6 +135,10 @@ const SidebarLayout = ({
             combat: levels["Combat"],
             maxLevelCount,
           },
+          fish: {
+            totalFishCaught,
+            uniqueCaught,
+          },
           mining: {
             deepestMineLevel,
             deepestSkullCavernLevel, // TODO: map through monstersKilled and add entry into DB for each
@@ -136,6 +159,18 @@ const SidebarLayout = ({
           },
         }),
       });
+      const start2 = performance.now();
+      console.log("Completed part 1 in", performance.now() - start, "ms");
+      // split the data pushes into multiple parts since it timeouts if it's too big
+      response = await fetch("/api/kv", {
+        method: "PATCH",
+        body: JSON.stringify({
+          fish: { ...fishCaught },
+        }),
+      });
+      const elapsed = performance.now() - start;
+      console.log("Completed part 2 in", performance.now() - start2, "ms");
+      console.log("Elapsed", elapsed, "ms");
     };
 
     reader.readAsText(file!);

@@ -22,7 +22,7 @@ import AchievementCard from "../components/achievementcard";
 import achievements from "../research/processors/data/achievements.json";
 import { useKV } from "../hooks/useKV";
 
-// a mapping of money achievements and their required amount
+// a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
   Greenhorn: 15000, // money needed to be earned
   Cowpoke: 50000,

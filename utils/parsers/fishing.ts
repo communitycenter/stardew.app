@@ -4,10 +4,11 @@ type fishID = string;
 
 interface ReturnType {
   totalFishCaught: number;
-  fishCaught: [key: fishID, value: number];
+  uniqueCaught: number;
+  fishCaught: Record<fishID, boolean>;
 }
 
-export function parseFishing(json: any) {
+export function parseFishing(json: any): ReturnType {
   /* 
     Achievements Relevant:
       - Mother Catch (catch 100 total fish).
@@ -16,6 +17,7 @@ export function parseFishing(json: any) {
       - Master Angler (catch every type of fish).
   */
   const totalFishCaught = json.SaveGame.player.stats.fishCaught;
+  let uniqueCaught = 0;
 
   // get a list of all the fish possible and initialize it to all false for caught
   const allFish: Record<fishID, boolean> = {};
@@ -27,6 +29,7 @@ export function parseFishing(json: any) {
   if (totalFishCaught === 0) {
     return {
       totalFishCaught,
+      uniqueCaught,
       fishCaught: allFish,
     };
   }
@@ -39,14 +42,26 @@ export function parseFishing(json: any) {
       let itemID = fish.key.int.toString() as fishID;
 
       // some things you can catch but aren't fish or don't count towards the achievement
-      // like the fish you catch on Mr. Qi's quest
+      // like the fish you catch on Mr. Qi's quest or trash
       if (!allFish.hasOwnProperty(itemID)) continue;
       allFish[itemID] = true;
+      uniqueCaught++;
     }
+  } else {
+    // only one type caught
+    let fish = json.SaveGame.player.fishCaught.item;
+    let itemID = fish.key.int.toString() as fishID;
+
+    if (!allFish.hasOwnProperty(itemID))
+      return { totalFishCaught, uniqueCaught, fishCaught: allFish };
+
+    allFish[itemID] = true;
+    uniqueCaught++;
   }
 
   return {
     totalFishCaught,
+    uniqueCaught,
     fishCaught: allFish,
   };
 }
