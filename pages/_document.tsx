@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
             name="description"
             content="Keep track of your Stardew Valley progression."
           />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/icon.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com/" />
           <link

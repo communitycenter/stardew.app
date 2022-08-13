@@ -17,6 +17,8 @@ import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
+import icon from "../public/icon.png";
+
 import {
   parseMoney,
   parseGeneral,
@@ -56,6 +58,7 @@ interface LayoutProps {
 import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
 import { UploadIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
 const SidebarLayout = ({
   children,
