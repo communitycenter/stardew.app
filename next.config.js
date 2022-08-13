@@ -6,6 +6,6 @@ const nextConfig = {
 module.exports = {
   ...nextConfig,
   images: {
-    domains: ["stardewvalleywiki.com"],
+    domains: ["stardewvalleywiki.com", "cdn.discordapp.com"],
   },
 };

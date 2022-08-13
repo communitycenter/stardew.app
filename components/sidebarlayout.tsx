@@ -25,8 +25,6 @@ import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
-import icon from "../public/icon.png";
-
 import {
   parseMoney,
   parseGeneral,
@@ -65,7 +63,6 @@ interface LayoutProps {
 
 import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
-import { UploadIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { getCookie } from "cookies-next";
 
@@ -403,13 +400,17 @@ const SidebarLayout = ({
                         "group flex items-center rounded-md py-4 px-3 text-base font-medium"
                     )}
                   >
-                    <FaUserCircle
+                    <Image
                       className={classNames(
-                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
                       )}
                       aria-hidden="true"
+                      src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
+                      alt="User avatar"
+                      height={24}
+                      width={24}
                     />
-                    <p className="dark:text-white">{user.discord_name}</p>
+                    <p className="ml-2 dark:text-white">{user.discord_name}</p>
                   </a>
                 )}
               </div>
