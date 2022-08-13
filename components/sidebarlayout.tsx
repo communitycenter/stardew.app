@@ -3,11 +3,21 @@ import { Dialog, Transition } from "@headlessui/react";
 import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
-import { FaUserCircle, FaFish, FaHammer } from "react-icons/fa";
-import { BiMenu, BiMessageSquareX } from "react-icons/bi";
+import {
+  FaUserCircle,
+  FaFish,
+  FaHammer,
+  FaFileImport,
+  FaFileExport,
+  FaGithub,
+  FaDiscord,
+} from "react-icons/fa";
+import { BiImport, BiMenu, BiMessageSquareX } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
+
+import icon from "../public/icon.png";
 
 import {
   parseMoney,
@@ -46,6 +56,9 @@ interface LayoutProps {
 }
 
 import { XMLParser } from "fast-xml-parser";
+import Link from "next/link";
+import { UploadIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
 const SidebarLayout = ({
   children,
@@ -253,22 +266,22 @@ const SidebarLayout = ({
                   <div className="mx-4 mt-4 border border-gray-200" />
                   <nav className="mt-4 space-y-1 px-2">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.name === activeTab
-                            ? "bg-gray-100 text-black"
-                            : "text-black hover:bg-gray-50 hover:text-gray-900",
-                          "group flex items-center rounded-md py-4 px-5 text-base font-medium"
-                        )}
-                      >
-                        <item.icon
-                          className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
+                      <Link key="{item.name}" href={item.href}>
+                        <a
+                          className={classNames(
+                            item.name === activeTab
+                              ? "bg-gray-100 text-black"
+                              : "text-black hover:bg-gray-50 hover:text-gray-900",
+                            "group flex items-center rounded-md py-4 px-5 text-base font-medium"
+                          )}
+                        >
+                          <item.icon
+                            className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
+                            aria-hidden="true"
+                          />
+                          {item.name}
+                        </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
@@ -282,52 +295,98 @@ const SidebarLayout = ({
       {/* Desktop sidebar */}
       <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#111111]">
-          <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+          <div className="soverflow-y-auto flex flex-1 flex-col pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center justify-between px-4">
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* File Input, not sure how to process file yet but it lets you upload a file */}
-              <div>
-                <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
-                  <FiUpload // Desktop version of the upload icon
-                    className="h-5 w-5 text-black dark:text-white"
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleFile(e)
-                    }
-                  />
-                </label>
+              <div className="flex space-x-2">
+                <Link href="https://discord.gg/YBNGCgCxG5">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                    <FaDiscord
+                      className="h-5 w-5 text-black dark:text-white"
+                      aria-hidden="true"
+                    />
+                  </label>
+                </Link>
+                <Link href="https://github.com/stardewapp">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                    <FaGithub
+                      className="h-5 w-5 text-black dark:text-white"
+                      aria-hidden="true"
+                    />
+                  </label>
+                </Link>
               </div>
               {/* end file input section */}
             </div>
             <div className="mx-4 mt-4 border border-gray-200 dark:border-[#2a2a2a]" />
             <nav className="mt-4 flex-1 space-y-2 bg-white px-2 dark:bg-[#111111] ">
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.name === activeTab
-                      ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
-                      : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
-                    "group flex items-center rounded-md py-4 px-5 text-base font-medium"
-                  )}
-                >
-                  <item.icon
+                <Link key={item.name} href={item.href}>
+                  <a
                     className={classNames(
                       item.name === activeTab
-                        ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                        ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                        : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
+                      "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                     )}
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
+                  >
+                    <item.icon
+                      className={classNames(
+                        item.name === activeTab
+                          ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                      )}
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </a>
+                </Link>
               ))}
             </nav>
+            <div className="mx-2 flex space-x-2">
+              <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
+                <Link href="/oauth">
+                  <a
+                    className={classNames(
+                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
+                    )}
+                  >
+                    <FaUserCircle
+                      className={classNames(
+                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                    />
+                    Login
+                  </a>
+                </Link>
+              </div>
+              <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
+                <a
+                  className={classNames(
+                    "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                      "group flex items-center rounded-md py-4  px-5 text-base font-medium"
+                  )}
+                >
+                  <BiImport
+                    className={classNames(
+                      "h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                    )}
+                    aria-hidden="true"
+                  >
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleFile(e)
+                      }
+                    ></input>
+                  </BiImport>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

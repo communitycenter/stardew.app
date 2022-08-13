@@ -105,6 +105,13 @@ export default async function handler(
       expires: new Date(token.expires * 1000),
     });
 
+    setCookie("discord_user", JSON.stringify(discordUserData), {
+      req,
+      res,
+      domain: "localhost",
+      expires: new Date(token.expires * 1000),
+    });
+
     res.redirect("/fishing");
   } catch (e: any) {
     res.status(500).send(e.message);
