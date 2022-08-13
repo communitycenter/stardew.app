@@ -84,7 +84,11 @@ const SidebarLayout = ({
   //   }
   // }, []);
 
-  const [user, setUser] = useState<{ discord_name: string } | null>(null);
+  const [user, setUser] = useState<{
+    discord_name: string;
+    discord_id: string;
+    discord_avatar: string;
+  } | null>(null);
   useEffect(() => {
     try {
       const cookie = getCookie("discord_user");
