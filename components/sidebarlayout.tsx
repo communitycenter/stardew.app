@@ -3,8 +3,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
-import { FaUserCircle, FaFish, FaHammer } from "react-icons/fa";
-import { BiMenu, BiMessageSquareX } from "react-icons/bi";
+import {
+  FaUserCircle,
+  FaFish,
+  FaHammer,
+  FaFileImport,
+  FaFileExport,
+} from "react-icons/fa";
+import { BiImport, BiMenu, BiMessageSquareX } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
@@ -47,6 +53,7 @@ interface LayoutProps {
 
 import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
+import { UploadIcon } from "@heroicons/react/outline";
 
 const SidebarLayout = ({
   children,
@@ -330,6 +337,49 @@ const SidebarLayout = ({
                 </Link>
               ))}
             </nav>
+            <div className="mx-2 flex space-x-2">
+              <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
+                <Link href="/oauth">
+                  <a
+                    className={classNames(
+                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
+                    )}
+                  >
+                    <FaUserCircle
+                      className={classNames(
+                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                    />
+                    Login
+                  </a>
+                </Link>
+              </div>
+              <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
+                <a
+                  className={classNames(
+                    "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                      "group flex items-center rounded-md py-4  px-5 text-base font-medium"
+                  )}
+                >
+                  <FaFileExport
+                    className={classNames(
+                      "h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                    )}
+                    aria-hidden="true"
+                  >
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleFile(e)
+                      }
+                    ></input>
+                  </FaFileExport>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
