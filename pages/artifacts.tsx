@@ -16,13 +16,6 @@ import { FilterIcon } from "@heroicons/react/outline";
 import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
-// a mapping of achievements and their requirements
-const requirements: Record<string, number> = {
-  Fisherman: 10,
-  "Ol' Mariner": 24,
-  "Master Angler": 67,
-};
-
 const Artifacts: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [totalArtifactsFound, setTotalArtifactsFound] = useKV(
@@ -125,12 +118,6 @@ const Artifacts: NextPage = () => {
           </div>
         </div>
       </SidebarLayout>
-
-      {/* <FishSlideOver
-        isOpen={showFish}
-        selectedFish={selectedFish}
-        setOpen={setShowFish}
-      /> */}
     </>
   );
 };
