@@ -346,7 +346,7 @@ const SidebarLayout = ({
             </nav>
             <div className="mx-2 flex space-x-2">
               <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                <Link href="/oauth">
+                <Link href="/api/oauth">
                   <a
                     className={classNames(
                       "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
@@ -359,7 +359,7 @@ const SidebarLayout = ({
                       )}
                       aria-hidden="true"
                     />
-                    Login
+                    <p className="dark:text-white">Login</p>
                   </a>
                 </Link>
               </div>
