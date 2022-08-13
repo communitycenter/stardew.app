@@ -379,7 +379,20 @@ const SidebarLayout = ({
                     </a>
                   </Link>
                 ) : (
-                  <span>{user.discord_name}</span>
+                  <a
+                    className={classNames(
+                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
+                    )}
+                  >
+                    <FaUserCircle
+                      className={classNames(
+                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                    />
+                    <p className="dark:text-white">{user.discord_name}</p>
+                  </a>
                 )}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
