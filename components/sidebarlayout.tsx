@@ -1,4 +1,10 @@
-import { Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
+import {
+  Fragment,
+  Dispatch,
+  SetStateAction,
+  ChangeEvent,
+  useMemo,
+} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
@@ -59,6 +65,7 @@ import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
 import { UploadIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import { getCookie } from "cookies-next";
 
 const SidebarLayout = ({
   children,
@@ -66,6 +73,14 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
+  const user = useMemo(() => {
+    try {
+      const cookie = getCookie("discord_user");
+      return cookie ? JSON.parse(cookie as string) : null;
+    } catch (e) {
+      return null;
+    }
+  }, []);
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     const file = event.target!.files![0];
@@ -346,22 +361,26 @@ const SidebarLayout = ({
             </nav>
             <div className="mx-2 flex space-x-2">
               <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                <Link href="/api/oauth">
-                  <a
-                    className={classNames(
-                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
-                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
-                    )}
-                  >
-                    <FaUserCircle
+                {!user ? (
+                  <Link href="/api/oauth">
+                    <a
                       className={classNames(
-                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
+                          "group flex items-center rounded-md py-4 px-3 text-base font-medium"
                       )}
-                      aria-hidden="true"
-                    />
-                    <p className="dark:text-white">Login</p>
-                  </a>
-                </Link>
+                    >
+                      <FaUserCircle
+                        className={classNames(
+                          "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        )}
+                        aria-hidden="true"
+                      />
+                      <p className="dark:text-white">Login</p>
+                    </a>
+                  </Link>
+                ) : (
+                  <span>{user.discord_name}</span>
+                )}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
                 <a
