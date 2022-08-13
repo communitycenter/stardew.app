@@ -4,6 +4,8 @@ import {
   SetStateAction,
   ChangeEvent,
   useMemo,
+  useEffect,
+  useState,
 } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
@@ -73,14 +75,26 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
-  const user = useMemo(() => {
+  // const user = useMemo(() => {
+  //   try {
+  //     const cookie = getCookie("discord_user");
+  //     return cookie ? JSON.parse(cookie as string) : null;
+  //   } catch (e) {
+  //     return null;
+  //   }
+  // }, []);
+
+  const [user, setUser] = useState<{ discord_name: string } | null>(null);
+  useEffect(() => {
     try {
       const cookie = getCookie("discord_user");
-      return cookie ? JSON.parse(cookie as string) : null;
+      if (!cookie) setUser(null);
+      setUser(JSON.parse(cookie as string));
     } catch (e) {
-      return null;
+      setUser(null);
     }
-  }, []);
+  }, [user]);
+
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     const file = event.target!.files![0];
