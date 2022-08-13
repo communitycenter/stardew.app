@@ -368,7 +368,7 @@ const SidebarLayout = ({
                       "group flex items-center rounded-md py-4  px-5 text-base font-medium"
                   )}
                 >
-                  <FaFileExport
+                  <BiImport
                     className={classNames(
                       "h-5 w-5 flex-shrink-0 text-black dark:text-white"
                     )}
@@ -381,7 +381,7 @@ const SidebarLayout = ({
                         handleFile(e)
                       }
                     ></input>
-                  </FaFileExport>
+                  </BiImport>
                 </a>
               </div>
             </div>
