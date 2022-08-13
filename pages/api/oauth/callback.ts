@@ -105,7 +105,7 @@ export default async function handler(
       expires: new Date(token.expires * 1000),
     });
 
-    setCookie("discord_user", JSON.stringify(discordUserData), {
+    setCookie("discord_user", JSON.stringify({ discord_id: discordUserData.id, discord_name: discordUserData.username, discord_avatar: discordUserData.avatar }), {
       req,
       res,
       domain: "localhost",

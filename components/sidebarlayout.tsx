@@ -1,4 +1,4 @@
-import { Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
+import { Fragment, Dispatch, SetStateAction, ChangeEvent, useMemo } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
@@ -59,6 +59,7 @@ import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
 import { UploadIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import { getCookie } from "cookies-next";
 
 const SidebarLayout = ({
   children,
@@ -66,6 +67,14 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
+  const user = useMemo(() => {
+    try {
+      const cookie = getCookie("discord_user")
+      return cookie ? JSON.parse(cookie as string) : null
+    } catch(e) {
+      return null
+    }
+  }, []);
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     const file = event.target!.files![0];
@@ -346,7 +355,7 @@ const SidebarLayout = ({
             </nav>
             <div className="mx-2 flex space-x-2">
               <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                <Link href="/oauth">
+                {!user ? <Link href="/api/oauth">
                   <a
                     className={classNames(
                       "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
@@ -361,7 +370,7 @@ const SidebarLayout = ({
                     />
                     Login
                   </a>
-                </Link>
+                </Link> : <span>{user.discord_name}</span>}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
                 <a
