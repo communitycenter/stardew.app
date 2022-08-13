@@ -46,6 +46,7 @@ interface LayoutProps {
 }
 
 import { XMLParser } from "fast-xml-parser";
+import Link from "next/link";
 
 const SidebarLayout = ({
   children,
@@ -254,22 +255,22 @@ const SidebarLayout = ({
                   <div className="mx-4 mt-4 border border-gray-200" />
                   <nav className="mt-4 space-y-1 px-2">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.name === activeTab
-                            ? "bg-gray-100 text-black"
-                            : "text-black hover:bg-gray-50 hover:text-gray-900",
-                          "group flex items-center rounded-md py-4 px-5 text-base font-medium"
-                        )}
-                      >
-                        <item.icon
-                          className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
+                      <Link key="{item.name}" href={item.href}>
+                        <a
+                          className={classNames(
+                            item.name === activeTab
+                              ? "bg-gray-100 text-black"
+                              : "text-black hover:bg-gray-50 hover:text-gray-900",
+                            "group flex items-center rounded-md py-4 px-5 text-base font-medium"
+                          )}
+                        >
+                          <item.icon
+                            className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
+                            aria-hidden="true"
+                          />
+                          {item.name}
+                        </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
@@ -307,26 +308,26 @@ const SidebarLayout = ({
             <div className="mx-4 mt-4 border border-gray-200 dark:border-[#2a2a2a]" />
             <nav className="mt-4 flex-1 space-y-2 bg-white px-2 dark:bg-[#111111] ">
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.name === activeTab
-                      ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
-                      : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
-                    "group flex items-center rounded-md py-4 px-5 text-base font-medium"
-                  )}
-                >
-                  <item.icon
+                <Link key={item.name} href={item.href}>
+                  <a
                     className={classNames(
                       item.name === activeTab
-                        ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                        ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                        : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
+                      "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                     )}
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
+                  >
+                    <item.icon
+                      className={classNames(
+                        item.name === activeTab
+                          ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                      )}
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </a>
+                </Link>
               ))}
             </nav>
           </div>
