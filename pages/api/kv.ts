@@ -70,21 +70,23 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
       value: flatBody[key],
     };
   });
-  
-  const chunks = []
-  for (let i = 0; i < transactions.length; i += 50) {
-    chunks.push(transactions.slice(i, i + 50))
+
+  const chunks = [];
+  for (let i = 0; i < transactions.length; i += 200) {
+    chunks.push(transactions.slice(i, i + 200));
   }
 
   try {
     await Promise.all(
-      chunks.map((chunk) => 
+      chunks.map((chunk) =>
         prisma.$transaction([
-          prisma.trackedVariables.deleteMany({ where: { id: { in: chunk.map(row => row.id) } } }),
-          prisma.trackedVariables.createMany({ data: chunk })
+          prisma.trackedVariables.deleteMany({
+            where: { id: { in: chunk.map((row) => row.id) } },
+          }),
+          prisma.trackedVariables.createMany({ data: chunk }),
         ])
       )
-    )
+    );
   } catch (e) {
     console.log(e);
   }

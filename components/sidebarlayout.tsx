@@ -68,21 +68,23 @@ const SidebarLayout = ({
       const start = performance.now();
       const parser = new XMLParser({ ignoreAttributes: false });
       const jsonObj = parser.parse(event.target?.result as string);
-      console.log("Parsed XML!");
+      console.log(
+        "Parsed XML in",
+        (performance.now() - start).toFixed(3),
+        "ms"
+      );
+
       console.log("Parsing information...");
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
-
       const moneyEarned = parseMoney(jsonObj);
       const { levels, maxLevelCount } = parseSkills(jsonObj);
       const questsCompleted = parseQuests(jsonObj);
       const { stardrops, stardropsCount } = parseStardrops(jsonObj);
       const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
         parseMonsters(jsonObj);
-
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       const { fiveHeartCount, tenHeartCount, relationships } =
         parseSocial(jsonObj);
-
       const {
         allRecipesCount,
         cookedRecipesCount,
@@ -90,13 +92,13 @@ const SidebarLayout = ({
         uncookedRecipes,
         unknownRecipes,
       } = parseCooking(jsonObj);
-
       const {
         fishCaught: allFish,
         totalFishCaught,
         uniqueCaught,
       } = parseFishing(jsonObj);
       console.log("Parsed information!");
+
       console.log("Uploading values to DB");
       // TODO: probably a cleaner way to do this with a filter or something.
       let fishCaught = {} as any;
@@ -105,7 +107,7 @@ const SidebarLayout = ({
           fishCaught[fish_id] = true;
         }
       }
-
+      const dbstart = performance.now();
       let response = await fetch("/api/kv", {
         method: "PATCH",
         body: JSON.stringify({
@@ -138,6 +140,7 @@ const SidebarLayout = ({
           fish: {
             totalFishCaught,
             uniqueCaught,
+            ...fishCaught,
           },
           mining: {
             deepestMineLevel,
@@ -159,18 +162,14 @@ const SidebarLayout = ({
           },
         }),
       });
-      const start2 = performance.now();
-      console.log("Completed part 1 in", performance.now() - start, "ms");
-      // split the data pushes into multiple parts since it timeouts if it's too big
-      response = await fetch("/api/kv", {
-        method: "PATCH",
-        body: JSON.stringify({
-          fish: { ...fishCaught },
-        }),
-      });
+      console.log(
+        "Completed DB uploads in",
+        (performance.now() - dbstart).toFixed(3),
+        "ms"
+      );
+
       const elapsed = performance.now() - start;
-      console.log("Completed part 2 in", performance.now() - start2, "ms");
-      console.log("Elapsed", elapsed, "ms");
+      console.log("Elapsed", elapsed.toFixed(3), "ms");
     };
 
     reader.readAsText(file!);

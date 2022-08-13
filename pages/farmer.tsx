@@ -105,10 +105,42 @@ const Farmer: NextPage = () => {
               </div>
               <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
                 <div className="col-span-2 xl:col-span-1">
-                  <InfoCard title={name} Icon={UserIcon} />
+                  <InfoCard
+                    title={"Player Name"}
+                    Icon={UserIcon}
+                    description={name}
+                  />
                 </div>
-                <InfoCard title={farmInfo} Icon={HomeIcon} />
-                <InfoCard title={`Played for ${timePlayed}`} Icon={ClockIcon} />
+                <InfoCard
+                  title="Farm Information"
+                  description={farmInfo}
+                  Icon={HomeIcon}
+                />
+                <InfoCard
+                  title="Playtime"
+                  Icon={ClockIcon}
+                  description={timePlayed}
+                />
+                <InfoCard
+                  title="Money Earned"
+                  Icon={CurrencyDollarIcon}
+                  description={`${moneyEarned.toLocaleString()}g`}
+                />
+                <InfoCard
+                  title="Farmer Level"
+                  Icon={ChartBarIcon}
+                  description={`${farmerLevel}/25`}
+                />
+                <InfoCard
+                  title="Quests Completed"
+                  Icon={BriefcaseIcon}
+                  description={`${questsCompleted}`}
+                />
+                <InfoCard
+                  title="Stardrops Found"
+                  Icon={StarIcon}
+                  description={`${stardropsCount}`}
+                />
               </div>
             </div>
             {/* General Farmer Info */}
@@ -118,12 +150,6 @@ const Farmer: NextPage = () => {
                 Money
               </div>
               <div className="grid grid-cols-2 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-                <div className="col-span-2 xl:col-span-3">
-                  <InfoCard
-                    title={`Earned ${moneyEarned.toLocaleString()}g in total.`}
-                    Icon={CurrencyDollarIcon}
-                  />
-                </div>
                 {Object.values(achievements)
                   .filter((achievement) => achievement.id <= 4)
                   .map((achievement) => (
@@ -132,7 +158,14 @@ const Farmer: NextPage = () => {
                       tag={"achievements"}
                       key={achievement.id}
                       title={achievement.name}
-                      description={achievement.description}
+                      description={
+                        achievement.description +
+                        (moneyEarned >= requirements[achievement.name]
+                          ? ""
+                          : ` - ${(
+                              requirements[achievement.name] - moneyEarned
+                            ).toLocaleString()}g left!`)
+                      }
                       sourceURL={achievement.iconURL}
                       initialChecked={
                         moneyEarned >= requirements[achievement.name]
@@ -146,28 +179,6 @@ const Farmer: NextPage = () => {
             <div>
               <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
                 Skills
-              </div>
-
-              <InfoCard
-                title={`${name} is level ${farmerLevel}.`}
-                Icon={ChartBarIcon}
-              />
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                {Object.values(achievements)
-                  .filter((achievement) => achievement.category === "skills")
-                  .map((achievement) => (
-                    <AchievementCard
-                      id={achievement.id}
-                      tag={"achievements"}
-                      key={achievement.id}
-                      title={achievement.name}
-                      description={achievement.description}
-                      sourceURL={achievement.iconURL}
-                      initialChecked={
-                        maxLevelCount >= requirements[achievement.name]
-                      }
-                    />
-                  ))}
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
                 <SkillDisplay
@@ -191,6 +202,23 @@ const Farmer: NextPage = () => {
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
                 />
               </div>
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                {Object.values(achievements)
+                  .filter((achievement) => achievement.category === "skills")
+                  .map((achievement) => (
+                    <AchievementCard
+                      id={achievement.id}
+                      tag={"achievements"}
+                      key={achievement.id}
+                      title={achievement.name}
+                      description={achievement.description}
+                      sourceURL={achievement.iconURL}
+                      initialChecked={
+                        maxLevelCount >= requirements[achievement.name]
+                      }
+                    />
+                  ))}
+              </div>
             </div>
             {/* Skills Information */}
             {/* Quests Information */}
@@ -198,10 +226,6 @@ const Farmer: NextPage = () => {
               <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
                 Quests
               </div>
-              <InfoCard
-                title={`${name} has completed ${questsCompleted} quest(s).`}
-                Icon={BriefcaseIcon}
-              />
               <div className="mt-4 grid grid-cols-2 gap-4">
                 {Object.values(achievements)
                   .filter((achievement) => achievement.category === "quests")
@@ -226,10 +250,7 @@ const Farmer: NextPage = () => {
               <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
                 Stardrops
               </div>
-              <InfoCard
-                title={`${name} has found ${stardropsCount} stardrop(s).`}
-                Icon={StarIcon}
-              />
+
               <div className="mt-4">
                 <AchievementCard
                   id={34}
