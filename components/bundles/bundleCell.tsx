@@ -9,6 +9,7 @@ import { BundleItem, CommunityCenterRoom } from "../../types/bundles";
 import { CheckCircleIcon } from "@heroicons/react/outline";
 
 import * as sprites from "../../research/processors/data/sprites.json";
+import Image from "next/image";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -81,9 +82,9 @@ const BundleCell = ({
       )}
     >
       <div className="flex-shrink-0 ">
-        <img
+        <Image
           className="h-8 w-8"
-          src={sprites[item.itemID.toString() as keyof typeof sprites]}
+          src={sprites[item.itemID.toString() as keyof typeof sprites]!}
           alt="wtf"
         />
       </div>
