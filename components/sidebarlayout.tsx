@@ -9,6 +9,8 @@ import {
   FaHammer,
   FaFileImport,
   FaFileExport,
+  FaGithub,
+  FaDiscord,
 } from "react-icons/fa";
 import { BiImport, BiMenu, BiMessageSquareX } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
@@ -291,24 +293,27 @@ const SidebarLayout = ({
       {/* Desktop sidebar */}
       <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#111111]">
-          <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+          <div className="soverflow-y-auto flex flex-1 flex-col pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center justify-between px-4">
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* File Input, not sure how to process file yet but it lets you upload a file */}
-              <div>
-                <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
-                  <FiUpload // Desktop version of the upload icon
-                    className="h-5 w-5 text-black dark:text-white"
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleFile(e)
-                    }
-                  />
-                </label>
+              <div className="flex space-x-2">
+                <Link href="https://discord.gg/YBNGCgCxG5">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                    <FaDiscord
+                      className="h-5 w-5 text-black dark:text-white"
+                      aria-hidden="true"
+                    />
+                  </label>
+                </Link>
+                <Link href="https://github.com/stardewapp">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                    <FaGithub
+                      className="h-5 w-5 text-black dark:text-white"
+                      aria-hidden="true"
+                    />
+                  </label>
+                </Link>
               </div>
               {/* end file input section */}
             </div>
