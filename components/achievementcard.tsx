@@ -55,12 +55,12 @@ const AchievementCard = ({
   );
   const oneClick = useCallback(() => {
     setTruncate((old) => !old);
-  }, [truncate]);
+  }, []);
   const twoClick = useCallback(() => {
     setChecked((old) => !old);
   }, [setChecked]);
 
-  const click = useSingleAndDoubleClick(oneClick, twoClick); // we don't need to do anything on a single click (? i think ?)
+  const click = useSingleAndDoubleClick(oneClick, twoClick);
 
   return (
     <div

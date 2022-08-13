@@ -94,7 +94,7 @@ const SidebarLayout = ({
     } catch (e) {
       setUser(null);
     }
-  }, [user]);
+  }, []);
 
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react

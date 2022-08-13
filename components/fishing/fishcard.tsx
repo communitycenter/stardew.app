@@ -10,6 +10,8 @@ import {
 } from "react";
 import { useKV } from "../../hooks/useKV";
 
+import Image from "next/image";
+
 type Props = {
   fish: Fish;
   setSelectedFish: (fish: Fish) => void;
@@ -64,7 +66,7 @@ const FishCard = ({ fish, setSelectedFish, setShowFish }: Props) => {
       onClick={click}
     >
       <div className="flex-shrink-0">
-        <img className="h-8 w-8" src={fish.iconURL} alt={fish.name} />
+        <Image src={fish.iconURL} alt={fish.name} width={32} height={32} />
       </div>
 
       <div className="min-w-0 flex-1">
