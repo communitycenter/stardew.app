@@ -62,34 +62,34 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
   );
 
   console.log(flatBody);
-  const upserts = Object.keys(flatBody).map((key) => {
+  const transactions = Object.keys(flatBody).map((key) => {
     return {
-      where: {
-        id: `${uid};${key}`,
-      },
-      update: {
-        value: flatBody[key],
-      },
-      create: {
-        id: `${uid};${key}`,
-        user: uid,
-        tag: key.split(";")[0],
-        value: flatBody[key],
-      },
+      id: `${uid};${key}`,
+      user: uid,
+      tag: key.split(";")[0],
+      value: flatBody[key],
     };
   });
-
-  // console.log(upserts);
+  
+  const chunks = []
+  for (let i = 0; i < transactions.length; i += 50) {
+    chunks.push(transactions.slice(i, i + 50))
+  }
 
   try {
-    await prisma.$transaction(
-      upserts.map((opts) => prisma.trackedVariables.upsert(opts))
-    );
+    await Promise.all(
+      chunks.map((chunk) => 
+        prisma.$transaction([
+          prisma.trackedVariables.deleteMany({ where: { id: { in: chunk.map(row => row.id) } } }),
+          prisma.trackedVariables.createMany({ data: chunk })
+        ])
+      )
+    )
   } catch (e) {
     console.log(e);
   }
 
-  res.status(200).send(upserts);
+  res.status(200).send(transactions);
 }
 
 export default async function handler(
