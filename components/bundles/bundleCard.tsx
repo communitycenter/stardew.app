@@ -56,7 +56,7 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
   return (
     <div
       className={classNames(
-        "flex flex-col items-start space-x-3 rounded-xl border border-solid border-gray-300 bg-white p-2 py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] md:flex-row md:items-center",
+        "flex flex-col items-start space-x-3 rounded-xl border border-solid border-gray-300 bg-white p-2 px-4 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] md:flex-row md:items-center",
         bundleFinished ? "border-green-300 bg-green-50" : ""
       )}
     >

@@ -81,11 +81,13 @@ const BundleCell = ({
           : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
       )}
     >
-      <div className="flex-shrink-0 ">
+      <div className="h-8 w-8 flex-shrink-0">
         <Image
-          className="h-8 w-8"
+          className=""
           src={sprites[item.itemID.toString() as keyof typeof sprites]!}
           alt="wtf"
+          height={32}
+          width={32}
         />
       </div>
       {item.itemQuantity > 1 && (
