@@ -84,11 +84,11 @@ const Cooking: NextPage = () => {
                     tag={"achievements"}
                     key={achievement.id}
                     title={achievement.name}
-                    description={
-                      achievement.description +
-                      (totalRecipesCooked >= requirements[achievement.name]
+                    description={achievement.description}
+                    additionalDescription={
+                      totalRecipesCooked >= requirements[achievement.name]
                         ? ""
-                        : ` - ${80 - totalRecipesCooked} left!`)
+                        : ` - ${80 - totalRecipesCooked} left!`
                     }
                     sourceURL={achievement.iconURL}
                     initialChecked={

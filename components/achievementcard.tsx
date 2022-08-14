@@ -9,6 +9,7 @@ interface Props {
   id: number | string;
   title: string;
   description: string;
+  additionalDescription?: string;
   sourceURL: string;
   tag: string;
   initialChecked?: boolean;
@@ -43,6 +44,7 @@ const AchievementCard = ({
   title,
   sourceURL,
   description,
+  additionalDescription,
   id,
   initialChecked,
   tag,
@@ -92,7 +94,7 @@ const AchievementCard = ({
                 "text-sm text-gray-400" + (truncate ? " truncate" : "")
               }
             >
-              {description}
+              {description} {!checked ? additionalDescription : ""}
             </p>
           </motion.div>
         </div>

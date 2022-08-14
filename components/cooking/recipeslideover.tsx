@@ -67,7 +67,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                       </div>
                     </div>
                     <div className="relative mt-6 flex-1 px-4 dark:text-white sm:px-6">
-                      {/* Fish Content */}
+                      {/* Cooking Content */}
                       <div>
                         {/* Header with Image */}
                         <div className="flex justify-center">
@@ -96,13 +96,58 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
 
                       {/* Information Section */}
                       <div className="mt-8 space-y-6">
-                        <div>
-                          <h4 className="text-lg font-semibold">
-                            Unlock Conditions
-                          </h4>
-                          <p className="mt-1 dark:text-gray-400">
-                            {selected.unlockConditions}
-                          </p>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-lg font-semibold">
+                              Unlock Conditions
+                            </h4>
+                            <p className="mt-1 dark:text-gray-400">
+                              {selected.unlockConditions}
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-semibold">
+                              Ingredients Needed
+                            </h4>
+                            <p className="mt-1 dark:text-gray-400">
+                              {selected.ingredients.map((ingredient) => {
+                                const findItem = Object.entries(objects).find(
+                                  ([id, obj]) =>
+                                    id === ingredient.itemID.toString()
+                                );
+                                let item;
+                                if (findItem) {
+                                  item = findItem[1];
+                                } else {
+                                  item = {
+                                    name: "Unknown",
+                                    iconURL:
+                                      "https://stardewvalleywiki.com/mediawiki/images/9/94/Emojis131.png",
+                                  };
+                                }
+                                return (
+                                  <div key={ingredient.itemID}>
+                                    <div className="flex items-center">
+                                      <div className="flex-shrink-0">
+                                        <Image
+                                          src={item.iconURL}
+                                          alt={item.name}
+                                          width={32}
+                                          height={32}
+                                          quality={100}
+                                        />
+                                      </div>
+                                      <div className="ml-2 mb-2">
+                                        <div className="text-sm font-semibold">
+                                          {ingredient.amount}x {item!.name}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </p>
+                          </div>
                         </div>
 
                         {/* Mark as Complete Button */}
@@ -119,7 +164,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                             <XIcon className="h-6 w-6" aria-hidden="true" />
                           )}
                           <p className="">
-                            Mark as {checked ? "un" : null}caught
+                            Mark as {checked ? "un" : null}cooked
                           </p>
                         </button>
                       </div>
