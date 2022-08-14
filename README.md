@@ -4,7 +4,7 @@
 
 <p align="center">
     <strong>Stardew.app</strong></br>
-    🌟 Next generation, user-oriented Stardew Valley perfection tracker.
+    <i>Next generation, user-oriented Stardew Valley perfection tracker.<i>
 </p>
 
 # Overview
