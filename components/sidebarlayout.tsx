@@ -44,13 +44,13 @@ const navigation = [
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
   { name: "Fishing", href: "/fishing", icon: FaFish },
-  { name: "Perfection", href: "#", icon: HiSparkles },
+  { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
-  { name: "Crafting", href: "#", icon: FaHammer },
-  { name: "Shipping", href: "#", icon: MdLocalShipping },
+  { name: "Crafting", href: "/construction", icon: FaHammer },
+  { name: "Shipping", href: "/construction", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
-  { name: "Secret Notes", href: "#", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
-  { name: "Ginger Island", href: "#", icon: GiIsland },
+  { name: "Secret Notes", href: "/construction", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
+  { name: "Ginger Island", href: "/construction", icon: GiIsland },
 ];
 
 interface LayoutProps {
