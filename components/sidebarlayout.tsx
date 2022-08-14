@@ -328,26 +328,26 @@ const SidebarLayout = ({
           <div className="soverflow-y-auto flex flex-1 flex-col pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center justify-between px-4">
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
-              {/* File Input, not sure how to process file yet but it lets you upload a file */}
+              {/* Sidebar Links Section */}
               <div className="flex space-x-2">
-                <Link href="https://discord.gg/YBNGCgCxG5">
+                <a href="https://discord.gg/YBNGCgCxG5">
                   <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
                     <FaDiscord
                       className="h-5 w-5 text-black dark:text-white"
                       aria-hidden="true"
                     />
                   </label>
-                </Link>
-                <Link href="https://github.com/stardewapp">
+                </a>
+                <a href="https://github.com/stardewapp">
                   <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
                     <FaGithub
                       className="h-5 w-5 text-black dark:text-white"
                       aria-hidden="true"
                     />
                   </label>
-                </Link>
+                </a>
               </div>
-              {/* end file input section */}
+              {/* End Sibdebar Links Section */}
             </div>
             <div className="mx-4 mt-4 border border-gray-200 dark:border-[#2a2a2a]" />
             <nav className="mt-4 flex-1 space-y-2 bg-white px-2 dark:bg-[#111111] ">
@@ -378,12 +378,7 @@ const SidebarLayout = ({
               <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
                 {!user ? (
                   <Link href="/api/oauth">
-                    <a
-                      className={classNames(
-                        "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
-                          "group flex items-center rounded-md py-4 px-3 text-base font-medium"
-                      )}
-                    >
+                    <a className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
                       <FaUserCircle
                         className={classNames(
                           "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
@@ -415,27 +410,21 @@ const SidebarLayout = ({
                 )}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
-                <a
-                  className={classNames(
-                    "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
-                      "group flex items-center rounded-md py-4  px-5 text-base font-medium"
-                  )}
-                >
+                <label className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
                   <BiImport
                     className={classNames(
                       "h-5 w-5 flex-shrink-0 text-black dark:text-white"
                     )}
                     aria-hidden="true"
-                  >
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        handleFile(e)
-                      }
-                    ></input>
-                  </BiImport>
-                </a>
+                  />
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      handleFile(e)
+                    }
+                  />
+                </label>
               </div>
             </div>
           </div>
