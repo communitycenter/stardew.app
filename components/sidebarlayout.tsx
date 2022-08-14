@@ -3,24 +3,21 @@ import {
   Dispatch,
   SetStateAction,
   ChangeEvent,
-  useMemo,
   useEffect,
   useState,
 } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { RiQuestionFill, RiFilePaper2Fill } from "react-icons/ri";
+import { RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
   FaUserCircle,
   FaFish,
   FaHammer,
-  FaFileImport,
-  FaFileExport,
   FaGithub,
   FaDiscord,
 } from "react-icons/fa";
-import { BiImport, BiMenu, BiMessageSquareX } from "react-icons/bi";
+import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
 import { GiCookingPot, GiIsland } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
@@ -65,6 +62,7 @@ import { XMLParser } from "fast-xml-parser";
 import Link from "next/link";
 import Image from "next/image";
 import { getCookie } from "cookies-next";
+import { AnimatePresence, motion } from "framer-motion";
 
 const SidebarLayout = ({
   children,
@@ -331,15 +329,19 @@ const SidebarLayout = ({
               {/* Sidebar Links Section */}
               <div className="flex space-x-2">
                 <a href="https://discord.gg/YBNGCgCxG5">
-                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                     <FaDiscord
                       className="h-5 w-5 text-black dark:text-white"
                       aria-hidden="true"
                     />
                   </label>
                 </a>
-                <a href="https://github.com/stardewapp">
-                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#141414] hover:dark:bg-[#1F1F1F]">
+                <a
+                  href="https://github.com/stardewapp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                     <FaGithub
                       className="h-5 w-5 text-black dark:text-white"
                       aria-hidden="true"
@@ -443,7 +445,16 @@ const SidebarLayout = ({
           </button>
         </div>
         <main className="flex-1">
-          <div className="py-6">{children}</div>
+          <AnimatePresence>
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="py-6">{children}</div>
+            </motion.div>
+          </AnimatePresence>
         </main>
       </div>
     </>
