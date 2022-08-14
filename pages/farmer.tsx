@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   HomeIcon,
   ClockIcon,
@@ -265,7 +266,7 @@ const Farmer: NextPage = () => {
                   }
                 />
               </div>
-              <div className=" mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                 {Object.keys(STARDROPS).map((stardrop) => (
                   <AchievementCard
                     id={stardrop}

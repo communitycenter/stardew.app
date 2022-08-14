@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from "@heroicons/react/outline";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
@@ -63,33 +64,45 @@ const AchievementCard = ({
   const click = useSingleAndDoubleClick(oneClick, twoClick);
 
   return (
-    <div
-      className={
-        "relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2a2a2a] dark:bg-[#1f1f1f] "
-      }
-      onClick={click}
-    >
-      <Image
-        src={sourceURL}
-        alt={title}
-        width={size ?? 42}
-        height={size ?? 42}
-        className="rounded-sm"
-      />
-      <div className="min-w-0 flex-1">
-        <p className="truncate font-medium text-gray-900 dark:text-white">
-          {title}
-        </p>
-        <p className={"text-sm text-gray-400" + (truncate ? " truncate" : "")}>
-          {description}
-        </p>
+    <motion.div layout>
+      <div
+        className={
+          "relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2a2a2a] dark:bg-[#1f1f1f] "
+        }
+        onClick={click}
+      >
+        <motion.div layout="position">
+          <Image
+            src={sourceURL}
+            alt={title}
+            width={size ?? 42}
+            height={size ?? 42}
+            className="rounded-sm"
+          />
+        </motion.div>
+        <div className="min-w-0 flex-1">
+          <motion.div layout="position">
+            <p className="truncate font-medium text-gray-900 dark:text-white">
+              {title}
+            </p>
+          </motion.div>
+          <motion.div layout="position">
+            <p
+              className={
+                "text-sm text-gray-400" + (truncate ? " truncate" : "")
+              }
+            >
+              {description}
+            </p>
+          </motion.div>
+        </div>
+        {checked !== null && (
+          <CheckCircleIcon
+            className={"h-5 w-5 " + (checked ? "text-green-500" : "hidden")}
+          />
+        )}
       </div>
-      {checked !== null && (
-        <CheckCircleIcon
-          className={"h-5 w-5 " + (checked ? "text-green-500" : "hidden")}
-        />
-      )}
-    </div>
+    </motion.div>
   );
 };
 
