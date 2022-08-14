@@ -212,13 +212,13 @@ const Farmer: NextPage = () => {
                       tag={"achievements"}
                       key={achievement.id}
                       title={achievement.name}
-                      description={
-                        achievement.description +
-                        (maxLevelCount >= requirements[achievement.name]
+                      description={achievement.description}
+                      additionalDescription={
+                        maxLevelCount >= requirements[achievement.name]
                           ? ""
                           : ` - ${
                               requirements[achievement.name] - maxLevelCount
-                            } left!`)
+                            } left!`
                       }
                       sourceURL={achievement.iconURL}
                       initialChecked={
@@ -243,13 +243,13 @@ const Farmer: NextPage = () => {
                       tag={"achievements"}
                       key={achievement.id}
                       title={achievement.name}
-                      description={
-                        achievement.description +
-                        (questsCompleted >= requirements[achievement.name]
+                      description={achievement.description}
+                      additionalDescription={
+                        questsCompleted >= requirements[achievement.name]
                           ? ""
                           : ` - ${
                               requirements[achievement.name] - questsCompleted
-                            } left!`)
+                            } left!`
                       }
                       sourceURL={achievement.iconURL}
                       initialChecked={
@@ -271,11 +271,9 @@ const Farmer: NextPage = () => {
                   id={34}
                   tag={"achievements"}
                   title={"Mystery Of The Stardrops"}
-                  description={
-                    "Find every stardrop." +
-                    (stardropsCount >= 7
-                      ? ""
-                      : ` - ${7 - stardropsCount} left!`)
+                  description={"Find every stardrop."}
+                  additionalDescription={
+                    stardropsCount >= 7 ? "" : ` - ${7 - stardropsCount} left!`
                   }
                   sourceURL={
                     "https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg"

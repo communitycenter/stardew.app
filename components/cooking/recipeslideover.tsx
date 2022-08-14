@@ -16,6 +16,18 @@ type Props = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
+const categoryItems: Record<string, string> = {
+  "-4": "Any Fish",
+  "-5": "Any Egg",
+  "-6": "Any Milk",
+};
+
+const categoryIcons: Record<string, string> = {
+  "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
+  "-5": "https://stardewvalleywiki.com/mediawiki/images/2/26/Egg.png",
+  "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
+};
+
 const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
   const [checked, setChecked] = useKV(
     "cooking",
@@ -111,20 +123,26 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                             </h4>
                             <p className="mt-1 dark:text-gray-400">
                               {selected.ingredients.map((ingredient) => {
-                                const findItem = Object.entries(objects).find(
-                                  ([id, obj]) =>
-                                    id === ingredient.itemID.toString()
-                                );
                                 let item;
-                                if (findItem) {
+
+                                console.log(ingredient);
+
+                                if (ingredient.itemID > 0) {
+                                  const findItem = Object.entries(objects).find(
+                                    ([id, obj]) =>
+                                      id === ingredient.itemID.toString()
+                                  );
+                                  if (!findItem) return;
                                   item = findItem[1];
                                 } else {
                                   item = {
-                                    name: "Unknown",
-                                    iconURL:
-                                      "https://stardewvalleywiki.com/mediawiki/images/9/94/Emojis131.png",
+                                    name: categoryItems[ingredient.itemID],
+                                    iconURL: categoryIcons[ingredient.itemID],
                                   };
                                 }
+
+                                console.log(item);
+
                                 return (
                                   <div key={ingredient.itemID}>
                                     <div className="flex items-center">
@@ -139,7 +157,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                                       </div>
                                       <div className="ml-2 mb-2">
                                         <div className="text-sm font-semibold">
-                                          {ingredient.amount}x {item!.name}
+                                          {ingredient.amount}x {item.name}
                                         </div>
                                       </div>
                                     </div>
