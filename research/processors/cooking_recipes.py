@@ -82,10 +82,15 @@ for recipe_name, value in rawData["content"].items():
 
     if (recipe_name in tv_recipes):
         unlockConditions = "Unlocked through Queen of Sauce TV."
+        
+    iconURL = objects[str(itemID)]["iconURL"]
+    description = objects[str(itemID)]["description"]
     
     cookingRecipes[f"{itemID}"] = {
         "name": recipe_name,
         "itemID": itemID,
+        "iconURL": iconURL,
+        "description": description,
         "unlockConditions": unlockConditions,
         "ingredients": ingredients
     }

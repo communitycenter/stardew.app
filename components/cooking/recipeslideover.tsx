@@ -1,25 +1,28 @@
-import { Fragment, Dispatch, SetStateAction } from "react";
+import type { CookingRecipe } from "../../types/cookingRecipes";
+
+import cooking_recipes from "../../research/processors/data/cooking_recipes.json";
+import objects from "../../research/processors/data/objects.json";
+
+import { Fragment, Dispatch, SetStateAction, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, CheckIcon } from "@heroicons/react/outline";
 import { useKV } from "../../hooks/useKV";
 
 import Image from "next/image";
-import { Fish } from "../../types";
 
 type Props = {
   isOpen: boolean;
-  selectedFish: Fish;
+  selected: CookingRecipe;
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-// iterate through a list and return a comma separated string
-
-const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
+const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
   const [checked, setChecked] = useKV(
-    "fish",
-    selectedFish.itemID.toString(),
+    "cooking",
+    selected.itemID.toString(),
     false
   );
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -71,8 +74,8 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                           <div>
                             <div className="flex justify-center">
                               <Image
-                                src={selectedFish.iconURL}
-                                alt={selectedFish.name}
+                                src={selected.iconURL}
+                                alt={selected.name}
                                 width={80}
                                 height={80}
                                 quality={100}
@@ -80,10 +83,10 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                             </div>
                             <div className="text-center">
                               <h3 className="mt-6 text-xl font-semibold">
-                                {selectedFish.name}
+                                {selected.name}
                               </h3>
                               <h4 className="italic dark:text-gray-400">
-                                {selectedFish.description}
+                                {selected.description}
                               </h4>
                             </div>
                           </div>
@@ -91,62 +94,24 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                         {/* End Header with Image */}
                       </div>
 
-                      {/* Fish Information Section */}
+                      {/* Information Section */}
                       <div className="mt-8 space-y-6">
                         <div>
-                          <h4 className="text-lg font-semibold">Location</h4>
+                          <h4 className="text-lg font-semibold">
+                            Unlock Conditions
+                          </h4>
                           <p className="mt-1 dark:text-gray-400">
-                            {selectedFish.locations.join(", ")}
+                            {selected.unlockConditions}
                           </p>
                         </div>
-                        {"time" in selectedFish && (
-                          <div>
-                            <h4 className="text-lg font-semibold">Time</h4>
-                            <p className="mt-1 dark:text-gray-400">
-                              {selectedFish.time}
-                            </p>
-                          </div>
-                        )}
 
-                        {"seasons" in selectedFish && (
-                          <div>
-                            <h4 className="text-lg font-semibold">Season</h4>
-                            <p className="mt-1 dark:text-gray-400">
-                              {selectedFish.seasons.join(", ")}
-                            </p>
-                          </div>
-                        )}
-
-                        {"weather" in selectedFish && (
-                          <div>
-                            <h4 className="text-lg font-semibold">Weather</h4>
-                            <p className="mt-1 dark:text-gray-400">
-                              {selectedFish.weather}
-                            </p>
-                          </div>
-                        )}
-                        {"difficulty" in selectedFish && (
-                          <div>
-                            <h4 className="text-lg font-semibold">
-                              Difficulty
-                            </h4>
-                            <p className="mt-1 dark:text-gray-400">
-                              {selectedFish.difficulty}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Mark as Caught Button */}
+                        {/* Mark as Complete Button */}
                         <button
-                          // "absolute inset-x-0 bottom-0" is used to position the button at the bottom of the screen, but
-                          // it gets rid of the padding on the left and right and becomes scrollable when you try and add it to the button.
-                          className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:border-white"
+                          className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:bg-[#191919]"
                           onClick={() => {
                             setChecked((old) => !old);
                             setOpen(false);
                           }}
-                          // TODO: when you mark as caught, set the local storage to a list of all marked fish?
-                          // when you first render the page it would have to fetch from local storage to see what you've already caught
                         >
                           {!checked ? (
                             <CheckIcon className="h-6 w-6" aria-hidden="true" />
@@ -173,4 +138,4 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
   );
 };
 
-export default FishSlideOver;
+export default RecipeSlideOver;

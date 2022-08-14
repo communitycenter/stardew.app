@@ -43,7 +43,7 @@ const navigation = [
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
   { name: "Fishing", href: "/fishing", icon: FaFish },
   { name: "Perfection", href: "#", icon: HiSparkles },
-  { name: "Cooking", href: "#", icon: GiCookingPot },
+  { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "#", icon: FaHammer },
   { name: "Shipping", href: "#", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "#", icon: MdMuseum },
