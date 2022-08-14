@@ -16,6 +16,7 @@ import {
   FaHammer,
   FaGithub,
   FaDiscord,
+  FaHouseUser,
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
@@ -39,6 +40,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 const navigation = [
+  { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
   { name: "Fishing", href: "/fishing", icon: FaFish },
