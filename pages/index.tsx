@@ -55,8 +55,8 @@ const Home: NextPage = () => {
               <div className="space-y-2">
                 <h2>
                   Get started by heading to the sidebar and checking off what
-                  you've done - you can also upload your save file below and
-                  have it automatically import data.
+                  you&apos;ve done - you can also upload your save file below
+                  and have it automatically import data.
                 </h2>
                 <h2>
                   You can also login with Discord to save your data across
