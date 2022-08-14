@@ -63,6 +63,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCookie } from "cookies-next";
 import { AnimatePresence, motion } from "framer-motion";
+import Notification from "./notification";
 
 const SidebarLayout = ({
   children,
@@ -70,14 +71,10 @@ const SidebarLayout = ({
   sidebarOpen,
   setSidebarOpen,
 }: LayoutProps) => {
-  // const user = useMemo(() => {
-  //   try {
-  //     const cookie = getCookie("discord_user");
-  //     return cookie ? JSON.parse(cookie as string) : null;
-  //   } catch (e) {
-  //     return null;
-  //   }
-  // }, []);
+  const [showNotification, setShowNotification] = useState(false);
+  const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const [errorMSG, setErrorMSG] = useState("");
+  const [completionTime, setCompletedTime] = useState<string>("0.00");
 
   const [user, setUser] = useState<{
     discord_name: string;
@@ -96,7 +93,17 @@ const SidebarLayout = ({
 
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
+    setShowNotification(false);
+    setShowErrorNotification(false);
     const file = event.target!.files![0];
+    if (typeof file === "undefined") return;
+
+    // just a check to see if the file name has the format <string>_<id>
+    if (!/[a-zA-Z]+_[0-9]+/.test(file.name)) {
+      setErrorMSG("Invalid file name.");
+      setShowErrorNotification(true);
+      return;
+    }
     const reader = new FileReader();
 
     // We can check the progress of the upload with a couple events from the reader
@@ -211,6 +218,8 @@ const SidebarLayout = ({
 
       const elapsed = performance.now() - start;
       console.log("Elapsed", elapsed.toFixed(3), "ms");
+      setCompletedTime((elapsed / 1000).toFixed(2));
+      setShowNotification(true);
     };
 
     reader.readAsText(file!);
@@ -457,6 +466,20 @@ const SidebarLayout = ({
           </AnimatePresence>
         </main>
       </div>
+      <Notification
+        title="Successfully Parsed and Uploaded Data"
+        description={`Completed in ${completionTime} seconds!`}
+        success={true}
+        show={showNotification}
+        setShow={setShowNotification}
+      />
+      <Notification
+        title="Error Parsing Data"
+        description={errorMSG}
+        success={false}
+        show={showErrorNotification}
+        setShow={setShowErrorNotification}
+      />
     </>
   );
 };
