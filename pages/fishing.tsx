@@ -78,7 +78,18 @@ const Fishing: NextPage = () => {
                     tag={"achievements"}
                     key={achievement.id}
                     title={achievement.name}
-                    description={achievement.description}
+                    description={
+                      achievement.description +
+                      (achievement.name === "Mother Catch"
+                        ? totalFishCaught >= 100
+                          ? ""
+                          : ` - ${100 - totalFishCaught} left!`
+                        : uniqueCaught >= requirements[achievement.name]
+                        ? ""
+                        : ` - ${
+                            requirements[achievement.name] - uniqueCaught
+                          } left!`)
+                    }
                     sourceURL={achievement.iconURL}
                     initialChecked={
                       achievement.name === "Mother Catch"
