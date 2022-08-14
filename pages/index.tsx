@@ -24,7 +24,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>stardew.app</title>
+        <title>stardew.app | Home</title>
+        <meta name="description" content="The homepage for Stardew.app." />
       </Head>
       <SidebarLayout
         activeTab="Home"
