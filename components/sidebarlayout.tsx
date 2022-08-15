@@ -47,7 +47,7 @@ const navigation = [
   { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/construction", icon: FaHammer },
-  { name: "Shipping", href: "/construction", icon: MdLocalShipping },
+  { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Secret Notes", href: "/construction", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
   { name: "Ginger Island", href: "/construction", icon: GiIsland },
@@ -397,7 +397,7 @@ const SidebarLayout = ({
                     </a>
                   </Link>
                 ) : (
-                  <a
+                  <div
                     className={classNames(
                       "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
                         "group flex items-center rounded-md py-4 px-3 text-base font-medium"
@@ -414,7 +414,7 @@ const SidebarLayout = ({
                       width={24}
                     />
                     <p className="ml-2 dark:text-white">{user.discord_name}</p>
-                  </a>
+                  </div>
                 )}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
