@@ -29,6 +29,7 @@ const requirements: Record<string, number> = {
 const Shipping: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   //   const [showFish, setShowFish] = useState<boolean>(false);
+  const [hasUploaded] = useKV<boolean>("general", "user", false);
   const [name] = useKV("general", "name", "Farmer");
   //   const [totalFishCaught] = useKV("fish", "totalFishCaught", 0);
   //   const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
@@ -56,10 +57,13 @@ const Shipping: NextPage = () => {
             <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
               Achievements
             </h2>
-            <InfoCard
-              title={`${name} has shipped \${put the items number here} items.`}
-              Icon={InformationCircleIcon}
-            />
+            {hasUploaded && (
+              <InfoCard
+                title={`${name} has shipped \${put the items number here} items.`}
+                Icon={InformationCircleIcon}
+              />
+            )}
+
             <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((achievement) => achievement.category === "shipping")

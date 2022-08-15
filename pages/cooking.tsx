@@ -38,6 +38,8 @@ const Cooking: NextPage = () => {
     Object.values(cooking_recipes)[0]
   );
 
+  const [hasUploaded] = useKV<boolean>("general", "user", false);
+
   return (
     <>
       <Head>
@@ -46,6 +48,7 @@ const Cooking: NextPage = () => {
           name="description"
           content="Track your Stardew Valley cooking recipe progress. See what recipes you need to cook for 100% completion on Stardew Valley."
         />
+        d
       </Head>
       <SidebarLayout
         activeTab="Cooking"

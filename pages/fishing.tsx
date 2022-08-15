@@ -33,6 +33,7 @@ const Fishing: NextPage = () => {
   const [selectedFish, setSelectedFish] = useState<Fish>(
     Object.values(fishes)[0]
   );
+  const [hasUploaded] = useKV<boolean>("general", "user", false);
 
   return (
     <>
@@ -65,10 +66,12 @@ const Fishing: NextPage = () => {
             <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
               Achievements
             </h2>
-            <InfoCard
-              title={`${name} has caught ${totalFishCaught} total fish and has caught ${uniqueCaught}/67 fish types.`}
-              Icon={InformationCircleIcon}
-            />
+            {hasUploaded && (
+              <InfoCard
+                title={`${name} has caught ${totalFishCaught} total fish and has caught ${uniqueCaught}/67 fish types.`}
+                Icon={InformationCircleIcon}
+              />
+            )}
             <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-4">
               {Object.values(achievements)
                 .filter((achievement) => achievement.category === "fishing")
