@@ -81,7 +81,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
       chunks.map((chunk) =>
         prisma.$transaction([
           prisma.trackedVariables.deleteMany({
-            where: { id: { in: chunk.map((row) => row.id) } },
+            where: { user: uid },
           }),
           prisma.trackedVariables.createMany({ data: chunk }),
         ])
