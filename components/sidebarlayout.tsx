@@ -47,7 +47,7 @@ const navigation = [
   { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/construction", icon: FaHammer },
-  { name: "Shipping", href: "/construction", icon: MdLocalShipping },
+  { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Secret Notes", href: "/construction", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
   { name: "Ginger Island", href: "/construction", icon: GiIsland },
