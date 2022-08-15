@@ -60,7 +60,7 @@ const Shipping: NextPage = () => {
               title={`${name} has shipped \${put the items number here} items.`}
               Icon={InformationCircleIcon}
             />
-            <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-4">
+            <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((achievement) => achievement.category === "shipping")
                 .map((achievement) => (
