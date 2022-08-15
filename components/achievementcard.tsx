@@ -65,11 +65,28 @@ const AchievementCard = ({
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
 
+  let checkColor = "h-5 w-5 ";
+  let boxColor = "";
+  switch (checked) {
+    case false: // unknown recipe
+      checkColor += "hidden";
+      boxColor +=
+        "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
+      break;
+    case true: // cooked recipe
+      checkColor += "text-green-500";
+      boxColor += "border-green-900 bg-green-500/10 hover:bg-green-500/20";
+      break;
+    default:
+      break;
+  }
+
   return (
     <motion.div layout>
       <div
         className={
-          "relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2a2a2a] dark:bg-[#1f1f1f] "
+          "relative flex select-none items-center space-x-3 rounded-lg border border-solid py-4 px-5 hover:cursor-pointer " +
+          boxColor
         }
         onClick={click}
       >
@@ -98,11 +115,6 @@ const AchievementCard = ({
             </p>
           </motion.div>
         </div>
-        {checked !== null && (
-          <CheckCircleIcon
-            className={"h-5 w-5 " + (checked ? "text-green-500" : "hidden")}
-          />
-        )}
       </div>
     </motion.div>
   );
