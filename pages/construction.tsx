@@ -32,8 +32,8 @@ const Construction: NextPage = () => {
             <div className="justify-center space-y-2 text-center text-gray-900 dark:text-white">
               <div className="space-y-2">
                 <h2>
-                  {`Uh oh! You&apos;ve found a page that is currently under
-                  construction. Give us a bit to finish this <3`}
+                  Uh oh! You&apos;ve found a page that is currently under
+                  construction.{" Give us a bit to finish this <3"}
                 </h2>
               </div>
             </div>
