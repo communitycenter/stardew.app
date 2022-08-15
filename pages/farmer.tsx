@@ -79,6 +79,7 @@ const Farmer: NextPage = () => {
   const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
   const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
   const [stardropsCount] = useKV<number>("stardrops", "count", 0);
+  const [hasUploaded] = useKV<boolean>("general", "user", false);
 
   return (
     <>
@@ -98,50 +99,52 @@ const Farmer: NextPage = () => {
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 gap-4 py-4">
             {/* General Farmer Info */}
-            <div>
-              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-                Farmer Information
-              </div>
-              <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
-                <div className="col-span-2 xl:col-span-1">
+            {hasUploaded && (
+              <div>
+                <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                  Farmer Information
+                </div>
+                <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+                  <div className="col-span-2 xl:col-span-1">
+                    <InfoCard
+                      title={"Player Name"}
+                      Icon={UserIcon}
+                      description={name}
+                    />
+                  </div>
                   <InfoCard
-                    title={"Player Name"}
-                    Icon={UserIcon}
-                    description={name}
+                    title="Farm Information"
+                    description={farmInfo}
+                    Icon={HomeIcon}
+                  />
+                  <InfoCard
+                    title="Playtime"
+                    Icon={ClockIcon}
+                    description={timePlayed}
+                  />
+                  <InfoCard
+                    title="Money Earned"
+                    Icon={CurrencyDollarIcon}
+                    description={`${moneyEarned.toLocaleString()}g`}
+                  />
+                  <InfoCard
+                    title="Farmer Level"
+                    Icon={ChartBarIcon}
+                    description={`${farmerLevel}/25`}
+                  />
+                  <InfoCard
+                    title="Quests Completed"
+                    Icon={BriefcaseIcon}
+                    description={`${questsCompleted}`}
+                  />
+                  <InfoCard
+                    title="Stardrops Found"
+                    Icon={StarIcon}
+                    description={`${stardropsCount}`}
                   />
                 </div>
-                <InfoCard
-                  title="Farm Information"
-                  description={farmInfo}
-                  Icon={HomeIcon}
-                />
-                <InfoCard
-                  title="Playtime"
-                  Icon={ClockIcon}
-                  description={timePlayed}
-                />
-                <InfoCard
-                  title="Money Earned"
-                  Icon={CurrencyDollarIcon}
-                  description={`${moneyEarned.toLocaleString()}g`}
-                />
-                <InfoCard
-                  title="Farmer Level"
-                  Icon={ChartBarIcon}
-                  description={`${farmerLevel}/25`}
-                />
-                <InfoCard
-                  title="Quests Completed"
-                  Icon={BriefcaseIcon}
-                  description={`${questsCompleted}`}
-                />
-                <InfoCard
-                  title="Stardrops Found"
-                  Icon={StarIcon}
-                  description={`${stardropsCount}`}
-                />
               </div>
-            </div>
+            )}
             {/* General Farmer Info */}
             {/* Money Stats */}
             <div>
