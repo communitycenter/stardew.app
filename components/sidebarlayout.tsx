@@ -402,7 +402,7 @@ const SidebarLayout = ({
                     </a>
                   </Link>
                 ) : (
-                  <a
+                  <div
                     className={classNames(
                       "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
                         "group flex items-center rounded-md py-4 px-3 text-base font-medium"
@@ -419,7 +419,7 @@ const SidebarLayout = ({
                       width={24}
                     />
                     <p className="ml-2 dark:text-white">{user.discord_name}</p>
-                  </a>
+                  </div>
                 )}
               </div>
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
