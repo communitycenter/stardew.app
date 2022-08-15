@@ -6,6 +6,7 @@ interface ReturnType {
   cookedRecipesCount: number;
   uncookedRecipes: Set<recipeID>;
   unknownRecipes: Set<recipeID>;
+  allKnownRecipes?: { [key: recipeID]: 1 | 2 }; // 1 = cooked, 2 = uncooked
 }
 
 // aliases for readibility
@@ -47,6 +48,7 @@ export function parseCooking(json: any): ReturnType {
 
   // then, we'll find all the recipes that the player knows
   let knownRecipes = new Set<recipeID>(); // a set of recipe IDs
+  let allKnownRecipes = {} as { [key: recipeID]: 1 | 2 }; // a map of recipe IDs to 1 or 2
   // check if there are multiple recipes
   if (typeof json.SaveGame.player.cookingRecipes.item.key === "undefined") {
     // if there are multiple recipes, we need to loop through them
@@ -60,6 +62,7 @@ export function parseCooking(json: any): ReturnType {
       // find the recipe ID since keys in cookingRecipes is the item name
       let itemID: recipeID = allRecipes_name[recipeName];
       knownRecipes.add(itemID);
+      allKnownRecipes[itemID] = 1;
     }
   } else {
     // only one recipe known
@@ -69,6 +72,7 @@ export function parseCooking(json: any): ReturnType {
     }
     let itemID: recipeID = allRecipes_name[recipeName];
     knownRecipes.add(itemID);
+    allKnownRecipes[itemID] = 1;
   }
 
   if (json.SaveGame.player.recipesCooked === "") {
@@ -91,12 +95,16 @@ export function parseCooking(json: any): ReturnType {
     for (const idx in json.SaveGame.player.recipesCooked.item) {
       let recipe = json.SaveGame.player.recipesCooked.item[idx];
       cookedRecipes.add(recipe.key.int.toString() as recipeID);
+      allKnownRecipes[recipe.key.int.toString() as recipeID] = 2;
     }
   } else {
     // only one recipe cooked
     cookedRecipes.add(
       json.SaveGame.player.recipesCooked.item.key.int as recipeID
     );
+    allKnownRecipes[
+      json.SaveGame.player.recipesCooked.item.key.int as recipeID
+    ] = 2;
   }
 
   // then, we'll find the recipes the player has not cooked by finding the
@@ -121,5 +129,6 @@ export function parseCooking(json: any): ReturnType {
     cookedRecipesCount,
     uncookedRecipes,
     unknownRecipes,
+    allKnownRecipes,
   };
 }

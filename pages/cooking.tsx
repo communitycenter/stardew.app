@@ -25,6 +25,8 @@ const requirements: Record<string, number> = {
 };
 
 const Cooking: NextPage = () => {
+  const [recipes, setRecipes] = useState<any>(cooking_recipes);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
 
@@ -55,7 +57,16 @@ const Cooking: NextPage = () => {
             Cooking
           </h1>
           <div>
-            <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
+            <label
+              onClick={() =>
+                setRecipes(
+                  Object.values(recipes).find(
+                    (value: any) => value.itemID <= 206
+                  )
+                )
+              }
+              className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+            >
               <span className="flex justify-between">
                 {" "}
                 <FilterIcon
@@ -102,7 +113,7 @@ const Cooking: NextPage = () => {
             All Recipes
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(cooking_recipes).map((recipe) => (
+            {Object.values(recipes).map((recipe: any) => (
               <RecipeCard
                 key={recipe.itemID}
                 recipe={recipe}

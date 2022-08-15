@@ -135,13 +135,8 @@ const SidebarLayout = ({
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       const { fiveHeartCount, tenHeartCount, relationships } =
         parseSocial(jsonObj);
-      const {
-        allRecipesCount,
-        cookedRecipesCount,
-        knownRecipesCount,
-        uncookedRecipes,
-        unknownRecipes,
-      } = parseCooking(jsonObj);
+      const { cookedRecipesCount, knownRecipesCount, allKnownRecipes } =
+        parseCooking(jsonObj);
       const {
         fishCaught: allFish,
         totalFishCaught,
@@ -206,9 +201,9 @@ const SidebarLayout = ({
             tenHeartCount, // TODO: map through relationships and add entry into DB for each
           },
           cooking: {
-            allRecipesCount,
             cookedRecipesCount,
             knownRecipesCount, // TODO: map through uncookedRecipes and unknownRecipes and add entry into DB for each
+            ...allKnownRecipes,
           },
         }),
       });

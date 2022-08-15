@@ -125,8 +125,6 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                               {selected.ingredients.map((ingredient) => {
                                 let item;
 
-                                console.log(ingredient);
-
                                 if (ingredient.itemID > 0) {
                                   const findItem = Object.entries(objects).find(
                                     ([id, obj]) =>
@@ -140,8 +138,6 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                                     iconURL: categoryIcons[ingredient.itemID],
                                   };
                                 }
-
-                                console.log(item);
 
                                 return (
                                   <div key={ingredient.itemID}>

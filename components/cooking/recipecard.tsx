@@ -43,12 +43,31 @@ function useSingleAndDoubleClick(
 }
 
 const RecipeCard = ({ recipe, setSelectedRecipe, setShowRecipe }: Props) => {
-  const [checked, setChecked] = useKV<boolean>(
+  const [value, setValue] = useKV<number>(
     "cooking",
     recipe.itemID.toString(),
-    false
+    0
   );
-  const className = "h-5 w-5 " + (checked ? "text-green-500" : "hidden");
+
+  let checkColor = "h-5 w-5 ";
+  let boxColor = "";
+  switch (value) {
+    case 0: // unknown recipe
+      checkColor += "hidden";
+      boxColor +=
+        "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
+      break;
+    case 1: // uncooked recipe
+      checkColor += "text-yellow-500";
+      boxColor += "border-yellow-900 bg-yellow-500/10 hover:bg-yellow-500/20";
+      break;
+    case 2: // cooked recipe
+      checkColor += "text-green-500";
+      boxColor += "border-green-900 bg-green-500/10 hover:bg-green-500/20";
+      break;
+    default:
+      break;
+  }
 
   const oneClick = useCallback(() => {
     setSelectedRecipe(recipe);
@@ -56,13 +75,16 @@ const RecipeCard = ({ recipe, setSelectedRecipe, setShowRecipe }: Props) => {
   }, [recipe, setSelectedRecipe, setShowRecipe]);
 
   const twoClick = useCallback(() => {
-    setChecked((old) => !old);
-  }, [setChecked]);
+    setValue((prev) => (prev + 1) % 3);
+  }, [setValue]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (
     <div
-      className="relative flex select-none items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+      className={
+        "relative flex select-none items-center space-x-3 rounded-lg border border-solid py-4 px-5 hover:cursor-pointer " +
+        boxColor
+      }
       onClick={click}
     >
       <div className="flex-shrink-0">
@@ -76,7 +98,7 @@ const RecipeCard = ({ recipe, setSelectedRecipe, setShowRecipe }: Props) => {
         <p className="truncate text-sm text-gray-400">{recipe.description}</p>
       </div>
 
-      {checked !== null && <CheckCircleIcon className={className} />}
+      {/* {value !== null && <CheckCircleIcon className={checkColor} />} */}
     </div>
   );
 };
