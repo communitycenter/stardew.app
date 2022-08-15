@@ -17,10 +17,13 @@ export default class MyDocument extends Document {
             property="og:description"
             content="Keep track of your Stardew Valley progression."
           />
-          <meta property="og:image" content="https://stardew.app/icon.png" />
+          <meta
+            property="og:thumbnail"
+            content="https://stardew.app/icon.png"
+          />
           <meta property="og:image:width" content="64" />
           <meta property="og:image:height" content="64" />
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary" />
           <meta name="twitter:url" content="https://stardew.app" />
           <meta name="twitter:title" content="Stardew.app" />
           <meta
