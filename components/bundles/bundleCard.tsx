@@ -1,5 +1,7 @@
 import { Bundle, BundleItem, CommunityCenterRoom } from "../../types/bundles";
 import itemIds from "../../research/processors/data/items.json";
+import bundleSprites from "../../research/processors/data/bundle_sprites.json";
+
 import BundleCell from "./bundleCell";
 import { useCallback, useMemo, useState } from "react";
 import { useLocalStorageState } from "../../hooks/use-local-storage";
@@ -64,7 +66,7 @@ const BundleCard = ({ bundleName, bundle }: Props) => {
         <div>
           <img
             className="mt-1 h-8 w-8"
-            src="https://stardewvalleywiki.com/mediawiki/images/b/b3/Bundle_Green.png"
+            src={bundleSprites[bundleName as keyof typeof bundleSprites]}
             alt="wtf"
           />
         </div>

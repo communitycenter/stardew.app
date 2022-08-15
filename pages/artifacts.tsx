@@ -66,7 +66,7 @@ const Artifacts: NextPage = () => {
               title={`${name} has caught 123 total fish and has caught 123/67 fish types.`}
               Icon={InformationCircleIcon}
               description={""}
-            /> 
+            />  
             
             I hate this info card.
 
