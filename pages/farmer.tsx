@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
 
+import achievements from "../research/processors/data/achievements.json";
+
+import InfoCard from "../components/infocard";
+import AchievementCard from "../components/achievementcard";
+import SkillDisplay from "../components/skilldisplay";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { useKV } from "../hooks/useKV";
+import Head from "next/head";
+
 import {
   HomeIcon,
   ClockIcon,
@@ -13,15 +20,6 @@ import {
   BriefcaseIcon,
   StarIcon,
 } from "@heroicons/react/solid";
-
-import Head from "next/head";
-
-import InfoCard from "../components/infocard";
-import SkillDisplay from "../components/skilldisplay";
-import AchievementCard from "../components/achievementcard";
-
-import achievements from "../research/processors/data/achievements.json";
-import { useKV } from "../hooks/useKV";
 
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
@@ -159,13 +157,13 @@ const Farmer: NextPage = () => {
                       tag={"achievements"}
                       key={achievement.id}
                       title={achievement.name}
-                      description={
-                        achievement.description +
-                        (moneyEarned >= requirements[achievement.name]
+                      description={achievement.description}
+                      additionalDescription={
+                        moneyEarned >= requirements[achievement.name]
                           ? ""
                           : ` - ${(
                               requirements[achievement.name] - moneyEarned
-                            ).toLocaleString()}g left!`)
+                            ).toLocaleString()}g left!`
                       }
                       sourceURL={achievement.iconURL}
                       initialChecked={

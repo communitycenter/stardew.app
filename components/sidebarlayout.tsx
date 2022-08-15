@@ -202,7 +202,7 @@ const SidebarLayout = ({
           },
           cooking: {
             cookedRecipesCount,
-            knownRecipesCount, // TODO: map through uncookedRecipes and unknownRecipes and add entry into DB for each
+            knownRecipesCount,
             ...allKnownRecipes,
           },
         }),

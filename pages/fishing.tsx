@@ -4,17 +4,17 @@ import type { Fish } from "../types";
 import fishes from "../research/processors/data/fish.json";
 import achievements from "../research/processors/data/achievements.json";
 
-import FishCard from "../components/fishing/fishcard";
+import BooleanCard from "../components/cards/booleancard";
 import AchievementCard from "../components/achievementcard";
 import InfoCard from "../components/infocard";
 import SidebarLayout from "../components/sidebarlayout";
+import FishSlideOver from "../components/fishing/fishslideover";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
-import FishSlideOver from "../components/fishing/fishslideover";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements
@@ -105,11 +105,12 @@ const Fishing: NextPage = () => {
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {Object.values(fishes).map((fish) => (
-              <FishCard
+              <BooleanCard
                 key={fish.itemID}
-                fish={fish}
-                setSelectedFish={setSelectedFish}
-                setShowFish={setShowFish}
+                category="fish"
+                itemObject={fish}
+                setSelected={setSelectedFish}
+                setShow={setShowFish}
               />
             ))}
           </div>

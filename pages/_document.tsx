@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta
             name="description"
-            content="Keep track of your Stardew Valley progression."
+            content="Stardew.app is a web application that allows you to track your Stardew Valley progress by uploading your save file. A simple and beautiful Stardew Valley 100% completion tracker."
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://stardew.app" />
@@ -18,8 +18,8 @@ export default class MyDocument extends Document {
             content="Keep track of your Stardew Valley progression."
           />
           <meta property="og:image" content="https://stardew.app/icon.png" />
-          <meta property="og:image:width" content="512" />
-          <meta property="og:image:height" content="512" />
+          <meta property="og:image:width" content="64" />
+          <meta property="og:image:height" content="64" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://stardew.app" />
           <meta name="twitter:title" content="Stardew.app" />
