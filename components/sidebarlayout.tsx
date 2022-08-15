@@ -329,7 +329,7 @@ const SidebarLayout = ({
       {/* Desktop sidebar */}
       <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
         <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white dark:border-[#2a2a2a] dark:bg-[#111111]">
-          <div className="soverflow-y-auto flex flex-1 flex-col pt-5 pb-4">
+          <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center justify-between px-4">
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* Sidebar Links Section */}
