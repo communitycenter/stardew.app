@@ -135,7 +135,7 @@ const SidebarLayout = ({
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       const { fiveHeartCount, tenHeartCount, relationships } =
         parseSocial(jsonObj);
-      const { cookedRecipesCount, knownRecipesCount, allKnownRecipes } =
+      const { cookedRecipesCount, knownRecipesCount, allRecipes } =
         parseCooking(jsonObj);
       const {
         fishCaught: allFish,
@@ -145,13 +145,6 @@ const SidebarLayout = ({
       console.log("Parsed information!");
 
       console.log("Uploading values to DB");
-      // TODO: probably a cleaner way to do this with a filter or something.
-      let fishCaught = {} as any;
-      for (const fish_id in allFish) {
-        if (allFish[fish_id] === true) {
-          fishCaught[fish_id] = true;
-        }
-      }
       const dbstart = performance.now();
       let response = await fetch("/api/kv", {
         method: "PATCH",
@@ -162,6 +155,7 @@ const SidebarLayout = ({
             farmInfo,
             moneyEarned,
             questsCompleted,
+            user: true,
           },
           stardrops: {
             count: stardropsCount,
@@ -185,7 +179,7 @@ const SidebarLayout = ({
           fish: {
             totalFishCaught,
             uniqueCaught,
-            ...fishCaught,
+            ...allFish,
           },
           mining: {
             deepestMineLevel,
@@ -203,7 +197,7 @@ const SidebarLayout = ({
           cooking: {
             cookedRecipesCount,
             knownRecipesCount,
-            ...allKnownRecipes,
+            ...allRecipes,
           },
         }),
       });

@@ -6,7 +6,7 @@ interface ReturnType {
   cookedRecipesCount: number;
   uncookedRecipes: Set<recipeID>;
   unknownRecipes: Set<recipeID>;
-  allKnownRecipes?: { [key: recipeID]: 1 | 2 }; // 1 = cooked, 2 = uncooked
+  allRecipes: { [key: recipeID]: 0 | 1 | 2 }; // 1 = cooked, 2 = uncooked
 }
 
 // aliases for readibility
@@ -36,6 +36,7 @@ export function parseCooking(json: any): ReturnType {
   // allRecipes_name will be a k,v pair of recipe name and recipe id
   let allRecipes_id: Record<recipeID, recipeName> = {};
   let allRecipes_name: Record<recipeName, recipeID> = {};
+  let allRecipes: { [key: recipeID]: 0 | 1 | 2 } = {};
   for (const key in cooking_recipes) {
     allRecipes_id[key as recipeID] = cooking_recipes[
       key as keyof typeof cooking_recipes
@@ -44,11 +45,12 @@ export function parseCooking(json: any): ReturnType {
     allRecipes_name[
       cooking_recipes[key as keyof typeof cooking_recipes]["name"] as recipeName
     ] = key as recipeID;
+
+    allRecipes[key as recipeID] = 0;
   }
 
   // then, we'll find all the recipes that the player knows
   let knownRecipes = new Set<recipeID>(); // a set of recipe IDs
-  let allKnownRecipes = {} as { [key: recipeID]: 1 | 2 }; // a map of recipe IDs to 1 or 2
   // check if there are multiple recipes
   if (typeof json.SaveGame.player.cookingRecipes.item.key === "undefined") {
     // if there are multiple recipes, we need to loop through them
@@ -62,7 +64,7 @@ export function parseCooking(json: any): ReturnType {
       // find the recipe ID since keys in cookingRecipes is the item name
       let itemID: recipeID = allRecipes_name[recipeName];
       knownRecipes.add(itemID);
-      allKnownRecipes[itemID] = 1;
+      allRecipes[itemID] = 1;
     }
   } else {
     // only one recipe known
@@ -72,7 +74,7 @@ export function parseCooking(json: any): ReturnType {
     }
     let itemID: recipeID = allRecipes_name[recipeName];
     knownRecipes.add(itemID);
-    allKnownRecipes[itemID] = 1;
+    allRecipes[itemID] = 1;
   }
 
   if (json.SaveGame.player.recipesCooked === "") {
@@ -85,6 +87,7 @@ export function parseCooking(json: any): ReturnType {
       unknownRecipes: new Set<recipeID>(
         Object.keys(allRecipes_id).filter((id) => !knownRecipes.has(id))
       ),
+      allRecipes,
     };
   }
 
@@ -95,16 +98,14 @@ export function parseCooking(json: any): ReturnType {
     for (const idx in json.SaveGame.player.recipesCooked.item) {
       let recipe = json.SaveGame.player.recipesCooked.item[idx];
       cookedRecipes.add(recipe.key.int.toString() as recipeID);
-      allKnownRecipes[recipe.key.int.toString() as recipeID] = 2;
+      allRecipes[recipe.key.int.toString() as recipeID] = 2;
     }
   } else {
     // only one recipe cooked
     cookedRecipes.add(
       json.SaveGame.player.recipesCooked.item.key.int as recipeID
     );
-    allKnownRecipes[
-      json.SaveGame.player.recipesCooked.item.key.int as recipeID
-    ] = 2;
+    allRecipes[json.SaveGame.player.recipesCooked.item.key.int as recipeID] = 2;
   }
 
   // then, we'll find the recipes the player has not cooked by finding the
@@ -129,6 +130,6 @@ export function parseCooking(json: any): ReturnType {
     cookedRecipesCount,
     uncookedRecipes,
     unknownRecipes,
-    allKnownRecipes,
+    allRecipes,
   };
 }
