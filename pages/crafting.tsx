@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import type { CookingRecipe } from "../types";
+import type { CraftingRecipe } from "../types/recipes";
 
 import achievements from "../research/processors/data/achievements.json";
-import cooking_recipes from "../research/processors/data/cooking_recipes.json";
+import crafting_recipes from "../research/processors/data/crafting_recipes.json";
 
 import AchievementCard from "../components/achievementcard";
 import InfoCard from "../components/infocard";
@@ -19,14 +19,12 @@ import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
-  Cook: 10,
-  "Sous Chef": 25,
-  "Gourmet Chef": 80,
+  "D.I.Y.": 15,
+  Artisan: 30,
+  "Craft Master": 129,
 };
 
 const Cooking: NextPage = () => {
-  const [recipes, setRecipes] = useState<any>(cooking_recipes);
-
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
 
@@ -34,8 +32,8 @@ const Cooking: NextPage = () => {
   const [totalRecipesCooked] = useKV("cooking", "cookedRecipesCount", 0);
   const [knownRecipesCount] = useKV("cooking", "knownRecipesCount", 0);
 
-  const [selectedRecipe, setSelectedRecipe] = useState<CookingRecipe>(
-    Object.values(cooking_recipes)[0]
+  const [selectedRecipe, setSelectedRecipe] = useState<CraftingRecipe>(
+    Object.values(crafting_recipes)[0]
   );
 
   const [hasUploaded] = useKV<boolean>("general", "user", false);
@@ -60,16 +58,7 @@ const Cooking: NextPage = () => {
             Cooking
           </h1>
           <div>
-            <label
-              onClick={() =>
-                setRecipes(
-                  Object.values(recipes).find(
-                    (value: any) => value.itemID <= 206
-                  )
-                )
-              }
-              className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
-            >
+            <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
               <span className="flex justify-between">
                 {" "}
                 <FilterIcon
@@ -116,7 +105,7 @@ const Cooking: NextPage = () => {
             All Recipes
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(recipes).map((recipe: any) => (
+            {Object.values(crafting_recipes).map((recipe: any) => (
               <RecipeCard
                 key={recipe.itemID}
                 recipe={recipe}

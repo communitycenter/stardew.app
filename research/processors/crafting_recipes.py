@@ -81,14 +81,14 @@ for recipe_name, value in rawData["content"].items():
             unlockConditions = "unknown"
 
     # TODO: have to parse bigcraftables and lookup there
-    iconURL = objects[str(itemID)]["iconURL"]
-    description = objects[str(itemID)]["description"]
+    # iconURL = objects[str(itemID)]["iconURL"]
+    # description = objects[str(itemID)]["description"]
 
     craftingRecipes[f"{itemID}"] = {
         "name": recipe_name,
         "itemID": itemID,
-        "iconURL": iconURL,
-        "description": description,
+        # "iconURL": iconURL,
+        # "description": description,
         "unlockConditions": unlockConditions,
         "ingredients": materials,
         "bigCraftable": bigCraftable,

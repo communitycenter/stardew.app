@@ -6,6 +6,7 @@ interface ReturnType {
   craftedRecipesCount: number;
   uncraftedRecipes: Set<string>;
   unknownRecipes: Set<string>;
+  allRecipes: { [key: string]: 0 | 1 | 2 }; // 1 = uncrafted, 2 = crafted
 }
 
 export function parseCrafting(json: any): ReturnType {
@@ -18,18 +19,20 @@ export function parseCrafting(json: any): ReturnType {
 
   // first, we need to make a list of all the crafting recipes in the game
   // this will help us map the names to IDs
-  const allRecipes: Record<string, string> = {};
+  const allRecipes_name: Record<string, string> = {};
+  let allRecipes: { [key: string]: 0 | 1 | 2 } = {};
   for (const key in crafting_recipes) {
     let itemID = key;
     let itemName =
       crafting_recipes[key as keyof typeof crafting_recipes]["name"];
 
-    allRecipes[itemName] = itemID;
+    allRecipes_name[itemName] = itemID;
+    allRecipes[itemID] = 0; // initialize to unknown
   }
   // then, we'll find all the recipes that the player knows and also those they've crafted
   const knownRecipes = new Set<string>(); // a set of recipe IDs
   const craftedRecipes = new Set<string>(); // a set of recipe IDs
-  // new save files have multiple recipes by default so no checks needed
+  //! new save files have multiple recipes by default so no checks needed
   for (const idx in json.SaveGame.player.craftingRecipes.item) {
     let recipe = json.SaveGame.player.craftingRecipes.item[idx];
     let recipeName = recipe.key.string;
@@ -39,10 +42,12 @@ export function parseCrafting(json: any): ReturnType {
     let amountCrafted = recipe.value.int;
 
     // find the recipe ID since keys in craftingRecipes.item is the item name
-    const itemID = allRecipes[recipeName];
+    const itemID = allRecipes_name[recipeName];
     knownRecipes.add(itemID);
+    allRecipes[itemID] = 1; // 1 = uncrafted but known recipe.
     if (amountCrafted > 0) {
       craftedRecipes.add(itemID);
+      allRecipes[itemID] = 2; // 2 = crafted recipe.
     }
   }
 
@@ -53,14 +58,15 @@ export function parseCrafting(json: any): ReturnType {
 
   // and finally those crafting recipes that the player needs to learn
   const unknownRecipes = new Set<string>(
-    Object.values(allRecipes).filter((id) => !knownRecipes.has(id))
+    Object.values(allRecipes_name).filter((id) => !knownRecipes.has(id))
   );
 
   return {
-    allRecipesCount: Object.keys(allRecipes).length,
+    allRecipesCount: Object.keys(allRecipes_name).length,
     knownRecipesCount: knownRecipes.size,
     craftedRecipesCount: craftedRecipes.size,
     uncraftedRecipes,
     unknownRecipes,
+    allRecipes,
   };
 }

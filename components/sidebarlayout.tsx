@@ -142,6 +142,7 @@ const SidebarLayout = ({
         totalFishCaught,
         uniqueCaught,
       } = parseFishing(jsonObj);
+      const { allRecipes: allCraftingRecipes } = parseCooking(jsonObj);
       console.log("Parsed information!");
 
       console.log("Uploading values to DB");
@@ -198,6 +199,9 @@ const SidebarLayout = ({
             cookedRecipesCount,
             knownRecipesCount,
             ...allRecipes,
+          },
+          crafting: {
+            ...allCraftingRecipes,
           },
         }),
       });

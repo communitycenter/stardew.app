@@ -1,6 +1,3 @@
-import type { CookingRecipe } from "../../types/cookingRecipes";
-
-import { CheckCircleIcon } from "@heroicons/react/outline";
 import {
   Dispatch,
   SetStateAction,
@@ -13,8 +10,8 @@ import { useKV } from "../../hooks/useKV";
 import Image from "next/image";
 
 type Props = {
-  recipe: CookingRecipe;
-  setSelectedRecipe: Dispatch<SetStateAction<CookingRecipe>>;
+  recipe: any;
+  setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
 };
 

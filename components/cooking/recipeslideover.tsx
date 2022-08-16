@@ -1,6 +1,3 @@
-import type { CookingRecipe } from "../../types/cookingRecipes";
-
-import cooking_recipes from "../../research/processors/data/cooking_recipes.json";
 import objects from "../../research/processors/data/objects.json";
 
 import { Fragment, Dispatch, SetStateAction, useState } from "react";
@@ -12,7 +9,7 @@ import Image from "next/image";
 
 type Props = {
   isOpen: boolean;
-  selected: CookingRecipe;
+  selected: any; // a CookingRecipe or CraftingRecipe
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
@@ -122,7 +119,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                               Ingredients Needed
                             </h4>
                             <p className="mt-1 dark:text-gray-400">
-                              {selected.ingredients.map((ingredient) => {
+                              {selected.ingredients.map((ingredient: any) => {
                                 let item;
 
                                 if (ingredient.itemID > 0) {
