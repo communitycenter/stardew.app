@@ -138,7 +138,7 @@ const SidebarLayout = ({
 
       // Cooking
       const { cookedCount, knownCount, allRecipes } = parseCooking(jsonObj);
-      // Crafing
+      // Crafting
       const {
         allRecipes: craftingRecipes,
         knownCount: knownCountCrafted,

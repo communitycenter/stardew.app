@@ -88,13 +88,14 @@ const Artifacts: NextPage = () => {
             Artifacts
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(artifacts.artifacts).map(([id, artifact]) => (
+            {Object.entries(artifacts.artifacts).map(([, artifact]) => (
               <AchievementCard
-                key={artifact.name}
+                key={artifact.itemID}
                 description={artifact.description}
                 title={artifact.name}
+                size={32}
                 sourceURL={artifact.iconURL}
-                id={id}
+                id={artifact.itemID}
                 tag="artifact"
               />
             ))}
@@ -103,13 +104,14 @@ const Artifacts: NextPage = () => {
             Minerals
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(artifacts.minerals).map(([id, mineral]) => (
+            {Object.entries(artifacts.minerals).map(([, mineral]) => (
               <AchievementCard
-                key={mineral.name}
+                key={mineral.itemID}
                 description={mineral.description}
                 title={mineral.name}
+                size={32}
                 sourceURL={mineral.iconURL}
-                id={id}
+                id={mineral.itemID}
                 tag="mineral"
               />
             ))}
