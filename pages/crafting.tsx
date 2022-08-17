@@ -104,6 +104,28 @@ const Crafting: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             All Recipes
           </h2>
+          {/* Color indicator information */}
+          <div className="flex items-center space-x-8">
+            <div className="mt-2">
+              <div className="flex items-center space-x-2">
+                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
+                <p className="text-sm dark:text-white">- Cooked Recipe</p>
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="flex items-center space-x-2">
+                <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20" />
+                <p className="text-sm dark:text-white">- Known Recipe</p>
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="flex items-center space-x-2">
+                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
+                <p className="text-sm dark:text-white">- Unknown Recipe</p>
+              </div>
+            </div>
+          </div>
+          {/* End Color indicator information */}
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {Object.values(crafting_recipes).map((recipe: any) => (
               <RecipeCard
@@ -121,6 +143,7 @@ const Crafting: NextPage = () => {
 
       <RecipeSlideOver
         isOpen={showRecipe}
+        category={"crafting"}
         selected={selectedRecipe}
         setOpen={setShowRecipe}
       />

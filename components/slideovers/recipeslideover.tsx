@@ -9,6 +9,7 @@ import Image from "next/image";
 
 type Props = {
   isOpen: boolean;
+  category: string;
   selected: any; // a CookingRecipe or CraftingRecipe
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
@@ -17,19 +18,22 @@ const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
   "-5": "Any Egg",
   "-6": "Any Milk",
+  "-777": "Wild Seeds (Any)",
 };
 
 const categoryIcons: Record<string, string> = {
   "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
   "-5": "https://stardewvalleywiki.com/mediawiki/images/2/26/Egg.png",
   "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
+  "-777":
+    "https://stardewcommunitywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
 };
 
-const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
-  const [checked, setChecked] = useKV(
-    "cooking",
+const RecipeSlideOver = ({ isOpen, category, selected, setOpen }: Props) => {
+  const [value, setValue] = useKV<number>(
+    category,
     selected.itemID.toString(),
-    false
+    0
   );
 
   return (
@@ -118,7 +122,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                             <h4 className="text-lg font-semibold">
                               Ingredients Needed
                             </h4>
-                            <p className="mt-1 dark:text-gray-400">
+                            <div className="mt-1 dark:text-gray-400">
                               {selected.ingredients.map((ingredient: any) => {
                                 let item;
 
@@ -157,7 +161,7 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                                   </div>
                                 );
                               })}
-                            </p>
+                            </div>
                           </div>
                         </div>
 
@@ -165,17 +169,22 @@ const RecipeSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                         <button
                           className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:bg-[#191919]"
                           onClick={() => {
-                            setChecked((old) => !old);
+                            setValue((prev) => (prev + 1) % 3);
                             setOpen(false);
                           }}
                         >
-                          {!checked ? (
+                          {value <= 1 ? (
                             <CheckIcon className="h-6 w-6" aria-hidden="true" />
                           ) : (
                             <XIcon className="h-6 w-6" aria-hidden="true" />
                           )}
                           <p className="">
-                            Mark as {checked ? "un" : null}cooked
+                            Mark as{" "}
+                            {!(value === 0)
+                              ? value === 1
+                                ? "completed"
+                                : "unknown"
+                              : "known"}
                           </p>
                         </button>
                       </div>

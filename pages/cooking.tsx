@@ -118,13 +118,13 @@ const Cooking: NextPage = () => {
           <div className="flex items-center space-x-8">
             <div className="mt-2">
               <div className="flex items-center space-x-2">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/30" />
+                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
                 <p className="text-sm dark:text-white">- Cooked Recipe</p>
               </div>
             </div>
             <div className="mt-2">
               <div className="flex items-center space-x-2">
-                <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/30" />
+                <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20" />
                 <p className="text-sm dark:text-white">- Known Recipe</p>
               </div>
             </div>
@@ -152,6 +152,7 @@ const Cooking: NextPage = () => {
 
       <RecipeSlideOver
         isOpen={showRecipe}
+        category={"cooking"}
         selected={selectedRecipe}
         setOpen={setShowRecipe}
       />
