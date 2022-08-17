@@ -79,10 +79,8 @@ for recipe_name, value in rawData["content"].items():
         unlockConditions = f"Reach {hearts} hearts with {npc}."
     elif unlockConditions[0] == "null":
         if recipe_name in defaults:
-            unlockConditions = "default"
+            unlockConditions = "Starter recipe - no steps required!"
         else:
-            # TODO: there's actually a lot of these so we need to find a way to
-            # find their unlock conditions.
             unlockConditions = "unknown"
 
     # lookup information from big_craftables if true

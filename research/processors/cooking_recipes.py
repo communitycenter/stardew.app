@@ -29,6 +29,16 @@ categories = {
     "-6": "Any Milk"
 }
 
+# hardcoding these recipeSources that would need to be scraped
+# if you want to avoid hardcoding you can look at the method from crafting_recipes.py
+recipeSource = {
+    "Cookie": "Evelyn (4-heart event).",
+    "Triple Shot Espresso": "Stardrop Saloon for 5,000g.",
+    "Ginger Ale": "Dwarf Shop in Volcano Dungeon for 1,000g.",
+    "Banana Pudding": "Island Trader for 30 Bone Fragments.",
+    "Tropical Curry": "Ginger Island Resort for 2,000g."
+}
+
 # get the names of all the the recipes unlocked through Queen of Sauce TV
 # for some reason, the unlock condition for these is an unobtainable level in
 # CookingRecipes.json so we have to find them this way 🙂
@@ -62,7 +72,7 @@ for recipe_name, value in rawData["content"].items():
     
     unlockConditions = fields[3].split(" ")
     if (unlockConditions[0] == "default"): 
-        unlockConditions = "default"
+        unlockConditions = "Starter recipe - no steps required!"
     elif (unlockConditions[0] == "f"): # unlocked through friendship
         npc = unlockConditions[1]
         hearts = unlockConditions[2]
@@ -73,12 +83,12 @@ for recipe_name, value in rawData["content"].items():
         skill = unlockConditions[1]
         level = unlockConditions[2]
         unlockConditions = f"Reach level {level} in {skill}."
-    elif (unlockConditions[0] == "null"):
-        # hardcoding these since, for now, its only one.
-        if (recipe_name == "Cookies"):
-            unlockConditions = "Obtained in the 4-heart event with Evelyn."
-        else:
-            unlockConditions = "unknown"
+    else:
+        unlockConditions = "unknown"
+        
+    # hardcoding these since, for now, its only one.
+    if (recipe_name in recipeSource.keys()):
+        unlockConditions = recipeSource[recipe_name]
 
     if (recipe_name in tv_recipes):
         unlockConditions = "Unlocked through Queen of Sauce TV."

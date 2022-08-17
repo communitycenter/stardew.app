@@ -88,7 +88,7 @@
         "itemID": 130,
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Chest.png",
         "description": "A place to store your items.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -274,7 +274,7 @@
         "itemID": 37,
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Wood_Sign.png",
         "description": "Use an item on this to change what's displayed. The item won't be consumed.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -288,7 +288,7 @@
         "itemID": 38,
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f3/Stone_Sign.png",
         "description": "Use an item on this to change what's displayed. The item won't be consumed.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
@@ -2000,7 +2000,7 @@
         "itemID": 146,
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Campfire.png",
         "description": "Provides a moderate amount of light.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
