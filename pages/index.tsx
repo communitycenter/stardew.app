@@ -42,7 +42,7 @@ const Home: NextPage = () => {
                 alt="Heart emoji"
               ></Image>
             </div>
-            <div className="space-yCleanShot 2022-08-14 at 16.11.50@2x.png-2 justify-center text-center text-gray-900 dark:text-white">
+            <div className="space-y-2 justify-center text-center text-gray-900 dark:text-white">
               <div className="text-2xl font-semibold ">
                 Welcome to Stardew.app!{" "}
                 <Image
