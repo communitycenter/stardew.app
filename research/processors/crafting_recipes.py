@@ -2,10 +2,15 @@
 # https://stardewvalleywiki.com/Modding:Recipe_data
 
 import json
+import bs4
+import requests
 
 
 with open("../raw_data/CraftingRecipes.json", "r") as f:
     rawData = json.load(f)
+    
+with open("./data/big_craftables.json", "r") as f:
+    big_craftables = json.load(f)
 
 with open("./data/objects.json", "r") as f:
     objects = json.load(f)
@@ -80,15 +85,44 @@ for recipe_name, value in rawData["content"].items():
             # find their unlock conditions.
             unlockConditions = "unknown"
 
-    # TODO: have to parse bigcraftables and lookup there
-    # iconURL = objects[str(itemID)]["iconURL"]
-    # description = objects[str(itemID)]["description"]
+    # lookup information from big_craftables if true
+    if bigCraftable:
+        iconURL = big_craftables[str(itemID)]["iconURL"]
+        description = big_craftables[str(itemID)]["description"]
+    else:
+        iconURL = objects[str(itemID)]["iconURL"]
+        description = objects[str(itemID)]["description"]
+        
+    if unlockConditions == "unknown":
+        special = set(["Hyper Speed-Gro", "Deluxe Fertilizer", "Deluxe Retaining Soil", "Warp Totem: Desert", "Warp Totem: Island", "Fairy Dust"])
+        
+        if recipe_name in special:
+            tdText = "Recipe Source(s):\n"
+        else:
+            tdText = "Recipe Source:\n"
+        # find the unlock conditions by scraping the wiki
+        wiki_url = f"https://stardewvalleywiki.com/{recipe_name}"
+        r = requests.get(wiki_url)
+        soup = bs4.BeautifulSoup(r.text, "html.parser")
+
+        # first we'll find the row title 
+        elem = soup.find("td", string=tdText)
+        # then find the next element which is the unlockConditions
+        unlockConditions = elem.findNext("td").getText().strip()
+        
+        # clean up the string
+        if unlockConditions.startswith("Qi's"):
+            unlockConditions = unlockConditions.replace("  ", " ")
+            if unlockConditions.endswith(")"):
+                unlockConditions = unlockConditions.replace(" ( 20)", "for 20 Qi Gems")
+            else:
+                unlockConditions = unlockConditions + " Qi Gems"
 
     craftingRecipes[f"{itemID}"] = {
         "name": recipe_name,
         "itemID": itemID,
-        # "iconURL": iconURL,
-        # "description": description,
+        "iconURL": iconURL,
+        "description": description,
         "unlockConditions": unlockConditions,
         "ingredients": materials,
         "bigCraftable": bigCraftable,
