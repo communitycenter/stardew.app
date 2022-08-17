@@ -31,8 +31,8 @@ const Crafting: NextPage = () => {
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
 
   const [name] = useKV("general", "name", "Farmer");
-  const [craftedCount] = useKV("crafting", "craftedCount", 0);
-  const [knownCount] = useKV("crafting", "knownCount", 0);
+  const [craftedCount, setCraftedCount] = useKV("crafting", "craftedCount", 0);
+  const [knownCount, setKnownCount] = useKV("crafting", "knownCount", 0);
 
   const [selectedRecipe, setSelectedRecipe] = useState<CraftingRecipe>(
     Object.values(crafting_recipes)[0]
@@ -135,6 +135,8 @@ const Crafting: NextPage = () => {
                 recipe={recipe}
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}
+                setKnownCount={setKnownCount}
+                setCompletedCount={setCraftedCount}
               />
             ))}
           </div>
@@ -146,6 +148,8 @@ const Crafting: NextPage = () => {
         category={"crafting"}
         selected={selectedRecipe}
         setOpen={setShowRecipe}
+        setCompletedCount={setCraftedCount}
+        setKnownCount={setKnownCount}
       />
     </>
   );

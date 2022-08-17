@@ -13,7 +13,7 @@ type Props = {
   selected: any; // a CookingRecipe or CraftingRecipe
   setOpen: Dispatch<SetStateAction<boolean>>;
   setKnownCount: Dispatch<SetStateAction<number>>;
-  setCookedCount: Dispatch<SetStateAction<number>>;
+  setCompletedCount: Dispatch<SetStateAction<number>>;
 };
 
 const categoryItems: Record<string, string> = {
@@ -37,7 +37,7 @@ const RecipeSlideOver = ({
   selected,
   setOpen,
   setKnownCount,
-  setCookedCount,
+  setCompletedCount,
 }: Props) => {
   const [value, setValue] = useKV<number>(
     category,
@@ -183,11 +183,11 @@ const RecipeSlideOver = ({
                                 setKnownCount((prev) => prev + 1);
                                 break;
                               case 1: // known so add to cooked count on update
-                                setCookedCount((prev) => prev + 1);
+                                setCompletedCount((prev) => prev + 1);
                                 break;
                               case 2: // cooked so subtract from known and cooked count on update
                                 setKnownCount((prev) => prev - 1);
-                                setCookedCount((prev) => prev - 1);
+                                setCompletedCount((prev) => prev - 1);
                                 break;
                               default:
                                 break;

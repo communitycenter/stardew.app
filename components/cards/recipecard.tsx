@@ -16,7 +16,7 @@ type Props = {
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
   setKnownCount: Dispatch<SetStateAction<number>>;
-  setCookedCount: Dispatch<SetStateAction<number>>;
+  setCompletedCount: Dispatch<SetStateAction<number>>;
 };
 
 function useSingleAndDoubleClick(
@@ -50,7 +50,7 @@ const RecipeCard = ({
   setSelectedRecipe,
   setShowRecipe,
   setKnownCount,
-  setCookedCount,
+  setCompletedCount,
 }: Props) => {
   const [value, setValue] = useKV<number>(
     category,
@@ -88,10 +88,10 @@ const RecipeCard = ({
         setKnownCount((knownCount) => knownCount + 1);
         break;
       case 1: // uncooked recipe so add to cooked count on update
-        setCookedCount((cookedCount) => cookedCount + 1);
+        setCompletedCount((cookedCount) => cookedCount + 1);
         break;
       case 2: // cooked recipe so subtract from cooked and known count on update
-        setCookedCount((cookedCount) => cookedCount - 1);
+        setCompletedCount((cookedCount) => cookedCount - 1);
         setKnownCount((knownCount) => knownCount - 1);
         break;
       default:

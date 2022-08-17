@@ -145,7 +145,7 @@ const Cooking: NextPage = () => {
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}
                 setKnownCount={setKnownCount}
-                setCookedCount={setCookedCount}
+                setCompletedCount={setCookedCount}
               />
             ))}
           </div>
@@ -158,7 +158,7 @@ const Cooking: NextPage = () => {
         selected={selectedRecipe}
         setOpen={setShowRecipe}
         setKnownCount={setKnownCount}
-        setCookedCount={setCookedCount}
+        setCompletedCount={setCookedCount}
       />
     </>
   );
