@@ -29,7 +29,7 @@ const requirements: Record<string, number> = {
 const Shipping: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   //   const [showFish, setShowFish] = useState<boolean>(false);
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
   const [name] = useKV("general", "name", "Farmer");
   //   const [totalFishCaught] = useKV("fish", "totalFishCaught", 0);
   //   const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);

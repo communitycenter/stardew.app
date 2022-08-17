@@ -33,7 +33,7 @@ const Fishing: NextPage = () => {
   const [selectedFish, setSelectedFish] = useState<Fish>(
     Object.values(fishes)[0]
   );
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   return (
     <>

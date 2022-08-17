@@ -38,7 +38,7 @@ const Cooking: NextPage = () => {
     Object.values(cooking_recipes)[0]
   );
 
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   return (
     <>

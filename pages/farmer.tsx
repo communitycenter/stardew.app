@@ -79,7 +79,7 @@ const Farmer: NextPage = () => {
   const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
   const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
   const [stardropsCount] = useKV<number>("stardrops", "count", 0);
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   return (
     <>
