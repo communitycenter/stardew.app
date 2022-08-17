@@ -15,6 +15,8 @@ type Props = {
   bigCraftable?: boolean;
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
+  setKnownCount: Dispatch<SetStateAction<number>>;
+  setCookedCount: Dispatch<SetStateAction<number>>;
 };
 
 function useSingleAndDoubleClick(
@@ -47,6 +49,8 @@ const RecipeCard = ({
   bigCraftable,
   setSelectedRecipe,
   setShowRecipe,
+  setKnownCount,
+  setCookedCount,
 }: Props) => {
   const [value, setValue] = useKV<number>(
     category,
@@ -78,6 +82,21 @@ const RecipeCard = ({
   }, [recipe, setSelectedRecipe, setShowRecipe]);
 
   const twoClick = useCallback(() => {
+    // update counts based on state of recipe
+    switch (value) {
+      case 0: // unknown recipe so add to known count on update
+        setKnownCount((knownCount) => knownCount + 1);
+        break;
+      case 1: // uncooked recipe so add to cooked count on update
+        setCookedCount((cookedCount) => cookedCount + 1);
+        break;
+      case 2: // cooked recipe so subtract from cooked and known count on update
+        setCookedCount((cookedCount) => cookedCount - 1);
+        setKnownCount((knownCount) => knownCount - 1);
+        break;
+      default:
+        break;
+    }
     setValue((prev) => (prev + 1) % 3);
   }, [setValue]);
 

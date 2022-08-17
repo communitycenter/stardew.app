@@ -16,6 +16,7 @@ type Props = {
   category: string;
   setSelected: Dispatch<SetStateAction<Fish | any>>;
   setShow: Dispatch<SetStateAction<boolean>>;
+  setCount: Dispatch<SetStateAction<number>>;
 };
 
 function useSingleAndDoubleClick(
@@ -42,7 +43,13 @@ function useSingleAndDoubleClick(
   return () => setClick((prev) => prev + 1);
 }
 
-const BooleanCard = ({ itemObject, setSelected, setShow, category }: Props) => {
+const BooleanCard = ({
+  itemObject,
+  setSelected,
+  setShow,
+  category,
+  setCount,
+}: Props) => {
   const [checked, setChecked] = useKV<boolean>(
     category,
     itemObject.itemID.toString(),
@@ -58,6 +65,11 @@ const BooleanCard = ({ itemObject, setSelected, setShow, category }: Props) => {
   }, [itemObject, setSelected, setShow]);
 
   const twoClick = useCallback(() => {
+    if (checked) {
+      setCount((prev) => prev - 1);
+    } else {
+      setCount((prev) => prev + 1);
+    }
     setChecked((old) => !old);
   }, [setChecked]);
 

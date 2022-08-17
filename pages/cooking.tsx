@@ -30,8 +30,8 @@ const Cooking: NextPage = () => {
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   const [name] = useKV("general", "name", "Farmer");
-  const [cookedCount] = useKV("cooking", "cookedCount", 0);
-  const [knownCount] = useKV("cooking", "knownCount", 0);
+  const [cookedCount, setCookedCount] = useKV("cooking", "cookedCount", 0);
+  const [knownCount, setKnownCount] = useKV("cooking", "knownCount", 0);
 
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
@@ -144,6 +144,8 @@ const Cooking: NextPage = () => {
                 recipe={recipe}
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}
+                setKnownCount={setKnownCount}
+                setCookedCount={setCookedCount}
               />
             ))}
           </div>
@@ -155,6 +157,8 @@ const Cooking: NextPage = () => {
         category={"cooking"}
         selected={selectedRecipe}
         setOpen={setShowRecipe}
+        setKnownCount={setKnownCount}
+        setCookedCount={setCookedCount}
       />
     </>
   );

@@ -10,11 +10,12 @@ type Props = {
   isOpen: boolean;
   selectedFish: Fish;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  setCount: Dispatch<SetStateAction<number>>;
 };
 
 // iterate through a list and return a comma separated string
 
-const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
+const FishSlideOver = ({ isOpen, selectedFish, setOpen, setCount }: Props) => {
   const [checked, setChecked] = useKV(
     "fish",
     selectedFish.itemID.toString(),
@@ -142,6 +143,9 @@ const FishSlideOver = ({ isOpen, selectedFish, setOpen }: Props) => {
                           // it gets rid of the padding on the left and right and becomes scrollable when you try and add it to the button.
                           className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:border-white"
                           onClick={() => {
+                            checked
+                              ? setCount((prev) => prev - 1)
+                              : setCount((prev) => prev + 1);
                             setChecked((old) => !old);
                             setOpen(false);
                           }}

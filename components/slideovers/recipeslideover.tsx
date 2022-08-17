@@ -12,6 +12,8 @@ type Props = {
   category: string;
   selected: any; // a CookingRecipe or CraftingRecipe
   setOpen: Dispatch<SetStateAction<boolean>>;
+  setKnownCount: Dispatch<SetStateAction<number>>;
+  setCookedCount: Dispatch<SetStateAction<number>>;
 };
 
 const categoryItems: Record<string, string> = {
@@ -29,7 +31,14 @@ const categoryIcons: Record<string, string> = {
     "https://stardewcommunitywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
 };
 
-const RecipeSlideOver = ({ isOpen, category, selected, setOpen }: Props) => {
+const RecipeSlideOver = ({
+  isOpen,
+  category,
+  selected,
+  setOpen,
+  setKnownCount,
+  setCookedCount,
+}: Props) => {
   const [value, setValue] = useKV<number>(
     category,
     selected.itemID.toString(),
@@ -169,6 +178,20 @@ const RecipeSlideOver = ({ isOpen, category, selected, setOpen }: Props) => {
                         <button
                           className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:bg-[#191919]"
                           onClick={() => {
+                            switch (value) {
+                              case 0: // unknown so add to known count on update
+                                setKnownCount((prev) => prev + 1);
+                                break;
+                              case 1: // known so add to cooked count on update
+                                setCookedCount((prev) => prev + 1);
+                                break;
+                              case 2: // cooked so subtract from known and cooked count on update
+                                setKnownCount((prev) => prev - 1);
+                                setCookedCount((prev) => prev - 1);
+                                break;
+                              default:
+                                break;
+                            }
                             setValue((prev) => (prev + 1) % 3);
                             setOpen(false);
                           }}

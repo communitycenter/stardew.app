@@ -27,9 +27,13 @@ const requirements: Record<string, number> = {
 const Fishing: NextPage = () => {
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
-  const [name] = useKV("general", "name", "Farmer");
-  const [totalCaught] = useKV("fish", "totalCaught", 0);
-  const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
+  const [name] = useKV<string>("general", "name", "Farmer");
+  const [totalCaught] = useKV<number>("fish", "totalCaught", 0);
+  const [uniqueCaught, setUniqueCaught] = useKV<number>(
+    "fish",
+    "uniqueCaught",
+    0
+  );
 
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showFish, setShowFish] = useState<boolean>(false);
@@ -116,6 +120,7 @@ const Fishing: NextPage = () => {
                 itemObject={fish}
                 setSelected={setSelectedFish}
                 setShow={setShowFish}
+                setCount={setUniqueCaught}
               />
             ))}
           </div>
@@ -126,6 +131,7 @@ const Fishing: NextPage = () => {
         isOpen={showFish}
         selectedFish={selectedFish}
         setOpen={setShowFish}
+        setCount={setUniqueCaught}
       />
     </>
   );
