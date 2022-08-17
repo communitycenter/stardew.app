@@ -12,6 +12,7 @@ import Image from "next/image";
 type Props = {
   recipe: any;
   category: string;
+  bigCraftable?: boolean;
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
 };
@@ -43,6 +44,7 @@ function useSingleAndDoubleClick(
 const RecipeCard = ({
   recipe,
   category,
+  bigCraftable,
   setSelectedRecipe,
   setShowRecipe,
 }: Props) => {
@@ -86,7 +88,9 @@ const RecipeCard = ({
       }
       onClick={click}
     >
-      <Image src={recipe.iconURL} alt={recipe.name} width={32} height={32} />
+      <div className="flex">
+        <Image src={recipe.iconURL} alt={recipe.name} width={32} height={32} />
+      </div>
 
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">

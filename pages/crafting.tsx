@@ -109,6 +109,7 @@ const Crafting: NextPage = () => {
               <RecipeCard
                 key={recipe.itemID}
                 category={"crafting"}
+                bigCraftable={recipe.bigCraftable}
                 recipe={recipe}
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}

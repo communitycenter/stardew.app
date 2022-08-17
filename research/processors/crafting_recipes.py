@@ -70,7 +70,7 @@ for recipe_name, value in rawData["content"].items():
         unlockConditions = f"Reach level {level} in {skill}."
     elif unlockConditions[0] == "l":
         if unlockConditions[1] == "0":
-            unlockConditions = "default"
+            unlockConditions = "Starter recipe - no steps required!"
         else:
             unlockConditions = f"Reach farmer level {unlockConditions[1]}."
     elif unlockConditions[0] == "f":

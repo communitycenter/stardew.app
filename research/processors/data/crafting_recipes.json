@@ -4,7 +4,7 @@
         "itemID": 322,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1e/Wood_Fence.png",
         "description": "Keeps grass and animals contained!",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -74,7 +74,7 @@
         "itemID": 325,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/94/Gate.png",
         "description": "Allows you to pass through a fence.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -102,7 +102,7 @@
         "itemID": 93,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b2/Torch.png",
         "description": "Provides a modest amount of light.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1388,7 +1388,7 @@
         "itemID": 328,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Wood_Floor.png",
         "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1402,7 +1402,7 @@
         "itemID": 401,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/85/Straw_Floor.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1420,7 +1420,7 @@
         "itemID": 331,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2a/Weathered_Floor.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1434,7 +1434,7 @@
         "itemID": 840,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9e/Rustic_Plank_Floor.png",
         "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Carpenter's Shop (200g)",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1448,7 +1448,7 @@
         "itemID": 333,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a4/Crystal_Floor.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 338,
@@ -1462,7 +1462,7 @@
         "itemID": 329,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Stone_Floor.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
@@ -1476,7 +1476,7 @@
         "itemID": 841,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/51/Stone_Walkway_Floor.png",
         "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Carpenter's Shop (200g)",
         "ingredients": [
             {
                 "itemID": 390,
@@ -1490,7 +1490,7 @@
         "itemID": 293,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/29/Brick_Floor.png",
         "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 330,
@@ -1508,7 +1508,7 @@
         "itemID": 405,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e3/Wood_Path.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 388,
@@ -1522,7 +1522,7 @@
         "itemID": 407,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/15/Gravel_Path.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
@@ -1536,7 +1536,7 @@
         "itemID": 411,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/90/Cobblestone_Path.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
@@ -1550,7 +1550,7 @@
         "itemID": 415,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Stepping_Stone_Path.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 390,
@@ -1564,7 +1564,7 @@
         "itemID": 409,
         "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Crystal_Path.png",
         "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "default",
+        "unlockConditions": "Starter recipe - no steps required!",
         "ingredients": [
             {
                 "itemID": 338,
