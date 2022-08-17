@@ -15,7 +15,7 @@ import logo from "../public/icon.png";
 import { FaDiscord } from "react-icons/fa";
 
 const navigation = [
-  { name: "Login with Discord", href: "#", icon: FaDiscord },
+  { name: "Login with Discord", href: "/api/oauth", icon: FaDiscord },
   { name: "Upload Stardew Save File", href: "#", icon: SparklesIcon },
 ];
 
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
                 alt="Heart emoji"
               ></Image>
             </div>
-            <div className="space-y-2 justify-center text-center text-gray-900 dark:text-white">
+            <div className="justify-center space-y-2 text-center text-gray-900 dark:text-white">
               <div className="text-2xl font-semibold ">
                 Welcome to Stardew.app!{" "}
                 <Image

@@ -96,7 +96,12 @@ export default async function handler(
       }
     }
 
-    setCookie("uid", user.id, { req, res, domain: "localhost", maxAge: 3600 });
+    setCookie("uid", user.id, {
+      req,
+      res,
+      domain: "localhost",
+      maxAge: 60 * 60 * 24 * 365,
+    });
     const token = createToken(user.id, cookieSecret, 60 * 60 * 24 * 365);
     setCookie("token", token.token, {
       req,
@@ -105,12 +110,20 @@ export default async function handler(
       expires: new Date(token.expires * 1000),
     });
 
-    setCookie("discord_user", JSON.stringify({ discord_id: discordUserData.id, discord_name: discordUserData.username, discord_avatar: discordUserData.avatar }), {
-      req,
-      res,
-      domain: "localhost",
-      expires: new Date(token.expires * 1000),
-    });
+    setCookie(
+      "discord_user",
+      JSON.stringify({
+        discord_id: discordUserData.id,
+        discord_name: discordUserData.username,
+        discord_avatar: discordUserData.avatar,
+      }),
+      {
+        req,
+        res,
+        domain: "localhost",
+        expires: new Date(token.expires * 1000),
+      }
+    );
 
     res.redirect("/fishing");
   } catch (e: any) {
