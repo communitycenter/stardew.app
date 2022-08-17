@@ -90,7 +90,7 @@ const AchievementCard = ({
         }
         onClick={click}
       >
-        <motion.div layout="position">
+        <motion.div layout="position" className="flex">
           <Image
             src={sourceURL}
             alt={title}

@@ -65,9 +65,7 @@ const FishCard = ({ fish, setSelectedFish, setShowFish }: Props) => {
       className="relative flex select-none items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
       onClick={click}
     >
-      <div className="flex-shrink-0">
-        <Image src={fish.iconURL} alt={fish.name} width={32} height={32} />
-      </div>
+      <Image src={fish.iconURL} alt={fish.name} width={32} height={32} />
 
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">

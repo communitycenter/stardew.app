@@ -27,6 +27,8 @@ const requirements: Record<string, number> = {
 const Cooking: NextPage = () => {
   const [recipes, setRecipes] = useState<any>(cooking_recipes);
 
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
 
@@ -37,8 +39,6 @@ const Cooking: NextPage = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<CookingRecipe>(
     Object.values(cooking_recipes)[0]
   );
-
-  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   return (
     <>
@@ -119,6 +119,7 @@ const Cooking: NextPage = () => {
             {Object.values(recipes).map((recipe: any) => (
               <RecipeCard
                 key={recipe.itemID}
+                category={"cooking"}
                 recipe={recipe}
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}

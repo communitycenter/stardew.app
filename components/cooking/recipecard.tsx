@@ -11,6 +11,7 @@ import Image from "next/image";
 
 type Props = {
   recipe: any;
+  category: string;
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
 };
@@ -39,27 +40,28 @@ function useSingleAndDoubleClick(
   return () => setClick((prev) => prev + 1);
 }
 
-const RecipeCard = ({ recipe, setSelectedRecipe, setShowRecipe }: Props) => {
+const RecipeCard = ({
+  recipe,
+  category,
+  setSelectedRecipe,
+  setShowRecipe,
+}: Props) => {
   const [value, setValue] = useKV<number>(
-    "cooking",
+    category,
     recipe.itemID.toString(),
     0
   );
 
-  let checkColor = "h-5 w-5 ";
   let boxColor = "";
   switch (value) {
     case 0: // unknown recipe
-      checkColor += "hidden";
       boxColor +=
         "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
       break;
     case 1: // uncooked recipe
-      checkColor += "text-yellow-500";
       boxColor += "border-yellow-900 bg-yellow-500/10 hover:bg-yellow-500/20";
       break;
     case 2: // cooked recipe
-      checkColor += "text-green-500";
       boxColor += "border-green-900 bg-green-500/10 hover:bg-green-500/20";
       break;
     default:
@@ -84,9 +86,7 @@ const RecipeCard = ({ recipe, setSelectedRecipe, setShowRecipe }: Props) => {
       }
       onClick={click}
     >
-      <div className="flex-shrink-0">
-        <Image src={recipe.iconURL} alt={recipe.name} width={32} height={32} />
-      </div>
+      <Image src={recipe.iconURL} alt={recipe.name} width={32} height={32} />
 
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">

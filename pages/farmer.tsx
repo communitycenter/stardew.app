@@ -71,15 +71,18 @@ const STARDROPS = {
 
 const Farmer: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [farmerLevel] = useKV<number>("levels", "player", 0);
-  const [maxLevelCount] = useKV<number>("levels", "maxLevelCount", 0);
+
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+
   const [name] = useKV<string>("general", "name", "Farmer");
   const [farmInfo] = useKV<string>("general", "farmInfo", "No farm info");
   const [timePlayed] = useKV<string>("general", "timePlayed", "0h 0m");
   const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
+  const [farmerLevel] = useKV<number>("levels", "player", 0);
   const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
   const [stardropsCount] = useKV<number>("stardrops", "count", 0);
-  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+
+  const [maxLevelCount] = useKV<number>("levels", "maxLevelCount", 0);
 
   return (
     <>

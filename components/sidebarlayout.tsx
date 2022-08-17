@@ -156,7 +156,7 @@ const SidebarLayout = ({
             farmInfo,
             moneyEarned,
             questsCompleted,
-            user: true,
+            uploadedFile: true,
           },
           stardrops: {
             count: stardropsCount,
