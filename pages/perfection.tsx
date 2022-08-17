@@ -63,8 +63,8 @@ const Perfection: NextPage = () => {
               <div className="justify-center space-y-2 text-center text-gray-900 dark:text-white">
                 <div className="space-y-2">
                   <h2>
-                    You'll need to upload a save file before you can use this
-                    page!
+                    You&apos;ll need to upload a save file before you can use
+                    this page!
                   </h2>
                 </div>
               </div>
