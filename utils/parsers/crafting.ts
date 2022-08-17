@@ -2,8 +2,8 @@ import crafting_recipes from "../../research/processors/data/crafting_recipes.js
 
 interface ReturnType {
   allRecipesCount: number;
-  knownRecipesCount: number;
-  craftedRecipesCount: number;
+  knownCount: number;
+  craftedCount: number;
   uncraftedRecipes: Set<string>;
   unknownRecipes: Set<string>;
   allRecipes: { [key: string]: 0 | 1 | 2 }; // 1 = uncrafted, 2 = crafted
@@ -63,8 +63,8 @@ export function parseCrafting(json: any): ReturnType {
 
   return {
     allRecipesCount: Object.keys(allRecipes_name).length,
-    knownRecipesCount: knownRecipes.size,
-    craftedRecipesCount: craftedRecipes.size,
+    knownCount: knownRecipes.size,
+    craftedCount: craftedRecipes.size,
     uncraftedRecipes,
     unknownRecipes,
     allRecipes,

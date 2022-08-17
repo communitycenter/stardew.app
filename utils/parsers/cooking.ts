@@ -2,8 +2,8 @@ import cooking_recipes from "../../research/processors/data/cooking_recipes.json
 
 interface ReturnType {
   allRecipesCount: number;
-  knownRecipesCount: number;
-  cookedRecipesCount: number;
+  knownCount: number;
+  cookedCount: number;
   uncookedRecipes: Set<recipeID>;
   unknownRecipes: Set<recipeID>;
   allRecipes: { [key: recipeID]: 0 | 1 | 2 }; // 1 = cooked, 2 = uncooked
@@ -81,8 +81,8 @@ export function parseCooking(json: any): ReturnType {
     // no recipes have been cooked
     return {
       allRecipesCount: Object.keys(allRecipes_id).length,
-      knownRecipesCount: knownRecipes.size,
-      cookedRecipesCount: 0,
+      knownCount: knownRecipes.size,
+      cookedCount: 0,
       uncookedRecipes: knownRecipes,
       unknownRecipes: new Set<recipeID>(
         Object.keys(allRecipes_id).filter((id) => !knownRecipes.has(id))
@@ -120,14 +120,14 @@ export function parseCooking(json: any): ReturnType {
     Object.keys(allRecipes_id).filter((id) => !knownRecipes.has(id))
   );
 
-  let knownRecipesCount = knownRecipes.size;
-  let cookedRecipesCount = cookedRecipes.size;
+  let knownCount = knownRecipes.size;
+  let cookedCount = cookedRecipes.size;
   let allRecipesCount = Object.keys(allRecipes_id).length;
 
   return {
     allRecipesCount,
-    knownRecipesCount,
-    cookedRecipesCount,
+    knownCount,
+    cookedCount,
     uncookedRecipes,
     unknownRecipes,
     allRecipes,

@@ -31,7 +31,7 @@ const Shipping: NextPage = () => {
   //   const [showFish, setShowFish] = useState<boolean>(false);
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
   const [name] = useKV("general", "name", "Farmer");
-  //   const [totalFishCaught] = useKV("fish", "totalFishCaught", 0);
+  //   const [totalCaught] = useKV("fish", "totalCaught", 0);
   //   const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
   //   const [selectedFish, setSelectedFish] = useState<Fish>(
   //     Object.values(fishes)[0]
@@ -77,7 +77,7 @@ const Shipping: NextPage = () => {
                     sourceURL={achievement.iconURL}
                     // initialChecked={
                     //   achievement.name === "Mother Catch"
-                    //     ? totalFishCaught >= 100
+                    //     ? totalCaught >= 100
                     //     : uniqueCaught >= requirements[achievement.name]
                     // }
                   />

@@ -25,15 +25,17 @@ const requirements: Record<string, number> = {
 };
 
 const Fishing: NextPage = () => {
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+
+  const [name] = useKV("general", "name", "Farmer");
+  const [totalCaught] = useKV("fish", "totalCaught", 0);
+  const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showFish, setShowFish] = useState<boolean>(false);
-  const [name] = useKV("general", "name", "Farmer");
-  const [totalFishCaught] = useKV("fish", "totalFishCaught", 0);
-  const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
   const [selectedFish, setSelectedFish] = useState<Fish>(
     Object.values(fishes)[0]
   );
-  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   return (
     <>
@@ -68,7 +70,7 @@ const Fishing: NextPage = () => {
             </h2>
             {hasUploaded && (
               <InfoCard
-                title={`${name} has caught ${totalFishCaught} total fish and has caught ${uniqueCaught}/67 fish types.`}
+                title={`${name} has caught ${totalCaught} total fish and has caught ${uniqueCaught}/67 fish types.`}
                 Icon={InformationCircleIcon}
               />
             )}
@@ -84,9 +86,9 @@ const Fishing: NextPage = () => {
                     description={achievement.description}
                     additionalDescription={
                       achievement.name === "Mother Catch"
-                        ? totalFishCaught >= 100
+                        ? totalCaught >= 100
                           ? ""
-                          : ` - ${100 - totalFishCaught} left!`
+                          : ` - ${100 - totalCaught} left!`
                         : uniqueCaught >= requirements[achievement.name]
                         ? ""
                         : ` - ${
@@ -96,7 +98,7 @@ const Fishing: NextPage = () => {
                     sourceURL={achievement.iconURL}
                     initialChecked={
                       achievement.name === "Mother Catch"
-                        ? totalFishCaught >= 100
+                        ? totalCaught >= 100
                         : uniqueCaught >= requirements[achievement.name]
                     }
                   />

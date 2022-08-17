@@ -3,9 +3,9 @@ import fish from "../../research/processors/data/fish.json";
 type fishID = string;
 
 interface ReturnType {
-  totalFishCaught: number;
+  totalCaught: number;
   uniqueCaught: number;
-  fishCaught: Record<fishID, boolean>;
+  allFish: Record<fishID, boolean>;
 }
 
 export function parseFishing(json: any): ReturnType {
@@ -16,7 +16,7 @@ export function parseFishing(json: any): ReturnType {
       - Ol' Mariner (catch 24 different fish).
       - Master Angler (catch every type of fish).
   */
-  const totalFishCaught = json.SaveGame.player.stats.fishCaught;
+  const totalCaught = json.SaveGame.player.stats.fishCaught;
   let uniqueCaught = 0;
 
   // get a list of all the fish possible and initialize it to all false for caught
@@ -26,11 +26,11 @@ export function parseFishing(json: any): ReturnType {
     allFish[itemID] = false;
   }
 
-  if (totalFishCaught === 0) {
+  if (totalCaught === 0) {
     return {
-      totalFishCaught,
+      totalCaught,
       uniqueCaught,
-      fishCaught: allFish,
+      allFish,
     };
   }
 
@@ -53,15 +53,15 @@ export function parseFishing(json: any): ReturnType {
     let itemID = fish.key.int.toString() as fishID;
 
     if (!allFish.hasOwnProperty(itemID))
-      return { totalFishCaught, uniqueCaught, fishCaught: allFish };
+      return { totalCaught, uniqueCaught, allFish };
 
     allFish[itemID] = true;
     uniqueCaught++;
   }
 
   return {
-    totalFishCaught,
+    totalCaught,
     uniqueCaught,
-    fishCaught: allFish,
+    allFish,
   };
 }

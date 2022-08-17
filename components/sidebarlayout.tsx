@@ -34,6 +34,7 @@ import {
   parseSocial,
   parseCooking,
   parseFishing,
+  parseCrafting,
 } from "../utils";
 
 function classNames(...classes: string[]) {
@@ -46,7 +47,7 @@ const navigation = [
   { name: "Fishing", href: "/fishing", icon: FaFish },
   { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
-  { name: "Crafting", href: "/construction", icon: FaHammer },
+  { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Secret Notes", href: "/construction", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
@@ -125,24 +126,34 @@ const SidebarLayout = ({
       );
 
       console.log("Parsing information...");
+      // General Information
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
       const moneyEarned = parseMoney(jsonObj);
       const { levels, maxLevelCount } = parseSkills(jsonObj);
       const questsCompleted = parseQuests(jsonObj);
       const { stardrops, stardropsCount } = parseStardrops(jsonObj);
-      const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
-        parseMonsters(jsonObj);
+
+      // Fishing
+      const { allFish, totalCaught, uniqueCaught } = parseFishing(jsonObj);
+
+      // Cooking
+      const { cookedCount, knownCount, allRecipes } = parseCooking(jsonObj);
+      // Crafing
+      const {
+        allRecipes: craftingRecipes,
+        knownCount: knownCountCrafted,
+        craftedCount: craftedCount,
+      } = parseCrafting(jsonObj);
+
+      // Family & social
       const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
       const { fiveHeartCount, tenHeartCount, relationships } =
         parseSocial(jsonObj);
-      const { cookedRecipesCount, knownRecipesCount, allRecipes } =
-        parseCooking(jsonObj);
-      const {
-        fishCaught: allFish,
-        totalFishCaught,
-        uniqueCaught,
-      } = parseFishing(jsonObj);
-      const { allRecipes: allCraftingRecipes } = parseCooking(jsonObj);
+
+      // Monsters
+      const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
+        parseMonsters(jsonObj);
+
       console.log("Parsed information!");
 
       console.log("Uploading values to DB");
@@ -178,9 +189,19 @@ const SidebarLayout = ({
             maxLevelCount,
           },
           fish: {
-            totalFishCaught,
+            totalCaught,
             uniqueCaught,
             ...allFish,
+          },
+          cooking: {
+            cookedCount,
+            knownCount,
+            ...allRecipes,
+          },
+          crafting: {
+            craftedCount,
+            knownCount: knownCountCrafted,
+            ...craftingRecipes,
           },
           mining: {
             deepestMineLevel,
@@ -194,14 +215,6 @@ const SidebarLayout = ({
           social: {
             fiveHeartCount,
             tenHeartCount, // TODO: map through relationships and add entry into DB for each
-          },
-          cooking: {
-            cookedRecipesCount,
-            knownRecipesCount,
-            ...allRecipes,
-          },
-          crafting: {
-            ...allCraftingRecipes,
           },
         }),
       });

@@ -7,24 +7,24 @@ describe("Parse Cooking", () => {
   it("Returns how many recipes the player has cooked and which recipes are left to find and cook", () => {
     const {
       allRecipesCount,
-      knownRecipesCount,
-      cookedRecipesCount,
+      knownCount,
+      cookedCount,
       uncookedRecipes,
       unknownRecipes,
       allRecipes,
     } = parseCooking(year3);
     expect(allRecipesCount).toBe(80);
-    expect(knownRecipesCount).toBe(73);
-    expect(cookedRecipesCount).toBe(25);
-    expect(uncookedRecipes.size).toBe(knownRecipesCount - cookedRecipesCount);
-    expect(unknownRecipes.size).toBe(allRecipesCount - knownRecipesCount);
+    expect(knownCount).toBe(73);
+    expect(cookedCount).toBe(25);
+    expect(uncookedRecipes.size).toBe(knownCount - cookedCount);
+    expect(unknownRecipes.size).toBe(allRecipesCount - knownCount);
     expect(Object.keys(allRecipes).length).toBe(allRecipesCount);
     // console.log(JSON.stringify(allRecipes, null, 2));
 
     const {
       allRecipesCount: arc2,
-      knownRecipesCount: krc2,
-      cookedRecipesCount: crc2,
+      knownCount: krc2,
+      cookedCount: crc2,
       uncookedRecipes: unc2,
       unknownRecipes: unk2,
       allRecipes: all2,
@@ -38,8 +38,8 @@ describe("Parse Cooking", () => {
 
     const {
       allRecipesCount: arc3,
-      knownRecipesCount: krc3,
-      cookedRecipesCount: crc3,
+      knownCount: krc3,
+      cookedCount: crc3,
       uncookedRecipes: unc3,
       unknownRecipes: unk3,
       allRecipes: all3,

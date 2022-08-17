@@ -24,38 +24,38 @@ const requirements: Record<string, number> = {
   "Craft Master": 129,
 };
 
-const Cooking: NextPage = () => {
+const Crafting: NextPage = () => {
+  const [hasUploaded] = useKV<boolean>("general", "user", false);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
 
   const [name] = useKV("general", "name", "Farmer");
-  const [totalRecipesCooked] = useKV("cooking", "cookedRecipesCount", 0);
-  const [knownRecipesCount] = useKV("cooking", "knownRecipesCount", 0);
+  const [craftedCount] = useKV("crafting", "craftedCount", 0);
+  const [knownCount] = useKV("crafting", "knownCount", 0);
 
   const [selectedRecipe, setSelectedRecipe] = useState<CraftingRecipe>(
     Object.values(crafting_recipes)[0]
   );
 
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
-
   return (
     <>
       <Head>
-        <title>stardew.app | Cooking</title>
+        <title>stardew.app | Crafting</title>
         <meta
           name="description"
-          content="Track your Stardew Valley cooking recipe progress. See what recipes you need to cook for 100% completion on Stardew Valley."
+          content="Track your Stardew Valley crafting recipe progress. See what recipes you need to craft for 100% completion on Stardew Valley."
         />
         d
       </Head>
       <SidebarLayout
-        activeTab="Cooking"
+        activeTab="Crafting"
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
         <div className="mx-auto flex max-w-screen-2xl flex-shrink-0 items-center justify-between px-4 sm:px-6 md:px-8">
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            Cooking
+            Crafting
           </h1>
           <div>
             <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
@@ -75,12 +75,12 @@ const Cooking: NextPage = () => {
               Achievements
             </h2>
             <InfoCard
-              title={`${name} knows how to cook ${knownRecipesCount}/80 recipes and has cooked ${totalRecipesCooked}/80 recipes.`}
+              title={`${name} knows how to craft ${knownCount}/129 recipes and has crafted ${craftedCount}/129 recipes.`}
               Icon={InformationCircleIcon}
             />
             <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
-                .filter((achievement) => achievement.category === "cooking")
+                .filter((achievement) => achievement.category === "crafting")
                 .map((achievement) => (
                   <AchievementCard
                     id={achievement.id}
@@ -89,13 +89,13 @@ const Cooking: NextPage = () => {
                     title={achievement.name}
                     description={achievement.description}
                     additionalDescription={
-                      totalRecipesCooked >= requirements[achievement.name]
+                      craftedCount >= requirements[achievement.name]
                         ? ""
-                        : ` - ${80 - totalRecipesCooked} left!`
+                        : ` - ${80 - craftedCount} left!`
                     }
                     sourceURL={achievement.iconURL}
                     initialChecked={
-                      totalRecipesCooked >= requirements[achievement.name]
+                      craftedCount >= requirements[achievement.name]
                     }
                   />
                 ))}
@@ -108,6 +108,7 @@ const Cooking: NextPage = () => {
             {Object.values(crafting_recipes).map((recipe: any) => (
               <RecipeCard
                 key={recipe.itemID}
+                category={"crafting"}
                 recipe={recipe}
                 setSelectedRecipe={setSelectedRecipe}
                 setShowRecipe={setShowRecipe}
@@ -126,4 +127,4 @@ const Cooking: NextPage = () => {
   );
 };
 
-export default Cooking;
+export default Crafting;

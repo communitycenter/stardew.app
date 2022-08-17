@@ -7,23 +7,23 @@ describe("Parse Crafting", () => {
   it("Returns Information about crafting recipes the player has crafted and needs to craft.", () => {
     const {
       allRecipesCount,
-      craftedRecipesCount,
-      knownRecipesCount,
+      craftedCount,
+      knownCount,
       uncraftedRecipes,
       unknownRecipes,
       allRecipes,
     } = parseCrafting(year3);
     expect(allRecipesCount).toBe(129);
-    expect(knownRecipesCount).toBe(110);
-    expect(craftedRecipesCount).toBe(34);
-    expect(uncraftedRecipes.size).toBe(knownRecipesCount - craftedRecipesCount);
-    expect(unknownRecipes.size).toBe(allRecipesCount - knownRecipesCount);
+    expect(knownCount).toBe(110);
+    expect(craftedCount).toBe(34);
+    expect(uncraftedRecipes.size).toBe(knownCount - craftedCount);
+    expect(unknownRecipes.size).toBe(allRecipesCount - knownCount);
     expect(Object.keys(allRecipes).length).toBe(allRecipesCount);
 
     const {
       allRecipesCount: arc2,
-      knownRecipesCount: krc2,
-      craftedRecipesCount: crc2,
+      knownCount: krc2,
+      craftedCount: crc2,
       uncraftedRecipes: unc2,
       unknownRecipes: unk2,
       allRecipes: all2,
@@ -37,8 +37,8 @@ describe("Parse Crafting", () => {
 
     const {
       allRecipesCount: arc3,
-      knownRecipesCount: krc3,
-      craftedRecipesCount: crc3,
+      knownCount: krc3,
+      craftedCount: crc3,
       uncraftedRecipes: unc3,
       unknownRecipes: unk3,
       allRecipes: all3,

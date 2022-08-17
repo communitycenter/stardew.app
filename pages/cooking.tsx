@@ -29,13 +29,12 @@ const Cooking: NextPage = () => {
 
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
+  const [name] = useKV("general", "name", "Farmer");
+  const [cookedCount] = useKV("cooking", "cookedCount", 0);
+  const [knownCount] = useKV("cooking", "knownCount", 0);
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [showRecipe, setShowRecipe] = useState<boolean>(false);
-
-  const [name] = useKV("general", "name", "Farmer");
-  const [totalRecipesCooked] = useKV("cooking", "cookedRecipesCount", 0);
-  const [knownRecipesCount] = useKV("cooking", "knownRecipesCount", 0);
-
   const [selectedRecipe, setSelectedRecipe] = useState<CookingRecipe>(
     Object.values(cooking_recipes)[0]
   );
@@ -86,7 +85,7 @@ const Cooking: NextPage = () => {
               Achievements
             </h2>
             <InfoCard
-              title={`${name} knows how to cook ${knownRecipesCount}/80 recipes and has cooked ${totalRecipesCooked}/80 recipes.`}
+              title={`${name} knows how to cook ${knownCount}/80 recipes and has cooked ${cookedCount}/80 recipes.`}
               Icon={InformationCircleIcon}
             />
             <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-3">
@@ -100,13 +99,13 @@ const Cooking: NextPage = () => {
                     title={achievement.name}
                     description={achievement.description}
                     additionalDescription={
-                      totalRecipesCooked >= requirements[achievement.name]
+                      cookedCount >= requirements[achievement.name]
                         ? ""
-                        : ` - ${80 - totalRecipesCooked} left!`
+                        : ` - ${80 - cookedCount} left!`
                     }
                     sourceURL={achievement.iconURL}
                     initialChecked={
-                      totalRecipesCooked >= requirements[achievement.name]
+                      cookedCount >= requirements[achievement.name]
                     }
                   />
                 ))}
