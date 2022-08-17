@@ -19,7 +19,6 @@ describe("Parse Crafting", () => {
     expect(uncraftedRecipes.size).toBe(knownRecipesCount - craftedRecipesCount);
     expect(unknownRecipes.size).toBe(allRecipesCount - knownRecipesCount);
     expect(Object.keys(allRecipes).length).toBe(allRecipesCount);
-    console.log("all recipes count:", allRecipesCount);
 
     const {
       allRecipesCount: arc2,
