@@ -6,16 +6,15 @@ import shipping from "../research/processors/data/shipment.json";
 import sprites from "../research/processors/data/sprites.json";
 import achievements from "../research/processors/data/achievements.json";
 
-import FishCard from "../components/fishing/fishcard";
-import AchievementCard from "../components/achievementcard";
-import InfoCard from "../components/infocard";
+import AchievementCard from "../components/cards/achievementcard";
+import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
-import FishSlideOver from "../components/fishing/fishslideover";
+import FishSlideOver from "../components/slideovers/fishslideover";
 import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 

@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 
 import achievements from "../research/processors/data/achievements.json";
 
-import InfoCard from "../components/infocard";
-import AchievementCard from "../components/achievementcard";
+import InfoCard from "../components/cards/infocard";
+import AchievementCard from "../components/cards/achievementcard";
 import SkillDisplay from "../components/skilldisplay";
 import SidebarLayout from "../components/sidebarlayout";
 

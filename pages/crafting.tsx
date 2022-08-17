@@ -4,11 +4,11 @@ import type { CraftingRecipe } from "../types/recipes";
 import achievements from "../research/processors/data/achievements.json";
 import crafting_recipes from "../research/processors/data/crafting_recipes.json";
 
-import AchievementCard from "../components/achievementcard";
-import InfoCard from "../components/infocard";
+import AchievementCard from "../components/cards/achievementcard";
+import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
-import RecipeCard from "../components/cooking/recipecard";
-import RecipeSlideOver from "../components/cooking/recipeslideover";
+import RecipeCard from "../components/cards/recipecard";
+import RecipeSlideOver from "../components/slideovers/recipeslideover";
 
 import { useState } from "react";
 import Head from "next/head";

@@ -1,19 +1,17 @@
 import type { NextPage } from "next";
-import type { Fish } from "../types";
 
 import achievements from "../research/processors/data/achievements.json";
 import artifacts from "../research/processors/data/museum.json";
 
-import FishCard from "../components/fishing/fishcard";
-import AchievementCard from "../components/achievementcard";
-import InfoCard from "../components/infocard";
+import AchievementCard from "../components/cards/achievementcard";
+import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 const Artifacts: NextPage = () => {

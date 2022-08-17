@@ -5,10 +5,10 @@ import fishes from "../research/processors/data/fish.json";
 import achievements from "../research/processors/data/achievements.json";
 
 import BooleanCard from "../components/cards/booleancard";
-import AchievementCard from "../components/achievementcard";
-import InfoCard from "../components/infocard";
+import AchievementCard from "../components/cards/achievementcard";
+import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
-import FishSlideOver from "../components/fishing/fishslideover";
+import FishSlideOver from "../components/slideovers/fishslideover";
 
 import { useState } from "react";
 import { useKV } from "../hooks/useKV";

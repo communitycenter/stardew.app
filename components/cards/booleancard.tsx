@@ -49,7 +49,7 @@ const BooleanCard = ({ itemObject, setSelected, setShow, category }: Props) => {
     false
   );
   const className = checked
-    ? "border-green-900 bg-green-500/10 hover:bg-green-500/20"
+    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:bg-green-500/20"
     : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   const oneClick = useCallback(() => {
@@ -70,14 +70,12 @@ const BooleanCard = ({ itemObject, setSelected, setShow, category }: Props) => {
       }
       onClick={click}
     >
-      <div className="flex-shrink-0">
-        <Image
-          src={itemObject.iconURL}
-          alt={itemObject.name}
-          width={32}
-          height={32}
-        />
-      </div>
+      <Image
+        src={itemObject.iconURL}
+        alt={itemObject.name}
+        width={32}
+        height={32}
+      />
 
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-gray-900 dark:text-white">

@@ -61,10 +61,12 @@ const RecipeCard = ({
         "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
       break;
     case 1: // uncooked recipe
-      boxColor += "border-yellow-900 bg-yellow-500/10 hover:bg-yellow-500/20";
+      boxColor +=
+        "border-yellow-900 bg-yellow-500/20 hover:bg-yellow-500/30 dark:bg-yellow-500/10 hover:bg-yellow-500/20";
       break;
     case 2: // cooked recipe
-      boxColor += "border-green-900 bg-green-500/10 hover:bg-green-500/20";
+      boxColor +=
+        "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:bg-green-500/20";
       break;
     default:
       break;

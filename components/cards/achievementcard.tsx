@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
-import { useKV } from "../hooks/useKV";
+import { useKV } from "../../hooks/useKV";
 
 interface Props {
   id: number | string;
@@ -65,28 +65,16 @@ const AchievementCard = ({
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
 
-  let checkColor = "h-5 w-5 ";
-  let boxColor = "";
-  switch (checked) {
-    case false: // unknown recipe
-      checkColor += "hidden";
-      boxColor +=
-        "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
-      break;
-    case true: // cooked recipe
-      checkColor += "text-green-500";
-      boxColor += "border-green-900 bg-green-500/10 hover:bg-green-500/20";
-      break;
-    default:
-      break;
-  }
+  const className = checked
+    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:bg-green-500/20"
+    : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   return (
     <motion.div layout>
       <div
         className={
           "relative flex select-none items-center space-x-3 rounded-lg border border-solid py-4 px-5 hover:cursor-pointer " +
-          boxColor
+          className
         }
         onClick={click}
       >
