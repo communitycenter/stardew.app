@@ -10,7 +10,11 @@ bundles = {}
 
 def clean_up_text(text):
     cleaned_up_symbols = (
-        text.replace("\n", " ").replace("\t", " ").replace("\xa0", " ").strip()
+        text.replace("\n", " ")
+        .replace("\t", " ")
+        .replace("\xa0", " ")
+        .replace(":", "")
+        .strip()
     )
     return re.sub(" +", " ", cleaned_up_symbols)
 
@@ -39,7 +43,6 @@ def main():
         and tag.get("id", None) != None
     )
     td_tag_list_parsed = [x for x in td_tag_list if x.attrs.get("id")[:4] != "info"]
-
 
     for tag_list in td_tag_list_parsed:
         _children_in_tag = [x for x in tag_list.children]
@@ -95,8 +98,6 @@ def main():
                 headers[2]: _items[1],
                 headers[3]: _items[3],
             }
-
-
 
 
 if __name__ == "__main__":
