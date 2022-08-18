@@ -30,3 +30,9 @@ Stardew.app is actively in development. We're currently working on:
 
 ## Contributions
 Contributions are always welcome! Feel free to open a PR.
+
+Stardew.app has been contributed to by the lovely people below <3
+
+<a href="https://github.com/stardewapp/stardew.app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=stardewapp/stardew.app" />
+</a>
