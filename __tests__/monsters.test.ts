@@ -7,6 +7,7 @@ describe("Parse Monsters", () => {
   it("Returns how many monsters per category were killed and what monster slayer goals are left", () => {
     const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
       parseMonsters(year3);
+
     expect(deepestMineLevel).toBe(120);
     expect(deepestSkullCavernLevel).toBe(101);
     expect(monstersKilled).toEqual({
