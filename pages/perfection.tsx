@@ -98,7 +98,7 @@ const Perfection: NextPage = () => {
               Monsters
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <AchievementCard
+              <InfoCard
                 title="Deepest Mining Level"
                 description={deepestMiningLevel.toString()}
                 Icon={QuestionMarkCircleIcon}
