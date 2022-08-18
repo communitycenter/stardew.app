@@ -75,7 +75,7 @@ const Home: NextPage = () => {
               <button
                 onClick={onFileUpload}
                 type="button"
-                className="hidden sm:block relative w-2/3 mx-auto border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-none"
+                className="hidden sm:block relative w-2/3 mx-auto border-2 border-gray-300 border-dashed rounded-lg p-10 text-center hover:border-gray-400 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-none"
               >
                 <PlusIcon className="mx-auto h-8 w-8 text-gray-400" />
                 <span className="mt-2 block text-sm font-medium text-gray-900 dark:text-white">Upload Stardew Save File</span>
