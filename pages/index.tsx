@@ -90,7 +90,7 @@ const Home: NextPage = () => {
                     className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
-                  <p className="mt-4 text-sm group-hover:text-gray-400">
+                  <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
                     Upload Stardew Valley Save File
                   </p>
                   <input
