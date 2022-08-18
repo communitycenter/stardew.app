@@ -291,7 +291,7 @@ const SidebarLayout = ({
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
                     <h1 className="text-lg font-semibold">stardew.app</h1>
-                    {/* File Input, not sure how to process file yet but it lets you upload a file */}
+                    {/* File Input */}
                     <div>
                       <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
                         <FiUpload
