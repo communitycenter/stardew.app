@@ -82,7 +82,7 @@ def main():
                 _grab_parent = item.parent.parent
                 _find_all_tds_from_tag = _grab_parent.find_all("td")
 
-                for td in _find_all_tds_from_tag:
+                for td in _find_all_tds_from_tag[1:]:
                     _check_if_td_has_a_image = td.find("img")
                     if _check_if_td_has_a_image:
                         _items.append(
@@ -90,14 +90,14 @@ def main():
                         )
                     else:
                         _items.append(clean_up_text(td.text))
+                    
+                    if len(_items) == len(headers):
+                        bundles[_grab_title] = {}
+                        for header in headers:
+                            bundles[_grab_title][header] = _items[headers.index(header)]
+                        break
+                        
 
-            # please do not ask me why i did this
-            bundles[_grab_title] = {
-                headers[0]: _items[0],
-                headers[1]: _items[2],
-                headers[2]: _items[1],
-                headers[3]: _items[3],
-            }
 
 
 if __name__ == "__main__":
