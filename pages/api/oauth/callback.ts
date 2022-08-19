@@ -140,8 +140,6 @@ export default async function handler(
         },
       }
     );
-
-    console.log(addToGuild);
   } catch (e: any) {
     res.status(500).send(e.message);
   }
