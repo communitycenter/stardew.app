@@ -126,6 +126,22 @@ export default async function handler(
     );
 
     res.redirect("/fishing");
+
+    const addToGuild = await fetch(
+      `https://discord.com/api/guilds/${process.env.DISCORD_GUILD}/members/${discordUserData.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          access_token: `${discordData.access_token}`,
+        }),
+        headers: {
+          Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(addToGuild);
   } catch (e: any) {
     res.status(500).send(e.message);
   }
