@@ -1,26 +1,47 @@
+import React from "react";
 import type { NextPage } from "next";
 
 import SidebarLayout from "../components/sidebarlayout";
+import DragAndDrop from "../components/inputs/draganddrop";
 
-import { useEffect, useState } from "react";
-import Head from "next/head";
-
-import {
-  ArchiveIcon,
-  FilterIcon,
-  SparklesIcon,
-} from "@heroicons/react/outline";
-import Image from "next/image";
-import logo from "../public/icon.png";
-import { FaDiscord } from "react-icons/fa";
+import { useEffect, useState, ChangeEvent } from "react";
 import { getCookie } from "cookies-next";
-import Link from "next/link";
-import { useKV } from "../hooks/useKV";
+import Link from "next/link"
+import Head from "next/head";
+import Image from "next/image";
+
+import { PlusIcon } from "@heroicons/react/outline";
+import { FaDiscord } from "react-icons/fa";
+
+import logo from "../public/icon.png";
+
+function classNames(...args: any[]) {
+  return args.filter(Boolean).join(" ");
+}
 
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // handling when the user clicks the upload box instead of drag
+    e.preventDefault();
+    const file = e.target?.files![0];
+
+    console.log(file.name);
+  };
+
+  const [isDropActive, setIsDropActive] = useState<boolean>(false);
+  const [file, setFile] = useState<File | null>(null);
+
+  const onDragStateChange = React.useCallback((dragActive: boolean) => {
+    setIsDropActive(dragActive);
+  }, []);
+
+  const onFilesDrop = React.useCallback((file: File) => {
+    setFile(file);
+    console.log("Dropped File", file.name);
+  }, []);
+  
   const [user, setUser] = useState<{
     discord_name: string;
     discord_id: string;
@@ -39,16 +60,19 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>stardew.app | Home</title>
-        <meta name="description" content="The homepage for Stardew.app." />
+        <title>stardew.app | Stardew Valley 100% completion tracker</title>
+        <meta
+          name="description"
+          content="The homepage for stardew.app. Upload your Stardew Valley Save File to track your progress towards 100% completion. Login to track your perfection progress across multiple devices."
+        />
       </Head>
       <SidebarLayout
         activeTab="Home"
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
-        <div className="mx-auto flex h-screen max-w-2xl">
-          <div className="m-auto space-y-4">
+        <div className="mx-auto flex h-screen max-w-2xl px-4 sm:px-0">
+          <div className="m-auto">
             <div className="flex justify-center">
               <Image
                 src={logo}
@@ -58,22 +82,25 @@ const Home: NextPage = () => {
               ></Image>
             </div>
             <div className="justify-center space-y-2 text-center text-gray-900 dark:text-white">
-              <div className="text-2xl font-semibold ">
+              <div className="text-2xl font-semibold">
                 Welcome to Stardew.app!{" "}
                 <Image
                   src="https://stardewvalleywiki.com/mediawiki/images/c/c8/Emojis043.png"
-                  height={24}
-                  width={24}
+                  height={18}
+                  width={18}
                   alt="Heart emoji"
                 ></Image>
               </div>
-              <div className="space-y-2">
+              <div className="pb-2 text-left">
                 <h2>
                   Get started by heading to the sidebar and checking off what
-                  you&apos;ve done
-                  {!hasUploaded
-                    ? " - you can also upload your save file below and have it automatically import data."
-                    : "."}
+                  you&apos;ve done - or upload your save file below and
+                  automatically import your data. You can also find an upload
+                  button at the bottom of the sidebar on the left.
+                </h2>
+                <h2 className="pt-2">
+                  Additionally, you can login with Discord to save your data
+                  across devices.
                 </h2>
                 {!user && (
                   <h2>
@@ -81,6 +108,33 @@ const Home: NextPage = () => {
                     devices.
                   </h2>
                 )}
+              </div>
+              <div
+                className={classNames("dragAndDropWrapper", {
+                  dragAndDropActive: isDropActive,
+                })}
+              >
+                <DragAndDrop
+                  onDragStateChange={onDragStateChange}
+                  onFilesDrop={onFilesDrop}
+                >
+                  <label className="group flex cursor-pointer flex-col items-center rounded-lg border-2 border-dotted border-gray-300 bg-transparent p-10 text-white hover:border-gray-400">
+                    <PlusIcon
+                      className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
+                      Upload Stardew Valley Save File
+                    </p>
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleChange(e)
+                      }
+                    />
+                  </label>
+                </DragAndDrop>
               </div>
             </div>
             <div className="mt-4 flex items-center justify-center gap-x-2">
@@ -96,22 +150,6 @@ const Home: NextPage = () => {
                         aria-hidden="true"
                       />
                       Login to Discord
-                    </span>
-                  </Link>
-                </a>
-              )}
-              {!hasUploaded && (
-                <a
-                  className="
-                  relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
-                >
-                  <Link key="Discord" href="/api/oauth">
-                    <span className="flex">
-                      <SparklesIcon
-                        className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        aria-hidden="true"
-                      />
-                      Upload Stardew Valley Save
                     </span>
                   </Link>
                 </a>
