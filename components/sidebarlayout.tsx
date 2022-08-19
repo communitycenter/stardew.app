@@ -6,8 +6,12 @@ import {
   useEffect,
   useState,
 } from "react";
+import { getCookie } from "cookies-next";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+
 import { Dialog, Transition } from "@headlessui/react";
-import { RiFilePaper2Fill } from "react-icons/ri";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
@@ -20,7 +24,7 @@ import {
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
-import { GiCookingPot, GiIsland } from "react-icons/gi";
+import { GiCookingPot } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
 import {
@@ -36,6 +40,12 @@ import {
   parseFishing,
   parseCrafting,
 } from "../utils";
+
+import Notification from "./notification";
+import Popup from "./popup";
+
+import { XMLParser } from "fast-xml-parser";
+const semVerGte = require("semver/functions/gte");
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -58,14 +68,6 @@ interface LayoutProps {
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-import { XMLParser } from "fast-xml-parser";
-import Link from "next/link";
-import Image from "next/image";
-import { getCookie } from "cookies-next";
-import { AnimatePresence, motion } from "framer-motion";
-import Notification from "./notification";
-import Popup from "./popup";
 
 const SidebarLayout = ({
   children,
@@ -129,6 +131,17 @@ const SidebarLayout = ({
       // check the version number of the SDV save file
       try {
         const gameVersion: string = jsonObj.SaveGame.gameVersion;
+
+        // make sure the game version is at least 1.5.0
+        // we can modify this later if we decide to support older versions of SDV
+        if (!semVerGte(gameVersion, "1.5.0")) {
+          setErrorMSG(
+            "Please upload a save file from version 1.5.0 or newer. If you would like to request support for an older version, please contact us on Discord or open an issue on Github."
+          );
+          setShowErrorNotification(true);
+          console.log("Exiting...");
+          return;
+        }
       } catch (e) {
         if (e instanceof TypeError) {
           setErrorMSG(
