@@ -40,4 +40,57 @@ Contributions are always welcome! Feel free to open a PR.
 Stardew.app has been contributed to by the lovely people below <3
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/clxmente">
+            <img src="https://avatars.githubusercontent.com/u/37494038?v=4" width="100;" alt="clxmente"/>
+            <br />
+            <sub><b>Clemente Solorio</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jacc">
+            <img src="https://avatars.githubusercontent.com/u/6956351?v=4" width="100;" alt="jacc"/>
+            <br />
+            <sub><b>Jack LaFond</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/leahlundqvist">
+            <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="leahlundqvist"/>
+            <br />
+            <sub><b>Leah Lundqvist</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/brandonsaldan">
+            <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
+            <br />
+            <sub><b>Brandon Saldan</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ms7m">
+            <img src="https://avatars.githubusercontent.com/u/37344632?v=4" width="100;" alt="ms7m"/>
+            <br />
+            <sub><b>Mustafa</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/cbyrneee">
+            <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="cbyrneee"/>
+            <br />
+            <sub><b>Conor Byrne</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/IanMitchell">
+            <img src="https://avatars.githubusercontent.com/u/603872?v=4" width="100;" alt="IanMitchell"/>
+            <br />
+            <sub><b>Ian Mitchell</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
