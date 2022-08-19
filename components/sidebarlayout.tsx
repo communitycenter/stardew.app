@@ -100,9 +100,11 @@ const SidebarLayout = ({
     const file = event.target!.files![0];
     if (typeof file === "undefined") return;
 
-    // just a check to see if the file name has the format <string>_<id>
-    if (!/[a-zA-Z]+_[0-9]+/.test(file.name)) {
-      setErrorMSG("Invalid file name.");
+    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
+    if (!/[a-zA-Z]+_[0-9]+/.test(file.name) || file.type !== "") {
+      setErrorMSG(
+        "Invalid File Uploaded. Please upload a Stardew Valley save file."
+      );
       setShowErrorNotification(true);
       return;
     }
@@ -124,6 +126,19 @@ const SidebarLayout = ({
         "ms"
       );
 
+      // check the version number of the SDV save file
+      try {
+        const gameVersion: string = jsonObj.SaveGame.gameVersion;
+      } catch (e) {
+        if (e instanceof TypeError) {
+          setErrorMSG(
+            "Invalid File Uploaded. Couldn't find gameVersion, please upload a Stardew Valley save file."
+          );
+          setShowErrorNotification(true);
+          console.log("Exiting...");
+          return;
+        }
+      }
       console.log("Parsing information...");
       // General Information
       const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
