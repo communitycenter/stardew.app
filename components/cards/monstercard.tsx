@@ -12,8 +12,8 @@ import Image from "next/image";
 type Props = {
   monsterCategory: any;
   monsterInfo: any;
-  //   setSelectedMonster: Dispatch<SetStateAction<any>>;
-  //   setShowMonster: Dispatch<SetStateAction<boolean>>;
+  setSelectedMonster: Dispatch<SetStateAction<any>>;
+  setShowMonster: Dispatch<SetStateAction<boolean>>;
   //   setCompletedCount: Dispatch<SetStateAction<number>>;
 };
 
@@ -44,6 +44,8 @@ function useSingleAndDoubleClick(
 const MonsterCard = ({
   monsterCategory,
   monsterInfo,
+  setSelectedMonster,
+  setShowMonster,
 }: //   setSelectedMonster,
 //   setShowMonster,
 //   setCompletedCount,
@@ -64,38 +66,38 @@ Props) => {
       "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:bg-green-500/20";
   }
 
-  //   const oneClick = useCallback(() => {
-  //     setSelectedMonster(monsterCategory);
-  //     setShowMonster(true);
-  //   }, [monsterCategory, setSelectedMonster, setShowMonster]);
+  const oneClick = useCallback(() => {
+    setSelectedMonster(monsterCategory);
+    setShowMonster(true);
+  }, [monsterCategory, setSelectedMonster, setShowMonster]);
 
-  //   const twoClick = useCallback(() => {
-  //     // update counts based on state of recipe
-  //     switch (value) {
-  //       case 0: // unknown recipe so add to known count on update
-  //         setKnownCount((knownCount) => knownCount + 1);
-  //         break;
-  //       case 1: // uncooked recipe so add to cooked count on update
-  //         setCompletedCount((cookedCount) => cookedCount + 1);
-  //         break;
-  //       case 2: // cooked recipe so subtract from cooked and known count on update
-  //         setCompletedCount((cookedCount) => cookedCount - 1);
-  //         setKnownCount((knownCount) => knownCount - 1);
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     setValue((prev) => (prev + 1) % 3);
-  //   }, [setValue]);
+  // const twoClick = useCallback(() => {
+  //   // update counts based on state of recipe
+  //   switch (value) {
+  //     case 0: // unknown recipe so add to known count on update
+  //       setKnownCount((knownCount) => knownCount + 1);
+  //       break;
+  //     case 1: // uncooked recipe so add to cooked count on update
+  //       setCompletedCount((cookedCount) => cookedCount + 1);
+  //       break;
+  //     case 2: // cooked recipe so subtract from cooked and known count on update
+  //       setCompletedCount((cookedCount) => cookedCount - 1);
+  //       setKnownCount((knownCount) => knownCount - 1);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   setValue((prev) => (prev + 1) % 3);
+  // }, [setValue]);
 
-  //   const click = useSingleAndDoubleClick(oneClick, oneClick);
+  const click = useSingleAndDoubleClick(oneClick, oneClick);
   return (
     <div
       className={
         "relative flex select-none items-center space-x-3 rounded-lg border border-solid py-4 px-5 hover:cursor-pointer " +
         boxColor
       }
-      //   onClick={click}
+      onClick={click}
     >
       <div className="flex">
         <Image
@@ -111,7 +113,10 @@ Props) => {
           {monsterCategory}
         </p>
         <p className="truncate text-sm text-gray-400">
-          {value}/{monsterInfo.Quantity}
+          {value}
+          {monsterInfo.Quantity <= value
+            ? " killed"
+            : `/${monsterInfo.Quantity} left`}
         </p>
       </div>
 

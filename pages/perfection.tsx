@@ -22,6 +22,7 @@ import AchievementCard from "../components/cards/achievementcard";
 
 import monsters from "../research/processors/data/monsters.json";
 import MonsterCard from "../components/cards/monstercard";
+import MonsterSlideOver from "../components/slideovers/monsterslideover";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -33,22 +34,10 @@ const Perfection: NextPage = () => {
     "deepestSkullCavernLevel",
     0
   );
-  const [batsCount, setBatsCount] = useKV<number>("mining", "bats", 0);
-  const [caveInsectsCount] = useKV<number>("mining", "cave insects", 0);
-  const [duggiesCount] = useKV<number>("mining", "duggies", 0);
-  const [dustSpritesCount] = useKV<number>("mining", "dust sprites", 0);
-  const [magmaSpritesCount] = useKV<number>("mining", "magma sprites", 0);
-  const [mummiesCount] = useKV<number>("mining", "mummies", 0);
-  const [pepperRexCount] = useKV<number>("mining", "pepper rex", 0);
-  const [rockCrabsCount] = useKV<number>("mining", "rock crabs", 0);
-  const [serpentsCount] = useKV<number>("mining", "serpents", 0);
-  const [skeletonsCount] = useKV<number>("mining", "skeletons", 0);
-  const [slimesCount] = useKV<number>("mining", "slimes", 0);
-  const [voidSpiritsCount] = useKV<number>("mining", "void spirits", 0);
 
   const [showMonster, setShowMonster] = useState<boolean>(false);
   const [selectedMonster, setSelectedMonster] = useState<any>(
-    Object.values(monsters)[0]
+    Object.entries(monsters)[1]
   );
   return (
     <>
@@ -92,15 +81,20 @@ const Perfection: NextPage = () => {
                   key={monster}
                   monsterInfo={monsterInfo}
                   monsterCategory={monster}
-                  // setSelected={setSelectedMonster}
-                  // setShow={setShowMonster}
-                  // setCount={setBatsCount}
+                  setSelectedMonster={setSelectedMonster}
+                  setShowMonster={setShowMonster}
                 />
               ))}
             </div>
           </div>
         </div>
       </SidebarLayout>
+
+      <MonsterSlideOver
+        isOpen={showMonster}
+        selected={selectedMonster}
+        setOpen={setShowMonster}
+      />
     </>
   );
 };
