@@ -1,11 +1,10 @@
 import React from "react";
-import classNames from "classnames";
 import type { NextPage } from "next";
 
 import SidebarLayout from "../components/sidebarlayout";
+import DragAndDrop from "../components/inputs/draganddrop";
 
 import { ChangeEvent, useState } from "react";
-import { useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -13,9 +12,10 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { FaDiscord } from "react-icons/fa";
 
 import logo from "../public/icon.png";
-import { FiUpload } from "react-icons/fi";
 
-import DragAndDrop from "../components/inputs/draganddrop";
+function classNames(...args: any[]) {
+  return args.filter(Boolean).join(" ");
+}
 
 const navigation = [
   {
@@ -29,11 +29,6 @@ const navigation = [
 
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const inputFile = useRef<HTMLInputElement | null>(null);
-  const onButtonClick = () => {
-    inputFile.current!.click();
-    console.log("clicked");
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("handling change");
@@ -47,12 +42,12 @@ const Home: NextPage = () => {
   const [files, setFiles] = useState<File[]>([]);
 
   const onDragStateChange = React.useCallback((dragActive: boolean) => {
-    setIsDropActive(dragActive)
-  }, [])
+    setIsDropActive(dragActive);
+  }, []);
 
   const onFilesDrop = React.useCallback((files: File[]) => {
-    setFiles(files)
-  }, [])
+    setFiles(files);
+  }, []);
 
   return (
     <>
@@ -101,27 +96,30 @@ const Home: NextPage = () => {
                 </h2>
               </div>
               <div
-                className={classNames('dragAndDropWrapper', {
-                  'dragAndDropActive': isDropActive,
+                className={classNames("dragAndDropWrapper", {
+                  dragAndDropActive: isDropActive,
                 })}
               >
-                <DragAndDrop onDragStateChange={onDragStateChange} onFilesDrop={onFilesDrop}>
+                <DragAndDrop
+                  onDragStateChange={onDragStateChange}
+                  onFilesDrop={onFilesDrop}
+                >
                   <label className="group flex cursor-pointer flex-col items-center rounded-lg border-2 border-dotted border-gray-300 bg-transparent p-10 text-white hover:border-gray-400">
-                  <PlusIcon
-                    className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
-                    Upload Stardew Valley Save File
-                  </p>
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleChange(e)
-                    }
-                  />
-                </label>
+                    <PlusIcon
+                      className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
+                      Upload Stardew Valley Save File
+                    </p>
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleChange(e)
+                      }
+                    />
+                  </label>
                 </DragAndDrop>
               </div>
             </div>
