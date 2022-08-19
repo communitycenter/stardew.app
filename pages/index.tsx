@@ -1,3 +1,5 @@
+import React from "react";
+import classNames from "classnames";
 import type { NextPage } from "next";
 
 import SidebarLayout from "../components/sidebarlayout";
@@ -12,6 +14,8 @@ import { FaDiscord } from "react-icons/fa";
 
 import logo from "../public/icon.png";
 import { FiUpload } from "react-icons/fi";
+
+import DragAndDrop from "../components/inputs/draganddrop";
 
 const navigation = [
   {
@@ -38,6 +42,18 @@ const Home: NextPage = () => {
 
     console.log(file.name);
   };
+
+  const [isDropActive, setIsDropActive] = useState<boolean>(false);
+  const [files, setFiles] = useState<File[]>([]);
+
+  const onDragStateChange = React.useCallback((dragActive: boolean) => {
+    setIsDropActive(dragActive)
+  }, [])
+
+  const onFilesDrop = React.useCallback((files: File[]) => {
+    setFiles(files)
+  }, [])
+
   return (
     <>
       <Head>
@@ -84,8 +100,13 @@ const Home: NextPage = () => {
                   across devices.
                 </h2>
               </div>
-              <div>
-                <label className="group flex cursor-pointer flex-col items-center rounded-lg border-2 border-dotted border-gray-300 bg-transparent p-10 text-white hover:border-gray-400">
+              <div
+                className={classNames('dragAndDropWrapper', {
+                  'dragAndDropActive': isDropActive,
+                })}
+              >
+                <DragAndDrop onDragStateChange={onDragStateChange} onFilesDrop={onFilesDrop}>
+                  <label className="group flex cursor-pointer flex-col items-center rounded-lg border-2 border-dotted border-gray-300 bg-transparent p-10 text-white hover:border-gray-400">
                   <PlusIcon
                     className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
@@ -101,6 +122,7 @@ const Home: NextPage = () => {
                     }
                   />
                 </label>
+                </DragAndDrop>
               </div>
             </div>
             <div className="mt-4 flex items-center justify-center gap-x-2">
