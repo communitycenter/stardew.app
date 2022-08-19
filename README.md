@@ -16,6 +16,8 @@ Currently, the website is able to track the following:
 - Bundle tracking
 - Fishing tracking with fish information
 - Cooking tracking with recipe ingredients
+- Farm & forage tracking
+- Crafting tracker
 - Museum and artifact tracking
 - Discord OAuth2 login to preserve data across devices
 - Stardew save file upload to process data
@@ -23,8 +25,6 @@ Currently, the website is able to track the following:
 ### Roadmap
 Stardew.app is actively in development. We're currently working on:
 - Perfection tracker
-- Crafting tracker
-- Farm & forage tracker
 - Secret notes tracker
 - Ginger Island tracker
 
