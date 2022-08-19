@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 export interface DragAndDropProps {
-  onDragStateChange?: (isDragActive: boolean) => void
-  onDrag?: () => void
-  onDragIn?: () => void
-  onDragOut?: () => void
-  onDrop?: () => void
-  onFilesDrop?: (files: File[]) => void
+  onDragStateChange?: (isDragActive: boolean) => void;
+  onDrag?: () => void;
+  onDragIn?: () => void;
+  onDragOut?: () => void;
+  onDrop?: () => void;
+  onFilesDrop?: (file: File) => void;
 }
 
 export const DragAndDrop = React.memo(
@@ -18,102 +18,107 @@ export const DragAndDrop = React.memo(
       onDragIn,
       onDragOut,
       onDrop,
-    } = props
+    } = props;
 
-    const [isDragActive, setIsDragActive] = React.useState(false)
-    const dragAndDropRef = React.useRef<null | HTMLDivElement>(null)
+    const [isDragActive, setIsDragActive] = React.useState(false);
+    const dragAndDropRef = React.useRef<null | HTMLDivElement>(null);
 
     const mapFileListToArray = (files: FileList) => {
-      const array = []
+      const array = [];
 
       for (let i = 0; i < files.length; i++) {
-        array.push(files.item(i))
+        array.push(files.item(i));
       }
 
-      return array
-    }
+      return array[0];
+    };
 
     const handleDragIn = React.useCallback(
-      (event) => {
-        event.preventDefault()
-        event.stopPropagation()
-        onDragIn?.()
+      (event: any) => {
+        //TODO: properly type these events
+        event.preventDefault();
+        event.stopPropagation();
+        onDragIn?.();
 
         if (event.dataTransfer.items && event.dataTransfer.items.length > 0) {
-          setIsDragActive(true)
+          setIsDragActive(true);
         }
       },
       [onDragIn]
-    )
+    );
 
     const handleDragOut = React.useCallback(
-      (event) => {
-        event.preventDefault()
-        event.stopPropagation()
-        onDragOut?.()
+      (event: any) => {
+        //TODO: properly type these events
+        event.preventDefault();
+        event.stopPropagation();
+        onDragOut?.();
 
-        setIsDragActive(false)
+        setIsDragActive(false);
       },
       [onDragOut]
-    )
+    );
 
     const handleDrag = React.useCallback(
-      (event) => {
-        event.preventDefault()
-        event.stopPropagation()
+      (event: any) => {
+        //TODO: properly type these events
+        event.preventDefault();
+        event.stopPropagation();
 
-        onDrag?.()
+        onDrag?.();
         if (!isDragActive) {
-          setIsDragActive(true)
+          setIsDragActive(true);
         }
       },
       [isDragActive, onDrag]
-    )
+    );
 
     const handleDrop = React.useCallback(
-      (event) => {
-        event.preventDefault()
-        event.stopPropagation()
+      (event: any) => {
+        //TODO: properly type these events
+        event.preventDefault();
+        event.stopPropagation();
 
-        setIsDragActive(false)
-        onDrop?.()
+        setIsDragActive(false);
+        onDrop?.();
 
         if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-          const files = mapFileListToArray(event.dataTransfer.files)
+          const file = mapFileListToArray(event.dataTransfer.files);
 
-          onFilesDrop?.(files)
-          event.dataTransfer.clearData()
-          console.log({files})
+          onFilesDrop?.(file!);
+          event.dataTransfer.clearData();
+
+          // TODO: do we need to upload the save file data in here?
         }
       },
       [onDrop, onFilesDrop]
-    )
+    );
 
     React.useEffect(() => {
-      onDragStateChange?.(isDragActive)
-    }, [isDragActive])
+      onDragStateChange?.(isDragActive);
+    }, [isDragActive, onDragStateChange]);
 
     React.useEffect(() => {
-      const tempZoneRef = dragAndDropRef?.current
+      const tempZoneRef = dragAndDropRef?.current;
       if (tempZoneRef) {
-        tempZoneRef.addEventListener('dragenter', handleDragIn)
-        tempZoneRef.addEventListener('dragleave', handleDragOut)
-        tempZoneRef.addEventListener('dragover', handleDrag)
-        tempZoneRef.addEventListener('drop', handleDrop)
+        tempZoneRef.addEventListener("dragenter", handleDragIn);
+        tempZoneRef.addEventListener("dragleave", handleDragOut);
+        tempZoneRef.addEventListener("dragover", handleDrag);
+        tempZoneRef.addEventListener("drop", handleDrop);
       }
 
       return () => {
-        tempZoneRef?.removeEventListener('dragenter', handleDragIn)
-        tempZoneRef?.removeEventListener('dragleave', handleDragOut)
-        tempZoneRef?.removeEventListener('dragover', handleDrag)
-        tempZoneRef?.removeEventListener('drop', handleDrop)
-      }
-    }, [])
+        tempZoneRef?.removeEventListener("dragenter", handleDragIn);
+        tempZoneRef?.removeEventListener("dragleave", handleDragOut);
+        tempZoneRef?.removeEventListener("dragover", handleDrag);
+        tempZoneRef?.removeEventListener("drop", handleDrop);
+      };
+    }, [handleDrag, handleDragIn, handleDragOut, handleDrop]);
 
-    return <div ref={dragAndDropRef}>{props.children}</div>
+    return <div ref={dragAndDropRef}>{props.children}</div>;
   }
-)
+);
 
-DragAndDrop.displayName = 'DragAndDrop'
+DragAndDrop.displayName = "DragAndDrop";
 
 export default DragAndDrop;

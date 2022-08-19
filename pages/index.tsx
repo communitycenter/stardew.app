@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("handling change");
+    // handling when the user clicks the upload box instead of drag
     e.preventDefault();
     const file = e.target?.files![0];
 
@@ -39,14 +39,15 @@ const Home: NextPage = () => {
   };
 
   const [isDropActive, setIsDropActive] = useState<boolean>(false);
-  const [files, setFiles] = useState<File[]>([]);
+  const [file, setFile] = useState<File | null>(null);
 
   const onDragStateChange = React.useCallback((dragActive: boolean) => {
     setIsDropActive(dragActive);
   }, []);
 
-  const onFilesDrop = React.useCallback((files: File[]) => {
-    setFiles(files);
+  const onFilesDrop = React.useCallback((file: File) => {
+    setFile(file);
+    console.log("Dropped File", file.name);
   }, []);
 
   return (
