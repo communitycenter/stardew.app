@@ -25,7 +25,6 @@ Currently, the website is able to track the following:
 ### Roadmap
 Stardew.app is actively in development. We're currently working on:
 - Perfection tracker
-
 - Secret notes tracker
 - Ginger Island tracker
 
