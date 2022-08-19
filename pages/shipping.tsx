@@ -86,6 +86,20 @@ const Shipping: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             All Items to Ship
           </h2>
+          <div className="flex items-center space-x-4">
+            <div className="mt-2">
+              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
+                <p className="text-sm dark:text-white">Shipped Item</p>
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
+                <p className="text-sm dark:text-white">Unshipped Item</p>
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {Object.entries(shipping).map(([id, name]) => (
               <AchievementCard
