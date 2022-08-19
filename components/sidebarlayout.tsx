@@ -145,7 +145,7 @@ const SidebarLayout = ({
       } catch (e) {
         if (e instanceof TypeError) {
           setErrorMSG(
-            "Invalid File Uploaded. Couldn't find gameVersion, please upload a Stardew Valley save file."
+            "Invalid File Uploaded. Couldn't find Game Version, please upload a Stardew Valley save file."
           );
           setShowErrorNotification(true);
           console.log("Exiting...");
