@@ -1,0 +1,285 @@
+{
+  "Slimes": {
+    "Monster Type": [
+      [
+        "Slime (any color,excludes Big Slimes and Slimes in Slime Hutch)",
+        "/mediawiki/images/thumb/7/7b/Green_Slime.png/24px-Green_Slime.png"
+      ]
+    ],
+    "Quantity": "1000",
+    "Reward": [
+      "Slime Charmer Ring",
+      "/mediawiki/images/thumb/5/51/Slime_Charmer_Ring.png/24px-Slime_Charmer_Ring.png"
+    ],
+    "Reward Description": "Prevents damage from slimes."
+  },
+  "Void Spirits": {
+    "Monster Type": [
+      [
+        "Shadow Shaman",
+        "/mediawiki/images/thumb/1/11/Shadow_Shaman.png/16px-Shadow_Shaman.png"
+      ],
+      [
+        "Shadow Shaman (dangerous)",
+        "/mediawiki/images/thumb/d/d9/Shadow_Shaman_Dangerous.png/16px-Shadow_Shaman_Dangerous.png"
+      ],
+      [
+        "Shadow Brute",
+        "/mediawiki/images/thumb/e/e0/Shadow_Brute.png/16px-Shadow_Brute.png"
+      ],
+      [
+        "Shadow Brute (dangerous)",
+        "/mediawiki/images/thumb/1/15/Shadow_Brute_Dangerous.png/16px-Shadow_Brute_Dangerous.png"
+      ],
+      [
+        "Shadow Sniper",
+        "/mediawiki/images/thumb/a/a4/Shadow_Sniper.png/16px-Shadow_Sniper.png"
+      ]
+    ],
+    "Quantity": "150",
+    "Reward": [
+      "Void Spirits Shadow Shaman Shadow Shaman (dangerous) Shadow Brute Shadow Brute (dangerous) Shadow Sniper",
+      "/mediawiki/images/thumb/1/11/Shadow_Shaman.png/16px-Shadow_Shaman.png"
+    ],
+    "Reward Description": [
+      "Savage Ring",
+      "/mediawiki/images/thumb/5/55/Savage_Ring.png/24px-Savage_Ring.png"
+    ]
+  },
+  "Bats": {
+    "Monster Type": [
+      ["Bat", "/mediawiki/images/thumb/a/ad/Bat.png/24px-Bat.png"],
+      [
+        "Bat (dangerous)",
+        "/mediawiki/images/thumb/8/8d/Bat_Dangerous.png/24px-Bat_Dangerous.png"
+      ],
+      [
+        "Frost Bat",
+        "/mediawiki/images/thumb/3/36/Frost_Bat.png/24px-Frost_Bat.png"
+      ],
+      [
+        "Frost Bat (dangerous)",
+        "/mediawiki/images/thumb/d/dd/Frost_Bat_Dangerous.png/24px-Frost_Bat_Dangerous.png"
+      ],
+      [
+        "Lava Bat",
+        "/mediawiki/images/thumb/c/c5/Lava_Bat.png/24px-Lava_Bat.png"
+      ],
+      [
+        "Iridium Bat",
+        "/mediawiki/images/thumb/d/d5/Iridium_Bat.png/24px-Iridium_Bat.png"
+      ]
+    ],
+    "Quantity": "200",
+    "Reward": [
+      "Bats Bat Bat (dangerous) Frost Bat Frost Bat (dangerous) Lava Bat Iridium Bat",
+      "/mediawiki/images/thumb/a/ad/Bat.png/24px-Bat.png"
+    ],
+    "Reward Description": [
+      "Vampire Ring",
+      "/mediawiki/images/thumb/a/a8/Vampire_Ring.png/24px-Vampire_Ring.png"
+    ]
+  },
+  "Skeletons": {
+    "Monster Type": [
+      [
+        "Skeleton",
+        "/mediawiki/images/thumb/2/23/Skeleton.png/16px-Skeleton.png"
+      ],
+      [
+        "Skeleton (dangerous)",
+        "/mediawiki/images/thumb/8/8c/Skeleton_Dangerous.png/16px-Skeleton_Dangerous.png"
+      ],
+      [
+        "Skeleton Mage",
+        "/mediawiki/images/thumb/f/f5/Skeleton_Mage_Dangerous.png/16px-Skeleton_Mage_Dangerous.png"
+      ]
+    ],
+    "Quantity": "50",
+    "Reward": [
+      "Skeletons Skeleton Skeleton (dangerous) Skeleton Mage",
+      "/mediawiki/images/thumb/2/23/Skeleton.png/16px-Skeleton.png"
+    ],
+    "Reward Description": [
+      "Skeleton Mask",
+      "/mediawiki/images/thumb/1/12/Skeleton_Mask.png/24px-Skeleton_Mask.png"
+    ]
+  },
+  "Cave Insects": {
+    "Monster Type": [
+      ["Bug", "/mediawiki/images/thumb/7/7d/Bug.png/24px-Bug.png"],
+      [
+        "Bug (dangerous)",
+        "/mediawiki/images/thumb/7/7c/Bug_Dangerous.png/24px-Bug_Dangerous.png"
+      ],
+      [
+        "Cave Fly",
+        "/mediawiki/images/thumb/8/8f/Cave_Fly.png/24px-Cave_Fly.png"
+      ],
+      [
+        "Cave Fly (dangerous)",
+        "/mediawiki/images/thumb/d/dc/Cave_Fly_Dangerous.png/24px-Cave_Fly_Dangerous.png"
+      ],
+      ["Grub", "/mediawiki/images/thumb/0/0c/Grub.png/24px-Grub.png"],
+      [
+        "Grub (dangerous)",
+        "/mediawiki/images/thumb/5/5b/Grub_Dangerous.png/24px-Grub_Dangerous.png"
+      ],
+      [
+        "Mutant Fly",
+        "/mediawiki/images/thumb/6/69/Mutant_Fly.png/24px-Mutant_Fly.png"
+      ],
+      [
+        "Mutant Grub",
+        "/mediawiki/images/thumb/6/62/Mutant_Grub.png/24px-Mutant_Grub.png"
+      ],
+      [
+        "Armored Bug",
+        "/mediawiki/images/thumb/1/19/Armored_Bug.png/24px-Armored_Bug.png"
+      ],
+      [
+        "Armored Bug (dangerous)",
+        "/mediawiki/images/thumb/2/2e/Armored_Bug_Dangerous.png/24px-Armored_Bug_Dangerous.png"
+      ]
+    ],
+    "Quantity": "125",
+    "Reward": [
+      "Cave Insects Bug Bug (dangerous) Cave Fly Cave Fly (dangerous) Grub Grub (dangerous) Mutant Fly Mutant Grub Armored Bug Armored Bug (dangerous)",
+      "/mediawiki/images/thumb/7/7d/Bug.png/24px-Bug.png"
+    ],
+    "Reward Description": [
+      "Insect Head",
+      "/mediawiki/images/thumb/3/35/Insect_Head.png/24px-Insect_Head.png"
+    ]
+  },
+  "Duggies": {
+    "Monster Type": [
+      ["Duggy", "/mediawiki/images/thumb/3/3a/Duggy.png/24px-Duggy.png"],
+      [
+        "Duggy (dangerous)",
+        "/mediawiki/images/thumb/c/c9/Duggy_Dangerous.png/24px-Duggy_Dangerous.png"
+      ],
+      [
+        "Magma Duggy",
+        "/mediawiki/images/thumb/4/41/Magma_Duggy.png/24px-Magma_Duggy.png"
+      ]
+    ],
+    "Quantity": "30",
+    "Reward": [
+      "Duggies Duggy Duggy (dangerous) Magma Duggy",
+      "/mediawiki/images/thumb/3/3a/Duggy.png/24px-Duggy.png"
+    ],
+    "Reward Description": [
+      "Hard Hat",
+      "/mediawiki/images/thumb/0/08/Hard_Hat.png/24px-Hard_Hat.png"
+    ]
+  },
+  "Dust Sprites": {
+    "Monster Type": [
+      [
+        "Dust Sprite",
+        "/mediawiki/images/thumb/9/9a/Dust_Sprite.png/24px-Dust_Sprite.png"
+      ],
+      [
+        "Dust Sprite (dangerous)",
+        "/mediawiki/images/thumb/d/d0/Dust_Sprite_Dangerous.png/24px-Dust_Sprite_Dangerous.png"
+      ]
+    ],
+    "Quantity": "500",
+    "Reward": [
+      "Dust Sprites Dust Sprite Dust Sprite (dangerous)",
+      "/mediawiki/images/thumb/9/9a/Dust_Sprite.png/24px-Dust_Sprite.png"
+    ],
+    "Reward Description": [
+      "Burglar's Ring",
+      "/mediawiki/images/thumb/8/8b/Burglar%27s_Ring.png/24px-Burglar%27s_Ring.png"
+    ]
+  },
+  "Rock Crabs": {
+    "Monster Type": [
+      [
+        "Rock Crab",
+        "/mediawiki/images/thumb/d/d4/Rock_Crab.png/24px-Rock_Crab.png"
+      ],
+      [
+        "Rock Crab (dangerous)",
+        "/mediawiki/images/thumb/3/3e/Rock_Crab_Dangerous.png/24px-Rock_Crab_Dangerous.png"
+      ],
+      [
+        "Lava Crab",
+        "/mediawiki/images/thumb/1/1b/Lava_Crab.png/24px-Lava_Crab.png"
+      ],
+      [
+        "Lava Crab (dangerous)",
+        "/mediawiki/images/thumb/2/27/Lava_Crab_Dangerous.png/24px-Lava_Crab_Dangerous.png"
+      ],
+      [
+        "Iridium Crab",
+        "/mediawiki/images/thumb/e/ef/Iridium_Crab.png/24px-Iridium_Crab.png"
+      ]
+    ],
+    "Quantity": "60",
+    "Reward": [
+      "Rock Crabs Rock Crab Rock Crab (dangerous) Lava Crab Lava Crab (dangerous) Iridium Crab",
+      "/mediawiki/images/thumb/d/d4/Rock_Crab.png/24px-Rock_Crab.png"
+    ],
+    "Reward Description": [
+      "Crabshell Ring",
+      "/mediawiki/images/thumb/e/eb/Crabshell_Ring.png/24px-Crabshell_Ring.png"
+    ]
+  },
+  "Mummies": {
+    "Monster Type": [
+      ["Mummy", "/mediawiki/images/thumb/7/70/Mummy.png/16px-Mummy.png"],
+      [
+        "Mummy (dangerous)",
+        "/mediawiki/images/thumb/3/3b/Mummy_Dangerous.png/16px-Mummy_Dangerous.png"
+      ]
+    ],
+    "Quantity": "100",
+    "Reward": [
+      "Mummies Mummy Mummy (dangerous)",
+      "/mediawiki/images/thumb/7/70/Mummy.png/16px-Mummy.png"
+    ],
+    "Reward Description": [
+      "Arcane Hat",
+      "/mediawiki/images/thumb/c/c7/Arcane_Hat.png/24px-Arcane_Hat.png"
+    ]
+  },
+  "Serpents": {
+    "Monster Type": [
+      ["Serpent", "/mediawiki/images/thumb/8/89/Serpent.png/24px-Serpent.png"],
+      [
+        "Royal Serpent",
+        "/mediawiki/images/thumb/2/28/Royal_Serpent.png/24px-Royal_Serpent.png"
+      ]
+    ],
+    "Quantity": "250",
+    "Reward": [
+      "Serpents Serpent Royal Serpent",
+      "/mediawiki/images/thumb/8/89/Serpent.png/24px-Serpent.png"
+    ],
+    "Reward Description": [
+      "Napalm Ring",
+      "/mediawiki/images/thumb/8/82/Napalm_Ring.png/24px-Napalm_Ring.png"
+    ]
+  },
+  "Magma Sprites": {
+    "Monster Type": [
+      [
+        "Magma Sprite",
+        "/mediawiki/images/thumb/f/f2/Magma_Sprite.png/24px-Magma_Sprite.png"
+      ],
+      [
+        "Magma Sparker",
+        "/mediawiki/images/thumb/5/58/Magma_Sparker.png/24px-Magma_Sparker.png"
+      ]
+    ],
+    "Quantity": "150",
+    "Reward": [
+      "Magma Sprites Magma Sprite Magma Sparker",
+      "/mediawiki/images/thumb/f/f2/Magma_Sprite.png/24px-Magma_Sprite.png"
+    ],
+    "Reward Description": "Marlon's Phone Number"
+  }
+}

@@ -20,23 +20,9 @@ import { GiMining } from "react-icons/gi";
 import BooleanCard from "../components/cards/booleancard";
 import AchievementCard from "../components/cards/achievementcard";
 
-const monsters = {
-  slimes: {
-    name: "Slimes",
-    numerToKill: 1000,
-  },
-  "void spirits": {},
-  bats: {},
-  skeletons: {},
-  "cave insects": {},
-  duggies: {},
-  "dust sprites": {},
-  "rock crabs": {},
-  mummies: {},
-  "pepper rex": {},
-  serpents: {},
-  "magma sprites": {},
-};
+import monsters from "../research/processors/data/monsters.json";
+import MonsterCard from "../components/cards/monstercard";
+import MonsterSlideOver from "../components/slideovers/monsterslideover";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -48,19 +34,11 @@ const Perfection: NextPage = () => {
     "deepestSkullCavernLevel",
     0
   );
-  const [batsCount] = useKV<number>("mining", "bats", 0);
-  const [caveInsectsCount] = useKV<number>("mining", "cave insects", 0);
-  const [duggiesCount] = useKV<number>("mining", "duggies", 0);
-  const [dustSpritesCount] = useKV<number>("mining", "dust sprites", 0);
-  const [magmaSpritesCount] = useKV<number>("mining", "magma sprites", 0);
-  const [mummiesCount] = useKV<number>("mining", "mummies", 0);
-  const [pepperRexCount] = useKV<number>("mining", "pepper rex", 0);
-  const [rockCrabsCount] = useKV<number>("mining", "rock crabs", 0);
-  const [serpentsCount] = useKV<number>("mining", "serpents", 0);
-  const [skeletonsCount] = useKV<number>("mining", "skeletons", 0);
-  const [slimesCount] = useKV<number>("mining", "slimes", 0);
-  const [voidSpiritsCount] = useKV<number>("mining", "void spirits", 0);
 
+  const [showMonster, setShowMonster] = useState<boolean>(false);
+  const [selectedMonster, setSelectedMonster] = useState<any>(
+    Object.entries(monsters)[1]
+  );
   return (
     <>
       <Head>
@@ -97,21 +75,26 @@ const Perfection: NextPage = () => {
             <div className="mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Monsters
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <InfoCard
-                title="Deepest Mining Level"
-                description={deepestMiningLevel.toString()}
-                Icon={QuestionMarkCircleIcon}
-              />
-              <InfoCard
-                title="Deepest Skull Mining Level"
-                description={deepestSkullCavernLevel.toString()}
-                Icon={QuestionMarkCircleIcon}
-              />
+            <div className="grid grid-cols-5 gap-4">
+              {Object.entries(monsters).map(([monster, monsterInfo]) => (
+                <MonsterCard
+                  key={monster}
+                  monsterInfo={monsterInfo}
+                  monsterCategory={monster}
+                  setSelectedMonster={setSelectedMonster}
+                  setShowMonster={setShowMonster}
+                />
+              ))}
             </div>
           </div>
         </div>
       </SidebarLayout>
+
+      <MonsterSlideOver
+        isOpen={showMonster}
+        selected={selectedMonster}
+        setOpen={setShowMonster}
+      />
     </>
   );
 };

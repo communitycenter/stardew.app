@@ -39,3 +39,8 @@ yarn-error.log*
 .idea
 
 .env
+
+# python
+venv/*
+*.pyc
+__pycache__

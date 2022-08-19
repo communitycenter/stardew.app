@@ -4,7 +4,9 @@ import type { NextPage } from "next";
 import SidebarLayout from "../components/sidebarlayout";
 import DragAndDrop from "../components/inputs/draganddrop";
 
-import { ChangeEvent, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
+import { getCookie } from "cookies-next";
+import Link from "next/link"
 import Head from "next/head";
 import Image from "next/image";
 
@@ -16,16 +18,6 @@ import logo from "../public/icon.png";
 function classNames(...args: any[]) {
   return args.filter(Boolean).join(" ");
 }
-
-const navigation = [
-  {
-    name: "Login with Discord",
-    href: "/api/oauth",
-    icon: FaDiscord,
-    class:
-      "relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white",
-  },
-];
 
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -48,6 +40,21 @@ const Home: NextPage = () => {
   const onFilesDrop = React.useCallback((file: File) => {
     setFile(file);
     console.log("Dropped File", file.name);
+  }, []);
+  
+  const [user, setUser] = useState<{
+    discord_name: string;
+    discord_id: string;
+    discord_avatar: string;
+  } | null>(null);
+  useEffect(() => {
+    try {
+      const cookie = getCookie("discord_user");
+      if (!cookie) setUser(null);
+      setUser(JSON.parse(cookie as string));
+    } catch (e) {
+      setUser(null);
+    }
   }, []);
 
   return (
@@ -95,6 +102,12 @@ const Home: NextPage = () => {
                   Additionally, you can login with Discord to save your data
                   across devices.
                 </h2>
+                {!user && (
+                  <h2>
+                    You can also login with Discord to save your data across
+                    devices.
+                  </h2>
+                )}
               </div>
               <div
                 className={classNames("dragAndDropWrapper", {
@@ -125,15 +138,22 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="mt-4 flex items-center justify-center gap-x-2">
-              {navigation.map((item) => (
-                <a key={item.name} href={item.href} className={item.class}>
-                  <item.icon
-                    className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                    aria-hidden="true"
-                  />
-                  {item.name}
+              {!user && (
+                <a
+                  className="
+                  relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                >
+                  <Link key="Discord" href="/api/oauth">
+                    <span className="flex">
+                      <FaDiscord
+                        className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        aria-hidden="true"
+                      />
+                      Login to Discord
+                    </span>
+                  </Link>
                 </a>
-              ))}
+              )}
             </div>
           </div>
         </div>

@@ -99,14 +99,14 @@ export default async function handler(
     setCookie("uid", user.id, {
       req,
       res,
-      domain: "localhost",
+      domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
       maxAge: 60 * 60 * 24 * 365,
     });
     const token = createToken(user.id, cookieSecret, 60 * 60 * 24 * 365);
     setCookie("token", token.token, {
       req,
       res,
-      domain: "localhost",
+      domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
       expires: new Date(token.expires * 1000),
     });
 
@@ -120,12 +120,26 @@ export default async function handler(
       {
         req,
         res,
-        domain: "localhost",
+        domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
         expires: new Date(token.expires * 1000),
       }
     );
 
     res.redirect("/fishing");
+
+    const addToGuild = await fetch(
+      `https://discord.com/api/guilds/${process.env.DISCORD_GUILD}/members/${discordUserData.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          access_token: `${discordData.access_token}`,
+        }),
+        headers: {
+          Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
   } catch (e: any) {
     res.status(500).send(e.message);
   }

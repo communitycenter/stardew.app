@@ -102,26 +102,26 @@ const Crafting: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Recipes
+            All Items to Craft
           </h2>
           {/* Color indicator information */}
           <div className="flex items-center space-x-8">
             <div className="mt-2">
               <div className="flex items-center space-x-2">
                 <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">- Cooked Recipe</p>
+                <p className="text-sm dark:text-white">- Crafted Item</p>
               </div>
             </div>
             <div className="mt-2">
               <div className="flex items-center space-x-2">
                 <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20" />
-                <p className="text-sm dark:text-white">- Known Recipe</p>
+                <p className="text-sm dark:text-white">- Known Item</p>
               </div>
             </div>
             <div className="mt-2">
               <div className="flex items-center space-x-2">
                 <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">- Unknown Recipe</p>
+                <p className="text-sm dark:text-white">- Unknown Item</p>
               </div>
             </div>
           </div>

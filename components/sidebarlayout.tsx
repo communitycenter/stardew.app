@@ -50,8 +50,6 @@ const navigation = [
   { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
-  { name: "Secret Notes", href: "/construction", icon: RiFilePaper2Fill }, // Maybe put under Farmer tab?
-  { name: "Ginger Island", href: "/construction", icon: GiIsland },
 ];
 
 interface LayoutProps {
@@ -476,7 +474,7 @@ const SidebarLayout = ({
         </main>
       </div>
       <Notification
-        title="Successfully Parsed and Uploaded Data"
+        title="Successfully uploaded save file!"
         description={`Completed in ${completionTime} seconds!`}
         success={true}
         show={showNotification}
