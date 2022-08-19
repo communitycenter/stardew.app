@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 
 import SidebarLayout from "../components/sidebarlayout";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import {
@@ -13,14 +13,29 @@ import {
 import Image from "next/image";
 import logo from "../public/icon.png";
 import { FaDiscord } from "react-icons/fa";
-
-const navigation = [
-  { name: "Login with Discord", href: "/api/oauth", icon: FaDiscord },
-  { name: "Upload Stardew Save File", href: "#", icon: SparklesIcon },
-];
+import { getCookie } from "cookies-next";
+import Link from "next/link";
+import { useKV } from "../hooks/useKV";
 
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+
+  const [user, setUser] = useState<{
+    discord_name: string;
+    discord_id: string;
+    discord_avatar: string;
+  } | null>(null);
+  useEffect(() => {
+    try {
+      const cookie = getCookie("discord_user");
+      if (!cookie) setUser(null);
+      setUser(JSON.parse(cookie as string));
+    } catch (e) {
+      setUser(null);
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -55,30 +70,52 @@ const Home: NextPage = () => {
               <div className="space-y-2">
                 <h2>
                   Get started by heading to the sidebar and checking off what
-                  you&apos;ve done - you can also upload your save file below
-                  and have it automatically import data.
+                  you&apos;ve done
+                  {!hasUploaded
+                    ? " - you can also upload your save file below and have it automatically import data."
+                    : "."}
                 </h2>
-                <h2>
-                  You can also login with Discord to save your data across
-                  devices.
-                </h2>
+                {!user && (
+                  <h2>
+                    You can also login with Discord to save your data across
+                    devices.
+                  </h2>
+                )}
               </div>
             </div>
             <div className="mt-4 flex items-center justify-center gap-x-2">
-              {navigation.map((item) => (
+              {!user && (
                 <a
-                  key={item.name}
-                  href={item.href}
                   className="
                   relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
                 >
-                  <item.icon
-                    className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                    aria-hidden="true"
-                  />
-                  {item.name}
+                  <Link key="Discord" href="/api/oauth">
+                    <span className="flex">
+                      <FaDiscord
+                        className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        aria-hidden="true"
+                      />
+                      Login to Discord
+                    </span>
+                  </Link>
                 </a>
-              ))}
+              )}
+              {!hasUploaded && (
+                <a
+                  className="
+                  relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                >
+                  <Link key="Discord" href="/api/oauth">
+                    <span className="flex">
+                      <SparklesIcon
+                        className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                        aria-hidden="true"
+                      />
+                      Upload Stardew Valley Save
+                    </span>
+                  </Link>
+                </a>
+              )}
             </div>
           </div>
         </div>

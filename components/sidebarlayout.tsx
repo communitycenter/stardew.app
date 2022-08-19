@@ -474,7 +474,7 @@ const SidebarLayout = ({
         </main>
       </div>
       <Notification
-        title="Successfully Parsed and Uploaded Data"
+        title="Successfully uploaded save file!"
         description={`Completed in ${completionTime} seconds!`}
         success={true}
         show={showNotification}
