@@ -65,6 +65,7 @@ import Image from "next/image";
 import { getCookie } from "cookies-next";
 import { AnimatePresence, motion } from "framer-motion";
 import Notification from "./notification";
+import Popup from "./popup";
 
 const SidebarLayout = ({
   children,
@@ -392,6 +393,7 @@ const SidebarLayout = ({
                 </Link>
               ))}
             </nav>
+            <Popup />
             <div className="mx-2 flex space-x-2">
               <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
                 {!user ? (
