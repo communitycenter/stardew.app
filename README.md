@@ -8,10 +8,13 @@
 </p>
 
 # Overview
+
 Stardew.app is a next-generation, user-oriented Stardew Valley perfection tracker. The website was born when Jack LaFond and Clemente Solorio, two avid players of the game, decided to get together and create a better community resource.
 
 ## Features
+
 Currently, the website is able to track the following:
+
 - Farmer information + achievements
 - Bundle tracking
 - Fishing tracking with fish information
@@ -23,16 +26,18 @@ Currently, the website is able to track the following:
 - Stardew save file upload to process data
 
 ### Roadmap
+
 Stardew.app is actively in development. We're currently working on:
+
 - Perfection tracker
 - Secret notes tracker
 - Ginger Island tracker
 
 ## Contributions
+
 Contributions are always welcome! Feel free to open a PR.
 
 Stardew.app has been contributed to by the lovely people below <3
 
-<a href="https://github.com/stardewapp/stardew.app/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=stardewapp/stardew.app" />
-</a>
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
