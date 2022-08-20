@@ -42,28 +42,47 @@ export default function MyModal({ isOpen, setOpen }: Props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     Logging into Stardew.app
                   </Dialog.Title>
-                  <div className="mt-2">
+                  <div className="mt-2 space-y-4">
                     <p className="text-sm text-gray-500">
                       Logging into Stardew.app gives you some pretty sweet
-                      perks: -123 - 123 -123 -123
+                      perks:
+                    </p>
+                    <p className="text-left text-sm text-gray-500">
+                      <li>123</li>
+                      <li>123</li>
+                      <li>123</li>
+                      <li>123</li>
+                      <li>123</li>
+                      <li>123</li>
                     </p>
                   </div>
 
-                  <div className="mt-4 justify-around">
-                    <button
-                      type="button"
-                      className="inline-flex justify-between rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Got it, thanks!
-                    </button>
+                  <div className="flex justify-center space-x-2">
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        No thanks, maybe later...
+                      </button>
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Log into Discord
+                      </button>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
