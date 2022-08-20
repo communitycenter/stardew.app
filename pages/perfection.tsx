@@ -37,7 +37,7 @@ const Perfection: NextPage = () => {
 
   const [showMonster, setShowMonster] = useState<boolean>(false);
   const [selectedMonster, setSelectedMonster] = useState<any>(
-    Object.entries(monsters)[1]
+    Object.entries(monsters)[0]
   );
   return (
     <>

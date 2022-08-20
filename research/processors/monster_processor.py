@@ -74,7 +74,13 @@ def main():
                     _check_if_span_has_image = item.find("img")
                     if _check_if_span_has_image:
                         _items[0].append(
-                            (clean_up_text(item.text), _check_if_span_has_image["src"])
+                            (
+                                clean_up_text(item.text),
+                                _check_if_span_has_image["src"]
+                                .split(".png/")[0]
+                                .replace("/thumb", "")
+                                + ".png",
+                            )
                         )
                     else:
                         _items[0].append(clean_up_text(item.text))
@@ -86,18 +92,22 @@ def main():
                     _check_if_td_has_a_image = td.find("img")
                     if _check_if_td_has_a_image:
                         _items.append(
-                            (clean_up_text(td.text), _check_if_td_has_a_image["src"])
+                            (
+                                clean_up_text(td.text),
+                                _check_if_td_has_a_image["src"]
+                                .split(".png/")[0]
+                                .replace("/thumb", "")
+                                + ".png",
+                            )
                         )
                     else:
                         _items.append(clean_up_text(td.text))
-                    
+
                     if len(_items) == len(headers):
                         bundles[_grab_title] = {}
                         for header in headers:
                             bundles[_grab_title][header] = _items[headers.index(header)]
                         break
-                        
-
 
 
 if __name__ == "__main__":

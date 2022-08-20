@@ -67,7 +67,7 @@ Props) => {
   }
 
   const oneClick = useCallback(() => {
-    setSelectedMonster(monsterCategory);
+    setSelectedMonster([monsterCategory, monsterInfo]);
     setShowMonster(true);
   }, [monsterCategory, setSelectedMonster, setShowMonster]);
 
