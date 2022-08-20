@@ -48,6 +48,7 @@ import { XMLParser } from "fast-xml-parser";
 import Login from "./inputs/login";
 import UserSignedIn from "./usersignedin";
 import * as Popover from "@radix-ui/react-popover";
+import MyModal from "./login";
 
 const semVerGte = require("semver/functions/gte");
 
@@ -81,6 +82,8 @@ const SidebarLayout = ({
 }: LayoutProps) => {
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const [showLoginSlideover, setShowLoginSlideover] = useState<boolean>(false);
+
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
 
@@ -426,21 +429,43 @@ const SidebarLayout = ({
               ))}
             </nav>
             <div className="mx-2 flex items-center space-x-2 text-white">
-              <div className="flex-1 rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
-                <div className="flex py-4 px-3">
-                  <img
-                    className={classNames(
-                      " rounded-2xl text-black dark:text-white"
-                    )}
-                    aria-hidden="true"
-                    src="https://i.pinimg.com/564x/8f/1b/09/8f1b09269d8df868039a5f9db169a772.jpg"
-                    alt="User avatar"
-                    height={24}
-                    width={24}
-                  />
-                  <p className="ml-2 dark:text-white">{user?.discord_name}</p>
+              {!user ? (
+                <div className="flex-1 rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
+                  <div
+                    className="flex py-4 px-3"
+                    onClick={() => setShowLoginSlideover(true)}
+                  >
+                    <img
+                      className={classNames(
+                        " rounded-2xl text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                      src="https://i.pinimg.com/564x/8f/1b/09/8f1b09269d8df868039a5f9db169a772.jpg"
+                      alt="User avatar"
+                      height={24}
+                      width={24}
+                    />
+                    <p className="ml-2 dark:text-white">bruh</p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="flex-1 rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
+                  <div className="flex py-4 px-3">
+                    <img
+                      className={classNames(
+                        " rounded-2xl text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                      src="https://i.pinimg.com/564x/8f/1b/09/8f1b09269d8df868039a5f9db169a772.jpg"
+                      alt="User avatar"
+                      height={24}
+                      width={24}
+                    />
+                    <p className="ml-2 dark:text-white">{user?.discord_name}</p>
+                  </div>
+                </div>
+              )}
+
               <div className="flex rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
                 <div className="py-4 px-4">
                   <label>
@@ -503,6 +528,7 @@ const SidebarLayout = ({
         show={showErrorNotification}
         setShow={setShowErrorNotification}
       />
+      <MyModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
     </>
   );
 };
