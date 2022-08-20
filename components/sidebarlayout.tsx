@@ -77,6 +77,7 @@ const SidebarLayout = ({
   setSidebarOpen,
 }: LayoutProps) => {
   const [showNotification, setShowNotification] = useState(false);
+  const [showStartNotification, setShowStartNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
@@ -100,6 +101,7 @@ const SidebarLayout = ({
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     setShowNotification(false);
     setShowErrorNotification(false);
+    setShowStartNotification(false);
     const file = event.target!.files![0];
     if (typeof file === "undefined") return;
 
@@ -118,6 +120,7 @@ const SidebarLayout = ({
     // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
 
     reader.onload = async function (event) {
+      setShowStartNotification(true);
       // console.log(event.target?.result);
       console.log("Parsing XML...");
       const start = performance.now();
@@ -511,6 +514,13 @@ const SidebarLayout = ({
           </AnimatePresence>
         </main>
       </div>
+      <Notification
+        title="Starting save file processing..."
+        description={`This might take a second!`}
+        success={true}
+        show={showStartNotification}
+        setShow={setShowStartNotification}
+      />
       <Notification
         title="Successfully uploaded save file!"
         description={`Completed in ${completionTime} seconds!`}

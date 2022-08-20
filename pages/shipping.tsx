@@ -30,7 +30,7 @@ const Shipping: NextPage = () => {
   //   const [showFish, setShowFish] = useState<boolean>(false);
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
   const [name] = useKV("general", "name", "Farmer");
-  //   const [totalCaught] = useKV("fish", "totalCaught", 0);
+  const [totalShipped] = useKV("shipping", "numItems", 0);
   //   const [uniqueCaught] = useKV("fish", "uniqueCaught", 0);
   //   const [selectedFish, setSelectedFish] = useState<Fish>(
   //     Object.values(fishes)[0]
@@ -58,7 +58,7 @@ const Shipping: NextPage = () => {
             </h2>
             {hasUploaded && (
               <InfoCard
-                title={`${name} has shipped \${put the items number here} items.`}
+                title={`${name} has shipped ${totalShipped} items.`}
                 Icon={InformationCircleIcon}
               />
             )}
