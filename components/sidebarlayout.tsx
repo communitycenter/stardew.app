@@ -373,7 +373,7 @@ const SidebarLayout = ({
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* Sidebar Links Section */}
               <div className="flex space-x-2">
-                <a href="https://discord.gg/YBNGCgCxG5">
+                <a href="https://discord.gg/NkgNVZwQ2M">
                   <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                     <FaDiscord
                       className="h-5 w-5 text-black dark:text-white"
