@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
     "@prisma/client": "4.1.1",
+    "@radix-ui/react-popover": "1.0.0",
     "cookies-next": "^2.1.1",
     "fast-xml-parser": "^4.0.9",
     "framer-motion": "^6.5.1",

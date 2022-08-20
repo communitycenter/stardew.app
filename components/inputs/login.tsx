@@ -9,7 +9,7 @@ function classNames(...classes: string[]) {
 
 export const Login = () => {
   return (
-    <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
+    <div className="mt-4 flex-1 justify-end space-y-2 bg-white p-9 dark:bg-[#111111]">
       <Link href="/api/oauth">
         <a className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
           <FaUserCircle

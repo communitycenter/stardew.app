@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
@@ -47,6 +47,8 @@ import Popup from "./popup";
 import { XMLParser } from "fast-xml-parser";
 import Login from "./inputs/login";
 import UserSignedIn from "./usersignedin";
+import * as Popover from "@radix-ui/react-popover";
+
 const semVerGte = require("semver/functions/gte");
 
 function classNames(...classes: string[]) {
@@ -424,26 +426,94 @@ const SidebarLayout = ({
               ))}
             </nav>
             <div className="mx-2 flex space-x-2">
-              <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                {!user ? <Login /> : <UserSignedIn />}
+              <div className="flex-1 bg-white dark:bg-[#111111]">
+                <Popover.Root>
+                  <Popover.PopoverTrigger>
+                    <div className="flex-1 rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
+                      <div className="flex">
+                        <img
+                          className={classNames(
+                            "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
+                          )}
+                          aria-hidden="true"
+                          src="https://i.pinimg.com/564x/8f/1b/09/8f1b09269d8df868039a5f9db169a772.jpg"
+                          alt="User avatar"
+                          height={24}
+                          width={24}
+                        />
+                        <p className="ml-2 dark:text-white">
+                          {user?.discord_name}
+                        </p>
+                      </div>
+                    </div>
+                  </Popover.PopoverTrigger>
+                  <Popover.PopoverContent>
+                    <div className="relative bottom-4 left-2 divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 shadow-lg ring-opacity-5 focus:outline-none dark:border-[#2a2a2a]  dark:bg-[#1F1F1F] dark:text-white">
+                      <div className="px-4 py-3">
+                        <p className="text-sm text-[#7D7D7D]">
+                          stardew.app {"<3"}
+                        </p>
+                      </div>
+                      <div className="py-1">
+                        <div>
+                          <Link key="discord" href="/">
+                            <a
+                              className={classNames(
+                                "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                              )}
+                            >
+                              Credits
+                            </a>
+                          </Link>
+                        </div>
+                        <div>
+                          <Link key="discord" href="/">
+                            <a
+                              className={classNames(
+                                "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                              )}
+                            >
+                              Delete uploaded data
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="py-1">
+                        <form method="POST" action="#">
+                          <div>
+                            <Link key="discord" href="/">
+                              <a
+                                className={classNames(
+                                  "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                                )}
+                              >
+                                Log out
+                              </a>
+                            </Link>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </Popover.PopoverContent>
+                </Popover.Root>
+                <div className="flex justify-end bg-white dark:bg-[#111111]">
+                  <label className="flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
+                    <BiImport
+                      className={classNames(
+                        "h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      )}
+                      aria-hidden="true"
+                    />
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleFile(e)
+                      }
+                    />
+                  </label>
+                </div>
               </div>
-              {/* <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
-                <label className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                  <BiImport
-                    className={classNames(
-                      "h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                    )}
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleFile(e)
-                    }
-                  />
-                </label>
-              </div> */}
             </div>
           </div>
         </div>
