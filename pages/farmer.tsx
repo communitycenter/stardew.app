@@ -78,7 +78,7 @@ const Farmer: NextPage = () => {
   const [moneyEarned] = useKV<number>("general", "moneyEarned", 0);
   const [farmerLevel] = useKV<number>("levels", "player", 0);
   const [questsCompleted] = useKV<number>("general", "questsCompleted", 0);
-  const [stardropsCount] = useKV<number>("stardrops", "count", 0);
+  const [stardropsCount, setStarCount] = useKV<number>("stardrops", "count", 0);
 
   const [maxLevelCount] = useKV<number>("levels", "maxLevelCount", 0);
 
@@ -301,6 +301,7 @@ const Farmer: NextPage = () => {
                     description={
                       STARDROPS[stardrop as keyof typeof STARDROPS].description
                     }
+                    setCount={setStarCount}
                   />
                 ))}
               </div>
