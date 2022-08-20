@@ -151,17 +151,20 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                                 <div key={selected[1]["Reward"]}>
                                   <div className="flex items-center">
                                     <div className="flex-shrink-0">
-                                      {/* <Image
+                                      <Image
                                         src={`https://stardewvalleywiki.com${selected[1]["Reward"][1]}`}
-                                        alt={selected[1]["Reward"][0]}
+                                        alt={selected[1]["Reward"]}
                                         width={32}
                                         height={32}
                                         quality={100}
-                                      /> */}
+                                      />
                                     </div>
                                     <div className="ml-2 mb-2">
                                       <div className="text-sm font-semibold">
-                                        {selected[1]["Reward"]}
+                                        {selected[1]["Reward"][0]}
+                                      </div>
+                                      <div className="text-sm">
+                                        {selected[1]["Reward Description"]}
                                       </div>
                                     </div>
                                   </div>

@@ -141,7 +141,7 @@
       ["Magma Sparker", "/mediawiki/images/5/58/Magma_Sparker.png"]
     ],
     "Quantity": "150",
-    "Reward": "Marlon's Phone Number",
+    "Reward": ["Marlon's Phone Number", "/mediawiki/images/3/37/Marlon.png"],
     "Reward Description": "Can call to utilize Item Recovery Service from home"
   }
 }
