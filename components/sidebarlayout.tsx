@@ -235,8 +235,8 @@ const SidebarLayout = ({
             ...craftingRecipes,
           },
           shipping: {
-            itemsShipped,
             numItems,
+            ...itemsShipped,
           },
           mining: {
             deepestMineLevel,
