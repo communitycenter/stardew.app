@@ -39,6 +39,7 @@ import {
   parseCooking,
   parseFishing,
   parseCrafting,
+  parseShipping,
 } from "../utils";
 
 import Notification from "./notification";
@@ -181,6 +182,9 @@ const SidebarLayout = ({
       const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
         parseMonsters(jsonObj);
 
+      // Shipping
+      const { itemsShipped, numItems } = parseShipping(jsonObj);
+
       console.log("Parsed information!");
 
       console.log("Uploading values to DB");
@@ -229,6 +233,10 @@ const SidebarLayout = ({
             craftedCount,
             knownCount: knownCountCrafted,
             ...craftingRecipes,
+          },
+          shipping: {
+            itemsShipped,
+            numItems,
           },
           mining: {
             deepestMineLevel,
