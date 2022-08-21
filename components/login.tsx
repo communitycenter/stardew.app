@@ -1,5 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import Image from "next/image";
+import logo from "../public/icon.png";
+import Link from "next/link";
 
 type Props = {
   isOpen: boolean;
@@ -47,20 +50,30 @@ export default function MyModal({ isOpen, setOpen }: Props) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
+                    <div className="mb-2 flex justify-center">
+                      <Image
+                        src={logo}
+                        height={48}
+                        width={48}
+                        alt="Heart emoji"
+                      ></Image>
+                    </div>
                     Logging into Stardew.app
                   </Dialog.Title>
                   <div className="mt-2 space-y-4">
                     <p className="text-sm text-gray-500">
-                      Logging into Stardew.app gives you some pretty sweet
-                      perks:
+                      We use Discord as our primary login system - here&apos;s
+                      what you get by logging in:
                     </p>
                     <p className="text-left text-sm text-gray-500">
-                      <li>123</li>
-                      <li>123</li>
-                      <li>123</li>
-                      <li>123</li>
-                      <li>123</li>
-                      <li>123</li>
+                      <li>Synced progress across devices</li>
+                      <li>Shiny role in our Discord server</li>
+                      <li>Super fast support</li>
+                    </p>
+                    <p className="text-xs italic text-gray-500">
+                      Upon logging in, you&apos;ll be added to our server - you
+                      can always leave though (we won&apos;t hold it against
+                      you!)
                     </p>
                   </div>
 
@@ -75,13 +88,14 @@ export default function MyModal({ isOpen, setOpen }: Props) {
                       </button>
                     </div>
                     <div className="mt-4">
-                      <button
-                        type="button"
-                        className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
-                      >
-                        Log into Discord
-                      </button>
+                      <Link href="/api/oauth">
+                        <button
+                          type="button"
+                          className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        >
+                          Log into Discord
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </Dialog.Panel>

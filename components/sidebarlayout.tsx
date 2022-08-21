@@ -465,26 +465,6 @@ const SidebarLayout = ({
                   </div>
                 </div>
               )}
-
-              <div className="flex rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
-                <div className="py-4 px-4">
-                  <label>
-                    <BiImport
-                      className={classNames(
-                        "h-6 w-6 text-black dark:text-white"
-                      )}
-                      aria-hidden="true"
-                    />
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        handleFile(e)
-                      }
-                    />
-                  </label>
-                </div>
-              </div>
             </div>
           </div>
         </div>
