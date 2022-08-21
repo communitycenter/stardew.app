@@ -64,27 +64,6 @@ export default function Popup({ user }: Props) {
                         "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
                       )}
                     >
-                      Join our Discord
-                    </div>
-                  </div>
-                  <div>
-                    <a
-                      className={classNames(
-                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                      )}
-                    >
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-                <div className="py-1 font-normal">
-                  <div>
-                    <div
-                      onClick={() => setShowCreditsSlideover(true)}
-                      className={classNames(
-                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                      )}
-                    >
                       Credits
                     </div>
                   </div>
