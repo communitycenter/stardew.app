@@ -459,6 +459,8 @@ const SidebarLayout = ({
                   </div>
                 )}
               </div>
+
+              {/* DESKTOP UPLOAD BTN */}
               <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
                 <label className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
                   <BiImport
@@ -476,6 +478,7 @@ const SidebarLayout = ({
                   />
                 </label>
               </div>
+              {/* END DESKTOP UPLOAD BTN */}
             </div>
           </div>
         </div>

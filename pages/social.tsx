@@ -43,7 +43,7 @@ const Social: NextPage = () => {
   const [name] = useKV<string>("general", "name", "Farmer");
   const [spouse] = useKV<string>("family", "spouse", "No spouse");
   const [houseUpgradeLevel] = useKV<number>("family", "houseUpgradeLevel", 0);
-  const [children] = useKV<Array<string>>("family", "children", []);
+  const [childrenLength] = useKV<number>("family", "childrenLength", 0);
   const [fiveHeartCount] = useKV<number>("social", "fiveHeartCount", 0);
   const [tenHeartCount] = useKV<number>("social", "tenHeartCount", 0);
 
@@ -145,7 +145,15 @@ const Social: NextPage = () => {
                     initialChecked={
                       requirements.hasOwnProperty(achievement.name)
                         ? houseUpgradeLevel >= requirements[achievement.name]
-                        : children.length >= 2 && spouse !== "No Spouse"
+                        : childrenLength >= 2 && spouse !== "No Spouse"
+                    }
+                    additionalDescription={
+                      requirements.hasOwnProperty(achievement.name)
+                        ? ` - ${
+                            requirements[achievement.name] - houseUpgradeLevel
+                          } more to go`
+                        : ` - ${2 - childrenLength} more kid(s)` +
+                          (spouse === "No spouse" ? " + Spouse needed" : "")
                     }
                   />
                 ))}
@@ -166,7 +174,7 @@ const Social: NextPage = () => {
             <InfoCard
               Icon={EmojiSadIcon}
               title={"Children"}
-              description={children.length.toString()}
+              description={childrenLength.toString()}
             />
           </div>
           <div className="mt-4" />
@@ -189,8 +197,10 @@ const Social: NextPage = () => {
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
             {Object.values(villagers)
-              .filter((villager: any) => villager.isDateable)
-              .filter((villager: any) => villager.name !== spouse)
+              .filter(
+                (villager: any) =>
+                  villager.isDateable && villager.name !== spouse // don't show spouse in list of villagers
+              )
               .map((villager: any) => (
                 <VillagerCard
                   key={villager.name}
