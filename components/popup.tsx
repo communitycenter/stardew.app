@@ -67,13 +67,18 @@ export default function Popup({ user }: Props) {
                     </div>
                   </div>
                   <div>
-                    <a
+                    <div
+                      onClick={async () => {
+                        await fetch("/api/kv", {
+                          method: "DELETE",
+                        });
+                      }}
                       className={classNames(
                         "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
                       )}
                     >
                       Delete uploaded data
-                    </a>
+                    </div>
                   </div>
                 </div>
                 <div className="py-1">
