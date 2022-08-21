@@ -4,6 +4,10 @@ import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
 interface Props {
   name: string;
   iconURL: string;
@@ -12,24 +16,60 @@ interface Props {
 }
 
 const VillagerCard = ({ name, iconURL, isDateable, married }: Props) => {
-  const [spouse] = useKV("family", "spouse", "Haley");
-  const [hearts, setHearts] = useState<number>(-1);
+  const [spouse] = useKV("family", "spouse", "No spouse");
+  // const [hearts, setHearts] = useState<number>(-1);
+  const [points, setPoints] = useKV("social", name, 0);
+
+  const hearts = Math.floor(points / 250);
+
+  const EightHearts = () => {
+    let icons: JSX.Element[] = [];
+    for (let i = 1; i < 9; i++) {
+      icons.push(
+        <HeartIcon
+          className={classNames(
+            "h-5 w-5",
+            hearts >= i
+              ? "text-red-400 hover:text-red-600"
+              : "text-gray-300 hover:text-red-400" //TODO: dark mode
+          )}
+          aria-hidden="true"
+        />
+      );
+    }
+    return icons;
+  };
 
   const TenHearts = () => {
     let icons: JSX.Element[] = [];
-    for (let i = 0; i < (married ? 14 : isDateable ? 10 : 8); i++) {
+    for (let i = 1; i < 11; i++) {
       icons.push(
         <HeartIcon
-          className={
-            "h-5 w-5 " +
-            (i > 7 && !married // show disabled hearts 9 and 10 if married (can't date this NPC while married)
-              ? "text-gray-500 dark:text-black" // married, can't reach 10 hearts
+          className={classNames(
+            "h-5 w-5",
+            i >= 9 && spouse !== "No spouse"
+              ? "text-black"
               : hearts >= i
               ? "text-red-400 hover:text-red-600"
-              : "text-gray-300 hover:text-red-400 dark:text-[#2a2a2a]") // not married, can reach 10 hearts
-          }
-          aria-hidden="true"
-          onClick={() => setHearts(i)}
+              : "text-gray-300 hover:text-red-400" //TODO: dark mode
+          )}
+        />
+      );
+    }
+    return icons;
+  };
+
+  const FourteenHearts = () => {
+    let icons: JSX.Element[] = [];
+    for (let i = 1; i < 15; i++) {
+      icons.push(
+        <HeartIcon
+          className={classNames(
+            "h-5 w-5",
+            hearts >= i
+              ? "text-red-400 hover:text-red-600"
+              : "text-gray-300 hover:text-red-400" //TODO: dark mode
+          )}
         />
       );
     }
@@ -42,7 +82,13 @@ const VillagerCard = ({ name, iconURL, isDateable, married }: Props) => {
         <Image alt={name} src={iconURL} width={32} height={32} />
         <p className="text-sm text-gray-900 dark:text-white">{name}</p>
       </div>
-      <div className="flex">{TenHearts()}</div>
+      <div className="flex">
+        {isDateable
+          ? married
+            ? FourteenHearts()
+            : TenHearts()
+          : EightHearts()}
+      </div>
     </div>
   );
 };

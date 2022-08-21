@@ -233,7 +233,7 @@ const SidebarLayout = ({
           },
           mining: {
             deepestMineLevel,
-            deepestSkullCavernLevel, // TODO: map through monstersKilled and add entry into DB for each
+            deepestSkullCavernLevel,
             ...monstersKilled,
           },
           family: {
@@ -243,7 +243,8 @@ const SidebarLayout = ({
           },
           social: {
             fiveHeartCount,
-            tenHeartCount, // TODO: map through relationships and add entry into DB for each
+            tenHeartCount,
+            ...relationships,
           },
         }),
       });

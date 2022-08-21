@@ -14,31 +14,38 @@ import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
 import {
-  InformationCircleIcon,
   HomeIcon,
   UsersIcon,
   EmojiSadIcon,
   HeartIcon,
 } from "@heroicons/react/solid";
 
+// A way to check if we need to use tenHeartCount or fiveHeartCount
+const tenHearts = new Set(["Best Friends", "The Beloved Farmer"]);
+
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
-  "D.I.Y.": 15,
-  Artisan: 30,
-  "Craft Master": 129,
+  "A New Friend": 1,
+  Cliques: 4,
+  Networking: 10,
+  Popular: 20,
+  "Best Friends": 1,
+  "The Beloved Farmer": 8,
+  "Moving Up": 1,
+  "Living Large": 2, // The Cellar (3rd upgrade) does not count for this
 };
 
 const Social: NextPage = () => {
-  const [hasUploaded] = useKV<boolean>("general", "user", false);
+  const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const [name] = useKV<string>("general", "name", "Farmer");
-  const [spouse] = useKV<string>("family", "spouse", "Haley");
+  const [spouse] = useKV<string>("family", "spouse", "No spouse");
   const [houseUpgradeLevel] = useKV<number>("family", "houseUpgradeLevel", 0);
-  const [fiveHeartCount] = useKV<number>("family", "fiveHeartCount", 0);
-  const [tenHeartCount] = useKV<number>("family", "tenHeartCount", 0);
   const [children] = useKV<Array<string>>("family", "children", []);
+  const [fiveHeartCount] = useKV<number>("social", "fiveHeartCount", 0);
+  const [tenHeartCount] = useKV<number>("social", "tenHeartCount", 0);
 
   return (
     <>
@@ -88,6 +95,7 @@ const Social: NextPage = () => {
                 description={tenHeartCount.toString()}
               />
             </div>
+
             <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
               Relationships
             </h2>
@@ -102,13 +110,27 @@ const Social: NextPage = () => {
                     title={achievement.name}
                     description={achievement.description}
                     sourceURL={achievement.iconURL}
+                    initialChecked={
+                      tenHearts.has(achievement.name)
+                        ? tenHeartCount >= requirements[achievement.name]
+                        : fiveHeartCount >= requirements[achievement.name]
+                    }
+                    additionalDescription={
+                      tenHearts.has(achievement.name)
+                        ? ` - ${
+                            requirements[achievement.name] - tenHeartCount
+                          } more to go`
+                        : ` - ${
+                            requirements[achievement.name] - fiveHeartCount
+                          } more to go`
+                    }
                   />
                 ))}
             </div>
+
             <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
               Home & Family
             </h2>
-
             <div className="mt-2 grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((achievement) => achievement.category === "home")
@@ -120,6 +142,11 @@ const Social: NextPage = () => {
                     title={achievement.name}
                     description={achievement.description}
                     sourceURL={achievement.iconURL}
+                    initialChecked={
+                      requirements.hasOwnProperty(achievement.name)
+                        ? houseUpgradeLevel >= requirements[achievement.name]
+                        : children.length >= 2 && spouse !== "No Spouse"
+                    }
                   />
                 ))}
             </div>
@@ -142,9 +169,9 @@ const Social: NextPage = () => {
               description={children.length.toString()}
             />
           </div>
-          <div className="my-2" />
+          <div className="mt-4" />
           {Object.values(villagers)
-            .filter((villager: any) => villager.name === "Haley")
+            .filter((villager: any) => villager.name === spouse)
             .map((villager: any) => (
               <VillagerCard
                 key={villager.name}
