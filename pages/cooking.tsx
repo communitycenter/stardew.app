@@ -101,7 +101,9 @@ const Cooking: NextPage = () => {
                     additionalDescription={
                       cookedCount >= requirements[achievement.name]
                         ? ""
-                        : ` - ${80 - cookedCount} left!`
+                        : ` - ${
+                            requirements[achievement.name] - cookedCount
+                          } left!`
                     }
                     sourceURL={achievement.iconURL}
                     initialChecked={

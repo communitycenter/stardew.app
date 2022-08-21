@@ -104,7 +104,7 @@ const SidebarLayout = ({
     if (typeof file === "undefined") return;
 
     // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
-    if (!/[a-zA-Z]+_[0-9]+/.test(file.name) || file.type !== "") {
+    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
       setErrorMSG(
         "Invalid File Uploaded. Please upload a Stardew Valley save file."
       );
@@ -375,7 +375,7 @@ const SidebarLayout = ({
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* Sidebar Links Section */}
               <div className="flex space-x-2">
-                <a href="https://discord.gg/YBNGCgCxG5">
+                <a href="https://discord.gg/NkgNVZwQ2M">
                   <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                     <FaDiscord
                       className="h-5 w-5 text-black dark:text-white"
