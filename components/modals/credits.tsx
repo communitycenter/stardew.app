@@ -40,7 +40,7 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                <Dialog.Panel className=" w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -53,22 +53,39 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                         alt="Heart emoji"
                       ></Image> */}
                     </div>
-                    Logging into Stardew.app
+                    Credits
                   </Dialog.Title>
                   <div className="mt-2 space-y-4">
                     <p className="text-sm text-gray-500">
-                      We use Discord as our primary login system - here&apos;s
-                      what you get by logging in:
+                      Stardew.app was created by{" "}
+                      <a href="https://twitter.com/laf0nd">Jack LaFond</a> and{" "}
+                      <a href="https://twitter.com/clxmente">
+                        Clemente Solorio - however, we&apos;ve had some
+                        incredible help from contributors over on our{" "}
+                        <a href="https://github.com/stardewapp/stardew.app">
+                          GitHub
+                        </a>
+                        .
+                      </a>
                     </p>
-                    <p className="text-left text-sm text-gray-500">
-                      <li>Synced progress across devices</li>
-                      <li>Shiny role in our Discord server</li>
-                      <li>Super fast support</li>
+                    <p className="text-sm text-gray-500">
+                      A huge thanks especially to Leah Lundqvist, Mustafa
+                      Mohamed, Conor Byrne and Ian Mitchell for contributions
+                      that got the site to where it is today.
                     </p>
+                    <h3 className="text-sm font-medium leading-6 text-gray-900">
+                      Other Sources
+                      <p className="text-sm font-normal text-gray-500">
+                        Stardew.app would not have been possible without the
+                        Stardew Valley Wiki, as well as MouseyPound&apos;
+                        contributions on Stardew Checkup.
+                      </p>
+                    </h3>
+
                     <p className="text-xs italic text-gray-500">
-                      Upon logging in, you&apos;ll be added to our server - you
-                      can always leave though (we won&apos;t hold it against
-                      you!)
+                      Stardew.app uses assets and information from
+                      ConcernedApe&apos;s hit game Stardew Valley - all rights
+                      reserved.
                     </p>
                   </div>
                 </Dialog.Panel>
