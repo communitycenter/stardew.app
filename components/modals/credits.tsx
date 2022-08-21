@@ -70,8 +70,8 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                     </p>
                     <p className="text-sm text-gray-500">
                       A huge thanks especially to Leah Lundqvist, Mustafa
-                      Mohamed, Conor Byrne and Ian Mitchell for contributions
-                      that got the site to where it is today.
+                      Mohamed, Conor Byrne, Ian Mitchell and Brandon Saldan for
+                      contributions that got the site to where it is today.
                     </p>
                     <h3 className="text-sm font-medium leading-6 text-gray-900">
                       Other Sources
