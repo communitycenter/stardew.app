@@ -431,17 +431,18 @@ const SidebarLayout = ({
             </nav>
             <div className="mx-2 flex items-center space-x-2 text-white">
               {!user ? (
-                <Link href="/api/oauth">
-                  <a className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                    <FaUserCircle
-                      className={classNames(
-                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                      )}
-                      aria-hidden="true"
-                    />
-                    <p className="dark:text-white">Login to Stardew.app</p>
-                  </a>
-                </Link>
+                <div
+                  onClick={() => setShowLoginSlideover(true)}
+                  className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                >
+                  <FaUserCircle
+                    className={classNames(
+                      "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                    )}
+                    aria-hidden="true"
+                  />
+                  <p className="dark:text-white">Login to Stardew.app</p>
+                </div>
               ) : (
                 <Popup user={user} />
               )}

@@ -41,10 +41,10 @@ export default function LoginModal({ isOpen, setOpen }: Props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                <Dialog.Panel className=" w-full max-w-md transform overflow-hidden rounded-2xl border border-gray-300 bg-[#f0f0f0] p-6 text-center align-middle shadow-xl transition-all dark:border-[#2A2A2A] dark:bg-[#191919]">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-900 dark:text-white"
                   >
                     <div className="mb-2 flex justify-center">
                       <Image
