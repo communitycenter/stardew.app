@@ -21,6 +21,7 @@ import {
   FaGithub,
   FaDiscord,
   FaHouseUser,
+  FaUser,
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
@@ -430,24 +431,17 @@ const SidebarLayout = ({
             </nav>
             <div className="mx-2 flex items-center space-x-2 text-white">
               {!user ? (
-                <div className="flex-1 rounded-md border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F]  dark:text-white">
-                  <div
-                    className="flex py-4 px-3"
-                    onClick={() => setShowLoginSlideover(true)}
-                  >
-                    <img
+                <Link href="/api/oauth">
+                  <a className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
+                    <FaUserCircle
                       className={classNames(
-                        " rounded-2xl text-black dark:text-white"
+                        "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
                       )}
                       aria-hidden="true"
-                      src="https://i.pinimg.com/564x/8f/1b/09/8f1b09269d8df868039a5f9db169a772.jpg"
-                      alt="User avatar"
-                      height={24}
-                      width={24}
                     />
-                    <p className="ml-2 dark:text-white">bruh</p>
-                  </div>
-                </div>
+                    <p className="dark:text-white">Login to Stardew.app</p>
+                  </a>
+                </Link>
               ) : (
                 <Popup user={user} />
               )}

@@ -27,25 +27,21 @@ export default function Popup({ user }: Props) {
         <div className="flex-1">
           <Popover.Trigger asChild>
             <div className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-              {/* <FaUserCircle
-              className={classNames(
-                "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-              )}
-              aria-hidden="true"
-            /> */}
-              <Image
-                className={classNames(
-                  "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
-                )}
-                aria-hidden="true"
-                src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
-                alt="User avatar"
-                height={24}
-                width={24}
-              />
-              <div className="truncate">
-                <div className="font-normal dark:text-white">
-                  {user.discord_name}
+              <div className="flex space-x-2">
+                <Image
+                  className={classNames(
+                    "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
+                  )}
+                  aria-hidden="true"
+                  src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
+                  alt="User avatar"
+                  height={24}
+                  width={24}
+                />
+                <div className="truncate">
+                  <div className="font-normal dark:text-white">
+                    {user.discord_name}
+                  </div>
                 </div>
               </div>
             </div>
@@ -53,8 +49,11 @@ export default function Popup({ user }: Props) {
           <Popover.Portal>
             <Popover.Content>
               <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
-                <div className="px-4 py-3">
-                  <p className="text-sm text-[#7D7D7D]">stardew.app v0.0.1</p>
+                <div className="flex justify-between px-4 py-3">
+                  <p className="text-right text-sm text-[#7D7D7D]">
+                    stardew.app
+                  </p>
+                  <p className="text-right text-sm text-[#7D7D7D]">v0.0.1</p>
                 </div>
                 <div className="py-1 font-normal">
                   <div>
