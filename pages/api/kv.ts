@@ -101,7 +101,7 @@ async function _delete(req: NextApiRequest, res: NextApiResponse<Data>) {
     await prisma.trackedVariables.deleteMany({
       where: { user: uid },
     });
-    res.status(200);
+    res.status(200).end();
   } catch (e) {
     console.log(e);
     res.status(500).send({ error: e });

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { FaUserCircle } from "react-icons/fa";
 import { deleteCookie } from "cookies-next";
 import CreditsModal from "./modals/credits";
+import DeletionModal from "./modals/deletion";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +22,8 @@ interface Props {
 export default function Popup({ user }: Props) {
   const [showCreditsSlideover, setShowCreditsSlideover] =
     useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+
   return (
     <>
       <Popover.Root>
@@ -68,11 +71,7 @@ export default function Popup({ user }: Props) {
                   </div>
                   <div>
                     <div
-                      onClick={async () => {
-                        await fetch("/api/kv", {
-                          method: "DELETE",
-                        });
-                      }}
+                      onClick={() => setShowDeleteModal(true)}
                       className={classNames(
                         "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
                       )}
@@ -106,6 +105,7 @@ export default function Popup({ user }: Props) {
         isOpen={showCreditsSlideover}
         setOpen={setShowCreditsSlideover}
       />
+      <DeletionModal isOpen={showDeleteModal} setOpen={setShowDeleteModal} />
     </>
   );
 }
