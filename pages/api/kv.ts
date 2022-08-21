@@ -96,16 +96,9 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
 
 async function _delete(req: NextApiRequest, res: NextApiResponse<Data>) {
   const uid = await getUID(req, res);
-  console.log(uid);
 
-  // const chunks = [];
-  // for (let i = 0; i < transactions.length; i += 200) {
-  //   chunks.push(transactions.slice(i, i + 200));
-  // }
-
-  let success;
   try {
-    success = await prisma.trackedVariables.deleteMany({
+    await prisma.trackedVariables.deleteMany({
       where: { user: uid },
     });
     res.status(200);
