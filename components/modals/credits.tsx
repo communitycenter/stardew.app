@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import Image from "next/image";
-import logo from "../public/icon.png";
 import Link from "next/link";
 
 type Props = {
@@ -9,13 +8,9 @@ type Props = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function MyModal({ isOpen, setOpen }: Props) {
+export default function CreditsModal({ isOpen, setOpen }: Props) {
   function closeModal() {
     setOpen(false);
-  }
-
-  function openModal() {
-    setOpen(true);
   }
 
   return (
@@ -51,12 +46,12 @@ export default function MyModal({ isOpen, setOpen }: Props) {
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     <div className="mb-2 flex justify-center">
-                      <Image
+                      {/* <Image
                         src={logo}
                         height={48}
                         width={48}
                         alt="Heart emoji"
-                      ></Image>
+                      ></Image> */}
                     </div>
                     Logging into Stardew.app
                   </Dialog.Title>
@@ -75,28 +70,6 @@ export default function MyModal({ isOpen, setOpen }: Props) {
                       can always leave though (we won&apos;t hold it against
                       you!)
                     </p>
-                  </div>
-
-                  <div className="flex justify-center space-x-2">
-                    <div className="mt-4">
-                      <button
-                        type="button"
-                        className="rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
-                      >
-                        No thanks, maybe later...
-                      </button>
-                    </div>
-                    <div className="mt-4">
-                      <Link href="/api/oauth">
-                        <button
-                          type="button"
-                          className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        >
-                          Log into Discord
-                        </button>
-                      </Link>
-                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

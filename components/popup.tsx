@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 // import { Menu, Transition } from "@headlessui/react";
 // import { ChevronDownIcon } from "@heroicons/react/solid";
 // import Link from "next/link";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaUserCircle } from "react-icons/fa";
 import { deleteCookie } from "cookies-next";
+import CreditsModal from "./modals/credits";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -18,81 +19,90 @@ interface Props {
 }
 
 export default function Popup({ user }: Props) {
+  const [showCreditsSlideover, setShowCreditsSlideover] =
+    useState<boolean>(false);
   return (
-    <Popover.Root>
-      <div className="flex-1">
-        <Popover.Trigger asChild>
-          <div className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-            {/* <FaUserCircle
+    <>
+      <Popover.Root>
+        <div className="flex-1">
+          <Popover.Trigger asChild>
+            <div className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
+              {/* <FaUserCircle
               className={classNames(
                 "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
               )}
               aria-hidden="true"
             /> */}
-            <Image
-              className={classNames(
-                "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
-              )}
-              aria-hidden="true"
-              src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
-              alt="User avatar"
-              height={24}
-              width={24}
-            />
-            <div className="truncate">
-              <div className="font-normal dark:text-white">
-                {user.discord_name}
-              </div>
-            </div>
-          </div>
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content>
-            <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md ring-opacity-5 drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
-              <div className="px-4 py-3">
-                <p className="text-sm text-[#7D7D7D]">stardew.app v0.0.1</p>
-              </div>
-              <div className="py-1 font-normal">
-                <div>
-                  <a
-                    className={classNames(
-                      "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                    )}
-                  >
-                    Credits
-                  </a>
-                </div>
-                <div>
-                  <a
-                    className={classNames(
-                      "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                    )}
-                  >
-                    Delete uploaded data
-                  </a>
+              <Image
+                className={classNames(
+                  "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
+                )}
+                aria-hidden="true"
+                src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
+                alt="User avatar"
+                height={24}
+                width={24}
+              />
+              <div className="truncate">
+                <div className="font-normal dark:text-white">
+                  {user.discord_name}
                 </div>
               </div>
-              <div className="py-1">
-                <button
-                  onClick={() => {
-                    deleteCookie("token");
-                    deleteCookie("uid");
-                    deleteCookie("oauth_state");
-                    deleteCookie("discord_user");
-                    return (window.location.href = "/");
-                  }}
-                  className={classNames(
-                    "group flex w-full items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                  )}
-                >
-                  Log out
-                </button>
-              </div>
             </div>
-          </Popover.Content>
-        </Popover.Portal>
-      </div>
-    </Popover.Root>
+          </Popover.Trigger>
+          <Popover.Portal>
+            <Popover.Content>
+              <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md ring-opacity-5 drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
+                <div className="px-4 py-3">
+                  <p className="text-sm text-[#7D7D7D]">stardew.app v0.0.1</p>
+                </div>
+                <div className="py-1 font-normal">
+                  <div>
+                    <button
+                      onClick={() => setShowCreditsSlideover(true)}
+                      className={classNames(
+                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                      )}
+                    >
+                      Credits
+                    </button>
+                  </div>
+                  <div>
+                    <a
+                      className={classNames(
+                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                      )}
+                    >
+                      Delete uploaded data
+                    </a>
+                  </div>
+                </div>
+                <div className="py-1">
+                  <div
+                    onClick={() => {
+                      deleteCookie("token");
+                      deleteCookie("uid");
+                      deleteCookie("oauth_state");
+                      deleteCookie("discord_user");
+                      return (window.location.href = "/");
+                    }}
+                    className={classNames(
+                      "group flex w-full items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                    )}
+                  >
+                    Log out
+                  </div>
+                </div>
+              </div>
+            </Popover.Content>
+          </Popover.Portal>
+        </div>
+      </Popover.Root>
+      <CreditsModal
+        isOpen={showCreditsSlideover}
+        setOpen={setShowCreditsSlideover}
+      />
+    </>
   );
 }
 

@@ -45,11 +45,10 @@ import Notification from "./notification";
 import Popup from "./popup";
 
 import { XMLParser } from "fast-xml-parser";
-import Login from "./inputs/login";
-import UserSignedIn from "./usersignedin";
 import * as Popover from "@radix-ui/react-popover";
-import MyModal from "./login";
+import LoginModal from "./modals/login";
 import Example from "./popup";
+import CreditsModal from "./modals/credits";
 
 const semVerGte = require("semver/functions/gte");
 
@@ -495,7 +494,7 @@ const SidebarLayout = ({
         show={showErrorNotification}
         setShow={setShowErrorNotification}
       />
-      <MyModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
+      <LoginModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
     </>
   );
 };
