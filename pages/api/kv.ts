@@ -94,6 +94,20 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
   res.status(200).send(transactions);
 }
 
+async function _delete(req: NextApiRequest, res: NextApiResponse<Data>) {
+  const uid = await getUID(req, res);
+
+  try {
+    await prisma.trackedVariables.deleteMany({
+      where: { user: uid },
+    });
+    res.status(200).end();
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ error: e });
+  }
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
@@ -104,6 +118,8 @@ export default async function handler(
         return await get(req, res);
       case "PATCH":
         return await patch(req, res);
+      case "DELETE":
+        return await _delete(req, res);
     }
     res.status(405).end();
   } catch (e: any) {

@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
@@ -21,6 +21,7 @@ import {
   FaGithub,
   FaDiscord,
   FaHouseUser,
+  FaUser,
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
@@ -45,6 +46,11 @@ import Notification from "./notification";
 import Popup from "./popup";
 
 import { XMLParser } from "fast-xml-parser";
+import * as Popover from "@radix-ui/react-popover";
+import LoginModal from "./modals/login";
+import Example from "./popup";
+import CreditsModal from "./modals/credits";
+
 const semVerGte = require("semver/functions/gte");
 
 function classNames(...classes: string[]) {
@@ -77,6 +83,8 @@ const SidebarLayout = ({
 }: LayoutProps) => {
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const [showLoginSlideover, setShowLoginSlideover] = useState<boolean>(false);
+
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
 
@@ -421,59 +429,23 @@ const SidebarLayout = ({
                 </Link>
               ))}
             </nav>
-            <Popup />
-            <div className="mx-2 flex space-x-2">
-              <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                {!user ? (
-                  <Link href="/api/oauth">
-                    <a className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                      <FaUserCircle
-                        className={classNames(
-                          "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        )}
-                        aria-hidden="true"
-                      />
-                      <p className="dark:text-white">Login</p>
-                    </a>
-                  </Link>
-                ) : (
-                  <div
+            <div className="mx-2 flex items-center space-x-2 text-white">
+              {!user ? (
+                <div
+                  onClick={() => setShowLoginSlideover(true)}
+                  className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                >
+                  <FaDiscord
                     className={classNames(
-                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
-                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
-                    )}
-                  >
-                    <Image
-                      className={classNames(
-                        "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
-                      )}
-                      aria-hidden="true"
-                      src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
-                      alt="User avatar"
-                      height={24}
-                      width={24}
-                    />
-                    <p className="ml-2 dark:text-white">{user.discord_name}</p>
-                  </div>
-                )}
-              </div>
-              <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
-                <label className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                  <BiImport
-                    className={classNames(
-                      "h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
                     )}
                     aria-hidden="true"
                   />
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleFile(e)
-                    }
-                  />
-                </label>
-              </div>
+                  <p className="dark:text-white">Login with Discord</p>
+                </div>
+              ) : (
+                <Popup user={user} />
+              )}
             </div>
           </div>
         </div>
@@ -517,6 +489,7 @@ const SidebarLayout = ({
         show={showErrorNotification}
         setShow={setShowErrorNotification}
       />
+      <LoginModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
     </>
   );
 };
