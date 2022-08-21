@@ -450,7 +450,7 @@ const SidebarLayout = ({
                   </div>
                 </div>
               ) : (
-                <Example />
+                <Popup user={user} />
               )}
             </div>
           </div>
