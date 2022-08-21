@@ -65,7 +65,11 @@ const VillagerCard = ({ name, iconURL, isDateable, married }: Props) => {
           )}
           aria-hidden="true"
           key={i}
-          onClick={() => setPoints(i * 250)}
+          onClick={() => {
+            if (i >= 9 && spouse === "No Spouse")
+              setPoints(i * 250); // don't allow higher hearts than possible.
+            else setPoints(8 * 250); // if they try and click on an impossible heart, just set to 8 hearts.
+          }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(-1)}
         />
