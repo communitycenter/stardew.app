@@ -58,15 +58,25 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                   <div className="mt-2 space-y-4">
                     <p className="text-sm text-gray-500">
                       Stardew.app was created by{" "}
-                      <a href="https://twitter.com/laf0nd">Jack LaFond</a> and{" "}
-                      <a href="https://twitter.com/clxmente">
-                        Clemente Solorio - however, we&apos;ve had some
-                        incredible help from contributors over on our{" "}
-                        <a href="https://github.com/stardewapp/stardew.app">
-                          GitHub
-                        </a>
-                        .
+                      <a
+                        className="underline"
+                        href="https://twitter.com/laf0nd"
+                      >
+                        Jack LaFond
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        className="underline"
+                        href="https://twitter.com/clxmente"
+                      >
+                        Clemente Solorio
+                      </a>{" "}
+                      - however, we&apos;ve had some incredible help from
+                      contributors over on our{" "}
+                      <a href="https://github.com/stardewapp/stardew.app">
+                        GitHub
                       </a>
+                      .
                     </p>
                     <p className="text-sm text-gray-500">
                       A huge thanks especially to Leah Lundqvist, Mustafa
