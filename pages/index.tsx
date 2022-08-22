@@ -36,7 +36,7 @@ const Home: NextPage = () => {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     // setShowNotification(false);
     // setShowErrorNotification(false);
-    const file = event.target!.files![0];
+    const file = e.target!.files![0];
     if (typeof file === "undefined") return;
 
     // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.

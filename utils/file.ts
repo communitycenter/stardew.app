@@ -50,7 +50,8 @@ export async function parseSaveFile(file: any) {
   const { stardrops, stardropsCount } = parseStardrops(jsonObj);
 
   // Museum
-  const { artifacts, minerals } = parseMuseum(jsonObj);
+  const { artifacts, minerals, artifactsDonated, mineralsDonated } =
+    parseMuseum(jsonObj);
 
   // Fishing
   const { allFish, totalCaught, uniqueCaught } = parseFishing(jsonObj);
@@ -128,8 +129,10 @@ export async function parseSaveFile(file: any) {
         ...monstersKilled,
       },
       museum: {
-        artifacts,
-        minerals,
+        ...artifacts,
+        ...minerals,
+        artifactsDonated,
+        mineralsDonated,
       },
       family: {
         houseUpgradeLevel,
@@ -150,7 +153,5 @@ export async function parseSaveFile(file: any) {
 
   const elapsed = performance.now() - start;
   console.log("Elapsed", elapsed.toFixed(3), "ms");
-  //   setCompletedTime((elapsed / 1000).toFixed(2));
-  //   setShowNotification(true);
   return { success: true, timeTaken: (elapsed / 1000).toFixed(2) };
 }
