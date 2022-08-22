@@ -43,17 +43,17 @@ Stardew.app has been contributed to by the lovely people below <3
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/jacc">
-            <img src="https://avatars.githubusercontent.com/u/6956351?v=4" width="100;" alt="jacc"/>
-            <br />
-            <sub><b>Jack LaFond</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/clxmente">
             <img src="https://avatars.githubusercontent.com/u/37494038?v=4" width="100;" alt="clxmente"/>
             <br />
             <sub><b>Clemente Solorio</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jacc">
+            <img src="https://avatars.githubusercontent.com/u/6956351?v=4" width="100;" alt="jacc"/>
+            <br />
+            <sub><b>Jack LaFond</b></sub>
         </a>
     </td>
     <td align="center">
