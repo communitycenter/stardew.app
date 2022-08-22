@@ -173,6 +173,7 @@ const VillagerSlideOver = ({
                                   <ItemDisplay
                                     itemID={itemID}
                                     item={findItem(itemID)}
+                                    key={itemID}
                                   />
                                 );
                               })}
@@ -191,6 +192,7 @@ const VillagerSlideOver = ({
                                   <ItemDisplay
                                     itemID={itemID}
                                     item={findItem(itemID)}
+                                    key={itemID}
                                   />
                                 );
                               })}
@@ -209,6 +211,7 @@ const VillagerSlideOver = ({
                                   <ItemDisplay
                                     itemID={itemID}
                                     item={findItem(itemID)}
+                                    key={itemID}
                                   />
                                 );
                               })}
@@ -227,6 +230,7 @@ const VillagerSlideOver = ({
                                   <ItemDisplay
                                     itemID={itemID}
                                     item={findItem(itemID)}
+                                    key={itemID}
                                   />
                                 );
                               })}

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const ItemDisplay = ({ itemID, item }: any) => {
   return (
-    <div className="flex items-center space-x-2" key={itemID}>
+    <div className="flex items-center space-x-2">
       <Image
         src={item.iconURL}
         alt={item.name}
