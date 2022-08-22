@@ -2,7 +2,7 @@ import { useKV } from "../../hooks/useKV";
 import Image from "next/image";
 
 import { HeartIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -12,10 +12,21 @@ interface Props {
   name: string;
   iconURL: string;
   isDateable: boolean;
+  villagerObj: any;
+  setSelectedVillager: Dispatch<SetStateAction<any>>;
+  setShowVillager: Dispatch<SetStateAction<boolean>>;
   married?: boolean;
 }
 
-const VillagerCard = ({ name, iconURL, isDateable, married }: Props) => {
+const VillagerCard = ({
+  name,
+  iconURL,
+  isDateable,
+  married,
+  villagerObj,
+  setSelectedVillager,
+  setShowVillager,
+}: Props) => {
   const [spouse] = useKV("family", "spouse", "No spouse");
   // const [hearts, setHearts] = useState<number>(-1);
   const [points, setPoints] = useKV("social", name, 0);
@@ -103,7 +114,13 @@ const VillagerCard = ({ name, iconURL, isDateable, married }: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-between rounded-xl border border-gray-300 bg-white py-3 px-4 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
+    <div
+      onClick={() => {
+        setSelectedVillager(villagerObj);
+        setShowVillager(true);
+      }}
+      className="flex items-center justify-between rounded-xl border border-gray-300 bg-white py-3 px-4 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
+    >
       <div className="flex items-center space-x-2">
         <Image alt={name} src={iconURL} width={32} height={32} />
         <p className="text-sm text-gray-900 dark:text-white">{name}</p>

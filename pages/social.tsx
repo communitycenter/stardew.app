@@ -19,6 +19,7 @@ import {
   EmojiSadIcon,
   HeartIcon,
 } from "@heroicons/react/solid";
+import VillagerSlideOver from "../components/slideovers/villagerslideover";
 
 // A way to check if we need to use tenHeartCount or fiveHeartCount
 const tenHearts = new Set(["Best Friends", "The Beloved Farmer"]);
@@ -38,14 +39,26 @@ const requirements: Record<string, number> = {
 const Social: NextPage = () => {
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-
   const [name] = useKV<string>("general", "name", "Farmer");
   const [spouse] = useKV<string>("family", "spouse", "No spouse");
   const [houseUpgradeLevel] = useKV<number>("family", "houseUpgradeLevel", 0);
   const [childrenLength] = useKV<number>("family", "childrenLength", 0);
-  const [fiveHeartCount] = useKV<number>("social", "fiveHeartCount", 0);
-  const [tenHeartCount] = useKV<number>("social", "tenHeartCount", 0);
+  const [fiveHeartCount, setFiveHeartCount] = useKV<number>(
+    "social",
+    "fiveHeartCount",
+    0
+  );
+  const [tenHeartCount, setTenHeartCount] = useKV<number>(
+    "social",
+    "tenHeartCount",
+    0
+  );
+
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [showVillager, setShowVillager] = useState<boolean>(false);
+  const [selectedVillager, setSelectedVillager] = useState<any>(
+    Object.values(villagers)[0]
+  );
 
   return (
     <>
@@ -187,6 +200,9 @@ const Social: NextPage = () => {
                 isDateable={true}
                 name={villager.name}
                 married={true}
+                setSelectedVillager={setSelectedVillager}
+                setShowVillager={setShowVillager}
+                villagerObj={villager}
               />
             ))}
           {/* End Home & Family */}
@@ -207,6 +223,9 @@ const Social: NextPage = () => {
                   name={villager.name}
                   iconURL={villager.iconURL}
                   isDateable={villager.isDateable}
+                  setSelectedVillager={setSelectedVillager}
+                  setShowVillager={setShowVillager}
+                  villagerObj={villager}
                 />
               ))}
             {Object.values(villagers)
@@ -217,12 +236,22 @@ const Social: NextPage = () => {
                   name={villager.name}
                   iconURL={villager.iconURL}
                   isDateable={villager.isDateable}
+                  setSelectedVillager={setSelectedVillager}
+                  setShowVillager={setShowVillager}
+                  villagerObj={villager}
                 />
               ))}
           </div>
           {/* End Villager Section */}
         </div>
       </SidebarLayout>
+      <VillagerSlideOver
+        isOpen={showVillager}
+        setOpen={setShowVillager}
+        selected={selectedVillager}
+        setFiveCount={setFiveHeartCount}
+        setTenCount={setTenHeartCount}
+      />
     </>
   );
 };
