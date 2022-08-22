@@ -1,8 +1,14 @@
+import {
+  Dispatch,
+  SetStateAction,
+  MouseEvent,
+  useState,
+  MouseEventHandler,
+} from "react";
 import { useKV } from "../../hooks/useKV";
 import Image from "next/image";
 
 import { HeartIcon } from "@heroicons/react/solid";
-import { Dispatch, SetStateAction, useState } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -46,11 +52,15 @@ const VillagerCard = ({
               ? "text-red-500" // all hearts up to and including the hovered heart are red
               : hearts >= i
               ? "text-red-400 hover:text-red-600" // completed heart
-              : "text-gray-300 hover:text-red-400" // incomplete heart //TODO: dark mode
+              : "text-gray-300 hover:text-red-400" // incomplete heart
           )}
           aria-hidden="true"
           key={i}
-          onClick={() => setPoints(i * 250)}
+          onClick={(e: any) => {
+            // TODO: properly type these events
+            e.stopPropagation(); // prevents the click from bubbling up to the card and causing the card to be clicked
+            setPoints(i * 250);
+          }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(-1)}
         />
@@ -76,10 +86,16 @@ const VillagerCard = ({
           )}
           aria-hidden="true"
           key={i}
-          onClick={() => {
-            if (i >= 9 && spouse === "No Spouse")
+          onClick={(e: any) => {
+            // TODO: Properly type these events
+            e.stopPropagation();
+            if (i < 9) {
+              setPoints(i * 250);
+            } else if (i >= 9 && spouse === "No spouse") {
               setPoints(i * 250); // don't allow higher hearts than possible.
-            else setPoints(8 * 250); // if they try and click on an impossible heart, just set to 8 hearts.
+            } else {
+              setPoints(8 * 250); // if they try and click on an impossible heart, just set to 8 hearts
+            }
           }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(-1)}
@@ -104,7 +120,11 @@ const VillagerCard = ({
           )}
           aria-hidden="true"
           key={i}
-          onClick={() => setPoints(i * 250)}
+          onClick={(e: any) => {
+            // TODO: Properly type these events
+            e.stopPropagation();
+            setPoints(i * 250);
+          }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(-1)}
         />

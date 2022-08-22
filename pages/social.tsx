@@ -212,6 +212,7 @@ const Social: NextPage = () => {
             Villagers
           </h2>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
+            {/* Marriage Candidates */}
             {Object.values(villagers)
               .filter(
                 (villager: any) =>
@@ -228,6 +229,9 @@ const Social: NextPage = () => {
                   villagerObj={villager}
                 />
               ))}
+            {/* End Marriage Candidates */}
+
+            {/* Non Dateable Villagers */}
             {Object.values(villagers)
               .filter((villager: any) => !villager.isDateable)
               .map((villager: any) => (
@@ -241,6 +245,7 @@ const Social: NextPage = () => {
                   villagerObj={villager}
                 />
               ))}
+            {/* End Non Dateable Villagers */}
           </div>
           {/* End Villager Section */}
         </div>
