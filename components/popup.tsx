@@ -1,82 +1,111 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { Fragment, useState } from "react";
+// import { Menu, Transition } from "@headlessui/react";
+// import { ChevronDownIcon } from "@heroicons/react/solid";
+// import Link from "next/link";
+// import { FaDiscord } from "react-icons/fa";
+import * as Popover from "@radix-ui/react-popover";
 import Link from "next/link";
-import { FaDiscord } from "react-icons/fa";
+import Image from "next/image";
+import { FaUserCircle } from "react-icons/fa";
+import { deleteCookie } from "cookies-next";
+import CreditsModal from "./modals/credits";
+import DeletionModal from "./modals/deletion";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Popup() {
+interface Props {
+  user: any;
+}
+
+export default function Popup({ user }: Props) {
+  const [showCreditsSlideover, setShowCreditsSlideover] =
+    useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+
   return (
-    <Menu as="div" className=" text-left">
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="ml-2 mr-2 divide-y divide-[#2A2A2A]  rounded-md border bg-gray-100 shadow-lg ring-opacity-5 focus:outline-none dark:border-[#2a2a2a]  dark:bg-[#1F1F1F] dark:text-white">
-          <div className="px-4 py-3">
-            <p className="text-sm text-[#7D7D7D]">stardew.app {"<3"}</p>
-          </div>
-          <div className="py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <Link key="discord" href="/">
-                  <a
-                    className={classNames(
-                      "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                    )}
-                  >
-                    Credits
-                  </a>
-                </Link>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <Link key="discord" href="/">
-                  <a
-                    className={classNames(
-                      "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                    )}
-                  >
-                    Delete uploaded data
-                  </a>
-                </Link>
-              )}
-            </Menu.Item>
-          </div>
-          <div className="py-1">
-            <form method="POST" action="#">
-              <Menu.Item>
-                {({ active }) => (
-                  <Link key="discord" href="/">
-                    <a
+    <>
+      <Popover.Root>
+        <div className="flex-1">
+          <Popover.Trigger asChild>
+            <div className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
+              <div className="flex space-x-2">
+                <Image
+                  className={classNames(
+                    "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
+                  )}
+                  aria-hidden="true"
+                  src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
+                  alt="User avatar"
+                  height={24}
+                  width={24}
+                />
+                <div className="truncate">
+                  <div className="font-normal dark:text-white">
+                    {user.discord_name}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popover.Trigger>
+          <Popover.Portal>
+            <Popover.Content>
+              <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
+                <div className="flex justify-between px-4 py-3">
+                  <p className="text-right text-sm text-[#7D7D7D]">
+                    stardew.app
+                  </p>
+                  <p className="text-right text-sm text-[#7D7D7D]">v0.0.1</p>
+                </div>
+                <div className="py-1 font-normal">
+                  <div>
+                    <div
+                      onClick={() => setShowCreditsSlideover(true)}
                       className={classNames(
-                        "group flex items-center rounded-md py-2 px-5 text-base font-medium text-[#7D7D7D] hover:bg-gray-50 hover:text-white dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
                       )}
                     >
-                      Log out
-                    </a>
-                  </Link>
-                )}
-              </Menu.Item>
-            </form>
-          </div>
-        </Menu.Items>
-      </Transition>
-      <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-          Options
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-        </Menu.Button>
-      </div>
-    </Menu>
+                      Credits
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      onClick={() => setShowDeleteModal(true)}
+                      className={classNames(
+                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                      )}
+                    >
+                      Delete uploaded data
+                    </div>
+                  </div>
+                </div>
+                <div className="py-1">
+                  <div
+                    onClick={() => {
+                      deleteCookie("token");
+                      deleteCookie("uid");
+                      deleteCookie("oauth_state");
+                      deleteCookie("discord_user");
+                      return (window.location.href = "/");
+                    }}
+                    className={classNames(
+                      "group flex w-full items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
+                    )}
+                  >
+                    Log out
+                  </div>
+                </div>
+              </div>
+            </Popover.Content>
+          </Popover.Portal>
+        </div>
+      </Popover.Root>
+      <CreditsModal
+        isOpen={showCreditsSlideover}
+        setOpen={setShowCreditsSlideover}
+      />
+      <DeletionModal isOpen={showDeleteModal} setOpen={setShowDeleteModal} />
+    </>
   );
 }
