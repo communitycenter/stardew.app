@@ -15,6 +15,9 @@ with open("../raw_data/NPCDispositions.json", "r") as file:
 with open("../raw_data/NPCGiftTastes.json", "r") as file:
     gift_tastes = json.load(file)
     gift_tastes = gift_tastes["content"]
+    
+with open("./data/objects.json", "r") as file:
+    objects = json.load(file)
 
 key: str
 value: str    
@@ -28,10 +31,13 @@ for key, value in npc_info.items():
         tastes: List[str] = gift_tastes[key].split("/")
     except:
         continue
-    loves = [int(x) for x in tastes[1].split(" ") if x != ""]
-    likes = [int(x) for x in tastes[3].split(" ") if x != ""]
-    dislikes = [int(x) for x in tastes[5].split(" ") if x != ""]
-    hates = [int(x) for x in tastes[7].split(" ") if x != ""]
+    
+    # create a list of all ids, but only add itemIDs that are in objects.json
+    # or negative numbers which are categories
+    loves = [int(x) for x in tastes[1].split(" ") if x != "" and ((x in objects) if int(x) > 0 else True)]
+    likes = [int(x) for x in tastes[3].split(" ") if x != "" and ((x in objects) if int(x) > 0 else True)]
+    dislikes = [int(x) for x in tastes[5].split(" ") if x != "" and ((x in objects) if int(x) > 0 else True)]
+    hates = [int(x) for x in tastes[7].split(" ") if x != "" and ((x in objects) if int(x) > 0 else True)]
     
     wiki_url = f"https://stardewvalleywiki.com/File:{key}.png"
     r = requests.get(wiki_url)
