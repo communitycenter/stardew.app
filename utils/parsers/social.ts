@@ -1,18 +1,11 @@
 interface ReturnType {
   fiveHeartCount: number;
   tenHeartCount: number;
-  relationships: Relationships;
+  relationships: { [key: villager]: points };
 }
 
-type Relationship = {
-  friendshipPoints: number;
-  status: string;
-  isDateable: boolean;
-};
-
-type Relationships = {
-  [key: string]: Relationship;
-};
+type villager = string;
+type points = number;
 
 const ignore = new Set<string>([
   "Gunther",
@@ -24,7 +17,7 @@ const ignore = new Set<string>([
 ]);
 
 export function parseSocial(json: any): ReturnType {
-  let relationships: Relationships = {};
+  let relationships: { [key: villager]: points } = {};
   // loop through every game location and check each NPC to see if they are datable 😵‍💫
   for (const location of json.SaveGame.locations.GameLocation) {
     if (location.characters == "") continue;
@@ -40,11 +33,7 @@ export function parseSocial(json: any): ReturnType {
           NPC["@_xsi:type"] !== "Child"
         )
           continue;
-        relationships[NPC.name] = {
-          friendshipPoints: 0,
-          status: "Stranger",
-          isDateable: NPC.datable,
-        };
+        relationships[NPC.name] = 0;
       }
     } else {
       // only one character at this location so we can just check that one
@@ -55,11 +44,7 @@ export function parseSocial(json: any): ReturnType {
         NPC["@_xsi:type"] !== "Child"
       )
         continue;
-      relationships[NPC.name] = {
-        friendshipPoints: 0,
-        status: "Stranger",
-        isDateable: NPC.datable,
-      };
+      relationships[NPC.name] = 0;
     }
   }
 
@@ -83,16 +68,14 @@ export function parseSocial(json: any): ReturnType {
         json.SaveGame.player.friendshipData.item[idx].value.Friendship.Status;
 
       try {
-        relationships[name].friendshipPoints = friendshipPoints;
-        relationships[name].status = status;
+        relationships[name] = friendshipPoints;
+        // relationships[name].status = status; OUTDATED
+        // console.log(status);
       } catch (e) {
         if (e instanceof TypeError) {
           // modded character or children
-          relationships[name] = {
-            friendshipPoints: friendshipPoints,
-            status: status,
-            isDateable: false, // if they weren't in the locations, then you can deal with this cuz no other way to know
-          };
+          relationships[name] = friendshipPoints;
+          // console.log(status);
         } else throw e;
       }
     }
@@ -109,16 +92,14 @@ export function parseSocial(json: any): ReturnType {
         json.SaveGame.player.friendshipData.item.value.Friendship.Status;
 
       try {
-        relationships[name].friendshipPoints = friendshipPoints;
-        relationships[name].status = status;
+        relationships[name] = friendshipPoints;
+        // relationships[name].status = status;
+        // console.log(status);
       } catch (e) {
         if (e instanceof TypeError) {
           // modded character or children
-          relationships[name] = {
-            friendshipPoints: friendshipPoints,
-            status: status,
-            isDateable: false,
-          };
+          relationships[name] = friendshipPoints;
+          // console.log(status);
         } else throw e;
       }
     }

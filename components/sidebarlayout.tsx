@@ -25,7 +25,7 @@ import {
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
-import { GiCookingPot } from "react-icons/gi";
+import { GiCookingPot, GiThreeFriends } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
 import {
@@ -61,13 +61,14 @@ function classNames(...classes: string[]) {
 const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
-  { name: "Bundles", href: "/bundles", icon: IoIosArchive },
   { name: "Fishing", href: "/fishing", icon: FaFish },
   { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
+  { name: "Family & Social", href: "/social", icon: GiThreeFriends },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
+  { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
 
 interface LayoutProps {

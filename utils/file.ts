@@ -141,7 +141,8 @@ export async function parseSaveFile(file: any) {
       },
       social: {
         fiveHeartCount,
-        tenHeartCount, // TODO: map through relationships and add entry into DB for each
+        tenHeartCount,
+        ...relationships,
       },
     }),
   });
