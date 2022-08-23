@@ -22,6 +22,9 @@ import {
   FaDiscord,
   FaHouseUser,
   FaUser,
+  FaPeopleCarry,
+  FaHeartbeat,
+  FaHeart,
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
@@ -66,7 +69,7 @@ const navigation = [
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
-  { name: "Family & Social", href: "/social", icon: GiThreeFriends },
+  { name: "Family & Social", href: "/social", icon: FaHeart },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
