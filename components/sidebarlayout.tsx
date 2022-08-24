@@ -178,7 +178,7 @@ const SidebarLayout = ({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white dark:bg-[#111111]">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -204,7 +204,7 @@ const SidebarLayout = ({
                 </Transition.Child>
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
-                    <h1 className="text-lg font-semibold">stardew.app</h1>
+                    <h1 className="text-lg font-semibold dark:text-white">stardew.app</h1>
                     {/* File Input */}
                     <div>
                       <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
@@ -228,19 +228,23 @@ const SidebarLayout = ({
                     {navigation.map((item) => (
                       <Link key="{item.name}" href={item.href}>
                         <a
-                          className={classNames(
-                            item.name === activeTab
-                              ? "bg-gray-100 text-black"
-                              : "text-black hover:bg-gray-50 hover:text-gray-900",
-                            "group flex items-center rounded-md py-4 px-5 text-base font-medium"
-                          )}
-                        >
-                          <item.icon
-                            className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
-                            aria-hidden="true"
-                          />
-                          {item.name}
-                        </a>
+                    className={classNames(
+                      item.name === activeTab
+                        ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                        : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
+                      "group flex items-center rounded-md py-4 px-5 text-base font-medium"
+                    )}
+                  >
+                    <item.icon
+                      className={classNames(
+                        item.name === activeTab
+                          ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                      )}
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </a>
                       </Link>
                     ))}
                   </nav>
