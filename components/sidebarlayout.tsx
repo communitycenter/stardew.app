@@ -207,7 +207,7 @@ const SidebarLayout = ({
                     <h1 className="text-lg font-semibold dark:text-white">stardew.app</h1>
                     {/* File Input */}
                     <div>
-                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
+                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] dark:bg-[#1F1F1F] p-1 text-white hover:bg-gray-200">
                         <FiUpload
                           className="h-5 w-5 text-black"
                           aria-hidden="true"
@@ -248,6 +248,27 @@ const SidebarLayout = ({
                       </Link>
                     ))}
                   </nav>
+                  <div className="mx-2 flex items-center space-x-2 text-white">
+                    {!user ? (
+                      <div
+                        onClick={() => {
+                          setShowLoginSlideover(true);
+                          setSidebarOpen(false);
+                        }}
+                        className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                      >
+                        <FaDiscord
+                          className={classNames(
+                            "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          )}
+                          aria-hidden="true"
+                        />
+                        <p className="dark:text-white">Login with Discord</p>
+                      </div>
+                    ) : (
+                      <Popup user={user} />
+                    )}
+            </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
