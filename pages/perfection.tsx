@@ -138,7 +138,7 @@ const Perfection: NextPage = () => {
             </div>
           </div>
 
-          <div className="mt-4 grid grid-cols-5 gap-4">
+          <div className="mt-4 grid gap-4 xl:grid-cols-5">
             {Object.entries(monsters).map(([monster, monsterInfo]) => (
               <MonsterCard
                 key={monster}
