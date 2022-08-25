@@ -26,7 +26,6 @@ import AchievementCard from "../components/cards/achievementcard";
 import monsters from "../research/processors/data/monsters.json";
 import MonsterCard from "../components/cards/monstercard";
 import MonsterSlideOver from "../components/slideovers/monsterslideover";
-import WalnutCard from "../components/cards/walnutcard";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
