@@ -205,11 +205,35 @@ const SidebarLayout = ({
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
                     <h1 className="text-lg font-semibold dark:text-white">stardew.app</h1>
-                    {/* File Input */}
-                    <div>
-                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] dark:bg-[#1F1F1F] p-1 text-white hover:bg-gray-200">
+                    {/* Icons & Inputs */}
+
+                    <div className="flex space-x-2">
+                      {/* Github Icon */}
+                      <a href="https://github.com/stardewapp">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaGithub
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Github Icon */}
+
+                      {/* Discord Icon */}
+                      <a href="https://discord.gg/NkgNVZwQ2M">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaDiscord
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Discord Icon */}
+
+                      {/* File Input */}
+                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                         <FiUpload
-                          className="h-5 w-5 text-black"
+                          className="h-5 w-5 text-black dark:text-white"
                           aria-hidden="true"
                         />
                         <input
@@ -220,11 +244,13 @@ const SidebarLayout = ({
                           }
                         />
                       </label>
+                    {/* End File Input */}
+                      
                     </div>
-                    {/* end file input section */}
+                    {/* End Icons & Inputs Section */}
                   </div>
                   <div className="mx-4 mt-4 border border-gray-200" />
-                  <nav className="mt-4 space-y-1 px-2">
+                  <nav className="mt-4 flex-1 px-2 space-y-1 bg-white dark:bg-[#111111]">
                     {navigation.map((item) => (
                       <Link key="{item.name}" href={item.href}>
                         <a
