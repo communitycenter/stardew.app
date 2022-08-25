@@ -44,11 +44,11 @@ const Perfection: NextPage = () => {
   return (
     <>
       <Head>
-        <title>stardew.app | Construction</title>
+        <title>stardew.app | Perfection</title>
         <meta name="description" content="The homepage for Stardew.app." />
       </Head>
       <SidebarLayout
-        activeTab=""
+        activeTab="Perfection"
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >

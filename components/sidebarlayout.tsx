@@ -65,7 +65,7 @@ const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
   { name: "Fishing", href: "/fishing", icon: FaFish },
-  { name: "Perfection", href: "/construction", icon: HiSparkles },
+  { name: "Perfection", href: "/perfection", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
@@ -202,7 +202,7 @@ const SidebarLayout = ({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+                <div className="flex h-0 flex-1 flex-col overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
                     <h1 className="text-lg font-semibold dark:text-white">
                       stardew.app
