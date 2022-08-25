@@ -4,6 +4,7 @@ import { parseCrafting } from "./parsers/crafting";
 import { parseFamily } from "./parsers/family";
 import { parseFishing } from "./parsers/fishing";
 import { parseGeneral } from "./parsers/general";
+import { parseGingerIsland } from "./parsers/island";
 import { parseMoney } from "./parsers/money";
 import { parseMonsters } from "./parsers/monsters";
 import { parseMuseum } from "./parsers/museum";
@@ -74,6 +75,15 @@ export async function parseSaveFile(file: any) {
   const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
     parseMonsters(jsonObj);
 
+  // Ginger Island
+  const {
+    hasVisitedIsland,
+    journalScrapsFound,
+    goldenWalnutsFound,
+    goldenWalnutsCalculated,
+    walnutsFound,
+  } = parseGingerIsland(jsonObj);
+
   console.log("Parsed information!");
 
   console.log("Uploading values to DB");
@@ -143,6 +153,13 @@ export async function parseSaveFile(file: any) {
         fiveHeartCount,
         tenHeartCount,
         ...relationships,
+      },
+      gingerIsland: {
+        hasVisitedIsland,
+        journalScrapsFound,
+        goldenWalnutsFound,
+        goldenWalnutsCalculated,
+        ...walnutsFound,
       },
     }),
   });
