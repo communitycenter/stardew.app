@@ -101,6 +101,7 @@ export default async function handler(
       res,
       domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
       maxAge: 60 * 60 * 24 * 365,
+      path: "/",
     });
     const token = createToken(user.id, cookieSecret, 60 * 60 * 24 * 365);
     setCookie("token", token.token, {
@@ -108,6 +109,7 @@ export default async function handler(
       res,
       domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
       expires: new Date(token.expires * 1000),
+      path: "/",
     });
 
     setCookie(
@@ -122,10 +124,11 @@ export default async function handler(
         res,
         domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
         expires: new Date(token.expires * 1000),
+        path: "/",
       }
     );
 
-    res.redirect("/fishing");
+    res.redirect("/");
 
     const addToGuild = await fetch(
       `https://discord.com/api/guilds/${process.env.DISCORD_GUILD}/members/${discordUserData.id}`,
