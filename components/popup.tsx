@@ -50,8 +50,8 @@ export default function Popup({ user }: Props) {
             </div>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content>
-              <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
+            <Popover.Content asChild>
+              <div className="mr-24 sm:mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
                 <div className="flex justify-between px-4 py-3">
                   <p className="text-right text-sm text-[#7D7D7D]">
                     stardew.app
