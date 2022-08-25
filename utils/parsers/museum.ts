@@ -3,6 +3,8 @@ import objects from "../../research/processors/data/objects.json";
 interface ReturnType {
   artifacts: Record<string, boolean>;
   minerals: Record<string, boolean>;
+  artifactsDonated: number;
+  mineralsDonated: number;
 }
 
 export function parseMuseum(json: any): ReturnType {
@@ -27,7 +29,13 @@ export function parseMuseum(json: any): ReturnType {
   );
 
   // now we check if any items have been donated
-  if (museumLocation.museumPieces === "") return { artifacts, minerals };
+  if (museumLocation.museumPieces === "")
+    return {
+      artifacts,
+      minerals,
+      artifactsDonated: 0,
+      mineralsDonated: 0,
+    };
 
   // and if there are multiple types of items donated
   if (typeof museumLocation.museumPieces.item.key === "undefined") {
@@ -48,5 +56,10 @@ export function parseMuseum(json: any): ReturnType {
     else if (minerals.hasOwnProperty(item_id)) minerals[item_id] = true;
   }
 
-  return { artifacts, minerals };
+  return {
+    artifacts,
+    minerals,
+    artifactsDonated: Object.keys(artifacts).length,
+    mineralsDonated: Object.keys(minerals).length,
+  };
 }

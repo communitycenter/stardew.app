@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
@@ -21,10 +21,14 @@ import {
   FaGithub,
   FaDiscord,
   FaHouseUser,
+  FaUser,
+  FaPeopleCarry,
+  FaHeartbeat,
+  FaHeart,
 } from "react-icons/fa";
 import { BiImport, BiMenu } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
-import { GiCookingPot } from "react-icons/gi";
+import { GiCookingPot, GiThreeFriends } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
 import {
@@ -39,12 +43,19 @@ import {
   parseCooking,
   parseFishing,
   parseCrafting,
+  parseMuseum,
 } from "../utils";
 
 import Notification from "./notification";
 import Popup from "./popup";
 
 import { XMLParser } from "fast-xml-parser";
+import * as Popover from "@radix-ui/react-popover";
+import LoginModal from "./modals/login";
+import Example from "./popup";
+import CreditsModal from "./modals/credits";
+import { parseSaveFile } from "../utils/file";
+
 const semVerGte = require("semver/functions/gte");
 
 function classNames(...classes: string[]) {
@@ -53,13 +64,14 @@ function classNames(...classes: string[]) {
 const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
-  { name: "Bundles", href: "/bundles", icon: IoIosArchive },
   { name: "Fishing", href: "/fishing", icon: FaFish },
   { name: "Perfection", href: "/construction", icon: HiSparkles },
   { name: "Cooking", href: "/cooking", icon: GiCookingPot },
   { name: "Crafting", href: "/crafting", icon: FaHammer },
   { name: "Shipping", href: "/shipping", icon: MdLocalShipping },
+  { name: "Family & Social", href: "/social", icon: FaHeart },
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
+  { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
 
 interface LayoutProps {
@@ -77,6 +89,8 @@ const SidebarLayout = ({
 }: LayoutProps) => {
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const [showLoginSlideover, setShowLoginSlideover] = useState<boolean>(false);
+
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
 
@@ -103,7 +117,7 @@ const SidebarLayout = ({
     if (typeof file === "undefined") return;
 
     // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
-    if (!/[a-zA-Z]+_[0-9]+/.test(file.name) || file.type !== "") {
+    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
       setErrorMSG(
         "Invalid File Uploaded. Please upload a Stardew Valley save file."
       );
@@ -117,145 +131,18 @@ const SidebarLayout = ({
     // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
 
     reader.onload = async function (event) {
-      // console.log(event.target?.result);
-      console.log("Parsing XML...");
-      const start = performance.now();
-      const parser = new XMLParser({ ignoreAttributes: false });
-      const jsonObj = parser.parse(event.target?.result as string);
-      console.log(
-        "Parsed XML in",
-        (performance.now() - start).toFixed(3),
-        "ms"
-      );
-
-      // check the version number of the SDV save file
       try {
-        const gameVersion: string = jsonObj.SaveGame.gameVersion;
-
-        // make sure the game version is at least 1.5.0
-        // we can modify this later if we decide to support older versions of SDV
-        if (!semVerGte(gameVersion, "1.5.0")) {
-          setErrorMSG(
-            "Please upload a save file from version 1.5.0 or newer. If you would like to request support for an older version, please contact us on Discord or open an issue on Github."
-          );
-          setShowErrorNotification(true);
-          console.log("Exiting...");
-          return;
+        const { success, timeTaken } = await parseSaveFile(
+          event.target?.result
+        );
+        if (success) {
+          setShowNotification(true);
+          setCompletedTime(timeTaken);
         }
       } catch (e) {
-        if (e instanceof TypeError) {
-          setErrorMSG(
-            "Invalid File Uploaded. Couldn't find Game Version, please upload a Stardew Valley save file."
-          );
-          setShowErrorNotification(true);
-          console.log("Exiting...");
-          return;
-        }
+        setErrorMSG(e as string);
+        setShowErrorNotification(true);
       }
-      console.log("Parsing information...");
-      // General Information
-      const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
-      const moneyEarned = parseMoney(jsonObj);
-      const { levels, maxLevelCount } = parseSkills(jsonObj);
-      const questsCompleted = parseQuests(jsonObj);
-      const { stardrops, stardropsCount } = parseStardrops(jsonObj);
-
-      // Fishing
-      const { allFish, totalCaught, uniqueCaught } = parseFishing(jsonObj);
-
-      // Cooking
-      const { cookedCount, knownCount, allRecipes } = parseCooking(jsonObj);
-      // Crafting
-      const {
-        allRecipes: craftingRecipes,
-        knownCount: knownCountCrafted,
-        craftedCount: craftedCount,
-      } = parseCrafting(jsonObj);
-
-      // Family & social
-      const { houseUpgradeLevel, spouse, children } = parseFamily(jsonObj);
-      const { fiveHeartCount, tenHeartCount, relationships } =
-        parseSocial(jsonObj);
-
-      // Monsters
-      const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
-        parseMonsters(jsonObj);
-
-      console.log("Parsed information!");
-
-      console.log("Uploading values to DB");
-      const dbstart = performance.now();
-      let response = await fetch("/api/kv", {
-        method: "PATCH",
-        body: JSON.stringify({
-          general: {
-            name,
-            timePlayed,
-            farmInfo,
-            moneyEarned,
-            questsCompleted,
-            uploadedFile: true,
-          },
-          stardrops: {
-            count: stardropsCount,
-            CF_Fair: stardrops.CF_Fair,
-            CF_Fish: stardrops.CF_Fish,
-            CF_Mines: stardrops.CF_Mines,
-            CF_Sewer: stardrops.CF_Sewer,
-            CF_Spouse: stardrops.CF_Spouse,
-            CF_Statue: stardrops.CF_Statue,
-            museumComplete: stardrops.museumComplete,
-          },
-          levels: {
-            player: levels["Player"],
-            farming: levels["Farming"],
-            fishing: levels["Fishing"],
-            foraging: levels["Foraging"],
-            mining: levels["Mining"],
-            combat: levels["Combat"],
-            maxLevelCount,
-          },
-          fish: {
-            totalCaught,
-            uniqueCaught,
-            ...allFish,
-          },
-          cooking: {
-            cookedCount,
-            knownCount,
-            ...allRecipes,
-          },
-          crafting: {
-            craftedCount,
-            knownCount: knownCountCrafted,
-            ...craftingRecipes,
-          },
-          mining: {
-            deepestMineLevel,
-            deepestSkullCavernLevel, // TODO: map through monstersKilled and add entry into DB for each
-            ...monstersKilled,
-          },
-          family: {
-            houseUpgradeLevel,
-            spouse: spouse ? spouse : "No spouse",
-            childrenLength: children ? children.length : 0,
-          },
-          social: {
-            fiveHeartCount,
-            tenHeartCount, // TODO: map through relationships and add entry into DB for each
-          },
-        }),
-      });
-      console.log(
-        "Completed DB uploads in",
-        (performance.now() - dbstart).toFixed(3),
-        "ms"
-      );
-
-      const elapsed = performance.now() - start;
-      console.log("Elapsed", elapsed.toFixed(3), "ms");
-      setCompletedTime((elapsed / 1000).toFixed(2));
-      setShowNotification(true);
     };
 
     reader.readAsText(file!);
@@ -291,7 +178,7 @@ const SidebarLayout = ({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white dark:bg-[#111111]">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -315,41 +202,56 @@ const SidebarLayout = ({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
+                <div className="h-0 flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
-                    <h1 className="text-lg font-semibold">stardew.app</h1>
-                    {/* File Input */}
-                    <div>
-                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
-                        <FiUpload
-                          className="h-5 w-5 text-black"
-                          aria-hidden="true"
-                        />
-                        <input
-                          type="file"
-                          className="hidden"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            handleFile(e)
-                          }
-                        />
-                      </label>
+                    <h1 className="text-lg font-semibold dark:text-white">
+                      stardew.app
+                    </h1>
+                    {/* Icons & Inputs */}
+
+                    <div className="flex space-x-2">
+                      {/* Github Icon */}
+                      <a href="https://github.com/stardewapp">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaGithub
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Github Icon */}
+
+                      {/* Discord Icon */}
+                      <a href="https://discord.gg/NkgNVZwQ2M">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaDiscord
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Discord Icon */}
                     </div>
-                    {/* end file input section */}
+                    {/* End Icons & Inputs Section */}
                   </div>
                   <div className="mx-4 mt-4 border border-gray-200" />
-                  <nav className="mt-4 space-y-1 px-2">
+                  <nav className="mt-4 flex-1 space-y-1 bg-white px-2 dark:bg-[#111111]">
                     {navigation.map((item) => (
                       <Link key="{item.name}" href={item.href}>
                         <a
                           className={classNames(
                             item.name === activeTab
-                              ? "bg-gray-100 text-black"
-                              : "text-black hover:bg-gray-50 hover:text-gray-900",
+                              ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                              : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
                             "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                           )}
                         >
                           <item.icon
-                            className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
+                            className={classNames(
+                              item.name === activeTab
+                                ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                                : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                            )}
                             aria-hidden="true"
                           />
                           {item.name}
@@ -357,6 +259,27 @@ const SidebarLayout = ({
                       </Link>
                     ))}
                   </nav>
+                  <div className="mx-2 flex items-center space-x-2 text-white">
+                    {!user ? (
+                      <div
+                        onClick={() => {
+                          setShowLoginSlideover(true);
+                          setSidebarOpen(false);
+                        }}
+                        className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                      >
+                        <FaDiscord
+                          className={classNames(
+                            "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          )}
+                          aria-hidden="true"
+                        />
+                        <p className="dark:text-white">Login with Discord</p>
+                      </div>
+                    ) : (
+                      <Popup user={user} />
+                    )}
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -373,7 +296,7 @@ const SidebarLayout = ({
               <h1 className="font-semibold dark:text-white">stardew.app</h1>
               {/* Sidebar Links Section */}
               <div className="flex space-x-2">
-                <a href="https://discord.gg/YBNGCgCxG5">
+                <a href="https://discord.gg/NkgNVZwQ2M">
                   <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                     <FaDiscord
                       className="h-5 w-5 text-black dark:text-white"
@@ -412,7 +335,7 @@ const SidebarLayout = ({
                       className={classNames(
                         item.name === activeTab
                           ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D]"
                       )}
                       aria-hidden="true"
                     />
@@ -421,59 +344,23 @@ const SidebarLayout = ({
                 </Link>
               ))}
             </nav>
-            <Popup />
-            <div className="mx-2 flex space-x-2">
-              <div className="mt-4 flex-1 justify-end space-y-2 bg-white dark:bg-[#111111]">
-                {!user ? (
-                  <Link href="/api/oauth">
-                    <a className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                      <FaUserCircle
-                        className={classNames(
-                          "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        )}
-                        aria-hidden="true"
-                      />
-                      <p className="dark:text-white">Login</p>
-                    </a>
-                  </Link>
-                ) : (
-                  <div
+            <div className="mx-2 flex items-center space-x-2 text-white">
+              {!user ? (
+                <div
+                  onClick={() => setShowLoginSlideover(true)}
+                  className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                >
+                  <FaDiscord
                     className={classNames(
-                      "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white" +
-                        "group flex items-center rounded-md py-4 px-3 text-base font-medium"
-                    )}
-                  >
-                    <Image
-                      className={classNames(
-                        "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
-                      )}
-                      aria-hidden="true"
-                      src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
-                      alt="User avatar"
-                      height={24}
-                      width={24}
-                    />
-                    <p className="ml-2 dark:text-white">{user.discord_name}</p>
-                  </div>
-                )}
-              </div>
-              <div className="mt-4 flex justify-center bg-white dark:bg-[#111111]">
-                <label className="group flex items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
-                  <BiImport
-                    className={classNames(
-                      "h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                      "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
                     )}
                     aria-hidden="true"
                   />
-                  <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleFile(e)
-                    }
-                  />
-                </label>
-              </div>
+                  <p className="dark:text-white">Login with Discord</p>
+                </div>
+              ) : (
+                <Popup user={user} />
+              )}
             </div>
           </div>
         </div>
@@ -517,6 +404,7 @@ const SidebarLayout = ({
         show={showErrorNotification}
         setShow={setShowErrorNotification}
       />
+      <LoginModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
     </>
   );
 };
