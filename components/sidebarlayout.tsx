@@ -202,7 +202,7 @@ const SidebarLayout = ({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
+                <div className="h-0 flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
                     <h1 className="text-lg font-semibold dark:text-white">
                       stardew.app
@@ -335,7 +335,7 @@ const SidebarLayout = ({
                       className={classNames(
                         item.name === activeTab
                           ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D]"
                       )}
                       aria-hidden="true"
                     />
