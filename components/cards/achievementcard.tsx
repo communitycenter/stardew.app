@@ -79,7 +79,12 @@ const AchievementCard = ({
     : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   return (
-    <motion.div layout>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      layout
+    >
       <div
         className={
           "relative flex select-none items-center space-x-3 rounded-lg border border-solid py-4 px-5 hover:cursor-pointer " +
@@ -98,7 +103,12 @@ const AchievementCard = ({
         </motion.div>
         <div className="min-w-0 flex-1">
           <motion.div layout="position">
-            <p className="truncate font-medium text-gray-900 dark:text-white">
+            <p
+              className={
+                "font-medium text-gray-900 dark:text-white" +
+                (truncate ? " truncate" : "")
+              }
+            >
               {title}
             </p>
           </motion.div>

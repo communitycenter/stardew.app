@@ -6,6 +6,7 @@ import { useState } from "react";
 import Head from "next/head";
 
 import achievements from "../research/processors/data/achievements.json";
+import walnuts from "../research/processors/data/walnuts.json";
 
 import {
   ArchiveIcon,
@@ -25,6 +26,7 @@ import AchievementCard from "../components/cards/achievementcard";
 import monsters from "../research/processors/data/monsters.json";
 import MonsterCard from "../components/cards/monstercard";
 import MonsterSlideOver from "../components/slideovers/monsterslideover";
+import WalnutCard from "../components/cards/walnutcard";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -86,7 +88,7 @@ const Perfection: NextPage = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-2 gap-4">
               <div>
                 <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
                   Mining
@@ -135,7 +137,7 @@ const Perfection: NextPage = () => {
                     ))}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-4 grid gap-4 xl:grid-cols-5">
@@ -148,6 +150,46 @@ const Perfection: NextPage = () => {
                 setShowMonster={setShowMonster}
               />
             ))}
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
+          <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
+            Ginger Island
+          </h2>
+          {/* <div className="mt-2 grid grid-cols-2 gap-4">
+            <Ac
+              title="Deepest Mining Level"
+              description={deepestMiningLevel.toString()}
+              Icon={GiMining}
+            />
+            <InfoCard
+              title="Deepest Skull Mining Level"
+              description={deepestSkullCavernLevel.toString()}
+              Icon={GiMining}
+            />
+          </div> */}
+
+          <div>
+            <div>
+              <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
+                Golden Walnuts
+              </h2>
+              <div className="grid grid-cols-5 gap-4">
+                {Object.entries(walnuts).map(([id, walnut]) => (
+                  <AchievementCard
+                    key={id}
+                    title={walnut.name}
+                    tag="gingerIsland"
+                    id={id}
+                    description={walnut.hint}
+                    sourceURL={
+                      "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
+                    }
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </SidebarLayout>

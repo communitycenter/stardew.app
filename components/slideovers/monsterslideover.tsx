@@ -35,8 +35,6 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
   //     0
   //   );
 
-  console.log(selected);
-
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
