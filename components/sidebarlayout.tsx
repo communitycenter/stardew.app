@@ -178,7 +178,7 @@ const SidebarLayout = ({
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white dark:bg-[#111111]">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -202,41 +202,56 @@ const SidebarLayout = ({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
+                <div className="h-0 flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
-                    <h1 className="text-lg font-semibold">stardew.app</h1>
-                    {/* File Input */}
-                    <div>
-                      <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200">
-                        <FiUpload
-                          className="h-5 w-5 text-black"
-                          aria-hidden="true"
-                        />
-                        <input
-                          type="file"
-                          className="hidden"
-                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            handleFile(e)
-                          }
-                        />
-                      </label>
+                    <h1 className="text-lg font-semibold dark:text-white">
+                      stardew.app
+                    </h1>
+                    {/* Icons & Inputs */}
+
+                    <div className="flex space-x-2">
+                      {/* Github Icon */}
+                      <a href="https://github.com/stardewapp">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaGithub
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Github Icon */}
+
+                      {/* Discord Icon */}
+                      <a href="https://discord.gg/NkgNVZwQ2M">
+                        <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
+                          <FaDiscord
+                            className="h-5 w-5 text-black dark:text-white"
+                            aria-hidden="true"
+                          />
+                        </label>
+                      </a>
+                      {/* End Discord Icon */}
                     </div>
-                    {/* end file input section */}
+                    {/* End Icons & Inputs Section */}
                   </div>
                   <div className="mx-4 mt-4 border border-gray-200" />
-                  <nav className="mt-4 space-y-1 px-2">
+                  <nav className="mt-4 flex-1 space-y-1 bg-white px-2 dark:bg-[#111111]">
                     {navigation.map((item) => (
                       <Link key="{item.name}" href={item.href}>
                         <a
                           className={classNames(
                             item.name === activeTab
-                              ? "bg-gray-100 text-black"
-                              : "text-black hover:bg-gray-50 hover:text-gray-900",
+                              ? "border bg-gray-100 text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
+                              : "text-[#7D7D7D] hover:bg-gray-50  dark:hover:bg-[#1F1F1F]",
                             "group flex items-center rounded-md py-4 px-5 text-base font-medium"
                           )}
                         >
                           <item.icon
-                            className={"mr-3 h-7 w-7 flex-shrink-0 text-black"}
+                            className={classNames(
+                              item.name === activeTab
+                                ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                                : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                            )}
                             aria-hidden="true"
                           />
                           {item.name}
@@ -244,6 +259,27 @@ const SidebarLayout = ({
                       </Link>
                     ))}
                   </nav>
+                  <div className="mx-2 flex items-center space-x-2 text-white">
+                    {!user ? (
+                      <div
+                        onClick={() => {
+                          setShowLoginSlideover(true);
+                          setSidebarOpen(false);
+                        }}
+                        className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
+                      >
+                        <FaDiscord
+                          className={classNames(
+                            "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
+                          )}
+                          aria-hidden="true"
+                        />
+                        <p className="dark:text-white">Login with Discord</p>
+                      </div>
+                    ) : (
+                      <Popup user={user} />
+                    )}
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -299,7 +335,7 @@ const SidebarLayout = ({
                       className={classNames(
                         item.name === activeTab
                           ? "mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D] "
+                          : "mr-3 h-5 w-5 flex-shrink-0 text-[#7D7D7D]"
                       )}
                       aria-hidden="true"
                     />
