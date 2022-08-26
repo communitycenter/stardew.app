@@ -9,9 +9,8 @@ import {
 import { getCookie } from "cookies-next";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
@@ -21,42 +20,17 @@ import {
   FaGithub,
   FaDiscord,
   FaHouseUser,
-  FaUser,
-  FaPeopleCarry,
-  FaHeartbeat,
   FaHeart,
 } from "react-icons/fa";
-import { BiImport, BiMenu } from "react-icons/bi";
-import { FiUpload } from "react-icons/fi";
-import { GiCookingPot, GiThreeFriends } from "react-icons/gi";
+import { BiMenu } from "react-icons/bi";
+import { GiCookingPot } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
-import {
-  parseMoney,
-  parseGeneral,
-  parseSkills,
-  parseQuests,
-  parseStardrops,
-  parseMonsters,
-  parseFamily,
-  parseSocial,
-  parseCooking,
-  parseFishing,
-  parseCrafting,
-  parseMuseum,
-} from "../utils";
-
 import Notification from "./notification";
+import LoginModal from "./modals/login";
 import Popup from "./popup";
 
-import { XMLParser } from "fast-xml-parser";
-import * as Popover from "@radix-ui/react-popover";
-import LoginModal from "./modals/login";
-import Example from "./popup";
-import CreditsModal from "./modals/credits";
 import { parseSaveFile } from "../utils/file";
-
-const semVerGte = require("semver/functions/gte");
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -202,7 +176,7 @@ const SidebarLayout = ({
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+                <div className="flex h-0 flex-1 flex-col overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center justify-between px-4">
                     <h1 className="text-lg font-semibold dark:text-white">
                       stardew.app
