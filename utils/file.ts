@@ -8,6 +8,7 @@ import { parseGingerIsland } from "./parsers/island";
 import { parseMoney } from "./parsers/money";
 import { parseMonsters } from "./parsers/monsters";
 import { parseMuseum } from "./parsers/museum";
+import { parsePerfection } from "./parsers/perfection";
 import { parseQuests } from "./parsers/quests";
 import { parseSkills } from "./parsers/skills";
 import { parseSocial } from "./parsers/social";
@@ -83,6 +84,9 @@ export async function parseSaveFile(file: any) {
     goldenWalnutsCalculated,
     walnutsFound,
   } = parseGingerIsland(jsonObj);
+
+  // Perfection
+  const { candleCount } = parsePerfection(jsonObj);
 
   console.log("Parsed information!");
 
@@ -160,6 +164,9 @@ export async function parseSaveFile(file: any) {
         goldenWalnutsFound,
         goldenWalnutsCalculated,
         ...walnutsFound,
+      },
+      perfection: {
+        candles: candleCount,
       },
     }),
   });
