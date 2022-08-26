@@ -83,10 +83,10 @@ export default function Popup({ user }: Props) {
                 <div className="py-1">
                   <div
                     onClick={() => {
-                      deleteCookie("token", { path: "/" });
-                      deleteCookie("uid", { path: "/" });
-                      deleteCookie("oauth_state", { path: "/" });
-                      deleteCookie("discord_user", { path: "/" });
+                      deleteCookie("token", { path: "/", maxAge: -1 });
+                      deleteCookie("uid", { path: "/", maxAge: -1 });
+                      deleteCookie("oauth_state", { path: "/", maxAge: -1 });
+                      deleteCookie("discord_user", { path: "/", maxAge: -1 });
                       return (window.location.href = "/");
                     }}
                     className={classNames(
