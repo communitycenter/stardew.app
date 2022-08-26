@@ -83,10 +83,34 @@ export default function Popup({ user }: Props) {
                 <div className="py-1">
                   <div
                     onClick={() => {
-                      deleteCookie("token", { path: "/", maxAge: 0 });
-                      deleteCookie("uid", { path: "/", maxAge: 0 });
-                      deleteCookie("oauth_state", { path: "/", maxAge: 0 });
-                      deleteCookie("discord_user", { path: "/", maxAge: 0 });
+                      deleteCookie("token", {
+                        path: "/",
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("uid", {
+                        path: "/",
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("oauth_state", {
+                        path: "/",
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("discord_user", {
+                        path: "/",
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
                       return (window.location.href = "/");
                     }}
                     className={classNames(
