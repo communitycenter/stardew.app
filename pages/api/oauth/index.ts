@@ -15,7 +15,6 @@ export default function handler(
     res,
     domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
     maxAge: 60 * 60 * 24 * 365,
-    path: "/",
   });
   res.redirect(
     `https://discord.com/api/oauth2/authorize?client_id=${
