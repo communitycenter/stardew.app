@@ -20,6 +20,9 @@ import { FaBook, FaDiscord, FaSkull, FaTree } from "react-icons/fa";
 import { useKV } from "../hooks/useKV";
 import InfoCard from "../components/cards/infocard";
 import {
+  GiCandleFlame,
+  GiCandleHolder,
+  GiCandles,
   GiDeathSkull,
   GiIsland,
   GiMineWagon,
@@ -110,6 +113,11 @@ const Perfection: NextPage = () => {
                 title="Secret Notes Found"
                 description={secretNotesFound.toString()}
                 Icon={GiPapers}
+              />
+              <InfoCard
+                title="Grandpa's Evaluation Candles"
+                description={candles.toString()}
+                Icon={GiCandles}
               />
               {!hasVisitedIsland ? (
                 <>
