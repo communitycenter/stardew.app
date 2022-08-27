@@ -33,7 +33,7 @@ import AchievementCard from "../components/cards/achievementcard";
 import monsters from "../research/processors/data/monsters.json";
 import MonsterCard from "../components/cards/monstercard";
 import MonsterSlideOver from "../components/slideovers/monsterslideover";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -66,6 +66,9 @@ const Perfection: NextPage = () => {
     "deepestSkullCavernLevel",
     0
   );
+
+  const [showGinger, setShowGinger] = useState<boolean>(false);
+  const [showMonsters, setShowMonsters] = useState<boolean>(false);
 
   const [showMonster, setShowMonster] = useState<boolean>(false);
   const [selectedMonster, setSelectedMonster] = useState<any>(
@@ -131,64 +134,133 @@ const Perfection: NextPage = () => {
                 </>
               )}
             </div>
+
             <div>
-              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-                Monsters & Mining
+              <div className="mb-2 mt-4 ml-1 text-2xl text-gray-900 dark:text-white md:text-xl">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                    Monsters & Mining
+                  </div>
+                  <button
+                    onClick={() => setShowMonsters(!showMonsters)}
+                    className="flex items-center rounded-2xl border border-gray-300 bg-[#f0f0f0] p-1 dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:bg-[#f0f0f0]/10"
+                  >
+                    <div>
+                      <motion.div
+                        className="rounded-full"
+                        animate={{ rotate: showMonsters ? 90 : 0 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+                    {/* <p className="text-sm dark:text-white">
+                      {showMonsters ? "Hide" : "Show"}
+                    </p> */}
+                  </button>
+                </div>
               </div>
-              <div className="mt-4 grid gap-4 xl:grid-cols-5">
-                {Object.entries(monsters).map(([monster, monsterInfo]) => (
-                  <MonsterCard
-                    key={monster}
-                    monsterInfo={monsterInfo}
-                    monsterCategory={monster}
-                    setSelectedMonster={setSelectedMonster}
-                    setShowMonster={setShowMonster}
-                  />
-                ))}
+              <AnimatePresence initial={showMonsters}>
+                {showMonsters && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -25, animation: "fadeIn" }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                      transition: { duration: 0.2 },
+                    }}
+                    exit={{ opacity: 0, y: -25, transition: { duration: 0.2 } }}
+                    className="mt-4 grid gap-4 xl:grid-cols-5"
+                    layout
+                  >
+                    {Object.entries(monsters).map(([monster, monsterInfo]) => (
+                      <MonsterCard
+                        key={monster}
+                        monsterInfo={monsterInfo}
+                        monsterCategory={monster}
+                        setSelectedMonster={setSelectedMonster}
+                        setShowMonster={setShowMonster}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl text-gray-900 dark:text-white md:text-xl">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                    Ginger Island
+                  </div>
+                  <button
+                    onClick={() => setShowGinger(!showGinger)}
+                    className="flex items-center rounded-2xl border border-gray-300 bg-[#f0f0f0] p-1 dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:bg-[#f0f0f0]/10"
+                  >
+                    <div>
+                      <motion.div
+                        className="rounded-full"
+                        animate={{ rotate: showGinger ? 90 : 0 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+                    {/* <p className="text-sm dark:text-white">
+                      {showMonsters ? "Hide" : "Show"}
+                    </p> */}
+                  </button>
+                </div>
               </div>
+              <AnimatePresence initial={showGinger}>
+                {showGinger && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -50, animation: "fadeIn" }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                      y: -25,
+                      transition: { duration: 0.2 },
+                    }}
+                    className="mt-4 grid gap-4 xl:grid-cols-5"
+                  >
+                    {Object.entries(walnuts).map(([id, walnut]) => (
+                      <AchievementCard
+                        key={id}
+                        title={walnut.name}
+                        tag="gingerIsland"
+                        id={id}
+                        description={walnut.hint}
+                        sourceURL={
+                          "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
+                        }
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
-        </div>
-
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
-          <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
-            Ginger Island
-          </h2>
-          {/* <div className="mt-2 grid grid-cols-2 gap-4">
-            <Ac
-              title="Deepest Mining Level"
-              description={deepestMiningLevel.toString()}
-              Icon={GiMining}
-            />
-            <InfoCard
-              title="Deepest Skull Mining Level"
-              description={deepestSkullCavernLevel.toString()}
-              Icon={GiMining}
-            />
-          </div> */}
-
-          <motion.div layout className="">
-            <div>
-              <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
-                Golden Walnuts
-              </h2>
-              <div className="grid grid-cols-5 gap-4">
-                {Object.entries(walnuts).map(([id, walnut]) => (
-                  <AchievementCard
-                    key={id}
-                    title={walnut.name}
-                    tag="gingerIsland"
-                    id={id}
-                    description={walnut.hint}
-                    sourceURL={
-                      "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
-                    }
-                    initialChecked={walnut}
-                  />
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </SidebarLayout>
 
