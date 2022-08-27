@@ -16,20 +16,49 @@ import {
 } from "@heroicons/react/outline";
 import Image from "next/image";
 import logo from "../public/icon.png";
-import { FaDiscord } from "react-icons/fa";
+import { FaBook, FaDiscord, FaSkull, FaTree } from "react-icons/fa";
 import { useKV } from "../hooks/useKV";
 import InfoCard from "../components/cards/infocard";
-import { GiMining } from "react-icons/gi";
+import {
+  GiDeathSkull,
+  GiIsland,
+  GiMineWagon,
+  GiMining,
+  GiPaper,
+  GiPapers,
+} from "react-icons/gi";
 import BooleanCard from "../components/cards/booleancard";
 import AchievementCard from "../components/cards/achievementcard";
 
 import monsters from "../research/processors/data/monsters.json";
 import MonsterCard from "../components/cards/monstercard";
 import MonsterSlideOver from "../components/slideovers/monsterslideover";
+import { motion } from "framer-motion";
 
 const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
+  const [secretNotesFound] = useKV<number>("general", "secretNotesFound", 0);
+
+  const [candles] = useKV<number>("perfection", "candles", 0);
+  const [hasVisitedIsland] = useKV<boolean>(
+    "perfection",
+    "hasVisitedIsland",
+    false
+  );
+
+  const [goldenWalnutsCalculated] = useKV<number>(
+    "gingerIsland",
+    "goldenWalnutsCalculated",
+    0
+  );
+
+  const [journalScrapsFound] = useKV<number>(
+    "gingerIsland",
+    "journalScrapsFound",
+    0
+  );
 
   const [deepestMiningLevel] = useKV<number>("mining", "deepestMineLevel", 0);
   const [deepestSkullCavernLevel] = useKV<number>(
@@ -57,98 +86,67 @@ const Perfection: NextPage = () => {
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection
           </h1>
-          <div>
-            <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-              <span className="flex justify-between">
-                {" "}
-                <FilterIcon
-                  className="h-5 w-5 text-black dark:bg-[#1F1F1F] dark:text-white"
-                  aria-hidden="true"
-                />
-              </span>
-            </label>
-          </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
-          <div>
-            <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
-              Mining & Monsters
-            </h2>
-            <div className="mt-2 grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 py-4">
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+              {/* <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Farmer Information
+              </div> */}
               <InfoCard
                 title="Deepest Mining Level"
                 description={deepestMiningLevel.toString()}
-                Icon={GiMining}
+                Icon={GiMineWagon}
               />
               <InfoCard
-                title="Deepest Skull Mining Level"
+                title="Deepest Skull Cavern Level"
                 description={deepestSkullCavernLevel.toString()}
-                Icon={GiMining}
+                Icon={GiDeathSkull}
               />
+              <InfoCard
+                title="Secret Notes Found"
+                description={secretNotesFound.toString()}
+                Icon={GiPapers}
+              />
+              {!hasVisitedIsland ? (
+                <>
+                  <InfoCard
+                    title="Golden Walnuts Found"
+                    description={goldenWalnutsCalculated.toString() + "/130"}
+                    Icon={FaTree}
+                  />
+                  <InfoCard
+                    title="Journal Scraps Found"
+                    description={journalScrapsFound.toString() + "/11"}
+                    Icon={FaBook}
+                  />
+                </>
+              ) : (
+                <>
+                  <InfoCard
+                    title="Has Visited Ginger Island"
+                    description="No"
+                    Icon={GiIsland}
+                  />
+                </>
+              )}
             </div>
-
-            {/* <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
-                  Mining
-                </h2>
-                <div className="mt-2">
-                  {Object.values(achievements)
-                    .filter((achievement) => achievement.name === "The Bottom")
-                    .map((achievement) => (
-                      <AchievementCard
-                        id={achievement.id}
-                        tag={"achievements"}
-                        key={achievement.id}
-                        title={achievement.name}
-                        description={achievement.description}
-                        sourceURL={achievement.iconURL}
-                        initialChecked={deepestMiningLevel === 120}
-                        additionalDescription={`- ${
-                          120 - deepestMiningLevel
-                        } levels left!`}
-                      />
-                    ))}
-                </div>
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Monsters & Mining
               </div>
-              <div>
-                <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
-                  Monsters
-                </h2>
-                <div className="mt-2">
-                  {Object.values(achievements)
-                    .filter(
-                      (achievement) => achievement.category === "monsters"
-                    )
-                    .map((achievement) => (
-                      <AchievementCard
-                        id={achievement.id}
-                        tag={"achievements"}
-                        key={achievement.id}
-                        title={achievement.name}
-                        description={achievement.description}
-                        sourceURL={achievement.iconURL}
-                        // initialChecked={deepestMiningLevel === 120}
-                        // additionalDescription={`- ${
-                        //   120 - deepestMiningLevel
-                        // } levels left!`}
-                      />
-                    ))}
-                </div>
+              <div className="mt-4 grid gap-4 xl:grid-cols-5">
+                {Object.entries(monsters).map(([monster, monsterInfo]) => (
+                  <MonsterCard
+                    key={monster}
+                    monsterInfo={monsterInfo}
+                    monsterCategory={monster}
+                    setSelectedMonster={setSelectedMonster}
+                    setShowMonster={setShowMonster}
+                  />
+                ))}
               </div>
-            </div> */}
-          </div>
-
-          <div className="mt-4 grid gap-4 xl:grid-cols-5">
-            {Object.entries(monsters).map(([monster, monsterInfo]) => (
-              <MonsterCard
-                key={monster}
-                monsterInfo={monsterInfo}
-                monsterCategory={monster}
-                setSelectedMonster={setSelectedMonster}
-                setShowMonster={setShowMonster}
-              />
-            ))}
+            </div>
           </div>
         </div>
 
@@ -169,7 +167,7 @@ const Perfection: NextPage = () => {
             />
           </div> */}
 
-          <div>
+          <motion.div layout className="">
             <div>
               <h2 className="mt-2 text-sm font-semibold text-gray-900 dark:text-white">
                 Golden Walnuts
@@ -185,11 +183,12 @@ const Perfection: NextPage = () => {
                     sourceURL={
                       "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
                     }
+                    initialChecked={walnut}
                   />
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </SidebarLayout>
 

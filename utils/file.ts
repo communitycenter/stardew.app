@@ -45,7 +45,8 @@ export async function parseSaveFile(file: any) {
   console.log("Parsing information...");
 
   // General Information
-  const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
+  const { name, timePlayed, farmInfo, secretNotesFound } =
+    parseGeneral(jsonObj);
   const moneyEarned = parseMoney(jsonObj);
   const { levels, maxLevelCount } = parseSkills(jsonObj);
   const questsCompleted = parseQuests(jsonObj);
@@ -101,6 +102,7 @@ export async function parseSaveFile(file: any) {
         farmInfo,
         moneyEarned,
         questsCompleted,
+        secretNotesFound,
         uploadedFile: true,
       },
       stardrops: {
