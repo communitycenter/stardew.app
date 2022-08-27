@@ -111,7 +111,7 @@ const Perfection: NextPage = () => {
               />
               <InfoCard
                 title="Secret Notes Found"
-                description={secretNotesFound.toString()}
+                description={secretNotesFound.toString() + "/25"}
                 Icon={GiPapers}
               />
               <InfoCard
