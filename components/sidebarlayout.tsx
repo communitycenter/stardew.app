@@ -15,26 +15,19 @@ import {
   FaUserCircle,
   FaFish,
   FaHammer,
-  FaGithub,
-  FaDiscord,
   FaHouseUser,
   FaHeart,
 } from "react-icons/fa";
-import { BiMenu } from "react-icons/bi";
 import { GiCookingPot } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
 import Notification from "./notification";
 import LoginModal from "./modals/login";
+import DesktopNav from "./desktopnav";
 import MobileNav from "./mobilenav";
-import Popup from "./popup";
 
 import { parseSaveFile } from "../utils/file";
-import DesktopNav from "./desktopnav";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
@@ -47,7 +40,6 @@ const navigation = [
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
-
 export type NavItem = typeof navigation[0];
 
 interface LayoutProps {

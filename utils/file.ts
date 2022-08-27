@@ -125,7 +125,7 @@ export async function parseSaveFile(file: any) {
       },
       mining: {
         deepestMineLevel,
-        deepestSkullCavernLevel, // TODO: map through monstersKilled and add entry into DB for each
+        deepestSkullCavernLevel,
         ...monstersKilled,
       },
       museum: {
