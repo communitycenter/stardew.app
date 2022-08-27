@@ -234,9 +234,6 @@ const Perfection: NextPage = () => {
                         </svg>
                       </motion.div>
                     </div>
-                    {/* <p className="text-sm dark:text-white">
-                      {showMonsters ? "Hide" : "Show"}
-                    </p> */}
                   </button>
                 </div>
               </div>
