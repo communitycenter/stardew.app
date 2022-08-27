@@ -96,8 +96,8 @@ const AchievementCard = ({
           <Image
             src={sourceURL}
             alt={title}
-            width={size ?? 32}
-            height={size ?? 32}
+            width={size ?? 42}
+            height={size ?? 42}
             className="rounded-sm"
           />
         </motion.div>

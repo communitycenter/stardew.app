@@ -255,6 +255,7 @@ const Perfection: NextPage = () => {
                         title={walnut.name}
                         tag="gingerIsland"
                         id={id}
+                        size={32}
                         description={walnut.hint}
                         sourceURL={
                           "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
