@@ -64,17 +64,17 @@ Stardew.app has been contributed to by the lovely people below <3
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/brandonsaldan">
-            <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
-            <br />
-            <sub><b>Brandon Saldan</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/TheLDB">
             <img src="https://avatars.githubusercontent.com/u/29960599?v=4" width="100;" alt="TheLDB"/>
             <br />
             <sub><b>Landon</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/brandonsaldan">
+            <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
+            <br />
+            <sub><b>Brandon Saldan</b></sub>
         </a>
     </td>
     <td align="center">

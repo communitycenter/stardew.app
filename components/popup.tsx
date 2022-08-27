@@ -50,8 +50,8 @@ export default function Popup({ user }: Props) {
             </div>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content>
-              <div className="mr-8 mb-2 w-full  divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none  dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white">
+            <Popover.Content asChild>
+              <div className="z-50 mr-24 mb-2 w-full divide-y  divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none dark:border-[#2a2a2a]  dark:bg-[#1F1F1F] dark:text-white sm:mr-8">
                 <div className="flex justify-between px-4 py-3">
                   <p className="text-right text-sm text-[#7D7D7D]">
                     stardew.app
@@ -83,10 +83,30 @@ export default function Popup({ user }: Props) {
                 <div className="py-1">
                   <div
                     onClick={() => {
-                      deleteCookie("token");
-                      deleteCookie("uid");
-                      deleteCookie("oauth_state");
-                      deleteCookie("discord_user");
+                      deleteCookie("token", {
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("uid", {
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("oauth_state", {
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("discord_user", {
+                        maxAge: 0,
+                        domain: process.env.DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
                       return (window.location.href = "/");
                     }}
                     className={classNames(
