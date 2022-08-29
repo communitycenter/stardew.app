@@ -77,45 +77,6 @@ const SidebarLayout = ({
     }
   }, []);
 
-  async function handleFile(event: ChangeEvent<HTMLInputElement>) {
-    // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
-    setShowNotification(false);
-    setShowErrorNotification(false);
-    const file = event.target!.files![0];
-    if (typeof file === "undefined") return;
-
-    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
-    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
-      setErrorMSG(
-        "Invalid File Uploaded. Please upload a Stardew Valley save file."
-      );
-      setShowErrorNotification(true);
-      return;
-    }
-    const reader = new FileReader();
-
-    // We can check the progress of the upload with a couple events from the reader
-    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
-    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
-
-    reader.onload = async function (event) {
-      try {
-        const { success, timeTaken } = await parseSaveFile(
-          event.target?.result
-        );
-        if (success) {
-          setShowNotification(true);
-          setCompletedTime(timeTaken);
-        }
-      } catch (e) {
-        setErrorMSG(e as string);
-        setShowErrorNotification(true);
-      }
-    };
-
-    reader.readAsText(file!);
-  }
-
   return (
     <>
       <MobileNav
