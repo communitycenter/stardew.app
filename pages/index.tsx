@@ -143,12 +143,6 @@ const Home: NextPage = () => {
                   Additionally, you can login with Discord to save your data
                   across devices.
                 </h2>
-                {!user && (
-                  <h2>
-                    You can also login with Discord to save your data across
-                    devices.
-                  </h2>
-                )}
               </div>
               <div
                 className={classNames("dragAndDropWrapper", {
