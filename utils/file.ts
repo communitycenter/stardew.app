@@ -39,7 +39,7 @@ export async function parseSaveFile(file: any) {
       return {
         success: false,
         message:
-          "Invalid file uploaded- couldn't find a valid game version. Please upload a Stardew Valley save file.",
+          "Invalid file uploaded - couldn't find a valid game version. Please upload a Stardew Valley save file.",
       };
     } else {
       throw new Error(e as string);
