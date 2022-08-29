@@ -55,12 +55,15 @@ const Home: NextPage = () => {
 
     reader.onload = async function (event) {
       try {
-        const { success, timeTaken } = await parseSaveFile(
+        const { success, timeTaken, message } = await parseSaveFile(
           event.target?.result
         );
         if (success) {
           setShowNotification(true);
-          setCompletedTime(timeTaken);
+          setCompletedTime(timeTaken!);
+        } else {
+          setErrorMSG(message!);
+          setShowErrorNotification(true);
         }
       } catch (e) {
         setErrorMSG(e as string);

@@ -28,15 +28,21 @@ export async function parseSaveFile(file: any) {
     // make sure the game version is at least 1.5.0
     // we can modify this later if we decide to support older versions of SDV
     if (!semVerGte(gameVersion, "1.5.0")) {
-      throw new Error(
-        "Please upload a save file from version 1.5.0 or newer. If you would like to request support for an older version, please contact us on Discord or open an issue on Github."
-      );
+      return {
+        success: false,
+        message:
+          "Stardew.app currently only supports Stardew Valley 1.5.0 and above.",
+      };
     }
   } catch (e) {
     if (e instanceof TypeError) {
-      throw new Error(
-        "Invalid file uploaded. Couldn't find Game Version, please upload a Stardew Valley save file."
-      );
+      return {
+        success: false,
+        message:
+          "Invalid file uploaded- couldn't find a valid game version. Please upload a Stardew Valley save file.",
+      };
+    } else {
+      throw new Error(e as string);
     }
   }
 
