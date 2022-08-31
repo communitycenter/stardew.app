@@ -1,19 +1,11 @@
-import { Fragment, useState } from "react";
-// import { Menu, Transition } from "@headlessui/react";
-// import { ChevronDownIcon } from "@heroicons/react/solid";
-// import Link from "next/link";
-// import { FaDiscord } from "react-icons/fa";
-import * as Popover from "@radix-ui/react-popover";
-import Link from "next/link";
-import Image from "next/image";
-import { FaUserCircle } from "react-icons/fa";
+import { useState } from "react";
 import { deleteCookie } from "cookies-next";
+import Image from "next/image";
+
+import * as Popover from "@radix-ui/react-popover";
+
 import CreditsModal from "./modals/credits";
 import DeletionModal from "./modals/deletion";
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 interface Props {
   user: any;
@@ -32,9 +24,7 @@ export default function Popup({ user }: Props) {
             <div className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]">
               <div className="flex space-x-2">
                 <Image
-                  className={classNames(
-                    "mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
-                  )}
+                  className="mr-3 h-5 w-5 flex-shrink-0 rounded-2xl text-black dark:text-white"
                   aria-hidden="true"
                   src={`https://cdn.discordapp.com/avatars/${user.discord_id}/${user.discord_avatar}.png`}
                   alt="User avatar"
@@ -51,7 +41,7 @@ export default function Popup({ user }: Props) {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content asChild>
-              <div className="z-50 mr-24 mb-2 w-full divide-y  divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none dark:border-[#2a2a2a]  dark:bg-[#1F1F1F] dark:text-white sm:mr-8">
+              <div className="z-50 mr-24 mb-2 w-full divide-y divide-[#2A2A2A] rounded-md border bg-gray-100 font-medium shadow-md drop-shadow-lg transition focus:outline-none dark:border-[#2a2a2a] dark:bg-[#1F1F1F] dark:text-white sm:mr-8">
                 <div className="flex justify-between px-4 py-3">
                   <p className="text-right text-sm text-[#7D7D7D]">
                     stardew.app
@@ -62,9 +52,7 @@ export default function Popup({ user }: Props) {
                   <div>
                     <div
                       onClick={() => setShowCreditsSlideover(true)}
-                      className={classNames(
-                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                      )}
+                      className="group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-black dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414] hover:dark:text-white"
                     >
                       Credits
                     </div>
@@ -72,9 +60,7 @@ export default function Popup({ user }: Props) {
                   <div>
                     <div
                       onClick={() => setShowDeleteModal(true)}
-                      className={classNames(
-                        "group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                      )}
+                      className="group flex items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-black dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414] hover:dark:text-white"
                     >
                       Delete uploaded data
                     </div>
@@ -109,9 +95,7 @@ export default function Popup({ user }: Props) {
                       });
                       return (window.location.href = "/");
                     }}
-                    className={classNames(
-                      "group flex w-full items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-white  dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:hover:bg-[#141414]"
-                    )}
+                    className="group flex w-full items-center rounded-md py-2 px-5 text-base font-normal text-[#7D7D7D] hover:cursor-pointer hover:bg-gray-50 hover:text-black dark:border-[#2A2A2A]  dark:bg-[#1F1F1F] dark:hover:bg-[#141414] hover:dark:text-white"
                   >
                     Log out
                   </div>

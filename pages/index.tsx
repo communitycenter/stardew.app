@@ -55,12 +55,15 @@ const Home: NextPage = () => {
 
     reader.onload = async function (event) {
       try {
-        const { success, timeTaken } = await parseSaveFile(
+        const { success, timeTaken, message } = await parseSaveFile(
           event.target?.result
         );
         if (success) {
           setShowNotification(true);
-          setCompletedTime(timeTaken);
+          setCompletedTime(timeTaken!);
+        } else {
+          setErrorMSG(message!);
+          setShowErrorNotification(true);
         }
       } catch (e) {
         setErrorMSG(e as string);
@@ -143,12 +146,6 @@ const Home: NextPage = () => {
                   Additionally, you can login with Discord to save your data
                   across devices.
                 </h2>
-                {!user && (
-                  <h2>
-                    You can also login with Discord to save your data across
-                    devices.
-                  </h2>
-                )}
               </div>
               <div
                 className={classNames("dragAndDropWrapper", {

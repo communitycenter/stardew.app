@@ -1,66 +1,38 @@
 import {
-  Fragment,
   Dispatch,
   SetStateAction,
   ChangeEvent,
   useEffect,
   useState,
+  Fragment,
 } from "react";
 import { getCookie } from "cookies-next";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
-import { Dialog, Menu, Transition } from "@headlessui/react";
 import { HiSparkles } from "react-icons/hi";
 import { IoIosArchive, IoMdCloseCircle } from "react-icons/io";
 import {
   FaUserCircle,
   FaFish,
   FaHammer,
-  FaGithub,
-  FaDiscord,
   FaHouseUser,
-  FaUser,
-  FaPeopleCarry,
-  FaHeartbeat,
   FaHeart,
+  FaDiscord,
+  FaGithub,
 } from "react-icons/fa";
-import { BiImport, BiMenu } from "react-icons/bi";
-import { FiUpload } from "react-icons/fi";
-import { GiCookingPot, GiThreeFriends } from "react-icons/gi";
+import { GiCookingPot } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
-import {
-  parseMoney,
-  parseGeneral,
-  parseSkills,
-  parseQuests,
-  parseStardrops,
-  parseMonsters,
-  parseFamily,
-  parseSocial,
-  parseCooking,
-  parseFishing,
-  parseCrafting,
-  parseMuseum,
-} from "../utils";
-
 import Notification from "./notification";
+import LoginModal from "./modals/login";
+import DesktopNav from "./desktopnav";
+import MobileNav from "./mobilenav";
+
+import { parseSaveFile } from "../utils/file";
+import { Dialog, Transition } from "@headlessui/react";
 import Popup from "./popup";
 
-import { XMLParser } from "fast-xml-parser";
-import * as Popover from "@radix-ui/react-popover";
-import LoginModal from "./modals/login";
-import Example from "./popup";
-import CreditsModal from "./modals/credits";
-import { parseSaveFile } from "../utils/file";
-
-const semVerGte = require("semver/functions/gte");
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
   { name: "Farmer", href: "/farmer", icon: FaUserCircle },
@@ -73,12 +45,17 @@ const navigation = [
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
+export type NavItem = typeof navigation[0];
 
 interface LayoutProps {
   children: React.ReactNode;
   activeTab: string;
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
 }
 
 const SidebarLayout = ({
@@ -89,7 +66,7 @@ const SidebarLayout = ({
 }: LayoutProps) => {
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
-  const [showLoginSlideover, setShowLoginSlideover] = useState<boolean>(false);
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
 
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
@@ -108,45 +85,6 @@ const SidebarLayout = ({
       setUser(null);
     }
   }, []);
-
-  async function handleFile(event: ChangeEvent<HTMLInputElement>) {
-    // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
-    setShowNotification(false);
-    setShowErrorNotification(false);
-    const file = event.target!.files![0];
-    if (typeof file === "undefined") return;
-
-    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
-    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
-      setErrorMSG(
-        "Invalid File Uploaded. Please upload a Stardew Valley save file."
-      );
-      setShowErrorNotification(true);
-      return;
-    }
-    const reader = new FileReader();
-
-    // We can check the progress of the upload with a couple events from the reader
-    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
-    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
-
-    reader.onload = async function (event) {
-      try {
-        const { success, timeTaken } = await parseSaveFile(
-          event.target?.result
-        );
-        if (success) {
-          setShowNotification(true);
-          setCompletedTime(timeTaken);
-        }
-      } catch (e) {
-        setErrorMSG(e as string);
-        setShowErrorNotification(true);
-      }
-    };
-
-    reader.readAsText(file!);
-  }
 
   return (
     <>
@@ -366,30 +304,34 @@ const SidebarLayout = ({
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col dark:bg-[#141414] md:pl-64">
-        <div className="sticky top-0 z-10 pl-1 pt-1   sm:pl-3 sm:pt-3 md:hidden">
-          <button
-            type="button"
-            className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-            onClick={() => setSidebarOpen(true)}
+      <MobileNav
+        activeTab={activeTab}
+        navigation={navigation}
+        setShowLoginModal={setShowLoginModal}
+        setSidebarOpen={setSidebarOpen}
+        sidebarOpen={sidebarOpen}
+        user={user}
+      />
+
+      <DesktopNav
+        activeTab={activeTab}
+        navigation={navigation}
+        setShowLoginModal={setShowLoginModal}
+        setSidebarOpen={setSidebarOpen}
+        user={user}
+      >
+        <AnimatePresence>
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <span className="sr-only">Open sidebar</span>
-            <BiMenu className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <main className="flex-1">
-          <AnimatePresence>
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="py-6">{children}</div>
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </div>
+            <div className="py-6">{children}</div>
+          </motion.div>
+        </AnimatePresence>
+      </DesktopNav>
+
       <Notification
         title="Successfully uploaded save file!"
         description={`Completed in ${completionTime} seconds!`}
@@ -404,7 +346,7 @@ const SidebarLayout = ({
         show={showErrorNotification}
         setShow={setShowErrorNotification}
       />
-      <LoginModal isOpen={showLoginSlideover} setOpen={setShowLoginSlideover} />
+      <LoginModal isOpen={showLoginModal} setOpen={setShowLoginModal} />
     </>
   );
 };
