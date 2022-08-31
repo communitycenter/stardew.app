@@ -1,8 +1,10 @@
+import notes from "../../research/processors/data/secret_notes.json";
+
 interface ReturnType {
   name: string;
   timePlayed: string;
   farmInfo: string;
-  secretNotesFound: number;
+  secretNotesFound: { [key: string]: boolean };
 }
 
 function msToTime(time: number): string {
@@ -25,7 +27,15 @@ const farmTypes = [
 export function parseGeneral(json: any): ReturnType {
   const name = json.SaveGame.player.name;
   const timePlayed = msToTime(json.SaveGame.player.millisecondsPlayed);
-  let secretNotesFound = 0;
+
+  // Get all IDs of the secret notes
+  const notesIDs = Object.keys(notes);
+
+  // Make an empty object that we're eventually gonna return
+  let notesObject: { [key: string]: boolean } = {};
+
+  // For each walnut event, set it to a default value of 0
+  notesIDs.map((id) => (notesObject[id] = false));
 
   // the farm type is stored under SaveGame > whichFarm which is a number 0-6
   // which corresponds to the farmTypes above.
@@ -33,15 +43,16 @@ export function parseGeneral(json: any): ReturnType {
     farmTypes[json.SaveGame.whichFarm]
   })`;
 
-  // Check if user even has seen any secret notes, if not return 0
   if (!json.SaveGame.player.secretNotesSeen.int) {
-    secretNotesFound = 0;
+    return { name, timePlayed, farmInfo, secretNotesFound: notesObject };
   } else {
-    // Filter notes below 1000 to find secret notes, then return length of array
-    secretNotesFound = json.SaveGame.player.secretNotesSeen.int.filter(
+    const secretNotesFound = json.SaveGame.player.secretNotesSeen.int.filter(
       (scrap: number) => scrap <= 1000
-    ).length;
-  }
+    );
+    secretNotesFound.map((note: number) => {
+      notesObject[note] = true;
+    });
 
-  return { name, timePlayed, farmInfo, secretNotesFound };
+    return { name, timePlayed, farmInfo, secretNotesFound: notesObject };
+  }
 }

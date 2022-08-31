@@ -102,8 +102,11 @@ export async function parseSaveFile(file: any) {
         farmInfo,
         moneyEarned,
         questsCompleted,
-        secretNotesFound,
         uploadedFile: true,
+      },
+      secretNotes: {
+        ...secretNotesFound,
+        found: Object.keys(secretNotesFound.found).length,
       },
       stardrops: {
         count: stardropsCount,

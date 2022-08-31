@@ -7,6 +7,7 @@ import Head from "next/head";
 
 import achievements from "../research/processors/data/achievements.json";
 import walnuts from "../research/processors/data/walnuts.json";
+import notes from "../research/processors/data/secret_notes.json";
 
 import {
   ArchiveIcon,
@@ -42,7 +43,7 @@ const Perfection: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
-  const [secretNotesFound] = useKV<number>("general", "secretNotesFound", 0);
+  const [secretNotesFound] = useKV<number>("secretNotes", "found", 0);
 
   const [candles] = useKV<number>("perfection", "candles", 0);
   const [hasVisitedIsland] = useKV<boolean>(
@@ -72,6 +73,7 @@ const Perfection: NextPage = () => {
 
   const [showGinger, setShowGinger] = useState<boolean>(false);
   const [showMonsters, setShowMonsters] = useState<boolean>(false);
+  const [showNotes, setShowNotes] = useState<boolean>(false);
 
   const [showMonster, setShowMonster] = useState<boolean>(false);
   const [selectedMonster, setSelectedMonster] = useState<any>(
@@ -235,19 +237,25 @@ const Perfection: NextPage = () => {
                       </motion.div>
                     </div>
                   </button>
+                  <div className="flex items-center rounded-2xl border border-gray-300 bg-[#f0f0f0] p-1 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                    <div className="text-bold ml-2 mr-2 flex h-5 items-center justify-center rounded-full text-center text-sm  ">
+                      {goldenWalnutsCalculated}/130
+                    </div>
+                  </div>
                 </div>
               </div>
               <AnimatePresence initial={showGinger}>
                 {showGinger && (
                   <motion.div
-                    initial={{ opacity: 0, y: -50, animation: "fadeIn" }}
+                    initial={{ opacity: 0, y: -25, animation: "fadeIn" }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{
                       opacity: 0,
                       y: -25,
                       transition: { duration: 0.2 },
                     }}
-                    className="mt-4 grid gap-4 xl:grid-cols-5"
+                    className="mt-4 grid gap-4 xl:grid-cols-4"
+                    layout
                   >
                     {Object.entries(walnuts).map(([id, walnut]) => (
                       <AchievementCard
@@ -259,6 +267,74 @@ const Perfection: NextPage = () => {
                         description={walnut.hint}
                         sourceURL={
                           "https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
+                        }
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div>
+              <div className="mb-2 mt-4 ml-1 text-2xl text-gray-900 dark:text-white md:text-xl">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                    Secret Notes
+                  </div>
+                  <button
+                    onClick={() => setShowNotes(!showNotes)}
+                    className="flex items-center rounded-2xl border border-gray-300 bg-[#f0f0f0] p-1 dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:bg-[#f0f0f0]/10"
+                  >
+                    <div>
+                      <motion.div
+                        className="rounded-full"
+                        animate={{ rotate: showNotes ? 90 : 0 }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+                  </button>
+                  <div className="flex items-center rounded-2xl border border-gray-300 bg-[#f0f0f0] p-1 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                    <div className="text-bold ml-2 mr-2 flex h-5 items-center justify-center rounded-full text-center text-sm  ">
+                      {secretNotesFound}/25
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <AnimatePresence initial={showNotes}>
+                {showNotes && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -25, animation: "fadeIn" }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                      y: -25,
+                      transition: { duration: 0.2 },
+                    }}
+                    className="mt-4 grid gap-4 xl:grid-cols-4"
+                    layout
+                  >
+                    {Object.entries(notes).map(([id, note]) => (
+                      <AchievementCard
+                        key={id}
+                        title={note.name}
+                        tag="secretNotes"
+                        id={id}
+                        size={32}
+                        description={note.location}
+                        sourceURL={
+                          "https://stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
                         }
                       />
                     ))}
