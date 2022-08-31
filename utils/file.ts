@@ -106,7 +106,7 @@ export async function parseSaveFile(file: any) {
       },
       secretNotes: {
         ...secretNotesFound,
-        found: Object.keys(secretNotesFound.found).length,
+        found: Object.keys(secretNotesFound).length,
       },
       stardrops: {
         count: stardropsCount,
