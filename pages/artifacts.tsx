@@ -16,14 +16,15 @@ import { InformationCircleIcon } from "@heroicons/react/solid";
 
 const Artifacts: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
   const [totalArtifactsFound, setTotalArtifactsFound] = useKV(
-    "artifact",
-    "totalArtifactsFound",
+    "museum",
+    "artifactsDonated",
     0
   );
-  const [totalMineralsFound, totalMineralsFoundFound] = useKV(
-    "mineral",
-    "totalMineralsFound",
+  const [totalMineralsFound, setTotalMineralsFound] = useKV(
+    "museum",
+    "mineralsDonated",
     0
   );
 
@@ -60,15 +61,12 @@ const Artifacts: NextPage = () => {
             <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
               Achievements
             </h2>
-            {/* <InfoCard
-              title={`${name} has caught 123 total fish and has caught 123/67 fish types.`}
+            <InfoCard
+              title={`${name} has donated ${totalArtifactsFound}/42 artifacts and ${totalMineralsFound}/53 minerals.`}
               Icon={InformationCircleIcon}
               description={""}
-            />  
-            
-            I hate this info card.
+            />
 
-            */}
             <div className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-4">
               {Object.values(achievements)
                 .filter((achievement) => achievement.category === "museum")
@@ -80,6 +78,11 @@ const Artifacts: NextPage = () => {
                     title={achievement.name}
                     description={achievement.description}
                     sourceURL={achievement.iconURL}
+                    initialChecked={
+                      achievement.name === "A Complete Collection"
+                        ? totalMineralsFound + totalArtifactsFound === 95
+                        : totalMineralsFound + totalArtifactsFound >= 40
+                    }
                   />
                 ))}
             </div>
@@ -110,7 +113,7 @@ const Artifacts: NextPage = () => {
                 size={32}
                 sourceURL={artifact.iconURL}
                 id={artifact.itemID}
-                tag="artifact"
+                tag="museum"
               />
             ))}
           </div>
@@ -140,7 +143,7 @@ const Artifacts: NextPage = () => {
                 size={32}
                 sourceURL={mineral.iconURL}
                 id={mineral.itemID}
-                tag="mineral"
+                tag="museum"
               />
             ))}
           </div>

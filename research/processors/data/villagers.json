@@ -1,0 +1,1204 @@
+{
+    "Abigail": {
+        "name": "Abigail",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/88/Abigail.png",
+        "isDateable": true,
+        "birthday": "Fall 13",
+        "loves": [
+            66,
+            128,
+            220,
+            226,
+            276,
+            611,
+            904
+        ],
+        "likes": [],
+        "dislikes": [
+            -5,
+            -75,
+            -79,
+            16,
+            245,
+            246
+        ],
+        "hates": [
+            330
+        ]
+    },
+    "Caroline": {
+        "name": "Caroline",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Caroline.png",
+        "isDateable": false,
+        "birthday": "Winter 7",
+        "loves": [
+            213,
+            614,
+            593,
+            907
+        ],
+        "likes": [
+            -7,
+            18,
+            815,
+            402,
+            418
+        ],
+        "dislikes": [
+            -81,
+            330,
+            300,
+            306,
+            307
+        ],
+        "hates": [
+            80,
+            296
+        ]
+    },
+    "Clint": {
+        "name": "Clint",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Clint.png",
+        "isDateable": false,
+        "birthday": "Winter 26",
+        "loves": [
+            60,
+            62,
+            64,
+            66,
+            68,
+            70,
+            336,
+            337,
+            605,
+            649,
+            749
+        ],
+        "likes": [
+            334,
+            335
+        ],
+        "dislikes": [
+            -80,
+            2,
+            16,
+            80
+        ],
+        "hates": [
+            4
+        ]
+    },
+    "Demetrius": {
+        "name": "Demetrius",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f9/Demetrius.png",
+        "isDateable": false,
+        "birthday": "Summer 19",
+        "loves": [
+            207,
+            232,
+            233,
+            400
+        ],
+        "likes": [
+            -5,
+            -79,
+            422
+        ],
+        "dislikes": [
+            80,
+            330
+        ],
+        "hates": [
+            2
+        ]
+    },
+    "Willy": {
+        "name": "Willy",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/82/Willy.png",
+        "isDateable": false,
+        "birthday": "Summer 24",
+        "loves": [
+            72,
+            143,
+            149,
+            154,
+            276,
+            337,
+            698,
+            459
+        ],
+        "likes": [
+            66,
+            336,
+            340,
+            699,
+            707,
+            198,
+            202,
+            209,
+            212,
+            213,
+            214,
+            219,
+            225,
+            727,
+            730,
+            728,
+            732,
+            265
+        ],
+        "dislikes": [
+            -7,
+            -81,
+            2,
+            4,
+            330
+        ],
+        "hates": []
+    },
+    "Elliott": {
+        "name": "Elliott",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Elliott.png",
+        "isDateable": true,
+        "birthday": "Fall 5",
+        "loves": [
+            715,
+            732,
+            218,
+            444,
+            637,
+            814
+        ],
+        "likes": [
+            727,
+            728,
+            -79,
+            60,
+            80,
+            82,
+            84,
+            149,
+            151,
+            346,
+            348,
+            728
+        ],
+        "dislikes": [
+            16,
+            206,
+            330,
+            -79,
+            -81,
+            -6
+        ],
+        "hates": [
+            80,
+            154,
+            300,
+            296
+        ]
+    },
+    "Emily": {
+        "name": "Emily",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/28/Emily.png",
+        "isDateable": true,
+        "birthday": "Spring 27",
+        "loves": [
+            60,
+            62,
+            64,
+            66,
+            68,
+            70,
+            241,
+            428,
+            440
+        ],
+        "likes": [
+            18,
+            82,
+            84,
+            86,
+            196,
+            200,
+            207,
+            230,
+            235,
+            402,
+            418
+        ],
+        "dislikes": [
+            78,
+            2,
+            232,
+            233,
+            225,
+            226
+        ],
+        "hates": [
+            212,
+            213,
+            227,
+            228
+        ]
+    },
+    "Evelyn": {
+        "name": "Evelyn",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8e/Evelyn.png",
+        "isDateable": false,
+        "birthday": "Winter 20",
+        "loves": [
+            72,
+            220,
+            239,
+            284,
+            591,
+            595
+        ],
+        "likes": [
+            -6,
+            18,
+            402,
+            418
+        ],
+        "dislikes": [
+            16,
+            80
+        ],
+        "hates": [
+            225,
+            226,
+            227,
+            228,
+            219,
+            396,
+            397,
+            393,
+            372,
+            248,
+            296,
+            -4,
+            330
+        ]
+    },
+    "George": {
+        "name": "George",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/George.png",
+        "isDateable": false,
+        "birthday": "Fall 24",
+        "loves": [
+            20,
+            205
+        ],
+        "likes": [
+            18,
+            195,
+            199,
+            200,
+            214,
+            219,
+            223,
+            231,
+            233
+        ],
+        "dislikes": [
+            -80,
+            16
+        ],
+        "hates": [
+            22,
+            80,
+            330
+        ]
+    },
+    "Gus": {
+        "name": "Gus",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/52/Gus.png",
+        "isDateable": false,
+        "birthday": "Summer 8",
+        "loves": [
+            72,
+            213,
+            635,
+            729,
+            907
+        ],
+        "likes": [
+            348,
+            303,
+            -7,
+            18
+        ],
+        "dislikes": [
+            16,
+            330
+        ],
+        "hates": [
+            80,
+            167,
+            648
+        ]
+    },
+    "Haley": {
+        "name": "Haley",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Haley.png",
+        "isDateable": true,
+        "birthday": "Spring 14",
+        "loves": [
+            221,
+            421,
+            610,
+            88
+        ],
+        "likes": [
+            18,
+            60,
+            62,
+            64,
+            70,
+            88,
+            222,
+            223,
+            232,
+            233,
+            234,
+            402,
+            418
+        ],
+        "dislikes": [
+            -5,
+            -6,
+            -75,
+            -79,
+            -81,
+            80,
+            -27
+        ],
+        "hates": [
+            -4,
+            2,
+            16,
+            330,
+            74
+        ]
+    },
+    "Harvey": {
+        "name": "Harvey",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/95/Harvey.png",
+        "isDateable": true,
+        "birthday": "Winter 14",
+        "loves": [
+            348,
+            237,
+            432,
+            395,
+            342
+        ],
+        "likes": [
+            -81,
+            -79,
+            -7,
+            402,
+            614,
+            418,
+            422,
+            436,
+            438,
+            442,
+            444,
+            422
+        ],
+        "dislikes": [
+            -4,
+            424,
+            426,
+            2,
+            330,
+            233,
+            232,
+            238,
+            234,
+            223,
+            222,
+            221,
+            220,
+            216,
+            211,
+            210,
+            208,
+            206,
+            205
+        ],
+        "hates": [
+            296,
+            245,
+            397,
+            396,
+            394,
+            393,
+            392
+        ]
+    },
+    "Jas": {
+        "name": "Jas",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/55/Jas.png",
+        "isDateable": false,
+        "birthday": "Summer 4",
+        "loves": [
+            221,
+            595,
+            604
+        ],
+        "likes": [
+            18,
+            60,
+            64,
+            70,
+            88,
+            232,
+            233,
+            234,
+            222,
+            223,
+            340,
+            344,
+            402,
+            418,
+            903
+        ],
+        "dislikes": [
+            -5,
+            -81,
+            -75,
+            -79,
+            80
+        ],
+        "hates": [
+            253,
+            395,
+            459,
+            -26,
+            2,
+            16,
+            330,
+            873
+        ]
+    },
+    "Jodi": {
+        "name": "Jodi",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/41/Jodi.png",
+        "isDateable": false,
+        "birthday": "Fall 11",
+        "loves": [
+            72,
+            200,
+            211,
+            214,
+            220,
+            222,
+            225,
+            231
+        ],
+        "likes": [
+            -5,
+            -6,
+            -79,
+            18,
+            402,
+            418
+        ],
+        "dislikes": [
+            -81,
+            80,
+            248,
+            330
+        ],
+        "hates": [
+            18,
+            22,
+            396
+        ]
+    },
+    "Alex": {
+        "name": "Alex",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/04/Alex.png",
+        "isDateable": true,
+        "birthday": "Summer 13",
+        "loves": [
+            201,
+            212
+        ],
+        "likes": [
+            -5
+        ],
+        "dislikes": [
+            16,
+            330
+        ],
+        "hates": [
+            80
+        ]
+    },
+    "Kent": {
+        "name": "Kent",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/99/Kent.png",
+        "isDateable": false,
+        "birthday": "Spring 4",
+        "loves": [
+            607,
+            649
+        ],
+        "likes": [
+            -5,
+            -79,
+            18,
+            402,
+            418
+        ],
+        "dislikes": [
+            80,
+            330,
+            416,
+            873
+        ],
+        "hates": [
+            -6,
+            2,
+            227,
+            229,
+            456
+        ]
+    },
+    "Leah": {
+        "name": "Leah",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e6/Leah.png",
+        "isDateable": true,
+        "birthday": "Winter 23",
+        "loves": [
+            196,
+            200,
+            348,
+            606,
+            651,
+            426,
+            430
+        ],
+        "likes": [
+            -5,
+            -6,
+            -79,
+            -81,
+            18,
+            402,
+            169,
+            406,
+            408,
+            418,
+            86
+        ],
+        "dislikes": [
+            -2,
+            2,
+            152,
+            330,
+            221,
+            223,
+            229,
+            232,
+            233,
+            241,
+            209,
+            194
+        ],
+        "hates": [
+            305,
+            211,
+            210,
+            206,
+            216
+        ]
+    },
+    "Lewis": {
+        "name": "Lewis",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Lewis.png",
+        "isDateable": false,
+        "birthday": "Spring 7",
+        "loves": [
+            200,
+            208,
+            235,
+            614,
+            260
+        ],
+        "likes": [
+            -80,
+            24,
+            88,
+            90,
+            192,
+            258,
+            264,
+            272,
+            274,
+            278
+        ],
+        "dislikes": [
+            -6,
+            16,
+            330
+        ],
+        "hates": [
+            80
+        ]
+    },
+    "Linus": {
+        "name": "Linus",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Linus.png",
+        "isDateable": false,
+        "birthday": "Winter 3",
+        "loves": [
+            88,
+            90,
+            234,
+            242,
+            280
+        ],
+        "likes": [
+            -5,
+            -6,
+            -79,
+            -81
+        ],
+        "dislikes": [
+            -2,
+            330
+        ],
+        "hates": [
+            2
+        ]
+    },
+    "Marnie": {
+        "name": "Marnie",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/52/Marnie.png",
+        "isDateable": false,
+        "birthday": "Fall 18",
+        "loves": [
+            72,
+            221,
+            240,
+            608
+        ],
+        "likes": [
+            -5,
+            -6,
+            402,
+            418
+        ],
+        "dislikes": [
+            16,
+            152
+        ],
+        "hates": [
+            330
+        ]
+    },
+    "Maru": {
+        "name": "Maru",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Maru.png",
+        "isDateable": true,
+        "birthday": "Summer 10",
+        "loves": [
+            72,
+            197,
+            190,
+            215,
+            222,
+            243,
+            336,
+            337,
+            400,
+            787,
+            910
+        ],
+        "likes": [
+            -260,
+            62,
+            64,
+            66,
+            68,
+            70,
+            334,
+            335,
+            725,
+            726,
+            909
+        ],
+        "dislikes": [
+            -4,
+            330,
+            414,
+            410,
+            404,
+            724
+        ],
+        "hates": [
+            340,
+            342,
+            2,
+            430,
+            416
+        ]
+    },
+    "Pam": {
+        "name": "Pam",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Pam.png",
+        "isDateable": false,
+        "birthday": "Spring 18",
+        "loves": [
+            24,
+            90,
+            199,
+            208,
+            303,
+            346,
+            459,
+            873
+        ],
+        "likes": [
+            -6,
+            -75,
+            -79,
+            18,
+            227,
+            228,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            238,
+            402,
+            418
+        ],
+        "dislikes": [
+            -5,
+            16,
+            80,
+            330
+        ],
+        "hates": [
+            149,
+            151
+        ]
+    },
+    "Penny": {
+        "name": "Penny",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ab/Penny.png",
+        "isDateable": true,
+        "birthday": "Fall 2",
+        "loves": [
+            60,
+            376,
+            651,
+            72,
+            164,
+            218,
+            230,
+            244,
+            254
+        ],
+        "likes": [
+            -6,
+            20,
+            22
+        ],
+        "dislikes": [
+            -4,
+            80,
+            330,
+            456,
+            457,
+            444,
+            440,
+            422,
+            420
+        ],
+        "hates": [
+            446,
+            346,
+            348,
+            303,
+            304,
+            398,
+            459,
+            873
+        ]
+    },
+    "Pierre": {
+        "name": "Pierre",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Pierre.png",
+        "isDateable": false,
+        "birthday": "Spring 26",
+        "loves": [
+            202
+        ],
+        "likes": [
+            -5,
+            -6,
+            -7,
+            18,
+            22,
+            402,
+            418,
+            259
+        ],
+        "dislikes": [
+            -2,
+            -81,
+            330
+        ],
+        "hates": [
+            167,
+            -4,
+            199,
+            270,
+            229,
+            248
+        ]
+    },
+    "Robin": {
+        "name": "Robin",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Robin.png",
+        "isDateable": false,
+        "birthday": "Fall 21",
+        "loves": [
+            224,
+            426,
+            636
+        ],
+        "likes": [
+            -6,
+            -79,
+            424,
+            709
+        ],
+        "dislikes": [
+            16,
+            330
+        ],
+        "hates": [
+            2
+        ]
+    },
+    "Sam": {
+        "name": "Sam",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/94/Sam.png",
+        "isDateable": true,
+        "birthday": "Summer 17",
+        "loves": [
+            90,
+            206,
+            562,
+            731
+        ],
+        "likes": [
+            167,
+            210,
+            213,
+            220,
+            223,
+            224,
+            228,
+            232,
+            233,
+            239,
+            -5
+        ],
+        "dislikes": [
+            -81,
+            80,
+            152,
+            330,
+            -75
+        ],
+        "hates": [
+            306,
+            307,
+            342,
+            -15,
+            2
+        ]
+    },
+    "Sebastian": {
+        "name": "Sebastian",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Sebastian.png",
+        "isDateable": true,
+        "birthday": "Winter 10",
+        "loves": [
+            84,
+            227,
+            236,
+            575,
+            305
+        ],
+        "likes": [
+            267,
+            614,
+            276
+        ],
+        "dislikes": [
+            -81,
+            30,
+            -80
+        ],
+        "hates": [
+            -5,
+            2,
+            459,
+            195,
+            201,
+            240,
+            330,
+            -26,
+            873
+        ]
+    },
+    "Shane": {
+        "name": "Shane",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8b/Shane.png",
+        "isDateable": true,
+        "birthday": "Spring 20",
+        "loves": [
+            206,
+            215,
+            260,
+            346
+        ],
+        "likes": [
+            -5,
+            -79,
+            303
+        ],
+        "dislikes": [
+            -81,
+            152,
+            330
+        ],
+        "hates": [
+            80,
+            342
+        ]
+    },
+    "Vincent": {
+        "name": "Vincent",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Vincent.png",
+        "isDateable": false,
+        "birthday": "Spring 10",
+        "loves": [
+            221,
+            398,
+            612,
+            721,
+            903
+        ],
+        "likes": [
+            18,
+            60,
+            64,
+            70,
+            88,
+            232,
+            233,
+            234,
+            222,
+            223,
+            340,
+            344,
+            402,
+            418
+        ],
+        "dislikes": [
+            -5,
+            -75,
+            -79,
+            -81,
+            80
+        ],
+        "hates": [
+            253,
+            395,
+            459,
+            -26,
+            2,
+            16,
+            330,
+            873
+        ]
+    },
+    "Wizard": {
+        "name": "Wizard",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c7/Wizard.png",
+        "isDateable": false,
+        "birthday": "Winter 17",
+        "loves": [
+            155,
+            422,
+            769,
+            768
+        ],
+        "likes": [
+            -12,
+            72,
+            82,
+            84
+        ],
+        "dislikes": [
+            -5,
+            -6,
+            -81,
+            2,
+            16,
+            330,
+            766
+        ],
+        "hates": []
+    },
+    "Dwarf": {
+        "name": "Dwarf",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Dwarf.png",
+        "isDateable": false,
+        "birthday": "Summer 22",
+        "loves": [
+            554,
+            60,
+            62,
+            64,
+            66,
+            68,
+            70,
+            749
+        ],
+        "likes": [
+            78,
+            82,
+            84,
+            86,
+            96,
+            97,
+            98,
+            99,
+            121,
+            122
+        ],
+        "dislikes": [
+            -5,
+            -6,
+            16,
+            -81,
+            2,
+            4,
+            330
+        ],
+        "hates": []
+    },
+    "Sandy": {
+        "name": "Sandy",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Sandy.png",
+        "isDateable": false,
+        "birthday": "Fall 15",
+        "loves": [
+            18,
+            402,
+            418,
+            905
+        ],
+        "likes": [
+            -75,
+            -79,
+            88,
+            428,
+            436,
+            438,
+            440
+        ],
+        "dislikes": [
+            -4,
+            2,
+            330
+        ],
+        "hates": []
+    },
+    "Krobus": {
+        "name": "Krobus",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Krobus.png",
+        "isDateable": false,
+        "birthday": "Winter 1",
+        "loves": [
+            72,
+            16,
+            276,
+            337,
+            305,
+            308
+        ],
+        "likes": [
+            66,
+            265,
+            336,
+            340
+        ],
+        "dislikes": [
+            -7,
+            -81,
+            2,
+            330
+        ],
+        "hates": []
+    },
+    "Leo": {
+        "name": "Leo",
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Leo.png",
+        "isDateable": false,
+        "birthday": "Summer 26",
+        "loves": [
+            444,
+            289,
+            834,
+            906
+        ],
+        "likes": [
+            852,
+            396,
+            392,
+            394,
+            397,
+            905
+        ],
+        "dislikes": [
+            -7,
+            -81,
+            2,
+            330,
+            303,
+            459,
+            342,
+            346,
+            348
+        ],
+        "hates": [
+            257,
+            253,
+            247,
+            271,
+            283,
+            304,
+            303,
+            346,
+            873,
+            348,
+            459,
+            167
+        ]
+    }
+}

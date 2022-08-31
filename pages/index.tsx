@@ -6,7 +6,7 @@ import DragAndDrop from "../components/inputs/draganddrop";
 
 import { useEffect, useState, ChangeEvent } from "react";
 import { getCookie } from "cookies-next";
-import Link from "next/link"
+import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -14,6 +14,9 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { FaDiscord } from "react-icons/fa";
 
 import logo from "../public/icon.png";
+import { parseSaveFile } from "../utils/file";
+import Notification from "../components/notification";
+import { execPath } from "process";
 
 function classNames(...args: any[]) {
   return args.filter(Boolean).join(" ");
@@ -21,13 +24,54 @@ function classNames(...args: any[]) {
 
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const [errorMSG, setErrorMSG] = useState("");
+  const [completionTime, setCompletedTime] = useState<string>("0.00");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // handling when the user clicks the upload box instead of drag
     e.preventDefault();
-    const file = e.target?.files![0];
 
-    console.log(file.name);
+    // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
+    // setShowNotification(false);
+    // setShowErrorNotification(false);
+    const file = e.target!.files![0];
+    if (typeof file === "undefined") return;
+
+    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
+    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
+      setErrorMSG(
+        "Invalid File Uploaded. Please upload a Stardew Valley save file."
+      );
+      setShowErrorNotification(true);
+      return;
+    }
+    const reader = new FileReader();
+
+    // We can check the progress of the upload with a couple events from the reader
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
+
+    reader.onload = async function (event) {
+      try {
+        const { success, timeTaken, message } = await parseSaveFile(
+          event.target?.result
+        );
+        if (success) {
+          setShowNotification(true);
+          setCompletedTime(timeTaken!);
+        } else {
+          setErrorMSG(message!);
+          setShowErrorNotification(true);
+        }
+      } catch (e) {
+        setErrorMSG(e as string);
+        setShowErrorNotification(true);
+      }
+    };
+
+    reader.readAsText(file!);
   };
 
   const [isDropActive, setIsDropActive] = useState<boolean>(false);
@@ -41,7 +85,7 @@ const Home: NextPage = () => {
     setFile(file);
     console.log("Dropped File", file.name);
   }, []);
-  
+
   const [user, setUser] = useState<{
     discord_name: string;
     discord_id: string;
@@ -102,12 +146,6 @@ const Home: NextPage = () => {
                   Additionally, you can login with Discord to save your data
                   across devices.
                 </h2>
-                {!user && (
-                  <h2>
-                    You can also login with Discord to save your data across
-                    devices.
-                  </h2>
-                )}
               </div>
               <div
                 className={classNames("dragAndDropWrapper", {
@@ -158,6 +196,20 @@ const Home: NextPage = () => {
           </div>
         </div>
       </SidebarLayout>
+      <Notification
+        title="Successfully uploaded save file!"
+        description={`Completed in ${completionTime} seconds!`}
+        success={true}
+        show={showNotification}
+        setShow={setShowNotification}
+      />
+      <Notification
+        title="Error Parsing Data"
+        description={errorMSG}
+        success={false}
+        show={showErrorNotification}
+        setShow={setShowErrorNotification}
+      />
     </>
   );
 };
