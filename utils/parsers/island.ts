@@ -84,8 +84,6 @@ export function parseGingerIsland(json: any): ReturnType {
     });
   }
 
-  console.log(walnutObject);
-
   // Calculate the amount of golden walnuts the player has found based on the game's code
   goldenWalnutsCalculated = Object.entries(walnutObject).reduce(
     (a, b) => a + b[1],
