@@ -201,7 +201,7 @@ const SidebarLayout = ({
                     {!user ? (
                       <div
                         onClick={() => {
-                          setShowLoginSlideover(true);
+                          setShowLoginModal(true);
                           setSidebarOpen(false);
                         }}
                         className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
