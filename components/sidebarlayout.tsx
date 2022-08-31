@@ -21,7 +21,6 @@ import {
 import { GiCookingPot } from "react-icons/gi";
 import { MdLocalShipping, MdMuseum } from "react-icons/md";
 
-<<<<<<< HEAD
 import {
   parseMoney,
   parseGeneral,
@@ -37,8 +36,6 @@ import {
   parseShipping,
 } from "../utils";
 
-=======
->>>>>>> main
 import Notification from "./notification";
 import LoginModal from "./modals/login";
 import DesktopNav from "./desktopnav";
@@ -96,7 +93,6 @@ const SidebarLayout = ({
     }
   }, []);
 
-<<<<<<< HEAD
   async function handleFile(event: ChangeEvent<HTMLInputElement>) {
     // https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react
     setShowNotification(false);
@@ -272,8 +268,6 @@ const SidebarLayout = ({
     reader.readAsText(file!);
   }
 
-=======
->>>>>>> main
   return (
     <>
       <MobileNav
