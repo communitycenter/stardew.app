@@ -285,7 +285,7 @@ const SidebarLayout = ({
             <div className="mx-2 flex items-center space-x-2 text-white">
               {!user ? (
                 <div
-                  onClick={() => setShowLoginSlideover(true)}
+                  onClick={() => setShowLoginModal(true)}
                   className="group flex w-full items-center rounded-md border bg-gray-100 py-4 px-5 text-base font-medium text-black hover:cursor-pointer dark:border-[#2a2a2a] dark:bg-[#1f1f1f] dark:text-white hover:dark:bg-[#191919]"
                 >
                   <FaDiscord
