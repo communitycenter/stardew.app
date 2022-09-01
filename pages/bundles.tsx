@@ -39,6 +39,14 @@ const Bundles: NextPage = () => {
           content="Track your Stardew Valley Community Center bundle progress. See what items you need for your bundles to attain 100% completion on Stardew Valley."
         />
         <meta
+          name="og:description"
+          content="Track your Stardew Valley Community Center bundle progress. See what items you need for your bundles to attain 100% completion on Stardew Valley."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your Stardew Valley Community Center bundle progress. See what items you need for your bundles to attain 100% completion on Stardew Valley."
+        />
+        <meta
           name="keywords"
           content="stardew valley bundle tracker, stardew valley, stardew, stardew checkup, stardew bundles, stardew 100% completion, stardew perfection tracker, stardew, valley"
         />

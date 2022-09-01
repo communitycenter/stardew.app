@@ -69,6 +69,14 @@ const Social: NextPage = () => {
           content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
         />
         <meta
+          name="og:description"
+          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
+        />
+        <meta
           name="keywords"
           content="stardew valley relationship tracker, stardew valley, stardew, stardew checkup, stardew relationships, stardew 100% completion, stardew perfection tracker, stardew, valley, stardew valley npc gifts, stardew valley shane, stardew valley npc loves, stardew valley npcs"
         />

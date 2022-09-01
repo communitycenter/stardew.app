@@ -93,6 +93,14 @@ const Farmer: NextPage = () => {
           content="Track your overall Stardew Valley stats. See how close you are to 100% completion on Stardew Valley."
         />
         <meta
+          name="og:description"
+          content="Track your overall Stardew Valley stats. See how close you are to 100% completion on Stardew Valley."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your overall Stardew Valley stats. See how close you are to 100% completion on Stardew Valley."
+        />
+        <meta
           name="keywords"
           content="stardew valley achievement tracker, stardew valley, stardew, stardew checkup, stardew achievements, stardew 100% completion, stardew perfection tracker, stardew, valley"
         />

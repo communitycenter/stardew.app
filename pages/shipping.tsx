@@ -45,6 +45,14 @@ const Shipping: NextPage = () => {
           content="Track your Stardew Valley farm and forage progress. See what items you need to ship for 100% completion on Stardew Valley."
         />
         <meta
+          name="og:description"
+          content="Track your Stardew Valley farm and forage progress. See what items you need to ship for 100% completion on Stardew Valley."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your Stardew Valley farm and forage progress. See what items you need to ship for 100% completion on Stardew Valley."
+        />
+        <meta
           name="keywords"
           content="stardew valley shipping tracker, stardew valley, stardew, stardew checkup, stardew shipping, stardew 100% completion, stardew perfection tracker, stardew, valley, stardew farm and forage, stardew farm, stardew forage"
         />
