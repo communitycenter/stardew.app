@@ -115,7 +115,7 @@ const Home: NextPage = () => {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
-        <div className="mx-auto flex h-screen max-w-2xl px-4 sm:px-0">
+        {/* <div className="mx-auto flex h-screen max-w-2xl px-4 sm:px-0">
           <div className="m-auto">
             <div className="flex justify-center">
               <Image
@@ -192,6 +192,65 @@ const Home: NextPage = () => {
                   </Link>
                 </a>
               )}
+            </div>
+          </div>
+        </div> */}
+        {/* <div className="px-8">
+          <div className="space-y-4 ">
+            <div>
+              <div className="h-screenflex items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                welcome
+              </div>
+            </div>
+            <div className="flex flex-wrap space-x-4 md:flex-nowrap">
+              <div className="w-screen items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919] ">
+                how to use site
+              </div>
+              <div className="w-screen items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                social links
+              </div>
+            </div>
+          </div>
+        </div> */}
+        <div className="px-8">
+          <div className="grid gap-4">
+            <div>
+              <div className=" h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                welcome
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                welcome
+              </div>
+              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                welcome
+              </div>
+            </div>
+            <div>
+              <DragAndDrop
+                onDragStateChange={onDragStateChange}
+                onFilesDrop={onFilesDrop}
+              >
+                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] hover:shadow-[inset_0_0px_10px] hover:shadow-green-300 hover:transition-shadow hover:duration-300 hover:ease-in-out dark:border-[#2A2A2A] dark:bg-[#191919]">
+                  <label className="flex h-full w-full flex-grow items-center justify-center">
+                    <PlusIcon
+                      className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
+                      Upload Stardew Valley Save File
+                    </p>
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleChange(e)
+                      }
+                    />
+                  </label>
+                </div>
+              </DragAndDrop>
             </div>
           </div>
         </div>
