@@ -46,6 +46,10 @@ const Crafting: NextPage = () => {
           name="description"
           content="Track your Stardew Valley crafting recipe progress. See what recipes you need to craft for 100% completion on Stardew Valley."
         />
+        <meta
+          name="keywords"
+          content="stardew valley crafting tracker, stardew valley, stardew, stardew checkup, stardew crafting, stardew 100% completion, stardew perfection tracker, stardew, valley"
+        />
         d
       </Head>
       <SidebarLayout

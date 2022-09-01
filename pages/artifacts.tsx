@@ -34,6 +34,14 @@ const Artifacts: NextPage = () => {
     <>
       <Head>
         <title>stardew.app | Artifacts</title>
+        <meta
+          name="description"
+          content="Track your Stardew Valley artifacts and museum progress. See what items you have left to donate for 100% completion on Stardew Valley."
+        />
+        <meta
+          name="keywords"
+          content="stardew valley museum tracker, stardew valley artifact tracker, stardew valley artifacts, stardew valley museum, stardew valley prismatic shard, prismatic shard, stardew valley, stardew, stardew checkup, stardew museum, stardew 100% completion, stardew perfection tracker, stardew, valley"
+        />
       </Head>
       <SidebarLayout
         activeTab="Museum & Artifacts"

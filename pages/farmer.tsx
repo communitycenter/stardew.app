@@ -88,6 +88,14 @@ const Farmer: NextPage = () => {
     <>
       <Head>
         <title>stardew.app | Farmer</title>
+        <meta
+          name="description"
+          content="Track your overall Stardew Valley stats. See how close you are to 100% completion on Stardew Valley."
+        />
+        <meta
+          name="keywords"
+          content="stardew valley achievement tracker, stardew valley, stardew, stardew checkup, stardew achievements, stardew 100% completion, stardew perfection tracker, stardew, valley"
+        />
       </Head>
       <SidebarLayout
         activeTab="Farmer"

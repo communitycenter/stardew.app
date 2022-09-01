@@ -47,6 +47,10 @@ const Cooking: NextPage = () => {
           name="description"
           content="Track your Stardew Valley cooking recipe progress. See what recipes you need to cook for 100% completion on Stardew Valley."
         />
+        <meta
+          name="keywords"
+          content="stardew valley cooking tracker, stardew valley, stardew, stardew checkup, stardew cooking, stardew 100% completion, stardew perfection tracker, stardew, valley, cook stardew valley"
+        />
         d
       </Head>
       <SidebarLayout
