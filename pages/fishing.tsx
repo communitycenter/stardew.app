@@ -45,6 +45,22 @@ const Fishing: NextPage = () => {
     <>
       <Head>
         <title>stardew.app | Fishing</title>
+        <meta
+          name="description"
+          content="Track your Stardew Valley fishing progress. See what fish you need to catch for 100% completion on Stardew Valley."
+        />
+        <meta
+          name="og:description"
+          content="Track your Stardew Valley fishing progress. See what fish you need to catch for 100% completion on Stardew Valley."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your Stardew Valley fishing progress. See what fish you need to catch for 100% completion on Stardew Valley."
+        />
+        <meta
+          name="keywords"
+          content="stardew valley fishing tracker, stardew valley, stardew, stardew checkup, stardew fishing, stardew 100% completion, stardew perfection tracker, stardew, valley"
+        />
       </Head>
       <SidebarLayout
         activeTab="Fishing"

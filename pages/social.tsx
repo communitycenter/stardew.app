@@ -66,9 +66,20 @@ const Social: NextPage = () => {
         <title>stardew.app | Relationships</title>
         <meta
           name="description"
-          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC as well information on the gifts that are the best or worst to gift them."
+          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
         />
-        d
+        <meta
+          name="og:description"
+          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
+        />
+        <meta
+          name="twitter:description"
+          content="Track your Stardew Valley relationships progress. View your villager relationship levels with each Stardew Valley NPC, as well information on the gifts that are the best or worst to gift them."
+        />
+        <meta
+          name="keywords"
+          content="stardew valley relationship tracker, stardew valley, stardew, stardew checkup, stardew relationships, stardew 100% completion, stardew perfection tracker, stardew, valley, stardew valley npc gifts, stardew valley shane, stardew valley npc loves, stardew valley npcs"
+        />
       </Head>
       <SidebarLayout
         activeTab="Family & Social"
@@ -92,6 +103,81 @@ const Social: NextPage = () => {
           </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
+          {/* Home and Family Section */}
+          <h2 className="mt-8 mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+            Home & Family
+          </h2>
+          <div className="mt-2 grid grid-cols-2 gap-4 xl:grid-cols-3">
+            <InfoCard Icon={UsersIcon} title={"Spouse"} description={spouse} />
+            <InfoCard
+              Icon={HomeIcon}
+              title={"House Upgrade Level"}
+              description={houseUpgradeLevel.toString()}
+            />
+            <InfoCard
+              Icon={EmojiSadIcon}
+              title={"Children"}
+              description={childrenLength.toString()}
+            />
+          </div>
+          <div className="mt-4" />
+          {Object.values(villagers)
+            .filter((villager: any) => villager.name === spouse)
+            .map((villager: any) => (
+              <VillagerCard
+                key={villager.name}
+                iconURL={villager.iconURL}
+                isDateable={true}
+                name={villager.name}
+                married={true}
+                setSelectedVillager={setSelectedVillager}
+                setShowVillager={setShowVillager}
+                villagerObj={villager}
+              />
+            ))}
+          {/* End Home & Family */}
+
+          {/* Villager Section */}
+          <h2 className="mt-8 text-lg font-semibold text-gray-900 dark:text-white">
+            Villagers
+          </h2>
+          <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
+            {/* Marriage Candidates */}
+            {Object.values(villagers)
+              .filter(
+                (villager: any) =>
+                  villager.isDateable && villager.name !== spouse // don't show spouse in list of villagers
+              )
+              .map((villager: any) => (
+                <VillagerCard
+                  key={villager.name}
+                  name={villager.name}
+                  iconURL={villager.iconURL}
+                  isDateable={villager.isDateable}
+                  setSelectedVillager={setSelectedVillager}
+                  setShowVillager={setShowVillager}
+                  villagerObj={villager}
+                />
+              ))}
+            {/* End Marriage Candidates */}
+
+            {/* Non Dateable Villagers */}
+            {Object.values(villagers)
+              .filter((villager: any) => !villager.isDateable)
+              .map((villager: any) => (
+                <VillagerCard
+                  key={villager.name}
+                  name={villager.name}
+                  iconURL={villager.iconURL}
+                  isDateable={villager.isDateable}
+                  setSelectedVillager={setSelectedVillager}
+                  setShowVillager={setShowVillager}
+                  villagerObj={villager}
+                />
+              ))}
+            {/* End Non Dateable Villagers */}
+          </div>
+          {/* End Villager Section */}
           <div>
             <h2 className="my-2 text-lg font-semibold text-gray-900 dark:text-white">
               Achievements
@@ -172,82 +258,6 @@ const Social: NextPage = () => {
                 ))}
             </div>
           </div>
-
-          {/* Home and Family Section */}
-          <h2 className="mt-8 mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-            Home & Family
-          </h2>
-          <div className="mt-2 grid grid-cols-2 gap-4 xl:grid-cols-3">
-            <InfoCard Icon={UsersIcon} title={"Spouse"} description={spouse} />
-            <InfoCard
-              Icon={HomeIcon}
-              title={"House Upgrade Level"}
-              description={houseUpgradeLevel.toString()}
-            />
-            <InfoCard
-              Icon={EmojiSadIcon}
-              title={"Children"}
-              description={childrenLength.toString()}
-            />
-          </div>
-          <div className="mt-4" />
-          {Object.values(villagers)
-            .filter((villager: any) => villager.name === spouse)
-            .map((villager: any) => (
-              <VillagerCard
-                key={villager.name}
-                iconURL={villager.iconURL}
-                isDateable={true}
-                name={villager.name}
-                married={true}
-                setSelectedVillager={setSelectedVillager}
-                setShowVillager={setShowVillager}
-                villagerObj={villager}
-              />
-            ))}
-          {/* End Home & Family */}
-
-          {/* Villager Section */}
-          <h2 className="mt-8 text-lg font-semibold text-gray-900 dark:text-white">
-            Villagers
-          </h2>
-          <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
-            {/* Marriage Candidates */}
-            {Object.values(villagers)
-              .filter(
-                (villager: any) =>
-                  villager.isDateable && villager.name !== spouse // don't show spouse in list of villagers
-              )
-              .map((villager: any) => (
-                <VillagerCard
-                  key={villager.name}
-                  name={villager.name}
-                  iconURL={villager.iconURL}
-                  isDateable={villager.isDateable}
-                  setSelectedVillager={setSelectedVillager}
-                  setShowVillager={setShowVillager}
-                  villagerObj={villager}
-                />
-              ))}
-            {/* End Marriage Candidates */}
-
-            {/* Non Dateable Villagers */}
-            {Object.values(villagers)
-              .filter((villager: any) => !villager.isDateable)
-              .map((villager: any) => (
-                <VillagerCard
-                  key={villager.name}
-                  name={villager.name}
-                  iconURL={villager.iconURL}
-                  isDateable={villager.isDateable}
-                  setSelectedVillager={setSelectedVillager}
-                  setShowVillager={setShowVillager}
-                  villagerObj={villager}
-                />
-              ))}
-            {/* End Non Dateable Villagers */}
-          </div>
-          {/* End Villager Section */}
         </div>
       </SidebarLayout>
       <VillagerSlideOver

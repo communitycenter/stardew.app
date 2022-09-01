@@ -83,12 +83,20 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                       Mohamed, Conor Byrne, Ian Mitchell and Brandon Saldan for
                       contributions that got the site to where it is today.
                     </p>
-                    <h3 className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
-                      Other Sources
+                    <h3 className="space-y-4 text-sm font-medium leading-6 text-gray-900 dark:text-white">
+                      Notable Mentions
                       <p className="text-sm font-normal text-gray-500">
                         Stardew.app would not have been possible without the
-                        Stardew Valley Wiki, as well as MouseyPound&apos;
+                        Stardew Valley Wiki, as well as MouseyPound&apos;s
                         contributions on Stardew Checkup.
+                      </p>
+                      <p className="text-sm font-normal text-gray-500">
+                        A huge incredible thank you to the wonderful Stardew
+                        Valley Discord community (especially the seasoned
+                        farmers), where many questions on design styles,
+                        usability, and other website related testing was done.
+                        The site would not be as quality without the help of the
+                        community.
                       </p>
                     </h3>
 
