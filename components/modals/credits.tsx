@@ -83,7 +83,7 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                       Mohamed, Conor Byrne, Ian Mitchell and Brandon Saldan for
                       contributions that got the site to where it is today.
                     </p>
-                    <h3 className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+                    <h3 className="space-y-4 text-sm font-medium leading-6 text-gray-900 dark:text-white">
                       Notable Mentions
                       <p className="text-sm font-normal text-gray-500">
                         Stardew.app would not have been possible without the
