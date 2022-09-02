@@ -10,7 +10,7 @@ import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 import FishSlideOver from "../components/slideovers/fishslideover";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useKV } from "../hooks/useKV";
 import Head from "next/head";
 
@@ -25,6 +25,20 @@ const requirements: Record<string, number> = {
 };
 
 const Fishing: NextPage = () => {
+  const [data, setData] = useState<{ [key: string]: boolean } | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    fetch("/api/getCategoryInfo?category=fish&type=boolean")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const [_filter, setFilter] = useState<string>("off");
+
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   const [name] = useKV<string>("general", "name", "Farmer");
@@ -130,20 +144,65 @@ const Fishing: NextPage = () => {
           </h2>
           <div className="flex items-center space-x-4">
             <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
+              <div
+                onClick={() =>
+                  setFilter((prev) => (prev === "true" ? "off" : "true"))
+                }
+                className={
+                  "flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 hover:cursor-pointer dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:border-gray-400" +
+                  (_filter === "true" ? " bg-[#e0e0e0] dark:bg-[#2A2A2A]" : "")
+                }
+              >
                 <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
                 <p className="text-sm dark:text-white">Caught Fish</p>
               </div>
             </div>
             <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
+              <div
+                onClick={() =>
+                  setFilter((prev) => (prev === "false" ? "off" : "false"))
+                }
+                className={
+                  "flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 hover:cursor-pointer dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:border-gray-400" +
+                  (_filter === "false" ? " bg-[#e0e0e0] dark:bg-[#2A2A2A]" : "")
+                }
+              >
                 <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
                 <p className="text-sm dark:text-white">Uncaught Fish</p>
               </div>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(fishes).map((fish) => (
+            {loading || !data
+              ? Object.values(fishes).map((fish) => (
+                  <BooleanCard
+                    key={fish.itemID}
+                    category="fish"
+                    itemObject={fish}
+                    setSelected={setSelectedFish}
+                    setShow={setShowFish}
+                    setCount={setUniqueCaught}
+                  />
+                ))
+              : Object.keys(data)
+                  .filter((key) => {
+                    if (_filter === "off") {
+                      return data[key] === true || data[key] === false;
+                    } else {
+                      return data[key] === JSON.parse(_filter);
+                    }
+                  })
+                  .map((fishID) => (
+                    <BooleanCard
+                      key={fishID}
+                      category="fish"
+                      itemObject={fishes[fishID as keyof typeof fishes]}
+                      setSelected={setSelectedFish}
+                      setShow={setShowFish}
+                      setCount={setUniqueCaught}
+                    />
+                  ))}
+            {/* {Object.values(fishes).map((fish) => (
               <BooleanCard
                 key={fish.itemID}
                 category="fish"
@@ -152,7 +211,7 @@ const Fishing: NextPage = () => {
                 setShow={setShowFish}
                 setCount={setUniqueCaught}
               />
-            ))}
+            ))} */}
           </div>
         </div>
       </SidebarLayout>
