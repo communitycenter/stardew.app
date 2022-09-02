@@ -16,6 +16,7 @@ import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
 import { InformationCircleIcon } from "@heroicons/react/solid";
+import { useCategory } from "../utils/useCategory";
 
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
@@ -25,17 +26,7 @@ const requirements: Record<string, number> = {
 };
 
 const Fishing: NextPage = () => {
-  const [data, setData] = useState<{ [key: string]: boolean } | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    fetch("/api/getCategoryInfo?category=fish&type=boolean")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
+  const { data, error, isLoading } = useCategory("fish", "boolean");
 
   const [_filter, setFilter] = useState<string>("off");
 
@@ -173,7 +164,7 @@ const Fishing: NextPage = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {loading || !data
+            {isLoading
               ? Object.values(fishes).map((fish) => (
                   <BooleanCard
                     key={fish.itemID}
