@@ -71,25 +71,25 @@ export default function Popup({ user }: Props) {
                     onClick={() => {
                       deleteCookie("token", {
                         maxAge: 0,
-                        domain: process.env.DEVELOPMENT
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
                           ? "localhost"
                           : "stardew.app",
                       });
                       deleteCookie("uid", {
                         maxAge: 0,
-                        domain: process.env.DEVELOPMENT
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
                           ? "localhost"
                           : "stardew.app",
                       });
                       deleteCookie("oauth_state", {
                         maxAge: 0,
-                        domain: process.env.DEVELOPMENT
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
                           ? "localhost"
                           : "stardew.app",
                       });
                       deleteCookie("discord_user", {
                         maxAge: 0,
-                        domain: process.env.DEVELOPMENT
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
                           ? "localhost"
                           : "stardew.app",
                       });

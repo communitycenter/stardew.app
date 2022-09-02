@@ -99,7 +99,7 @@ export default async function handler(
     setCookie("uid", user.id, {
       req,
       res,
-      domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
+      domain: process.env.NEXT_PUBLIC_DEVELOPMENT ? "localhost" : "stardew.app",
       maxAge: 60 * 60 * 24 * 365,
     });
 
@@ -107,7 +107,7 @@ export default async function handler(
     setCookie("token", token.token, {
       req,
       res,
-      domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
+      domain: process.env.NEXT_PUBLIC_DEVELOPMENT ? "localhost" : "stardew.app",
       expires: new Date(token.expires * 1000),
     });
 
@@ -121,7 +121,9 @@ export default async function handler(
       {
         req,
         res,
-        domain: process.env.DEVELOPMENT ? "localhost" : "stardew.app",
+        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+          ? "localhost"
+          : "stardew.app",
         expires: new Date(token.expires * 1000),
       }
     );
