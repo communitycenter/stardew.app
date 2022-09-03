@@ -8,7 +8,6 @@ interface Props {
 }
 
 const boolOpts = new Set(["true", "false"]);
-const numOpts = new Set(["0", "1", "2"]);
 
 const bubbleColors: Record<string, string> = {
   true: "border-green-900 bg-green-500/20", // completed
