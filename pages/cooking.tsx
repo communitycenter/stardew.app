@@ -151,9 +151,7 @@ const Cooking: NextPage = () => {
               : Object.keys(data)
                   .filter((key) => {
                     if (_filter === "off") {
-                      return (
-                        data[key] === 0 || data[key] === 1 || data[key] === 2
-                      );
+                      return true;
                     } else {
                       return data[key] === JSON.parse(_filter);
                     }
