@@ -9,14 +9,15 @@ import AchievementCard from "../components/cards/achievementcard";
 import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 import FishSlideOver from "../components/slideovers/fishslideover";
+import FilterBtn from "../components/filterbtn";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useKV } from "../hooks/useKV";
+import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
 import { InformationCircleIcon } from "@heroicons/react/solid";
-import { useCategory } from "../utils/useCategory";
 
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
@@ -133,35 +134,19 @@ const Fishing: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             All Fish
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div
-                onClick={() =>
-                  setFilter((prev) => (prev === "true" ? "off" : "true"))
-                }
-                className={
-                  "flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 hover:cursor-pointer dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:border-gray-400" +
-                  (_filter === "true" ? " bg-[#e0e0e0] dark:bg-[#2A2A2A]" : "")
-                }
-              >
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Caught Fish</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div
-                onClick={() =>
-                  setFilter((prev) => (prev === "false" ? "off" : "false"))
-                }
-                className={
-                  "flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 hover:cursor-pointer dark:border-[#2A2A2A] dark:bg-[#191919] hover:dark:border-gray-400" +
-                  (_filter === "false" ? " bg-[#e0e0e0] dark:bg-[#2A2A2A]" : "")
-                }
-              >
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Uncaught Fish</p>
-              </div>
-            </div>
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="true"
+              title="Caught Fish"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="false"
+              title="Uncaught Fish"
+            />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {isLoading
