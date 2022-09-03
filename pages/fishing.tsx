@@ -134,6 +134,8 @@ const Fishing: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             All Fish
           </h2>
+
+          {/* Filter Buttons */}
           <div className="mt-2 flex items-center space-x-4">
             <FilterBtn
               _filter={_filter}
@@ -148,6 +150,8 @@ const Fishing: NextPage = () => {
               title="Uncaught Fish"
             />
           </div>
+          {/* End Filter Buttons */}
+
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {isLoading
               ? Object.values(fishes).map((fish) => (
@@ -178,16 +182,6 @@ const Fishing: NextPage = () => {
                       setCount={setUniqueCaught}
                     />
                   ))}
-            {/* {Object.values(fishes).map((fish) => (
-              <BooleanCard
-                key={fish.itemID}
-                category="fish"
-                itemObject={fish}
-                setSelected={setSelectedFish}
-                setShow={setShowFish}
-                setCount={setUniqueCaught}
-              />
-            ))} */}
           </div>
         </div>
       </SidebarLayout>
