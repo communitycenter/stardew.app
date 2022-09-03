@@ -19,9 +19,11 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const query = req.query;
   const { category, type } = query;
 
-  console.log("category", category);
-
-  if (!category) return res.status(400).json({ error: "No category provided" });
+  if (!category || !type) {
+    return res
+      .status(400)
+      .json({ error: "Missing Query Param (Category or Type required)" });
+  }
 
   // grab all {id: id, value: value} from trackedVariables where user = uid,
   // from the correct category
