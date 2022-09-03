@@ -91,6 +91,8 @@ const Artifacts: NextPage = () => {
                 ))}
             </div>
           </div>
+
+          {/* ARTIFACTS */}
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             Artifacts
           </h2>
@@ -121,6 +123,9 @@ const Artifacts: NextPage = () => {
               />
             ))}
           </div>
+          {/* END ARTIFACTS */}
+
+          {/* MINERALS */}
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             Minerals
           </h2>
@@ -151,6 +156,7 @@ const Artifacts: NextPage = () => {
               />
             ))}
           </div>
+          {/* END MINERALS */}
         </div>
       </SidebarLayout>
     </>

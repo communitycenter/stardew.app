@@ -15,7 +15,7 @@ type Props = {
   itemObject: Fish | any;
   category: string;
   setSelected: Dispatch<SetStateAction<Fish | any>>;
-  setShow: Dispatch<SetStateAction<boolean>>;
+  setShow?: Dispatch<SetStateAction<boolean>>;
   setCount: Dispatch<SetStateAction<number>>;
 };
 
@@ -61,7 +61,7 @@ const BooleanCard = ({
 
   const oneClick = useCallback(() => {
     setSelected(itemObject);
-    setShow(true);
+    setShow?.(true);
   }, [itemObject, setSelected, setShow]);
 
   const twoClick = useCallback(() => {
