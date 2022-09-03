@@ -12,11 +12,10 @@ import RecipeSlideOver from "../components/slideovers/recipeslideover";
 import FilterBtn from "../components/filterbtn";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
 import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
-import { FilterIcon } from "@heroicons/react/outline";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements

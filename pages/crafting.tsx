@@ -12,11 +12,10 @@ import RecipeSlideOver from "../components/slideovers/recipeslideover";
 import FilterBtn from "../components/filterbtn";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
 import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
-import { FilterIcon } from "@heroicons/react/outline";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements
@@ -74,17 +73,6 @@ const Crafting: NextPage = () => {
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
             Crafting
           </h1>
-          <div>
-            <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-              <span className="flex justify-between">
-                {" "}
-                <FilterIcon
-                  className="h-5 w-5 text-black dark:bg-[#1F1F1F] dark:text-white"
-                  aria-hidden="true"
-                />
-              </span>
-            </label>
-          </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
           <div>
