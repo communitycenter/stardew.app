@@ -135,10 +135,14 @@ export async function parseSaveFile(file: any) {
         ...monstersKilled,
       },
       museum: {
-        ...artifacts,
-        ...minerals,
         artifactsDonated,
         mineralsDonated,
+      },
+      artifacts: {
+        ...artifacts,
+      },
+      minerals: {
+        ...minerals,
       },
       family: {
         houseUpgradeLevel,
