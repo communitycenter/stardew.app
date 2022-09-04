@@ -12,6 +12,7 @@ import Image from "next/image";
 type Props = {
   recipe: any;
   category: string;
+  bigCraftable?: boolean;
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
   setKnownCount: Dispatch<SetStateAction<number>>;
@@ -37,7 +38,7 @@ function useSingleAndDoubleClick(
     if (click === 2) actionDoubleClick();
 
     return () => clearTimeout(timer);
-  }, [click, actionDoubleClick, actionSimpleClick, delay]);
+  }, [click]);
 
   return () => setClick((prev) => prev + 1);
 }
@@ -45,6 +46,7 @@ function useSingleAndDoubleClick(
 const RecipeCard = ({
   recipe,
   category,
+  bigCraftable,
   setSelectedRecipe,
   setShowRecipe,
   setKnownCount,
@@ -96,7 +98,7 @@ const RecipeCard = ({
         break;
     }
     setValue((prev) => (prev + 1) % 3);
-  }, [setValue, setCompletedCount, setKnownCount, value]);
+  }, [setValue]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (

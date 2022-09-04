@@ -40,7 +40,7 @@ function useSingleAndDoubleClick(
     if (click === 2) actionDoubleClick();
 
     return () => clearTimeout(timer);
-  }, [click, actionDoubleClick, actionSimpleClick, delay]);
+  }, [click]);
 
   return () => setClick((prev) => prev + 1);
 }
@@ -70,7 +70,7 @@ const AchievementCard = ({
     else setCount?.((prev: number) => prev + 1);
 
     setChecked((old) => !old);
-  }, [setChecked, checked, setCount]);
+  }, [setChecked]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
 
