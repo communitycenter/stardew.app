@@ -139,7 +139,6 @@ const Crafting: NextPage = () => {
                   <RecipeCard
                     key={recipe.itemID}
                     category={"crafting"}
-                    bigCraftable={recipe.bigCraftable}
                     recipe={recipe}
                     setSelectedRecipe={setSelectedRecipe}
                     setShowRecipe={setShowRecipe}
@@ -159,11 +158,6 @@ const Crafting: NextPage = () => {
                     <RecipeCard
                       key={recipeID}
                       category={"crafting"}
-                      bigCraftable={
-                        crafting_recipes[
-                          recipeID as keyof typeof crafting_recipes
-                        ].bigCraftable
-                      }
                       recipe={
                         crafting_recipes[
                           recipeID as keyof typeof crafting_recipes
