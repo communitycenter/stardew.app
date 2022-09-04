@@ -5,22 +5,31 @@ import artifacts from "../research/processors/data/museum.json";
 
 import AchievementCard from "../components/cards/achievementcard";
 import InfoCard from "../components/cards/infocard";
+import BooleanCard from "../components/cards/booleancard";
+import FilterBtn from "../components/filterbtn";
 import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
 import { useKV } from "../hooks/useKV";
+import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
 import { InformationCircleIcon } from "@heroicons/react/solid";
-import BooleanCard from "../components/cards/booleancard";
-import FilterBtn from "../components/filterbtn";
-import { useCategory } from "../utils/useCategory";
 
 const Artifacts: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [_filter, setFilter] = useState<string>("off");
+  const [_Afilter, setAFilter] = useState<string>("off");
+  const [_Mfilter, setMFilter] = useState<string>("off");
 
-  const { data, error, isLoading } = useCategory("museum", "boolean");
+  const { data: archData, isLoading: archLoading } = useCategory(
+    "artifacts",
+    "boolean"
+  );
+
+  const { data: minData, isLoading: minLoading } = useCategory(
+    "minerals",
+    "boolean"
+  );
 
   const [totalArtifactsFound, setTotalArtifactsFound] = useKV(
     "museum",
@@ -104,32 +113,32 @@ const Artifacts: NextPage = () => {
           </h2>
           <div className="mt-2 flex items-center space-x-4">
             <FilterBtn
-              _filter={_filter}
-              setFilter={setFilter}
+              _filter={_Afilter}
+              setFilter={setAFilter}
               targetState="true"
               title="Donated Artifact"
             />
             <FilterBtn
-              _filter={_filter}
-              setFilter={setFilter}
+              _filter={_Afilter}
+              setFilter={setAFilter}
               targetState="false"
               title="Unfound Artifact"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {isLoading
+            {archLoading
               ? Object.entries(artifacts.artifacts).map(([, artifact]) => (
                   <BooleanCard
                     key={artifact.itemID}
                     itemObject={artifact}
-                    category="museum"
+                    category="artifacts"
                     setCount={setTotalArtifactsFound}
                   />
                 ))
-              : Object.keys(data)
+              : Object.keys(archData)
                   .filter((key) => {
-                    if (_filter === "off") return true;
-                    else return data[key] === JSON.parse(_filter);
+                    if (_Afilter === "off") return true;
+                    else return archData[key] === JSON.parse(_Afilter);
                   })
                   .map((artifactID: string) => (
                     <BooleanCard
@@ -139,7 +148,7 @@ const Artifacts: NextPage = () => {
                           artifactID as keyof typeof artifacts.artifacts
                         ]
                       }
-                      category="museum"
+                      category="artifacts"
                       setCount={setTotalArtifactsFound}
                     />
                   ))}
@@ -150,29 +159,47 @@ const Artifacts: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             Minerals
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Donated Mineral</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Unfound Mineral</p>
-              </div>
-            </div>
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_Mfilter}
+              setFilter={setMFilter}
+              targetState="true"
+              title="Donated Artifact"
+            />
+            <FilterBtn
+              _filter={_Mfilter}
+              setFilter={setMFilter}
+              targetState="false"
+              title="Unfound Artifact"
+            />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(artifacts.minerals).map(([, mineral]) => (
-              <BooleanCard
-                key={mineral.itemID}
-                itemObject={mineral}
-                category="museum"
-                setCount={setTotalArtifactsFound}
-              />
-            ))}
+            {minLoading
+              ? Object.entries(artifacts.minerals).map(([, mineral]) => (
+                  <BooleanCard
+                    key={mineral.itemID}
+                    itemObject={mineral}
+                    category="minerals"
+                    setCount={setTotalArtifactsFound}
+                  />
+                ))
+              : Object.keys(minData)
+                  .filter((key) => {
+                    if (_Mfilter === "off") return true;
+                    else return minData[key] === JSON.parse(_Mfilter);
+                  })
+                  .map((mineralID: string) => (
+                    <BooleanCard
+                      key={mineralID}
+                      itemObject={
+                        artifacts.minerals[
+                          mineralID as keyof typeof artifacts.minerals
+                        ]
+                      }
+                      category="minerals"
+                      setCount={setTotalMineralsFound}
+                    />
+                  ))}
           </div>
           {/* END MINERALS */}
         </div>
