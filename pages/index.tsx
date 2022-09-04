@@ -30,6 +30,8 @@ const Home: NextPage = () => {
   const [completionTime, setCompletedTime] = useState<string>("0.00");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowNotification(false);
+    setShowErrorNotification(false);
     // handling when the user clicks the upload box instead of drag
     e.preventDefault();
 
@@ -81,9 +83,44 @@ const Home: NextPage = () => {
     setIsDropActive(dragActive);
   }, []);
 
-  const onFilesDrop = React.useCallback((file: File) => {
-    setFile(file);
-    console.log("Dropped File", file.name);
+  const onFilesDrop = React.useCallback(async (file: File) => {
+    setShowNotification(false);
+    setShowErrorNotification(false);
+    if (typeof file === "undefined") return;
+
+    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
+    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
+      setErrorMSG(
+        "Invalid File Uploaded. Please upload a Stardew Valley save file."
+      );
+      setShowErrorNotification(true);
+      return;
+    }
+    const reader = new FileReader();
+
+    // We can check the progress of the upload with a couple events from the reader
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
+
+    reader.onload = async function (event) {
+      try {
+        const { success, timeTaken, message } = await parseSaveFile(
+          event.target?.result
+        );
+        if (success) {
+          setShowNotification(true);
+          setCompletedTime(timeTaken!);
+        } else {
+          setErrorMSG(message!);
+          setShowErrorNotification(true);
+        }
+      } catch (e) {
+        setErrorMSG(e as string);
+        setShowErrorNotification(true);
+      }
+    };
+
+    reader.readAsText(file!);
   }, []);
 
   const [user, setUser] = useState<{
@@ -120,7 +157,7 @@ const Home: NextPage = () => {
             <div>
               <div className=" h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
                 <div>
-                  <div className="flex justify-center space-y-3">
+                  <div className="space-y-3">
                     <div>
                       <Image
                         src={logo}
@@ -128,7 +165,7 @@ const Home: NextPage = () => {
                         height={64}
                         alt="stardew.app"
                       />
-                      <div>123</div>
+                      <div></div>
                     </div>
                   </div>
                 </div>
@@ -147,15 +184,33 @@ const Home: NextPage = () => {
                 onDragStateChange={onDragStateChange}
                 onFilesDrop={onFilesDrop}
               >
-                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] hover:shadow-[inset_0_0px_10px] hover:shadow-green-300 hover:transition-shadow hover:duration-300 hover:ease-in-out dark:border-[#2A2A2A] dark:bg-[#191919]">
-                  <label className="flex h-full w-full flex-grow items-center justify-center space-x-3 hover:cursor-pointer   ">
+                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-solid transition hover:border-sky-900 hover:bg-sky-800/20 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                  <label className="flex h-full w-full flex-grow items-center justify-center space-x-3">
                     <PlusIcon
-                      className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
+                      className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <p className="text-sm text-gray-400 group-hover:text-gray-500">
-                      Upload Stardew Valley Save File
-                    </p>
+
+                    <div>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        Drag your Stardew Valley save here, or click to upload.
+                      </p>
+                      <br />
+
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        Need help finding your save? Saves usually look like
+                        this: <code>Jack_0120902</code>
+                      </p>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        <span className="font-bold">Windows: </span>
+                        %AppData%\StardewValley\Saves\
+                      </p>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        <span className="font-bold">macOS & Linux: </span>
+                        ~/.config/StardewValley/Saves/
+                      </p>
+                    </div>
+
                     <input
                       type="file"
                       className="hidden"

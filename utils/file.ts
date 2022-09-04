@@ -15,6 +15,7 @@ import { parseStardrops } from "./parsers/stardrops";
 const semVerGte = require("semver/functions/gte");
 
 export async function parseSaveFile(file: any) {
+  console.log(file);
   console.log("Parsing XML...");
   const start = performance.now();
   const parser = new XMLParser({ ignoreAttributes: false });
