@@ -4,6 +4,7 @@ import achievements from "../research/processors/data/achievements.json";
 
 import InfoCard from "../components/cards/infocard";
 import AchievementCard from "../components/cards/achievementcard";
+import ExpandableCard from "../components/cards/expandablecard";
 import SkillDisplay from "../components/skilldisplay";
 import SidebarLayout from "../components/sidebarlayout";
 
@@ -305,18 +306,15 @@ const Farmer: NextPage = () => {
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                 {Object.keys(STARDROPS).map((stardrop) => (
-                  <AchievementCard
-                    id={stardrop}
-                    tag={"stardrops"}
+                  <ExpandableCard
+                    category={"stardrops"}
                     key={stardrop}
-                    size={24}
-                    sourceURL={
-                      "https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
-                    }
-                    title={STARDROPS[stardrop as keyof typeof STARDROPS].title}
-                    description={
-                      STARDROPS[stardrop as keyof typeof STARDROPS].description
-                    }
+                    itemObject={{
+                      iconURL:
+                        "https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png",
+                      itemID: stardrop,
+                      ...STARDROPS[stardrop as keyof typeof STARDROPS],
+                    }}
                     setCount={setStarCount}
                   />
                 ))}

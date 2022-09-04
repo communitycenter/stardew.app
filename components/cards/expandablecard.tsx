@@ -83,17 +83,17 @@ const ExpandableCard = ({ itemObject, category, setCount }: Props) => {
     >
       <button
         onClick={click}
-        className="flex cursor-pointer select-none items-center space-x-4 border-b border-gray-900/50 py-4 px-5 text-sm font-bold text-gray-900 focus:outline-none dark:border-white/10 dark:text-white"
+        className="flex cursor-pointer select-none items-center space-x-4 border-b border-gray-900/50 py-4 px-5 text-sm font-semibold text-gray-900 focus:outline-none dark:border-white/10 dark:text-white"
       >
         <Image
           src={itemObject.iconURL}
-          alt={itemObject.name}
+          alt={itemObject.name ?? itemObject.title}
           width={24}
           height={24}
           quality={25}
         />
         <div className="flex flex-1 items-center space-x-2 text-left">
-          <span>{itemObject.name}</span>
+          <span>{itemObject.name ?? itemObject.title}</span>
         </div>
         <motion.div animate={{ rotate: isOpen ? 90 : 0 }}>
           <ChevronRightIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
