@@ -166,11 +166,8 @@ const Fishing: NextPage = () => {
                 ))
               : Object.keys(data)
                   .filter((key) => {
-                    if (_filter === "off") {
-                      return data[key] === true || data[key] === false;
-                    } else {
-                      return data[key] === JSON.parse(_filter);
-                    }
+                    if (_filter === "off") return true;
+                    else return data[key] === JSON.parse(_filter);
                   })
                   .map((fishID) => (
                     <BooleanCard

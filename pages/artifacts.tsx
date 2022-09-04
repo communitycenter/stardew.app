@@ -9,14 +9,18 @@ import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
 import { useKV } from "../hooks/useKV";
-import { motion } from "framer-motion";
 import Head from "next/head";
 
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import BooleanCard from "../components/cards/booleancard";
+import FilterBtn from "../components/filterbtn";
+import { useCategory } from "../utils/useCategory";
 
 const Artifacts: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [_filter, setFilter] = useState<string>("off");
+
+  const { data, error, isLoading } = useCategory("museum", "boolean");
 
   const [totalArtifactsFound, setTotalArtifactsFound] = useKV(
     "museum",
@@ -98,29 +102,47 @@ const Artifacts: NextPage = () => {
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
             Artifacts
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Donated Artifact</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Unfound Artifact</p>
-              </div>
-            </div>
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="true"
+              title="Donated Artifact"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="false"
+              title="Unfound Artifact"
+            />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(artifacts.artifacts).map(([, artifact]) => (
-              <BooleanCard
-                key={artifact.itemID}
-                itemObject={artifact}
-                category="museum"
-                setCount={setTotalArtifactsFound}
-              />
-            ))}
+            {isLoading
+              ? Object.entries(artifacts.artifacts).map(([, artifact]) => (
+                  <BooleanCard
+                    key={artifact.itemID}
+                    itemObject={artifact}
+                    category="museum"
+                    setCount={setTotalArtifactsFound}
+                  />
+                ))
+              : Object.keys(data)
+                  .filter((key) => {
+                    if (_filter === "off") return true;
+                    else return data[key] === JSON.parse(_filter);
+                  })
+                  .map((artifactID: string) => (
+                    <BooleanCard
+                      key={artifactID}
+                      itemObject={
+                        artifacts.artifacts[
+                          artifactID as keyof typeof artifacts.artifacts
+                        ]
+                      }
+                      category="museum"
+                      setCount={setTotalArtifactsFound}
+                    />
+                  ))}
           </div>
           {/* END ARTIFACTS */}
 
