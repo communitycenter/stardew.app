@@ -5,7 +5,7 @@ import artifacts from "../research/processors/data/museum.json";
 
 import AchievementCard from "../components/cards/achievementcard";
 import InfoCard from "../components/cards/infocard";
-import BooleanCard from "../components/cards/booleancard";
+import ExpandableCard from "../components/cards/expandablecard";
 import FilterBtn from "../components/filterbtn";
 import SidebarLayout from "../components/sidebarlayout";
 
@@ -128,7 +128,7 @@ const Artifacts: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {archLoading
               ? Object.entries(artifacts.artifacts).map(([, artifact]) => (
-                  <BooleanCard
+                  <ExpandableCard
                     key={artifact.itemID}
                     itemObject={artifact}
                     category="artifacts"
@@ -141,7 +141,7 @@ const Artifacts: NextPage = () => {
                     else return archData[key] === JSON.parse(_Afilter);
                   })
                   .map((artifactID: string) => (
-                    <BooleanCard
+                    <ExpandableCard
                       key={artifactID}
                       itemObject={
                         artifacts.artifacts[
@@ -176,7 +176,7 @@ const Artifacts: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {minLoading
               ? Object.entries(artifacts.minerals).map(([, mineral]) => (
-                  <BooleanCard
+                  <ExpandableCard
                     key={mineral.itemID}
                     itemObject={mineral}
                     category="minerals"
@@ -189,7 +189,7 @@ const Artifacts: NextPage = () => {
                     else return minData[key] === JSON.parse(_Mfilter);
                   })
                   .map((mineralID: string) => (
-                    <BooleanCard
+                    <ExpandableCard
                       key={mineralID}
                       itemObject={
                         artifacts.minerals[
