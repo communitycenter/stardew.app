@@ -9,9 +9,11 @@ import SidebarLayout from "../components/sidebarlayout";
 
 import { useState } from "react";
 import { useKV } from "../hooks/useKV";
+import { motion } from "framer-motion";
 import Head from "next/head";
 
 import { InformationCircleIcon } from "@heroicons/react/solid";
+import BooleanCard from "../components/cards/booleancard";
 
 const Artifacts: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -112,14 +114,11 @@ const Artifacts: NextPage = () => {
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {Object.entries(artifacts.artifacts).map(([, artifact]) => (
-              <AchievementCard
+              <BooleanCard
                 key={artifact.itemID}
-                description={artifact.description}
-                title={artifact.name}
-                size={32}
-                sourceURL={artifact.iconURL}
-                id={artifact.itemID}
-                tag="museum"
+                itemObject={artifact}
+                category="museum"
+                setCount={setTotalArtifactsFound}
               />
             ))}
           </div>
@@ -145,14 +144,11 @@ const Artifacts: NextPage = () => {
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
             {Object.entries(artifacts.minerals).map(([, mineral]) => (
-              <AchievementCard
+              <BooleanCard
                 key={mineral.itemID}
-                description={mineral.description}
-                title={mineral.name}
-                size={32}
-                sourceURL={mineral.iconURL}
-                id={mineral.itemID}
-                tag="museum"
+                itemObject={mineral}
+                category="museum"
+                setCount={setTotalArtifactsFound}
               />
             ))}
           </div>

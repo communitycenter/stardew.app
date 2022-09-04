@@ -12,9 +12,9 @@ import { useKV } from "../../hooks/useKV";
 import Image from "next/image";
 
 type Props = {
-  itemObject: Fish | any;
+  itemObject?: Fish | any;
   category: string;
-  setSelected: Dispatch<SetStateAction<Fish | any>>;
+  setSelected?: Dispatch<SetStateAction<Fish | any>>;
   setShow?: Dispatch<SetStateAction<boolean>>;
   setCount: Dispatch<SetStateAction<number>>;
 };
@@ -50,6 +50,8 @@ const BooleanCard = ({
   category,
   setCount,
 }: Props) => {
+  const [truncate, setTruncate] = useState<boolean>(true);
+
   const [checked, setChecked] = useKV<boolean>(
     category,
     itemObject.itemID.toString(),
@@ -60,8 +62,12 @@ const BooleanCard = ({
     : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   const oneClick = useCallback(() => {
-    setSelected(itemObject);
-    setShow?.(true);
+    if (setShow && setSelected) {
+      setSelected(itemObject);
+      setShow(true);
+    } else {
+      setTruncate((old) => !old);
+    }
   }, [itemObject, setSelected, setShow]);
 
   const twoClick = useCallback(() => {
@@ -93,7 +99,12 @@ const BooleanCard = ({
         <p className="text-sm font-medium text-gray-900 dark:text-white">
           {itemObject.name}
         </p>
-        <p className="truncate text-sm text-gray-400">
+        <p
+          className={
+            "text-sm text-gray-400" +
+            (setSelected ? " truncate" : truncate ? " truncate" : "")
+          }
+        >
           {itemObject.description}
         </p>
       </div>
