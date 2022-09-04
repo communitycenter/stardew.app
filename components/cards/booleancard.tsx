@@ -38,7 +38,7 @@ function useSingleAndDoubleClick(
     if (click === 2) actionDoubleClick();
 
     return () => clearTimeout(timer);
-  }, [click]);
+  }, [click, actionDoubleClick, actionSimpleClick, delay]);
 
   return () => setClick((prev) => prev + 1);
 }
@@ -71,7 +71,7 @@ const BooleanCard = ({
       setCount((prev) => prev + 1);
     }
     setChecked((old) => !old);
-  }, [setChecked]);
+  }, [setChecked, checked, setCount]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (

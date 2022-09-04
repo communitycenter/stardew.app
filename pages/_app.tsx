@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return () => {
       router.events.off("routeChangeComplete", onRouteChangeComplete);
     };
-  }, []);
+  }, [router.events]);
 
   return (
     <main>

@@ -42,7 +42,7 @@ function useSingleAndDoubleClick(
     if (click === 2) actionDoubleClick();
 
     return () => clearTimeout(timer);
-  }, [click]);
+  }, [click, actionDoubleClick, actionSimpleClick, delay]);
 
   return () => setClick((prev) => prev + 1);
 }
@@ -61,7 +61,7 @@ const ExpandableCard = ({ itemObject, category, setCount }: Props) => {
 
   const oneClick = useCallback(() => {
     toggle();
-  }, [itemObject]);
+  }, []);
 
   const twoClick = useCallback(() => {
     if (checked) {
@@ -70,7 +70,7 @@ const ExpandableCard = ({ itemObject, category, setCount }: Props) => {
       setCount((prev) => prev + 1);
     }
     setChecked((old) => !old);
-  }, [setChecked]);
+  }, [setChecked, checked, setCount]);
 
   const click = useSingleAndDoubleClick(oneClick, twoClick);
   return (
