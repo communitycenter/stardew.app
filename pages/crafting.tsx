@@ -107,7 +107,13 @@ const Crafting: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Items to Craft
+            {_filter === "off"
+              ? "All Items to Craft"
+              : {
+                  "0": "Unknown Item",
+                  "1": "Known Item",
+                  "2": "Crafted Item",
+                }[_filter]}
           </h2>
 
           {/* Filter Buttons */}

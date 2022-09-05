@@ -132,7 +132,9 @@ const Fishing: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Fish
+            {_filter === "off"
+              ? "All Fish"
+              : { true: "Caught Fish", false: "Uncaught Fish" }[_filter]}
           </h2>
 
           {/* Filter Buttons */}

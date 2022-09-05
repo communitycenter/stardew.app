@@ -109,7 +109,11 @@ const Artifacts: NextPage = () => {
 
           {/* ARTIFACTS */}
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Artifacts
+            {_Afilter === "off"
+              ? "Artifacts"
+              : { true: "Donated Artifact", false: "Unfound Artifact" }[
+                  _Afilter
+                ]}
           </h2>
           <div className="mt-2 flex items-center space-x-4">
             <FilterBtn
@@ -157,20 +161,24 @@ const Artifacts: NextPage = () => {
 
           {/* MINERALS */}
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Minerals
+            {_Mfilter === "off"
+              ? "Minerals"
+              : { true: "Donated Artifact", false: "Unfound Artifact" }[
+                  _Mfilter
+                ]}
           </h2>
           <div className="mt-2 flex items-center space-x-4">
             <FilterBtn
               _filter={_Mfilter}
               setFilter={setMFilter}
               targetState="true"
-              title="Donated Artifact"
+              title="Donated Mineral"
             />
             <FilterBtn
               _filter={_Mfilter}
               setFilter={setMFilter}
               targetState="false"
-              title="Unfound Artifact"
+              title="Unfound Mineral"
             />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">

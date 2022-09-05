@@ -108,7 +108,13 @@ const Cooking: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Recipes
+            {_filter === "off"
+              ? "All Recipes"
+              : {
+                  "0": "Unknown Recipe",
+                  "1": "Known Recipe",
+                  "2": "Cooked Recipe",
+                }[_filter]}
           </h2>
 
           {/* Filter Buttons */}
