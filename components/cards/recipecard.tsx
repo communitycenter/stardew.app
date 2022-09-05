@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useKV } from "../../hooks/useKV";
 
-import Image from "next/image";
+import Image from "next/future/image";
 
 type Props = {
   recipe: any;
@@ -110,7 +110,13 @@ const RecipeCard = ({
       onClick={click}
     >
       <div className="flex">
-        <Image src={recipe.iconURL} alt={recipe.name} width={32} height={32} />
+        <Image
+          src={recipe.iconURL}
+          alt={recipe.name}
+          width={32}
+          height={32}
+          sizes="100vw"
+        />
       </div>
 
       <div className="min-w-0 flex-1">
