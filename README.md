@@ -24,13 +24,14 @@ Currently, the website is able to track the following:
 - Museum and artifact tracking
 - Discord OAuth2 login to preserve data across devices
 - Stardew save file upload to process data
+- Secret notes tracker
+- Journal scraps tracker
 
 ### Roadmap
 
 Stardew.app is actively in development. We're currently working on:
 
 - Perfection tracker
-- Secret notes tracker
 - Ginger Island tracker
 
 ## Contributions

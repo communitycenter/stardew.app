@@ -6,6 +6,11 @@ const nextConfig = {
 
 module.exports = {
   ...nextConfig,
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   images: {
     domains: [
       "stardewvalleywiki.com",
