@@ -75,7 +75,7 @@ const AchievementCard = ({
   const click = useSingleAndDoubleClick(oneClick, twoClick);
 
   const className = checked
-    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:bg-green-500/20"
+    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
     : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   return (
@@ -105,7 +105,8 @@ const AchievementCard = ({
           <motion.div layout="position">
             <p
               className={
-                "text-sm text-gray-400" + (truncate ? " truncate" : "")
+                "text-sm text-gray-500 dark:text-gray-400" +
+                (truncate ? " truncate" : "")
               }
             >
               {description} {!checked ? additionalDescription : ""}

@@ -157,7 +157,7 @@ export const verifyToken = (token: string, key: string) => {
   };
 };
 
-async function getUID(
+export async function getUID(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ): Promise<string> {

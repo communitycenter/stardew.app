@@ -9,12 +9,13 @@ import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 import RecipeCard from "../components/cards/recipecard";
 import RecipeSlideOver from "../components/slideovers/recipeslideover";
+import FilterBtn from "../components/filterbtn";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
+import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
-import { FilterIcon } from "@heroicons/react/outline";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements
@@ -25,7 +26,8 @@ const requirements: Record<string, number> = {
 };
 
 const Cooking: NextPage = () => {
-  const [recipes, setRecipes] = useState<any>(cooking_recipes);
+  const { data, error, isLoading } = useCategory("cooking", "number");
+  const [_filter, setFilter] = useState<string>("off");
 
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
@@ -70,26 +72,6 @@ const Cooking: NextPage = () => {
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
             Cooking
           </h1>
-          <div>
-            <label
-              onClick={() =>
-                setRecipes(
-                  Object.values(recipes).find(
-                    (value: any) => value.itemID <= 206
-                  )
-                )
-              }
-              className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]"
-            >
-              <span className="flex justify-between">
-                {" "}
-                <FilterIcon
-                  className="h-5 w-5 text-black dark:bg-[#1F1F1F] dark:text-white"
-                  aria-hidden="true"
-                />
-              </span>
-            </label>
-          </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
           <div>
@@ -126,42 +108,74 @@ const Cooking: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Recipes
+            {_filter === "off"
+              ? "All Recipes"
+              : {
+                  "0": "Unknown Recipe",
+                  "1": "Known Recipe",
+                  "2": "Cooked Recipe",
+                }[_filter]}
           </h2>
-          {/* Color indicator information */}
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Cooked Recipe</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20" />
-                <p className="text-sm dark:text-white">Known Recipe</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Unknown Recipe</p>
-              </div>
-            </div>
+
+          {/* Filter Buttons */}
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="2"
+              title="Cooked Recipe"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="1"
+              title="Known Recipe"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="0"
+              title="Unknown Recipe"
+            />
           </div>
-          {/* End Color indicator information */}
+          {/* End Filter Buttons */}
+
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(recipes).map((recipe: any) => (
-              <RecipeCard
-                key={recipe.itemID}
-                category={"cooking"}
-                recipe={recipe}
-                setSelectedRecipe={setSelectedRecipe}
-                setShowRecipe={setShowRecipe}
-                setKnownCount={setKnownCount}
-                setCompletedCount={setCookedCount}
-              />
-            ))}
+            {isLoading
+              ? Object.values(cooking_recipes).map((recipe: any) => (
+                  <RecipeCard
+                    key={recipe.itemID}
+                    category={"cooking"}
+                    recipe={recipe}
+                    setSelectedRecipe={setSelectedRecipe}
+                    setShowRecipe={setShowRecipe}
+                    setKnownCount={setKnownCount}
+                    setCompletedCount={setCookedCount}
+                  />
+                ))
+              : Object.keys(data)
+                  .filter((key) => {
+                    if (_filter === "off") {
+                      return true;
+                    } else {
+                      return data[key] === JSON.parse(_filter);
+                    }
+                  })
+                  .map((recipeID) => (
+                    <RecipeCard
+                      key={recipeID}
+                      category="cooking"
+                      recipe={
+                        cooking_recipes[
+                          recipeID as keyof typeof cooking_recipes
+                        ]
+                      }
+                      setSelectedRecipe={setSelectedRecipe}
+                      setShowRecipe={setShowRecipe}
+                      setKnownCount={setKnownCount}
+                      setCompletedCount={setCookedCount}
+                    />
+                  ))}
           </div>
         </div>
       </SidebarLayout>

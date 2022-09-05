@@ -56,10 +56,13 @@ export function parseMuseum(json: any): ReturnType {
     else if (minerals.hasOwnProperty(item_id)) minerals[item_id] = true;
   }
 
+  const artifactsDonated = Object.values(artifacts).filter((v) => v).length;
+  const mineralsDonated = Object.values(minerals).filter((v) => v).length;
+
   return {
     artifacts,
     minerals,
-    artifactsDonated: Object.keys(artifacts).length,
-    mineralsDonated: Object.keys(minerals).length,
+    artifactsDonated,
+    mineralsDonated,
   };
 }

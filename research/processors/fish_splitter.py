@@ -120,7 +120,7 @@ for key, value in content.items():
     
     if name in trap_fish:
         location, min_size, max_size = fields[4], fields[5], fields[6]
-        fish[name] = {
+        fish[key] = {
             "itemID": int(key),
             "name": name,
             "iconURL": "https://stardewvalleywiki.com" + iconURL,
@@ -142,7 +142,7 @@ for key, value in content.items():
     weather = fields[7]
     min_level = fields[12]
     
-    fish[name] = {
+    fish[key] = {
         "itemID": int(key),
         "name": name,
         "iconURL": "https://stardewvalleywiki.com" + iconURL,

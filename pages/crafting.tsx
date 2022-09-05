@@ -9,12 +9,13 @@ import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 import RecipeCard from "../components/cards/recipecard";
 import RecipeSlideOver from "../components/slideovers/recipeslideover";
+import FilterBtn from "../components/filterbtn";
 
 import { useState } from "react";
+import { useKV } from "../hooks/useKV";
+import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
-import { FilterIcon } from "@heroicons/react/outline";
-import { useKV } from "../hooks/useKV";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 // a mapping of achievements and their requirements
@@ -25,6 +26,9 @@ const requirements: Record<string, number> = {
 };
 
 const Crafting: NextPage = () => {
+  const { data, error, isLoading } = useCategory("crafting", "number");
+  const [_filter, setFilter] = useState<string>("off");
+
   const [hasUploaded] = useKV<boolean>("general", "user", false);
 
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -69,17 +73,6 @@ const Crafting: NextPage = () => {
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
             Crafting
           </h1>
-          <div>
-            <label className="flex cursor-pointer flex-col items-center rounded-md border border-gray-300 bg-white p-1 text-white hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F]">
-              <span className="flex justify-between">
-                {" "}
-                <FilterIcon
-                  className="h-5 w-5 text-black dark:bg-[#1F1F1F] dark:text-white"
-                  aria-hidden="true"
-                />
-              </span>
-            </label>
-          </div>
         </div>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 md:px-8">
           <div>
@@ -114,42 +107,74 @@ const Crafting: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Items to Craft
+            {_filter === "off"
+              ? "All Items to Craft"
+              : {
+                  "0": "Unknown Item",
+                  "1": "Known Item",
+                  "2": "Crafted Item",
+                }[_filter]}
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Crafted Item</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20" />
-                <p className="text-sm dark:text-white">Known Item</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Unknown Item</p>
-              </div>
-            </div>
+
+          {/* Filter Buttons */}
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="2"
+              title="Crafted Item"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="1"
+              title="Known Item"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="0"
+              title="Unknown Item"
+            />
           </div>
-          {/* End Color indicator information */}
+          {/* End Filter Buttons */}
+
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(crafting_recipes).map((recipe: any) => (
-              <RecipeCard
-                key={recipe.itemID}
-                category={"crafting"}
-                bigCraftable={recipe.bigCraftable}
-                recipe={recipe}
-                setSelectedRecipe={setSelectedRecipe}
-                setShowRecipe={setShowRecipe}
-                setKnownCount={setKnownCount}
-                setCompletedCount={setCraftedCount}
-              />
-            ))}
+            {isLoading
+              ? Object.values(crafting_recipes).map((recipe: any) => (
+                  <RecipeCard
+                    key={recipe.itemID}
+                    category={"crafting"}
+                    recipe={recipe}
+                    setSelectedRecipe={setSelectedRecipe}
+                    setShowRecipe={setShowRecipe}
+                    setKnownCount={setKnownCount}
+                    setCompletedCount={setCraftedCount}
+                  />
+                ))
+              : Object.keys(data)
+                  .filter((key) => {
+                    if (_filter === "off") {
+                      return true;
+                    } else {
+                      return data[key] === JSON.parse(_filter);
+                    }
+                  })
+                  .map((recipeID) => (
+                    <RecipeCard
+                      key={recipeID}
+                      category={"crafting"}
+                      recipe={
+                        crafting_recipes[
+                          recipeID as keyof typeof crafting_recipes
+                        ]
+                      }
+                      setSelectedRecipe={setSelectedRecipe}
+                      setShowRecipe={setShowRecipe}
+                      setKnownCount={setKnownCount}
+                      setCompletedCount={setCraftedCount}
+                    />
+                  ))}
           </div>
         </div>
       </SidebarLayout>

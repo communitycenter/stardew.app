@@ -1,5 +1,5 @@
 {
-    "Pufferfish": {
+    "128": {
         "itemID": 128,
         "name": "Pufferfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
@@ -19,7 +19,7 @@
         "weather": "Sunny",
         "minLevel": "0"
     },
-    "Anchovy": {
+    "129": {
         "itemID": 129,
         "name": "Anchovy",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Anchovy.png",
@@ -39,7 +39,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Tuna": {
+    "130": {
         "itemID": 130,
         "name": "Tuna",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Tuna.png",
@@ -60,7 +60,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Sardine": {
+    "131": {
         "itemID": 131,
         "name": "Sardine",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
@@ -82,7 +82,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Bream": {
+    "132": {
         "itemID": 132,
         "name": "Bream",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/82/Bream.png",
@@ -104,7 +104,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Largemouth Bass": {
+    "136": {
         "itemID": 136,
         "name": "Largemouth Bass",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/11/Largemouth_Bass.png",
@@ -127,7 +127,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Smallmouth Bass": {
+    "137": {
         "itemID": 137,
         "name": "Smallmouth Bass",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a5/Smallmouth_Bass.png",
@@ -148,7 +148,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Rainbow Trout": {
+    "138": {
         "itemID": 138,
         "name": "Rainbow Trout",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/14/Rainbow_Trout.png",
@@ -168,7 +168,7 @@
         "weather": "Sunny",
         "minLevel": "0"
     },
-    "Salmon": {
+    "139": {
         "itemID": 139,
         "name": "Salmon",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Salmon.png",
@@ -187,7 +187,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Walleye": {
+    "140": {
         "itemID": 140,
         "name": "Walleye",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/05/Walleye.png",
@@ -210,7 +210,7 @@
         "weather": "Rainy",
         "minLevel": "0"
     },
-    "Perch": {
+    "141": {
         "itemID": 141,
         "name": "Perch",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/43/Perch.png",
@@ -231,7 +231,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Carp": {
+    "142": {
         "itemID": 142,
         "name": "Carp",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Carp.png",
@@ -255,7 +255,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Catfish": {
+    "143": {
         "itemID": 143,
         "name": "Catfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/99/Catfish.png",
@@ -278,7 +278,7 @@
         "weather": "Rainy",
         "minLevel": "0"
     },
-    "Pike": {
+    "144": {
         "itemID": 144,
         "name": "Pike",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Pike.png",
@@ -299,7 +299,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Sunfish": {
+    "145": {
         "itemID": 145,
         "name": "Sunfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/56/Sunfish.png",
@@ -319,7 +319,7 @@
         "weather": "Sunny",
         "minLevel": "0"
     },
-    "Red Mullet": {
+    "146": {
         "itemID": 146,
         "name": "Red Mullet",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Red_Mullet.png",
@@ -339,7 +339,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Herring": {
+    "147": {
         "itemID": 147,
         "name": "Herring",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Herring.png",
@@ -359,7 +359,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Eel": {
+    "148": {
         "itemID": 148,
         "name": "Eel",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Eel.png",
@@ -379,7 +379,7 @@
         "weather": "Rainy",
         "minLevel": "0"
     },
-    "Octopus": {
+    "149": {
         "itemID": 149,
         "name": "Octopus",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5a/Octopus.png",
@@ -400,7 +400,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Red Snapper": {
+    "150": {
         "itemID": 150,
         "name": "Red Snapper",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d3/Red_Snapper.png",
@@ -422,7 +422,7 @@
         "weather": "Rainy",
         "minLevel": "0"
     },
-    "Squid": {
+    "151": {
         "itemID": 151,
         "name": "Squid",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Squid.png",
@@ -441,7 +441,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Seaweed": {
+    "152": {
         "itemID": 152,
         "name": "Seaweed",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/13/Seaweed.png",
@@ -463,7 +463,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Green Algae": {
+    "153": {
         "itemID": 153,
         "name": "Green Algae",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Green_Algae.png",
@@ -485,7 +485,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Sea Cucumber": {
+    "154": {
         "itemID": 154,
         "name": "Sea Cucumber",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a9/Sea_Cucumber.png",
@@ -506,7 +506,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Super Cucumber": {
+    "155": {
         "itemID": 155,
         "name": "Super Cucumber",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Super_Cucumber.png",
@@ -528,7 +528,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Ghostfish": {
+    "156": {
         "itemID": 156,
         "name": "Ghostfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Ghostfish.png",
@@ -550,7 +550,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "White Algae": {
+    "157": {
         "itemID": 157,
         "name": "White Algae",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f7/White_Algae.png",
@@ -574,7 +574,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Stonefish": {
+    "158": {
         "itemID": 158,
         "name": "Stonefish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/03/Stonefish.png",
@@ -596,7 +596,7 @@
         "weather": "Both",
         "minLevel": "3"
     },
-    "Crimsonfish": {
+    "159": {
         "itemID": 159,
         "name": "Crimsonfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dc/Crimsonfish.png",
@@ -615,7 +615,7 @@
         "weather": "Both",
         "minLevel": "5"
     },
-    "Angler": {
+    "160": {
         "itemID": 160,
         "name": "Angler",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bf/Angler.png",
@@ -637,7 +637,7 @@
         "weather": "Both",
         "minLevel": "3"
     },
-    "Ice Pip": {
+    "161": {
         "itemID": 161,
         "name": "Ice Pip",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Ice_Pip.png",
@@ -659,7 +659,7 @@
         "weather": "Both",
         "minLevel": "5"
     },
-    "Lava Eel": {
+    "162": {
         "itemID": 162,
         "name": "Lava Eel",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Lava_Eel.png",
@@ -682,7 +682,7 @@
         "weather": "Both",
         "minLevel": "7"
     },
-    "Legend": {
+    "163": {
         "itemID": 163,
         "name": "Legend",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/10/Legend.png",
@@ -704,7 +704,7 @@
         "weather": "Rainy",
         "minLevel": "10"
     },
-    "Sandfish": {
+    "164": {
         "itemID": 164,
         "name": "Sandfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Sandfish.png",
@@ -726,7 +726,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Scorpion Carp": {
+    "165": {
         "itemID": 165,
         "name": "Scorpion Carp",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Scorpion_Carp.png",
@@ -748,7 +748,7 @@
         "weather": "Both",
         "minLevel": "4"
     },
-    "Flounder": {
+    "267": {
         "itemID": 267,
         "name": "Flounder",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Flounder.png",
@@ -769,7 +769,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Midnight Carp": {
+    "269": {
         "itemID": 269,
         "name": "Midnight Carp",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/33/Midnight_Carp.png",
@@ -791,7 +791,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Mutant Carp": {
+    "682": {
         "itemID": 682,
         "name": "Mutant Carp",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cb/Mutant_Carp.png",
@@ -813,7 +813,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Sturgeon": {
+    "698": {
         "itemID": 698,
         "name": "Sturgeon",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/42/Sturgeon.png",
@@ -833,7 +833,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Tiger Trout": {
+    "699": {
         "itemID": 699,
         "name": "Tiger Trout",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Tiger_Trout.png",
@@ -855,7 +855,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Bullhead": {
+    "700": {
         "itemID": 700,
         "name": "Bullhead",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Bullhead.png",
@@ -877,7 +877,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Tilapia": {
+    "701": {
         "itemID": 701,
         "name": "Tilapia",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/73/Tilapia.png",
@@ -898,7 +898,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Chub": {
+    "702": {
         "itemID": 702,
         "name": "Chub",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Chub.png",
@@ -921,7 +921,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Dorado": {
+    "704": {
         "itemID": 704,
         "name": "Dorado",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/18/Dorado.png",
@@ -940,7 +940,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Albacore": {
+    "705": {
         "itemID": 705,
         "name": "Albacore",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Albacore.png",
@@ -960,7 +960,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Shad": {
+    "706": {
         "itemID": 706,
         "name": "Shad",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Shad.png",
@@ -981,7 +981,7 @@
         "weather": "Rainy",
         "minLevel": "0"
     },
-    "Lingcod": {
+    "707": {
         "itemID": 707,
         "name": "Lingcod",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Lingcod.png",
@@ -1001,7 +1001,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Halibut": {
+    "708": {
         "itemID": 708,
         "name": "Halibut",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Halibut.png",
@@ -1022,7 +1022,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Lobster": {
+    "715": {
         "itemID": 715,
         "name": "Lobster",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Lobster.png",
@@ -1034,7 +1034,7 @@
         "minInch": 2,
         "maxInch": 20
     },
-    "Crayfish": {
+    "716": {
         "itemID": 716,
         "name": "Crayfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Crayfish.png",
@@ -1046,7 +1046,7 @@
         "minInch": 1,
         "maxInch": 8
     },
-    "Crab": {
+    "717": {
         "itemID": 717,
         "name": "Crab",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crab.png",
@@ -1059,7 +1059,7 @@
         "minInch": 1,
         "maxInch": 20
     },
-    "Cockle": {
+    "718": {
         "itemID": 718,
         "name": "Cockle",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Cockle.png",
@@ -1072,7 +1072,7 @@
         "minInch": 1,
         "maxInch": 5
     },
-    "Mussel": {
+    "719": {
         "itemID": 719,
         "name": "Mussel",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Mussel.png",
@@ -1086,7 +1086,7 @@
         "minInch": 1,
         "maxInch": 5
     },
-    "Shrimp": {
+    "720": {
         "itemID": 720,
         "name": "Shrimp",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Shrimp.png",
@@ -1098,7 +1098,7 @@
         "minInch": 1,
         "maxInch": 3
     },
-    "Snail": {
+    "721": {
         "itemID": 721,
         "name": "Snail",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Snail.png",
@@ -1110,7 +1110,7 @@
         "minInch": 1,
         "maxInch": 5
     },
-    "Periwinkle": {
+    "722": {
         "itemID": 722,
         "name": "Periwinkle",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Periwinkle.png",
@@ -1122,7 +1122,7 @@
         "minInch": 1,
         "maxInch": 3
     },
-    "Oyster": {
+    "723": {
         "itemID": 723,
         "name": "Oyster",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/54/Oyster.png",
@@ -1135,7 +1135,7 @@
         "minInch": 1,
         "maxInch": 5
     },
-    "Woodskip": {
+    "734": {
         "itemID": 734,
         "name": "Woodskip",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Woodskip.png",
@@ -1158,7 +1158,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Glacierfish": {
+    "775": {
         "itemID": 775,
         "name": "Glacierfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fd/Glacierfish.png",
@@ -1177,7 +1177,7 @@
         "weather": "Sunny",
         "minLevel": "7"
     },
-    "Void Salmon": {
+    "795": {
         "itemID": 795,
         "name": "Void Salmon",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Void_Salmon.png",
@@ -1199,7 +1199,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Slimejack": {
+    "796": {
         "itemID": 796,
         "name": "Slimejack",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Slimejack.png",
@@ -1221,7 +1221,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Midnight Squid": {
+    "798": {
         "itemID": 798,
         "name": "Midnight Squid",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/83/Midnight_Squid.png",
@@ -1243,7 +1243,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Spook Fish": {
+    "799": {
         "itemID": 799,
         "name": "Spook Fish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Spook_Fish.png",
@@ -1265,7 +1265,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Blobfish": {
+    "800": {
         "itemID": 800,
         "name": "Blobfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Blobfish.png",
@@ -1287,7 +1287,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Stingray": {
+    "836": {
         "itemID": 836,
         "name": "Stingray",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3a/Stingray.png",
@@ -1309,7 +1309,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Lionfish": {
+    "837": {
         "itemID": 837,
         "name": "Lionfish",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Lionfish.png",
@@ -1331,7 +1331,7 @@
         "weather": "Both",
         "minLevel": "0"
     },
-    "Blue Discus": {
+    "838": {
         "itemID": 838,
         "name": "Blue Discus",
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Blue_Discus.png",

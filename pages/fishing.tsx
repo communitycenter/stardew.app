@@ -9,9 +9,11 @@ import AchievementCard from "../components/cards/achievementcard";
 import InfoCard from "../components/cards/infocard";
 import SidebarLayout from "../components/sidebarlayout";
 import FishSlideOver from "../components/slideovers/fishslideover";
+import FilterBtn from "../components/filterbtn";
 
 import { useState } from "react";
 import { useKV } from "../hooks/useKV";
+import { useCategory } from "../utils/useCategory";
 import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
@@ -25,6 +27,10 @@ const requirements: Record<string, number> = {
 };
 
 const Fishing: NextPage = () => {
+  const { data, error, isLoading } = useCategory("fish", "boolean");
+
+  const [_filter, setFilter] = useState<string>("off");
+
   const [hasUploaded] = useKV<boolean>("general", "uploadedFile", false);
 
   const [name] = useKV<string>("general", "name", "Farmer");
@@ -126,33 +132,55 @@ const Fishing: NextPage = () => {
             </div>
           </div>
           <h2 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
-            All Fish
+            {_filter === "off"
+              ? "All Fish"
+              : { true: "Caught Fish", false: "Uncaught Fish" }[_filter]}
           </h2>
-          <div className="flex items-center space-x-4">
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20" />
-                <p className="text-sm dark:text-white">Caught Fish</p>
-              </div>
-            </div>
-            <div className="mt-2">
-              <div className="flex items-center space-x-2 rounded-2xl border border-gray-300 bg-[#f0f0f0] p-2 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div className="h-4 w-4 rounded-full border border-gray-300 bg-white dark:border-[#2a2a2a] dark:bg-[#1f1f1f]" />
-                <p className="text-sm dark:text-white">Uncaught Fish</p>
-              </div>
-            </div>
+
+          {/* Filter Buttons */}
+          <div className="mt-2 flex items-center space-x-4">
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="true"
+              title="Caught Fish"
+            />
+            <FilterBtn
+              _filter={_filter}
+              setFilter={setFilter}
+              targetState="false"
+              title="Uncaught Fish"
+            />
           </div>
+          {/* End Filter Buttons */}
+
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {Object.values(fishes).map((fish) => (
-              <BooleanCard
-                key={fish.itemID}
-                category="fish"
-                itemObject={fish}
-                setSelected={setSelectedFish}
-                setShow={setShowFish}
-                setCount={setUniqueCaught}
-              />
-            ))}
+            {isLoading
+              ? Object.values(fishes).map((fish) => (
+                  <BooleanCard
+                    key={fish.itemID}
+                    category="fish"
+                    itemObject={fish}
+                    setSelected={setSelectedFish}
+                    setShow={setShowFish}
+                    setCount={setUniqueCaught}
+                  />
+                ))
+              : Object.keys(data)
+                  .filter((key) => {
+                    if (_filter === "off") return true;
+                    else return data[key] === JSON.parse(_filter);
+                  })
+                  .map((fishID) => (
+                    <BooleanCard
+                      key={fishID}
+                      category="fish"
+                      itemObject={fishes[fishID as keyof typeof fishes]}
+                      setSelected={setSelectedFish}
+                      setShow={setShowFish}
+                      setCount={setUniqueCaught}
+                    />
+                  ))}
           </div>
         </div>
       </SidebarLayout>
