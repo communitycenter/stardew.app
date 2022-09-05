@@ -18,6 +18,13 @@ import Head from "next/head";
 
 import { FilterIcon } from "@heroicons/react/outline";
 import { InformationCircleIcon } from "@heroicons/react/solid";
+import ExpandableCard from "../components/cards/expandablecard";
+
+const akjsdh: any = {
+  name: "test",
+  iconURL: "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png",
+  itemID: 334,
+};
 
 // a mapping of achievements and their requirements
 const requirements: Record<string, number> = {
@@ -181,6 +188,11 @@ const Fishing: NextPage = () => {
                       setCount={setUniqueCaught}
                     />
                   ))}
+            <ExpandableCard
+              itemObject={akjsdh}
+              category={"test"}
+              setCount={setUniqueCaught}
+            />
           </div>
         </div>
       </SidebarLayout>

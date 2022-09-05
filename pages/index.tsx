@@ -17,13 +17,25 @@ import logo from "../public/icon.png";
 import { parseSaveFile } from "../utils/file";
 import Notification from "../components/notification";
 import { execPath } from "process";
+import ExpandableCard from "../components/cards/expandablecard";
+import BooleanCard from "../components/cards/booleancard";
 
 function classNames(...args: any[]) {
   return args.filter(Boolean).join(" ");
 }
 
+const akjsdh: any = {
+  name: "Click me!",
+  iconURL:
+    "https://stardewvalleywiki.com/mediawiki/images/3/36/Emote_Exclamation.png",
+  description: "You did one click! Now double click it to mark it as complete.",
+  itemID: 1337,
+};
+
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [clem, setClem] = useState<number>(0);
+
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
   const [errorMSG, setErrorMSG] = useState("");
@@ -172,12 +184,36 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                welcome
+              <div className="flex h-[33vh] flex-col items-start rounded-lg border border-gray-300  py-4 px-5  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="space-y-6">
+                  <div className="justify-center text-xl font-semibold text-gray-900 dark:text-white">
+                    How it works
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-lg font-normal text-gray-900 dark:text-white">
+                      Click this card once to open it, and click it twice to
+                      mark it as complete!
+                    </p>
+                    <ExpandableCard
+                      itemObject={akjsdh}
+                      category={"tutorial"}
+                      setCount={setClem}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-lg font-normal text-gray-900 dark:text-white">
+                      Click this card once to open it, and click it twice to
+                      mark it as complete!
+                    </p>
+                    <ExpandableCard
+                      itemObject={akjsdh}
+                      category={"tutorial"}
+                      setCount={setClem}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                welcome
-              </div>
+              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300  py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]"></div>
             </div>
             <div>
               <DragAndDrop
