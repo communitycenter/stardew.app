@@ -12,7 +12,6 @@ import Image from "next/future/image";
 type Props = {
   recipe: any;
   category: string;
-  bigCraftable?: boolean;
   setSelectedRecipe: Dispatch<SetStateAction<any>>;
   setShowRecipe: Dispatch<SetStateAction<boolean>>;
   setKnownCount: Dispatch<SetStateAction<number>>;
@@ -46,7 +45,6 @@ function useSingleAndDoubleClick(
 const RecipeCard = ({
   recipe,
   category,
-  bigCraftable,
   setSelectedRecipe,
   setShowRecipe,
   setKnownCount,
