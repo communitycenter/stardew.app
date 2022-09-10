@@ -21,15 +21,17 @@ const Artifacts: NextPage = () => {
   const [_Afilter, setAFilter] = useState<string>("off");
   const [_Mfilter, setMFilter] = useState<string>("off");
 
-  const { data: archData, isLoading: archLoading } = useCategory(
-    "artifacts",
-    "boolean"
-  );
+  const {
+    data: archData,
+    isLoading: archLoading,
+    error: archError,
+  } = useCategory("artifacts", "boolean");
 
-  const { data: minData, isLoading: minLoading } = useCategory(
-    "minerals",
-    "boolean"
-  );
+  const {
+    data: minData,
+    isLoading: minLoading,
+    error: minError,
+  } = useCategory("minerals", "boolean");
 
   const [totalArtifactsFound, setTotalArtifactsFound] = useKV(
     "museum",
@@ -130,7 +132,7 @@ const Artifacts: NextPage = () => {
             />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {archLoading
+            {archLoading || archError
               ? Object.entries(artifacts.artifacts).map(([, artifact]) => (
                   <ExpandableCard
                     key={artifact.itemID}
@@ -182,7 +184,7 @@ const Artifacts: NextPage = () => {
             />
           </div>
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {minLoading
+            {minLoading || minError
               ? Object.entries(artifacts.minerals).map(([, mineral]) => (
                   <ExpandableCard
                     key={mineral.itemID}

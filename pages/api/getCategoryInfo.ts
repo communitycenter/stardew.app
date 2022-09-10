@@ -42,8 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   });
 
   if (vars.length === 0) {
-    res.status(404).json({ error: "No variables found" });
-    return;
+    return res.status(404).json({ error: "No variables found" });
   }
 
   // convert to {id: value} format
