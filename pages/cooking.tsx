@@ -141,7 +141,7 @@ const Cooking: NextPage = () => {
           {/* End Filter Buttons */}
 
           <div className="grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 xl:grid-cols-4">
-            {isLoading || error
+            {isLoading || error || !hasUploaded
               ? Object.values(cooking_recipes).map((recipe: any) => (
                   <RecipeCard
                     key={recipe.itemID}
