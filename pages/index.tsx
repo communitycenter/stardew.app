@@ -167,43 +167,44 @@ const Home: NextPage = () => {
         <div className="px-8">
           <div className="grid gap-4">
             <div>
-              <div className=" h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300 bg-[#f0f0f0] py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]">
-                <div>
-                  <div className="space-y-3">
+              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="items-center space-y-3">
+                  <div className="items-center">
+                    <Image
+                      src={logo}
+                      width={64}
+                      height={64}
+                      alt="stardew.app"
+                    />
+                    <div className="text-2xl font-semibold text-gray-900 dark:text-white">
+                      stardew.app
+                    </div>
                     <div>
-                      <Image
-                        src={logo}
-                        width={64}
-                        height={64}
-                        alt="stardew.app"
-                      />
-                      <div></div>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        Easily track all elements of your Stardew Valley
+                        gameplay to 100% completion.
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-sm  text-gray-500 dark:text-gray-400">
+                        Learn how to use the website below, or upload your save
+                        file and get started.
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="flex h-[33vh] flex-col items-start rounded-lg border border-gray-300  py-4 px-5  dark:border-[#2A2A2A] dark:bg-[#191919]">
+              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
                 <div className="space-y-6">
-                  <div className="justify-center text-xl font-semibold text-gray-900 dark:text-white">
-                    How it works
+                  <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
+                    How to use: check card
                   </div>
-                  <div className="space-y-2">
-                    <p className="text-lg font-normal text-gray-900 dark:text-white">
-                      Click this card once to open it, and click it twice to
-                      mark it as complete!
-                    </p>
-                    <ExpandableCard
-                      itemObject={akjsdh}
-                      category={"tutorial"}
-                      setCount={setClem}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-lg font-normal text-gray-900 dark:text-white">
-                      Click this card once to open it, and click it twice to
-                      mark it as complete!
+                  <div className="space-y-4">
+                    <p className="text-md font-normal text-gray-900 dark:text-white">
+                      Click once to expand information, click twice to mark as
+                      complete!
                     </p>
                     <ExpandableCard
                       itemObject={akjsdh}
@@ -213,14 +214,31 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-[33vh] items-center space-x-3 truncate rounded-lg border border-gray-300  py-4 px-5 dark:border-[#2A2A2A] dark:bg-[#191919]"></div>
+              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="space-y-6">
+                  <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
+                    How to use: expandable card
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-md font-normal text-gray-900 dark:text-white">
+                      Click once to open a sidebar, click twice to mark as
+                      complete!
+                    </p>
+                    <ExpandableCard
+                      itemObject={akjsdh}
+                      category={"tutorial"}
+                      setCount={setClem}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
+            <div className="hover:cursor-pointer">
               <DragAndDrop
                 onDragStateChange={onDragStateChange}
                 onFilesDrop={onFilesDrop}
               >
-                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-solid transition hover:border-sky-900 hover:bg-sky-800/20 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-solid transition hover:cursor-pointer hover:border-sky-900 hover:bg-sky-800/20 dark:border-[#2A2A2A] dark:bg-[#191919]">
                   <label className="flex h-full w-full flex-grow items-center justify-center space-x-3">
                     <PlusIcon
                       className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
