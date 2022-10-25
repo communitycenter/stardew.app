@@ -29,7 +29,7 @@ Currently, the website is able to track the following:
 
 ### Roadmap
 
-Stardew.app is actively in development. We're currently working on:
+Stardew.app's development is still on going, however slowed as IRL things have taken a hold of the development team. We're currently working on:
 
 - Perfection tracker
 - Ginger Island tracker
