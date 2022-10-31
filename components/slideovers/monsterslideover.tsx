@@ -35,8 +35,6 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
   //     0
   //   );
 
-  console.log(selected);
-
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -87,20 +85,21 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                         <div className="flex justify-center">
                           <div>
                             <div className="flex justify-center">
-                              {/* <Image
-                                src={selected.iconURL}
+                              <Image
+                                src={`https://stardewvalleywiki.com${selected[1]["Monster Type"][0][1]}`}
                                 alt={selected.name}
                                 width={80}
                                 height={80}
                                 quality={100}
-                              /> */}
+                              />
                             </div>
                             <div className="text-center">
                               <h3 className="mt-6 text-xl font-semibold">
-                                {selected.name}
+                                {selected[0]}
                               </h3>
                               <h4 className="italic dark:text-gray-400">
-                                {selected.description}
+                                Kill {selected[1].Quantity} {selected[0]} to
+                                complete this
                               </h4>
                             </div>
                           </div>
@@ -110,64 +109,70 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
 
                       {/* Information Section */}
 
-                      {/* <div className="mt-8 space-y-6">
+                      <div className="mt-8 space-y-6">
                         <div className="space-y-4">
-                          <div>
-                            <h4 className="text-lg font-semibold">
-                              Unlock Conditions
-                            </h4>
-                            <p className="mt-1 dark:text-gray-400">
-                              {selected.unlockConditions}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-semibold">
-                              Monster Types
-                            </h4>
-                            <div className="mt-1 dark:text-gray-400">
-                              {selected.ingredients.map((ingredient: any) => {
-                                let item;
-
-                                if (ingredient.itemID > 0) {
-                                  const findItem = Object.entries(objects).find(
-                                    ([id, obj]) =>
-                                      id === ingredient.itemID.toString()
-                                  );
-                                  if (!findItem) return;
-                                  item = findItem[1];
-                                } else {
-                                  item = {
-                                    name: categoryItems[ingredient.itemID],
-                                    iconURL: categoryIcons[ingredient.itemID],
-                                  };
-                                }
-
-                                return (
-                                  <div key={ingredient.itemID}>
-                                    <div className="flex items-center">
-                                      <div className="flex-shrink-0">
-                                        <Image
-                                          src={item.iconURL}
-                                          alt={item.name}
-                                          width={32}
-                                          height={32}
-                                          quality={100}
-                                        />
-                                      </div>
-                                      <div className="ml-2 mb-2">
-                                        <div className="text-sm font-semibold">
-                                          {ingredient.amount}x {item.name}
+                          <div className="space-y-2">
+                            <div>
+                              <h4 className="text-lg font-semibold">
+                                Monster Types
+                              </h4>
+                              <div className="mt-1 dark:text-gray-400">
+                                {selected[1]["Monster Type"].map(
+                                  ([name, icon]: any) => {
+                                    return (
+                                      <div key={name}>
+                                        <div className="flex items-center">
+                                          <div className="flex-shrink-0">
+                                            <Image
+                                              src={`https://stardewvalleywiki.com${icon}`}
+                                              alt={name}
+                                              width={32}
+                                              height={32}
+                                              quality={100}
+                                            />
+                                          </div>
+                                          <div className="ml-2 mb-2">
+                                            <div className="text-sm font-semibold">
+                                              {name}
+                                            </div>
+                                          </div>
                                         </div>
+                                      </div>
+                                    );
+                                  }
+                                )}
+                              </div>
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-semibold">Reward</h4>
+                              <div className="mt-1 dark:text-gray-400">
+                                <div key={selected[1]["Reward"]}>
+                                  <div className="flex items-center">
+                                    <div className="flex-shrink-0">
+                                      <Image
+                                        src={`https://stardewvalleywiki.com${selected[1]["Reward"][1]}`}
+                                        alt={selected[1]["Reward"]}
+                                        width={32}
+                                        height={32}
+                                        quality={100}
+                                      />
+                                    </div>
+                                    <div className="ml-2 mb-2">
+                                      <div className="text-sm font-semibold">
+                                        {selected[1]["Reward"][0]}
+                                      </div>
+                                      <div className="text-sm">
+                                        {selected[1]["Reward Description"]}
                                       </div>
                                     </div>
                                   </div>
-                                );
-                              })}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
 
-                        <button
+                        {/* <button
                           className="light:hover:bg-gray-200 flex w-full items-center space-x-3 rounded-lg border border-gray-300 bg-[#f7f7f7] py-5 px-3 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white dark:hover:bg-[#191919]"
                           onClick={() => {
                             switch (value) {
@@ -201,8 +206,8 @@ const MonsterSlideOver = ({ isOpen, selected, setOpen }: Props) => {
                                 : "unknown"
                               : "known"}
                           </p>
-                        </button>
-                      </div> */}
+                        </button> */}
+                      </div>
 
                       {/* End Fish Info Section */}
 

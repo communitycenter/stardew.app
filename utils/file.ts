@@ -4,9 +4,11 @@ import { parseCrafting } from "./parsers/crafting";
 import { parseFamily } from "./parsers/family";
 import { parseFishing } from "./parsers/fishing";
 import { parseGeneral } from "./parsers/general";
+import { parseGingerIsland } from "./parsers/island";
 import { parseMoney } from "./parsers/money";
 import { parseMonsters } from "./parsers/monsters";
 import { parseMuseum } from "./parsers/museum";
+import { parsePerfection } from "./parsers/perfection";
 import { parseQuests } from "./parsers/quests";
 import { parseSkills } from "./parsers/skills";
 import { parseSocial } from "./parsers/social";
@@ -49,7 +51,8 @@ export async function parseSaveFile(file: any) {
   console.log("Parsing information...");
 
   // General Information
-  const { name, timePlayed, farmInfo } = parseGeneral(jsonObj);
+  const { name, timePlayed, farmInfo, secretNotesFound } =
+    parseGeneral(jsonObj);
   const moneyEarned = parseMoney(jsonObj);
   const { levels, maxLevelCount } = parseSkills(jsonObj);
   const questsCompleted = parseQuests(jsonObj);
@@ -80,6 +83,18 @@ export async function parseSaveFile(file: any) {
   const { deepestMineLevel, deepestSkullCavernLevel, monstersKilled } =
     parseMonsters(jsonObj);
 
+  // Ginger Island
+  const {
+    hasVisitedIsland,
+    journalScrapsFound,
+    goldenWalnutsFound,
+    goldenWalnutsCalculated,
+    walnutsFound,
+  } = parseGingerIsland(jsonObj);
+
+  // Perfection
+  const { candleCount } = parsePerfection(jsonObj);
+
   console.log("Parsed information!");
 
   console.log("Uploading values to DB");
@@ -94,6 +109,10 @@ export async function parseSaveFile(file: any) {
         moneyEarned,
         questsCompleted,
         uploadedFile: true,
+      },
+      secretNotes: {
+        ...secretNotesFound,
+        found: Object.keys(secretNotesFound).length,
       },
       stardrops: {
         count: stardropsCount,
@@ -153,6 +172,16 @@ export async function parseSaveFile(file: any) {
         fiveHeartCount,
         tenHeartCount,
         ...relationships,
+      },
+      gingerIsland: {
+        hasVisitedIsland,
+        journalScrapsFound,
+        goldenWalnutsFound,
+        goldenWalnutsCalculated,
+        ...walnutsFound,
+      },
+      perfection: {
+        candles: candleCount,
       },
     }),
   });
