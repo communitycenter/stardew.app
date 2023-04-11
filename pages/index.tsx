@@ -210,8 +210,7 @@ const Home: NextPage = () => {
                   </div>
                   <div className="space-y-4">
                     <p className="text-md font-normal text-gray-900 dark:text-white">
-                      Click once to expand information, click twice to mark as
-                      complete!
+                      Double click to mark as complete!
                     </p>
                     <BooleanCard
                       itemObject={akjsdh2}
