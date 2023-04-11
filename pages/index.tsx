@@ -32,6 +32,13 @@ const akjsdh: any = {
   itemID: 1337,
 };
 
+const akjsdh2: any = {
+  name: "Click me!",
+  iconURL:
+    "https://stardewvalleywiki.com/mediawiki/images/3/36/Emote_Exclamation.png",
+  itemID: 1337,
+};
+
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [clem, setClem] = useState<number>(0);
@@ -164,7 +171,7 @@ const Home: NextPage = () => {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
-        <div className="px-8">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
           <div className="grid gap-4">
             <div>
               <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
@@ -196,7 +203,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
                 <div className="space-y-6">
                   <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
                     How to use: check card
@@ -206,10 +213,12 @@ const Home: NextPage = () => {
                       Click once to expand information, click twice to mark as
                       complete!
                     </p>
-                    <ExpandableCard
-                      itemObject={akjsdh}
-                      category={"tutorial"}
-                      setCount={setClem}
+                    <BooleanCard
+                      itemObject={akjsdh2}
+                      category={"tutorial1"}
+                      setCount={() => null}
+                      setSelected={() => null}
+                      setShow={() => null}
                     />
                   </div>
                 </div>
@@ -226,7 +235,7 @@ const Home: NextPage = () => {
                     </p>
                     <ExpandableCard
                       itemObject={akjsdh}
-                      category={"tutorial"}
+                      category={"tutorial2"}
                       setCount={setClem}
                     />
                   </div>
@@ -238,7 +247,7 @@ const Home: NextPage = () => {
                 onDragStateChange={onDragStateChange}
                 onFilesDrop={onFilesDrop}
               >
-                <div className="h-[25vh] items-center space-x-3 truncate rounded-lg border border-solid transition hover:cursor-pointer hover:border-sky-900 hover:bg-sky-800/20 dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="min-w-0 h-[25vh] flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
                   <label className="flex h-full w-full flex-grow items-center justify-center space-x-3">
                     <PlusIcon
                       className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
