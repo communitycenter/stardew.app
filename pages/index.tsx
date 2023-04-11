@@ -17,19 +17,40 @@ import logo from "../public/icon.png";
 import { parseSaveFile } from "../utils/file";
 import Notification from "../components/notification";
 import { execPath } from "process";
+import ExpandableCard from "../components/cards/expandablecard";
+import BooleanCard from "../components/cards/booleancard";
 
 function classNames(...args: any[]) {
   return args.filter(Boolean).join(" ");
 }
 
+const akjsdh: any = {
+  name: "Click me!",
+  iconURL:
+    "https://stardewvalleywiki.com/mediawiki/images/3/36/Emote_Exclamation.png",
+  description: "You did one click! Now double click it to mark it as complete.",
+  itemID: 1337,
+};
+
+const akjsdh2: any = {
+  name: "Click me!",
+  iconURL:
+    "https://stardewvalleywiki.com/mediawiki/images/3/36/Emote_Exclamation.png",
+  itemID: 1337,
+};
+
 const Home: NextPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [clem, setClem] = useState<number>(0);
+
   const [showNotification, setShowNotification] = useState(false);
   const [showErrorNotification, setShowErrorNotification] = useState(false);
   const [errorMSG, setErrorMSG] = useState("");
   const [completionTime, setCompletedTime] = useState<string>("0.00");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowNotification(false);
+    setShowErrorNotification(false);
     // handling when the user clicks the upload box instead of drag
     e.preventDefault();
 
@@ -81,9 +102,44 @@ const Home: NextPage = () => {
     setIsDropActive(dragActive);
   }, []);
 
-  const onFilesDrop = React.useCallback((file: File) => {
-    setFile(file);
-    console.log("Dropped File", file.name);
+  const onFilesDrop = React.useCallback(async (file: File) => {
+    setShowNotification(false);
+    setShowErrorNotification(false);
+    if (typeof file === "undefined") return;
+
+    // just a check to see if the file name has the format <string>_<id> and make sure it doesn't have an extension since SDV saves don't have one.
+    if (!/[a-zA-Z0-9]+_[0-9]+/.test(file.name) || file.type !== "") {
+      setErrorMSG(
+        "Invalid File Uploaded. Please upload a Stardew Valley save file."
+      );
+      setShowErrorNotification(true);
+      return;
+    }
+    const reader = new FileReader();
+
+    // We can check the progress of the upload with a couple events from the reader
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // ex: reader.onloadstart, reader.onprogress, and finally reader.onload when its finished.
+
+    reader.onload = async function (event) {
+      try {
+        const { success, timeTaken, message } = await parseSaveFile(
+          event.target?.result
+        );
+        if (success) {
+          setShowNotification(true);
+          setCompletedTime(timeTaken!);
+        } else {
+          setErrorMSG(message!);
+          setShowErrorNotification(true);
+        }
+      } catch (e) {
+        setErrorMSG(e as string);
+        setShowErrorNotification(true);
+      }
+    };
+
+    reader.readAsText(file!);
   }, []);
 
   const [user, setUser] = useState<{
@@ -115,55 +171,109 @@ const Home: NextPage = () => {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
-        <div className="mx-auto flex h-screen max-w-2xl px-4 sm:px-0">
-          <div className="m-auto">
-            <div className="flex justify-center">
-              <Image
-                src={logo}
-                height={64}
-                width={64}
-                alt="Heart emoji"
-              ></Image>
+        <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
+          <div className="grid gap-4">
+            <div>
+              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="items-center space-y-3">
+                  <div className="items-center">
+                    <Image
+                      src={logo}
+                      width={64}
+                      height={64}
+                      alt="stardew.app"
+                    />
+                    <div className="text-2xl font-semibold text-gray-900 dark:text-white">
+                      stardew.app
+                    </div>
+                    <div>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        Easily track all elements of your Stardew Valley
+                        gameplay to 100% completion.
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-sm  text-gray-500 dark:text-gray-400">
+                        Learn how to use the website below, or upload your save
+                        file and get started.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="justify-center space-y-2 text-center text-gray-900 dark:text-white">
-              <div className="text-2xl font-semibold">
-                Welcome to Stardew.app!{" "}
-                <Image
-                  src="https://stardewvalleywiki.com/mediawiki/images/c/c8/Emojis043.png"
-                  height={18}
-                  width={18}
-                  alt="Heart emoji"
-                ></Image>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="space-y-6">
+                  <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
+                    How to use: check card
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-md font-normal text-gray-900 dark:text-white">
+                      Click once to expand information, click twice to mark as
+                      complete!
+                    </p>
+                    <BooleanCard
+                      itemObject={akjsdh2}
+                      category={"tutorial1"}
+                      setCount={() => null}
+                      setSelected={() => null}
+                      setShow={() => null}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="pb-2 text-left">
-                <h2>
-                  Get started by heading to the sidebar and checking off what
-                  you&apos;ve done - or upload your save file below and
-                  automatically import your data. You can also find an upload
-                  button at the bottom of the sidebar on the left.
-                </h2>
-                <h2 className="pt-2">
-                  Additionally, you can login with Discord to save your data
-                  across devices.
-                </h2>
+              <div className="flex h-[33vh] flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                <div className="space-y-6">
+                  <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
+                    How to use: expandable card
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-md font-normal text-gray-900 dark:text-white">
+                      Click once to open a sidebar, click twice to mark as
+                      complete!
+                    </p>
+                    <ExpandableCard
+                      itemObject={akjsdh}
+                      category={"tutorial2"}
+                      setCount={setClem}
+                    />
+                  </div>
+                </div>
               </div>
-              <div
-                className={classNames("dragAndDropWrapper", {
-                  dragAndDropActive: isDropActive,
-                })}
+            </div>
+            <div className="hover:cursor-pointer">
+              <DragAndDrop
+                onDragStateChange={onDragStateChange}
+                onFilesDrop={onFilesDrop}
               >
-                <DragAndDrop
-                  onDragStateChange={onDragStateChange}
-                  onFilesDrop={onFilesDrop}
-                >
-                  <label className="group flex cursor-pointer flex-col items-center rounded-lg border-2 border-dotted border-gray-300 bg-transparent p-10 text-white hover:border-gray-400">
+                <div className="min-w-0 h-[25vh] flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+                  <label className="flex h-full w-full flex-grow items-center justify-center space-x-3">
                     <PlusIcon
-                      className="h-8 w-8 text-gray-400 group-hover:text-gray-500"
+                      className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <p className="mt-4 text-sm text-gray-400 group-hover:text-gray-500">
-                      Upload Stardew Valley Save File
-                    </p>
+
+                    <div>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        Drag your Stardew Valley save here, or click to upload.
+                      </p>
+                      <br />
+
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        Need help finding your save? Saves usually look like
+                        this: <code>Jack_0120902</code>
+                      </p>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        <span className="font-bold">Windows: </span>
+                        %AppData%\StardewValley\Saves\
+                      </p>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                        <span className="font-bold">macOS & Linux: </span>
+                        ~/.config/StardewValley/Saves/
+                      </p>
+                    </div>
+
                     <input
                       type="file"
                       className="hidden"
@@ -172,26 +282,8 @@ const Home: NextPage = () => {
                       }
                     />
                   </label>
-                </DragAndDrop>
-              </div>
-            </div>
-            <div className="mt-4 flex items-center justify-center gap-x-2">
-              {!user && (
-                <a
-                  className="
-                  relative flex items-center space-x-3 rounded-lg border border-solid border-gray-300 bg-white py-4 px-5 hover:cursor-pointer hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] dark:text-white"
-                >
-                  <Link key="Discord" href="/api/oauth">
-                    <span className="flex">
-                      <FaDiscord
-                        className="mr-3 h-5 w-5 flex-shrink-0 text-black dark:text-white"
-                        aria-hidden="true"
-                      />
-                      Login to Discord
-                    </span>
-                  </Link>
-                </a>
-              )}
+                </div>
+              </DragAndDrop>
             </div>
           </div>
         </div>

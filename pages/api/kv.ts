@@ -72,8 +72,8 @@ async function patch(req: NextApiRequest, res: NextApiResponse<Data>) {
   });
 
   const chunks = [];
-  for (let i = 0; i < transactions.length; i += 200) {
-    chunks.push(transactions.slice(i, i + 200));
+  for (let i = 0; i < transactions.length; i += 600) {
+    chunks.push(transactions.slice(i, i + 600));
   }
 
   try {
