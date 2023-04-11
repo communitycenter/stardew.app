@@ -47,6 +47,8 @@ import MobileNav from "./mobilenav";
 import { parseSaveFile } from "../utils/file";
 import { Dialog, Transition } from "@headlessui/react";
 import Popup from "./popup";
+import { XMLParser } from "fast-xml-parser";
+const semVerGte = require("semver/functions/gte");
 
 const navigation = [
   { name: "Home", href: "/", icon: FaHouseUser },
@@ -60,7 +62,7 @@ const navigation = [
   { name: "Museum & Artifacts", href: "/artifacts", icon: MdMuseum },
   { name: "Bundles", href: "/bundles", icon: IoIosArchive },
 ];
-export type NavItem = typeof navigation[0];
+export type NavItem = (typeof navigation)[0];
 
 interface LayoutProps {
   children: React.ReactNode;
