@@ -61,32 +61,31 @@ const BooleanCard = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Shift') {
+      if (e.key === "Shift") {
         setShiftPressed(true);
       }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.key === 'Shift') {
+      if (e.key === "Shift") {
         setShiftPressed(false);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('keyup', handleKeyUp);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('keyup', handleKeyUp);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
   const className = checked
-      ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-      : selectedBatch.has(itemObject.itemID)
-          ? "border-blue-900 bg-blue-500/20 hover:bg-blue-500/30 dark:bg-blue-500/10 hover:dark:bg-blue-500/20"
-          : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
-
+    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+    : selectedBatch.has(itemObject.itemID)
+    ? "border-blue-900 bg-blue-500/20 hover:bg-blue-500/30 dark:bg-blue-500/10 hover:dark:bg-blue-500/20"
+    : "hover:border-gray-400 dark:border-[#2A2A2A] dark:bg-[#1F1F1F] border-gray-300 bg-white";
 
   const oneClick = useCallback(() => {
     setSelected(itemObject);
@@ -114,16 +113,13 @@ const BooleanCard = ({
     });
   }, [itemObject.itemID]);
 
-  const click = useSingleAndDoubleClick(
-      () => {
-        if (shiftPressed) {
-          batchSelect();
-        } else {
-          oneClick();
-        }
-      },
-      twoClick
-  );
+  const click = useSingleAndDoubleClick(() => {
+    if (shiftPressed) {
+      batchSelect();
+    } else {
+      oneClick();
+    }
+  }, twoClick);
 
   return (
     <div

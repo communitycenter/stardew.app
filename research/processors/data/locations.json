@@ -1,2798 +1,2798 @@
 {
-    "UndergroundMine": {
-        "Spring": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Ghostfish": {
-                    "itemID": "156",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
+  "UndergroundMine": {
+    "Spring": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
         },
-        "Summer": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Ghostfish": {
-                    "itemID": "156",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
+        "Ghostfish": {
+          "itemID": "156",
+          "zoneNumber": "-1"
         },
-        "Fall": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Ghostfish": {
-                    "itemID": "156",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Ghostfish": {
-                    "itemID": "156",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
         }
+      },
+      "Foraging": {}
     },
-    "Desert": {
-        "Spring": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sandfish": {
-                    "itemID": "164",
-                    "zoneNumber": "-1"
-                },
-                "Scorpion Carp": {
-                    "itemID": "165",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Coconut": {
-                    "itemID": "88",
-                    "chance": ".5"
-                },
-                "Cactus Fruit": {
-                    "itemID": "90",
-                    "chance": ".5"
-                }
-            }
+    "Summer": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
         },
-        "Summer": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sandfish": {
-                    "itemID": "164",
-                    "zoneNumber": "-1"
-                },
-                "Scorpion Carp": {
-                    "itemID": "165",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Coconut": {
-                    "itemID": "88",
-                    "chance": ".5"
-                },
-                "Cactus Fruit": {
-                    "itemID": "90",
-                    "chance": ".5"
-                }
-            }
+        "Ghostfish": {
+          "itemID": "156",
+          "zoneNumber": "-1"
         },
-        "Fall": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sandfish": {
-                    "itemID": "164",
-                    "zoneNumber": "-1"
-                },
-                "Scorpion Carp": {
-                    "itemID": "165",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Coconut": {
-                    "itemID": "88",
-                    "chance": ".5"
-                },
-                "Cactus Fruit": {
-                    "itemID": "90",
-                    "chance": ".5"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sandfish": {
-                    "itemID": "164",
-                    "zoneNumber": "-1"
-                },
-                "Scorpion Carp": {
-                    "itemID": "165",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Coconut": {
-                    "itemID": "88",
-                    "chance": ".5"
-                },
-                "Cactus Fruit": {
-                    "itemID": "90",
-                    "chance": ".5"
-                }
-            }
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
         }
+      },
+      "Foraging": {}
     },
-    "BusStop": {
-        "Spring": {
-            "Fish": {},
-            "Foraging": {
-                "Daffodil": {
-                    "itemID": "18",
-                    "chance": ".9"
-                },
-                "Leek": {
-                    "itemID": "20",
-                    "chance": ".4"
-                },
-                "Dandelion": {
-                    "itemID": "22",
-                    "chance": ".7"
-                }
-            }
+    "Fall": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
         },
-        "Summer": {
-            "Fish": {},
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".4"
-                },
-                "Grape": {
-                    "itemID": "398",
-                    "chance": ".4"
-                },
-                "Sweet Pea": {
-                    "itemID": "402",
-                    "chance": ".7"
-                }
-            }
+        "Ghostfish": {
+          "itemID": "156",
+          "zoneNumber": "-1"
         },
-        "Fall": {
-            "Fish": {},
-            "Foraging": {
-                "Wild Plum": {
-                    "itemID": "406",
-                    "chance": ".6"
-                },
-                "Hazelnut": {
-                    "itemID": "408",
-                    "chance": ".4"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {},
-            "Foraging": {
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".33"
-                },
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".6"
-                },
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".5"
-                }
-            }
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
         }
+      },
+      "Foraging": {}
     },
-    "Forest": {
-        "Spring": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "0"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "0"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "0"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "0"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "0"
-                }
-            },
-            "Foraging": {
-                "Wild Horseradish": {
-                    "itemID": "16",
-                    "chance": ".9"
-                },
-                "Dandelion": {
-                    "itemID": "22",
-                    "chance": ".9"
-                }
-            }
+    "Winter": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
         },
-        "Summer": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "0"
-                },
-                "Pike": {
-                    "itemID": "144",
-                    "zoneNumber": "-1"
-                },
-                "Rainbow Trout": {
-                    "itemID": "138",
-                    "zoneNumber": "0"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "0"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "0"
-                },
-                "Dorado": {
-                    "itemID": "704",
-                    "zoneNumber": "0"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "0"
-                }
-            },
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".6"
-                },
-                "Sweet Pea": {
-                    "itemID": "402",
-                    "chance": ".9"
-                }
-            }
+        "Ghostfish": {
+          "itemID": "156",
+          "zoneNumber": "-1"
         },
-        "Fall": {
-            "Fish": {
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "0"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Salmon": {
-                    "itemID": "139",
-                    "zoneNumber": "0"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "0"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "0"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "0"
-                },
-                "Tiger Trout": {
-                    "itemID": "699",
-                    "zoneNumber": "0"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "1"
-                }
-            },
-            "Foraging": {
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Blackberry": {
-                    "itemID": "410",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Tiger Trout": {
-                    "itemID": "699",
-                    "zoneNumber": "0"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "0"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Pike": {
-                    "itemID": "144",
-                    "zoneNumber": "-1"
-                },
-                "Perch": {
-                    "itemID": "141",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "0"
-                },
-                "Lingcod": {
-                    "itemID": "707",
-                    "zoneNumber": "0"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "0"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "1"
-                }
-            },
-            "Foraging": {
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".9"
-                },
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".9"
-                },
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".5"
-                }
-            }
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
         }
-    },
-    "Town": {
-        "Spring": {
-            "Fish": {
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Daffodil": {
-                    "itemID": "18",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Rainbow Trout": {
-                    "itemID": "138",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Pike": {
-                    "itemID": "144",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Sweet Pea": {
-                    "itemID": "402",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Salmon": {
-                    "itemID": "139",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Tiger Trout": {
-                    "itemID": "699",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Blackberry": {
-                    "itemID": "410",
-                    "chance": ".6"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Perch": {
-                    "itemID": "141",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Pike": {
-                    "itemID": "144",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Lingcod": {
-                    "itemID": "707",
-                    "zoneNumber": "-1"
-                },
-                "Tiger Trout": {
-                    "itemID": "699",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".7"
-                },
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".1"
-                },
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".5"
-                }
-            }
-        }
-    },
-    "Mountain": {
-        "Spring": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Leek": {
-                    "itemID": "20",
-                    "chance": ".7"
-                },
-                "Wild Horseradish": {
-                    "itemID": "16",
-                    "chance": ".5"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Rainbow Trout": {
-                    "itemID": "138",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Sturgeon": {
-                    "itemID": "698",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".5"
-                },
-                "Grape": {
-                    "itemID": "398",
-                    "chance": ".8"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".4"
-                },
-                "Wild Plum": {
-                    "itemID": "406",
-                    "chance": ".4"
-                },
-                "Hazelnut": {
-                    "itemID": "408",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Perch": {
-                    "itemID": "141",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Lingcod": {
-                    "itemID": "707",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Sturgeon": {
-                    "itemID": "698",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".85"
-                },
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".9"
-                },
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".5"
-                }
-            }
-        }
-    },
-    "Backwoods": {
-        "Spring": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Legend": {
-                    "itemID": "163",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Leek": {
-                    "itemID": "20",
-                    "chance": ".7"
-                },
-                "Wild Horseradish": {
-                    "itemID": "16",
-                    "chance": ".5"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Rainbow Trout": {
-                    "itemID": "138",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Sturgeon": {
-                    "itemID": "698",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".5"
-                },
-                "Grape": {
-                    "itemID": "398",
-                    "chance": ".8"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".4"
-                },
-                "Wild Plum": {
-                    "itemID": "406",
-                    "chance": ".4"
-                },
-                "Hazelnut": {
-                    "itemID": "408",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Largemouth Bass": {
-                    "itemID": "136",
-                    "zoneNumber": "-1"
-                },
-                "Walleye": {
-                    "itemID": "140",
-                    "zoneNumber": "-1"
-                },
-                "Perch": {
-                    "itemID": "141",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Lingcod": {
-                    "itemID": "707",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                },
-                "Bullhead": {
-                    "itemID": "700",
-                    "zoneNumber": "-1"
-                },
-                "Sturgeon": {
-                    "itemID": "698",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".25"
-                },
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".4"
-                },
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".5"
-                }
-            }
-        }
-    },
-    "Railroad": {
-        "Spring": {
-            "Fish": {},
-            "Foraging": {
-                "Daffodil": {
-                    "itemID": "18",
-                    "chance": ".9"
-                },
-                "Leek": {
-                    "itemID": "20",
-                    "chance": ".4"
-                },
-                "Dandelion": {
-                    "itemID": "22",
-                    "chance": ".7"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {},
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".4"
-                },
-                "Grape": {
-                    "itemID": "398",
-                    "chance": ".4"
-                },
-                "Sweet Pea": {
-                    "itemID": "402",
-                    "chance": ".7"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {},
-            "Foraging": {
-                "Wild Plum": {
-                    "itemID": "406",
-                    "chance": ".6"
-                },
-                "Hazelnut": {
-                    "itemID": "408",
-                    "chance": ".4"
-                },
-                "Blackberry": {
-                    "itemID": "410",
-                    "chance": ".6"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {},
-            "Foraging": {
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".8"
-                },
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".8"
-                }
-            }
-        }
-    },
-    "Beach": {
-        "Spring": {
-            "Fish": {
-                "Anchovy": {
-                    "itemID": "129",
-                    "zoneNumber": "-1"
-                },
-                "Sardine": {
-                    "itemID": "131",
-                    "zoneNumber": "-1"
-                },
-                "Herring": {
-                    "itemID": "147",
-                    "zoneNumber": "-1"
-                },
-                "Eel": {
-                    "itemID": "148",
-                    "zoneNumber": "-1"
-                },
-                "Seaweed": {
-                    "itemID": "152",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".9"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".1"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Octopus": {
-                    "itemID": "149",
-                    "zoneNumber": "-1"
-                },
-                "Red Snapper": {
-                    "itemID": "150",
-                    "zoneNumber": "-1"
-                },
-                "Seaweed": {
-                    "itemID": "152",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".9"
-                },
-                "Rainbow Shell": {
-                    "itemID": "394",
-                    "chance": ".5"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".1"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Anchovy": {
-                    "itemID": "129",
-                    "zoneNumber": "-1"
-                },
-                "Sardine": {
-                    "itemID": "131",
-                    "zoneNumber": "-1"
-                },
-                "Eel": {
-                    "itemID": "148",
-                    "zoneNumber": "-1"
-                },
-                "Red Snapper": {
-                    "itemID": "150",
-                    "zoneNumber": "-1"
-                },
-                "Seaweed": {
-                    "itemID": "152",
-                    "zoneNumber": "-1"
-                },
-                "Sea Cucumber": {
-                    "itemID": "154",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Albacore": {
-                    "itemID": "705",
-                    "zoneNumber": "-1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".9"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".1"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Sardine": {
-                    "itemID": "131",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Herring": {
-                    "itemID": "147",
-                    "zoneNumber": "-1"
-                },
-                "Red Snapper": {
-                    "itemID": "150",
-                    "zoneNumber": "-1"
-                },
-                "Squid": {
-                    "itemID": "151",
-                    "zoneNumber": "-1"
-                },
-                "Seaweed": {
-                    "itemID": "152",
-                    "zoneNumber": "-1"
-                },
-                "Sea Cucumber": {
-                    "itemID": "154",
-                    "zoneNumber": "-1"
-                },
-                "Albacore": {
-                    "itemID": "705",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".4"
-                },
-                "Nautilus Shell": {
-                    "itemID": "392",
-                    "chance": ".8"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".05"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".2"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".2"
-                }
-            }
-        }
-    },
-    "Woods": {
-        "Spring": {
-            "Fish": {
-                "Woodskip": {
-                    "itemID": "734",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Morel": {
-                    "itemID": "257",
-                    "chance": ".5"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".25"
-                },
-                "Wild Horseradish": {
-                    "itemID": "16",
-                    "chance": ".8"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Woodskip": {
-                    "itemID": "734",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Fiddlehead Fern": {
-                    "itemID": "259",
-                    "chance": ".9"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".25"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Woodskip": {
-                    "itemID": "734",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Chanterelle": {
-                    "itemID": "281",
-                    "chance": ".5"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".6"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".2"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Woodskip": {
-                    "itemID": "734",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Holly": {
-                    "itemID": "283",
-                    "chance": ".9"
-                }
-            }
-        }
-    },
-    "Sewer": {
-        "Spring": {
-            "Fish": {
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "BugLand": {
-        "Spring": {
-            "Fish": {
-                "Slimejack": {
-                    "itemID": "796",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Slimejack": {
-                    "itemID": "796",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Slimejack": {
-                    "itemID": "796",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Slimejack": {
-                    "itemID": "796",
-                    "zoneNumber": "-1"
-                },
-                "Carp": {
-                    "itemID": "142",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "WitchSwamp": {
-        "Spring": {
-            "Fish": {
-                "Void Salmon": {
-                    "itemID": "795",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Void Salmon": {
-                    "itemID": "795",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Void Salmon": {
-                    "itemID": "795",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Void Salmon": {
-                    "itemID": "795",
-                    "zoneNumber": "-1"
-                },
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "White Algae": {
-                    "itemID": "157",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "fishingGame": {
-        "Spring": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "Temp": {
-        "Spring": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Wild Horseradish": {
-                    "itemID": "16",
-                    "chance": ".9"
-                },
-                "Dandelion": {
-                    "itemID": "22",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Spice Berry": {
-                    "itemID": "396",
-                    "chance": ".6"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Blackberry": {
-                    "itemID": "410",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Green Algae": {
-                    "itemID": "153",
-                    "zoneNumber": "-1"
-                },
-                "Sunfish": {
-                    "itemID": "145",
-                    "zoneNumber": "-1"
-                },
-                "Catfish": {
-                    "itemID": "143",
-                    "zoneNumber": "-1"
-                },
-                "Smallmouth Bass": {
-                    "itemID": "137",
-                    "zoneNumber": "-1"
-                },
-                "Bream": {
-                    "itemID": "132",
-                    "zoneNumber": "-1"
-                },
-                "Shad": {
-                    "itemID": "706",
-                    "zoneNumber": "-1"
-                },
-                "Chub": {
-                    "itemID": "702",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Crocus": {
-                    "itemID": "418",
-                    "chance": ".5"
-                },
-                "Crystal Fruit": {
-                    "itemID": "414",
-                    "chance": ".2"
-                }
-            }
-        }
-    },
-    "IslandNorth": {
-        "Spring": {
-            "Fish": {
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "-1"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "-1"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "IslandSouth": {
-        "Spring": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "IslandWest": {
-        "Spring": {
-            "Fish": {
-                "Octopus": {
-                    "itemID": "149",
-                    "zoneNumber": "1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "2"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "2"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "2"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Octopus": {
-                    "itemID": "149",
-                    "zoneNumber": "1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "2"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "2"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "2"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Octopus": {
-                    "itemID": "149",
-                    "zoneNumber": "1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "2"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "2"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "2"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Octopus": {
-                    "itemID": "149",
-                    "zoneNumber": "1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "1"
-                },
-                "Tilapia": {
-                    "itemID": "701",
-                    "zoneNumber": "2"
-                },
-                "Blue Discus": {
-                    "itemID": "838",
-                    "zoneNumber": "2"
-                },
-                "Midnight Carp": {
-                    "itemID": "269",
-                    "zoneNumber": "2"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "IslandSouthEast": {
-        "Spring": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Lionfish": {
-                    "itemID": "837",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "IslandSouthEastCave": {
-        "Spring": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Summer": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Fall": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        },
-        "Winter": {
-            "Fish": {
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                },
-                "Pufferfish": {
-                    "itemID": "128",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {}
-        }
-    },
-    "IslandSecret": {
-        "Spring": {
-            "Fish": {
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Squid": {
-                    "itemID": "151",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".6"
-                },
-                "Sea Urchin": {
-                    "itemID": "397",
-                    "chance": ".5"
-                },
-                "Rainbow Shell": {
-                    "itemID": "394",
-                    "chance": ".5"
-                },
-                "Coral": {
-                    "itemID": "393",
-                    "chance": ".3"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".2"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Squid": {
-                    "itemID": "151",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".6"
-                },
-                "Sea Urchin": {
-                    "itemID": "397",
-                    "chance": ".5"
-                },
-                "Rainbow Shell": {
-                    "itemID": "394",
-                    "chance": ".5"
-                },
-                "Coral": {
-                    "itemID": "393",
-                    "chance": ".3"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".2"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Squid": {
-                    "itemID": "151",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".6"
-                },
-                "Sea Urchin": {
-                    "itemID": "397",
-                    "chance": ".5"
-                },
-                "Rainbow Shell": {
-                    "itemID": "394",
-                    "chance": ".5"
-                },
-                "Coral": {
-                    "itemID": "393",
-                    "chance": ".3"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".2"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {
-                "Stingray": {
-                    "itemID": "836",
-                    "zoneNumber": "-1"
-                },
-                "Flounder": {
-                    "itemID": "267",
-                    "zoneNumber": "-1"
-                },
-                "Squid": {
-                    "itemID": "151",
-                    "zoneNumber": "-1"
-                },
-                "Halibut": {
-                    "itemID": "708",
-                    "zoneNumber": "-1"
-                },
-                "Red Mullet": {
-                    "itemID": "146",
-                    "zoneNumber": "-1"
-                },
-                "Super Cucumber": {
-                    "itemID": "155",
-                    "zoneNumber": "-1"
-                },
-                "Tuna": {
-                    "itemID": "130",
-                    "zoneNumber": "-1"
-                }
-            },
-            "Foraging": {
-                "Clam": {
-                    "itemID": "372",
-                    "chance": ".6"
-                },
-                "Sea Urchin": {
-                    "itemID": "397",
-                    "chance": ".5"
-                },
-                "Rainbow Shell": {
-                    "itemID": "394",
-                    "chance": ".5"
-                },
-                "Coral": {
-                    "itemID": "393",
-                    "chance": ".3"
-                },
-                "Cockle": {
-                    "itemID": "718",
-                    "chance": ".2"
-                },
-                "Mussel": {
-                    "itemID": "719",
-                    "chance": ".3"
-                },
-                "Oyster": {
-                    "itemID": "723",
-                    "chance": ".3"
-                }
-            }
-        }
-    },
-    "IslandNorthCave1": {
-        "Spring": {
-            "Fish": {},
-            "Foraging": {
-                "Chanterelle": {
-                    "itemID": "281",
-                    "chance": ".9"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".5"
-                },
-                "Purple Mushroom": {
-                    "itemID": "422",
-                    "chance": ".5"
-                }
-            }
-        },
-        "Summer": {
-            "Fish": {},
-            "Foraging": {
-                "Chanterelle": {
-                    "itemID": "281",
-                    "chance": ".9"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".9"
-                },
-                "Purple Mushroom": {
-                    "itemID": "422",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Fall": {
-            "Fish": {},
-            "Foraging": {
-                "Chanterelle": {
-                    "itemID": "281",
-                    "chance": ".9"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".9"
-                },
-                "Purple Mushroom": {
-                    "itemID": "422",
-                    "chance": ".9"
-                }
-            }
-        },
-        "Winter": {
-            "Fish": {},
-            "Foraging": {
-                "Chanterelle": {
-                    "itemID": "281",
-                    "chance": ".9"
-                },
-                "Common Mushroom": {
-                    "itemID": "404",
-                    "chance": ".9"
-                },
-                "Red Mushroom": {
-                    "itemID": "420",
-                    "chance": ".9"
-                },
-                "Purple Mushroom": {
-                    "itemID": "422",
-                    "chance": ".9"
-                }
-            }
-        }
+      },
+      "Foraging": {}
     }
+  },
+  "Desert": {
+    "Spring": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sandfish": {
+          "itemID": "164",
+          "zoneNumber": "-1"
+        },
+        "Scorpion Carp": {
+          "itemID": "165",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Coconut": {
+          "itemID": "88",
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "itemID": "90",
+          "chance": ".5"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sandfish": {
+          "itemID": "164",
+          "zoneNumber": "-1"
+        },
+        "Scorpion Carp": {
+          "itemID": "165",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Coconut": {
+          "itemID": "88",
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "itemID": "90",
+          "chance": ".5"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sandfish": {
+          "itemID": "164",
+          "zoneNumber": "-1"
+        },
+        "Scorpion Carp": {
+          "itemID": "165",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Coconut": {
+          "itemID": "88",
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "itemID": "90",
+          "chance": ".5"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sandfish": {
+          "itemID": "164",
+          "zoneNumber": "-1"
+        },
+        "Scorpion Carp": {
+          "itemID": "165",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Coconut": {
+          "itemID": "88",
+          "chance": ".5"
+        },
+        "Cactus Fruit": {
+          "itemID": "90",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "BusStop": {
+    "Spring": {
+      "Fish": {},
+      "Foraging": {
+        "Daffodil": {
+          "itemID": "18",
+          "chance": ".9"
+        },
+        "Leek": {
+          "itemID": "20",
+          "chance": ".4"
+        },
+        "Dandelion": {
+          "itemID": "22",
+          "chance": ".7"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {},
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".4"
+        },
+        "Grape": {
+          "itemID": "398",
+          "chance": ".4"
+        },
+        "Sweet Pea": {
+          "itemID": "402",
+          "chance": ".7"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {},
+      "Foraging": {
+        "Wild Plum": {
+          "itemID": "406",
+          "chance": ".6"
+        },
+        "Hazelnut": {
+          "itemID": "408",
+          "chance": ".4"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {},
+      "Foraging": {
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".33"
+        },
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".6"
+        },
+        "Holly": {
+          "itemID": "283",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Forest": {
+    "Spring": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "0"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "0"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "0"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "0"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "0"
+        }
+      },
+      "Foraging": {
+        "Wild Horseradish": {
+          "itemID": "16",
+          "chance": ".9"
+        },
+        "Dandelion": {
+          "itemID": "22",
+          "chance": ".9"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "0"
+        },
+        "Pike": {
+          "itemID": "144",
+          "zoneNumber": "-1"
+        },
+        "Rainbow Trout": {
+          "itemID": "138",
+          "zoneNumber": "0"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "0"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "0"
+        },
+        "Dorado": {
+          "itemID": "704",
+          "zoneNumber": "0"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "0"
+        }
+      },
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".6"
+        },
+        "Sweet Pea": {
+          "itemID": "402",
+          "chance": ".9"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "0"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Salmon": {
+          "itemID": "139",
+          "zoneNumber": "0"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "0"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "0"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "0"
+        },
+        "Tiger Trout": {
+          "itemID": "699",
+          "zoneNumber": "0"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "1"
+        }
+      },
+      "Foraging": {
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Blackberry": {
+          "itemID": "410",
+          "chance": ".9"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Tiger Trout": {
+          "itemID": "699",
+          "zoneNumber": "0"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "0"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Pike": {
+          "itemID": "144",
+          "zoneNumber": "-1"
+        },
+        "Perch": {
+          "itemID": "141",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "0"
+        },
+        "Lingcod": {
+          "itemID": "707",
+          "zoneNumber": "0"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "0"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "1"
+        }
+      },
+      "Foraging": {
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".9"
+        },
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".9"
+        },
+        "Holly": {
+          "itemID": "283",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Town": {
+    "Spring": {
+      "Fish": {
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Daffodil": {
+          "itemID": "18",
+          "chance": ".9"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Rainbow Trout": {
+          "itemID": "138",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Pike": {
+          "itemID": "144",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Sweet Pea": {
+          "itemID": "402",
+          "chance": ".9"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Salmon": {
+          "itemID": "139",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Tiger Trout": {
+          "itemID": "699",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Blackberry": {
+          "itemID": "410",
+          "chance": ".6"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Perch": {
+          "itemID": "141",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Pike": {
+          "itemID": "144",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Lingcod": {
+          "itemID": "707",
+          "zoneNumber": "-1"
+        },
+        "Tiger Trout": {
+          "itemID": "699",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".7"
+        },
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".1"
+        },
+        "Holly": {
+          "itemID": "283",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Mountain": {
+    "Spring": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Leek": {
+          "itemID": "20",
+          "chance": ".7"
+        },
+        "Wild Horseradish": {
+          "itemID": "16",
+          "chance": ".5"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Rainbow Trout": {
+          "itemID": "138",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Sturgeon": {
+          "itemID": "698",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".5"
+        },
+        "Grape": {
+          "itemID": "398",
+          "chance": ".8"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".4"
+        },
+        "Wild Plum": {
+          "itemID": "406",
+          "chance": ".4"
+        },
+        "Hazelnut": {
+          "itemID": "408",
+          "chance": ".9"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Perch": {
+          "itemID": "141",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Lingcod": {
+          "itemID": "707",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Sturgeon": {
+          "itemID": "698",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".85"
+        },
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".9"
+        },
+        "Holly": {
+          "itemID": "283",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Backwoods": {
+    "Spring": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Legend": {
+          "itemID": "163",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Leek": {
+          "itemID": "20",
+          "chance": ".7"
+        },
+        "Wild Horseradish": {
+          "itemID": "16",
+          "chance": ".5"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Rainbow Trout": {
+          "itemID": "138",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Sturgeon": {
+          "itemID": "698",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".5"
+        },
+        "Grape": {
+          "itemID": "398",
+          "chance": ".8"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".4"
+        },
+        "Wild Plum": {
+          "itemID": "406",
+          "chance": ".4"
+        },
+        "Hazelnut": {
+          "itemID": "408",
+          "chance": ".9"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Largemouth Bass": {
+          "itemID": "136",
+          "zoneNumber": "-1"
+        },
+        "Walleye": {
+          "itemID": "140",
+          "zoneNumber": "-1"
+        },
+        "Perch": {
+          "itemID": "141",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Lingcod": {
+          "itemID": "707",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        },
+        "Bullhead": {
+          "itemID": "700",
+          "zoneNumber": "-1"
+        },
+        "Sturgeon": {
+          "itemID": "698",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".25"
+        },
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".4"
+        },
+        "Holly": {
+          "itemID": "283",
+          "chance": ".5"
+        }
+      }
+    }
+  },
+  "Railroad": {
+    "Spring": {
+      "Fish": {},
+      "Foraging": {
+        "Daffodil": {
+          "itemID": "18",
+          "chance": ".9"
+        },
+        "Leek": {
+          "itemID": "20",
+          "chance": ".4"
+        },
+        "Dandelion": {
+          "itemID": "22",
+          "chance": ".7"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {},
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".4"
+        },
+        "Grape": {
+          "itemID": "398",
+          "chance": ".4"
+        },
+        "Sweet Pea": {
+          "itemID": "402",
+          "chance": ".7"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {},
+      "Foraging": {
+        "Wild Plum": {
+          "itemID": "406",
+          "chance": ".6"
+        },
+        "Hazelnut": {
+          "itemID": "408",
+          "chance": ".4"
+        },
+        "Blackberry": {
+          "itemID": "410",
+          "chance": ".6"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {},
+      "Foraging": {
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".8"
+        },
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".8"
+        }
+      }
+    }
+  },
+  "Beach": {
+    "Spring": {
+      "Fish": {
+        "Anchovy": {
+          "itemID": "129",
+          "zoneNumber": "-1"
+        },
+        "Sardine": {
+          "itemID": "131",
+          "zoneNumber": "-1"
+        },
+        "Herring": {
+          "itemID": "147",
+          "zoneNumber": "-1"
+        },
+        "Eel": {
+          "itemID": "148",
+          "zoneNumber": "-1"
+        },
+        "Seaweed": {
+          "itemID": "152",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".9"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".1"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Octopus": {
+          "itemID": "149",
+          "zoneNumber": "-1"
+        },
+        "Red Snapper": {
+          "itemID": "150",
+          "zoneNumber": "-1"
+        },
+        "Seaweed": {
+          "itemID": "152",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".9"
+        },
+        "Rainbow Shell": {
+          "itemID": "394",
+          "chance": ".5"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".1"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Anchovy": {
+          "itemID": "129",
+          "zoneNumber": "-1"
+        },
+        "Sardine": {
+          "itemID": "131",
+          "zoneNumber": "-1"
+        },
+        "Eel": {
+          "itemID": "148",
+          "zoneNumber": "-1"
+        },
+        "Red Snapper": {
+          "itemID": "150",
+          "zoneNumber": "-1"
+        },
+        "Seaweed": {
+          "itemID": "152",
+          "zoneNumber": "-1"
+        },
+        "Sea Cucumber": {
+          "itemID": "154",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Albacore": {
+          "itemID": "705",
+          "zoneNumber": "-1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".9"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".1"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Sardine": {
+          "itemID": "131",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Herring": {
+          "itemID": "147",
+          "zoneNumber": "-1"
+        },
+        "Red Snapper": {
+          "itemID": "150",
+          "zoneNumber": "-1"
+        },
+        "Squid": {
+          "itemID": "151",
+          "zoneNumber": "-1"
+        },
+        "Seaweed": {
+          "itemID": "152",
+          "zoneNumber": "-1"
+        },
+        "Sea Cucumber": {
+          "itemID": "154",
+          "zoneNumber": "-1"
+        },
+        "Albacore": {
+          "itemID": "705",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".4"
+        },
+        "Nautilus Shell": {
+          "itemID": "392",
+          "chance": ".8"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".05"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".2"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".2"
+        }
+      }
+    }
+  },
+  "Woods": {
+    "Spring": {
+      "Fish": {
+        "Woodskip": {
+          "itemID": "734",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Morel": {
+          "itemID": "257",
+          "chance": ".5"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".25"
+        },
+        "Wild Horseradish": {
+          "itemID": "16",
+          "chance": ".8"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Woodskip": {
+          "itemID": "734",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Fiddlehead Fern": {
+          "itemID": "259",
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".25"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Woodskip": {
+          "itemID": "734",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Chanterelle": {
+          "itemID": "281",
+          "chance": ".5"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".6"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".2"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Woodskip": {
+          "itemID": "734",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Holly": {
+          "itemID": "283",
+          "chance": ".9"
+        }
+      }
+    }
+  },
+  "Sewer": {
+    "Spring": {
+      "Fish": {
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "BugLand": {
+    "Spring": {
+      "Fish": {
+        "Slimejack": {
+          "itemID": "796",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Slimejack": {
+          "itemID": "796",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Slimejack": {
+          "itemID": "796",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Slimejack": {
+          "itemID": "796",
+          "zoneNumber": "-1"
+        },
+        "Carp": {
+          "itemID": "142",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "WitchSwamp": {
+    "Spring": {
+      "Fish": {
+        "Void Salmon": {
+          "itemID": "795",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Void Salmon": {
+          "itemID": "795",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Void Salmon": {
+          "itemID": "795",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Void Salmon": {
+          "itemID": "795",
+          "zoneNumber": "-1"
+        },
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "White Algae": {
+          "itemID": "157",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "fishingGame": {
+    "Spring": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "Temp": {
+    "Spring": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Wild Horseradish": {
+          "itemID": "16",
+          "chance": ".9"
+        },
+        "Dandelion": {
+          "itemID": "22",
+          "chance": ".9"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Spice Berry": {
+          "itemID": "396",
+          "chance": ".6"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Blackberry": {
+          "itemID": "410",
+          "chance": ".9"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Green Algae": {
+          "itemID": "153",
+          "zoneNumber": "-1"
+        },
+        "Sunfish": {
+          "itemID": "145",
+          "zoneNumber": "-1"
+        },
+        "Catfish": {
+          "itemID": "143",
+          "zoneNumber": "-1"
+        },
+        "Smallmouth Bass": {
+          "itemID": "137",
+          "zoneNumber": "-1"
+        },
+        "Bream": {
+          "itemID": "132",
+          "zoneNumber": "-1"
+        },
+        "Shad": {
+          "itemID": "706",
+          "zoneNumber": "-1"
+        },
+        "Chub": {
+          "itemID": "702",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Crocus": {
+          "itemID": "418",
+          "chance": ".5"
+        },
+        "Crystal Fruit": {
+          "itemID": "414",
+          "chance": ".2"
+        }
+      }
+    }
+  },
+  "IslandNorth": {
+    "Spring": {
+      "Fish": {
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "-1"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "-1"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "IslandSouth": {
+    "Spring": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "IslandWest": {
+    "Spring": {
+      "Fish": {
+        "Octopus": {
+          "itemID": "149",
+          "zoneNumber": "1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "2"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "2"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "2"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Octopus": {
+          "itemID": "149",
+          "zoneNumber": "1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "2"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "2"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "2"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Octopus": {
+          "itemID": "149",
+          "zoneNumber": "1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "2"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "2"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "2"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Octopus": {
+          "itemID": "149",
+          "zoneNumber": "1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "1"
+        },
+        "Tilapia": {
+          "itemID": "701",
+          "zoneNumber": "2"
+        },
+        "Blue Discus": {
+          "itemID": "838",
+          "zoneNumber": "2"
+        },
+        "Midnight Carp": {
+          "itemID": "269",
+          "zoneNumber": "2"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "IslandSouthEast": {
+    "Spring": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Lionfish": {
+          "itemID": "837",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "IslandSouthEastCave": {
+    "Spring": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Summer": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Fall": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    },
+    "Winter": {
+      "Fish": {
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        },
+        "Pufferfish": {
+          "itemID": "128",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {}
+    }
+  },
+  "IslandSecret": {
+    "Spring": {
+      "Fish": {
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Squid": {
+          "itemID": "151",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "itemID": "397",
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "itemID": "394",
+          "chance": ".5"
+        },
+        "Coral": {
+          "itemID": "393",
+          "chance": ".3"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".2"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Squid": {
+          "itemID": "151",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "itemID": "397",
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "itemID": "394",
+          "chance": ".5"
+        },
+        "Coral": {
+          "itemID": "393",
+          "chance": ".3"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".2"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Squid": {
+          "itemID": "151",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "itemID": "397",
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "itemID": "394",
+          "chance": ".5"
+        },
+        "Coral": {
+          "itemID": "393",
+          "chance": ".3"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".2"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {
+        "Stingray": {
+          "itemID": "836",
+          "zoneNumber": "-1"
+        },
+        "Flounder": {
+          "itemID": "267",
+          "zoneNumber": "-1"
+        },
+        "Squid": {
+          "itemID": "151",
+          "zoneNumber": "-1"
+        },
+        "Halibut": {
+          "itemID": "708",
+          "zoneNumber": "-1"
+        },
+        "Red Mullet": {
+          "itemID": "146",
+          "zoneNumber": "-1"
+        },
+        "Super Cucumber": {
+          "itemID": "155",
+          "zoneNumber": "-1"
+        },
+        "Tuna": {
+          "itemID": "130",
+          "zoneNumber": "-1"
+        }
+      },
+      "Foraging": {
+        "Clam": {
+          "itemID": "372",
+          "chance": ".6"
+        },
+        "Sea Urchin": {
+          "itemID": "397",
+          "chance": ".5"
+        },
+        "Rainbow Shell": {
+          "itemID": "394",
+          "chance": ".5"
+        },
+        "Coral": {
+          "itemID": "393",
+          "chance": ".3"
+        },
+        "Cockle": {
+          "itemID": "718",
+          "chance": ".2"
+        },
+        "Mussel": {
+          "itemID": "719",
+          "chance": ".3"
+        },
+        "Oyster": {
+          "itemID": "723",
+          "chance": ".3"
+        }
+      }
+    }
+  },
+  "IslandNorthCave1": {
+    "Spring": {
+      "Fish": {},
+      "Foraging": {
+        "Chanterelle": {
+          "itemID": "281",
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".5"
+        },
+        "Purple Mushroom": {
+          "itemID": "422",
+          "chance": ".5"
+        }
+      }
+    },
+    "Summer": {
+      "Fish": {},
+      "Foraging": {
+        "Chanterelle": {
+          "itemID": "281",
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "itemID": "422",
+          "chance": ".9"
+        }
+      }
+    },
+    "Fall": {
+      "Fish": {},
+      "Foraging": {
+        "Chanterelle": {
+          "itemID": "281",
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "itemID": "422",
+          "chance": ".9"
+        }
+      }
+    },
+    "Winter": {
+      "Fish": {},
+      "Foraging": {
+        "Chanterelle": {
+          "itemID": "281",
+          "chance": ".9"
+        },
+        "Common Mushroom": {
+          "itemID": "404",
+          "chance": ".9"
+        },
+        "Red Mushroom": {
+          "itemID": "420",
+          "chance": ".9"
+        },
+        "Purple Mushroom": {
+          "itemID": "422",
+          "chance": ".9"
+        }
+      }
+    }
+  }
 }

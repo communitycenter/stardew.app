@@ -1,2484 +1,2484 @@
 {
-    "322": {
-        "name": "Wood Fence",
-        "itemID": 322,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1e/Wood_Fence.png",
-        "description": "Keeps grass and animals contained!",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "323": {
-        "name": "Stone Fence",
-        "itemID": 323,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2d/Stone_Fence.png",
-        "description": "Lasts longer than a wood fence.",
-        "unlockConditions": "Reach level 2 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "324": {
-        "name": "Iron Fence",
-        "itemID": 324,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9d/Iron_Fence.png",
-        "description": "Lasts longer than a stone fence.",
-        "unlockConditions": "Reach level 4 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "298": {
-        "name": "Hardwood Fence",
-        "itemID": 298,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5c/Hardwood_Fence.png",
-        "description": "The most durable type of fence.",
-        "unlockConditions": "Reach level 6 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "297": {
-        "name": "Grass Starter",
-        "itemID": 297,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/14/Grass_Starter.png",
-        "description": "Place this on your farm to start a new patch of grass.",
-        "unlockConditions": "Pierre's for 1,000g",
-        "ingredients": [
-            {
-                "itemID": 771,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "325": {
-        "name": "Gate",
-        "itemID": 325,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/94/Gate.png",
-        "description": "Allows you to pass through a fence.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "130": {
-        "name": "Chest",
-        "itemID": 130,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Chest.png",
-        "description": "A place to store your items.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            }
-        ],
-        "bigCraftable": true
-    },
-    "93": {
-        "name": "Torch",
-        "itemID": 93,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b2/Torch.png",
-        "description": "Provides a modest amount of light.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            },
-            {
-                "itemID": 92,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "8": {
-        "name": "Scarecrow",
-        "itemID": 8,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/75/Scarecrow.png",
-        "description": "Prevents crows from attacking your crops. Has a limited radius (about 8 \"tiles\").",
-        "unlockConditions": "Reach level 1 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": true
-    },
-    "167": {
-        "name": "Deluxe Scarecrow",
-        "itemID": 167,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Deluxe_Scarecrow.png",
-        "description": "Prevents crows from attacking your crops. Has a large radius (about 16 \"tiles\").",
-        "unlockConditions": "Letter after collecting all rarecrows",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            },
-            {
-                "itemID": 386,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 40
-            }
-        ],
-        "bigCraftable": true
-    },
-    "10": {
-        "name": "Bee House",
-        "itemID": 10,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Bee_House.png",
-        "description": "Place outside and wait for delicious honey! (Except in Winter).",
-        "unlockConditions": "Reach level 3 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 40
-            },
-            {
-                "itemID": 382,
-                "amount": 8
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 724,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "12": {
-        "name": "Keg",
-        "itemID": 12,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Keg.png",
-        "description": "Place a fruit or vegetable in here. Eventually it will turn into a beverage.",
-        "unlockConditions": "Reach level 8 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 30
-            },
-            {
-                "itemID": 334,
-                "amount": 1
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 725,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "163": {
-        "name": "Cask",
-        "itemID": 163,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Cask.png",
-        "description": "Use in the cellar to age products like wine and cheese.",
-        "unlockConditions": "Final Farmhouse upgrade",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 20
-            },
-            {
-                "itemID": 709,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "13": {
-        "name": "Furnace",
-        "itemID": 13,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Furnace.png",
-        "description": "Turns ore and coal into metal bars.",
-        "unlockConditions": "Reach farmer level 2.",
-        "ingredients": [
-            {
-                "itemID": 378,
-                "amount": 20
-            },
-            {
-                "itemID": 390,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": true
-    },
-    "62": {
-        "name": "Garden Pot",
-        "itemID": 62,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Garden_Pot.png",
-        "description": "Grows crops from any season when indoors. Outdoors, it can only house seasonal crops.",
-        "unlockConditions": "Evelyn cutscene after completing the Greenhouse",
-        "ingredients": [
-            {
-                "itemID": 330,
-                "amount": 1
-            },
-            {
-                "itemID": 390,
-                "amount": 10
-            },
-            {
-                "itemID": 338,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "37": {
-        "name": "Wood Sign",
-        "itemID": 37,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Wood_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": true
-    },
-    "38": {
-        "name": "Stone Sign",
-        "itemID": 38,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f3/Stone_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": true
-    },
-    "16": {
-        "name": "Cheese Press",
-        "itemID": 16,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Cheese_Press.png",
-        "description": "Turns milk into cheese.",
-        "unlockConditions": "Reach level 6 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 45
-            },
-            {
-                "itemID": 390,
-                "amount": 45
-            },
-            {
-                "itemID": 709,
-                "amount": 10
-            },
-            {
-                "itemID": 334,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "24": {
-        "name": "Mayonnaise Machine",
-        "itemID": 24,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Mayonnaise_Machine.png",
-        "description": "Turns eggs into mayonnaise.",
-        "unlockConditions": "Reach level 2 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 15
-            },
-            {
-                "itemID": 390,
-                "amount": 15
-            },
-            {
-                "itemID": 86,
-                "amount": 1
-            },
-            {
-                "itemID": 334,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "25": {
-        "name": "Seed Maker",
-        "itemID": 25,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Seed_Maker.png",
-        "description": "Place crops inside to produce a varying amount of seeds. Doesn't work with fruit tree crops.",
-        "unlockConditions": "Reach level 9 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 25
-            },
-            {
-                "itemID": 382,
-                "amount": 10
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "17": {
-        "name": "Loom",
-        "itemID": 17,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Loom.png",
-        "description": "Turns raw wool into fine cloth.",
-        "unlockConditions": "Reach level 7 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 60
-            },
-            {
-                "itemID": 771,
-                "amount": 30
-            },
-            {
-                "itemID": 726,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "19": {
-        "name": "Oil Maker",
-        "itemID": 19,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Oil_Maker.png",
-        "description": "Makes gourmet truffle oil.",
-        "unlockConditions": "Reach level 8 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 766,
-                "amount": 50
-            },
-            {
-                "itemID": 709,
-                "amount": 20
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "20": {
-        "name": "Recycling Machine",
-        "itemID": 20,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Recycling_Machine.png",
-        "description": "Turns fishing trash into resources.",
-        "unlockConditions": "Reach level 4 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 25
-            },
-            {
-                "itemID": 390,
-                "amount": 25
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "154": {
-        "name": "Worm Bin",
-        "itemID": 154,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Worm_Bin.png",
-        "description": "Produces bait on a regular basis. The worms are self-sufficient.",
-        "unlockConditions": "Reach level 8 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 25
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 50
-            }
-        ],
-        "bigCraftable": true
-    },
-    "15": {
-        "name": "Preserves Jar",
-        "itemID": 15,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Preserves_Jar.png",
-        "description": "Turns vegetables into pickles and fruit into jam.",
-        "unlockConditions": "Reach level 4 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            },
-            {
-                "itemID": 390,
-                "amount": 40
-            },
-            {
-                "itemID": 382,
-                "amount": 8
-            }
-        ],
-        "bigCraftable": true
-    },
-    "114": {
-        "name": "Charcoal Kiln",
-        "itemID": 114,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Charcoal_Kiln.png",
-        "description": "Turns 10 pieces of wood into one piece of coal.",
-        "unlockConditions": "Reach level 4 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 20
-            },
-            {
-                "itemID": 334,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": true
-    },
-    "105": {
-        "name": "Tapper",
-        "itemID": 105,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Tapper.png",
-        "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product!",
-        "unlockConditions": "Reach level 3 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 40
-            },
-            {
-                "itemID": 334,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": true
-    },
-    "9": {
-        "name": "Lightning Rod",
-        "itemID": 9,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Lightning_Rod.png",
-        "description": "Collects energy from lightning storms and turns it into battery packs.",
-        "unlockConditions": "Reach level 6 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 338,
-                "amount": 1
-            },
-            {
-                "itemID": 767,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "156": {
-        "name": "Slime Incubator",
-        "itemID": 156,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Slime_Incubator.png",
-        "description": "Hatches slimes eggs into slimes. Allows you to raise slimes outdoors.",
-        "unlockConditions": "Reach level 8 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 337,
-                "amount": 2
-            },
-            {
-                "itemID": 766,
-                "amount": 100
-            }
-        ],
-        "bigCraftable": true
-    },
-    "158": {
-        "name": "Slime Egg-Press",
-        "itemID": 158,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Slime_Egg-Press.png",
-        "description": "Compresses 100 pieces of slime into a slime egg. It's a miracle of science!",
-        "unlockConditions": "Reach level 6 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 382,
-                "amount": 25
-            },
-            {
-                "itemID": 82,
-                "amount": 1
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "21": {
-        "name": "Crystalarium",
-        "itemID": 21,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crystalarium.png",
-        "description": "Insert a gem of your choice and it will grow copies.",
-        "unlockConditions": "Reach level 9 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 99
-            },
-            {
-                "itemID": 336,
-                "amount": 5
-            },
-            {
-                "itemID": 337,
-                "amount": 2
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "209": {
-        "name": "Mini-Jukebox",
-        "itemID": 209,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Mini-Jukebox.png",
-        "description": "Allows you to play your favorite tunes.",
-        "unlockConditions": "Gus\u00a0(5-heart event)",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 2
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "599": {
-        "name": "Sprinkler",
-        "itemID": 599,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/08/Sprinkler.png",
-        "description": "Waters the 4 adjacent tiles every morning.",
-        "unlockConditions": "Reach level 2 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 1
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "621": {
-        "name": "Quality Sprinkler",
-        "itemID": 621,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/af/Quality_Sprinkler.png",
-        "description": "Waters the 8 adjacent tiles every morning.",
-        "unlockConditions": "Reach level 6 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            },
-            {
-                "itemID": 338,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "645": {
-        "name": "Iridium Sprinkler",
-        "itemID": 645,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/90/Iridium_Sprinkler.png",
-        "description": "Waters the 24 adjacent tiles every morning.",
-        "unlockConditions": "Reach level 9 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 336,
-                "amount": 1
-            },
-            {
-                "itemID": 337,
-                "amount": 1
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "71": {
-        "name": "Staircase",
-        "itemID": 71,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Staircase.png",
-        "description": "Use this to move down a level in the mines.",
-        "unlockConditions": "Reach level 2 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 99
-            }
-        ],
-        "bigCraftable": true
-    },
-    "464": {
-        "name": "Flute Block",
-        "itemID": 464,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/31/Flute_Block.png",
-        "description": "Plays a flute sound when you walk past.",
-        "unlockConditions": "Robin\u00a0(6-heart event)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 10
-            },
-            {
-                "itemID": 378,
-                "amount": 2
-            },
-            {
-                "itemID": 771,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": false
-    },
-    "463": {
-        "name": "Drum Block",
-        "itemID": 463,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/dc/Drum_Block.png",
-        "description": "Plays a drum sound when you walk past.",
-        "unlockConditions": "Robin\u00a0(6-heart event)",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 10
-            },
-            {
-                "itemID": 378,
-                "amount": 2
-            },
-            {
-                "itemID": 771,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": false
-    },
-    "368": {
-        "name": "Basic Fertilizer",
-        "itemID": 368,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Basic_Fertilizer.png",
-        "description": "Improves soil quality a little, increasing your chance to grow quality crops. Mix into tilled soil.",
-        "unlockConditions": "Reach level 1 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 92,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "805": {
-        "name": "Tree Fertilizer",
-        "itemID": 805,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5d/Tree_Fertilizer.png",
-        "description": "Sprinkle on a wild tree to ensure rapid growth, even in winter. Doesn't work on fruit trees.",
-        "unlockConditions": "Reach level 7 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 771,
-                "amount": 5
-            },
-            {
-                "itemID": 390,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "369": {
-        "name": "Quality Fertilizer",
-        "itemID": 369,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a0/Quality_Fertilizer.png",
-        "description": "Improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
-        "unlockConditions": "Reach level 9 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 92,
-                "amount": 2
-            },
-            {
-                "itemID": -4,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "370": {
-        "name": "Basic Retaining Soil",
-        "itemID": 370,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c7/Basic_Retaining_Soil.png",
-        "description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
-        "unlockConditions": "Reach level 4 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "371": {
-        "name": "Quality Retaining Soil",
-        "itemID": 371,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/0a/Quality_Retaining_Soil.png",
-        "description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
-        "unlockConditions": "Reach level 7 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 3
-            },
-            {
-                "itemID": 330,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "465": {
-        "name": "Speed-Gro",
-        "itemID": 465,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/94/Speed-Gro.png",
-        "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 10%. Mix into tilled soil.",
-        "unlockConditions": "Reach level 3 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 726,
-                "amount": 1
-            },
-            {
-                "itemID": 372,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "466": {
-        "name": "Deluxe Speed-Gro",
-        "itemID": 466,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6d/Deluxe_Speed-Gro.png",
-        "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 25%. Mix into tilled soil.",
-        "unlockConditions": "Reach level 8 in Farming.",
-        "ingredients": [
-            {
-                "itemID": 725,
-                "amount": 1
-            },
-            {
-                "itemID": 393,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "918": {
-        "name": "Hyper Speed-Gro",
-        "itemID": 918,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/53/Hyper_Speed-Gro.png",
-        "description": "Greatly stimulates leaf production. Guaranteed to increase growth rate by at least 33%. Mix into tilled soil.",
-        "unlockConditions": "Qi's Walnut Room for 30 Qi Gems",
-        "ingredients": [
-            {
-                "itemID": 909,
-                "amount": 1
-            },
-            {
-                "itemID": 881,
-                "amount": 3
-            },
-            {
-                "itemID": 768,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "919": {
-        "name": "Deluxe Fertilizer",
-        "itemID": 919,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1c/Deluxe_Fertilizer.png",
-        "description": "Greatly improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
-        "unlockConditions": "Qi's Walnut Roomfor 20 Qi Gems",
-        "ingredients": [
-            {
-                "itemID": 337,
-                "amount": 1
-            },
-            {
-                "itemID": 92,
-                "amount": 40
-            }
-        ],
-        "bigCraftable": false
-    },
-    "920": {
-        "name": "Deluxe Retaining Soil",
-        "itemID": 920,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c3/Deluxe_Retaining_Soil.png",
-        "description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
-        "unlockConditions": "Island Trader for  Cinder Shard\u00a0(50)",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 5
-            },
-            {
-                "itemID": 771,
-                "amount": 3
-            },
-            {
-                "itemID": 330,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "286": {
-        "name": "Cherry Bomb",
-        "itemID": 286,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Cherry_Bomb.png",
-        "description": "Generates a small explosion. Stand back!",
-        "unlockConditions": "Reach level 1 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 378,
-                "amount": 4
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "287": {
-        "name": "Bomb",
-        "itemID": 287,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3b/Bomb.png",
-        "description": "Generates an explosion. Watch out!",
-        "unlockConditions": "Reach level 6 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 380,
-                "amount": 4
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "288": {
-        "name": "Mega Bomb",
-        "itemID": 288,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4f/Mega_Bomb.png",
-        "description": "Generates a powerful explosion. Use with extreme caution.",
-        "unlockConditions": "Reach level 8 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 384,
-                "amount": 4
-            },
-            {
-                "itemID": 768,
-                "amount": 1
-            },
-            {
-                "itemID": 769,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "441": {
-        "name": "Explosive Ammo",
-        "itemID": 441,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/f3/Explosive_Ammo.png",
-        "description": "Fire this with the slingshot.",
-        "unlockConditions": "Reach level 8 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 382,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "335": {
-        "name": "Transmute (Fe)",
+  "322": {
+    "name": "Wood Fence",
+    "itemID": 322,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1e/Wood_Fence.png",
+    "description": "Keeps grass and animals contained!",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "323": {
+    "name": "Stone Fence",
+    "itemID": 323,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2d/Stone_Fence.png",
+    "description": "Lasts longer than a wood fence.",
+    "unlockConditions": "Reach level 2 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "324": {
+    "name": "Iron Fence",
+    "itemID": 324,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9d/Iron_Fence.png",
+    "description": "Lasts longer than a stone fence.",
+    "unlockConditions": "Reach level 4 in Farming.",
+    "ingredients": [
+      {
         "itemID": 335,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6c/Iron_Bar.png",
-        "description": "A bar of pure iron.",
-        "unlockConditions": "Reach level 4 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 3
-            }
-        ],
-        "bigCraftable": false
-    },
-    "336": {
-        "name": "Transmute (Au)",
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "298": {
+    "name": "Hardwood Fence",
+    "itemID": 298,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5c/Hardwood_Fence.png",
+    "description": "The most durable type of fence.",
+    "unlockConditions": "Reach level 6 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "297": {
+    "name": "Grass Starter",
+    "itemID": 297,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/14/Grass_Starter.png",
+    "description": "Place this on your farm to start a new patch of grass.",
+    "unlockConditions": "Pierre's for 1,000g",
+    "ingredients": [
+      {
+        "itemID": 771,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "325": {
+    "name": "Gate",
+    "itemID": 325,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/94/Gate.png",
+    "description": "Allows you to pass through a fence.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "130": {
+    "name": "Chest",
+    "itemID": 130,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Chest.png",
+    "description": "A place to store your items.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      }
+    ],
+    "bigCraftable": true
+  },
+  "93": {
+    "name": "Torch",
+    "itemID": 93,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b2/Torch.png",
+    "description": "Provides a modest amount of light.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      },
+      {
+        "itemID": 92,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "8": {
+    "name": "Scarecrow",
+    "itemID": 8,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/75/Scarecrow.png",
+    "description": "Prevents crows from attacking your crops. Has a limited radius (about 8 \"tiles\").",
+    "unlockConditions": "Reach level 1 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": true
+  },
+  "167": {
+    "name": "Deluxe Scarecrow",
+    "itemID": 167,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Deluxe_Scarecrow.png",
+    "description": "Prevents crows from attacking your crops. Has a large radius (about 16 \"tiles\").",
+    "unlockConditions": "Letter after collecting all rarecrows",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      },
+      {
+        "itemID": 386,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 40
+      }
+    ],
+    "bigCraftable": true
+  },
+  "10": {
+    "name": "Bee House",
+    "itemID": 10,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Bee_House.png",
+    "description": "Place outside and wait for delicious honey! (Except in Winter).",
+    "unlockConditions": "Reach level 3 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 40
+      },
+      {
+        "itemID": 382,
+        "amount": 8
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 724,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "12": {
+    "name": "Keg",
+    "itemID": 12,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Keg.png",
+    "description": "Place a fruit or vegetable in here. Eventually it will turn into a beverage.",
+    "unlockConditions": "Reach level 8 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 30
+      },
+      {
+        "itemID": 334,
+        "amount": 1
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 725,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "163": {
+    "name": "Cask",
+    "itemID": 163,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Cask.png",
+    "description": "Use in the cellar to age products like wine and cheese.",
+    "unlockConditions": "Final Farmhouse upgrade",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 20
+      },
+      {
+        "itemID": 709,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "13": {
+    "name": "Furnace",
+    "itemID": 13,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Furnace.png",
+    "description": "Turns ore and coal into metal bars.",
+    "unlockConditions": "Reach farmer level 2.",
+    "ingredients": [
+      {
+        "itemID": 378,
+        "amount": 20
+      },
+      {
+        "itemID": 390,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": true
+  },
+  "62": {
+    "name": "Garden Pot",
+    "itemID": 62,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Garden_Pot.png",
+    "description": "Grows crops from any season when indoors. Outdoors, it can only house seasonal crops.",
+    "unlockConditions": "Evelyn cutscene after completing the Greenhouse",
+    "ingredients": [
+      {
+        "itemID": 330,
+        "amount": 1
+      },
+      {
+        "itemID": 390,
+        "amount": 10
+      },
+      {
+        "itemID": 338,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "37": {
+    "name": "Wood Sign",
+    "itemID": 37,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Wood_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": true
+  },
+  "38": {
+    "name": "Stone Sign",
+    "itemID": 38,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f3/Stone_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": true
+  },
+  "16": {
+    "name": "Cheese Press",
+    "itemID": 16,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Cheese_Press.png",
+    "description": "Turns milk into cheese.",
+    "unlockConditions": "Reach level 6 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 45
+      },
+      {
+        "itemID": 390,
+        "amount": 45
+      },
+      {
+        "itemID": 709,
+        "amount": 10
+      },
+      {
+        "itemID": 334,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "24": {
+    "name": "Mayonnaise Machine",
+    "itemID": 24,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Mayonnaise_Machine.png",
+    "description": "Turns eggs into mayonnaise.",
+    "unlockConditions": "Reach level 2 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 15
+      },
+      {
+        "itemID": 390,
+        "amount": 15
+      },
+      {
+        "itemID": 86,
+        "amount": 1
+      },
+      {
+        "itemID": 334,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "25": {
+    "name": "Seed Maker",
+    "itemID": 25,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Seed_Maker.png",
+    "description": "Place crops inside to produce a varying amount of seeds. Doesn't work with fruit tree crops.",
+    "unlockConditions": "Reach level 9 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 25
+      },
+      {
+        "itemID": 382,
+        "amount": 10
+      },
+      {
         "itemID": 336,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Gold_Bar.png",
-        "description": "A bar of pure gold.",
-        "unlockConditions": "Reach level 7 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "499": {
-        "name": "Ancient Seeds",
-        "itemID": 499,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ec/Ancient_Seeds.png",
-        "description": "Could these still grow?",
-        "unlockConditions": "Donating Ancient Seed artifact to Museum",
-        "ingredients": [
-            {
-                "itemID": 114,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "495": {
-        "name": "Wild Seeds (Sp)",
-        "itemID": 495,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
-        "description": "An assortment of wild spring seeds.",
-        "unlockConditions": "Reach level 1 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 16,
-                "amount": 1
-            },
-            {
-                "itemID": 18,
-                "amount": 1
-            },
-            {
-                "itemID": 20,
-                "amount": 1
-            },
-            {
-                "itemID": 22,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "496": {
-        "name": "Wild Seeds (Su)",
-        "itemID": 496,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c4/Summer_Seeds.png",
-        "description": "An assortment of wild summer seeds.",
-        "unlockConditions": "Reach level 4 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 396,
-                "amount": 1
-            },
-            {
-                "itemID": 398,
-                "amount": 1
-            },
-            {
-                "itemID": 402,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "497": {
-        "name": "Wild Seeds (Fa)",
-        "itemID": 497,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/55/Fall_Seeds.png",
-        "description": "An assortment of wild fall seeds.",
-        "unlockConditions": "Reach level 6 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 404,
-                "amount": 1
-            },
-            {
-                "itemID": 406,
-                "amount": 1
-            },
-            {
-                "itemID": 408,
-                "amount": 1
-            },
-            {
-                "itemID": 410,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "498": {
-        "name": "Wild Seeds (Wi)",
-        "itemID": 498,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/dd/Winter_Seeds.png",
-        "description": "An assortment of wild winter seeds.",
-        "unlockConditions": "Reach level 7 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 412,
-                "amount": 1
-            },
-            {
-                "itemID": 414,
-                "amount": 1
-            },
-            {
-                "itemID": 416,
-                "amount": 1
-            },
-            {
-                "itemID": 418,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "885": {
-        "name": "Fiber Seeds",
-        "itemID": 885,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/05/Fiber_Seeds.png",
-        "description": "Plant these in any season. Does not require watering. Harvest with the scythe. Takes 7 days to grow.",
-        "unlockConditions": "\"Community Cleanup\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 770,
-                "amount": 1
-            },
-            {
-                "itemID": 92,
-                "amount": 5
-            },
-            {
-                "itemID": 330,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "251": {
-        "name": "Tea Sapling",
-        "itemID": 251,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/12/Tea_Sapling.png",
-        "description": "Takes 20 days to mature. Produces tea leaves during the final week of each season, except winter. No watering necessary!",
-        "unlockConditions": "Mail the day after Caroline's 2-heart event.",
-        "ingredients": [
-            {
-                "itemID": -777,
-                "amount": 2
-            },
-            {
-                "itemID": 771,
-                "amount": 5
-            },
-            {
-                "itemID": 388,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "688": {
-        "name": "Warp Totem: Farm",
-        "itemID": 688,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e4/Warp_Totem_Farm.png",
-        "description": "Warp directly to your house. Consumed on use.",
-        "unlockConditions": "Reach level 8 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 1
-            },
-            {
-                "itemID": 340,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": false
-    },
-    "689": {
-        "name": "Warp Totem: Mountains",
-        "itemID": 689,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d8/Warp_Totem_Mountains.png",
-        "description": "Warp directly to the mountains. Consumed on use.",
-        "unlockConditions": "Reach level 7 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 1
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 390,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": false
-    },
-    "690": {
-        "name": "Warp Totem: Beach",
-        "itemID": 690,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2f/Warp_Totem_Beach.png",
-        "description": "Warp directly to the beach. Consumed on use.",
-        "unlockConditions": "Reach level 6 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 1
-            },
-            {
-                "itemID": 393,
-                "amount": 2
-            },
-            {
-                "itemID": 771,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "261": {
-        "name": "Warp Totem: Desert",
-        "itemID": 261,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/83/Warp_Totem_Desert.png",
-        "description": "Warp directly to Calico Desert. Consumed on use.",
-        "unlockConditions": "Desert Trader for  Iridium Bar\u00a0(10)",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 2
-            },
-            {
-                "itemID": 88,
-                "amount": 1
-            },
-            {
-                "itemID": 386,
-                "amount": 4
-            }
-        ],
-        "bigCraftable": false
-    },
-    "886": {
-        "name": "Warp Totem: Island",
-        "itemID": 886,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b9/Warp_Totem_Island.png",
-        "description": "Warp directly to Ginger Island. Consumed on use.",
-        "unlockConditions": "Volcano Dwarf for 10,000g",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 5
-            },
-            {
-                "itemID": 852,
-                "amount": 1
-            },
-            {
-                "itemID": 829,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "681": {
-        "name": "Rain Totem",
-        "itemID": 681,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/f7/Rain_Totem.png",
-        "description": "Activate to greatly increase the chance for rain tomorrow. Consumed on use.",
-        "unlockConditions": "Reach level 9 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 1
-            },
-            {
-                "itemID": 432,
-                "amount": 1
-            },
-            {
-                "itemID": 726,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "926": {
-        "name": "Cookout Kit",
-        "itemID": 926,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/91/Cookout_Kit.png",
-        "description": "Use this to create a cooking campfire, allowing you to cook on-the-go!",
-        "unlockConditions": "Reach level 9 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 15
-            },
-            {
-                "itemID": 771,
-                "amount": 10
-            },
-            {
-                "itemID": 382,
-                "amount": 3
-            }
-        ],
-        "bigCraftable": false
-    },
-    "403": {
-        "name": "Field Snack",
-        "itemID": 403,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Field_Snack.png",
-        "description": "A quick snack to fuel the hungry forager.",
-        "unlockConditions": "Reach level 1 in Foraging.",
-        "ingredients": [
-            {
-                "itemID": 309,
-                "amount": 1
-            },
-            {
-                "itemID": 310,
-                "amount": 1
-            },
-            {
-                "itemID": 311,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "746": {
-        "name": "Jack-O-Lantern",
-        "itemID": 746,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/17/Jack-O-Lantern.png",
-        "description": "A whimsical fall decoration.",
-        "unlockConditions": "Spirit's Eve (2,000g)",
-        "ingredients": [
-            {
-                "itemID": 276,
-                "amount": 1
-            },
-            {
-                "itemID": 93,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "328": {
-        "name": "Wood Floor",
-        "itemID": 328,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Wood_Floor.png",
-        "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "401": {
-        "name": "Straw Floor",
-        "itemID": 401,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/85/Straw_Floor.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "331": {
-        "name": "Weathered Floor",
-        "itemID": 331,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2a/Weathered_Floor.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "840": {
-        "name": "Rustic Plank Floor",
-        "itemID": 840,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9e/Rustic_Plank_Floor.png",
-        "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "Carpenter's Shop (200g)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "333": {
-        "name": "Crystal Floor",
-        "itemID": 333,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a4/Crystal_Floor.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 338,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "329": {
-        "name": "Stone Floor",
-        "itemID": 329,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Stone_Floor.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "841": {
-        "name": "Stone Walkway Floor",
-        "itemID": 841,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/51/Stone_Walkway_Floor.png",
-        "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "Carpenter's Shop (200g)",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "293": {
-        "name": "Brick Floor",
-        "itemID": 293,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/29/Brick_Floor.png",
-        "description": "Place on the ground to create paths or to decorate your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 330,
-                "amount": 2
-            },
-            {
-                "itemID": 390,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "405": {
-        "name": "Wood Path",
-        "itemID": 405,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e3/Wood_Path.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "407": {
-        "name": "Gravel Path",
-        "itemID": 407,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/15/Gravel_Path.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "411": {
-        "name": "Cobblestone Path",
-        "itemID": 411,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/90/Cobblestone_Path.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "415": {
-        "name": "Stepping Stone Path",
-        "itemID": 415,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Stepping_Stone_Path.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "409": {
-        "name": "Crystal Path",
-        "itemID": 409,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Crystal_Path.png",
-        "description": "Place on the ground to create paths or to spruce up your floors.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 338,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "774": {
-        "name": "Wild Bait",
-        "itemID": 774,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/da/Wild_Bait.png",
-        "description": "A unique recipe from Linus that gives you a chance to catch two fish at once.",
-        "unlockConditions": "Linus\u00a0(4-heart event)",
-        "ingredients": [
-            {
-                "itemID": 771,
-                "amount": 10
-            },
-            {
-                "itemID": 684,
-                "amount": 5
-            },
-            {
-                "itemID": 766,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "685": {
-        "name": "Bait",
-        "itemID": 685,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/ff/Bait.png",
-        "description": "Causes fish to bite faster. Must first be attached to a fishing rod.",
-        "unlockConditions": "Reach level 2 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 684,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "686": {
-        "name": "Spinner",
-        "itemID": 686,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7b/Spinner.png",
-        "description": "The shape makes it spin around in the water. Slightly increases the bite-rate when fishing.",
-        "unlockConditions": "Reach level 6 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "703": {
-        "name": "Magnet",
-        "itemID": 703,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/8c/Magnet.png",
-        "description": "Increases the chance of finding treasures when fishing. However, fish aren't crazy about the taste.",
-        "unlockConditions": "Reach level 9 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "694": {
-        "name": "Trap Bobber",
-        "itemID": 694,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/da/Trap_Bobber.png",
-        "description": "Causes fish to escape slower when you aren't reeling them in.",
-        "unlockConditions": "Reach level 6 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 1
-            },
-            {
-                "itemID": 92,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "695": {
-        "name": "Cork Bobber",
-        "itemID": 695,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/0b/Cork_Bobber.png",
-        "description": "Slightly increases the size of your \"fishing bar\".",
-        "unlockConditions": "Reach level 7 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 10
-            },
-            {
-                "itemID": 709,
-                "amount": 5
-            },
-            {
-                "itemID": 766,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "687": {
-        "name": "Dressed Spinner",
-        "itemID": 687,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e8/Dressed_Spinner.png",
-        "description": "The metal tab and colorful streamers create an enticing spectacle for fish. Increases the bite-rate when fishing.",
-        "unlockConditions": "Reach level 8 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 2
-            },
-            {
-                "itemID": 428,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "693": {
-        "name": "Treasure Hunter",
-        "itemID": 693,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/79/Treasure_Hunter.png",
-        "description": "Fish don't escape while collecting treasures. Also slightly increases the chance to find treasures.",
-        "unlockConditions": "Reach level 7 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 336,
-                "amount": 2
-            }
-        ],
-        "bigCraftable": false
-    },
-    "691": {
-        "name": "Barbed Hook",
-        "itemID": 691,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4f/Barbed_Hook.png",
-        "description": "Makes your catch more secure, causing the \"fishing bar\" to cling to your catch. Works best on slow, weak fish.",
-        "unlockConditions": "Reach level 8 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 1
-            },
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "772": {
-        "name": "Oil of Garlic",
-        "itemID": 772,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4b/Oil_of_Garlic.png",
-        "description": "Drink this and weaker monsters will avoid you.",
-        "unlockConditions": "Reach level 6 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 248,
-                "amount": 10
-            },
-            {
-                "itemID": 247,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "773": {
-        "name": "Life Elixir",
-        "itemID": 773,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6e/Life_Elixir.png",
-        "description": "Restores health to full.",
-        "unlockConditions": "Reach level 2 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 420,
-                "amount": 1
-            },
-            {
-                "itemID": 422,
-                "amount": 1
-            },
-            {
-                "itemID": 257,
-                "amount": 1
-            },
-            {
-                "itemID": 281,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "710": {
-        "name": "Crab Pot",
-        "itemID": 710,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/92/Crab_Pot.png",
-        "description": "Place it in the water, load it with bait, and check the next day to see if you've caught anything. Works in streams, lakes, and the ocean.",
-        "unlockConditions": "Reach level 3 in Fishing.",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 40
-            },
-            {
-                "itemID": 335,
-                "amount": 3
-            }
-        ],
-        "bigCraftable": false
-    },
-    "527": {
-        "name": "Iridium Band",
-        "itemID": 527,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/77/Iridium_Band.png",
-        "description": "Glows, attracts items, and increases attack damage by 10%.",
-        "unlockConditions": "Reach level 9 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 337,
-                "amount": 5
-            },
-            {
-                "itemID": 768,
-                "amount": 50
-            },
-            {
-                "itemID": 769,
-                "amount": 50
-            }
-        ],
-        "bigCraftable": false
-    },
-    "524": {
-        "name": "Ring of Yoba",
-        "itemID": 524,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/21/Ring_of_Yoba.png",
-        "description": "Occasionally shields the wearer from damage.",
-        "unlockConditions": "Reach level 7 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 336,
-                "amount": 5
-            },
-            {
-                "itemID": 335,
-                "amount": 5
-            },
-            {
-                "itemID": 72,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "525": {
-        "name": "Sturdy Ring",
-        "itemID": 525,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7e/Sturdy_Ring.png",
-        "description": "Cuts the duration of negative status effects in half.",
-        "unlockConditions": "Reach level 1 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 2
-            },
-            {
-                "itemID": 684,
-                "amount": 25
-            },
-            {
-                "itemID": 766,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": false
-    },
-    "521": {
-        "name": "Warrior Ring",
-        "itemID": 521,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/13/Warrior_Ring.png",
-        "description": "Occasionally infuses the wearer with \"warrior energy\" after slaying a monster.",
-        "unlockConditions": "Reach level 4 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 10
-            },
-            {
-                "itemID": 382,
-                "amount": 25
-            },
-            {
-                "itemID": 84,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "108": {
-        "name": "Tub o' Flowers",
-        "itemID": 108,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Tub_o%27_Flowers.png",
-        "description": "Flowers planted in an oak barrel. Blooms in spring and summer.",
-        "unlockConditions": "Flower Dance (1,000g)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 15
-            },
-            {
-                "itemID": 427,
-                "amount": 1
-            },
-            {
-                "itemID": 429,
-                "amount": 1
-            },
-            {
-                "itemID": 453,
-                "amount": 1
-            },
-            {
-                "itemID": 455,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "143": {
-        "name": "Wooden Brazier",
-        "itemID": 143,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wooden_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop (250g)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 10
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "83": {
-        "name": "Wicked Statue",
-        "itemID": 83,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Wicked_Statue.png",
-        "description": "There's something unsettling about the looks of this statue.",
-        "unlockConditions": "Krobus (1,000g)",
-        "ingredients": [
-            {
-                "itemID": 382,
-                "amount": 5
-            },
-            {
-                "itemID": 390,
-                "amount": 25
-            }
-        ],
-        "bigCraftable": true
-    },
-    "144": {
-        "name": "Stone Brazier",
-        "itemID": 144,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Stone_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop (400g)",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 10
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "145": {
-        "name": "Gold Brazier",
-        "itemID": 145,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b7/Gold_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop(1,000g)",
-        "ingredients": [
-            {
-                "itemID": 336,
-                "amount": 1
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            },
-            {
-                "itemID": 771,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "146": {
-        "name": "Campfire",
-        "itemID": 146,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Campfire.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Starter recipe - no steps required!",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 10
-            },
-            {
-                "itemID": 388,
-                "amount": 10
-            },
-            {
-                "itemID": 771,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": true
-    },
-    "147": {
-        "name": "Stump Brazier",
-        "itemID": 147,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Stump_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop (800g)",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 5
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "148": {
-        "name": "Carved Brazier",
-        "itemID": 148,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3c/Carved_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop(2,000g)",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 10
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "149": {
-        "name": "Skull Brazier",
-        "itemID": 149,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e6/Skull_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop(3,000g)",
-        "ingredients": [
-            {
-                "itemID": 881,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": true
-    },
-    "150": {
-        "name": "Barrel Brazier",
-        "itemID": 150,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/Barrel_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop (800g)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            },
-            {
-                "itemID": 768,
-                "amount": 1
-            },
-            {
-                "itemID": 382,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "151": {
-        "name": "Marble Brazier",
-        "itemID": 151,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Marble_Brazier.png",
-        "description": "Provides a moderate amount of light.",
-        "unlockConditions": "Carpenter's Shop(5,000g)",
-        "ingredients": [
-            {
-                "itemID": 567,
-                "amount": 1
-            },
-            {
-                "itemID": 62,
-                "amount": 1
-            },
-            {
-                "itemID": 390,
-                "amount": 100
-            }
-        ],
-        "bigCraftable": true
-    },
-    "152": {
-        "name": "Wood Lamp-post",
-        "itemID": 152,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Wood_Lamp-post.png",
-        "description": "Provides a good amount of light.",
-        "unlockConditions": "Carpenter's Shop (500g)",
-        "ingredients": [
-            {
-                "itemID": 388,
-                "amount": 50
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "153": {
-        "name": "Iron Lamp-post",
-        "itemID": 153,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Iron_Lamp-post.png",
-        "description": "Provides a good amount of light.",
-        "unlockConditions": "Carpenter's Shop(1,000g)",
-        "ingredients": [
-            {
-                "itemID": 335,
-                "amount": 1
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "872": {
-        "name": "Fairy Dust",
-        "itemID": 872,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/fc/Fairy_Dust.png",
-        "description": "Sprinkle on kegs, furnaces, and other refining equipment to instantly receive their product.",
-        "unlockConditions": "\"The Pirate's Wife\" quest",
-        "ingredients": [
-            {
-                "itemID": 72,
-                "amount": 1
-            },
-            {
-                "itemID": 595,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "874": {
-        "name": "Bug Steak",
-        "itemID": 874,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b7/Bug_Steak.png",
-        "description": "The last resort of the hungry cave diver.",
-        "unlockConditions": "Reach level 1 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 684,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": false
-    },
-    "39": {
-        "name": "Dark Sign",
-        "itemID": 39,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Dark_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed.",
-        "unlockConditions": "Reach 3 hearts with Krobus.",
-        "ingredients": [
-            {
-                "itemID": 767,
-                "amount": 5
-            },
-            {
-                "itemID": 881,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "877": {
-        "name": "Quality Bobber",
-        "itemID": 877,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/01/Quality_Bobber.png",
-        "description": "Boosts the quality of fish that you catch.",
-        "unlockConditions": "\"Juicy Bugs Wanted!\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 334,
-                "amount": 1
-            },
-            {
-                "itemID": 92,
-                "amount": 20
-            },
-            {
-                "itemID": 768,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "232": {
-        "name": "Stone Chest",
-        "itemID": 232,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Stone_Chest.png",
-        "description": "A place to store your items.",
-        "unlockConditions": "\"Robin's Resource Rush\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 390,
-                "amount": 50
-            }
-        ],
-        "bigCraftable": true
-    },
-    "879": {
-        "name": "Monster Musk",
-        "itemID": 879,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/af/Monster_Musk.png",
-        "description": "Spray this on to draw more monsters out of hiding.",
-        "unlockConditions": "\"Prismatic Jelly\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 767,
-                "amount": 30
-            },
-            {
-                "itemID": 766,
-                "amount": 30
-            }
-        ],
-        "bigCraftable": false
-    },
-    "238": {
-        "name": "Mini-Obelisk",
-        "itemID": 238,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c9/Mini-Obelisk.png",
-        "description": "Place two on the farm to warp between them.",
-        "unlockConditions": "\"A Curious Substance\" special order",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 30
-            },
-            {
-                "itemID": 768,
-                "amount": 20
-            },
-            {
-                "itemID": 336,
-                "amount": 3
-            }
-        ],
-        "bigCraftable": true
-    },
-    "239": {
-        "name": "Farm Computer",
-        "itemID": 239,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Farm_Computer.png",
-        "description": "Scans the farm and displays useful information.",
-        "unlockConditions": "Special Order",
-        "ingredients": [
-            {
-                "itemID": 122,
-                "amount": 1
-            },
-            {
-                "itemID": 787,
-                "amount": 1
-            },
-            {
-                "itemID": 338,
-                "amount": 10
-            }
-        ],
-        "bigCraftable": true
-    },
-    "254": {
-        "name": "Ostrich Incubator",
-        "itemID": 254,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/51/Ostrich_Incubator.png",
-        "description": "Hatches ostrich eggs into baby ostriches. Place in a barn.",
-        "unlockConditions": "Professor Snail",
-        "ingredients": [
-            {
-                "itemID": 881,
-                "amount": 50
-            },
-            {
-                "itemID": 709,
-                "amount": 50
-            },
-            {
-                "itemID": 848,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": true
-    },
-    "182": {
-        "name": "Geode Crusher",
-        "itemID": 182,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Geode_Crusher.png",
-        "description": "Breaks geodes open automatically. Requires coal to operate.",
-        "unlockConditions": "\"Cave Patrol\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 336,
-                "amount": 2
-            },
-            {
-                "itemID": 390,
-                "amount": 50
-            },
-            {
-                "itemID": 72,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "231": {
-        "name": "Solar Panel",
-        "itemID": 231,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Solar_Panel.png",
-        "description": "Slowly generates batteries when left in the sun.",
-        "unlockConditions": "\"Island Ingredients\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 338,
-                "amount": 10
-            },
-            {
-                "itemID": 335,
-                "amount": 5
-            },
-            {
-                "itemID": 336,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": true
-    },
-    "90": {
-        "name": "Bone Mill",
-        "itemID": 90,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Bone_Mill.png",
-        "description": "Turns bone items into fertilizers.",
-        "unlockConditions": "\"Fragments of the past\" Special Order",
-        "ingredients": [
-            {
-                "itemID": 881,
-                "amount": 10
-            },
-            {
-                "itemID": 330,
-                "amount": 3
-            },
-            {
-                "itemID": 390,
-                "amount": 20
-            }
-        ],
-        "bigCraftable": true
-    },
-    "839": {
-        "name": "Thorns Ring",
-        "itemID": 839,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5b/Thorns_Ring.png",
-        "description": "When enemies damage you, they will take damage themselves.",
-        "unlockConditions": "Reach level 7 in Combat.",
-        "ingredients": [
-            {
-                "itemID": 881,
-                "amount": 50
-            },
-            {
-                "itemID": 390,
-                "amount": 50
-            },
-            {
-                "itemID": 336,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": false
-    },
-    "888": {
-        "name": "Glowstone Ring",
-        "itemID": 888,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/65/Glowstone_Ring.png",
-        "description": "Emits a constant light, and also increases your radius for collecting items.",
-        "unlockConditions": "Reach level 4 in Mining.",
-        "ingredients": [
-            {
-                "itemID": 768,
-                "amount": 5
-            },
-            {
-                "itemID": 335,
-                "amount": 5
-            }
-        ],
-        "bigCraftable": false
-    },
-    "264": {
-        "name": "Heavy Tapper",
-        "itemID": 264,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0c/Heavy_Tapper.png",
-        "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product! Works twice as fast as a normal tapper.",
-        "unlockConditions": "Qi's Secret Walnut Room for 20 Qi Gems",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 30
-            },
-            {
-                "itemID": 910,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "275": {
-        "name": "Hopper",
-        "itemID": 275,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Hopper.png",
-        "description": "Items placed inside will automatically be loaded into the machine in front of it.",
-        "unlockConditions": "Qi's Walnut Room for 50 Qi Gems",
-        "ingredients": [
-            {
-                "itemID": 709,
-                "amount": 10
-            },
-            {
-                "itemID": 337,
-                "amount": 1
-            },
-            {
-                "itemID": 910,
-                "amount": 1
-            }
-        ],
-        "bigCraftable": true
-    },
-    "908": {
-        "name": "Magic Bait",
-        "itemID": 908,
-        "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Magic_Bait.png",
-        "description": "Allows you to catch fish from any season, time, or weather, from whichever type of water you cast into.",
-        "unlockConditions": "Qi's Walnut Room for 20 Qi Gems",
-        "ingredients": [
-            {
-                "itemID": 909,
-                "amount": 1
-            },
-            {
-                "itemID": 684,
-                "amount": 3
-            }
-        ],
-        "bigCraftable": false
-    }
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "17": {
+    "name": "Loom",
+    "itemID": 17,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Loom.png",
+    "description": "Turns raw wool into fine cloth.",
+    "unlockConditions": "Reach level 7 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 60
+      },
+      {
+        "itemID": 771,
+        "amount": 30
+      },
+      {
+        "itemID": 726,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "19": {
+    "name": "Oil Maker",
+    "itemID": 19,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Oil_Maker.png",
+    "description": "Makes gourmet truffle oil.",
+    "unlockConditions": "Reach level 8 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 766,
+        "amount": 50
+      },
+      {
+        "itemID": 709,
+        "amount": 20
+      },
+      {
+        "itemID": 336,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "20": {
+    "name": "Recycling Machine",
+    "itemID": 20,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Recycling_Machine.png",
+    "description": "Turns fishing trash into resources.",
+    "unlockConditions": "Reach level 4 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 25
+      },
+      {
+        "itemID": 390,
+        "amount": 25
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "154": {
+    "name": "Worm Bin",
+    "itemID": 154,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Worm_Bin.png",
+    "description": "Produces bait on a regular basis. The worms are self-sufficient.",
+    "unlockConditions": "Reach level 8 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 25
+      },
+      {
+        "itemID": 336,
+        "amount": 1
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 50
+      }
+    ],
+    "bigCraftable": true
+  },
+  "15": {
+    "name": "Preserves Jar",
+    "itemID": 15,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Preserves_Jar.png",
+    "description": "Turns vegetables into pickles and fruit into jam.",
+    "unlockConditions": "Reach level 4 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      },
+      {
+        "itemID": 390,
+        "amount": 40
+      },
+      {
+        "itemID": 382,
+        "amount": 8
+      }
+    ],
+    "bigCraftable": true
+  },
+  "114": {
+    "name": "Charcoal Kiln",
+    "itemID": 114,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Charcoal_Kiln.png",
+    "description": "Turns 10 pieces of wood into one piece of coal.",
+    "unlockConditions": "Reach level 4 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 20
+      },
+      {
+        "itemID": 334,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": true
+  },
+  "105": {
+    "name": "Tapper",
+    "itemID": 105,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Tapper.png",
+    "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product!",
+    "unlockConditions": "Reach level 3 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 40
+      },
+      {
+        "itemID": 334,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": true
+  },
+  "9": {
+    "name": "Lightning Rod",
+    "itemID": 9,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Lightning_Rod.png",
+    "description": "Collects energy from lightning storms and turns it into battery packs.",
+    "unlockConditions": "Reach level 6 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 338,
+        "amount": 1
+      },
+      {
+        "itemID": 767,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "156": {
+    "name": "Slime Incubator",
+    "itemID": 156,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Slime_Incubator.png",
+    "description": "Hatches slimes eggs into slimes. Allows you to raise slimes outdoors.",
+    "unlockConditions": "Reach level 8 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 337,
+        "amount": 2
+      },
+      {
+        "itemID": 766,
+        "amount": 100
+      }
+    ],
+    "bigCraftable": true
+  },
+  "158": {
+    "name": "Slime Egg-Press",
+    "itemID": 158,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Slime_Egg-Press.png",
+    "description": "Compresses 100 pieces of slime into a slime egg. It's a miracle of science!",
+    "unlockConditions": "Reach level 6 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 382,
+        "amount": 25
+      },
+      {
+        "itemID": 82,
+        "amount": 1
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "21": {
+    "name": "Crystalarium",
+    "itemID": 21,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crystalarium.png",
+    "description": "Insert a gem of your choice and it will grow copies.",
+    "unlockConditions": "Reach level 9 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 99
+      },
+      {
+        "itemID": 336,
+        "amount": 5
+      },
+      {
+        "itemID": 337,
+        "amount": 2
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "209": {
+    "name": "Mini-Jukebox",
+    "itemID": 209,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Mini-Jukebox.png",
+    "description": "Allows you to play your favorite tunes.",
+    "unlockConditions": "Gus\u00a0(5-heart event)",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 2
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "599": {
+    "name": "Sprinkler",
+    "itemID": 599,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/08/Sprinkler.png",
+    "description": "Waters the 4 adjacent tiles every morning.",
+    "unlockConditions": "Reach level 2 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 1
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "621": {
+    "name": "Quality Sprinkler",
+    "itemID": 621,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/af/Quality_Sprinkler.png",
+    "description": "Waters the 8 adjacent tiles every morning.",
+    "unlockConditions": "Reach level 6 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 336,
+        "amount": 1
+      },
+      {
+        "itemID": 338,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "645": {
+    "name": "Iridium Sprinkler",
+    "itemID": 645,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/90/Iridium_Sprinkler.png",
+    "description": "Waters the 24 adjacent tiles every morning.",
+    "unlockConditions": "Reach level 9 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 336,
+        "amount": 1
+      },
+      {
+        "itemID": 337,
+        "amount": 1
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "71": {
+    "name": "Staircase",
+    "itemID": 71,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Staircase.png",
+    "description": "Use this to move down a level in the mines.",
+    "unlockConditions": "Reach level 2 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 99
+      }
+    ],
+    "bigCraftable": true
+  },
+  "464": {
+    "name": "Flute Block",
+    "itemID": 464,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/31/Flute_Block.png",
+    "description": "Plays a flute sound when you walk past.",
+    "unlockConditions": "Robin\u00a0(6-heart event)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 10
+      },
+      {
+        "itemID": 378,
+        "amount": 2
+      },
+      {
+        "itemID": 771,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": false
+  },
+  "463": {
+    "name": "Drum Block",
+    "itemID": 463,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/dc/Drum_Block.png",
+    "description": "Plays a drum sound when you walk past.",
+    "unlockConditions": "Robin\u00a0(6-heart event)",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 10
+      },
+      {
+        "itemID": 378,
+        "amount": 2
+      },
+      {
+        "itemID": 771,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": false
+  },
+  "368": {
+    "name": "Basic Fertilizer",
+    "itemID": 368,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Basic_Fertilizer.png",
+    "description": "Improves soil quality a little, increasing your chance to grow quality crops. Mix into tilled soil.",
+    "unlockConditions": "Reach level 1 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 92,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "805": {
+    "name": "Tree Fertilizer",
+    "itemID": 805,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5d/Tree_Fertilizer.png",
+    "description": "Sprinkle on a wild tree to ensure rapid growth, even in winter. Doesn't work on fruit trees.",
+    "unlockConditions": "Reach level 7 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 771,
+        "amount": 5
+      },
+      {
+        "itemID": 390,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "369": {
+    "name": "Quality Fertilizer",
+    "itemID": 369,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a0/Quality_Fertilizer.png",
+    "description": "Improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
+    "unlockConditions": "Reach level 9 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 92,
+        "amount": 2
+      },
+      {
+        "itemID": -4,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "370": {
+    "name": "Basic Retaining Soil",
+    "itemID": 370,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c7/Basic_Retaining_Soil.png",
+    "description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
+    "unlockConditions": "Reach level 4 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "371": {
+    "name": "Quality Retaining Soil",
+    "itemID": 371,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/0a/Quality_Retaining_Soil.png",
+    "description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
+    "unlockConditions": "Reach level 7 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 3
+      },
+      {
+        "itemID": 330,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "465": {
+    "name": "Speed-Gro",
+    "itemID": 465,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/94/Speed-Gro.png",
+    "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 10%. Mix into tilled soil.",
+    "unlockConditions": "Reach level 3 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 726,
+        "amount": 1
+      },
+      {
+        "itemID": 372,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "466": {
+    "name": "Deluxe Speed-Gro",
+    "itemID": 466,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6d/Deluxe_Speed-Gro.png",
+    "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 25%. Mix into tilled soil.",
+    "unlockConditions": "Reach level 8 in Farming.",
+    "ingredients": [
+      {
+        "itemID": 725,
+        "amount": 1
+      },
+      {
+        "itemID": 393,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "918": {
+    "name": "Hyper Speed-Gro",
+    "itemID": 918,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/53/Hyper_Speed-Gro.png",
+    "description": "Greatly stimulates leaf production. Guaranteed to increase growth rate by at least 33%. Mix into tilled soil.",
+    "unlockConditions": "Qi's Walnut Room for 30 Qi Gems",
+    "ingredients": [
+      {
+        "itemID": 909,
+        "amount": 1
+      },
+      {
+        "itemID": 881,
+        "amount": 3
+      },
+      {
+        "itemID": 768,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "919": {
+    "name": "Deluxe Fertilizer",
+    "itemID": 919,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1c/Deluxe_Fertilizer.png",
+    "description": "Greatly improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
+    "unlockConditions": "Qi's Walnut Roomfor 20 Qi Gems",
+    "ingredients": [
+      {
+        "itemID": 337,
+        "amount": 1
+      },
+      {
+        "itemID": 92,
+        "amount": 40
+      }
+    ],
+    "bigCraftable": false
+  },
+  "920": {
+    "name": "Deluxe Retaining Soil",
+    "itemID": 920,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c3/Deluxe_Retaining_Soil.png",
+    "description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
+    "unlockConditions": "Island Trader for  Cinder Shard\u00a0(50)",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 5
+      },
+      {
+        "itemID": 771,
+        "amount": 3
+      },
+      {
+        "itemID": 330,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "286": {
+    "name": "Cherry Bomb",
+    "itemID": 286,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Cherry_Bomb.png",
+    "description": "Generates a small explosion. Stand back!",
+    "unlockConditions": "Reach level 1 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 378,
+        "amount": 4
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "287": {
+    "name": "Bomb",
+    "itemID": 287,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/3b/Bomb.png",
+    "description": "Generates an explosion. Watch out!",
+    "unlockConditions": "Reach level 6 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 380,
+        "amount": 4
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "288": {
+    "name": "Mega Bomb",
+    "itemID": 288,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4f/Mega_Bomb.png",
+    "description": "Generates a powerful explosion. Use with extreme caution.",
+    "unlockConditions": "Reach level 8 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 384,
+        "amount": 4
+      },
+      {
+        "itemID": 768,
+        "amount": 1
+      },
+      {
+        "itemID": 769,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "441": {
+    "name": "Explosive Ammo",
+    "itemID": 441,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/f3/Explosive_Ammo.png",
+    "description": "Fire this with the slingshot.",
+    "unlockConditions": "Reach level 8 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 382,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "335": {
+    "name": "Transmute (Fe)",
+    "itemID": 335,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6c/Iron_Bar.png",
+    "description": "A bar of pure iron.",
+    "unlockConditions": "Reach level 4 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 3
+      }
+    ],
+    "bigCraftable": false
+  },
+  "336": {
+    "name": "Transmute (Au)",
+    "itemID": 336,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Gold_Bar.png",
+    "description": "A bar of pure gold.",
+    "unlockConditions": "Reach level 7 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "499": {
+    "name": "Ancient Seeds",
+    "itemID": 499,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/ec/Ancient_Seeds.png",
+    "description": "Could these still grow?",
+    "unlockConditions": "Donating Ancient Seed artifact to Museum",
+    "ingredients": [
+      {
+        "itemID": 114,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "495": {
+    "name": "Wild Seeds (Sp)",
+    "itemID": 495,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
+    "description": "An assortment of wild spring seeds.",
+    "unlockConditions": "Reach level 1 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 16,
+        "amount": 1
+      },
+      {
+        "itemID": 18,
+        "amount": 1
+      },
+      {
+        "itemID": 20,
+        "amount": 1
+      },
+      {
+        "itemID": 22,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "496": {
+    "name": "Wild Seeds (Su)",
+    "itemID": 496,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/c/c4/Summer_Seeds.png",
+    "description": "An assortment of wild summer seeds.",
+    "unlockConditions": "Reach level 4 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 396,
+        "amount": 1
+      },
+      {
+        "itemID": 398,
+        "amount": 1
+      },
+      {
+        "itemID": 402,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "497": {
+    "name": "Wild Seeds (Fa)",
+    "itemID": 497,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/55/Fall_Seeds.png",
+    "description": "An assortment of wild fall seeds.",
+    "unlockConditions": "Reach level 6 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 404,
+        "amount": 1
+      },
+      {
+        "itemID": 406,
+        "amount": 1
+      },
+      {
+        "itemID": 408,
+        "amount": 1
+      },
+      {
+        "itemID": 410,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "498": {
+    "name": "Wild Seeds (Wi)",
+    "itemID": 498,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/dd/Winter_Seeds.png",
+    "description": "An assortment of wild winter seeds.",
+    "unlockConditions": "Reach level 7 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 412,
+        "amount": 1
+      },
+      {
+        "itemID": 414,
+        "amount": 1
+      },
+      {
+        "itemID": 416,
+        "amount": 1
+      },
+      {
+        "itemID": 418,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "885": {
+    "name": "Fiber Seeds",
+    "itemID": 885,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/05/Fiber_Seeds.png",
+    "description": "Plant these in any season. Does not require watering. Harvest with the scythe. Takes 7 days to grow.",
+    "unlockConditions": "\"Community Cleanup\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 770,
+        "amount": 1
+      },
+      {
+        "itemID": 92,
+        "amount": 5
+      },
+      {
+        "itemID": 330,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "251": {
+    "name": "Tea Sapling",
+    "itemID": 251,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/12/Tea_Sapling.png",
+    "description": "Takes 20 days to mature. Produces tea leaves during the final week of each season, except winter. No watering necessary!",
+    "unlockConditions": "Mail the day after Caroline's 2-heart event.",
+    "ingredients": [
+      {
+        "itemID": -777,
+        "amount": 2
+      },
+      {
+        "itemID": 771,
+        "amount": 5
+      },
+      {
+        "itemID": 388,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "688": {
+    "name": "Warp Totem: Farm",
+    "itemID": 688,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e4/Warp_Totem_Farm.png",
+    "description": "Warp directly to your house. Consumed on use.",
+    "unlockConditions": "Reach level 8 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 1
+      },
+      {
+        "itemID": 340,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": false
+  },
+  "689": {
+    "name": "Warp Totem: Mountains",
+    "itemID": 689,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/d8/Warp_Totem_Mountains.png",
+    "description": "Warp directly to the mountains. Consumed on use.",
+    "unlockConditions": "Reach level 7 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 1
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 390,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": false
+  },
+  "690": {
+    "name": "Warp Totem: Beach",
+    "itemID": 690,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2f/Warp_Totem_Beach.png",
+    "description": "Warp directly to the beach. Consumed on use.",
+    "unlockConditions": "Reach level 6 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 1
+      },
+      {
+        "itemID": 393,
+        "amount": 2
+      },
+      {
+        "itemID": 771,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "261": {
+    "name": "Warp Totem: Desert",
+    "itemID": 261,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/83/Warp_Totem_Desert.png",
+    "description": "Warp directly to Calico Desert. Consumed on use.",
+    "unlockConditions": "Desert Trader for  Iridium Bar\u00a0(10)",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 2
+      },
+      {
+        "itemID": 88,
+        "amount": 1
+      },
+      {
+        "itemID": 386,
+        "amount": 4
+      }
+    ],
+    "bigCraftable": false
+  },
+  "886": {
+    "name": "Warp Totem: Island",
+    "itemID": 886,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b9/Warp_Totem_Island.png",
+    "description": "Warp directly to Ginger Island. Consumed on use.",
+    "unlockConditions": "Volcano Dwarf for 10,000g",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 5
+      },
+      {
+        "itemID": 852,
+        "amount": 1
+      },
+      {
+        "itemID": 829,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "681": {
+    "name": "Rain Totem",
+    "itemID": 681,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/f7/Rain_Totem.png",
+    "description": "Activate to greatly increase the chance for rain tomorrow. Consumed on use.",
+    "unlockConditions": "Reach level 9 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 1
+      },
+      {
+        "itemID": 432,
+        "amount": 1
+      },
+      {
+        "itemID": 726,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "926": {
+    "name": "Cookout Kit",
+    "itemID": 926,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/91/Cookout_Kit.png",
+    "description": "Use this to create a cooking campfire, allowing you to cook on-the-go!",
+    "unlockConditions": "Reach level 9 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 15
+      },
+      {
+        "itemID": 771,
+        "amount": 10
+      },
+      {
+        "itemID": 382,
+        "amount": 3
+      }
+    ],
+    "bigCraftable": false
+  },
+  "403": {
+    "name": "Field Snack",
+    "itemID": 403,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Field_Snack.png",
+    "description": "A quick snack to fuel the hungry forager.",
+    "unlockConditions": "Reach level 1 in Foraging.",
+    "ingredients": [
+      {
+        "itemID": 309,
+        "amount": 1
+      },
+      {
+        "itemID": 310,
+        "amount": 1
+      },
+      {
+        "itemID": 311,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "746": {
+    "name": "Jack-O-Lantern",
+    "itemID": 746,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/17/Jack-O-Lantern.png",
+    "description": "A whimsical fall decoration.",
+    "unlockConditions": "Spirit's Eve (2,000g)",
+    "ingredients": [
+      {
+        "itemID": 276,
+        "amount": 1
+      },
+      {
+        "itemID": 93,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "328": {
+    "name": "Wood Floor",
+    "itemID": 328,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Wood_Floor.png",
+    "description": "Place on the ground to create paths or to decorate your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "401": {
+    "name": "Straw Floor",
+    "itemID": 401,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/85/Straw_Floor.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "331": {
+    "name": "Weathered Floor",
+    "itemID": 331,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/2a/Weathered_Floor.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "840": {
+    "name": "Rustic Plank Floor",
+    "itemID": 840,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9e/Rustic_Plank_Floor.png",
+    "description": "Place on the ground to create paths or to decorate your floors.",
+    "unlockConditions": "Carpenter's Shop (200g)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "333": {
+    "name": "Crystal Floor",
+    "itemID": 333,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/a4/Crystal_Floor.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 338,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "329": {
+    "name": "Stone Floor",
+    "itemID": 329,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4e/Stone_Floor.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "841": {
+    "name": "Stone Walkway Floor",
+    "itemID": 841,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/51/Stone_Walkway_Floor.png",
+    "description": "Place on the ground to create paths or to decorate your floors.",
+    "unlockConditions": "Carpenter's Shop (200g)",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "293": {
+    "name": "Brick Floor",
+    "itemID": 293,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/29/Brick_Floor.png",
+    "description": "Place on the ground to create paths or to decorate your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 330,
+        "amount": 2
+      },
+      {
+        "itemID": 390,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "405": {
+    "name": "Wood Path",
+    "itemID": 405,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e3/Wood_Path.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "407": {
+    "name": "Gravel Path",
+    "itemID": 407,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/15/Gravel_Path.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "411": {
+    "name": "Cobblestone Path",
+    "itemID": 411,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/90/Cobblestone_Path.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "415": {
+    "name": "Stepping Stone Path",
+    "itemID": 415,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/1b/Stepping_Stone_Path.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "409": {
+    "name": "Crystal Path",
+    "itemID": 409,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/9b/Crystal_Path.png",
+    "description": "Place on the ground to create paths or to spruce up your floors.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 338,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "774": {
+    "name": "Wild Bait",
+    "itemID": 774,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/da/Wild_Bait.png",
+    "description": "A unique recipe from Linus that gives you a chance to catch two fish at once.",
+    "unlockConditions": "Linus\u00a0(4-heart event)",
+    "ingredients": [
+      {
+        "itemID": 771,
+        "amount": 10
+      },
+      {
+        "itemID": 684,
+        "amount": 5
+      },
+      {
+        "itemID": 766,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "685": {
+    "name": "Bait",
+    "itemID": 685,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/ff/Bait.png",
+    "description": "Causes fish to bite faster. Must first be attached to a fishing rod.",
+    "unlockConditions": "Reach level 2 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 684,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "686": {
+    "name": "Spinner",
+    "itemID": 686,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7b/Spinner.png",
+    "description": "The shape makes it spin around in the water. Slightly increases the bite-rate when fishing.",
+    "unlockConditions": "Reach level 6 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "703": {
+    "name": "Magnet",
+    "itemID": 703,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/8/8c/Magnet.png",
+    "description": "Increases the chance of finding treasures when fishing. However, fish aren't crazy about the taste.",
+    "unlockConditions": "Reach level 9 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "694": {
+    "name": "Trap Bobber",
+    "itemID": 694,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/d/da/Trap_Bobber.png",
+    "description": "Causes fish to escape slower when you aren't reeling them in.",
+    "unlockConditions": "Reach level 6 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 1
+      },
+      {
+        "itemID": 92,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "695": {
+    "name": "Cork Bobber",
+    "itemID": 695,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/0b/Cork_Bobber.png",
+    "description": "Slightly increases the size of your \"fishing bar\".",
+    "unlockConditions": "Reach level 7 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 10
+      },
+      {
+        "itemID": 709,
+        "amount": 5
+      },
+      {
+        "itemID": 766,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "687": {
+    "name": "Dressed Spinner",
+    "itemID": 687,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/e/e8/Dressed_Spinner.png",
+    "description": "The metal tab and colorful streamers create an enticing spectacle for fish. Increases the bite-rate when fishing.",
+    "unlockConditions": "Reach level 8 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 2
+      },
+      {
+        "itemID": 428,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "693": {
+    "name": "Treasure Hunter",
+    "itemID": 693,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/79/Treasure_Hunter.png",
+    "description": "Fish don't escape while collecting treasures. Also slightly increases the chance to find treasures.",
+    "unlockConditions": "Reach level 7 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 336,
+        "amount": 2
+      }
+    ],
+    "bigCraftable": false
+  },
+  "691": {
+    "name": "Barbed Hook",
+    "itemID": 691,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4f/Barbed_Hook.png",
+    "description": "Makes your catch more secure, causing the \"fishing bar\" to cling to your catch. Works best on slow, weak fish.",
+    "unlockConditions": "Reach level 8 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 1
+      },
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 336,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "772": {
+    "name": "Oil of Garlic",
+    "itemID": 772,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/4/4b/Oil_of_Garlic.png",
+    "description": "Drink this and weaker monsters will avoid you.",
+    "unlockConditions": "Reach level 6 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 248,
+        "amount": 10
+      },
+      {
+        "itemID": 247,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "773": {
+    "name": "Life Elixir",
+    "itemID": 773,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/6e/Life_Elixir.png",
+    "description": "Restores health to full.",
+    "unlockConditions": "Reach level 2 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 420,
+        "amount": 1
+      },
+      {
+        "itemID": 422,
+        "amount": 1
+      },
+      {
+        "itemID": 257,
+        "amount": 1
+      },
+      {
+        "itemID": 281,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "710": {
+    "name": "Crab Pot",
+    "itemID": 710,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/9/92/Crab_Pot.png",
+    "description": "Place it in the water, load it with bait, and check the next day to see if you've caught anything. Works in streams, lakes, and the ocean.",
+    "unlockConditions": "Reach level 3 in Fishing.",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 40
+      },
+      {
+        "itemID": 335,
+        "amount": 3
+      }
+    ],
+    "bigCraftable": false
+  },
+  "527": {
+    "name": "Iridium Band",
+    "itemID": 527,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/77/Iridium_Band.png",
+    "description": "Glows, attracts items, and increases attack damage by 10%.",
+    "unlockConditions": "Reach level 9 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 337,
+        "amount": 5
+      },
+      {
+        "itemID": 768,
+        "amount": 50
+      },
+      {
+        "itemID": 769,
+        "amount": 50
+      }
+    ],
+    "bigCraftable": false
+  },
+  "524": {
+    "name": "Ring of Yoba",
+    "itemID": 524,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/2/21/Ring_of_Yoba.png",
+    "description": "Occasionally shields the wearer from damage.",
+    "unlockConditions": "Reach level 7 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 336,
+        "amount": 5
+      },
+      {
+        "itemID": 335,
+        "amount": 5
+      },
+      {
+        "itemID": 72,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "525": {
+    "name": "Sturdy Ring",
+    "itemID": 525,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/7/7e/Sturdy_Ring.png",
+    "description": "Cuts the duration of negative status effects in half.",
+    "unlockConditions": "Reach level 1 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 2
+      },
+      {
+        "itemID": 684,
+        "amount": 25
+      },
+      {
+        "itemID": 766,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": false
+  },
+  "521": {
+    "name": "Warrior Ring",
+    "itemID": 521,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/1/13/Warrior_Ring.png",
+    "description": "Occasionally infuses the wearer with \"warrior energy\" after slaying a monster.",
+    "unlockConditions": "Reach level 4 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 10
+      },
+      {
+        "itemID": 382,
+        "amount": 25
+      },
+      {
+        "itemID": 84,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "108": {
+    "name": "Tub o' Flowers",
+    "itemID": 108,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Tub_o%27_Flowers.png",
+    "description": "Flowers planted in an oak barrel. Blooms in spring and summer.",
+    "unlockConditions": "Flower Dance (1,000g)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 15
+      },
+      {
+        "itemID": 427,
+        "amount": 1
+      },
+      {
+        "itemID": 429,
+        "amount": 1
+      },
+      {
+        "itemID": 453,
+        "amount": 1
+      },
+      {
+        "itemID": 455,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "143": {
+    "name": "Wooden Brazier",
+    "itemID": 143,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wooden_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop (250g)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 10
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "83": {
+    "name": "Wicked Statue",
+    "itemID": 83,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Wicked_Statue.png",
+    "description": "There's something unsettling about the looks of this statue.",
+    "unlockConditions": "Krobus (1,000g)",
+    "ingredients": [
+      {
+        "itemID": 382,
+        "amount": 5
+      },
+      {
+        "itemID": 390,
+        "amount": 25
+      }
+    ],
+    "bigCraftable": true
+  },
+  "144": {
+    "name": "Stone Brazier",
+    "itemID": 144,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Stone_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop (400g)",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 10
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "145": {
+    "name": "Gold Brazier",
+    "itemID": 145,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b7/Gold_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop(1,000g)",
+    "ingredients": [
+      {
+        "itemID": 336,
+        "amount": 1
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      },
+      {
+        "itemID": 771,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "146": {
+    "name": "Campfire",
+    "itemID": 146,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Campfire.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Starter recipe - no steps required!",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 10
+      },
+      {
+        "itemID": 388,
+        "amount": 10
+      },
+      {
+        "itemID": 771,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": true
+  },
+  "147": {
+    "name": "Stump Brazier",
+    "itemID": 147,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Stump_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop (800g)",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 5
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "148": {
+    "name": "Carved Brazier",
+    "itemID": 148,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3c/Carved_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop(2,000g)",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 10
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "149": {
+    "name": "Skull Brazier",
+    "itemID": 149,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e6/Skull_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop(3,000g)",
+    "ingredients": [
+      {
+        "itemID": 881,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": true
+  },
+  "150": {
+    "name": "Barrel Brazier",
+    "itemID": 150,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/Barrel_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop (800g)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      },
+      {
+        "itemID": 768,
+        "amount": 1
+      },
+      {
+        "itemID": 382,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "151": {
+    "name": "Marble Brazier",
+    "itemID": 151,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Marble_Brazier.png",
+    "description": "Provides a moderate amount of light.",
+    "unlockConditions": "Carpenter's Shop(5,000g)",
+    "ingredients": [
+      {
+        "itemID": 567,
+        "amount": 1
+      },
+      {
+        "itemID": 62,
+        "amount": 1
+      },
+      {
+        "itemID": 390,
+        "amount": 100
+      }
+    ],
+    "bigCraftable": true
+  },
+  "152": {
+    "name": "Wood Lamp-post",
+    "itemID": 152,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Wood_Lamp-post.png",
+    "description": "Provides a good amount of light.",
+    "unlockConditions": "Carpenter's Shop (500g)",
+    "ingredients": [
+      {
+        "itemID": 388,
+        "amount": 50
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "153": {
+    "name": "Iron Lamp-post",
+    "itemID": 153,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Iron_Lamp-post.png",
+    "description": "Provides a good amount of light.",
+    "unlockConditions": "Carpenter's Shop(1,000g)",
+    "ingredients": [
+      {
+        "itemID": 335,
+        "amount": 1
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "872": {
+    "name": "Fairy Dust",
+    "itemID": 872,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/f/fc/Fairy_Dust.png",
+    "description": "Sprinkle on kegs, furnaces, and other refining equipment to instantly receive their product.",
+    "unlockConditions": "\"The Pirate's Wife\" quest",
+    "ingredients": [
+      {
+        "itemID": 72,
+        "amount": 1
+      },
+      {
+        "itemID": 595,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "874": {
+    "name": "Bug Steak",
+    "itemID": 874,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/b/b7/Bug_Steak.png",
+    "description": "The last resort of the hungry cave diver.",
+    "unlockConditions": "Reach level 1 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 684,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": false
+  },
+  "39": {
+    "name": "Dark Sign",
+    "itemID": 39,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Dark_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed.",
+    "unlockConditions": "Reach 3 hearts with Krobus.",
+    "ingredients": [
+      {
+        "itemID": 767,
+        "amount": 5
+      },
+      {
+        "itemID": 881,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "877": {
+    "name": "Quality Bobber",
+    "itemID": 877,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/0/01/Quality_Bobber.png",
+    "description": "Boosts the quality of fish that you catch.",
+    "unlockConditions": "\"Juicy Bugs Wanted!\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 334,
+        "amount": 1
+      },
+      {
+        "itemID": 92,
+        "amount": 20
+      },
+      {
+        "itemID": 768,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "232": {
+    "name": "Stone Chest",
+    "itemID": 232,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Stone_Chest.png",
+    "description": "A place to store your items.",
+    "unlockConditions": "\"Robin's Resource Rush\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 390,
+        "amount": 50
+      }
+    ],
+    "bigCraftable": true
+  },
+  "879": {
+    "name": "Monster Musk",
+    "itemID": 879,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/a/af/Monster_Musk.png",
+    "description": "Spray this on to draw more monsters out of hiding.",
+    "unlockConditions": "\"Prismatic Jelly\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 767,
+        "amount": 30
+      },
+      {
+        "itemID": 766,
+        "amount": 30
+      }
+    ],
+    "bigCraftable": false
+  },
+  "238": {
+    "name": "Mini-Obelisk",
+    "itemID": 238,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c9/Mini-Obelisk.png",
+    "description": "Place two on the farm to warp between them.",
+    "unlockConditions": "\"A Curious Substance\" special order",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 30
+      },
+      {
+        "itemID": 768,
+        "amount": 20
+      },
+      {
+        "itemID": 336,
+        "amount": 3
+      }
+    ],
+    "bigCraftable": true
+  },
+  "239": {
+    "name": "Farm Computer",
+    "itemID": 239,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Farm_Computer.png",
+    "description": "Scans the farm and displays useful information.",
+    "unlockConditions": "Special Order",
+    "ingredients": [
+      {
+        "itemID": 122,
+        "amount": 1
+      },
+      {
+        "itemID": 787,
+        "amount": 1
+      },
+      {
+        "itemID": 338,
+        "amount": 10
+      }
+    ],
+    "bigCraftable": true
+  },
+  "254": {
+    "name": "Ostrich Incubator",
+    "itemID": 254,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/51/Ostrich_Incubator.png",
+    "description": "Hatches ostrich eggs into baby ostriches. Place in a barn.",
+    "unlockConditions": "Professor Snail",
+    "ingredients": [
+      {
+        "itemID": 881,
+        "amount": 50
+      },
+      {
+        "itemID": 709,
+        "amount": 50
+      },
+      {
+        "itemID": 848,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": true
+  },
+  "182": {
+    "name": "Geode Crusher",
+    "itemID": 182,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Geode_Crusher.png",
+    "description": "Breaks geodes open automatically. Requires coal to operate.",
+    "unlockConditions": "\"Cave Patrol\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 336,
+        "amount": 2
+      },
+      {
+        "itemID": 390,
+        "amount": 50
+      },
+      {
+        "itemID": 72,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "231": {
+    "name": "Solar Panel",
+    "itemID": 231,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Solar_Panel.png",
+    "description": "Slowly generates batteries when left in the sun.",
+    "unlockConditions": "\"Island Ingredients\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 338,
+        "amount": 10
+      },
+      {
+        "itemID": 335,
+        "amount": 5
+      },
+      {
+        "itemID": 336,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": true
+  },
+  "90": {
+    "name": "Bone Mill",
+    "itemID": 90,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Bone_Mill.png",
+    "description": "Turns bone items into fertilizers.",
+    "unlockConditions": "\"Fragments of the past\" Special Order",
+    "ingredients": [
+      {
+        "itemID": 881,
+        "amount": 10
+      },
+      {
+        "itemID": 330,
+        "amount": 3
+      },
+      {
+        "itemID": 390,
+        "amount": 20
+      }
+    ],
+    "bigCraftable": true
+  },
+  "839": {
+    "name": "Thorns Ring",
+    "itemID": 839,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/5b/Thorns_Ring.png",
+    "description": "When enemies damage you, they will take damage themselves.",
+    "unlockConditions": "Reach level 7 in Combat.",
+    "ingredients": [
+      {
+        "itemID": 881,
+        "amount": 50
+      },
+      {
+        "itemID": 390,
+        "amount": 50
+      },
+      {
+        "itemID": 336,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": false
+  },
+  "888": {
+    "name": "Glowstone Ring",
+    "itemID": 888,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/6/65/Glowstone_Ring.png",
+    "description": "Emits a constant light, and also increases your radius for collecting items.",
+    "unlockConditions": "Reach level 4 in Mining.",
+    "ingredients": [
+      {
+        "itemID": 768,
+        "amount": 5
+      },
+      {
+        "itemID": 335,
+        "amount": 5
+      }
+    ],
+    "bigCraftable": false
+  },
+  "264": {
+    "name": "Heavy Tapper",
+    "itemID": 264,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0c/Heavy_Tapper.png",
+    "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product! Works twice as fast as a normal tapper.",
+    "unlockConditions": "Qi's Secret Walnut Room for 20 Qi Gems",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 30
+      },
+      {
+        "itemID": 910,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "275": {
+    "name": "Hopper",
+    "itemID": 275,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Hopper.png",
+    "description": "Items placed inside will automatically be loaded into the machine in front of it.",
+    "unlockConditions": "Qi's Walnut Room for 50 Qi Gems",
+    "ingredients": [
+      {
+        "itemID": 709,
+        "amount": 10
+      },
+      {
+        "itemID": 337,
+        "amount": 1
+      },
+      {
+        "itemID": 910,
+        "amount": 1
+      }
+    ],
+    "bigCraftable": true
+  },
+  "908": {
+    "name": "Magic Bait",
+    "itemID": 908,
+    "iconURL": "https://stardewcommunitywiki.com/mediawiki/images/5/58/Magic_Bait.png",
+    "description": "Allows you to catch fish from any season, time, or weather, from whichever type of water you cast into.",
+    "unlockConditions": "Qi's Walnut Room for 20 Qi Gems",
+    "ingredients": [
+      {
+        "itemID": 909,
+        "amount": 1
+      },
+      {
+        "itemID": 684,
+        "amount": 3
+      }
+    ],
+    "bigCraftable": false
+  }
 }

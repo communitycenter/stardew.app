@@ -1,296 +1,296 @@
 {
-    "130": {
-        "name": "Chest",
-        "itemID": 130,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Chest.png",
-        "description": "A place to store your items."
-    },
-    "8": {
-        "name": "Scarecrow",
-        "itemID": 8,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/75/Scarecrow.png",
-        "description": "Prevents crows from attacking your crops. Has a limited radius (about 8 \"tiles\")."
-    },
-    "167": {
-        "name": "Deluxe Scarecrow",
-        "itemID": 167,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Deluxe_Scarecrow.png",
-        "description": "Prevents crows from attacking your crops. Has a large radius (about 16 \"tiles\")."
-    },
-    "10": {
-        "name": "Bee House",
-        "itemID": 10,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Bee_House.png",
-        "description": "Place outside and wait for delicious honey! (Except in Winter)."
-    },
-    "12": {
-        "name": "Keg",
-        "itemID": 12,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Keg.png",
-        "description": "Place a fruit or vegetable in here. Eventually it will turn into a beverage."
-    },
-    "163": {
-        "name": "Cask",
-        "itemID": 163,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Cask.png",
-        "description": "Use in the cellar to age products like wine and cheese."
-    },
-    "13": {
-        "name": "Furnace",
-        "itemID": 13,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Furnace.png",
-        "description": "Turns ore and coal into metal bars."
-    },
-    "62": {
-        "name": "Garden Pot",
-        "itemID": 62,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Garden_Pot.png",
-        "description": "Grows crops from any season when indoors. Outdoors, it can only house seasonal crops."
-    },
-    "37": {
-        "name": "Wood Sign",
-        "itemID": 37,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Wood_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed."
-    },
-    "38": {
-        "name": "Stone Sign",
-        "itemID": 38,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f3/Stone_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed."
-    },
-    "16": {
-        "name": "Cheese Press",
-        "itemID": 16,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Cheese_Press.png",
-        "description": "Turns milk into cheese."
-    },
-    "24": {
-        "name": "Mayonnaise Machine",
-        "itemID": 24,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Mayonnaise_Machine.png",
-        "description": "Turns eggs into mayonnaise."
-    },
-    "25": {
-        "name": "Seed Maker",
-        "itemID": 25,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Seed_Maker.png",
-        "description": "Place crops inside to produce a varying amount of seeds. Doesn't work with fruit tree crops."
-    },
-    "17": {
-        "name": "Loom",
-        "itemID": 17,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Loom.png",
-        "description": "Turns raw wool into fine cloth."
-    },
-    "19": {
-        "name": "Oil Maker",
-        "itemID": 19,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Oil_Maker.png",
-        "description": "Makes gourmet truffle oil."
-    },
-    "20": {
-        "name": "Recycling Machine",
-        "itemID": 20,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Recycling_Machine.png",
-        "description": "Turns fishing trash into resources."
-    },
-    "154": {
-        "name": "Worm Bin",
-        "itemID": 154,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Worm_Bin.png",
-        "description": "Produces bait on a regular basis. The worms are self-sufficient."
-    },
-    "15": {
-        "name": "Preserves Jar",
-        "itemID": 15,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Preserves_Jar.png",
-        "description": "Turns vegetables into pickles and fruit into jam."
-    },
-    "114": {
-        "name": "Charcoal Kiln",
-        "itemID": 114,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Charcoal_Kiln.png",
-        "description": "Turns 10 pieces of wood into one piece of coal."
-    },
-    "105": {
-        "name": "Tapper",
-        "itemID": 105,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Tapper.png",
-        "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product!"
-    },
-    "9": {
-        "name": "Lightning Rod",
-        "itemID": 9,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Lightning_Rod.png",
-        "description": "Collects energy from lightning storms and turns it into battery packs."
-    },
-    "156": {
-        "name": "Slime Incubator",
-        "itemID": 156,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Slime_Incubator.png",
-        "description": "Hatches slimes eggs into slimes. Allows you to raise slimes outdoors."
-    },
-    "158": {
-        "name": "Slime Egg-Press",
-        "itemID": 158,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Slime_Egg-Press.png",
-        "description": "Compresses 100 pieces of slime into a slime egg. It's a miracle of science!"
-    },
-    "21": {
-        "name": "Crystalarium",
-        "itemID": 21,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crystalarium.png",
-        "description": "Insert a gem of your choice and it will grow copies."
-    },
-    "209": {
-        "name": "Mini-Jukebox",
-        "itemID": 209,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Mini-Jukebox.png",
-        "description": "Allows you to play your favorite tunes."
-    },
-    "71": {
-        "name": "Staircase",
-        "itemID": 71,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Staircase.png",
-        "description": "Use this to move down a level in the mines."
-    },
-    "108": {
-        "name": "Tub o' Flowers",
-        "itemID": 108,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Tub_o%27_Flowers.png",
-        "description": "Flowers planted in an oak barrel. Blooms in spring and summer."
-    },
-    "143": {
-        "name": "Wooden Brazier",
-        "itemID": 143,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wooden_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "83": {
-        "name": "Wicked Statue",
-        "itemID": 83,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Wicked_Statue.png",
-        "description": "There's something unsettling about the looks of this statue."
-    },
-    "144": {
-        "name": "Stone Brazier",
-        "itemID": 144,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Stone_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "145": {
-        "name": "Gold Brazier",
-        "itemID": 145,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b7/Gold_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "146": {
-        "name": "Campfire",
-        "itemID": 146,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Campfire.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "147": {
-        "name": "Stump Brazier",
-        "itemID": 147,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Stump_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "148": {
-        "name": "Carved Brazier",
-        "itemID": 148,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3c/Carved_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "149": {
-        "name": "Skull Brazier",
-        "itemID": 149,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e6/Skull_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "150": {
-        "name": "Barrel Brazier",
-        "itemID": 150,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/Barrel_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "151": {
-        "name": "Marble Brazier",
-        "itemID": 151,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Marble_Brazier.png",
-        "description": "Provides a moderate amount of light."
-    },
-    "152": {
-        "name": "Wood Lamp-post",
-        "itemID": 152,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Wood_Lamp-post.png",
-        "description": "Provides a good amount of light."
-    },
-    "153": {
-        "name": "Iron Lamp-post",
-        "itemID": 153,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Iron_Lamp-post.png",
-        "description": "Provides a good amount of light."
-    },
-    "39": {
-        "name": "Dark Sign",
-        "itemID": 39,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Dark_Sign.png",
-        "description": "Use an item on this to change what's displayed. The item won't be consumed."
-    },
-    "232": {
-        "name": "Stone Chest",
-        "itemID": 232,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Stone_Chest.png",
-        "description": "A place to store your items."
-    },
-    "238": {
-        "name": "Mini-Obelisk",
-        "itemID": 238,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c9/Mini-Obelisk.png",
-        "description": "Place two on the farm to warp between them."
-    },
-    "239": {
-        "name": "Farm Computer",
-        "itemID": 239,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Farm_Computer.png",
-        "description": "Scans the farm and displays useful information."
-    },
-    "254": {
-        "name": "Ostrich Incubator",
-        "itemID": 254,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/51/Ostrich_Incubator.png",
-        "description": "Hatches ostrich eggs into baby ostriches. Place in a barn."
-    },
-    "182": {
-        "name": "Geode Crusher",
-        "itemID": 182,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Geode_Crusher.png",
-        "description": "Breaks geodes open automatically. Requires coal to operate."
-    },
-    "231": {
-        "name": "Solar Panel",
-        "itemID": 231,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Solar_Panel.png",
-        "description": "Slowly generates batteries when left in the sun."
-    },
-    "90": {
-        "name": "Bone Mill",
-        "itemID": 90,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Bone_Mill.png",
-        "description": "Turns bone items into fertilizers."
-    },
-    "264": {
-        "name": "Heavy Tapper",
-        "itemID": 264,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0c/Heavy_Tapper.png",
-        "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product! Works twice as fast as a normal tapper."
-    },
-    "275": {
-        "name": "Hopper",
-        "itemID": 275,
-        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Hopper.png",
-        "description": "Items placed inside will automatically be loaded into the machine in front of it."
-    }
+  "130": {
+    "name": "Chest",
+    "itemID": 130,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Chest.png",
+    "description": "A place to store your items."
+  },
+  "8": {
+    "name": "Scarecrow",
+    "itemID": 8,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/75/Scarecrow.png",
+    "description": "Prevents crows from attacking your crops. Has a limited radius (about 8 \"tiles\")."
+  },
+  "167": {
+    "name": "Deluxe Scarecrow",
+    "itemID": 167,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Deluxe_Scarecrow.png",
+    "description": "Prevents crows from attacking your crops. Has a large radius (about 16 \"tiles\")."
+  },
+  "10": {
+    "name": "Bee House",
+    "itemID": 10,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Bee_House.png",
+    "description": "Place outside and wait for delicious honey! (Except in Winter)."
+  },
+  "12": {
+    "name": "Keg",
+    "itemID": 12,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Keg.png",
+    "description": "Place a fruit or vegetable in here. Eventually it will turn into a beverage."
+  },
+  "163": {
+    "name": "Cask",
+    "itemID": 163,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Cask.png",
+    "description": "Use in the cellar to age products like wine and cheese."
+  },
+  "13": {
+    "name": "Furnace",
+    "itemID": 13,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Furnace.png",
+    "description": "Turns ore and coal into metal bars."
+  },
+  "62": {
+    "name": "Garden Pot",
+    "itemID": 62,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Garden_Pot.png",
+    "description": "Grows crops from any season when indoors. Outdoors, it can only house seasonal crops."
+  },
+  "37": {
+    "name": "Wood Sign",
+    "itemID": 37,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Wood_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed."
+  },
+  "38": {
+    "name": "Stone Sign",
+    "itemID": 38,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f3/Stone_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed."
+  },
+  "16": {
+    "name": "Cheese Press",
+    "itemID": 16,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Cheese_Press.png",
+    "description": "Turns milk into cheese."
+  },
+  "24": {
+    "name": "Mayonnaise Machine",
+    "itemID": 24,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Mayonnaise_Machine.png",
+    "description": "Turns eggs into mayonnaise."
+  },
+  "25": {
+    "name": "Seed Maker",
+    "itemID": 25,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Seed_Maker.png",
+    "description": "Place crops inside to produce a varying amount of seeds. Doesn't work with fruit tree crops."
+  },
+  "17": {
+    "name": "Loom",
+    "itemID": 17,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Loom.png",
+    "description": "Turns raw wool into fine cloth."
+  },
+  "19": {
+    "name": "Oil Maker",
+    "itemID": 19,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c5/Oil_Maker.png",
+    "description": "Makes gourmet truffle oil."
+  },
+  "20": {
+    "name": "Recycling Machine",
+    "itemID": 20,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Recycling_Machine.png",
+    "description": "Turns fishing trash into resources."
+  },
+  "154": {
+    "name": "Worm Bin",
+    "itemID": 154,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Worm_Bin.png",
+    "description": "Produces bait on a regular basis. The worms are self-sufficient."
+  },
+  "15": {
+    "name": "Preserves Jar",
+    "itemID": 15,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Preserves_Jar.png",
+    "description": "Turns vegetables into pickles and fruit into jam."
+  },
+  "114": {
+    "name": "Charcoal Kiln",
+    "itemID": 114,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Charcoal_Kiln.png",
+    "description": "Turns 10 pieces of wood into one piece of coal."
+  },
+  "105": {
+    "name": "Tapper",
+    "itemID": 105,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Tapper.png",
+    "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product!"
+  },
+  "9": {
+    "name": "Lightning Rod",
+    "itemID": 9,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Lightning_Rod.png",
+    "description": "Collects energy from lightning storms and turns it into battery packs."
+  },
+  "156": {
+    "name": "Slime Incubator",
+    "itemID": 156,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Slime_Incubator.png",
+    "description": "Hatches slimes eggs into slimes. Allows you to raise slimes outdoors."
+  },
+  "158": {
+    "name": "Slime Egg-Press",
+    "itemID": 158,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Slime_Egg-Press.png",
+    "description": "Compresses 100 pieces of slime into a slime egg. It's a miracle of science!"
+  },
+  "21": {
+    "name": "Crystalarium",
+    "itemID": 21,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Crystalarium.png",
+    "description": "Insert a gem of your choice and it will grow copies."
+  },
+  "209": {
+    "name": "Mini-Jukebox",
+    "itemID": 209,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Mini-Jukebox.png",
+    "description": "Allows you to play your favorite tunes."
+  },
+  "71": {
+    "name": "Staircase",
+    "itemID": 71,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8c/Staircase.png",
+    "description": "Use this to move down a level in the mines."
+  },
+  "108": {
+    "name": "Tub o' Flowers",
+    "itemID": 108,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Tub_o%27_Flowers.png",
+    "description": "Flowers planted in an oak barrel. Blooms in spring and summer."
+  },
+  "143": {
+    "name": "Wooden Brazier",
+    "itemID": 143,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wooden_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "83": {
+    "name": "Wicked Statue",
+    "itemID": 83,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Wicked_Statue.png",
+    "description": "There's something unsettling about the looks of this statue."
+  },
+  "144": {
+    "name": "Stone Brazier",
+    "itemID": 144,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Stone_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "145": {
+    "name": "Gold Brazier",
+    "itemID": 145,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b7/Gold_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "146": {
+    "name": "Campfire",
+    "itemID": 146,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Campfire.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "147": {
+    "name": "Stump Brazier",
+    "itemID": 147,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Stump_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "148": {
+    "name": "Carved Brazier",
+    "itemID": 148,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3c/Carved_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "149": {
+    "name": "Skull Brazier",
+    "itemID": 149,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e6/Skull_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "150": {
+    "name": "Barrel Brazier",
+    "itemID": 150,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/Barrel_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "151": {
+    "name": "Marble Brazier",
+    "itemID": 151,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Marble_Brazier.png",
+    "description": "Provides a moderate amount of light."
+  },
+  "152": {
+    "name": "Wood Lamp-post",
+    "itemID": 152,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Wood_Lamp-post.png",
+    "description": "Provides a good amount of light."
+  },
+  "153": {
+    "name": "Iron Lamp-post",
+    "itemID": 153,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Iron_Lamp-post.png",
+    "description": "Provides a good amount of light."
+  },
+  "39": {
+    "name": "Dark Sign",
+    "itemID": 39,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Dark_Sign.png",
+    "description": "Use an item on this to change what's displayed. The item won't be consumed."
+  },
+  "232": {
+    "name": "Stone Chest",
+    "itemID": 232,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Stone_Chest.png",
+    "description": "A place to store your items."
+  },
+  "238": {
+    "name": "Mini-Obelisk",
+    "itemID": 238,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c9/Mini-Obelisk.png",
+    "description": "Place two on the farm to warp between them."
+  },
+  "239": {
+    "name": "Farm Computer",
+    "itemID": 239,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Farm_Computer.png",
+    "description": "Scans the farm and displays useful information."
+  },
+  "254": {
+    "name": "Ostrich Incubator",
+    "itemID": 254,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/51/Ostrich_Incubator.png",
+    "description": "Hatches ostrich eggs into baby ostriches. Place in a barn."
+  },
+  "182": {
+    "name": "Geode Crusher",
+    "itemID": 182,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Geode_Crusher.png",
+    "description": "Breaks geodes open automatically. Requires coal to operate."
+  },
+  "231": {
+    "name": "Solar Panel",
+    "itemID": 231,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Solar_Panel.png",
+    "description": "Slowly generates batteries when left in the sun."
+  },
+  "90": {
+    "name": "Bone Mill",
+    "itemID": 90,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Bone_Mill.png",
+    "description": "Turns bone items into fertilizers."
+  },
+  "264": {
+    "name": "Heavy Tapper",
+    "itemID": 264,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0c/Heavy_Tapper.png",
+    "description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product! Works twice as fast as a normal tapper."
+  },
+  "275": {
+    "name": "Hopper",
+    "itemID": 275,
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Hopper.png",
+    "description": "Items placed inside will automatically be loaded into the machine in front of it."
+  }
 }
