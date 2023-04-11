@@ -58,8 +58,8 @@ Stardew.app has been contributed to by the lovely people below <3
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leahlundqvist">
-            <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="leahlundqvist"/>
+        <a href="https://github.com/hex2f">
+            <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="hex2f"/>
             <br />
             <sub><b>Leah Lundqvist</b></sub>
         </a>
@@ -87,10 +87,10 @@ Stardew.app has been contributed to by the lovely people below <3
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/cbyrneee">
-            <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="cbyrneee"/>
+        <a href="https://github.com/caoimhebyrne">
+            <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
             <br />
-            <sub><b>Conor Byrne</b></sub>
+            <sub><b>Caoimhe</b></sub>
         </a>
     </td>
     <td align="center">
