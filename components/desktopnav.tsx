@@ -90,7 +90,7 @@ const DesktopNav = ({
                 </Link>
               ))}
             </nav>
-            <div className="mx-2 flex items-center space-x-2 text-white">
+            <div className="mt-2 mx-2 flex items-center space-x-2 text-white">
               {!user ? (
                 <div
                   onClick={() => setShowLoginModal(true)}
