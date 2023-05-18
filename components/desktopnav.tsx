@@ -112,7 +112,7 @@ const DesktopNav = ({
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col dark:bg-[#141414] md:pl-64">
+      <div className="flex flex-1 flex-col dark:bg-[#141414] md:pl-64 lg:h-screen">
         <div className="sticky top-0 z-10 pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
           <button
             type="button"

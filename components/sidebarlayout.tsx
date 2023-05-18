@@ -519,8 +519,9 @@ const SidebarLayout = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.3 }}
+            className="h-full"
           >
-            <div className="py-6">{children}</div>
+            <div className="py-6 h-full">{children}</div>
           </motion.div>
         </AnimatePresence>
       </DesktopNav>

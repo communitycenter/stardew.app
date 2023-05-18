@@ -171,8 +171,8 @@ const Home: NextPage = () => {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       >
-        <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
-          <div className="grid gap-4 md:h-screen">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14 h-full">
+          <div className="grid gap-4 min-h-full">
             <div className="h-full">
               <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] h-full">
                 <div className="items-center space-y-3">
@@ -202,7 +202,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 h-full md:grid-cols-2">
               <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
                 <div className="space-y-6">
                   <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
@@ -222,7 +222,7 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919]">
+              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] h-full">
                 <div className="space-y-6">
                   <div className="text-md justify-center font-semibold text-gray-900 dark:text-white">
                     How to use: expandable card
