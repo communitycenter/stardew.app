@@ -115,7 +115,7 @@ export const DragAndDrop = React.memo(
       };
     }, [handleDrag, handleDragIn, handleDragOut, handleDrop]);
 
-    return <div ref={dragAndDropRef}>{props.children}</div>;
+    return <div className="h-full" ref={dragAndDropRef}>{props.children}</div>;
   }
 );
 

@@ -172,9 +172,9 @@ const Home: NextPage = () => {
         setSidebarOpen={setSidebarOpen}
       >
         <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
-          <div className="grid gap-4">
-            <div>
-              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] lg:h-[33vh]">
+          <div className="grid gap-4 md:h-screen">
+            <div className="h-full">
+              <div className="flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] h-full">
                 <div className="items-center space-y-3">
                   <div className="items-center">
                     <Image
@@ -241,49 +241,47 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <div className="hover:cursor-pointer">
-              <DragAndDrop
-                onDragStateChange={onDragStateChange}
-                onFilesDrop={onFilesDrop}
-              >
-                <div className="min-w-0 flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] lg:h-[25vh]">
-                  <label className="flex h-full w-full flex-grow items-center justify-center space-x-3">
-                    <PlusIcon
-                      className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
+            <DragAndDrop
+              onDragStateChange={onDragStateChange}
+              onFilesDrop={onFilesDrop}
+            >
+              <div className="min-w-0 flex flex-col justify-center rounded-lg border border-gray-300 py-4  px-5 text-center  dark:border-[#2A2A2A] dark:bg-[#191919] h-full">
+                <label className="flex h-full w-full flex-grow items-center justify-center space-x-3 cursor-pointer">
+                  <PlusIcon
+                    className="h-10 w-10 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
 
-                    <div>
-                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
-                        Drag your Stardew Valley save here, or click to upload.
-                      </p>
-                      <br />
+                  <div>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                      Drag your Stardew Valley save here, or click to upload.
+                    </p>
+                    <br />
 
-                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
-                        Need help finding your save? Saves usually look like
-                        this: <code>Jack_0120902</code>
-                      </p>
-                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
-                        <span className="font-bold">Windows: </span>
-                        %AppData%\StardewValley\Saves\
-                      </p>
-                      <p className="text-sm text-gray-400 group-hover:text-gray-500">
-                        <span className="font-bold">macOS & Linux: </span>
-                        ~/.config/StardewValley/Saves/
-                      </p>
-                    </div>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                      Need help finding your save? Saves usually look like
+                      this: <code>Jack_0120902</code>
+                    </p>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                      <span className="font-bold">Windows: </span>
+                      %AppData%\StardewValley\Saves\
+                    </p>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-500">
+                      <span className="font-bold">macOS & Linux: </span>
+                      ~/.config/StardewValley/Saves/
+                    </p>
+                  </div>
 
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        handleChange(e)
-                      }
-                    />
-                  </label>
-                </div>
-              </DragAndDrop>
-            </div>
+                  <input
+                    type="file"
+                    className="hidden hover:cursor-pointer"
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      handleChange(e)
+                    }
+                  />
+                </label>
+              </div>
+            </DragAndDrop>
           </div>
         </div>
       </SidebarLayout>
