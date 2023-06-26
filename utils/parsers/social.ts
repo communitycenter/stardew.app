@@ -50,9 +50,17 @@ export function parseSocial(json: any): ReturnType {
 
   let fiveHeartCount = 0;
   let tenHeartCount = 0;
+
   // new files will have only one "item" which makes it not iterable so we'll
   // catch that error and handle it separately
-  if (typeof json.SaveGame.player.friendshipData.item.key === "undefined") {
+
+  if (json.SaveGame.player.friendshipData == "") {
+    // no relationships
+    return { fiveHeartCount, tenHeartCount, relationships };
+  } else if (
+    json.SaveGame.player.friendshipData &&
+    typeof json.SaveGame.player.friendshipData.item.key === "undefined"
+  ) {
     // multiple entries
     for (const idx in json.SaveGame.player.friendshipData.item) {
       let name = json.SaveGame.player.friendshipData.item[idx].key.string;
