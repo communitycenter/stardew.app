@@ -2,8 +2,9 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 
-import { ThemeProvider } from "@/components/theme-provider";
 import { Topbar } from "@/components/top-bar";
+import { Sidebar } from "@/components/sidebar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className={`${inter.className}`}>
         <Topbar />
-        <Component {...pageProps} />
+        <div className="">
+          <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col" />
+          <div className="md:pl-72">
+            <Component {...pageProps} />
+          </div>
+        </div>
       </div>
     </ThemeProvider>
   );
