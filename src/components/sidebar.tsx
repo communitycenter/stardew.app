@@ -4,39 +4,70 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
-import { HomeIcon, PersonIcon } from "@radix-ui/react-icons";
+import {
+  DiscordLogoIcon,
+  GitHubLogoIcon,
+  HeartFilledIcon,
+  HomeIcon,
+  PersonIcon,
+  StarFilledIcon,
+} from "@radix-ui/react-icons";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const navigation = [
+const miscNavigation = [
+  { name: "Bundles", href: "/bundles", icon: PersonIcon },
+  { name: "Walnuts", href: "/island/walnuts", icon: PersonIcon },
+  { name: "Secret Notes", href: "/island/notes", icon: PersonIcon },
+  { name: "Journal Scraps", href: "/island/scraps", icon: PersonIcon },
+];
+
+const playerNavigation = [
   { name: "Home", href: "/", icon: HomeIcon },
   { name: "Farmer", href: "/farmer", icon: PersonIcon },
-  { name: "Fishing", href: "/fishing", icon: PersonIcon },
-  { name: "Perfection", href: "/perfection", icon: PersonIcon },
+  { name: "Perfection", href: "/perfection", icon: StarFilledIcon },
+  { name: "Relationships", href: "/relationships", icon: HeartFilledIcon },
+];
+
+const collectionsNavigation = [
   { name: "Cooking", href: "/cooking", icon: PersonIcon },
   { name: "Crafting", href: "/crafting", icon: PersonIcon },
   { name: "Shipping", href: "/shipping", icon: PersonIcon },
-  { name: "Family & Social", href: "/social", icon: PersonIcon },
-  { name: "Museum & Artifacts", href: "/artifacts", icon: PersonIcon },
-  { name: "Bundles", href: "/bundles", icon: PersonIcon },
+  { name: "Fishing", href: "/fishing", icon: PersonIcon },
+  { name: "Museum & Artifacts", href: "/museum", icon: PersonIcon },
 ];
+
+const SidebarCategory = ({ children }: { children: string }) => (
+  <h2 className="mt-4 mb-2 px-4 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
+    {children}
+  </h2>
+);
 
 export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
 
   return (
     <div className={cn("pb-12", className)}>
-      <div className="space-y-4 py-4">
+      <div className="space-y-4">
         <div className="px-3 py-2">
-          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            keep or remove
-          </h2>
+          <SidebarCategory>Player</SidebarCategory>
           <div className="space-y-1">
-            {navigation.map((item) => (
+            {playerNavigation.map((item) => (
               <Button
                 key={item.href}
                 variant={pathname === item.href ? "secondary" : "ghost"}
-                className="w-full justify-start"
+                className={cn(
+                  "w-full justify-start",
+                  item.href === pathname
+                    ? ""
+                    : "text-neutral-600 dark:text-neutral-400"
+                )}
                 asChild
               >
                 <Link href={item.href}>
@@ -46,6 +77,70 @@ export function Sidebar({ className }: SidebarProps) {
               </Button>
             ))}
           </div>
+          <SidebarCategory>Collections</SidebarCategory>
+          <div className="space-y-1">
+            {collectionsNavigation.map((item) => (
+              <Button
+                key={item.href}
+                variant={pathname === item.href ? "secondary" : "ghost"}
+                className={cn(
+                  "w-full justify-start",
+                  item.href === pathname
+                    ? ""
+                    : "text-neutral-600 dark:text-neutral-400"
+                )}
+                asChild
+              >
+                <Link href={item.href}>
+                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                  {item.name}
+                </Link>
+              </Button>
+            ))}
+          </div>
+
+          <SidebarCategory>Misc</SidebarCategory>
+          <div className="space-y-1">
+            {miscNavigation.map((item) => (
+              <Button
+                key={item.href}
+                variant={pathname === item.href ? "secondary" : "ghost"}
+                className={cn(
+                  "w-full justify-start",
+                  item.href === pathname
+                    ? ""
+                    : "text-neutral-600 dark:text-neutral-400"
+                )}
+                asChild
+              >
+                <Link href={item.href}>
+                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                  {item.name}
+                </Link>
+              </Button>
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 pb-4 gap-2 fixed bottom-0 w-72 px-3">
+          <Button
+            variant="outline"
+            className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+          >
+            <DiscordLogoIcon />
+          </Button>
+          <Button
+            variant="outline"
+            className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+          >
+            <GitHubLogoIcon />
+            {/* <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>Hover</TooltipTrigger>
+                <TooltipContent>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider> */}
+          </Button>
         </div>
       </div>
     </div>

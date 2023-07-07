@@ -37,13 +37,15 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           role="combobox"
           aria-label="Load a farmhand..."
           aria-expanded={open}
-          className="flex-1 justify-between md:max-w-[200px] lg:max-w-[300px]"
+          className="flex-1 justify-between md:max-w-[200px]"
         >
-          {selectedPreset ? selectedPreset.name : "Load a farmhand..."}
+          <p className="w-full max-w-full truncate text-left">
+            {selectedPreset ? selectedPreset.name : "Load a farmhand..."}
+          </p>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
+      <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search farmhands..." />
           <CommandEmpty>No farmhands found.</CommandEmpty>
@@ -55,8 +57,9 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
                   setSelectedPreset(preset);
                   setOpen(false);
                 }}
+                className=""
               >
-                {preset.name}
+                <p className="w-full max-w-full truncate">{preset.name}</p>
                 <CheckIcon
                   className={cn(
                     "ml-auto h-4 w-4",

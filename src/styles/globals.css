@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*  
+ * DO NOT USE THIS CLASS UNDER ANY CIRCUMSTANCES. 
+ * DO NOT TOUCH THIS CLASS.
+ * IF YOU REMOVE THIS CLASS, EVERYTHING BREAKS.
+*/
+.conrad {
+  width: calc("awesomeness + swag") !important;
+}
