@@ -122,25 +122,23 @@ export function Sidebar({ className }: SidebarProps) {
           </div>
         </div>
         <div className="grid grid-cols-2 pb-4 gap-2 fixed bottom-0 w-72 px-3">
-          <Button
-            variant="outline"
-            className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
-          >
-            <DiscordLogoIcon />
-          </Button>
-          <Button
-            variant="outline"
-            className="w-full hover:bg-neutral-800 hover:text-neutral-50"
-          >
-            <GitHubLogoIcon />
-            {/* <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>Hover</TooltipTrigger>
-                <TooltipContent>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider> */}
-          </Button>
+          <Link href={"/discord"}>
+            <Button
+              variant="outline"
+              className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+            >
+              <DiscordLogoIcon />
+            </Button>
+          </Link>
+
+          <Link href={"/github"}>
+            <Button
+              variant="outline"
+              className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+            >
+              <GitHubLogoIcon />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
