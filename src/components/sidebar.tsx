@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 
 import { HomeIcon, PersonIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -20,6 +22,8 @@ const navigation = [
 ];
 
 export function Sidebar({ className }: SidebarProps) {
+  const pathname = usePathname();
+
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
@@ -27,27 +31,21 @@ export function Sidebar({ className }: SidebarProps) {
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             keep or remove
           </h2>
-          {navigation.map((item) => (
-            <Link key="{item.name}" href={item.href}>
+          <div className="space-y-1">
+            {navigation.map((item) => (
               <Button
-                variant={item.name === "Home" ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start space-y-1",
-                  item.name === "Home" ? "text-black" : "text-[#7D7D7D]"
-                )}
+                key={item.href}
+                variant={pathname === item.href ? "secondary" : "ghost"}
+                className="w-full justify-start"
+                asChild
               >
-                <item.icon
-                  className={cn(
-                    item.name === "Home"
-                      ? "mr-2 h-h w-4 text-black dark:text-white"
-                      : "mr-2 h-h w-4  hover:text-white "
-                  )}
-                  aria-hidden="true"
-                />
-                {item.name}
+                <Link href={item.href}>
+                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                  {item.name}
+                </Link>
               </Button>
-            </Link>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
