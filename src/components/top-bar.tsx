@@ -3,6 +3,15 @@ import { presets } from "@/data/presets";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
+import {
+  Upload,
+  UploadTrigger,
+  UploadContent,
+  UploadHeader,
+  UploadFooter,
+  UploadTitle,
+  UploadDescription,
+} from "@/components/ui/upload";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
@@ -20,12 +29,21 @@ export function Topbar() {
         {/* Desktop Version */}
         <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector presets={presets} />
-          <Button
-            variant="secondary"
-            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
-          >
-            Upload
-          </Button>
+          <Upload>
+            <UploadTrigger asChild>
+              <Button
+                variant="secondary"
+                className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
+              >
+                Upload
+              </Button>
+            </UploadTrigger>
+            <UploadContent>
+              <UploadHeader>
+                <UploadTitle>Select a Farmhand</UploadTitle>
+              </UploadHeader>
+            </UploadContent>
+          </Upload>
           <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white">
             Log In With Discord
           </Button>
