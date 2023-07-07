@@ -123,41 +123,43 @@ export function Sidebar({ className }: SidebarProps) {
           </div>
         </div>
         <div className="grid grid-cols-2 pb-4 gap-2 fixed bottom-0 w-72 px-3">
-          <Link href={"/discord"}>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger className={"w-full"}>
-                  <Button
-                    variant="outline"
-                    className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
-                  >
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+                  asChild
+                >
+                  <Link href={"/discord"}>
                     <DiscordLogoIcon />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Join our Discord!</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </Link>
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Join our Discord!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
-          <Link href={"/github"} suppressHydrationWarning={true}>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger className={"w-full"}>
-                  <Button
-                    variant="outline"
-                    className="w-full hover:bg-neutral-800 hover:text-neutral-50"
-                  >
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+                  asChild
+                >
+                  <Link href={"/github"}>
                     <GitHubLogoIcon />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>stardew.app&apos;s source!</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </Link>
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>stardew.app&apos;s source!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </div>
     </div>
