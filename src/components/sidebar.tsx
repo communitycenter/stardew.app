@@ -12,12 +12,13 @@ import {
   PersonIcon,
   StarFilledIcon,
 } from "@radix-ui/react-icons";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./ui/tooltip";
+} from "@/components/ui/tooltip";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -123,21 +124,39 @@ export function Sidebar({ className }: SidebarProps) {
         </div>
         <div className="grid grid-cols-2 pb-4 gap-2 fixed bottom-0 w-72 px-3">
           <Link href={"/discord"}>
-            <Button
-              variant="outline"
-              className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
-            >
-              <DiscordLogoIcon />
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger className={"w-full"}>
+                  <Button
+                    variant="outline"
+                    className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+                  >
+                    <DiscordLogoIcon />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Join our Discord!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </Link>
 
-          <Link href={"/github"}>
-            <Button
-              variant="outline"
-              className="w-full hover:bg-neutral-800 hover:text-neutral-50"
-            >
-              <GitHubLogoIcon />
-            </Button>
+          <Link href={"/github"} suppressHydrationWarning={true}>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger className={"w-full"}>
+                  <Button
+                    variant="outline"
+                    className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+                  >
+                    <GitHubLogoIcon />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>stardew.app&apos;s source!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </Link>
         </div>
       </div>
