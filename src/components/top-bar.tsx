@@ -1,32 +1,44 @@
-import { useRef, useState } from "react";
+// TODO: show modal for context switching players once we have a backend.
 import { presets } from "@/data/presets";
+import { ChangeEvent, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
-import {
-  Upload,
-  UploadTrigger,
-  UploadContent,
-  UploadHeader,
-  UploadFooter,
-  UploadTitle,
-  UploadDescription,
-} from "@/components/ui/upload";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
+import { parseSaveFile } from "@/lib/file";
+
 export function Topbar() {
-  const uploadFile = useRef<HTMLInputElement | null>(null);
-  const [open, setOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const openFilePicker = () => {
-    uploadFile.current?.click();
-  };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // TODO: replace console.logs with error messages in UI
+    e.preventDefault();
 
-  const handleFileUpload = () => {
-    openFilePicker();
-    setOpen(true);
+    const file = e.target!.files![0];
+
+    if (typeof file === "undefined" || !file) return;
+
+    if (file.type !== "") {
+      console.log("Invalid file type");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = async function (event) {
+      try {
+        const { timeElapsed, message } = parseSaveFile(
+          event.target?.result as string
+        );
+        console.log(timeElapsed, message);
+      } catch (err) {
+        console.log(err instanceof Error ? err.message : err);
+      }
+    };
+    reader.readAsText(file);
   };
 
   return (
@@ -42,23 +54,19 @@ export function Topbar() {
         {/* Desktop Version */}
         <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector presets={presets} />
-          <Upload open={open} onOpenChange={setOpen}>
-            <UploadTrigger asChild>
-              <Button
-                variant="secondary"
-                onClick={handleFileUpload}
-                className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
-              >
-                Upload
-                <input type='file' id='file' accept='.xml' ref={uploadFile} style={{display: 'none'}}/>
-              </Button>
-            </UploadTrigger>
-            <UploadContent>
-              <UploadHeader>
-                <UploadTitle>Select a Farmhand</UploadTitle>
-              </UploadHeader>
-            </UploadContent>
-          </Upload>
+          <Button
+            variant="secondary"
+            onClick={() => inputRef.current?.click()}
+            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
+          >
+            Upload
+            <input
+              type="file"
+              ref={inputRef}
+              className="hidden"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
+            />
+          </Button>
           <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white">
             Log In With Discord
           </Button>
