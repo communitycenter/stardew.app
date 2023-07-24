@@ -1,11 +1,22 @@
 // every page is gonna need lg:border-l border-neutral-200 dark:border-neutral-800
 
-import { Inter } from "next/font/google";
 import Head from "next/head";
+
+import { Inter } from "next/font/google";
+
+import { useContext, useEffect } from "react";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { players, activePlayer } = useContext(PlayersContext);
+
+  useEffect(() => {
+    console.log("hello", players);
+  }, [players]);
+
   return (
     <>
       <Head>
@@ -22,7 +33,12 @@ export default function Home() {
       <main
         className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className}`}
       >
-        <h1 className="text-4xl font-semibold">Hello</h1>
+        <h1 className="text-4xl font-semibold">
+          {players ? players.length : 0}
+        </h1>
+        <h1>
+          Active Player: {activePlayer ? activePlayer.general.name : "none"}
+        </h1>
       </main>
     </>
   );

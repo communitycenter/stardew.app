@@ -5,7 +5,6 @@ import { findAllByKey } from "@/lib/utils";
 const semverSatisfies = require("semver/functions/satisfies");
 
 export function parseSaveFile(xml: string) {
-  const start = performance.now();
   const parser = new XMLParser({ ignoreAttributes: false });
   const saveFile = parser.parse(xml);
 
@@ -24,6 +23,22 @@ export function parseSaveFile(xml: string) {
     // searches for all players in the save file and returns an array
     // objects are unprocessed and will be used to parse each player's data
     players = findAllByKey(saveFile.SaveGame, "farmhand");
+    let processedPlayers: any[] = [];
+
+    players.forEach((player) => {
+      // in here is where we'll call all our parsers and create the player object we'll use
+      let processedPlayer = {
+        general: {
+          name: player.name,
+          farmName: player.farmName,
+          totalMoneyEarned: player.totalMoneyEarned,
+        },
+        id: player.UniqueMultiplayerID,
+      };
+      processedPlayers.push(processedPlayer);
+    });
+
+    return processedPlayers;
   } catch (e) {
     if (e instanceof TypeError) {
       throw new Error(
@@ -32,7 +47,7 @@ export function parseSaveFile(xml: string) {
     } else throw e;
   }
 
-  let mainPlayerName = saveFile.SaveGame.player.name;
-  const elapsed = performance.now() - start;
-  return { timeElapsed: (elapsed / 1000).toFixed(2), message: mainPlayerName };
+  // let mainPlayerName = saveFile.SaveGame.player.name;
+  // const elapsed = performance.now() - start;
+  // return { timeElapsed: (elapsed / 1000).toFixed(2), players: h };
 }

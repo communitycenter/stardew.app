@@ -1,9 +1,10 @@
-import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+
+import { cn } from "@/lib/utils";
+
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { PopoverProps } from "@radix-ui/react-popover";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -18,19 +19,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { Preset } from "../data/presets";
+import { PlayersContext } from "@/contexts/players-context";
 
-interface PresetSelectorProps extends PopoverProps {
-  presets: Preset[];
-}
-
-export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
-  const [open, setOpen] = React.useState(false);
-  const [selectedPreset, setSelectedPreset] = React.useState<Preset>();
-  const router = useRouter();
+export function PresetSelector() {
+  const [open, setOpen] = useState(false);
+  const { players, activePlayer, setActivePlayer } = useContext(PlayersContext);
 
   return (
-    <Popover open={open} onOpenChange={setOpen} {...props}>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -40,7 +36,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           className="flex-1 justify-between md:max-w-[200px]"
         >
           <p className="w-full max-w-full truncate text-left">
-            {selectedPreset ? selectedPreset.name : "Load a farmhand..."}
+            {activePlayer ? activePlayer.general.name : "Load a farmhand..."}
           </p>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -50,26 +46,30 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
           <CommandInput placeholder="Search farmhands..." />
           <CommandEmpty>No farmhands found.</CommandEmpty>
           <CommandGroup heading="Farmhands">
-            {presets.map((preset) => (
-              <CommandItem
-                key={preset.id}
-                onSelect={() => {
-                  setSelectedPreset(preset);
-                  setOpen(false);
-                }}
-                className=""
-              >
-                <p className="w-full max-w-full truncate">{preset.name}</p>
-                <CheckIcon
-                  className={cn(
-                    "ml-auto h-4 w-4",
-                    selectedPreset?.id === preset.id
-                      ? "opacity-100"
-                      : "opacity-0"
-                  )}
-                />
-              </CommandItem>
-            ))}
+            {players
+              ? players.map((player: any) => (
+                  <CommandItem
+                    key={player.id}
+                    onSelect={() => {
+                      setActivePlayer(player);
+                      setOpen(false);
+                    }}
+                    className=""
+                  >
+                    <p className="w-full max-w-full truncate">
+                      {player.general.name}
+                    </p>
+                    <CheckIcon
+                      className={cn(
+                        "ml-auto h-4 w-4",
+                        activePlayer?.general.name === player.general.name
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                  </CommandItem>
+                ))
+              : null}
           </CommandGroup>
         </Command>
       </PopoverContent>

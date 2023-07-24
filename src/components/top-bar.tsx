@@ -1,10 +1,12 @@
 // TODO: show modal for context switching players once we have a backend.
 import { presets } from "@/data/presets";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
@@ -12,6 +14,7 @@ import { parseSaveFile } from "@/lib/file";
 
 export function Topbar() {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const { setPlayers } = useContext(PlayersContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // TODO: replace console.logs with error messages in UI
@@ -30,10 +33,8 @@ export function Topbar() {
 
     reader.onload = async function (event) {
       try {
-        const { timeElapsed, message } = parseSaveFile(
-          event.target?.result as string
-        );
-        console.log(timeElapsed, message);
+        const players = parseSaveFile(event.target?.result as string);
+        setPlayers(players);
       } catch (err) {
         console.log(err instanceof Error ? err.message : err);
       }
@@ -53,7 +54,7 @@ export function Topbar() {
         </div>
         {/* Desktop Version */}
         <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
-          <PresetSelector presets={presets} />
+          <PresetSelector />
           <Button
             variant="secondary"
             onClick={() => inputRef.current?.click()}
