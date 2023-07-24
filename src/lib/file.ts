@@ -1,4 +1,7 @@
 import { XMLParser } from "fast-xml-parser";
+
+import { findAllByKey } from "@/lib/utils";
+
 const semverSatisfies = require("semver/functions/satisfies");
 
 export function parseSaveFile(xml: string) {
@@ -15,6 +18,12 @@ export function parseSaveFile(xml: string) {
         `Game version ${version} is not supported. stardew.app currently only supports the Stardew Valley 1.5 update.`
       );
     }
+
+    // Now we can begin parsing the save file
+    let players: any[] = [];
+    // searches for all players in the save file and returns an array
+    // objects are unprocessed and will be used to parse each player's data
+    players = findAllByKey(saveFile.SaveGame, "farmhand");
   } catch (e) {
     if (e instanceof TypeError) {
       throw new Error(
