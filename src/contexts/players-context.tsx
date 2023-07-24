@@ -7,13 +7,11 @@ import {
   useEffect,
 } from "react";
 
+import { GeneralRet } from "@/lib/parsers/parseGeneral";
+
 // TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
-  general: {
-    name: string;
-    farmName: string;
-    totalMoneyEarned: number;
-  };
+  general: GeneralRet;
   id: string;
 }
 
