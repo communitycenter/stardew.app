@@ -1,182 +1,242 @@
 {
-  "Greenhorn": {
-    "id": 0,
-    "name": "Greenhorn",
-    "description": "Earn 15,000g",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-  },
-  "Cowpoke": {
-    "id": 1,
-    "name": "Cowpoke",
-    "description": "Earn 50,000g",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/24/Achievement_Cowpoke.jpg"
-  },
-  "Homesteader": {
-    "id": 2,
-    "name": "Homesteader",
-    "description": "Earn 250,000g",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fb/Achievement_Homesteader.jpg"
-  },
-  "Millionaire": {
-    "id": 3,
-    "name": "Millionaire",
-    "description": "Earn 1,000,000g",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Achievement_Millionaire.jpg"
-  },
-  "Legend": {
-    "id": 4,
-    "name": "Legend",
-    "description": "Earn 10,000,000g",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Achievement_Legend.jpg"
-  },
-  "A Complete Collection": {
-    "id": 5,
-    "name": "A Complete Collection",
-    "description": "Complete the museum collection.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_A_Complete_Collection.jpg"
-  },
-  "A New Friend": {
-    "id": 6,
-    "name": "A New Friend",
-    "description": "Reach a 5-heart friend level with someone.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Achievement_A_New_Friend.jpg"
-  },
-  "Best Friends": {
-    "id": 7,
-    "name": "Best Friends",
-    "description": "Reach a 10-heart friend level with someone.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e8/Achievement_Best_Friends.jpg"
-  },
-  "The Beloved Farmer": {
-    "id": 9,
-    "name": "The Beloved Farmer",
-    "description": "Reach a 10-heart friend level with 8 people.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Achievement_The_Beloved_Farmer.jpg"
-  },
-  "Cliques": {
-    "id": 11,
-    "name": "Cliques",
-    "description": "Reach a 5-heart friend level with 4 people.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Achievement_Cliques.jpg"
-  },
-  "Networking": {
-    "id": 12,
-    "name": "Networking",
-    "description": "Reach a 5-heart friend level with 10 people.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Achievement_Networking.jpg"
-  },
-  "Popular": {
-    "id": 13,
-    "name": "Popular",
-    "description": "Reach a 5-heart friend level with 20 people.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Achievement_Popular.jpg"
-  },
-  "Cook": {
-    "id": 15,
-    "name": "Cook",
-    "description": "Cook 10 different recipes.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_Cook.jpg"
-  },
-  "Sous Chef": {
-    "id": 16,
-    "name": "Sous Chef",
-    "description": "Cook 25 different recipes.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/44/Achievement_Sous_Chef.jpg"
-  },
-  "Gourmet Chef": {
-    "id": 17,
-    "name": "Gourmet Chef",
-    "description": "Cook every recipe.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dd/Achievement_Gourmet_Chef.jpg"
-  },
-  "Moving Up": {
-    "id": 18,
-    "name": "Moving Up",
-    "description": "Upgrade your house.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Achievement_Moving_Up.jpg"
-  },
-  "Living Large": {
-    "id": 19,
-    "name": "Living Large",
-    "description": "Upgrade your house to the maximum size.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Living_Large.jpg"
-  },
-  "D.I.Y.": {
-    "id": 20,
-    "name": "D.I.Y.",
-    "description": "Craft 15 different items.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Achievement_DIY.jpg"
-  },
-  "Artisan": {
-    "id": 21,
-    "name": "Artisan",
-    "description": "Craft 30 different items.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/20/Achievement_Artisan.jpg"
-  },
-  "Craft Master": {
-    "id": 22,
-    "name": "Craft Master",
-    "description": "Craft every item.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/60/Achievement_Master_Craft.jpg"
-  },
-  "Fisherman": {
-    "id": 24,
-    "name": "Fisherman",
-    "description": "Catch 10 different fish.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/00/Achievement_Fisherman.jpg"
-  },
-  "Ol' Mariner": {
-    "id": 25,
-    "name": "Ol' Mariner",
-    "description": "Catch 24 different fish.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Achievement_Ol_Mariner.jpg"
-  },
-  "Master Angler": {
-    "id": 26,
-    "name": "Master Angler",
-    "description": "Catch every fish.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Master_Angler.jpg"
-  },
-  "Mother Catch": {
-    "id": 27,
-    "name": "Mother Catch",
-    "description": "Catch 100 fish.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Achievement_Mother_Catch.jpg"
-  },
-  "Treasure Trove": {
-    "id": 28,
-    "name": "Treasure Trove",
-    "description": "Donate 40 different items to the museum.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/55/Achievement_Treasure_Trove.jpg"
-  },
-  "Gofer": {
-    "id": 29,
-    "name": "Gofer",
-    "description": "Complete 10 'Help Wanted' requests.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/27/Achievement_Gofer.jpg"
-  },
-  "A Big Help": {
-    "id": 30,
-    "name": "A Big Help",
-    "description": "Complete 40 'Help Wanted' requests.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Achievement_A_Big_Help.jpg"
-  },
-  "Polyculture": {
-    "id": 31,
-    "name": "Polyculture",
-    "description": "Ship 15 of each crop.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Achievement_Polyculture.jpg"
-  },
-  "Monoculture": {
-    "id": 32,
-    "name": "Monoculture",
-    "description": "Ship 300 of one crop.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Achievement_Monoculture.jpg"
-  },
-  "Full Shipment": {
-    "id": 34,
-    "name": "Full Shipment",
-    "description": "Ship every item.",
-    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b8/Achievement_Full_Shipment.jpg"
-  }
+    "Greenhorn": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg",
+        "name": "Greenhorn",
+        "description": "Earn 15,000g",
+        "id": 0
+    },
+    "Cowpoke": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/24/Achievement_Cowpoke.jpg",
+        "name": "Cowpoke",
+        "description": "Earn 50,000g",
+        "id": 1
+    },
+    "Homesteader": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fb/Achievement_Homesteader.jpg",
+        "name": "Homesteader",
+        "description": "Earn 250,000g",
+        "id": 2
+    },
+    "Millionaire": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Achievement_Millionaire.jpg",
+        "name": "Millionaire",
+        "description": "Earn 1,000,000g",
+        "id": 3
+    },
+    "Legend": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Achievement_Legend.jpg",
+        "name": "Legend",
+        "description": "Earn 10,000,000g (Secret Achievement)",
+        "id": 4
+    },
+    "A Complete Collection": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_A_Complete_Collection.jpg",
+        "name": "A Complete Collection",
+        "description": "Complete the museum collection.",
+        "id": 5
+    },
+    "A New Friend": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Achievement_A_New_Friend.jpg",
+        "name": "A New Friend",
+        "description": "Reach a 5-heart friend level with someone.",
+        "id": 6
+    },
+    "Best Friends": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e8/Achievement_Best_Friends.jpg",
+        "name": "Best Friends",
+        "description": "Reach a 10-heart friend level with someone.",
+        "id": 7
+    },
+    "The Beloved Farmer": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Achievement_The_Beloved_Farmer.jpg",
+        "name": "The Beloved Farmer",
+        "description": "Reach a 10-heart friend level with 8 people.",
+        "id": 8
+    },
+    "Cliques": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Achievement_Cliques.jpg",
+        "name": "Cliques",
+        "description": "Reach a 5-heart friend level with 4 people.",
+        "id": 9
+    },
+    "Networking": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Achievement_Networking.jpg",
+        "name": "Networking",
+        "description": "Reach a 5-heart friend level with 10 people.",
+        "id": 10
+    },
+    "Popular": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Achievement_Popular.jpg",
+        "name": "Popular",
+        "description": "Reach a 5-heart friend level with 20 people.",
+        "id": 11
+    },
+    "Cook": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Achievement_Cook.jpg",
+        "name": "Cook",
+        "description": "Cook 10 different recipes.",
+        "id": 12
+    },
+    "Sous Chef": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/44/Achievement_Sous_Chef.jpg",
+        "name": "Sous Chef",
+        "description": "Cook 25 different recipes.",
+        "id": 13
+    },
+    "Gourmet Chef": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dd/Achievement_Gourmet_Chef.jpg",
+        "name": "Gourmet Chef",
+        "description": "Cook every recipe.",
+        "id": 14
+    },
+    "Moving Up": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bd/Achievement_Moving_Up.jpg",
+        "name": "Moving Up",
+        "description": "Upgrade your house.",
+        "id": 15
+    },
+    "Living Large": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Living_Large.jpg",
+        "name": "Living Large",
+        "description": "Upgrade your house to the maximum size. (2nd upgrade, not cellar)",
+        "id": 16
+    },
+    "D.I.Y.": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Achievement_DIY.jpg",
+        "name": "D.I.Y.",
+        "description": "Craft 15 different items.",
+        "id": 17
+    },
+    "Artisan": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/20/Achievement_Artisan.jpg",
+        "name": "Artisan",
+        "description": "Craft 30 different items.",
+        "id": 18
+    },
+    "Craft Master": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/60/Achievement_Master_Craft.jpg",
+        "name": "Craft Master",
+        "description": "Craft every item.",
+        "id": 19
+    },
+    "Fisherman": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/00/Achievement_Fisherman.jpg",
+        "name": "Fisherman",
+        "description": "Catch 10 different fish.",
+        "id": 20
+    },
+    "Ol' Mariner": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Achievement_Ol_Mariner.jpg",
+        "name": "Ol' Mariner",
+        "description": "Catch 24 different fish.",
+        "id": 21
+    },
+    "Master Angler": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Achievement_Master_Angler.jpg",
+        "name": "Master Angler",
+        "description": "Catch every fish.",
+        "id": 22
+    },
+    "Mother Catch": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0f/Achievement_Mother_Catch.jpg",
+        "name": "Mother Catch",
+        "description": "Catch 100 fish.",
+        "id": 23
+    },
+    "Treasure Trove": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/55/Achievement_Treasure_Trove.jpg",
+        "name": "Treasure Trove",
+        "description": "Donate 40 different items to the museum.",
+        "id": 24
+    },
+    "Gofer": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/27/Achievement_Gofer.jpg",
+        "name": "Gofer",
+        "description": "Complete 10 'Help Wanted' requests.",
+        "id": 25
+    },
+    "A Big Help": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Achievement_A_Big_Help.jpg",
+        "name": "A Big Help",
+        "description": "Complete 40 'Help Wanted' requests.",
+        "id": 26
+    },
+    "Polyculture": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7f/Achievement_Polyculture.jpg",
+        "name": "Polyculture",
+        "description": "Ship 15 of each crop. See (note below)",
+        "id": 27
+    },
+    "Monoculture": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2c/Achievement_Monoculture.jpg",
+        "name": "Monoculture",
+        "description": "Ship 300 of one crop. See (note below)",
+        "id": 28
+    },
+    "Full Shipment": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b8/Achievement_Full_Shipment.jpg",
+        "name": "Full Shipment",
+        "description": "Ship every item.",
+        "id": 29
+    },
+    "Prairie King": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Achievement_Prarie_King.jpg",
+        "name": "Prairie King",
+        "description": "Beat 'Journey of the Prairie King'.",
+        "id": 30
+    },
+    "The Bottom": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Achievement_The_Bottom.jpg",
+        "name": "The Bottom",
+        "description": "Reach the lowest level of the mines.",
+        "id": 31
+    },
+    "Local Legend": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/72/Achievement_Local_Legend.jpg",
+        "name": "Local Legend",
+        "description": "Restore the Pelican Town Community Center.",
+        "id": 32
+    },
+    "Joja Co. Member Of The Year": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/02/Achievement_Joja_Co._Member_Of_The_Year.jpg",
+        "name": "Joja Co. Member Of The Year",
+        "description": "Purchase all Joja Community Development projects.",
+        "id": 33
+    },
+    "Mystery Of The Stardrops": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg",
+        "name": "Mystery Of The Stardrops",
+        "description": "Find every stardrop.",
+        "id": 34
+    },
+    "Full House": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e4/Achievement_Full_House.jpg",
+        "name": "Full House",
+        "description": "Get married and have two kids.",
+        "id": 35
+    },
+    "Singular Talent": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Achievement_Singular_Talent.jpg",
+        "name": "Singular Talent",
+        "description": "Reach level 10 in a skill.",
+        "id": 36
+    },
+    "Master Of The Five Ways": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/49/Achievement_Master_Of_The_Five_Ways.jpg",
+        "name": "Master Of The Five Ways",
+        "description": "Reach level 10 in every skill.",
+        "id": 37
+    },
+    "Protector Of The Valley": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/66/Achievement_Protector_Of_The_Valley.jpg",
+        "name": "Protector Of The Valley",
+        "description": "Complete all of the Adventure Guild Monster Slayer goals.",
+        "id": 38
+    },
+    "Fector's Challenge": {
+        "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Achievement_Fector%27s_Challenge.jpg",
+        "name": "Fector's Challenge",
+        "description": "Beat 'Journey Of The Prairie King' without dying. (Secret Achievement)",
+        "id": 39
+    }
 }

@@ -1,52 +1,51 @@
-# Parsing all Achievement data from game files
-# Heavily simplified from last time bc we didn't use all that data
+# Parsing all achievements from wiki
+# iconURL, name, description
 
-# ! Run file from processors directory
-
-# TODO: parse the wiki for achievements
 """
-    We might have to parse the wiki for achievements because the game files
-    don't have some of the exclusive achievements from steam/ps/xbox. Last time
-    we hardcoded all of that information, but it would be better to automate it
+    Instead of processing the game files, we're gonna scrape the wiki for the
+    achievements because the game files don't have all the achievements. This
+    means that we're not gonna have the accurate achievement IDs, but that's
+    not a big deal.
 """
 
 import json
-import bs4
 import requests
 
-Achievements = {}
+from bs4 import BeautifulSoup
 
-with open("../raw_data/Achievements.json") as f:
-    data = json.load(f)
+achievements = {}
 
-for key, value in data.items():
-    fields = value.split("^")
-    
-    # For now we don't care about whether the achievement is secret or not
-    name = fields[0]
-    description = fields[1]
+URL = "https://stardewvalleywiki.com/Achievements"
 
-    # Just get the title for money achievements
-    if int(key) in range(5):
-        name = name.split(" ")[0]
+page = requests.get(URL)
 
-    wiki_url = "https://stardewvalleywiki.com/File:Achievement_" + name.replace(" ", "_").replace("'", "") + ".jpg"
-    # weird cases where name is different from wiki url
-    if key == "20":
-        wiki_url = "https://stardewvalleywiki.com/File:Achievement_DIY.jpg"
-    elif key == "22":
-        wiki_url = "https://stardewvalleywiki.com/File:Achievement_Master_Craft.jpg"
-    
-    r = requests.get(wiki_url)
-    soup = bs4.BeautifulSoup(r.text, "html.parser")
-    iconURL = soup.find("div", {"class": "fullImageLink"}).find("img")["src"]
+soup = BeautifulSoup(page.text, "html.parser")
 
-    Achievements[name] = {
-        "id": int(key),
+tbody = soup.find("table").find("tbody")
+
+id = 0
+# Loop through all the rows
+# For some stupid reason, the first row is the table header
+for tr in tbody.find_all("tr")[1:]:
+    # handle rows that have two rewards like gourmet chef
+    if len(tr.find_all("td")) != 6:
+        continue
+
+    # Search the first <img> tag in the first <td> tag
+    iconURL = tr.find("td").find("img")["src"]
+
+    # Get the text value of the 3rd and 4th <td> tags
+    name = tr.find_all("td")[2].text.strip()
+    description = tr.find_all("td")[3].text.strip()
+
+    # Add the achievement to the dictionary
+    achievements[name] = {
+        "iconURL": "https://stardewvalleywiki.com" + iconURL,
         "name": name,
         "description": description,
-        "iconURL": "https://stardewvalleywiki.com" + iconURL,
-    } 
+        "id": id,  # This is not the accurate in game ID
+    }
+    id += 1
 
 with open("./data/achievements.json", "w") as f:
-    json.dump(Achievements, f, indent=4)
+    json.dump(achievements, f, indent=4)
