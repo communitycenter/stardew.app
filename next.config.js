@@ -10,10 +10,20 @@ const nextConfig = {
       },
       {
         source: "/github",
-        destination: "https://github.com/stardewapp/stardew.app",
+        destination: "https://github.com/communitycenter/stardew.app",
         permanent: true,
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "stardewvalleywiki.com",
+        port: "",
+        pathname: "/mediawiki/images/**",
+      },
+    ],
   },
 };
 

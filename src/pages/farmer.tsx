@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { PlayersContext } from "@/contexts/players-context";
 
 import { InfoCard } from "@/components/cards/infocard";
+import { AchievementCard } from "@/components/cards/achievementcard";
 
 import {
   UserIcon,
@@ -113,6 +114,45 @@ export default function Farmer() {
                     : "No Player Selected"
                 }
                 Icon={StarIcon}
+              />
+            </div>
+          </div>
+          {/* Money Achievements */}
+          <div>
+            <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Money
+            </div>
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+              <AchievementCard
+                id={0}
+                title="Greenhorn"
+                description="Earn 15,000g"
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
+              />
+              <AchievementCard
+                id={0}
+                title="Greenhorn"
+                description="Earn 15,000g"
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
+              />
+              <AchievementCard
+                id={0}
+                title="Greenhorn"
+                description="Earn 15,000g"
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
+                initialChecked={true}
+              />
+              <AchievementCard
+                id={0}
+                title="Greenhorn"
+                description="Earn 15,000g"
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
+              />
+              <AchievementCard
+                id={0}
+                title="Greenhorn"
+                description="Earn 15,000g"
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
               />
             </div>
           </div>
