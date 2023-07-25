@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import achievements from "@/research/processors/data/achievements.json";
+
 import { useContext } from "react";
 import { Inter } from "next/font/google";
 
@@ -19,6 +21,17 @@ import {
 } from "@heroicons/react/24/solid";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// TODO: Missing platform specific achievements (skills and stardrops)
+const reqs: Record<string, number> = {
+  Greenhorn: 15000,
+  Cowpoke: 50000,
+  Homesteader: 250000,
+  Millionaire: 1000000,
+  Legend: 10000000,
+  Gofer: 10,
+  "A Big Help": 40,
+};
 
 export default function Farmer() {
   const { activePlayer } = useContext(PlayersContext);
@@ -123,37 +136,34 @@ export default function Farmer() {
               Money
             </div>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
-              <AchievementCard
-                id={0}
-                title="Greenhorn"
-                description="Earn 15,000g"
-                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-              />
-              <AchievementCard
-                id={0}
-                title="Greenhorn"
-                description="Earn 15,000g"
-                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-              />
-              <AchievementCard
-                id={0}
-                title="Greenhorn"
-                description="Earn 15,000g"
-                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-                initialChecked={true}
-              />
-              <AchievementCard
-                id={0}
-                title="Greenhorn"
-                description="Earn 15,000g"
-                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-              />
-              <AchievementCard
-                id={0}
-                title="Greenhorn"
-                description="Earn 15,000g"
-                sourceURL="https://stardewvalleywiki.com/mediawiki/images/1/1d/Achievement_Greenhorn.jpg"
-              />
+              {Object.values(achievements)
+                .filter((achievement) => achievement.id <= 4)
+                .map((achievement) => (
+                  <AchievementCard
+                    id={achievement.id}
+                    key={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={
+                      activePlayer
+                        ? activePlayer.general.totalMoneyEarned >=
+                          reqs[achievement.name]
+                        : false
+                    }
+                    additionalDescription={
+                      activePlayer
+                        ? activePlayer.general.totalMoneyEarned >=
+                          reqs[achievement.name]
+                          ? ""
+                          : ` - ${(
+                              reqs[achievement.name] -
+                              activePlayer.general.totalMoneyEarned
+                            ).toLocaleString()}g left`
+                        : ""
+                    }
+                  />
+                ))}
             </div>
           </div>
         </div>

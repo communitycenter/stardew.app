@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ interface Props {
   description: string;
   id: number | string;
   additionalDescription?: string;
-  initialChecked?: boolean;
+  completed: boolean;
 }
 
 export const AchievementCard = ({
@@ -18,17 +18,15 @@ export const AchievementCard = ({
   description,
   id,
   additionalDescription,
-  initialChecked,
+  completed,
 }: Props) => {
-  const [checked, setChecked] = useState(initialChecked);
-
   /* -------------------- clickable classes (not used yet) -------------------- */
   /*
-  let checkedClass = checked
+  let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20 hover:cursor-pointer"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:cursor-pointer";
   */
-  let checkedClass = checked
+  let checkedClass = completed
     ? "border-green-900 bg-green-500/20 dark:bg-green-500/10"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950";
 
@@ -48,8 +46,8 @@ export const AchievementCard = ({
       />
       <div className="min-w-0 flex-1">
         <p className="font-medium truncate">{title}</p>
-        <p className="truncate-text-sm text-neutral-500 dark:text-neutral-400">
-          {description}
+        <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+          {description + " " + additionalDescription}
         </p>
       </div>
     </div>
