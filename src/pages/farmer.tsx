@@ -57,11 +57,11 @@ export default function Farmer() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-left md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} p-8`}
+        className={`flex min-h-screen items-left md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
       >
-        <div className="mx-auto max-w-7xl w-full">
+        <div className="mx-auto w-full">
           <div>
-            <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <div className="mb-3 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Farmer Information
             </div>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
@@ -132,7 +132,7 @@ export default function Farmer() {
           </div>
           {/* Money Achievements */}
           <div>
-            <div className="mb-2 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <div className="mb-3 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Money
             </div>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
