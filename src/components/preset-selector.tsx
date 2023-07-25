@@ -17,11 +17,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useToast } from "@/components/ui/use-toast";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 export function PresetSelector() {
   const [open, setOpen] = useState(false);
+  const { toast } = useToast();
   const { players, activePlayer, setActivePlayer } = useContext(PlayersContext);
 
   return (

@@ -1,8 +1,8 @@
 // TODO: show modal for context switching players once we have a backend.
-import { presets } from "@/data/presets";
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
 
@@ -13,8 +13,9 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { parseSaveFile } from "@/lib/file";
 
 export function Topbar() {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { toast } = useToast();
   const { setPlayers } = useContext(PlayersContext);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // TODO: replace console.logs with error messages in UI
@@ -25,7 +26,11 @@ export function Topbar() {
     if (typeof file === "undefined" || !file) return;
 
     if (file.type !== "") {
-      console.log("Invalid file type");
+      toast({
+        variant: "destructive",
+        title: "Invalid File Type",
+        description: "Please upload a Stardew Valley save file.",
+      });
       return;
     }
 
@@ -36,7 +41,11 @@ export function Topbar() {
         const players = parseSaveFile(event.target?.result as string);
         setPlayers(players);
       } catch (err) {
-        console.log(err instanceof Error ? err.message : err);
+        toast({
+          variant: "destructive",
+          title: "Error Parsing File",
+          description: err instanceof Error ? err.message : "Unknown error.",
+        });
       }
     };
     reader.readAsText(file);

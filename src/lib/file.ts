@@ -35,7 +35,6 @@ export function parseSaveFile(xml: string) {
       processedPlayers.push(processedPlayer);
     });
 
-    console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
     if (e instanceof TypeError) {
@@ -44,8 +43,4 @@ export function parseSaveFile(xml: string) {
       );
     } else throw e;
   }
-
-  // let mainPlayerName = saveFile.SaveGame.player.name;
-  // const elapsed = performance.now() - start;
-  // return { timeElapsed: (elapsed / 1000).toFixed(2), players: h };
 }
