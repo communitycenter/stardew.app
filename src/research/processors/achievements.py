@@ -1,5 +1,6 @@
 # Parsing all achievements from wiki
 # iconURL, name, description
+# ! Run file from processors directory
 
 """
     Instead of processing the game files, we're gonna scrape the wiki for the
@@ -47,5 +48,5 @@ for tr in tbody.find_all("tr")[1:]:
     }
     id += 1
 
-with open("./data/achievements.json", "w") as f:
+with open("../../data/achievements.json", "w") as f:
     json.dump(achievements, f, indent=4)

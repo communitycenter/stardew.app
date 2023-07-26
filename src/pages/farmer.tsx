@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import achievements from "@/research/processors/data/achievements.json";
+import achievements from "@/data/achievements.json";
 
 import { useContext } from "react";
 import { Inter } from "next/font/google";
@@ -19,10 +19,10 @@ import {
   BriefcaseIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
+import { Separator } from "@/components/ui/separator";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// TODO: Missing platform specific achievements (skills and stardrops)
 const reqs: Record<string, number> = {
   Greenhorn: 15000,
   Cowpoke: 50000,
@@ -31,6 +31,8 @@ const reqs: Record<string, number> = {
   Legend: 10000000,
   Gofer: 10,
   "A Big Help": 40,
+  "Singular Talent": 1, // platform specific
+  "Master Of The Five Ways": 5, // platform specific
 };
 
 export default function Farmer() {
@@ -57,29 +59,26 @@ export default function Farmer() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-left md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
       >
-        <div className="mx-auto w-full">
-          <div>
-            <div className="mb-3 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+        <div className="mx-auto w-full space-y-4 mt-4">
+          {/* Farmer Information */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Farmer Information
-            </div>
+            </h2>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
               <InfoCard
                 title="Player Name"
                 description={
-                  activePlayer
-                    ? activePlayer.general.name
-                    : "No Player Selected"
+                  activePlayer ? activePlayer.general.name : "No Info Found"
                 }
                 Icon={UserIcon}
               />
               <InfoCard
                 title="Farm Information"
                 description={
-                  activePlayer
-                    ? activePlayer.general.farmInfo
-                    : "No Player Selected"
+                  activePlayer ? activePlayer.general.farmInfo : "No Info Found"
                 }
                 Icon={HomeIcon}
               />
@@ -88,7 +87,7 @@ export default function Farmer() {
                 description={
                   activePlayer
                     ? activePlayer.general.timePlayed
-                    : "No Player Selected"
+                    : "No Info Found"
                 }
                 Icon={ClockIcon}
               />
@@ -97,7 +96,7 @@ export default function Farmer() {
                 description={
                   activePlayer
                     ? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
-                    : "No Player Selected"
+                    : "No Info Found"
                 }
                 Icon={CurrencyDollarIcon}
               />
@@ -106,7 +105,7 @@ export default function Farmer() {
                 description={
                   activePlayer
                     ? `${activePlayer.general.levels.Player}/25`
-                    : "No Player Selected"
+                    : "No Info Found"
                 }
                 Icon={ChartBarIcon}
               />
@@ -115,7 +114,7 @@ export default function Farmer() {
                 description={
                   activePlayer
                     ? activePlayer.general.questsCompleted.toString()
-                    : "No Player Selected"
+                    : "No Info Found"
                 }
                 Icon={BriefcaseIcon}
               />
@@ -124,17 +123,18 @@ export default function Farmer() {
                 description={
                   activePlayer
                     ? activePlayer.general.stardropsCount.toString()
-                    : "No Player Selected"
+                    : "No Info Found"
                 }
                 Icon={StarIcon}
               />
             </div>
-          </div>
+          </section>
           {/* Money Achievements */}
-          <div>
-            <div className="mb-3 mt-4 ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Money
-            </div>
+          <section className="space-y-3">
+            <Separator />
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Money Achievements
+            </h2>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((achievement) => achievement.id <= 4)
@@ -165,7 +165,93 @@ export default function Farmer() {
                   />
                 ))}
             </div>
-          </div>
+          </section>
+          {/* Skill Achievements */}
+          <section className="space-y-3">
+            <Separator />
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Skill Achievements
+            </h2>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
+              <InfoCard
+                title="Farming"
+                description={
+                  activePlayer
+                    ? `Level ${activePlayer.general.levels.Farming}`
+                    : "Level 0"
+                }
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
+              />
+              <InfoCard
+                title="Fishing"
+                description={
+                  activePlayer
+                    ? `Level ${activePlayer.general.levels.Fishing}`
+                    : "Level 0"
+                }
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
+              />
+              <InfoCard
+                title="Foraging"
+                description={
+                  activePlayer
+                    ? `Level ${activePlayer.general.levels.Foraging}`
+                    : "Level 0"
+                }
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
+              />
+              <InfoCard
+                title="Mining"
+                description={
+                  activePlayer
+                    ? `Level ${activePlayer.general.levels.Mining}`
+                    : "Level 0"
+                }
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
+              />
+              <InfoCard
+                title="Combat"
+                description={
+                  activePlayer
+                    ? `Level ${activePlayer.general.levels.Combat}`
+                    : "Level 0"
+                }
+                sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {Object.values(achievements)
+                .filter((achievement) =>
+                  achievement.description.includes("skill")
+                )
+                .map((achievement) => (
+                  <AchievementCard
+                    id={achievement.id}
+                    key={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={
+                      activePlayer
+                        ? activePlayer.general.maxLevelCount >=
+                          reqs[achievement.name]
+                        : false
+                    }
+                    additionalDescription={
+                      activePlayer
+                        ? activePlayer.general.maxLevelCount >=
+                          reqs[achievement.name]
+                          ? ""
+                          : ` - ${(
+                              reqs[achievement.name] -
+                              activePlayer.general.maxLevelCount
+                            ).toLocaleString()} left`
+                        : ""
+                    }
+                  />
+                ))}
+            </div>
+          </section>
         </div>
       </main>
     </>
