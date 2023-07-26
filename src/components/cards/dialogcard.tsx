@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 import {
@@ -28,7 +26,6 @@ export const DialogCard = ({
   iconURL,
   completed,
 }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
@@ -38,7 +35,7 @@ export const DialogCard = ({
       <DialogTrigger asChild>
         <div
           className={cn(
-            "py-4 px-5 flex justify-between items-center hover:cursor-pointer border rounded-lg",
+            "py-4 px-5 flex justify-between items-center hover:cursor-pointer border rounded-lg shadow-sm",
             checkedClass
           )}
         >
