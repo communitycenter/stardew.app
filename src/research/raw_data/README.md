@@ -5,3 +5,5 @@ These files were taken from the unpacked version of `Stardew Valley/Content`. We
 ## More Information on File Formats
 
 - [Achievements.json](https://stardewvalleywiki.com/Modding:Achievement_data)
+- [Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
+- [ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
