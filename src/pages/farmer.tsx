@@ -74,6 +74,7 @@ export default function Farmer() {
   return (
     <>
       <Head>
+        <title>stardew.app | Farmer</title>
         <meta
           name="description"
           content="Track and manage your achievements and Stardrops in Stardew Valley. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
@@ -205,6 +206,38 @@ export default function Farmer() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Skill Achievements
             </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {Object.values(achievements)
+                .filter((achievement) =>
+                  achievement.description.includes("skill")
+                )
+                .map((achievement) => (
+                  <AchievementCard
+                    id={achievement.id}
+                    key={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={
+                      activePlayer
+                        ? activePlayer.general.maxLevelCount >=
+                          reqs[achievement.name]
+                        : false
+                    }
+                    additionalDescription={
+                      activePlayer
+                        ? activePlayer.general.maxLevelCount >=
+                          reqs[achievement.name]
+                          ? ""
+                          : ` - ${(
+                              reqs[achievement.name] -
+                              activePlayer.general.maxLevelCount
+                            ).toLocaleString()} left`
+                        : ""
+                    }
+                  />
+                ))}
+            </div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
               <InfoCard
                 title="Farming"
@@ -251,38 +284,6 @@ export default function Farmer() {
                 }
                 sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
               />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.values(achievements)
-                .filter((achievement) =>
-                  achievement.description.includes("skill")
-                )
-                .map((achievement) => (
-                  <AchievementCard
-                    id={achievement.id}
-                    key={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
-                    completed={
-                      activePlayer
-                        ? activePlayer.general.maxLevelCount >=
-                          reqs[achievement.name]
-                        : false
-                    }
-                    additionalDescription={
-                      activePlayer
-                        ? activePlayer.general.maxLevelCount >=
-                          reqs[achievement.name]
-                          ? ""
-                          : ` - ${(
-                              reqs[achievement.name] -
-                              activePlayer.general.maxLevelCount
-                            ).toLocaleString()} left`
-                        : ""
-                    }
-                  />
-                ))}
             </div>
           </section>
           {/* Quests Achievements */}
