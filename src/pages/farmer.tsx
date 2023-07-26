@@ -130,8 +130,8 @@ export default function Farmer() {
             </div>
           </section>
           {/* Money Achievements */}
+          <Separator />
           <section className="space-y-3">
-            <Separator />
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Money Achievements
             </h2>
@@ -167,8 +167,8 @@ export default function Farmer() {
             </div>
           </section>
           {/* Skill Achievements */}
+          <Separator />
           <section className="space-y-3">
-            <Separator />
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Skill Achievements
             </h2>
@@ -246,6 +246,43 @@ export default function Farmer() {
                               reqs[achievement.name] -
                               activePlayer.general.maxLevelCount
                             ).toLocaleString()} left`
+                        : ""
+                    }
+                  />
+                ))}
+            </div>
+          </section>
+          {/* Quests Achievements */}
+          <Separator />
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Quests Achievements
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("requests"))
+                .map((achievement) => (
+                  <AchievementCard
+                    id={achievement.id}
+                    key={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={
+                      activePlayer
+                        ? activePlayer.general.questsCompleted >=
+                          reqs[achievement.name]
+                        : false
+                    }
+                    additionalDescription={
+                      activePlayer
+                        ? activePlayer.general.questsCompleted >=
+                          reqs[achievement.name]
+                          ? ""
+                          : ` - ${
+                              reqs[achievement.name] -
+                              activePlayer.general.questsCompleted
+                            } left`
                         : ""
                     }
                   />
