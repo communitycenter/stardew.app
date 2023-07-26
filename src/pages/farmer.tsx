@@ -20,8 +20,44 @@ import {
   StarIcon,
 } from "@heroicons/react/24/solid";
 import { Separator } from "@/components/ui/separator";
+import { DialogCard } from "@/components/cards/dialogcard";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const STARDROPS = {
+  CF_Fair: {
+    title: "Fair Star",
+    description:
+      "Can be purchased at the Stardew Valley Fair for 2,000 star tokens.",
+  },
+  CF_Fish: {
+    title: "Fishing Star",
+    description:
+      "Received in mail from Willy after completing the Master Angler Achievement.",
+  },
+  CF_Mines: {
+    title: "Mines Star",
+    description: "Obtained from the treasure chest on floor 100 in The Mines.",
+  },
+  CF_Sewer: {
+    title: "Krobus Star",
+    description: "Can be purchased from Krobus for 20,000g in The Sewers.",
+  },
+  CF_Spouse: {
+    title: "Spouse Star",
+    description:
+      "Obtained from spouse after reaching a friendship level of 12.5 hearts.",
+  },
+  CF_Statue: {
+    title: "Secret Woods Star",
+    description:
+      "Obtained from Old Master Cannoli in the Secret Woods after giving him a Sweet Gem Berry.",
+  },
+  museumComplete: {
+    title: "Museum Star",
+    description: "Reward for donating all 95 items to the Museum.",
+  },
+};
 
 const reqs: Record<string, number> = {
   Greenhorn: 15000,
@@ -287,6 +323,50 @@ export default function Farmer() {
                     }
                   />
                 ))}
+            </div>
+          </section>
+          {/* Stardrops Achievements */}
+          <Separator />
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Stardrops
+            </h2>
+            {/* hardcoding this one bc its only one */}
+            <AchievementCard
+              id={34}
+              title="Mystery Of The Stardrops"
+              description="Find every stardrop."
+              sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg"
+              completed={
+                activePlayer
+                  ? activePlayer.general.stardropsCount >=
+                    Object.keys(STARDROPS).length
+                  : false
+              }
+              additionalDescription={
+                activePlayer
+                  ? activePlayer.general.stardropsCount >=
+                    Object.keys(STARDROPS).length
+                    ? ""
+                    : ` - ${
+                        Object.keys(STARDROPS).length -
+                        activePlayer.general.stardropsCount
+                      } left`
+                  : ""
+              }
+            />
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {Object.entries(STARDROPS).map(([key, value]) => (
+                <DialogCard
+                  key={key}
+                  description={value.description}
+                  title={value.title}
+                  iconURL="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
+                  completed={
+                    activePlayer ? activePlayer.general.stardrops[key] : false
+                  }
+                />
+              ))}
             </div>
           </section>
         </div>

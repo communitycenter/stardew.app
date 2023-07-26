@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 
 interface Props {
   title: string;
