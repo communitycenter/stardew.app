@@ -1,6 +1,20 @@
 import Head from "next/head";
 
+import type { FishType } from "@/types/items";
+
+import fishes from "@/data/fish.json";
+import achievements from "@/data/achievements.json";
+
+import { useState } from "react";
+
+import { FishSheet } from "@/components/sheets/fish-sheet";
+import { BooleanCard } from "@/components/cards/boolean-card";
+import { AchievementCard } from "@/components/cards/achievement-card";
+
 export default function Fishing() {
+  const [open, setIsOpen] = useState(false);
+  const [fish, setFish] = useState<FishType | null>(null);
+
   return (
     <>
       <Head>
@@ -23,9 +37,51 @@ export default function Fishing() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-2xl">
+            Fishing Tracker
+          </h1>
+          {/* Achievements Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Achievements
+            </h2>
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("fish"))
+                .map((achievement) => (
+                  <AchievementCard
+                    key={achievement.id}
+                    id={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={false}
+                  />
+                ))}
+            </div>
+          </section>
+          {/* All Fish Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Fish
+            </h2>
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {Object.values(fishes).map((f) => (
+                <BooleanCard
+                  key={f.itemID}
+                  fish={f as FishType}
+                  completed={false}
+                  setIsOpen={setIsOpen}
+                  setObject={setFish}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+        <FishSheet open={open} setIsOpen={setIsOpen} fish={fish} />
       </main>
     </>
   );

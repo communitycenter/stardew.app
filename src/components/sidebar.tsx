@@ -8,10 +8,10 @@ import {
   DiscordLogoIcon,
   GitHubLogoIcon,
   HeartFilledIcon,
-  HomeIcon,
-  PersonIcon,
   StarFilledIcon,
 } from "@radix-ui/react-icons";
+
+import { HomeIcon, UserIcon } from "@heroicons/react/24/solid";
 
 import {
   Tooltip,
@@ -22,26 +22,48 @@ import {
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+function FishHookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("icon icon-tabler icon-tabler-fish-hook", className)}
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M16 9v6a5 5 0 0 1 -10 0v-4l3 3"></path>
+      <path d="M16 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M16 5v-2"></path>
+    </svg>
+  );
+}
+
 const miscNavigation = [
-  { name: "Bundles", href: "/bundles", icon: PersonIcon },
-  { name: "Walnuts", href: "/island/walnuts", icon: PersonIcon },
-  { name: "Secret Notes", href: "/island/notes", icon: PersonIcon },
-  { name: "Journal Scraps", href: "/island/scraps", icon: PersonIcon },
+  { name: "Bundles", href: "/bundles", icon: UserIcon },
+  { name: "Walnuts", href: "/island/walnuts", icon: UserIcon },
+  { name: "Secret Notes", href: "/island/notes", icon: UserIcon },
+  { name: "Journal Scraps", href: "/island/scraps", icon: UserIcon },
 ];
 
 const playerNavigation = [
   { name: "Home", href: "/", icon: HomeIcon },
-  { name: "Farmer", href: "/farmer", icon: PersonIcon },
+  { name: "Farmer", href: "/farmer", icon: UserIcon },
   { name: "Perfection", href: "/perfection", icon: StarFilledIcon },
   { name: "Relationships", href: "/relationships", icon: HeartFilledIcon },
 ];
 
 const collectionsNavigation = [
-  { name: "Cooking", href: "/cooking", icon: PersonIcon },
-  { name: "Crafting", href: "/crafting", icon: PersonIcon },
-  { name: "Shipping", href: "/shipping", icon: PersonIcon },
-  { name: "Fishing", href: "/fishing", icon: PersonIcon },
-  { name: "Museum & Artifacts", href: "/museum", icon: PersonIcon },
+  { name: "Cooking", href: "/cooking", icon: UserIcon },
+  { name: "Crafting", href: "/crafting", icon: UserIcon },
+  { name: "Fishing", href: "/fishing", icon: FishHookIcon },
+  { name: "Shipping", href: "/shipping", icon: UserIcon },
+  { name: "Museum & Artifacts", href: "/museum", icon: UserIcon },
 ];
 
 const SidebarCategory = ({ children }: { children: string }) => (
