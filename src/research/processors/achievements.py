@@ -12,6 +12,7 @@
 import json
 import requests
 
+from tqdm import tqdm
 from bs4 import BeautifulSoup
 
 achievements = {}
@@ -27,7 +28,7 @@ tbody = soup.find("table").find("tbody")
 id = 0
 # Loop through all the rows
 # For some stupid reason, the first row is the table header
-for tr in tbody.find_all("tr")[1:]:
+for tr in tqdm(tbody.find_all("tr")[1:]):
     # handle rows that have two rewards like gourmet chef
     if len(tr.find_all("td")) != 6:
         continue
@@ -49,4 +50,4 @@ for tr in tbody.find_all("tr")[1:]:
     id += 1
 
 with open("../../data/achievements.json", "w") as f:
-    json.dump(achievements, f, indent=4)
+    json.dump(achievements, f, separators=(",", ":"))

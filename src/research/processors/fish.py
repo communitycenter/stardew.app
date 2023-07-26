@@ -4,6 +4,7 @@
 import json
 import requests
 
+from tqdm import tqdm
 from datetime import datetime
 from bs4 import BeautifulSoup
 
@@ -30,7 +31,7 @@ with open("../raw_data/Fish.json") as f:
 with open("../raw_data/ObjectInformation.json") as f:
     object_info = json.load(f)
 
-for key, value in object_info.items():
+for key, value in tqdm(object_info.items()):
     # we gonna follow more of the checkForFishingAchievements() logic
     fields = value.split("/")
 
@@ -43,16 +44,13 @@ for key, value in object_info.items():
         fish_fields = fish_data[key].split("/")
 
         name = fields[0]
-        description = fields[5]
 
         wiki_url = f"https://stardewvalleywiki.com/{name.replace(' ', '_')}"
         page = requests.get(wiki_url)
         soup = BeautifulSoup(page.text, "html.parser")
-        iconURL = soup.find("img")["src"]  # first img is the icon (thank god)
 
         # find the locations
         if fish_fields[1] == "trap" or len(fields[3].split(" ")) < 2:
-            print(name)
             locations = (
                 soup.find_all("td", {"id": "infoboxdetail"})[1].text.strip().split("\n")
             )
@@ -67,9 +65,6 @@ for key, value in object_info.items():
         if fish_fields[1] == "trap":
             fish[key] = {
                 "itemID": int(key),
-                "name": name,
-                "iconURL": f"https://stardewvalleywiki.com{iconURL}",
-                "description": description,
                 "locations": locations,
                 "trapFish": True,
             }
@@ -86,9 +81,6 @@ for key, value in object_info.items():
 
         fish[key] = {
             "itemID": int(key),
-            "name": name,
-            "iconURL": f"https://stardewvalleywiki.com{iconURL}",
-            "description": description,
             "locations": locations,
             "trapFish": False,
             "difficulty": difficulty,
@@ -98,5 +90,6 @@ for key, value in object_info.items():
             "minLevel": min_level,
         }
 
+# json.dump(fish, f, indent=4) for pretty printing
 with open("../../data/fish.json", "w") as f:
-    json.dump(fish, f, indent=4)
+    json.dump(fish, f, separators=(",", ":"))

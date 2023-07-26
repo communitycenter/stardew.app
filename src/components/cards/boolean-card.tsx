@@ -1,9 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 import type { FishType } from "@/types/items";
 
+import objects from "@/data/objects.json";
+
+import { Dispatch, SetStateAction } from "react";
+
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 interface Props {
   fish: FishType;
@@ -18,6 +21,12 @@ export const BooleanCard = ({
   setIsOpen,
   setObject,
 }: Props) => {
+  const iconURL =
+    objects[fish.itemID.toString() as keyof typeof objects].iconURL;
+  const name = objects[fish.itemID.toString() as keyof typeof objects].name;
+  const description =
+    objects[fish.itemID.toString() as keyof typeof objects].description;
+
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
@@ -34,16 +43,16 @@ export const BooleanCard = ({
       }}
     >
       <Image
-        src={fish.iconURL}
-        alt={fish.name}
+        src={iconURL}
+        alt={name}
         className="rounded-sm"
         width={32}
         height={32}
       />
       <div className="min-w-0 flex-1">
-        <p className="font-medium truncate">{fish.name}</p>
+        <p className="font-medium truncate">{name}</p>
         <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-          {fish.description}
+          {description}
         </p>
       </div>
     </button>

@@ -3,14 +3,15 @@ import Head from "next/head";
 import type { FishType } from "@/types/items";
 
 import fishes from "@/data/fish.json";
+import objects from "@/data/objects.json";
 import achievements from "@/data/achievements.json";
 
 import { useState } from "react";
 
+import { Separator } from "@/components/ui/separator";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
-import { Separator } from "@/components/ui/separator";
 
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);

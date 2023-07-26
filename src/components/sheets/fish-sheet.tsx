@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import type { FishType } from "@/types/items";
 
+import objects from "@/data/objects.json";
+
 import { Dispatch, SetStateAction } from "react";
 
 import {
@@ -19,6 +21,15 @@ interface Props {
 }
 
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
+  const iconURL =
+    fish && objects[fish.itemID.toString() as keyof typeof objects].iconURL;
+
+  const name =
+    fish && objects[fish.itemID.toString() as keyof typeof objects].name;
+
+  const description =
+    fish && objects[fish.itemID.toString() as keyof typeof objects].description;
+
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
       <SheetContent>
@@ -26,20 +37,20 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
           <div className="flex justify-center">
             <Image
               src={
-                fish
-                  ? fish.iconURL
+                iconURL
+                  ? iconURL
                   : "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png"
               }
-              alt={fish ? fish.name : "No Info"}
+              alt={name ? name : "No Info"}
               height={64}
               width={64}
             />
           </div>
           <SheetTitle className="text-center">
-            {fish ? fish.name : "No Info"}
+            {name ? name : "No Info"}
           </SheetTitle>
           <SheetDescription className="text-center italic">
-            {fish ? fish.description : "No Description Found"}
+            {description ? description : "No Description Found"}
           </SheetDescription>
         </SheetHeader>
         {fish && (

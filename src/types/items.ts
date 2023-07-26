@@ -1,8 +1,5 @@
 interface Fish {
   itemID: number;
-  name: string;
-  iconURL: string;
-  description: string;
   locations: string[];
   trapFish: false;
   difficulty: string;
@@ -14,9 +11,6 @@ interface Fish {
 
 interface TrapFish {
   itemID: number;
-  name: string;
-  iconURL: string;
-  description: string;
   locations: string[];
   trapFish: true;
 }
