@@ -17,10 +17,9 @@ export default function Document() {
           content="Keep track of your Stardew Valley progression."
         />
 
-        {/* Add a new logo eventually */}
-        {/* <meta property="og:thumbnail" content="https://stardew.app/icon.png" />
+        <meta property="og:thumbnail" content="/favicon.png" />
         <meta property="og:image:width" content="64" />
-        <meta property="og:image:height" content="64" /> */}
+        <meta property="og:image:height" content="64" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://stardew.app" />
@@ -29,11 +28,11 @@ export default function Document() {
           name="twitter:description"
           content="Keep track of your Stardew Valley progression."
         />
-        <meta name="twitter:image" content="https://stardew.app/icon.png" />
+        <meta name="twitter:image" content="/favicon.png" />
         <meta name="twitter:image:width" content="512" />
         <meta name="twitter:image:height" content="512" />
 
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <body className="dark:bg-neutral-950 overscroll-y-none">
         <Main />
