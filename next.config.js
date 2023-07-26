@@ -23,6 +23,12 @@ const nextConfig = {
         port: "",
         pathname: "/mediawiki/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "stardewcommunitywiki.com",
+        port: "",
+        pathname: "/mediawiki/images/**",
+      },
     ],
   },
 };

@@ -1,6 +1,19 @@
 import Head from "next/head";
 
+import achievements from "@/data/achievements.json";
+import recipes from "@/data/cooking.json";
+
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { Separator } from "@/components/ui/separator";
+import { RecipeCard } from "@/components/cards/recipe-card";
+import { useState } from "react";
+import { CookingRecipe } from "@/types/recipe";
+import { CookingSheet } from "@/components/sheets/cooking-sheet";
+
 export default function Cooking() {
+  const [open, setIsOpen] = useState(false);
+  const [recipe, setRecipe] = useState<CookingRecipe | null>(null);
+
   return (
     <>
       <Head>
@@ -22,9 +35,52 @@ export default function Cooking() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-2xl">
+            Cooking Tracker
+          </h1>
+          {/* Achievements Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Achievements
+            </h2>
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("Cook"))
+                .map((achievement) => (
+                  <AchievementCard
+                    key={achievement.id}
+                    id={achievement.id}
+                    title={achievement.name}
+                    description={achievement.description}
+                    sourceURL={achievement.iconURL}
+                    completed={false}
+                  />
+                ))}
+            </div>
+          </section>
+          {/* All Fish Section */}
+          <Separator />
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Recipes
+            </h2>
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {Object.values(recipes).map((f) => (
+                <RecipeCard
+                  key={f.itemID}
+                  recipe={f}
+                  completed={false}
+                  setIsOpen={setIsOpen}
+                  setObject={setRecipe}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+        <CookingSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
       </main>
     </>
   );
