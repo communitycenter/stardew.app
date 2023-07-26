@@ -51,7 +51,8 @@ for key, value in object_info.items():
         iconURL = soup.find("img")["src"]  # first img is the icon (thank god)
 
         # find the locations
-        if fish_fields[1] == "trap":
+        if fish_fields[1] == "trap" or len(fields[3].split(" ")) < 2:
+            print(name)
             locations = (
                 soup.find_all("td", {"id": "infoboxdetail"})[1].text.strip().split("\n")
             )

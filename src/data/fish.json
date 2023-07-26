@@ -405,7 +405,11 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/13/Seaweed.png",
         "description": "It can be used in cooking.",
         "locations": [
-            "Fishing Pole: Ocean\nForaging: The Beach\nGarbage Cans\nFish Pond\nThe \"Dangerous Mines\""
+            "Fishing Pole: Ocean",
+            "Foraging: The Beach",
+            "Garbage Cans",
+            "Fish Pond",
+            "The \"Dangerous Mines\""
         ],
         "trapFish": false,
         "difficulty": "5 floater",
@@ -425,7 +429,10 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Green_Algae.png",
         "description": "It's really slimy.",
         "locations": [
-            "Fishing Pole: freshwater\nGreen Slimes\nGarbage Cans\nFish Pond"
+            "Fishing Pole: freshwater",
+            "Green Slimes",
+            "Garbage Cans",
+            "Fish Pond"
         ],
         "trapFish": false,
         "difficulty": "5 floater",
@@ -504,7 +511,9 @@
         "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f7/White_Algae.png",
         "description": "It's super slimy.",
         "locations": [
-            "Fishing Pole\nMonster drops\nFish Pond (Ghostfish)"
+            "Fishing Pole",
+            "Monster drops",
+            "Fish Pond (Ghostfish)"
         ],
         "trapFish": false,
         "difficulty": "5 floater",
