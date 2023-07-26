@@ -1,7 +1,4 @@
-import { Inter } from "next/font/google";
 import Head from "next/head";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Crafting() {
   return (
@@ -25,7 +22,7 @@ export default function Crafting() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className}`}
+        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
       >
         <h1 className="text-4xl font-semibold">placeholder</h1>
       </main>

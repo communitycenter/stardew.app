@@ -1,4 +1,3 @@
-// TODO: show modal for context switching players once we have a backend.
 import { ChangeEvent, useContext, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -18,7 +17,6 @@ export function Topbar() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // TODO: replace console.logs with error messages in UI
     e.preventDefault();
 
     const file = e.target!.files![0];
@@ -53,7 +51,7 @@ export function Topbar() {
 
   return (
     <div>
-      <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7">
+      <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7 bg-white dark:bg-neutral-950">
         <h2 className="text-lg font-semibold">stardew.app</h2>
         {/* Mobile Menu */}
         <div className="md:hidden flex justify-end">

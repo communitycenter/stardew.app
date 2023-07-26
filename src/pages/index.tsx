@@ -2,13 +2,9 @@
 
 import Head from "next/head";
 
-import { Inter } from "next/font/google";
-
 import { useContext, useEffect } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { players, activePlayer } = useContext(PlayersContext);
@@ -31,7 +27,7 @@ export default function Home() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className}`}
+        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
       >
         <h1 className="text-4xl font-semibold">
           {players ? players.length : 0}

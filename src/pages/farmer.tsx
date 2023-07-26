@@ -3,7 +3,6 @@ import Head from "next/head";
 import achievements from "@/data/achievements.json";
 
 import { useContext } from "react";
-import { Inter } from "next/font/google";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -21,8 +20,6 @@ import {
 } from "@heroicons/react/24/solid";
 import { Separator } from "@/components/ui/separator";
 import { DialogCard } from "@/components/cards/dialogcard";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const STARDROPS = {
   CF_Fair: {
@@ -95,7 +92,7 @@ export default function Farmer() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           {/* Farmer Information */}
