@@ -6,8 +6,10 @@ import { useContext } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
-import { InfoCard } from "@/components/cards/infocard";
-import { AchievementCard } from "@/components/cards/achievementcard";
+import { Separator } from "@/components/ui/separator";
+import { InfoCard } from "@/components/cards/info-card";
+import { DialogCard } from "@/components/cards/dialog-card";
+import { AchievementCard } from "@/components/cards/achievement-card";
 
 import {
   UserIcon,
@@ -18,8 +20,6 @@ import {
   BriefcaseIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
-import { Separator } from "@/components/ui/separator";
-import { DialogCard } from "@/components/cards/dialogcard";
 
 const STARDROPS = {
   CF_Fair: {
