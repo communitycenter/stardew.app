@@ -10,6 +10,7 @@ import { useState } from "react";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
+import { Separator } from "@/components/ui/separator";
 
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
@@ -64,6 +65,7 @@ export default function Fishing() {
             </div>
           </section>
           {/* All Fish Section */}
+          <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               All Fish
