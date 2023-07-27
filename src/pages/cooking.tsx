@@ -1,14 +1,16 @@
 import Head from "next/head";
 
-import achievements from "@/data/achievements.json";
 import recipes from "@/data/cooking.json";
+import achievements from "@/data/achievements.json";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
+import type { CookingRecipe } from "@/types/recipe";
+
+import { useState } from "react";
+
 import { Separator } from "@/components/ui/separator";
 import { RecipeCard } from "@/components/cards/recipe-card";
-import { useState } from "react";
-import { CookingRecipe } from "@/types/recipe";
 import { CookingSheet } from "@/components/sheets/cooking-sheet";
+import { AchievementCard } from "@/components/cards/achievement-card";
 
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
@@ -17,6 +19,7 @@ export default function Cooking() {
   return (
     <>
       <Head>
+        <title>stardew.app | Cooking Tracker</title>
         <meta
           name="description"
           content="Track and master cooking recipes in Stardew Valley. Keep tabs on the cooking recipes you've learned and monitor your progress towards becoming a skilled chef. Discover what recipes are left to learn and unlock the full potential of your culinary skills in Stardew Valley."
@@ -38,7 +41,7 @@ export default function Cooking() {
         className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
-          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-2xl">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Cooking Tracker
           </h1>
           {/* Achievements Section */}
@@ -46,7 +49,7 @@ export default function Cooking() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Achievements
             </h2>
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((a) => a.description.includes("Cook"))
                 .map((achievement) => (

@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import type { FishType } from "@/types/items";
-
 import objects from "@/data/objects.json";
+
+import type { FishType } from "@/types/items";
 
 import { Dispatch, SetStateAction } from "react";
 

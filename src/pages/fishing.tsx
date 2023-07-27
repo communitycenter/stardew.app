@@ -20,7 +20,7 @@ export default function Fishing() {
   return (
     <>
       <Head>
-        <title>stardew.app | Fishing</title>
+        <title>stardew.app | Fishing Tracker</title>
         <meta
           name="description"
           content="Track your Stardew Valley fishing progress and optimize your angling skills. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
@@ -42,7 +42,7 @@ export default function Fishing() {
         className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
-          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-2xl">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Fishing Tracker
           </h1>
           {/* Achievements Section */}

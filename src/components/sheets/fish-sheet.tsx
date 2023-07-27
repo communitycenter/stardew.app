@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import type { FishType } from "@/types/items";
-
 import objects from "@/data/objects.json";
+
+import type { FishType } from "@/types/items";
 
 import { Dispatch, SetStateAction } from "react";
 
@@ -13,6 +13,7 @@ import {
   SheetContent,
   SheetDescription,
 } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 interface Props {
   open: boolean;
@@ -21,8 +22,9 @@ interface Props {
 }
 
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
-  const iconURL =
-    fish && objects[fish.itemID.toString() as keyof typeof objects].iconURL;
+  const iconURL = fish
+    ? objects[fish.itemID.toString() as keyof typeof objects].iconURL
+    : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
 
   const name =
     fish && objects[fish.itemID.toString() as keyof typeof objects].name;
@@ -36,11 +38,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
         <SheetHeader className="mt-4">
           <div className="flex justify-center">
             <Image
-              src={
-                iconURL
-                  ? iconURL
-                  : "https://stardewvalleywiki.com/mediawiki/images/b/ba/Pufferfish.png"
-              }
+              src={iconURL}
               alt={name ? name : "No Info"}
               height={64}
               width={64}
@@ -54,9 +52,10 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
           </SheetDescription>
         </SheetHeader>
         {fish && (
-          <div className="space-y-4 mt-4">
-            <section className="space-y-1">
+          <div className="space-y-6 mt-4">
+            <section className="space-y-2">
               <h3 className="font-semibold">Location</h3>
+              <Separator />
               <ul className="list-disc list-inside">
                 {fish.locations.map((location) => (
                   <li
@@ -70,8 +69,9 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
             </section>
             {!fish.trapFish && (
               <>
-                <section className="space-y-1">
+                <section className="space-y-2">
                   <h3 className="font-semibold">Season</h3>
+                  <Separator />
                   <ul className="list-disc list-inside">
                     {fish.seasons.map((season) => (
                       <li
@@ -83,20 +83,23 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                     ))}
                   </ul>
                 </section>
-                <section className="space-y-1">
+                <section className="space-y-2">
                   <h3 className="font-semibold">Time</h3>
+                  <Separator />
                   <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
                     {fish.time}
                   </p>
                 </section>
-                <section className="space-y-1">
+                <section className="space-y-2">
                   <h3 className="font-semibold">Weather</h3>
+                  <Separator />
                   <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
                     {fish.weather}
                   </p>
                 </section>
-                <section className="space-y-1">
+                <section className="space-y-2">
                   <h3 className="font-semibold">Difficulty</h3>
+                  <Separator />
                   <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
                     {fish.difficulty}
                   </p>

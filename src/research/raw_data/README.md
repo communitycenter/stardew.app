@@ -4,6 +4,7 @@ These files were taken from the unpacked version of `Stardew Valley/Content`. We
 
 ## More Information on File Formats
 
-- [Achievements.json](https://stardewvalleywiki.com/Modding:Achievement_data)
-- [Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
-- [ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
+- [Data/Achievements.json](https://stardewvalleywiki.com/Modding:Achievement_data)
+- [Data/Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
+- [Data/ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
+- [Data/CookingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
