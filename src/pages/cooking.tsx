@@ -52,7 +52,7 @@ export default function Cooking() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Achievements
             </h2>
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((a) => a.description.includes("Cook"))
                 .map((achievement) => (
@@ -70,7 +70,7 @@ export default function Cooking() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               All Recipes
             </h2>
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes).map((f) => (
                 <RecipeCard
                   key={f.itemID}

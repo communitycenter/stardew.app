@@ -177,7 +177,7 @@ export default function Farmer() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Money Achievements
             </h2>
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((achievement) => achievement.id <= 4)
                 .map((achievement) => (
@@ -211,7 +211,7 @@ export default function Farmer() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Skill Achievements
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {Object.values(achievements)
                 .filter((achievement) =>
                   achievement.description.includes("skill")
@@ -294,7 +294,7 @@ export default function Farmer() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Quests Achievements
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {Object.values(achievements)
                 .filter((a) => a.description.includes("requests"))
                 .map((achievement) => (
@@ -349,7 +349,7 @@ export default function Farmer() {
                   : ""
               }
             />
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.entries(STARDROPS).map(([key, value]) => (
                 <DialogCard
                   key={key}
