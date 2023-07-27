@@ -1,7 +1,7 @@
 import { XMLParser } from "fast-xml-parser";
 
 import { findAllByKey } from "@/lib/utils";
-import { parseGeneral, parseFishing } from "@/lib/parsers";
+import { parseGeneral, parseFishing, parseCooking } from "@/lib/parsers";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -31,12 +31,12 @@ export function parseSaveFile(xml: string) {
       let processedPlayer = {
         general: parseGeneral(player, saveFile.SaveGame.whichFarm),
         fishing: parseFishing(player),
+        cooking: parseCooking(player),
         id: player.UniqueMultiplayerID,
       };
       processedPlayers.push(processedPlayer);
     });
 
-    console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
     if (e instanceof TypeError) {

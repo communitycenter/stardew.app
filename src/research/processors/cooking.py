@@ -54,13 +54,15 @@ cooking_recipes = {}
 with open("../raw_data/CookingRecipes.json", "r") as f:
     data = json.load(f)
 
+translations = {}
 unknowns = []
 for key, value in tqdm(data.items()):
     fields = value.split("/")
 
-    # before we had to manually translate the names
-    # now we just lookup up the name from the yield ID
+    # find which items have a different name in the objects.json
     name = objects[fields[2]]["name"]
+    if key != name:
+        translations[key] = name
 
     ingredients = []
     # create pairs of (itemID, quantity)
@@ -108,3 +110,5 @@ with open("../../data/cooking.json", "w") as f:
 if len(unknowns) > 0:
     for u in unknowns:
         print(u)
+print("Translations:")
+print(json.dumps(translations, indent=2))

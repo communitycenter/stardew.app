@@ -5,7 +5,8 @@ import achievements from "@/data/achievements.json";
 
 import type { CookingRecipe } from "@/types/recipe";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PlayersContext } from "@/contexts/players-context";
 
 import { Separator } from "@/components/ui/separator";
 import { RecipeCard } from "@/components/cards/recipe-card";
@@ -15,6 +16,8 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<CookingRecipe | null>(null);
+
+  const { activePlayer } = useContext(PlayersContext);
 
   return (
     <>
