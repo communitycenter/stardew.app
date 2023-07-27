@@ -1,4 +1,4 @@
-import { parseGeneral } from "@/lib/parsers/parseGeneral";
-import { parseFishing } from "@/lib/parsers/parseFishing";
+import { parseGeneral } from "@/lib/parsers/general";
+import { parseFishing } from "@/lib/parsers/fishing";
 
 export { parseGeneral, parseFishing };

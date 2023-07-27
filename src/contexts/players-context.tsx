@@ -7,8 +7,8 @@ import {
   useEffect,
 } from "react";
 
-import { GeneralRet } from "@/lib/parsers/parseGeneral";
-import { FishRet } from "@/lib/parsers/parseFishing";
+import { GeneralRet } from "@/lib/parsers/general";
+import { FishRet } from "@/lib/parsers/fishing";
 
 // TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
