@@ -102,10 +102,7 @@ export default function Fishing() {
                   return (
                     <AchievementCard
                       key={a.id}
-                      id={a.id}
-                      title={a.name}
-                      description={a.description}
-                      sourceURL={a.iconURL}
+                      achievement={a}
                       completed={completed}
                       additionalDescription={additionalDescription}
                     />

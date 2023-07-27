@@ -56,6 +56,14 @@ const STARDROPS = {
   },
 };
 
+const stardrop_ach = {
+  id: 34,
+  name: "Mystery Of The Stardrops",
+  description: "Find every stardrop.",
+  iconURL:
+    "https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg",
+};
+
 const reqs: Record<string, number> = {
   Greenhorn: 15000,
   Cowpoke: 50000,
@@ -174,11 +182,8 @@ export default function Farmer() {
                 .filter((achievement) => achievement.id <= 4)
                 .map((achievement) => (
                   <AchievementCard
-                    id={achievement.id}
                     key={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
+                    achievement={achievement}
                     completed={
                       activePlayer
                         ? activePlayer.general.totalMoneyEarned >=
@@ -213,11 +218,8 @@ export default function Farmer() {
                 )
                 .map((achievement) => (
                   <AchievementCard
-                    id={achievement.id}
                     key={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
+                    achievement={achievement}
                     completed={
                       activePlayer
                         ? activePlayer.general.maxLevelCount >=
@@ -297,11 +299,8 @@ export default function Farmer() {
                 .filter((a) => a.description.includes("requests"))
                 .map((achievement) => (
                   <AchievementCard
-                    id={achievement.id}
                     key={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
+                    achievement={achievement}
                     completed={
                       activePlayer
                         ? activePlayer.general.questsCompleted >=
@@ -331,10 +330,7 @@ export default function Farmer() {
             </h2>
             {/* hardcoding this one bc its only one */}
             <AchievementCard
-              id={34}
-              title="Mystery Of The Stardrops"
-              description="Find every stardrop."
-              sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e0/Achievement_Mystery_Of_The_Stardrops.jpg"
+              achievement={stardrop_ach}
               completed={
                 activePlayer
                   ? activePlayer.general.stardropsCount >=

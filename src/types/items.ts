@@ -16,3 +16,10 @@ interface TrapFish {
 }
 
 export type FishType = Fish | TrapFish;
+
+export interface Achievement {
+  id: number;
+  name: string;
+  description: string;
+  iconURL: string;
+}

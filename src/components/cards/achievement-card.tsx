@@ -1,21 +1,17 @@
 import Image from "next/image";
 
+import type { Achievement } from "@/types/items";
+
 import { cn } from "@/lib/utils";
 
 interface Props {
-  title: string;
-  sourceURL: string;
-  description: string;
-  id: number | string;
+  achievement: Achievement;
   additionalDescription?: string;
   completed: boolean;
 }
 
 export const AchievementCard = ({
-  title,
-  sourceURL,
-  description,
-  id,
+  achievement,
   additionalDescription,
   completed,
 }: Props) => {
@@ -37,16 +33,16 @@ export const AchievementCard = ({
       )}
     >
       <Image
-        src={sourceURL}
-        alt={title}
+        src={achievement.iconURL}
+        alt={achievement.name}
         className="rounded-sm"
         width={48}
         height={48}
       />
       <div className="min-w-0 flex-1">
-        <p className="font-medium truncate">{title}</p>
+        <p className="font-medium truncate">{achievement.name}</p>
         <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-          {description + " " + additionalDescription}
+          {achievement.description + (additionalDescription ?? "")}
         </p>
       </div>
     </div>

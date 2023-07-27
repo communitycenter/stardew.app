@@ -58,10 +58,7 @@ export default function Cooking() {
                 .map((achievement) => (
                   <AchievementCard
                     key={achievement.id}
-                    id={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
+                    achievement={achievement}
                     completed={false}
                   />
                 ))}
