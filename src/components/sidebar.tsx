@@ -177,9 +177,9 @@ export function Sidebar({ className }: SidebarProps) {
                   className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
                   asChild
                 >
-                  <Link href={"/discord"}>
+                  <a href={"/discord"} target="_blank" rel="noreferrer">
                     <DiscordLogoIcon />
-                  </Link>
+                  </a>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -196,9 +196,9 @@ export function Sidebar({ className }: SidebarProps) {
                   className="w-full hover:bg-neutral-800 hover:text-neutral-50"
                   asChild
                 >
-                  <Link href={"/github"}>
+                  <a href={"/github"} target="_blank" rel="noreferrer">
                     <GitHubLogoIcon />
-                  </Link>
+                  </a>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

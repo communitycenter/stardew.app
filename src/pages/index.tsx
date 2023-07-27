@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
