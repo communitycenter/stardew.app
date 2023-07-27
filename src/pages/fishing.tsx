@@ -3,19 +3,60 @@ import Head from "next/head";
 import type { FishType } from "@/types/items";
 
 import fishes from "@/data/fish.json";
-import objects from "@/data/objects.json";
 import achievements from "@/data/achievements.json";
 
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PlayersContext } from "@/contexts/players-context";
 
 import { Separator } from "@/components/ui/separator";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
+const reqs = {
+  Fisherman: 10,
+  "Ol' Mariner": 24,
+  "Master Angler": Object.keys(fishes).length,
+  "Mother Catch": 100,
+};
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
+  const [fishCaught, setFishCaught] = useState<Set<number>>(new Set());
+
+  const { activePlayer } = useContext(PlayersContext);
+
+  useEffect(() => {
+    if (activePlayer) {
+      setFishCaught(new Set(activePlayer.fishing.fishCaught));
+    }
+  }, [activePlayer]);
+
+  const getAchievementProgress = (name: string) => {
+    let completed = false;
+    let additionalDescription = "";
+    if (!activePlayer) {
+      return { completed, additionalDescription };
+    }
+
+    if (name === "Mother Catch") {
+      completed = activePlayer.fishing.totalCaught >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${
+          100 - activePlayer.fishing.totalCaught
+        } more`;
+      }
+    } else {
+      completed = fishCaught.size >= reqs[name as keyof typeof reqs];
+      if (!completed) {
+        additionalDescription = ` - ${
+          reqs[name as keyof typeof reqs] - fishCaught.size
+        } more`;
+      }
+    }
+    return { completed, additionalDescription };
+  };
 
   return (
     <>
@@ -51,18 +92,25 @@ export default function Fishing() {
               Achievements
             </h2>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
+              {/* this is absolutely disgusting but it works */}
               {Object.values(achievements)
                 .filter((a) => a.description.includes("fish"))
-                .map((achievement) => (
-                  <AchievementCard
-                    key={achievement.id}
-                    id={achievement.id}
-                    title={achievement.name}
-                    description={achievement.description}
-                    sourceURL={achievement.iconURL}
-                    completed={false}
-                  />
-                ))}
+                .map((a) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(a.name);
+
+                  return (
+                    <AchievementCard
+                      key={a.id}
+                      id={a.id}
+                      title={a.name}
+                      description={a.description}
+                      sourceURL={a.iconURL}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
             </div>
           </section>
           {/* All Fish Section */}
@@ -76,7 +124,7 @@ export default function Fishing() {
                 <BooleanCard
                   key={f.itemID}
                   fish={f as FishType}
-                  completed={false}
+                  completed={fishCaught.has(f.itemID)}
                   setIsOpen={setIsOpen}
                   setObject={setFish}
                 />

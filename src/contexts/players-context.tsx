@@ -8,10 +8,12 @@ import {
 } from "react";
 
 import { GeneralRet } from "@/lib/parsers/parseGeneral";
+import { FishRet } from "@/lib/parsers/parseFishing";
 
 // TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
   general: GeneralRet;
+  fishing: FishRet;
   id: string;
 }
 

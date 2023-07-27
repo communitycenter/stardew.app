@@ -9,10 +9,6 @@ import { PlayersContext } from "@/contexts/players-context";
 export default function Home() {
   const { players, activePlayer } = useContext(PlayersContext);
 
-  useEffect(() => {
-    console.log("hello", players);
-  }, [players]);
-
   return (
     <>
       <Head>
