@@ -124,7 +124,11 @@ export function parseCooking(player: any): CookingRet {
       cookedCount: cookedRecipes.size,
       recipes,
     };
-  } catch (err) {
-    throw err;
+  } catch (e) {
+    let msg = "";
+    if (e instanceof Error) {
+      msg = e.message;
+    }
+    throw new Error(`Error in parseCooking(): ${msg}`);
   }
 }

@@ -167,7 +167,11 @@ export function parseGeneral(player: any, whichFarm: number): GeneralRet {
       stardropsCount,
       stardrops,
     };
-  } catch (error) {
-    throw error;
+  } catch (e) {
+    let msg = "";
+    if (e instanceof Error) {
+      msg = e.message;
+    }
+    throw new Error(`Error in parseGeneral(): ${msg}`);
   }
 }

@@ -8,14 +8,15 @@ import {
 } from "react";
 
 import type { FishRet } from "@/lib/parsers/fishing";
-import type { GeneralRet } from "@/lib/parsers/general";
 import type { CookingRet } from "@/lib/parsers/cooking";
+import type { GeneralRet } from "@/lib/parsers/general";
 
 // TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
   general: GeneralRet;
   fishing: FishRet;
   cooking: CookingRet;
+  crafting: CookingRet;
   id: string;
 }
 

@@ -14,50 +14,58 @@ export function parseFishing(player: any): FishRet {
       - Ol' Mariner (catch 24 different fish).
       - Master Angler (catch every type of fish).
   */
-  const totalCaught = player.stats.fishCaught;
-  let uniqueCaught = 0;
+  try {
+    const totalCaught = player.stats.fishCaught;
+    let uniqueCaught = 0;
 
-  const fishCaught: number[] = [];
+    const fishCaught: number[] = [];
 
-  if (
-    totalCaught === 0 ||
-    !player.fishCaught ||
-    typeof player.fishCaught === "undefined"
-  ) {
+    if (
+      totalCaught === 0 ||
+      !player.fishCaught ||
+      typeof player.fishCaught === "undefined"
+    ) {
+      return {
+        totalCaught,
+        uniqueCaught,
+        fishCaught,
+      };
+    }
+
+    if (Array.isArray(player.fishCaught.item)) {
+      // multiple types of fish caught
+      for (const idx in player.fishCaught.item) {
+        let fish = player.fishCaught.item[idx];
+        let itemID = fish.key.int.toString();
+
+        // some things you can catch aren't fish or don't count
+        if (!fishes.hasOwnProperty(itemID)) continue;
+
+        uniqueCaught++;
+        fishCaught.push(parseInt(itemID));
+      }
+    } else {
+      // only one type of fish caught
+      let fish = player.fishCaught.item;
+      let itemID = fish.key.int.toString();
+
+      // some things you can catch aren't fish or don't count
+      if (fishes.hasOwnProperty(itemID)) {
+        uniqueCaught++;
+        fishCaught.push(parseInt(itemID));
+      }
+    }
+
     return {
       totalCaught,
       uniqueCaught,
       fishCaught,
     };
-  }
-
-  if (Array.isArray(player.fishCaught.item)) {
-    // multiple types of fish caught
-    for (const idx in player.fishCaught.item) {
-      let fish = player.fishCaught.item[idx];
-      let itemID = fish.key.int.toString();
-
-      // some things you can catch aren't fish or don't count
-      if (!fishes.hasOwnProperty(itemID)) continue;
-
-      uniqueCaught++;
-      fishCaught.push(parseInt(itemID));
+  } catch (e) {
+    let msg = "";
+    if (e instanceof Error) {
+      msg = e.message;
     }
-  } else {
-    // only one type of fish caught
-    let fish = player.fishCaught.item;
-    let itemID = fish.key.int.toString();
-
-    // some things you can catch aren't fish or don't count
-    if (fishes.hasOwnProperty(itemID)) {
-      uniqueCaught++;
-      fishCaught.push(parseInt(itemID));
-    }
+    throw new Error(`Error in parseFishing(): ${msg}`);
   }
-
-  return {
-    totalCaught,
-    uniqueCaught,
-    fishCaught,
-  };
 }

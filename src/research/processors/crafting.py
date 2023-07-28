@@ -41,6 +41,7 @@ defaults = set(
     ]
 )
 
+duplicates = []
 unknowns = []
 translations = {}
 recipes = {}
@@ -119,12 +120,15 @@ for key, value in tqdm(data.items()):
             else:
                 unlockConditions = unlockConditions + " Qi Gems"
 
+    if f"{itemID}" not in recipes:
         recipes[f"{itemID}"] = {
             "itemID": int(itemID),
             "ingredients": ingredients,
             "unlockConditions": unlockConditions,
             "isBigCraftable": is_big_craftable,
         }
+    else:
+        duplicates.append((name, itemID))
 
 with open("../../data/crafting.json", "w") as f:
     json.dump(recipes, f, separators=(",", ":"), sort_keys=True)
@@ -137,3 +141,5 @@ else:
     print("None")
 print("Translations:")
 print(json.dumps(translations, indent=2))
+print("Duplicates:")
+print(json.dumps(duplicates, indent=2))
