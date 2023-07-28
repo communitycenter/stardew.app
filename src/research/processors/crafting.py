@@ -109,7 +109,12 @@ for key, value in tqdm(data.items()):
             unknowns.append(name)
             continue
 
-        unlockConditions = elem.find_next("td").get_text().strip()
+        # remove hidden span tags which mess up the wiki scraping
+        next_elem = elem.find_next("td")
+        for span in next_elem.find_all("span", {"style": "display: none;"}):
+            span.decompose()
+
+        unlockConditions = next_elem.get_text().strip()
 
         # hardcoded way to clean up the string but i don't know another way
         # pretty special cases so idk if theres a way to generalize
