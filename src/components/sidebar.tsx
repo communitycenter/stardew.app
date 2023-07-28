@@ -5,13 +5,26 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 import {
-  DiscordLogoIcon,
-  GitHubLogoIcon,
-  HeartFilledIcon,
-  StarFilledIcon,
-} from "@radix-ui/react-icons";
-
-import { HomeIcon, UserIcon } from "@heroicons/react/24/solid";
+  IconHome2,
+  IconHeart,
+  IconFishHook,
+  IconEgg,
+  IconUser,
+  IconId,
+  IconHammer,
+  IconGardenCart,
+  IconAwardFilled,
+  IconBox,
+  IconShirt,
+  IconAward,
+  IconBrandGithub,
+  IconBrandDiscord,
+  IconBuildingWarehouse,
+  IconFile,
+  IconBook,
+  IconNote,
+  IconProgress,
+} from "@tabler/icons-react";
 
 import {
   Tooltip,
@@ -22,72 +35,26 @@ import {
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-function FishHookIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("icon icon-tabler icon-tabler-fish-hook", className)}
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      strokeWidth="2"
-      stroke="currentColor"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M16 9v6a5 5 0 0 1 -10 0v-4l3 3"></path>
-      <path d="M16 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-      <path d="M16 5v-2"></path>
-    </svg>
-  );
-}
-
-function EggIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("icon icon-tabler icon-tabler-egg-filled", className)}
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      strokeWidth="2"
-      stroke="currentColor"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M12.002 2c-4.173 -.008 -8.002 6.058 -8.002 12.083c0 4.708 3.25 7.917 8 7.917c4.727 -.206 8 -3.328 8 -7.917c0 -6.02 -3.825 -12.075 -7.998 -12.083z"
-        strokeWidth={0}
-        fill="currentColor"
-      ></path>
-    </svg>
-  );
-}
-
 const miscNavigation = [
-  { name: "Bundles", href: "/bundles", icon: UserIcon },
-  { name: "Walnuts", href: "/island/walnuts", icon: UserIcon },
-  { name: "Secret Notes", href: "/island/notes", icon: UserIcon },
-  { name: "Journal Scraps", href: "/island/scraps", icon: UserIcon },
+  { name: "Bundles", href: "/bundles", icon: IconBox },
+  { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
+  { name: "Secret Notes", href: "/island/notes", icon: IconNote },
+  { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
 ];
 
 const playerNavigation = [
-  { name: "Home", href: "/", icon: HomeIcon },
-  { name: "Farmer", href: "/farmer", icon: UserIcon },
-  { name: "Perfection", href: "/perfection", icon: StarFilledIcon },
-  { name: "Relationships", href: "/relationships", icon: HeartFilledIcon },
+  { name: "Home", href: "/", icon: IconHome2 },
+  { name: "Farmer", href: "/farmer", icon: IconId },
+  { name: "Perfection", href: "/perfection", icon: IconAward },
+  { name: "Relationships", href: "/relationships", icon: IconHeart },
 ];
 
 const collectionsNavigation = [
-  { name: "Cooking", href: "/cooking", icon: EggIcon },
-  { name: "Crafting", href: "/crafting", icon: UserIcon },
-  { name: "Fishing", href: "/fishing", icon: FishHookIcon },
-  { name: "Shipping", href: "/shipping", icon: UserIcon },
-  { name: "Museum & Artifacts", href: "/museum", icon: UserIcon },
+  { name: "Cooking", href: "/cooking", icon: IconEgg },
+  { name: "Crafting", href: "/crafting", icon: IconHammer },
+  { name: "Fishing", href: "/fishing", icon: IconFishHook },
+  { name: "Shipping", href: "/shipping", icon: IconGardenCart },
+  { name: "Museum & Artifacts", href: "/museum", icon: IconBuildingWarehouse },
 ];
 
 const SidebarCategory = ({ children }: { children: string }) => (
@@ -168,7 +135,7 @@ export function Sidebar({ className }: SidebarProps) {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 pb-4 gap-2 fixed bottom-0 w-72 px-3">
+        <div className="grid grid-cols-3 pb-4 gap-2 fixed bottom-0 w-72 px-3">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -178,7 +145,7 @@ export function Sidebar({ className }: SidebarProps) {
                   asChild
                 >
                   <a href={"/discord"} target="_blank" rel="noreferrer">
-                    <DiscordLogoIcon />
+                    <IconBrandDiscord size={20} />
                   </a>
                 </Button>
               </TooltipTrigger>
@@ -197,12 +164,37 @@ export function Sidebar({ className }: SidebarProps) {
                   asChild
                 >
                   <a href={"/github"} target="_blank" rel="noreferrer">
-                    <GitHubLogoIcon />
+                    <IconBrandGithub size={20} />
                   </a>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>stardew.app&apos;s source!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
+                  asChild
+                >
+                  <a
+                    href={
+                      "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button"
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <IconShirt size={20} />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Generate a Stardew avatar!</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

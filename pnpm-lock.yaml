@@ -25,6 +25,9 @@ dependencies:
   '@radix-ui/react-tooltip':
     specifier: ^1.0.6
     version: 1.0.6(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+  '@tabler/icons-react':
+    specifier: ^2.30.0
+    version: 2.30.0(react@18.2.0)
   '@types/node':
     specifier: 20.4.0
     version: 20.4.0
@@ -1084,6 +1087,20 @@ packages:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
       tslib: 2.6.0
+    dev: false
+
+  /@tabler/icons-react@2.30.0(react@18.2.0):
+    resolution: {integrity: sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.30.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.30.0:
+    resolution: {integrity: sha512-tvtmkI4ALjKThVVORh++sB9JnkFY7eGInKxNy+Df7WVQiF7T85tlvGADzlgX4Ic+CK5MIUzZ0jhOlQ/RRlgXpg==}
     dev: false
 
   /@types/json5@0.0.29:
