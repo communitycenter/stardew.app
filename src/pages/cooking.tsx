@@ -5,19 +5,54 @@ import achievements from "@/data/achievements.json";
 
 import type { CookingRecipe } from "@/types/recipe";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import { Separator } from "@/components/ui/separator";
+import { FilterButton } from "@/components/filter-btn";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { CookingSheet } from "@/components/sheets/cooking-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
+const reqs = {
+  Cook: 10,
+  "Sous Chef": 25,
+  "Gourmet Chef": Object.keys(recipes).length,
+};
+
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<CookingRecipe | null>(null);
+  const [playerRecipes, setPlayerRecipes] = useState({});
+
+  const [_filter, setFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
+
+  useEffect(() => {
+    if (activePlayer) {
+      setPlayerRecipes(activePlayer.cooking.recipes);
+    }
+  }, [activePlayer]);
+
+  const getAchievementProgress = (name: string) => {
+    let completed = false;
+    let additionalDescription = "";
+
+    if (!activePlayer) {
+      return { completed, additionalDescription };
+    }
+
+    completed =
+      activePlayer.cooking.cookedCount >= reqs[name as keyof typeof reqs];
+
+    if (!completed) {
+      additionalDescription = ` - ${
+        reqs[name as keyof typeof reqs] - activePlayer.cooking.cookedCount
+      } more`;
+    }
+    return { completed, additionalDescription };
+  };
 
   return (
     <>
@@ -55,31 +90,85 @@ export default function Cooking() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {Object.values(achievements)
                 .filter((a) => a.description.includes("Cook"))
-                .map((achievement) => (
-                  <AchievementCard
-                    key={achievement.id}
-                    achievement={achievement}
-                    completed={false}
-                  />
-                ))}
+                .map((achievement) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(achievement.name);
+
+                  return (
+                    <AchievementCard
+                      key={achievement.id}
+                      achievement={achievement}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
             </div>
           </section>
-          {/* All Fish Section */}
+          {/* All Recipes Section */}
           <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               All Recipes
             </h2>
+            <div className="flex space-x-4">
+              <FilterButton
+                target={"0"}
+                _filter={_filter}
+                title="Unknown Recipes"
+                setFilter={setFilter}
+              />
+              <FilterButton
+                target={"1"}
+                _filter={_filter}
+                title="Known Recipes"
+                setFilter={setFilter}
+              />
+              <FilterButton
+                target={"2"}
+                _filter={_filter}
+                title="Cooked Recipes"
+                setFilter={setFilter}
+              />
+            </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.values(recipes).map((f) => (
-                <RecipeCard
-                  key={f.itemID}
-                  recipe={f}
-                  completed={false}
-                  setIsOpen={setIsOpen}
-                  setObject={setRecipe}
-                />
-              ))}
+              {Object.values(recipes)
+                .filter((r) => {
+                  if (_filter === "0") {
+                    // unknown recipes (not in playerRecipes)
+                    return !(
+                      r.itemID in playerRecipes &&
+                      playerRecipes[r.itemID as keyof typeof playerRecipes] > 0
+                    );
+                  } else if (_filter === "1") {
+                    // known recipes (in playerRecipes) and not cooked
+                    return (
+                      r.itemID in playerRecipes &&
+                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
+                        1
+                    );
+                  } else if (_filter === "2") {
+                    // cooked recipes (in playerRecipes) and cooked
+                    return (
+                      r.itemID in playerRecipes &&
+                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
+                        2
+                    );
+                  } else return true; // all recipes
+                })
+                .map((f) => (
+                  <RecipeCard
+                    key={f.itemID}
+                    recipe={f}
+                    status={
+                      f.itemID in playerRecipes
+                        ? playerRecipes[f.itemID as keyof typeof playerRecipes]
+                        : 0
+                    }
+                    setIsOpen={setIsOpen}
+                    setObject={setRecipe}
+                  />
+                ))}
             </div>
           </section>
         </div>

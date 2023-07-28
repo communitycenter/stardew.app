@@ -123,7 +123,7 @@ export default function Fishing() {
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Incompleted"
+                title="Incomplete"
                 setFilter={setFilter}
               />
               <FilterButton
@@ -140,9 +140,7 @@ export default function Fishing() {
                     return !fishCaught.has(f.itemID); // incompleted
                   } else if (_filter === "2") {
                     return fishCaught.has(f.itemID); // completed
-                  } else {
-                    return true; // all
-                  }
+                  } else return true; // all
                 })
                 .map((f) => (
                   <BooleanCard
