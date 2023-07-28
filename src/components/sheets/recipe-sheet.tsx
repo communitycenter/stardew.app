@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
+import bigCraftables from "@/data/big_craftables.json";
 
-import type { CookingRecipe } from "@/types/recipe";
+import type { Recipe, CraftingRecipe } from "@/types/recipe";
 
 import { Dispatch, SetStateAction } from "react";
 
@@ -15,10 +16,10 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 
-interface Props {
+interface Props<T extends Recipe> {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  recipe: CookingRecipe | null; // TODO: update as we add more types
+  recipe: T | null;
 }
 
 const categoryItems: Record<string, string> = {
@@ -36,17 +37,46 @@ const categoryIcons: Record<string, string> = {
     "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
 };
 
-export const CookingSheet = ({ open, setIsOpen, recipe }: Props) => {
+export const RecipeSheet = <T extends Recipe>({
+  open,
+  setIsOpen,
+  recipe,
+}: Props<T>) => {
+  // accepts any type that extends Recipe (CraftingRecipe, CookingRecipe, etc.)
+  // returns true if the recipe is of type U and CraftingRecipe which for now
+  // is just the type CraftingRecipes
+  function isCraftingRecipe<U extends Recipe>(
+    recipe: U
+  ): recipe is U & CraftingRecipe {
+    return "isBigCraftable" in recipe;
+  }
+
   const iconURL = recipe
-    ? objects[recipe.itemID.toString() as keyof typeof objects].iconURL
+    ? isCraftingRecipe(recipe)
+      ? recipe.isBigCraftable
+        ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+            .iconURL
+        : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
+      : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
     : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
 
-  const name =
-    recipe && objects[recipe.itemID.toString() as keyof typeof objects].name;
+  const name = recipe
+    ? isCraftingRecipe(recipe)
+      ? recipe.isBigCraftable
+        ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+            .name
+        : objects[recipe.itemID.toString() as keyof typeof objects].name
+      : objects[recipe.itemID.toString() as keyof typeof objects].name
+    : null;
 
-  const description =
-    recipe &&
-    objects[recipe.itemID.toString() as keyof typeof objects].description;
+  const description = recipe
+    ? isCraftingRecipe(recipe)
+      ? recipe.isBigCraftable
+        ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+            .description
+        : objects[recipe.itemID.toString() as keyof typeof objects].description
+      : objects[recipe.itemID.toString() as keyof typeof objects].description
+    : null;
 
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
@@ -56,8 +86,14 @@ export const CookingSheet = ({ open, setIsOpen, recipe }: Props) => {
             <Image
               src={iconURL}
               alt={name ? name : "No Info"}
-              height={64}
               width={64}
+              height={
+                recipe && isCraftingRecipe(recipe)
+                  ? recipe.isBigCraftable
+                    ? 128
+                    : 64
+                  : 64
+              }
             />
           </div>
           <SheetTitle className="text-center">

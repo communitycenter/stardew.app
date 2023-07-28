@@ -1,12 +1,14 @@
-interface CookingIngredient {
+interface Ingredient {
   itemID: number;
   quantity: number;
 }
 
-interface CookingRecipeInstructions {
+export interface Recipe {
   itemID: number;
   unlockConditions: string;
-  ingredients: CookingIngredient[];
+  ingredients: Ingredient[];
 }
 
-export type CookingRecipe = CookingRecipeInstructions;
+export interface CraftingRecipe extends Recipe {
+  isBigCraftable: boolean;
+}

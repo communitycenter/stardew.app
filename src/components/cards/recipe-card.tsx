@@ -1,21 +1,27 @@
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
+import bigCraftables from "@/data/big_craftables.json";
 
 import { Dispatch, SetStateAction } from "react";
 
-import { CookingRecipe } from "@/types/recipe";
+import { Recipe, CraftingRecipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
 
-interface Props {
-  recipe: CookingRecipe; // TODO: update as we add more types
+interface Props<T extends Recipe> {
+  recipe: T;
   status: number;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  setObject: Dispatch<SetStateAction<CookingRecipe | null>>; // TODO: update as we add more types
+  setObject: Dispatch<SetStateAction<T | null>>;
 }
 
-export const RecipeCard = ({ recipe, status, setIsOpen, setObject }: Props) => {
+export const RecipeCard = <T extends Recipe>({
+  recipe,
+  status,
+  setIsOpen,
+  setObject,
+}: Props<T>) => {
   let colorClass = "";
   switch (status) {
     case 1:
@@ -32,13 +38,35 @@ export const RecipeCard = ({ recipe, status, setIsOpen, setObject }: Props) => {
       break;
   }
 
-  const iconURL =
-    objects[recipe.itemID.toString() as keyof typeof objects].iconURL;
+  // accepts any type that extends Recipe (CraftingRecipe, CookingRecipe, etc.)
+  // returns true if the recipe is of type U and CraftingRecipe which for now
+  // is just the type CraftingRecipes
+  function isCraftingRecipe<U extends Recipe>(
+    recipe: U
+  ): recipe is U & CraftingRecipe {
+    return "isBigCraftable" in recipe;
+  }
 
-  const name = objects[recipe.itemID.toString() as keyof typeof objects].name;
+  const iconURL = isCraftingRecipe(recipe)
+    ? recipe.isBigCraftable
+      ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+          .iconURL
+      : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
+    : objects[recipe.itemID.toString() as keyof typeof objects].iconURL;
 
-  const description =
-    objects[recipe.itemID.toString() as keyof typeof objects].description;
+  const name = isCraftingRecipe(recipe)
+    ? recipe.isBigCraftable
+      ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+          .name
+      : objects[recipe.itemID.toString() as keyof typeof objects].name
+    : objects[recipe.itemID.toString() as keyof typeof objects].name;
+
+  const description = isCraftingRecipe(recipe)
+    ? recipe.isBigCraftable
+      ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+          .description
+      : objects[recipe.itemID.toString() as keyof typeof objects].description
+    : objects[recipe.itemID.toString() as keyof typeof objects].description;
 
   return (
     <button
@@ -56,7 +84,7 @@ export const RecipeCard = ({ recipe, status, setIsOpen, setObject }: Props) => {
         alt={name}
         className="rounded-sm"
         width={32}
-        height={32}
+        height={isCraftingRecipe(recipe) && recipe.isBigCraftable ? 64 : 32}
       />
       <div className="min-w-0 flex-1">
         <p className="font-medium truncate">{name}</p>

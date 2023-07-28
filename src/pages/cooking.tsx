@@ -3,7 +3,7 @@ import Head from "next/head";
 import recipes from "@/data/cooking.json";
 import achievements from "@/data/achievements.json";
 
-import type { CookingRecipe } from "@/types/recipe";
+import type { Recipe } from "@/types/recipe";
 
 import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
@@ -11,7 +11,7 @@ import { PlayersContext } from "@/contexts/players-context";
 import { Separator } from "@/components/ui/separator";
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeCard } from "@/components/cards/recipe-card";
-import { CookingSheet } from "@/components/sheets/cooking-sheet";
+import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs = {
@@ -22,7 +22,7 @@ const reqs = {
 
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
-  const [recipe, setRecipe] = useState<CookingRecipe | null>(null);
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [playerRecipes, setPlayerRecipes] = useState({});
 
   const [_filter, setFilter] = useState("all");
@@ -172,7 +172,7 @@ export default function Cooking() {
             </div>
           </section>
         </div>
-        <CookingSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
+        <RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
       </main>
     </>
   );

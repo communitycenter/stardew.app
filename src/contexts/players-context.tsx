@@ -10,13 +10,14 @@ import {
 import type { FishRet } from "@/lib/parsers/fishing";
 import type { CookingRet } from "@/lib/parsers/cooking";
 import type { GeneralRet } from "@/lib/parsers/general";
+import type { CraftingRet } from "@/lib/parsers/crafting";
 
 // TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
   general: GeneralRet;
   fishing: FishRet;
   cooking: CookingRet;
-  crafting: CookingRet;
+  crafting: CraftingRet;
   id: string;
 }
 
