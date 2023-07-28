@@ -32,7 +32,7 @@ export const FilterButton = ({ title, target, _filter, setFilter }: Props) => {
   return (
     <button
       className={cn(
-        "flex items-center space-x-2 rounded-2xl border border-neutral-200 bg-white p-2 pr-3 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 hover:bg-neutral-100 hover:dark:bg-neutral-800 hover:cursor-pointer disabled:hover:cursor-not-allowed disabled:hover:bg-white disabled:hover:dark:bg-neutral-950",
+        "flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white p-2 pr-3 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 hover:bg-neutral-100 hover:dark:bg-neutral-800 hover:cursor-pointer disabled:hover:cursor-not-allowed disabled:hover:bg-white disabled:hover:dark:bg-neutral-950",
         _filter === target ? "bg-neutral-100 dark:bg-neutral-800" : ""
       )}
       onClick={() => handleClick()}

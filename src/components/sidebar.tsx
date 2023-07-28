@@ -38,7 +38,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 const miscNavigation = [
   { name: "Bundles", href: "/bundles", icon: IconBox },
   { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
-  { name: "Secret Notes", href: "/island/notes", icon: IconNote },
+  { name: "Secret Notes", href: "/notes", icon: IconNote },
   { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
 ];
 

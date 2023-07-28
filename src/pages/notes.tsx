@@ -5,24 +5,25 @@ import { Construction } from "@/components/construction";
 export default function SecretNotes() {
   return (
     <>
-      <Head>
+      <head>
         <meta
           name="description"
-          content="Track and discover secret notes on the island in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden mysteries and treasures scattered across the island. Monitor your progress towards completing the island's secret note collection and unveil the untold stories of this secluded paradise."
+          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
         />
         <meta
           name="og:description"
-          content="Track and discover secret notes on the island in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden mysteries and treasures scattered across the island. Monitor your progress towards completing the island's secret note collection and unveil the untold stories of this secluded paradise."
+          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
         />
         <meta
           name="twitter:description"
-          content="Track and discover secret notes on the island in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden mysteries and treasures scattered across the island. Monitor your progress towards completing the island's secret note collection and unveil the untold stories of this secluded paradise."
+          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
         />
         <meta
           name="keywords"
-          content="stardew valley island secret note tracker, stardew valley secret notes, stardew valley island secrets, stardew valley secret note collection, stardew valley island mysteries, stardew valley hidden treasures, stardew valley gameplay tracker, stardew valley, stardew, secret note tracker"
+          content="stardew valley secret notes tracker, stardew valley secret notes, stardew valley secret notes locations, stardew valley secret notes rewards, stardew valley secret notes collection, stardew valley gameplay tracker, stardew valley, stardew, secret notes tracker"
         />
-      </Head>
+      </head>
+
       <main
         className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8 justify-center items-center`}
       >

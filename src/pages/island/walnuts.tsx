@@ -1,3 +1,4 @@
+import { Construction } from "@/components/construction";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
@@ -27,7 +28,7 @@ export default function IslandWalnuts() {
       <main
         className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className}`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <Construction />
       </main>
     </>
   );
