@@ -115,19 +115,19 @@ export default function Cooking() {
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Unknown Recipes"
+                title="Unknown"
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"1"}
                 _filter={_filter}
-                title="Known Recipes"
+                title="Known"
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_filter}
-                title="Cooked Recipes"
+                title="Cooked"
                 setFilter={setFilter}
               />
             </div>

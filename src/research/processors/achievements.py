@@ -44,7 +44,7 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
     achievements[name] = {
         "iconURL": "https://stardewvalleywiki.com" + iconURL,
         "name": name,
-        "description": description,
+        "description": description.replace(" See (note below)", ""),
         "id": id,  # This is not the accurate in game ID
     }
     id += 1

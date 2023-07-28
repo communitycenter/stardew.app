@@ -112,23 +112,23 @@ export default function Crafting() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               All Recipes
             </h2>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 flex-1">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Unknown Recipes"
+                title="Unknown"
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"1"}
                 _filter={_filter}
-                title="Known Recipes"
+                title="Known"
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_filter}
-                title="Cooked Recipes"
+                title="Crafted"
                 setFilter={setFilter}
               />
             </div>
