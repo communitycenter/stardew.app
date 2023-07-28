@@ -41,7 +41,7 @@ for itemID in tqdm(itemIDs):
     big_craftables[itemID] = {
         "name": name,
         "description": description,
-        "iconURL": iconURL,
+        "iconURL": f"https://stardewvalleywiki.com{iconURL}",
     }
 
 with open("../../data/big_craftables.json", "w") as f:
