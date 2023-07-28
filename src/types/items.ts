@@ -23,3 +23,9 @@ export interface Achievement {
   description: string;
   iconURL: string;
 }
+
+export interface ShippingItem {
+  itemID: number;
+  polyculture: boolean;
+  monoculture: boolean;
+}

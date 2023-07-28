@@ -6,6 +6,7 @@ import {
   parseFishing,
   parseCooking,
   parseCrafting,
+  parseShipping,
 } from "@/lib/parsers";
 
 const semverSatisfies = require("semver/functions/satisfies");
@@ -38,6 +39,7 @@ export function parseSaveFile(xml: string) {
         fishing: parseFishing(player),
         cooking: parseCooking(player),
         crafting: parseCrafting(player),
+        shipping: parseShipping(player),
         id: player.UniqueMultiplayerID,
       };
       processedPlayers.push(processedPlayer);
