@@ -39,4 +39,4 @@ for a in tqdm(soup.find_all("a", {"class": "image"})):
     i += 1
 
     with open("./sprites.json", "w") as f:
-        json.dump(sprites, f, separators=(",", ":"))
+        json.dump(sprites, f, separators=(",", ":"), sort_keys=True)

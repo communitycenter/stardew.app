@@ -105,7 +105,7 @@ for key, value in tqdm(data.items()):
     }
 
 with open("../../data/cooking.json", "w") as f:
-    json.dump(cooking_recipes, f, separators=(",", ":"))
+    json.dump(cooking_recipes, f, separators=(",", ":"), sort_keys=True)
 
 if len(unknowns) > 0:
     for u in unknowns:

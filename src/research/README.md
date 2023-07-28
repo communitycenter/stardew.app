@@ -8,3 +8,5 @@ These files were taken from the unpacked version of `Stardew Valley/Content`. We
 - [Data/Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
 - [Data/ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
 - [Data/CookingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
+- [Data/CraftingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
+- [Data/BigCraftablesInformation.json](https://stardewvalleywiki.com/Modding:Items#Big_craftables)

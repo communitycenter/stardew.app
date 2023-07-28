@@ -92,4 +92,4 @@ for key, value in tqdm(object_info.items()):
 
 # json.dump(fish, f, indent=4) for pretty printing
 with open("../../data/fish.json", "w") as f:
-    json.dump(fish, f, separators=(",", ":"))
+    json.dump(fish, f, separators=(",", ":"), sort_keys=True)
