@@ -50,4 +50,4 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
     id += 1
 
 with open("../../data/achievements.json", "w") as f:
-    json.dump(achievements, f, separators=(",", ":"), sort_keys=True)
+    json.dump(achievements, f, separators=(",", ":"))
