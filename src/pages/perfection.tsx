@@ -1,10 +1,12 @@
 import Head from "next/head";
 
+import { Construction } from "@/components/construction";
+
 export default function Perfection() {
   return (
     <>
       <Head>
-        <title>stardew.app | Perfection</title>
+        <title>stardew.app | Perfection Tracker</title>
         <meta
           name="description"
           content="Track and optimize your progress towards achieving perfection in Stardew Valley. Monitor your farm, relationships, achievements, and community events. Maximize efficiency, uncover secrets, and strive for the ultimate 100% completion. Take control of your Stardew Valley journey and become a true perfectionist."
@@ -25,7 +27,7 @@ export default function Perfection() {
       <main
         className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <Construction />
       </main>
     </>
   );

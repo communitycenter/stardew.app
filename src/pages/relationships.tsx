@@ -1,9 +1,12 @@
 import Head from "next/head";
 
+import { Construction } from "@/components/construction";
+
 export default function Relationships() {
   return (
     <>
       <Head>
+        <title>stardew.app | Social Tracke</title>
         <meta
           name="description"
           content="Track and manage your relationships with villagers in Stardew Valley. Keep tabs on the villagers' heart levels, gifts, and interactions to deepen your connections. Monitor your progress towards reaching maximum heart levels and building strong relationships with the community."
@@ -24,7 +27,7 @@ export default function Relationships() {
       <main
         className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <Construction />
       </main>
     </>
   );

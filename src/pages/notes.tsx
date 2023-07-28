@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import { Construction } from "@/components/construction";
+
 export default function SecretNotes() {
   return (
     <>
@@ -21,6 +23,11 @@ export default function SecretNotes() {
           content="stardew valley island secret note tracker, stardew valley secret notes, stardew valley island secrets, stardew valley secret note collection, stardew valley island mysteries, stardew valley hidden treasures, stardew valley gameplay tracker, stardew valley, stardew, secret note tracker"
         />
       </Head>
+      <main
+        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 p-8 sm:p-0`}
+      >
+        <Construction />
+      </main>
     </>
   );
 }

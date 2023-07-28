@@ -2,13 +2,9 @@
 
 import Head from "next/head";
 
-import { useContext } from "react";
-
-import { PlayersContext } from "@/contexts/players-context";
+import { Construction } from "@/components/construction";
 
 export default function Home() {
-  const { players, activePlayer } = useContext(PlayersContext);
-
   return (
     <>
       <Head>
@@ -23,14 +19,9 @@ export default function Home() {
         />
       </Head>
       <main
-        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
+        className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800 p-8 sm:p-0`}
       >
-        <h1 className="text-4xl font-semibold">
-          {players ? players.length : 0}
-        </h1>
-        <h1>
-          Active Player: {activePlayer ? activePlayer.general.name : "none"}
-        </h1>
+        <Construction />
       </main>
     </>
   );

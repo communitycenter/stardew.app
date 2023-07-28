@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import { Construction } from "@/components/construction";
+
 export default function Bundles() {
   return (
     <>
@@ -24,7 +26,7 @@ export default function Bundles() {
       <main
         className={`flex min-h-screen items-center justify-center md:border-l border-neutral-200 dark:border-neutral-800`}
       >
-        <h1 className="text-4xl font-semibold">placeholder</h1>
+        <Construction />
       </main>
     </>
   );
