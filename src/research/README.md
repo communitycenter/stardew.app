@@ -10,3 +10,5 @@ These files were taken from the unpacked version of `Stardew Valley/Content`. We
 - [Data/CookingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
 - [Data/CraftingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
 - [Data/BigCraftablesInformation.json](https://stardewvalleywiki.com/Modding:Items#Big_craftables)
+- [Data/NPCDispositions.json](https://stardewvalleywiki.com/Modding:NPC_data)
+- [Data/NPCGiftTasts.json](https://stardewvalleywiki.com/Modding:Gift_taste_data)
