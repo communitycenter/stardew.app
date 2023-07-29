@@ -360,7 +360,7 @@
     "Quartz": {
       "locations": ["The Mines", "Garbage Can", "Stone Golem"],
       "used_in": ["Geologist's Bundle", "Refined Quartz", "Fish Pond"],
-      "itemID": "82"
+      "itemID": "80"
     },
     "Earth Crystal": {
       "locations": [
@@ -547,7 +547,7 @@
     "Opal": {
       "locations": ["Frozen Geode", "Omni Geode"],
       "used_in": [],
-      "itemID": "565"
+      "itemID": "564"
     },
     "Fire Opal": {
       "locations": ["Magma Geode", "Omni Geode"],
