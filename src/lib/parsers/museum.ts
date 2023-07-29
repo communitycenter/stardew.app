@@ -3,8 +3,6 @@ import objects from "@/data/objects.json";
 export interface MuseumRet {
   artifacts: number[];
   minerals: number[];
-  artifactsDonated: number;
-  mineralsDonated: number;
 }
 
 export function parseMuseum(museumLocation: any): MuseumRet {
@@ -33,8 +31,6 @@ export function parseMuseum(museumLocation: any): MuseumRet {
     return {
       artifacts,
       minerals,
-      artifactsDonated: 0,
-      mineralsDonated: 0,
     };
 
   // and if there are multiple types of items donated
@@ -56,15 +52,8 @@ export function parseMuseum(museumLocation: any): MuseumRet {
     else if (mineralsIds.includes(item_id)) minerals.push(parseInt(item_id));
   }
 
-  const artifactsDonated = Object.values(artifacts).filter((v) => v).length;
-  const mineralsDonated = Object.values(minerals).filter((v) => v).length;
-
-  console.log(artifacts, minerals);
-
   return {
     artifacts,
     minerals,
-    artifactsDonated,
-    mineralsDonated,
   };
 }
