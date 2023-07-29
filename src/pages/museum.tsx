@@ -95,7 +95,7 @@ export default function Museum() {
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
               Achievements
             </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid ggrid-cols-1 md:grid-cols-2">
               {Object.values(achievements)
                 .filter((a) => a.description.includes("museum"))
                 .map((achievement) => {
