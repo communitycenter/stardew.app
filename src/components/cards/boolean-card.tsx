@@ -21,8 +21,6 @@ export const BooleanCard = ({
   setIsOpen,
   setObject,
 }: Props) => {
-  console.log(item);
-
   const iconURL =
     objects[item.itemID.toString() as keyof typeof objects].iconURL;
   const name = objects[item.itemID.toString() as keyof typeof objects].name;

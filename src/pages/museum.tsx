@@ -6,9 +6,10 @@ import { FilterButton } from "@/components/filter-btn";
 import museum from "@/data/artifacts.json";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { FishType, TrinketItem } from "@/types/items";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
+import { PlayersContext } from "@/contexts/players-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
@@ -23,19 +24,38 @@ export default function Museum() {
     Set<number>
   >(new Set());
 
+  const [museumMineralCollected, setMuseumMineralCollected] = useState<
+    Set<number>
+  >(new Set());
+
+  const { activePlayer } = useContext(PlayersContext);
+
+  useEffect(() => {
+    if (activePlayer) {
+      setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts));
+      setMuseumMineralCollected(new Set(activePlayer.museum.minerals));
+    }
+  }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
 
     if (name === "Treasure Trove") {
-      completed = museumArtifactCollected.size >= 40;
+      completed =
+        museumArtifactCollected.size + museumMineralCollected.size >= 40;
       if (!completed) {
-        additionalDescription = ` - ${40 - museumArtifactCollected.size} more`;
+        additionalDescription = ` - ${
+          40 - (museumArtifactCollected.size + museumMineralCollected.size)
+        } more`;
       }
     } else {
-      completed = museumArtifactCollected.size >= 95;
+      completed =
+        museumArtifactCollected.size + museumMineralCollected.size >= 95;
       if (!completed) {
-        additionalDescription = ` - ${95 - museumArtifactCollected.size} more`;
+        additionalDescription = ` - ${
+          95 - (museumArtifactCollected.size + museumMineralCollected.size)
+        } more`;
       }
     }
 
@@ -64,7 +84,7 @@ export default function Museum() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8 justify-center items-center`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -124,7 +144,7 @@ export default function Museum() {
                 })
                 .map((f) => (
                   <BooleanCard
-                    key={f.itemID}
+                    key={`artifact-${f.itemID}`}
                     item={f}
                     completed={museumArtifactCollected.has(parseInt(f.itemID))}
                     setIsOpen={setIsOpen}
@@ -157,16 +177,16 @@ export default function Museum() {
               {Object.values(museum.minerals)
                 .filter((f) => {
                   if (_mineralFilter === "0") {
-                    return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
+                    return !museumMineralCollected.has(parseInt(f.itemID)); // incompleted
                   } else if (_mineralFilter === "2") {
-                    return museumArtifactCollected.has(parseInt(f.itemID)); // completed
+                    return museumMineralCollected.has(parseInt(f.itemID)); // completed
                   } else return true; // all
                 })
                 .map((f) => (
                   <BooleanCard
-                    key={f.itemID}
+                    key={`mineral-${f.itemID}`}
                     item={f as TrinketItem}
-                    completed={museumArtifactCollected.has(parseInt(f.itemID))}
+                    completed={museumMineralCollected.has(parseInt(f.itemID))}
                     setIsOpen={setIsOpen}
                     setObject={setMuseumArtifact}
                   />
