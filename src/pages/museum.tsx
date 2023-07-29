@@ -16,7 +16,8 @@ export default function Museum() {
     null
   );
 
-  const [_filter, setFilter] = useState("all");
+  const [_artifactFilter, setArtifactFilter] = useState("all");
+  const [_mineralFilter, setMineralFilter] = useState("all");
 
   const [museumArtifactCollected, setMuseumArtifactCollected] = useState<
     Set<number>
@@ -101,23 +102,23 @@ export default function Museum() {
             <div className="flex space-x-4">
               <FilterButton
                 target={"0"}
-                _filter={_filter}
+                _filter={_artifactFilter}
                 title="Not Donated"
-                setFilter={setFilter}
+                setFilter={setArtifactFilter}
               />
               <FilterButton
                 target={"2"}
-                _filter={_filter}
+                _filter={_artifactFilter}
                 title="Donated"
-                setFilter={setFilter}
+                setFilter={setArtifactFilter}
               />
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(museum.artifacts)
                 .filter((f) => {
-                  if (_filter === "0") {
+                  if (_artifactFilter === "0") {
                     return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
-                  } else if (_filter === "2") {
+                  } else if (_artifactFilter === "2") {
                     return museumArtifactCollected.has(parseInt(f.itemID)); // completed
                   } else return true; // all
                 })
@@ -141,23 +142,23 @@ export default function Museum() {
             <div className="flex space-x-4">
               <FilterButton
                 target={"0"}
-                _filter={_filter}
+                _filter={_mineralFilter}
                 title="Not Donated"
-                setFilter={setFilter}
+                setFilter={setMineralFilter}
               />
               <FilterButton
                 target={"2"}
-                _filter={_filter}
+                _filter={_mineralFilter}
                 title="Donated"
-                setFilter={setFilter}
+                setFilter={setMineralFilter}
               />
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(museum.minerals)
                 .filter((f) => {
-                  if (_filter === "0") {
+                  if (_mineralFilter === "0") {
                     return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
-                  } else if (_filter === "2") {
+                  } else if (_mineralFilter === "2") {
                     return museumArtifactCollected.has(parseInt(f.itemID)); // completed
                   } else return true; // all
                 })
