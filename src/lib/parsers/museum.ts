@@ -6,7 +6,6 @@ export interface MuseumRet {
 }
 
 export function parseMuseum(museumLocation: any): MuseumRet {
-  console.log(museumLocation);
   /*
     Achievements Relevant:
       - Treasure Trove (donate 40 items to museum).

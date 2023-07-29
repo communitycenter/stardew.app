@@ -7,6 +7,7 @@ import type { FishType, TrinketItem } from "@/types/items";
 import { Dispatch, SetStateAction } from "react";
 
 import { cn } from "@/lib/utils";
+import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props {
   item: FishType | TrinketItem | any;
@@ -55,6 +56,7 @@ export const BooleanCard = ({
           {description}
         </p>
       </div>
+      <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
     </button>
   );
 };
