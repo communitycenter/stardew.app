@@ -1,0 +1,1005 @@
+{
+  "artifacts": {
+    "Dwarf Scroll I": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Dwarf_Scroll_I.png",
+      "name": "Dwarf Scroll I",
+      "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a red bow.",
+      "locations": [
+        "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
+        "Several monsters (0.5% each)"
+      ],
+      "id": 0
+    },
+    "Dwarf Scroll II": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Dwarf_Scroll_II.png",
+      "name": "Dwarf Scroll II",
+      "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a green ribbon.",
+      "locations": [
+        "Tilling in Mines (floor 1-39) (0.1%)",
+        "Ghost drop (0.5%)",
+        "Frost Bat drop (0.5%)",
+        "Dust Sprite drop (0.5%)",
+        "Blue Slime drop (0.5%)"
+      ],
+      "id": 1
+    },
+    "Dwarf Scroll III": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Dwarf_Scroll_III.png",
+      "name": "Dwarf Scroll III",
+      "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a blue rope.",
+      "locations": [
+        "Several monsters drop (1.5% for Blue Slime, 0.5% for others)"
+      ],
+      "id": 2
+    },
+    "Dwarf Scroll IV": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Dwarf_Scroll_IV.png",
+      "name": "Dwarf Scroll IV",
+      "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a golden chain.",
+      "locations": [
+        "Any Monster (other than Serpent, Skeleton, Wilderness Golem, Carbon Ghost, Iridium Bat, Iridium Crab, and Haunted Skull) (0.1%)",
+        "Tilling in Mines (floor 80+) (0.2%)"
+      ],
+      "id": 3
+    },
+    "Chipped Amphora": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png",
+      "name": "Chipped Amphora",
+      "description": "An ancient vessel made of ceramic material. Used to transport both dry and wet goods.",
+      "locations": ["Town (3%)", "Artifact Trove (3.7%)"],
+      "id": 4
+    },
+    "Arrowhead": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d1/Arrowhead.png",
+      "name": "Arrowhead",
+      "description": "A crudely fashioned point used for hunting.",
+      "locations": [
+        "Mountain (1.6%)",
+        "Forest (1.6%)",
+        "Bus Stop (1.6%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 5
+    },
+    "Ancient Doll": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Ancient_Doll.png",
+      "name": "Ancient Doll",
+      "description": "An ancient doll covered in grime. This doll may have been used as a toy, a decoration, or a prop in some kind of ritual.",
+      "locations": [
+        "Mountain (3%)",
+        "Forest (2.4%)",
+        "Bus Stop (2.4%)",
+        "Town (0.8%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Feast of the Winter Star",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 6
+    },
+    "Elvish Jewelry": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Elvish_Jewelry.png",
+      "name": "Elvish Jewelry",
+      "description": "Dirty but still beautiful. On the side is a flowing script thought by some to be the ancient language of the elves. No Elvish bones have ever been found.",
+      "locations": [
+        "Forest (0.8%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 7
+    },
+    "Chewing Stick": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Chewing_Stick.png",
+      "name": "Chewing Stick",
+      "description": "Ancient people chewed on these to keep their teeth clean.",
+      "locations": [
+        "Mountain (1.5%)",
+        "Forest (1.5%)",
+        "Town (0.8%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Duggy drop (2%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 8
+    },
+    "Ornamental Fan": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ab/Ornamental_Fan.png",
+      "name": "Ornamental Fan",
+      "description": "This exquisute fan most likely belonged to a noblewoman. Historians believe that the valley was a popular sixth-era vacation spot for the wealthy.",
+      "locations": [
+        "Beach (1.6%)",
+        "Forest (0.7%)",
+        "Town (0.6%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 9
+    },
+    "Dinosaur Egg": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a1/Dinosaur_Egg.png",
+      "name": "Dinosaur Egg",
+      "description": "A giant dino egg... The entire shell is still intact!",
+      "locations": [
+        "Mountain (0.6%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Foraged on prehistoric floors of the Skull Cavern",
+        "Pepper Rex drop (10%)"
+      ],
+      "id": 10
+    },
+    "Rare Disc": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Rare_Disc.png",
+      "name": "Rare Disc",
+      "description": "A heavy black disc studded with peculiar red stones. When you hold it, you're overwhelmed with a feeling of dread.",
+      "locations": [
+        "Fishing Chest (0.8-0.9%)",
+        "Bats drop (except Iridium Bat) (0.1%)",
+        "Shadow Brute, Shadow Shaman, Spider drop (0.3%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 11
+    },
+    "Ancient Sword": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Ancient_Sword.png",
+      "name": "Ancient Sword",
+      "description": "It's the remains of an ancient sword. Most of the blade has turned to rust, but the hilt is very finely crafted.",
+      "locations": [
+        "Forest (0.7%)",
+        "Mountain (0.6%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 12
+    },
+    "Rusty Spoon": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Rusty_Spoon.png",
+      "name": "Rusty Spoon",
+      "description": "A plain old spoon, probably ten years old. Not very interesting.",
+      "locations": [
+        "Town (4% + 6-11%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 13
+    },
+    "Rusty Spur": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Rusty_Spur.png",
+      "name": "Rusty Spur",
+      "description": "An old spur that was once attached to a cowboy's boot. People must have been raising animals in this area for many generations.",
+      "locations": [
+        "Farm (10%)",
+        "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 14
+    },
+    "Rusty Cog": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/74/Rusty_Cog.png",
+      "name": "Rusty Cog",
+      "description": "A well preserved cog that must have been part of some ancient machine. This could be dwarven technology.",
+      "locations": [
+        "Mountain (4%)",
+        "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 15
+    },
+    "Chicken Statue": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Chicken_Statue.png",
+      "name": "Chicken Statue",
+      "description": "It's a statue of a chicken on a bronze base. The ancient people of this area must have been very fond of chickens.",
+      "locations": [
+        "Farm (9%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 16
+    },
+    "Ancient Seed": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Ancient_Seed.png",
+      "name": "Ancient Seed",
+      "description": "It's a dry old seed from some ancient plant. By all appearances it's long since dead...",
+      "locations": [
+        "Forest (0.7%)",
+        "Mountain (0.7%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Monster drop (Bug, Cave Fly, Grub, Mutant Fly, Mutant Grub: 0.5%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 17
+    },
+    "Prehistoric Tool": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Prehistoric_Tool.png",
+      "name": "Prehistoric Tool",
+      "description": "Some kind of gnarly old digging tool.",
+      "locations": [
+        "Bus Stop (3%)",
+        "Forest (2.1%)",
+        "Mountain (2%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 18
+    },
+    "Dried Starfish": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/df/Dried_Starfish.png",
+      "name": "Dried Starfish",
+      "description": "A starfish from the primordial ocean. It's an unusually pristine specimen!",
+      "locations": [
+        "Beach (8%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 19
+    },
+    "Anchor": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Anchor.png",
+      "name": "Anchor",
+      "description": "It may have belonged to ancient pirates.",
+      "locations": [
+        "Beach (4%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 20
+    },
+    "Glass Shards": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Glass_Shards.png",
+      "name": "Glass Shards",
+      "description": "A mixture of glass shards smoothed by centuries of ocean surf. These could have belonged to an ancient mosaic or necklace.",
+      "locations": [
+        "Beach (7%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 21
+    },
+    "Bone Flute": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fc/Bone_Flute.png",
+      "name": "Bone Flute",
+      "description": "It's a prehistoric wind instrument carved from an animal's bone. It produces an eerie tone.",
+      "locations": [
+        "Forest (0.7%)",
+        "Mountain (0.7%)",
+        "Town (0.4%)",
+        "Fishing Chest (0.8-0.9%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 22
+    },
+    "Prehistoric Handaxe": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/07/Prehistoric_Handaxe.png",
+      "name": "Prehistoric Handaxe",
+      "description": "One of the earliest tools employed by humans. This \"crude\" tool was created by striking one rock with another to form a sharp edge.",
+      "locations": [
+        "Bus Stop (4%)",
+        "Mountain (3%)",
+        "Forest (3%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 23
+    },
+    "Dwarvish Helm": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8b/Dwarvish_Helm.png",
+      "name": "Dwarvish Helm",
+      "description": "It's one of the helmets commonly worn by dwarves. The thick metal plating protects them from falling debris and stalactites.",
+      "locations": [
+        "Tilling in Mines (floor 1-39) (0.1%)",
+        "Geode (3%)",
+        "Omni Geode (1%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 24
+    },
+    "Dwarf Gadget": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Dwarf_Gadget.png",
+      "name": "Dwarf Gadget",
+      "description": "It's a piece of the advanced technology once known to the dwarves. It's still glowing and humming, but you're unable to understand how it works.",
+      "locations": [
+        "Tilling in Mines (floor 40-79) (0.1%)",
+        "Magma Geode (4%)",
+        "Omni Geode (1%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 25
+    },
+    "Ancient Drum": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Ancient_Drum.png",
+      "name": "Ancient Drum",
+      "description": "It's a drum made from wood and animal skin. It has a low, reverberating tone.",
+      "locations": [
+        "Bus Stop (0.7%)",
+        "Forest (0.7%)",
+        "Town (0.4%)",
+        "Frozen Geode (3%)",
+        "Omni Geode (1%)",
+        "Artifact Trove (3.7%)"
+      ],
+      "id": 26
+    },
+    "Golden Mask": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Golden_Mask.png",
+      "name": "Golden Mask",
+      "description": "A creepy golden mask probably used in an ancient magic ritual. A socket in the forehead contains a large purple gemstone.",
+      "locations": ["Desert (3%)", "Artifact Trove (3.7%)"],
+      "id": 27
+    },
+    "Golden Relic": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Golden_Relic.png",
+      "name": "Golden Relic",
+      "description": "It's a golden slab with heiroglyphs and pictures emblazoned onto the front.",
+      "locations": ["Desert (6%)", "Artifact Trove (3.7%)"],
+      "id": 28
+    },
+    "Strange Doll": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Strange_Doll_%28yellow%29.png",
+      "name": "Strange Doll",
+      "description": "???",
+      "locations": [
+        "Farm (0.08%)",
+        "Bus Stop (0.07%)",
+        "Town (0.07%)",
+        "Forest (0.06%)",
+        "Mountain (0.06%)",
+        "Beach (0.06%)",
+        "Tilling in Mines/Skull Cavern (any floor) (0.03%)",
+        "Fishing Chest (≈0.14%)",
+        "Secret Note #18"
+      ],
+      "id": 30
+    },
+    "Prehistoric Scapula": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Prehistoric_Scapula.png",
+      "name": "Prehistoric Scapula",
+      "description": "Commonly known as a \"shoulder blade\"... It's unclear what species it belonged to.",
+      "locations": [
+        "Forest (3-6%)",
+        "Town (0.7%)",
+        "Skeleton drop (0.5%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 31
+    },
+    "Prehistoric Tibia": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Prehistoric_Tibia.png",
+      "name": "Prehistoric Tibia",
+      "description": "A thick and sturdy leg bone.",
+      "locations": [
+        "Railroad (4-8%)",
+        "Forest (0.6%)",
+        "Pepper Rex drop (30%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 32
+    },
+    "Prehistoric Skull": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Prehistoric_Skull.png",
+      "name": "Prehistoric Skull",
+      "description": "This is definitely a mammalian skull.",
+      "locations": [
+        "Mountain (0.6% + 3-6%)",
+        "Haunted Skull drop (1.3%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 33
+    },
+    "Skeletal Hand": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Skeletal_Hand.png",
+      "name": "Skeletal Hand",
+      "description": "It's a wonder all these ancient little pieces lasted so long.",
+      "locations": [
+        "Backwoods (4-8%)",
+        "Beach (0.6%)",
+        "Haunted Skull drop (1.3%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 34
+    },
+    "Prehistoric Rib": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Prehistoric_Rib.png",
+      "name": "Prehistoric Rib",
+      "description": "Little gouge marks on the side suggest that this rib was someone's dinner.",
+      "locations": [
+        "Town (2.2-4%)",
+        "Farm (0.8%)",
+        "Pepper Rex drop (30%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 35
+    },
+    "Prehistoric Vertebra": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Prehistoric_Vertebra.png",
+      "name": "Prehistoric Vertebra",
+      "description": "A segment of some prehistoric creature's spine.",
+      "locations": [
+        "Bus Stop (0.7% + 3-5%)",
+        "Pepper Rex drop (30%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 36
+    },
+    "Skeletal Tail": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/29/Skeletal_Tail.png",
+      "name": "Skeletal Tail",
+      "description": "It's pretty short for a tail.",
+      "locations": [
+        "Tilling in Mines/Skull Cavern (any floor)",
+        "Fishing Chest (3.1-3.4%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 37
+    },
+    "Nautilus Fossil": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Nautilus_Fossil.png",
+      "name": "Nautilus Fossil",
+      "description": "This must've washed up ages ago from an ancient coral reef.",
+      "locations": [
+        "Beach (1.8%)",
+        "Fishing Chest (3.1-3.4%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 38
+    },
+    "Amphibian Fossil": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Amphibian_Fossil.png",
+      "name": "Amphibian Fossil",
+      "description": "The relatively short hind legs suggest some kind of primordial toad.",
+      "locations": [
+        "Forest (0.6%)",
+        "Mountain (0.6%)",
+        "Fishing Chest (3.1-3.4%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 39
+    },
+    "Palm Fossil": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Palm_Fossil.png",
+      "name": "Palm Fossil",
+      "description": "Palm Fossils are relatively common, but this happens to be a particularly well-preserved specimen.",
+      "locations": [
+        "Desert (7%)",
+        "Forest (0.6% + 3-5%)",
+        "Beach (0.6%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 40
+    },
+    "Trilobite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Trilobite",
+      "description": "A long extinct relative of the crab.",
+      "locations": [
+        "Beach (1.7% + 2.3-5%)",
+        "Forest (1.9%)",
+        "Mountain (1.8%)",
+        "Bone Nodes (0.8%)"
+      ],
+      "id": 41
+    }
+  },
+  "minerals": {
+    "Quartz": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Quartz",
+      "description": "A clear crystal commonly found in caves and mines.",
+      "locations": ["The Mines", "Garbage Can", "Stone Golem"],
+      "used_in": ["Geologist's Bundle", "Refined Quartz", "Fish Pond"]
+    },
+    "Earth Crystal": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Earth Crystal",
+      "description": "A resinous substance found near the surface.",
+      "locations": [
+        "The Mines",
+        "Duggy",
+        "Haunted Skull",
+        "Fishing Treasure Chest",
+        "Panning",
+        "Geode",
+        "Omni Geode",
+        "Garbage Can"
+      ],
+      "used_in": ["Geologist's Bundle", "Mayonnaise Machine", "Fish Pond"]
+    },
+    "Frozen Tear": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Frozen Tear",
+      "description": "A crystal fabled to be the frozen tears of a yeti.",
+      "locations": [
+        "The Mines",
+        "Fishing Treasure Chest",
+        "Panning",
+        "Frozen Geode",
+        "Omni Geode",
+        "Dust Sprite",
+        "Garbage Can"
+      ],
+      "used_in": [
+        "Geologist's Bundle",
+        "Warrior Ring",
+        "Sebastian",
+        "Fish Pond"
+      ]
+    },
+    "Fire Quartz": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Fire Quartz",
+      "description": "A glowing red crystal commonly found near hot lava.",
+      "locations": [
+        "The Mines",
+        "Fishing Treasure Chest",
+        "Panning",
+        "Magma Geode",
+        "Omni Geode",
+        "Garbage Can"
+      ],
+      "used_in": [
+        "Geologist's Bundle",
+        "Slime Egg-Press",
+        "Refined Quartz",
+        "Fish Pond"
+      ]
+    },
+    "Emerald": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Emerald",
+      "description": "A precious stone with a brilliant green color.",
+      "locations": [
+        "Emerald Node",
+        "Gem Node",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest",
+        "Feast of the Winter Star"
+      ],
+      "used_in": ["Clint", "Dwarf", "Emily", "Penny", "Fish Pond", "Forge"]
+    },
+    "Aquamarine": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Aquamarine",
+      "description": "A shimmery blue-green gem.",
+      "locations": [
+        "Aquamarine Node",
+        "Gem Node",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest"
+      ],
+      "used_in": [
+        "Dye Bundle",
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Marble Brazier",
+        "Fish Pond",
+        "Forge"
+      ]
+    },
+    "Ruby": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Ruby",
+      "description": "A precious stone that is sought after for its rich color and beautiful luster.",
+      "locations": [
+        "Ruby Node",
+        "Gem Node",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest",
+        "Feast of the Winter Star"
+      ],
+      "used_in": ["Clint", "Dwarf", "Emily", "Forge"]
+    },
+    "Amethyst": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Amethyst",
+      "description": "A purple variant of quartz.",
+      "locations": [
+        "Amethyst Node",
+        "Gem Node",
+        "Green Slimes",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest"
+      ],
+      "used_in": ["Abigail", "Clint", "Dwarf", "Emily", "Fish Pond", "Forge"]
+    },
+    "Topaz": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Topaz",
+      "description": "Fairly common but still prized for its beauty.",
+      "locations": [
+        "Topaz Node",
+        "Gem Node",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest"
+      ],
+      "used_in": ["Clint", "Dwarf", "Emily", "Fish Pond", "Forge"]
+    },
+    "Jade": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Jade",
+      "description": "A pale green ornamental stone.",
+      "locations": [
+        "Jade Node",
+        "Gem Node",
+        "Blue Slimes",
+        "Garbage Can",
+        "Fishing Treasure Chest",
+        "Feast of the Winter Star"
+      ],
+      "used_in": ["Clint", "Dwarf", "Emily", "Fish Pond", "Forge"]
+    },
+    "Diamond": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Diamond",
+      "description": "A rare and valuable gem.",
+      "locations": [
+        "Diamond Node",
+        "Gem Node",
+        "Panning",
+        "Garbage Can",
+        "Fishing Treasure Chest",
+        "monster",
+        "the mines"
+      ],
+      "used_in": [
+        "Ring of Yoba",
+        "Geode Crusher",
+        "Fairy Dust",
+        "Evelyn",
+        "Gus",
+        "Jodi",
+        "Krobus",
+        "Marnie",
+        "Maru",
+        "Penny",
+        "Willy",
+        "Fish Pond",
+        "Forge"
+      ]
+    },
+    "Prismatic Shard": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Prismatic Shard",
+      "description": "A very rare and powerful substance with unknown origins.",
+      "locations": [
+        "Iridium Node",
+        "Mystic Stone",
+        "Omni Geode",
+        "Shadow Brute",
+        "Shadow Shaman",
+        "Mummy",
+        "Serpent",
+        "Fishing Treasure Chest",
+        "monster",
+        "the mines"
+      ],
+      "used_in": [
+        "Villagers",
+        "Haley",
+        "Galaxy Sword",
+        "the Desert",
+        "Dark Shrine of Selfishness",
+        "Enchant"
+      ]
+    },
+    "Tigerseye": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Tigerseye",
+      "description": "A stripe of shimmering gold gives this gem a warm luster.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": ["Sam"]
+    },
+    "Opal": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Opal",
+      "description": "Its internal structure causes it to reflect a rainbow of light.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Fire Opal": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Fire Opal",
+      "description": "A rare variety of opal, named for its red spots.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Alamite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Alamite",
+      "description": "Its distinctive fluorescence makes it a favorite among rock collectors.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Bixite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Bixite",
+      "description": "A dark metallic Mineral sought after for its cubic structure.",
+      "locations": ["Magma Geode", "Omni Geode", "Black Slime"],
+      "used_in": []
+    },
+    "Baryte": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Baryte",
+      "description": "The best specimens resemble a desert rose.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Aerinite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Aerinite",
+      "description": "These crystals are curiously light.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Calcite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Calcite",
+      "description": "This yellow crystal is speckled with shimmering nodules.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Dolomite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Dolomite",
+      "description": "It can occur in coral reefs, often near an underwater volcano.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Esperite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Esperite",
+      "description": "The crystals glow bright green when stimulated.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Fluorapatite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Fluorapatite",
+      "description": "Small amounts are found in human teeth.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Geminite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Geminite",
+      "description": "Occurs in brilliant clusters.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Helvite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Helvite",
+      "description": "It grows in a triangular column.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Jamborite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Jamborite",
+      "description": "The crystals are so tightly packed it almost looks fuzzy.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Jagoite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Jagoite",
+      "description": "A high volume of tiny crystals makes it very glittery.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Kyanite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Kyanite",
+      "description": "The geometric faces are as smooth as glass.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Lunarite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Lunarite",
+      "description": "The cratered white orbs form a tight cluster.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Malachite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Malachite",
+      "description": "A popular ornamental stone, used in sculpture and to make green paint.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Neptunite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Neptunite",
+      "description": "A jet-black crystal that is unusually reflective.",
+      "locations": ["Magma Geode", "Omni Geode", "Black Slime"],
+      "used_in": []
+    },
+    "Lemon Stone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Lemon Stone",
+      "description": "Some claim the powdered crystal is a dwarvish delicacy.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": ["Dwarf"]
+    },
+    "Nekoite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Nekoite",
+      "description": "The delicate shards form a tiny pink meadow.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Orpiment": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Orpiment",
+      "description": "Despite its high toxicity, this Mineral is widely used in manufacturing and folk medicine.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Petrified Slime": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Petrified Slime",
+      "description": "This little guy may be 100,000 years old.",
+      "locations": ["Geode", "Omni Geode", "Slime Ball"],
+      "used_in": ["Fish Pond"]
+    },
+    "Thunder Egg": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Thunder Egg",
+      "description": "According to legend, angry thunder spirits would throw these stones at one another.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Pyrite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Pyrite",
+      "description": "Commonly known as \"Fool's Gold\".",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Ocean Stone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Ocean Stone",
+      "description": "An old legend claims these stones are the mosaics of ancient mermaids.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": ["Fish Pond"]
+    },
+    "Ghost Crystal": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Ghost Crystal",
+      "description": "There is an aura of coldness around this crystal.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Jasper": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Jasper",
+      "description": "When polished, this stone becomes attractively luminous. Prized by ancient peoples for thousands of years.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Celestine": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Celestine",
+      "description": "Some early life forms had bones made from this.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Marble": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Marble",
+      "description": "A very popular material for sculptures and construction.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": ["Marble Brazier"]
+    },
+    "Sandstone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Sandstone",
+      "description": "A common type of stone with red and brown striations.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Granite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Granite",
+      "description": "A speckled Mineral that is commonly used in construction.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": ["Fish Pond"]
+    },
+    "Basalt": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Basalt",
+      "description": "Forms near searing hot magma.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": ["Fish Pond"]
+    },
+    "Limestone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Limestone",
+      "description": "A very common type of stone. It's not worth very much.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": ["Fish Pond"]
+    },
+    "Soapstone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Soapstone",
+      "description": "Because of its relatively soft consistency, this stone is very popular for carving.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Hematite": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Hematite",
+      "description": "An iron-based Mineral with interesting magnetic properties.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Mudstone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Mudstone",
+      "description": "A fine-grained rock made from ancient clay or mud.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": ["Fish Pond"]
+    },
+    "Obsidian": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Obsidian",
+      "description": "A volcanic glass that forms when lava cools rapidly.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": ["Sebastian"]
+    },
+    "Slate": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Slate",
+      "description": "It's extremely resistant to water, making it a good roofing material.",
+      "locations": ["Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Fairy Stone": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Fairy Stone",
+      "description": "An old miner's song suggests these are made from the bones of ancient fairies.",
+      "locations": ["Frozen Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Star Shards": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Star Shards",
+      "description": "No one knows how these form. Some scientists claim that the microscopic structure displays unnatural regularity.",
+      "locations": ["Magma Geode", "Omni Geode"],
+      "used_in": []
+    },
+    "Geode": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Geode",
+      "description": "A blacksmith can break this open for you.",
+      "locations": ["Fish Pond"],
+      "used_in": []
+    },
+    "Frozen Geode": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Frozen Geode",
+      "description": "A blacksmith can break this open for you.",
+      "locations": ["Field Research Bundle", "Fish Pond"],
+      "used_in": []
+    },
+    "Magma Geode": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Magma Geode",
+      "description": "A blacksmith can break this open for you.",
+      "locations": [],
+      "used_in": []
+    },
+    "Omni Geode": {
+      "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png",
+      "name": "Omni Geode",
+      "description": "A blacksmith can break this open for you. These geodes contain a wide variety of Minerals.",
+      "locations": ["Clint", "Dwarf", "Fish Pond"],
+      "used_in": []
+    }
+  }
+}
