@@ -45,11 +45,7 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
 
     # Add the achievement to the dictionary
     artifacts[name] = {
-        "iconURL": "https://stardewvalleywiki.com" + iconURL,
-        "name": name,
-        "description": description.replace(" See (note below)", ""),
         "locations": locations,
-        "id": id,  # This is not the accurate in game ID
     }
     id += 1
 
@@ -1017,9 +1013,6 @@ for html in htmlobj:
             used_in = []
 
         minerals[name] = {
-            "iconURL": "https://stardewvalleywiki.com" + iconURL,
-            "name": name,
-            "description": description.replace(" See (note below)", ""),
             "locations": locations,
             "used_in": used_in,
         }
