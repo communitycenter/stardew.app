@@ -23,6 +23,9 @@ soup2 = BeautifulSoup(page2.text, "html.parser")
 tbody = soup.find("table").find("tbody")
 tbody2 = soup2.find("table").find("tbody")
 
+with open("../../data/objects.json", "r") as file:
+    objectsJson = json.load(file)
+
 id = 0
 # Loop through all the rows
 # For some stupid reason, the first row is the table header
@@ -42,10 +45,20 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
         "",
         tr.find_all("td")[4].text.strip(),
     ).split("\n")
+    itemId = 0
+
+    for item_id, item_info in objectsJson.items():
+        item_name = item_info.get(
+            "name", ""
+        ).lower()  # Get the item name (convert to lowercase for case-insensitive match)
+
+        if name.lower() in item_name:
+            itemId = item_id
 
     # Add the achievement to the dictionary
     artifacts[name] = {
         "locations": locations,
+        "id": itemId,
     }
     id += 1
 
@@ -1003,6 +1016,7 @@ for html in htmlobj:
         # sell_price = columns[3].text.strip()
         # gemologist_sell_price = columns[4].text.strip()
         locations = [item.text for item in columns[5].find_all("a")]
+        itemId = ""
         try:
             used_in = [
                 item.text
@@ -1012,9 +1026,18 @@ for html in htmlobj:
         except:
             used_in = []
 
+        for item_id, item_info in objectsJson.items():
+            item_name = item_info.get(
+                "name", ""
+            ).lower()  # Get the item name (convert to lowercase for case-insensitive match)
+
+            if name.lower() in item_name:
+                itemId = item_id
+
         minerals[name] = {
             "locations": locations,
             "used_in": used_in,
+            "id": itemId,
         }
 
 with open("../../data/artifacts.json", "w") as f:
