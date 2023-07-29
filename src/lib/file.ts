@@ -7,6 +7,7 @@ import {
   parseCooking,
   parseCrafting,
   parseShipping,
+  parseMuseum,
 } from "@/lib/parsers";
 
 const semverSatisfies = require("semver/functions/satisfies");
@@ -30,6 +31,12 @@ export function parseSaveFile(xml: string) {
     // searches for all players in the save file and returns an array
     // objects are unprocessed and will be used to parse each player's data
     players = findAllByKey(saveFile.SaveGame, "farmhand");
+    const parsedMuseum = parseMuseum(
+      saveFile.SaveGame.locations.GameLocation.find(
+        (obj: any) => obj["@_xsi:type"] === "LibraryMuseum"
+      )
+    );
+
     let processedPlayers: any[] = [];
 
     players.forEach((player) => {
@@ -40,6 +47,7 @@ export function parseSaveFile(xml: string) {
         cooking: parseCooking(player),
         crafting: parseCrafting(player),
         shipping: parseShipping(player),
+        museum: parsedMuseum,
         id: player.UniqueMultiplayerID,
       };
       processedPlayers.push(processedPlayer);
@@ -48,6 +56,7 @@ export function parseSaveFile(xml: string) {
     console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
+    console.log(e);
     if (e instanceof TypeError) {
       throw new Error(
         "Invalid file uploaded. Please upload a valid Stardew Valley save file."

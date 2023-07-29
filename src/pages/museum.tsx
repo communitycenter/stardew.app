@@ -1,8 +1,67 @@
 import Head from "next/head";
 
-import { Construction } from "@/components/construction";
+import achievements from "@/data/achievements.json";
+import { Separator } from "@/components/ui/separator";
+import { FilterButton } from "@/components/filter-btn";
+import museum from "@/data/artifacts.json";
+import { BooleanCard } from "@/components/cards/boolean-card";
+import { FishType, TrinketItem } from "@/types/items";
+import { useContext, useEffect, useState } from "react";
+import { MuseumSheet } from "@/components/sheets/museum-sheet";
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { PlayersContext } from "@/contexts/players-context";
 
 export default function Museum() {
+  const [open, setIsOpen] = useState(false);
+  const [museumArtifact, setMuseumArtifact] = useState<TrinketItem | null>(
+    null
+  );
+
+  const [_artifactFilter, setArtifactFilter] = useState("all");
+  const [_mineralFilter, setMineralFilter] = useState("all");
+
+  const [museumArtifactCollected, setMuseumArtifactCollected] = useState<
+    Set<number>
+  >(new Set());
+
+  const [museumMineralCollected, setMuseumMineralCollected] = useState<
+    Set<number>
+  >(new Set());
+
+  const { activePlayer } = useContext(PlayersContext);
+
+  useEffect(() => {
+    if (activePlayer) {
+      setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts));
+      setMuseumMineralCollected(new Set(activePlayer.museum.minerals));
+    }
+  }, [activePlayer]);
+
+  const getAchievementProgress = (name: string) => {
+    let completed = false;
+    let additionalDescription = "";
+
+    if (name === "Treasure Trove") {
+      completed =
+        museumArtifactCollected.size + museumMineralCollected.size >= 40;
+      if (!completed) {
+        additionalDescription = ` - ${
+          40 - (museumArtifactCollected.size + museumMineralCollected.size)
+        } more`;
+      }
+    } else {
+      completed =
+        museumArtifactCollected.size + museumMineralCollected.size >= 95;
+      if (!completed) {
+        additionalDescription = ` - ${
+          95 - (museumArtifactCollected.size + museumMineralCollected.size)
+        } more`;
+      }
+    }
+
+    return { completed, additionalDescription };
+  };
+
   return (
     <>
       <Head>
@@ -25,9 +84,121 @@ export default function Museum() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8 justify-center items-center`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
       >
-        <Construction />
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
+            Museum Tracker
+          </h1>
+          {/* Achievements Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Achievements
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("museum"))
+                .map((achievement) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(achievement.name);
+
+                  return (
+                    <AchievementCard
+                      key={achievement.id}
+                      achievement={achievement}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
+            </div>
+          </section>
+          {/* Artifacts Section */}
+          <Separator />
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Artifacts
+            </h2>
+            <div className="flex space-x-4">
+              <FilterButton
+                target={"0"}
+                _filter={_artifactFilter}
+                title="Not Donated"
+                setFilter={setArtifactFilter}
+              />
+              <FilterButton
+                target={"2"}
+                _filter={_artifactFilter}
+                title="Donated"
+                setFilter={setArtifactFilter}
+              />
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {Object.values(museum.artifacts)
+                .filter((f) => {
+                  if (_artifactFilter === "0") {
+                    return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
+                  } else if (_artifactFilter === "2") {
+                    return museumArtifactCollected.has(parseInt(f.itemID)); // completed
+                  } else return true; // all
+                })
+                .map((f) => (
+                  <BooleanCard
+                    key={`artifact-${f.itemID}`}
+                    item={f}
+                    completed={museumArtifactCollected.has(parseInt(f.itemID))}
+                    setIsOpen={setIsOpen}
+                    setObject={setMuseumArtifact}
+                  />
+                ))}
+            </div>
+          </section>
+          {/* Minerals Section */}
+          <Separator />
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Minerals
+            </h2>
+            <div className="flex space-x-4">
+              <FilterButton
+                target={"0"}
+                _filter={_mineralFilter}
+                title="Not Donated"
+                setFilter={setMineralFilter}
+              />
+              <FilterButton
+                target={"2"}
+                _filter={_mineralFilter}
+                title="Donated"
+                setFilter={setMineralFilter}
+              />
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {Object.values(museum.minerals)
+                .filter((f) => {
+                  if (_mineralFilter === "0") {
+                    return !museumMineralCollected.has(parseInt(f.itemID)); // incompleted
+                  } else if (_mineralFilter === "2") {
+                    return museumMineralCollected.has(parseInt(f.itemID)); // completed
+                  } else return true; // all
+                })
+                .map((f) => (
+                  <BooleanCard
+                    key={`mineral-${f.itemID}`}
+                    item={f as TrinketItem}
+                    completed={museumMineralCollected.has(parseInt(f.itemID))}
+                    setIsOpen={setIsOpen}
+                    setObject={setMuseumArtifact}
+                  />
+                ))}
+            </div>
+          </section>
+        </div>
+        <MuseumSheet
+          open={open}
+          setIsOpen={setIsOpen}
+          trinket={museumArtifact}
+        />
       </main>
     </>
   );

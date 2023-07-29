@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
+import Image from "next/image";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -52,7 +53,16 @@ export function Topbar() {
   return (
     <div>
       <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7 bg-white dark:bg-neutral-950">
-        <h2 className="text-lg font-semibold">stardew.app</h2>
+        <div className="flex flex-shrink-0 items-center">
+          <Image
+            width={"36"}
+            height={"36"}
+            className="h-9 w-auto"
+            src="/favicon.png"
+            alt="stardew.app logo"
+          />
+          <h1 className="pl-3 font-medium">stardew.app</h1>
+        </div>
         {/* Mobile Menu */}
         <div className="md:hidden flex justify-end">
           <Button variant="outline">
