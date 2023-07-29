@@ -2,30 +2,32 @@ import Image from "next/image";
 
 import objects from "@/data/objects.json";
 
-import type { FishType } from "@/types/items";
+import type { FishType, TrinketItem } from "@/types/items";
 
 import { Dispatch, SetStateAction } from "react";
 
 import { cn } from "@/lib/utils";
 
 interface Props {
-  fish: FishType;
+  item: FishType | TrinketItem | any;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  setObject: Dispatch<SetStateAction<FishType | null>>; // TODO: update as we add more types
+  setObject: any; // TODO: update as we add more types
 }
 
 export const BooleanCard = ({
-  fish,
+  item,
   completed,
   setIsOpen,
   setObject,
 }: Props) => {
+  console.log(item);
+
   const iconURL =
-    objects[fish.itemID.toString() as keyof typeof objects].iconURL;
-  const name = objects[fish.itemID.toString() as keyof typeof objects].name;
+    objects[item.itemID.toString() as keyof typeof objects].iconURL;
+  const name = objects[item.itemID.toString() as keyof typeof objects].name;
   const description =
-    objects[fish.itemID.toString() as keyof typeof objects].description;
+    objects[item.itemID.toString() as keyof typeof objects].description;
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -38,7 +40,7 @@ export const BooleanCard = ({
         checkedClass
       )}
       onClick={() => {
-        setObject(fish);
+        setObject(item);
         setIsOpen(true);
       }}
     >

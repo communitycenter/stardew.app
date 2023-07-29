@@ -58,7 +58,7 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
     # Add the achievement to the dictionary
     artifacts[name] = {
         "locations": locations,
-        "id": itemId,
+        "itemID": itemId,
     }
     id += 1
 
@@ -1037,7 +1037,7 @@ for html in htmlobj:
         minerals[name] = {
             "locations": locations,
             "used_in": used_in,
-            "id": itemId,
+            "itemID": itemId,
         }
 
 with open("../../data/artifacts.json", "w") as f:

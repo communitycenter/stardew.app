@@ -145,7 +145,7 @@ export default function Fishing() {
                 .map((f) => (
                   <BooleanCard
                     key={f.itemID}
-                    fish={f as FishType}
+                    item={f as FishType}
                     completed={fishCaught.has(f.itemID)}
                     setIsOpen={setIsOpen}
                     setObject={setFish}

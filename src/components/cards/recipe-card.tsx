@@ -83,8 +83,8 @@ export const RecipeCard = <T extends Recipe>({
         src={iconURL}
         alt={name}
         className="rounded-sm"
-        width={32}
-        height={isCraftingRecipe(recipe) && recipe.isBigCraftable ? 64 : 32}
+        width={16}
+        height={isCraftingRecipe(recipe) && recipe.isBigCraftable ? 32 : 16}
       />
       <div className="min-w-0 flex-1">
         <p className="font-medium truncate">{name}</p>

@@ -29,3 +29,9 @@ export interface ShippingItem {
   polyculture: boolean;
   monoculture: boolean;
 }
+
+export interface TrinketItem {
+  locations?: string[];
+  used_in?: string[];
+  itemID: string;
+}
