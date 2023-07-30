@@ -83,7 +83,7 @@ export default function Fishing() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -95,7 +95,6 @@ export default function Fishing() {
               Achievements
             </h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {/* this is absolutely disgusting but it works */}
               {Object.values(achievements)
                 .filter((a) => a.description.includes("fish"))
                 .map((a) => {

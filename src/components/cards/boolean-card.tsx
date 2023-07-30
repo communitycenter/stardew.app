@@ -35,7 +35,7 @@ export const BooleanCard = ({
   return (
     <button
       className={cn(
-        "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer",
+        "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer",
         checkedClass
       )}
       onClick={() => {

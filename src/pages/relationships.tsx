@@ -1,8 +1,42 @@
 import Head from "next/head";
 
-import { Construction } from "@/components/construction";
+import achievements from "@/data/achievements.json";
+import villagers from "@/data/villagers.json";
+
+import type { Villager } from "@/types/items";
+
+import { useContext, useState } from "react";
+import { PlayersContext } from "@/contexts/players-context";
+
+import { Separator } from "@/components/ui/separator";
+import { InfoCard } from "@/components/cards/info-card";
+import { VillagerCard } from "@/components/cards/villager-card";
+import { AchievementCard } from "@/components/cards/achievement-card";
+
+import { IconBabyCarriage } from "@tabler/icons-react";
+import { HeartIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
+
+const reqs: Record<string, number> = {
+  "A New Friend": 1,
+  Cliques: 4,
+  Networking: 10,
+  Popular: 20,
+  "Best Friends": 1,
+  "The Beloved Farmer": 8,
+  "Moving Up": 1,
+  "Living Large": 2,
+};
 
 export default function Relationships() {
+  const { activePlayer } = useContext(PlayersContext);
+
+  const [open, setIsOpen] = useState(false);
+  const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
+
+  // TODO: useEffect set data on activePlayer change
+
+  // TODO: getAchievementProgress
+
   return (
     <>
       <Head>
@@ -25,9 +59,102 @@ export default function Relationships() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8 justify-center items-center`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
-        <Construction />
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
+            Social & Family Tracker
+          </h1>
+          {/* Info related to achievements */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Social & Family Information
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+              <InfoCard
+                title="Five Heart Relationships"
+                description="33"
+                Icon={HeartIcon}
+              />
+              <InfoCard
+                title="Ten Heart Relationships"
+                description="21"
+                Icon={HeartIcon}
+              />
+              <InfoCard
+                title="Children"
+                description="2"
+                Icon={IconBabyCarriage}
+              />
+              <InfoCard
+                title="House Upgrade Level"
+                description="3"
+                Icon={HomeIcon}
+              />
+              <InfoCard title="Spouse" description="Haley" Icon={UsersIcon} />
+            </div>
+          </section>
+          <Separator />
+          {/* Achievements Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Achievements
+            </h2>
+            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+              Relationships
+            </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("heart"))
+                .map((a) => {
+                  return (
+                    <AchievementCard
+                      key={a.name}
+                      achievement={a}
+                      completed={false}
+                    />
+                  );
+                })}
+            </div>
+            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+              Home & Family
+            </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {Object.values(achievements)
+                .filter(
+                  (a) =>
+                    a.description.includes("house") ||
+                    a.description.includes("married")
+                )
+                .map((a) => {
+                  return (
+                    <AchievementCard
+                      key={a.name}
+                      achievement={a}
+                      completed={false}
+                    />
+                  );
+                })}
+            </div>
+          </section>
+          <Separator />
+          {/* Villagers Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Villagers
+            </h2>
+            <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
+              {Object.values(villagers).map((v) => (
+                <VillagerCard
+                  key={v.name}
+                  villager={v}
+                  setIsOpen={setIsOpen}
+                  setVillager={setVillager}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
     </>
   );

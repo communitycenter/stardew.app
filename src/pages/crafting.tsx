@@ -77,7 +77,7 @@ export default function Crafting() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
