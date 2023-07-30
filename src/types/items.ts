@@ -35,3 +35,9 @@ export interface TrinketItem {
   used_in?: string[];
   itemID: string;
 }
+
+export interface WalnutType {
+  name: string;
+  description: string;
+  iconURL: string;
+}
