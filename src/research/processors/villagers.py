@@ -151,6 +151,8 @@ for key, value in tqdm(npc_info.items()):
     # loves (check to make sure there's no override)
     for itemID in items[0]:
         if int(itemID) < 0:
+            if int(itemID) < -99:
+                continue
             # check if this is an override from prev categories
             if itemID in likes:
                 likes.remove(int(itemID))
@@ -169,6 +171,9 @@ for key, value in tqdm(npc_info.items()):
     # likes (check to make sure there's no override)
     for itemID in items[1]:
         if int(itemID) < 0:
+            # maru has a -260 which I can't find anywhere
+            if int(itemID) < -99:
+                continue
             if itemID in loves:
                 loves.remove(int(itemID))
             if itemID in dislikes:
@@ -185,6 +190,8 @@ for key, value in tqdm(npc_info.items()):
     # dislikes (check to make sure there's no override)
     for itemID in items[2]:
         if int(itemID) < 0:
+            if int(itemID) < -99:
+                continue
             if itemID in loves:
                 loves.remove(int(itemID))
             if itemID in likes:
@@ -201,6 +208,8 @@ for key, value in tqdm(npc_info.items()):
     # hates (check to make sure there's no override)
     for itemID in items[3]:
         if int(itemID) < 0:
+            if int(itemID) < -99:
+                continue
             if itemID in loves:
                 loves.remove(int(itemID))
             if itemID in likes:
@@ -247,6 +256,21 @@ for key, value in tqdm(npc_info.items()):
         "loves": list(loves),
         "likes": list(likes),
     }
+
+# loop through all loves, likes of every villager and track every negative number that appears
+categoryAppearances = set()
+for key in villagers:
+    loves = villagers[key]["loves"]
+    likes = villagers[key]["likes"]
+    for itemID in loves:
+        if itemID < 0:
+            categoryAppearances.add(itemID)
+    for itemID in likes:
+        if itemID < 0:
+            categoryAppearances.add(itemID)
+
+print("Negative numbers (categories) that appear in loves and likes:")
+print(categoryAppearances)
 
 with open("../../data/villagers.json", "w") as f:
     json.dump(villagers, f, separators=(",", ":"), sort_keys=True)

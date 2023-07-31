@@ -11,6 +11,7 @@ import { PlayersContext } from "@/contexts/players-context";
 import { Separator } from "@/components/ui/separator";
 import { InfoCard } from "@/components/cards/info-card";
 import { VillagerCard } from "@/components/cards/villager-card";
+import { VillagerSheet } from "@/components/sheets/villager-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
 import { IconBabyCarriage } from "@tabler/icons-react";
@@ -227,6 +228,7 @@ export default function Relationships() {
             </div>
           </section>
         </div>
+        <VillagerSheet open={open} setIsOpen={setIsOpen} villager={villager} />
       </main>
     </>
   );
