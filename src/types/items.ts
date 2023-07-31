@@ -35,3 +35,12 @@ export interface TrinketItem {
   used_in?: string[];
   itemID: string;
 }
+
+export interface Villager {
+  name: string;
+  iconURL: string;
+  birthday: string;
+  datable: boolean;
+  loves: number[];
+  likes: number[];
+}

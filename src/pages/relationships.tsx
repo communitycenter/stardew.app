@@ -33,9 +33,57 @@ export default function Relationships() {
   const [open, setIsOpen] = useState(false);
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
-  // TODO: useEffect set data on activePlayer change
+  // TODO: useEffect set data on activePlayer change (maybe not needed)
 
   // TODO: getAchievementProgress
+  const getAchievementProgress = (name: string) => {
+    const five = new Set(["A New Friend", "Cliques", "Networking", "Popular"]);
+    const ten = new Set(["Best Friends", "The Beloved Farmer"]);
+    const house = new Set(["Moving Up", "Living Large"]);
+    let completed = false;
+    let additionalDescription = "";
+
+    if (!activePlayer) {
+      return { completed, additionalDescription };
+    }
+
+    if (five.has(name)) {
+      // use 5 heart count relationships
+      completed = activePlayer.social.fiveHeartCount >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${
+          reqs[name] - activePlayer.social.fiveHeartCount
+        } more`;
+      }
+    } else if (ten.has(name)) {
+      // use 10 heart count relationships
+      completed = activePlayer.social.tenHeartCount >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${
+          reqs[name] - activePlayer.social.tenHeartCount
+        } more`;
+      }
+    } else if (house.has(name)) {
+      // house upgrades
+      completed = activePlayer.social.houseUpgradeLevel >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${activePlayer.social.houseUpgradeLevel}/${reqs[name]}`;
+      }
+    } else {
+      // get married and have two kids
+      if (
+        activePlayer.social.spouse &&
+        activePlayer.social.spouse !== "" &&
+        activePlayer.social.childrenCount >= 2
+      ) {
+        completed = true;
+      }
+      if (!completed) {
+        additionalDescription = ` - ${activePlayer.social.childrenCount}/2 kids`;
+      }
+    }
+    return { completed, additionalDescription };
+  };
 
   return (
     <>
@@ -73,25 +121,37 @@ export default function Relationships() {
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
               <InfoCard
                 title="Five Heart Relationships"
-                description="33"
+                description={
+                  activePlayer?.social.fiveHeartCount.toString() ?? "No Info"
+                }
                 Icon={HeartIcon}
               />
               <InfoCard
                 title="Ten Heart Relationships"
-                description="21"
+                description={
+                  activePlayer?.social.tenHeartCount.toString() ?? "No Info"
+                }
                 Icon={HeartIcon}
               />
               <InfoCard
                 title="Children"
-                description="2"
+                description={
+                  activePlayer?.social.childrenCount.toString() ?? "No Info"
+                }
                 Icon={IconBabyCarriage}
               />
               <InfoCard
                 title="House Upgrade Level"
-                description="3"
+                description={
+                  activePlayer?.social.houseUpgradeLevel.toString() ?? "No Info"
+                }
                 Icon={HomeIcon}
               />
-              <InfoCard title="Spouse" description="Haley" Icon={UsersIcon} />
+              <InfoCard
+                title="Spouse"
+                description={activePlayer?.social.spouse ?? "No Info"}
+                Icon={UsersIcon}
+              />
             </div>
           </section>
           <Separator />
@@ -107,11 +167,14 @@ export default function Relationships() {
               {Object.values(achievements)
                 .filter((a) => a.description.includes("heart"))
                 .map((a) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(a.name);
                   return (
                     <AchievementCard
                       key={a.name}
                       achievement={a}
-                      completed={false}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
                     />
                   );
                 })}
@@ -127,11 +190,14 @@ export default function Relationships() {
                     a.description.includes("married")
                 )
                 .map((a) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(a.name);
                   return (
                     <AchievementCard
                       key={a.name}
                       achievement={a}
-                      completed={false}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
                     />
                   );
                 })}
@@ -148,6 +214,12 @@ export default function Relationships() {
                 <VillagerCard
                   key={v.name}
                   villager={v}
+                  points={
+                    activePlayer?.social.relationships[v.name]?.points ?? 0
+                  }
+                  status={
+                    activePlayer?.social.relationships[v.name]?.status ?? null
+                  }
                   setIsOpen={setIsOpen}
                   setVillager={setVillager}
                 />
