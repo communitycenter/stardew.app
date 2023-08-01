@@ -92,8 +92,6 @@ export const parseMonsters = (player: any): MonstersRet => {
     };
   }
 
-  console.log(stats);
-
   // mimic game code to determine which category the monster belongs to
   // Reference: StardewValley.AdventureGuild.cs::showMonsterKillList()
   monstersKilled["Slimes"] = // slimesKilled

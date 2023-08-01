@@ -135,7 +135,6 @@ export default function Fishing() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(fishes)
                 .filter((f) => {
-                  console.log(fishCaught);
                   if (_filter === "0") {
                     return !fishCaught.has(f.itemID); // incompleted
                   } else if (_filter === "2") {

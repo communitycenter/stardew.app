@@ -11,8 +11,6 @@ export const walnuts = allWalnuts as unknown as { [key: string]: WalnutType };
 export function parseWalnuts(save: any): any {
   //   if (!player.mailReceived.string.includes("Visited_Island")) return;
 
-  console.log(save.goldenWalnutsFound);
-
   const collectedGoldenWalnuts: string[] =
     save.collectedNutTracker.string ?? [];
 
