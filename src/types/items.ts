@@ -36,6 +36,11 @@ export interface TrinketItem {
   itemID: string;
 }
 
+export interface WalnutType {
+  name: string;
+  description: string;
+  iconURL: string;
+}
 export interface Villager {
   name: string;
   iconURL: string;
