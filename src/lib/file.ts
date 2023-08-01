@@ -11,6 +11,7 @@ import {
   findChildren,
   parseSocial,
 } from "@/lib/parsers";
+import { parseWalnuts } from "./parsers/walnuts";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -39,6 +40,8 @@ export function parseSaveFile(xml: string) {
       )
     );
 
+    const parsedWalnuts = parseWalnuts(saveFile.SaveGame);
+
     // Map of uniqueMultiplayerID to array of children names
     const children = findChildren(saveFile.SaveGame);
 
@@ -55,6 +58,7 @@ export function parseSaveFile(xml: string) {
         museum: parsedMuseum,
         social: parseSocial(player, children),
         id: player.UniqueMultiplayerID,
+        walnuts: parsedWalnuts,
       };
       processedPlayers.push(processedPlayer);
     });
