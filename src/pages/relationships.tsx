@@ -1,8 +1,91 @@
 import Head from "next/head";
 
-import { Construction } from "@/components/construction";
+import achievements from "@/data/achievements.json";
+import villagers from "@/data/villagers.json";
+
+import type { Villager } from "@/types/items";
+
+import { useContext, useState } from "react";
+import { PlayersContext } from "@/contexts/players-context";
+
+import { Separator } from "@/components/ui/separator";
+import { InfoCard } from "@/components/cards/info-card";
+import { VillagerCard } from "@/components/cards/villager-card";
+import { VillagerSheet } from "@/components/sheets/villager-sheet";
+import { AchievementCard } from "@/components/cards/achievement-card";
+
+import { IconBabyCarriage } from "@tabler/icons-react";
+import { HeartIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
+
+const reqs: Record<string, number> = {
+  "A New Friend": 1,
+  Cliques: 4,
+  Networking: 10,
+  Popular: 20,
+  "Best Friends": 1,
+  "The Beloved Farmer": 8,
+  "Moving Up": 1,
+  "Living Large": 2,
+};
 
 export default function Relationships() {
+  const { activePlayer } = useContext(PlayersContext);
+
+  const [open, setIsOpen] = useState(false);
+  const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
+
+  // TODO: useEffect set data on activePlayer change (maybe not needed)
+
+  // TODO: getAchievementProgress
+  const getAchievementProgress = (name: string) => {
+    const five = new Set(["A New Friend", "Cliques", "Networking", "Popular"]);
+    const ten = new Set(["Best Friends", "The Beloved Farmer"]);
+    const house = new Set(["Moving Up", "Living Large"]);
+    let completed = false;
+    let additionalDescription = "";
+
+    if (!activePlayer) {
+      return { completed, additionalDescription };
+    }
+
+    if (five.has(name)) {
+      // use 5 heart count relationships
+      completed = activePlayer.social.fiveHeartCount >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${
+          reqs[name] - activePlayer.social.fiveHeartCount
+        } more`;
+      }
+    } else if (ten.has(name)) {
+      // use 10 heart count relationships
+      completed = activePlayer.social.tenHeartCount >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${
+          reqs[name] - activePlayer.social.tenHeartCount
+        } more`;
+      }
+    } else if (house.has(name)) {
+      // house upgrades
+      completed = activePlayer.social.houseUpgradeLevel >= reqs[name];
+      if (!completed) {
+        additionalDescription = ` - ${activePlayer.social.houseUpgradeLevel}/${reqs[name]}`;
+      }
+    } else {
+      // get married and have two kids
+      if (
+        activePlayer.social.spouse &&
+        activePlayer.social.spouse !== "" &&
+        activePlayer.social.childrenCount >= 2
+      ) {
+        completed = true;
+      }
+      if (!completed) {
+        additionalDescription = ` - ${activePlayer.social.childrenCount}/2 kids`;
+      }
+    }
+    return { completed, additionalDescription };
+  };
+
   return (
     <>
       <Head>
@@ -25,9 +108,127 @@ export default function Relationships() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 py-2 px-8 justify-center items-center`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
-        <Construction />
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
+            Social & Family Tracker
+          </h1>
+          {/* Info related to achievements */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Social & Family Information
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+              <InfoCard
+                title="Five Heart Relationships"
+                description={
+                  activePlayer?.social.fiveHeartCount.toString() ?? "No Info"
+                }
+                Icon={HeartIcon}
+              />
+              <InfoCard
+                title="Ten Heart Relationships"
+                description={
+                  activePlayer?.social.tenHeartCount.toString() ?? "No Info"
+                }
+                Icon={HeartIcon}
+              />
+              <InfoCard
+                title="Children"
+                description={
+                  activePlayer?.social.childrenCount.toString() ?? "No Info"
+                }
+                Icon={IconBabyCarriage}
+              />
+              <InfoCard
+                title="House Upgrade Level"
+                description={
+                  activePlayer?.social.houseUpgradeLevel.toString() ?? "No Info"
+                }
+                Icon={HomeIcon}
+              />
+              <InfoCard
+                title="Spouse"
+                description={activePlayer?.social.spouse ?? "No Info"}
+                Icon={UsersIcon}
+              />
+            </div>
+          </section>
+          <Separator />
+          {/* Achievements Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Achievements
+            </h2>
+            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+              Relationships
+            </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {Object.values(achievements)
+                .filter((a) => a.description.includes("heart"))
+                .map((a) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(a.name);
+                  return (
+                    <AchievementCard
+                      key={a.name}
+                      achievement={a}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
+            </div>
+            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+              Home & Family
+            </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {Object.values(achievements)
+                .filter(
+                  (a) =>
+                    a.description.includes("house") ||
+                    a.description.includes("married")
+                )
+                .map((a) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(a.name);
+                  return (
+                    <AchievementCard
+                      key={a.name}
+                      achievement={a}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
+            </div>
+          </section>
+          <Separator />
+          {/* Villagers Section */}
+          <section className="space-y-3">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              All Villagers
+            </h2>
+            <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
+              {Object.values(villagers).map((v) => (
+                <VillagerCard
+                  key={v.name}
+                  villager={v}
+                  points={
+                    activePlayer?.social.relationships[v.name]?.points ?? 0
+                  }
+                  status={
+                    activePlayer?.social.relationships[v.name]?.status ?? null
+                  }
+                  setIsOpen={setIsOpen}
+                  setVillager={setVillager}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+        <VillagerSheet open={open} setIsOpen={setIsOpen} villager={villager} />
       </main>
     </>
   );

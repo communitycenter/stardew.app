@@ -57,7 +57,6 @@ export const ShippingCard = ({ item, count, status }: Props) => {
       />
       <div className="min-w-0 flex-1 pr-3">
         <p className="font-medium truncate">{`${name} (${count}x)`}</p>
-
         <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
           {description}
         </p>

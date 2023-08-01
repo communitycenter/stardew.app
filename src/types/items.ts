@@ -41,3 +41,11 @@ export interface WalnutType {
   description: string;
   iconURL: string;
 }
+export interface Villager {
+  name: string;
+  iconURL: string;
+  birthday: string;
+  datable: boolean;
+  loves: number[];
+  likes: number[];
+}

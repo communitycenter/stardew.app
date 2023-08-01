@@ -3,7 +3,8 @@ import { parseFishing } from "@/lib/parsers/fishing";
 import { parseCooking } from "@/lib/parsers/cooking";
 import { parseCrafting } from "@/lib/parsers/crafting";
 import { parseShipping } from "@/lib/parsers/shipping";
-import { parseMuseum } from "./museum";
+import { parseMuseum } from "@/lib/parsers/museum";
+import { findChildren, parseSocial } from "@/lib/parsers/social";
 
 export {
   parseGeneral,
@@ -12,4 +13,6 @@ export {
   parseCrafting,
   parseShipping,
   parseMuseum,
+  findChildren,
+  parseSocial,
 };
