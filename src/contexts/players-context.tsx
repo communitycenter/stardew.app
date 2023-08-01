@@ -14,6 +14,7 @@ import type { CraftingRet } from "@/lib/parsers/crafting";
 import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { MuseumRet } from "@/lib/parsers/museum";
 import type { SocialRet } from "@/lib/parsers/social";
+import type { MonstersRet } from "@/lib/parsers/monsters";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 
 // TODO: Are we gonna specify the type of this or we just do any?
@@ -25,6 +26,7 @@ interface Player {
   shipping: ShippingRet;
   museum: MuseumRet;
   social: SocialRet;
+  monsters: MonstersRet;
   walnuts: WalnutRet;
   id: string;
 }

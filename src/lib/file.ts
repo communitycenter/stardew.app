@@ -10,6 +10,7 @@ import {
   parseMuseum,
   findChildren,
   parseSocial,
+  parseMonsters,
 } from "@/lib/parsers";
 import { parseWalnuts } from "./parsers/walnuts";
 
@@ -57,6 +58,7 @@ export function parseSaveFile(xml: string) {
         shipping: parseShipping(player),
         museum: parsedMuseum,
         social: parseSocial(player, children),
+        monsters: parseMonsters(player),
         id: player.UniqueMultiplayerID,
         walnuts: parsedWalnuts,
       };
