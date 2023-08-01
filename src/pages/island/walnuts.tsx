@@ -1,19 +1,56 @@
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { Construction } from "@/components/construction";
+import { FilterButton } from "@/components/filter-btn";
 import { PlayersContext } from "@/contexts/players-context";
-import walnuts from "@/data/walnuts.json";
-import { WalnutType } from "@/types/items";
+import { WalnutRet, walnuts } from "@/lib/parsers/walnuts";
+import { WalnutMapType, WalnutType } from "@/types/items";
 import { IdentificationIcon } from "@heroicons/react/24/outline";
 
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { SetStateAction, useContext } from "react";
+import {
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function IslandWalnuts() {
   const { activePlayer } = useContext(PlayersContext);
+  const [walnutsFound, setWalnutsFound] = useState<Set<string>>(new Set());
+
+  const [_filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    if (activePlayer) {
+      // take the walnut IDs in walnutFound and add them to a set
+      const foundArray = Object.entries(activePlayer.walnuts.found).filter(
+        ([id, amount]) => {
+          return walnuts[id as keyof typeof walnuts].num !== amount;
+        }
+      );
+      const foundIds = new Set(
+        foundArray.map((props) => {
+          return props[0];
+        })
+      );
+      setWalnutsFound(foundIds);
+    }
+  }, [activePlayer]);
+
+  const displayedWalnuts = useMemo(() => {
+    return Object.entries(walnuts).filter(([id]) => {
+      if (_filter === "0") {
+        return walnutsFound.has(id);
+      } else if (_filter === "2") {
+        return !walnutsFound.has(id);
+      } else return true; // all
+    });
+  }, [walnutsFound, _filter]);
 
   return (
     <>
@@ -43,8 +80,22 @@ export default function IslandWalnuts() {
             Golden Walnut Tracker{" "}
             {activePlayer ? `(${activePlayer.walnuts.total}/130)` : "(0/130)"}
           </h1>
+          <div className="flex space-x-4">
+            <FilterButton
+              target={"0"}
+              _filter={_filter}
+              title="Unfound"
+              setFilter={setFilter}
+            />
+            <FilterButton
+              target={"2"}
+              _filter={_filter}
+              title="Found"
+              setFilter={setFilter}
+            />
+          </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(walnuts).map(([id, walnut]) => {
+            {displayedWalnuts.map(([id, walnut]) => {
               return (
                 <DialogCard
                   key={id}

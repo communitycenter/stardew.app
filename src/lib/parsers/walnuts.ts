@@ -1,9 +1,12 @@
-import walnuts from "@/data/walnuts.json";
+import allWalnuts from "@/data/walnuts.json";
+import { WalnutType, WalnutMapType } from "@/types/items";
 
 export interface WalnutRet {
   total: number;
   found: { [key: string]: number };
 }
+
+export const walnuts = allWalnuts as unknown as { [key: string]: WalnutType };
 
 export function parseWalnuts(save: any): any {
   //   if (!player.mailReceived.string.includes("Visited_Island")) return;
