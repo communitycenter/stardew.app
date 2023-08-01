@@ -46,7 +46,7 @@ export default function IslandScraps() {
                   key={id}
                   title={note.name}
                   description={note.info}
-                  iconURL="https:stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
+                  iconURL="https://stardewvalleywiki.com/mediawiki/images/c/c4/Journal_Scrap.png"
                   completed={
                     activePlayer ? activePlayer.scraps.found[id] : false
                   }
