@@ -13,6 +13,7 @@ import {
   parseMonsters,
 } from "@/lib/parsers";
 import { parseWalnuts } from "./parsers/walnuts";
+import { parseNotes } from "./parsers/notes";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -61,6 +62,7 @@ export function parseSaveFile(xml: string) {
         monsters: parseMonsters(player),
         id: player.UniqueMultiplayerID,
         walnuts: parsedWalnuts,
+        notes: parseNotes(player),
       };
       processedPlayers.push(processedPlayer);
     });

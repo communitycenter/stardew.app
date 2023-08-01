@@ -1,21 +1,11 @@
-import { BooleanCard } from "@/components/cards/boolean-card";
 import { DialogCard } from "@/components/cards/dialog-card";
-import { Construction } from "@/components/construction";
 import { FilterButton } from "@/components/filter-btn";
 import { PlayersContext } from "@/contexts/players-context";
-import { WalnutRet, walnuts } from "@/lib/parsers/walnuts";
-import { WalnutMapType, WalnutType } from "@/types/items";
-import { IdentificationIcon } from "@heroicons/react/24/outline";
+import { walnuts } from "@/lib/parsers/walnuts";
 
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import {
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-  useMemo,
-} from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
