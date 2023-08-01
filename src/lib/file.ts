@@ -10,6 +10,7 @@ import {
   parseMuseum,
   findChildren,
   parseSocial,
+  parseMonsters,
 } from "@/lib/parsers";
 
 const semverSatisfies = require("semver/functions/satisfies");
@@ -54,6 +55,7 @@ export function parseSaveFile(xml: string) {
         shipping: parseShipping(player),
         museum: parsedMuseum,
         social: parseSocial(player, children),
+        monsters: parseMonsters(player),
         id: player.UniqueMultiplayerID,
       };
       processedPlayers.push(processedPlayer);

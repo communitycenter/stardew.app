@@ -5,6 +5,7 @@ import { parseCrafting } from "@/lib/parsers/crafting";
 import { parseShipping } from "@/lib/parsers/shipping";
 import { parseMuseum } from "@/lib/parsers/museum";
 import { findChildren, parseSocial } from "@/lib/parsers/social";
+import { parseMonsters } from "@/lib/parsers/monsters";
 
 export {
   parseGeneral,
@@ -15,4 +16,5 @@ export {
   parseMuseum,
   findChildren,
   parseSocial,
+  parseMonsters,
 };
