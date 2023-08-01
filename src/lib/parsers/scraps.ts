@@ -8,25 +8,26 @@ export interface ScrapsRet {
 export function parseScraps(player: any) {
   const notesIDs = Object.keys(scraps);
 
-  let notesObject: { [key: string]: boolean } = {};
+  let scrapsObject: { [key: string]: boolean } = {};
 
-  notesIDs.map((id) => (notesObject[id] = false));
+  notesIDs.map((id) => (scrapsObject[id] = false));
 
   if (!player.secretNotesSeen.int)
     return {
       total: 0,
-      found: notesObject,
+      found: scrapsObject,
     };
 
-  const found = player.secretNotesSeen.int
+  player.secretNotesSeen.int
     .filter((scrap: number) => scrap >= 1000)
     .map((note: number) => {
-      notesObject[note] = true;
+      scrapsObject[note] = true;
     });
 
+  console.log(scrapsObject);
   return {
     total: player.secretNotesSeen.int.filter((scrap: number) => scrap >= 1000)
       .length,
-    found: notesObject,
+    found: scrapsObject,
   };
 }
