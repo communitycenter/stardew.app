@@ -38,7 +38,7 @@ export function parseWalnuts(save: any): any {
   );
 
   return {
-    total: countedWalnuts,
+    foundCount: countedWalnuts,
     found: trackedWalnutObject,
   };
 }
