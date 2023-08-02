@@ -12,6 +12,7 @@ interface Props {
   description: string;
   percentage: number;
   footer: string;
+  [rest: string]: any;
 }
 
 export const PerfectionCard = ({
@@ -19,9 +20,10 @@ export const PerfectionCard = ({
   description,
   percentage,
   footer,
+  ...rest
 }: Props) => {
   return (
-    <Card>
+    <Card {...rest}>
       <div className="grid grid-cols-2">
         <div className="flex flex-col">
           <CardHeader className="flex flex-row items-cnter justify-between space-y-0 pb-2">
