@@ -110,7 +110,7 @@ export default function Relationships() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5`}
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -119,7 +119,7 @@ export default function Relationships() {
           {/* Info related to achievements */}
           <Accordion type="single" collapsible defaultValue="item-1">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                 Social & Family Information
               </AccordionTrigger>
               <AccordionContent>
@@ -171,7 +171,7 @@ export default function Relationships() {
             className="space-y-3"
           >
             <AccordionItem value="item-1">
-              <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                 Achievements
               </AccordionTrigger>
               <AccordionContent>
@@ -224,7 +224,7 @@ export default function Relationships() {
           </Accordion>
           {/* Villagers Section */}
           <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Villagers
             </h2>
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
