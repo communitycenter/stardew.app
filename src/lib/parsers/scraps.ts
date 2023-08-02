@@ -24,7 +24,6 @@ export function parseScraps(player: any) {
       scrapsObject[note] = true;
     });
 
-  console.log(scrapsObject);
   return {
     total: player.secretNotesSeen.int.filter((scrap: number) => scrap >= 1000)
       .length,
