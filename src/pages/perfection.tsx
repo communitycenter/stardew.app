@@ -1,16 +1,169 @@
 import Head from "next/head";
 
-import { PerfectionCard } from "@/components/cards/perfection-card";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import fish from "@/data/fish.json";
+import villagers from "@/data/villagers.json";
+import shippingItems from "@/data/shipping.json";
+import cookingRecipes from "@/data/cooking.json";
+import craftingRecipes from "@/data/crafting.json";
+
+import { useCallback, useContext, useMemo } from "react";
+import { PlayersContext } from "@/contexts/players-context";
+
+import { InfoCard } from "@/components/cards/info-card";
 import { PercentageIndicator } from "@/components/percentage";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { PerfectionCard } from "@/components/cards/perfection-card";
+
+const monsterGoals: Record<string, any> = {
+  Slimes: {
+    goal: 1000,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/7/7b/Green_Slime.png",
+  },
+  "Void Spirits": {
+    goal: 150,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/1/11/Shadow_Shaman.png",
+  },
+  Bats: {
+    goal: 200,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/d/d5/Iridium_Bat.png",
+  },
+  Skeletons: {
+    goal: 50,
+    iconURL: "https://stardewvalleywiki.com/mediawiki/images/2/23/Skeleton.png",
+  },
+  "Cave Insects": {
+    goal: 125,
+    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/7d/Bug.png",
+  },
+  Duggies: {
+    goal: 30,
+    iconURL: "https://stardewvalleywiki.com/mediawiki/images/3/3a/Duggy.png",
+  },
+  "Dust Sprites": {
+    goal: 500,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/9/9a/Dust_Sprite.png",
+  },
+  "Rock Crabs": {
+    goal: 60,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/d/d4/Rock_Crab.png",
+  },
+  Mummies: {
+    goal: 100,
+    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/70/Mummy.png",
+  },
+  "Pepper Rex": {
+    goal: 50,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/6/67/Pepper_Rex.png",
+  },
+  Serpents: {
+    goal: 250,
+    iconURL: "https://stardewvalleywiki.com/mediawiki/images/8/89/Serpent.png",
+  },
+  "Magma Sprites": {
+    goal: 150,
+    iconURL:
+      "https://stardewvalleywiki.com/mediawiki/images/f/f2/Magma_Sprite.png",
+  },
+};
 
 export default function Perfection() {
+  const { activePlayer } = useContext(PlayersContext);
+
+  // StardewValley.Utility.cs::percentGameComplete()
+  const getCraftedRecipesPercent = useMemo(() => {
+    // StardewValley.Utility.cs::getCraftedRecipesPercent()
+    if (!activePlayer) return 0;
+
+    const craftedRecipes = activePlayer.crafting.craftedCount;
+
+    // TODO: we don't include the wedding ring so no need to -1
+    //       but, apparently in multiplayer the wedding ring is required
+    //       i can't find the code that does this though
+    return craftedRecipes / Object.keys(craftingRecipes).length;
+  }, [activePlayer]);
+
+  const getCookedRecipesPercent = useMemo(() => {
+    // StardewValley.Utility.cs::getCookedRecipesPercent()
+    if (!activePlayer) return 0;
+
+    const cookedRecipes = activePlayer.cooking.cookedCount;
+
+    return cookedRecipes / Object.keys(cookingRecipes).length;
+  }, [activePlayer]);
+
+  const getFishCaughtPercent = useMemo(() => {
+    // StardewValley.Utility.cs::getFishCaughtPercent()
+    if (!activePlayer) return 0;
+
+    const fishCaught = activePlayer.fishing.uniqueCaught;
+
+    return fishCaught / Object.keys(fish).length;
+  }, [activePlayer]);
+
+  const getMaxedFriendshipPercent = useMemo(() => {
+    // StardewValley.Utility.cs::getMaxedFriendshipPercent()
+    if (!activePlayer) return 0;
+
+    const maxedFriendships = activePlayer.social.maxedCount;
+
+    return maxedFriendships / Object.keys(villagers).length;
+  }, [activePlayer]);
+
+  const getFarmerItemsShippedPercent = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    const farmerShipped = activePlayer.shipping.basicShippedCount;
+
+    return farmerShipped / Object.keys(shippingItems).length;
+  }, [activePlayer]);
+
+  const hasCompletedAllMonsterSlayerQuests = useMemo(() => {
+    if (!activePlayer) return false;
+
+    const monstersKilled = activePlayer.monsters.monstersKilled;
+
+    for (const monster of Object.keys(monstersKilled)) {
+      if (monstersKilled[monster] < monsterGoals[monster].goal) {
+        return false;
+      }
+    }
+    return true;
+  }, [activePlayer]);
+
+  const getPercentComplete = useCallback(() => {
+    if (!activePlayer) return 0;
+
+    let num = 0;
+
+    num += getFarmerItemsShippedPercent * 15; // 15% of the total
+    num += activePlayer.perfection.numObelisks;
+    num += activePlayer.perfection.goldenClock ? 10 : 0;
+    num += hasCompletedAllMonsterSlayerQuests ? 10 : 0;
+    num += getMaxedFriendshipPercent * 11; // 11% of the total
+    num += (Math.min(activePlayer.general.levels.Player, 25) / 25) * 5; // 5% of the total
+    num += activePlayer.general.stardropsCount >= 7 ? 10 : 0;
+    num += getCookedRecipesPercent * 10; // 10% of the total
+    num += getCraftedRecipesPercent * 10; // 10% of the total
+    num += getFishCaughtPercent * 10; // 10% of the total
+    num += (activePlayer.walnuts.foundCount / 130) * 5;
+
+    return num / 100;
+  }, [
+    activePlayer,
+    getFarmerItemsShippedPercent,
+    hasCompletedAllMonsterSlayerQuests,
+    getMaxedFriendshipPercent,
+    getCookedRecipesPercent,
+    getCraftedRecipesPercent,
+    getFishCaughtPercent,
+  ]);
+
   return (
     <>
       <Head>
@@ -39,91 +192,112 @@ export default function Perfection() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection Tracker
           </h1>
-          <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
-            <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
-              <div className="flex flex-col items-center p-4">
-                <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
-                  <CardTitle className="text-2xl font-semibold">
-                    Total Perfection
-                  </CardTitle>
-                </CardHeader>
+          <section className="space-y-4">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Goals
+            </h2>
+            <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
+              <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
+                <div className="flex flex-col items-center p-4">
+                  <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
+                    <CardTitle className="text-2xl font-semibold">
+                      Total Perfection
+                    </CardTitle>
+                  </CardHeader>
 
-                <PercentageIndicator
-                  percentage={59}
-                  className="h-32 w-32 lg:h-48 lg:w-48"
+                  <PercentageIndicator
+                    percentage={59}
+                    className="h-32 w-32 lg:h-48 lg:w-48"
+                  />
+                </div>
+              </Card>
+
+              <PerfectionCard
+                title="Produce & Forage Shipped"
+                description="124/145"
+                percentage={85}
+                footer="15% of total perfection"
+              />
+              <PerfectionCard
+                title="Obelisks on Farm"
+                description="2/4"
+                percentage={50}
+                footer="4% of total perfection"
+              />
+              <PerfectionCard
+                title="Golden Clock on Farm"
+                description="Missing"
+                percentage={0}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Monster Slayer Hero"
+                description="12/12"
+                percentage={100}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Great Friends"
+                description="33/34"
+                percentage={97}
+                footer="11% of total perfection"
+              />
+              <PerfectionCard
+                title="Farmer Level"
+                description="25/25"
+                percentage={100}
+                footer="5% of total perfection"
+              />
+              <PerfectionCard
+                title="Stardrops"
+                description="5/7"
+                percentage={71}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Cooking Recipes Made"
+                description="6/80"
+                percentage={7}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Crafting Recipes Made"
+                description="52/129"
+                percentage={40}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Fish Caught"
+                description="60/67"
+                percentage={89}
+                footer="10% of total perfection"
+              />
+              <PerfectionCard
+                title="Golden Walnuts"
+                description="128/130"
+                percentage={98}
+                footer="5% of total perfection"
+              />
+            </div>
+          </section>
+          <section className="space-y-4">
+            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+              Monster Slayer Goals
+            </h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {Object.keys(monsterGoals).map((monster) => (
+                <InfoCard
+                  key={monster}
+                  title={monster}
+                  sourceURL={monsterGoals[monster].iconURL}
+                  description={`${
+                    activePlayer?.monsters.monstersKilled[monster] ?? 0
+                  }/${monsterGoals[monster].goal}`}
                 />
-              </div>
-            </Card>
-
-            <PerfectionCard
-              title="Produce & Forage Shipped"
-              description="124/145"
-              percentage={85}
-              footer="15% of total perfection"
-            />
-            <PerfectionCard
-              title="Obelisks on Farm"
-              description="2/4"
-              percentage={50}
-              footer="4% of total perfection"
-            />
-            <PerfectionCard
-              title="Golden Clock on Farm"
-              description="Missing"
-              percentage={0}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Monster Slayer Hero"
-              description="12/12"
-              percentage={100}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Great Friends"
-              description="33/34"
-              percentage={97}
-              footer="11% of total perfection"
-            />
-            <PerfectionCard
-              title="Farmer Level"
-              description="25/25"
-              percentage={100}
-              footer="5% of total perfection"
-            />
-            <PerfectionCard
-              title="Stardrops"
-              description="5/7"
-              percentage={71}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Cooking Recipes Made"
-              description="6/80"
-              percentage={7}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Crafting Recipes Made"
-              description="52/129"
-              percentage={40}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Fish Caught"
-              description="60/67"
-              percentage={89}
-              footer="10% of total perfection"
-            />
-            <PerfectionCard
-              title="Golden Walnuts"
-              description="128/130"
-              percentage={98}
-              footer="5% of total perfection"
-            />
-          </div>
+              ))}
+            </div>
+          </section>
         </div>
-        {/* <PercentageIndicator percentage={20} /> */}
       </main>
     </>
   );
