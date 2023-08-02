@@ -68,7 +68,9 @@ export default function IslandWalnuts() {
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Golden Walnut Tracker{" "}
-            {activePlayer ? `(${activePlayer.walnuts.total}/130)` : "(0/130)"}
+            {activePlayer
+              ? `(${activePlayer.walnuts.foundCount}/130)`
+              : "(0/130)"}
           </h1>
           <div className="flex space-x-4">
             <FilterButton

@@ -2,7 +2,7 @@ import allWalnuts from "@/data/walnuts.json";
 import { WalnutType, WalnutMapType } from "@/types/items";
 
 export interface WalnutRet {
-  total: number;
+  foundCount: number;
   found: { [key: string]: number };
 }
 
