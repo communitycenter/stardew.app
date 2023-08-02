@@ -50,6 +50,7 @@ interface Relationship {
 export interface SocialRet {
   fiveHeartCount: number;
   tenHeartCount: number;
+  maxedCount: number;
   childrenCount: number;
   houseUpgradeLevel: number;
   spouse: string | null;
@@ -74,6 +75,7 @@ export function parseSocial(
   */
   let fiveHeartCount = 0;
   let tenHeartCount = 0;
+  let maxedCount = 0;
   let childrenCount = 0;
   let relationships: { [key: string]: Relationship } = {};
 
@@ -88,6 +90,7 @@ export function parseSocial(
     return {
       fiveHeartCount,
       tenHeartCount,
+      maxedCount,
       childrenCount,
       houseUpgradeLevel,
       spouse,
@@ -114,6 +117,11 @@ export function parseSocial(
       } else {
         relationships[name] = { points: friendshipPoints };
       }
+
+      // check if hearts are maxed, for non-dateable NPCs its 250 * 10
+      // for dateable NPCs its 250 * 8 (doesn't matter if they are dating or not)
+      const isDateable = villagers[name as keyof typeof villagers].datable;
+      if (friendshipPoints >= (isDateable ? 250 * 8 : 250 * 10)) maxedCount++;
     }
   } else {
     // only one relationship
@@ -138,6 +146,7 @@ export function parseSocial(
   return {
     fiveHeartCount,
     tenHeartCount,
+    maxedCount,
     childrenCount,
     houseUpgradeLevel,
     spouse,
