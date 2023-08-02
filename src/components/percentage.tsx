@@ -1,10 +1,11 @@
 interface Props {
   percentage: number;
+  className: string;
 }
 
-export const PercentageIndicator = ({ percentage }: Props) => {
+export const PercentageIndicator = ({ percentage, className }: Props) => {
   return (
-    <svg viewBox="0 0 36 36" className="h-14 w-14">
+    <svg viewBox="0 0 36 36" className={className}>
       <path
         className="stroke-neutral-200 dark:stroke-neutral-800 fill-none block"
         strokeLinecap="round"

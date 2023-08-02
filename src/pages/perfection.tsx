@@ -35,45 +35,23 @@ export default function Perfection() {
       <main
         className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4 px-20">
+        <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection Tracker
           </h1>
           <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
-            <Card className="col-span-1 row-span-full w-full">
+            <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
               <div className="flex flex-col items-center p-4">
-                <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-4">
+                <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
                   <CardTitle className="text-2xl font-semibold">
                     Total Perfection
                   </CardTitle>
                 </CardHeader>
 
-                <svg viewBox="0 0 36 36" className="h-48 w-48 mb-10">
-                  <path
-                    className="stroke-neutral-200 dark:stroke-neutral-800 fill-none block"
-                    strokeLinecap="round"
-                    strokeWidth="3"
-                    strokeDasharray="100, 100"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    className="stroke-emerald-500 fill-none animate-progress"
-                    strokeLinecap="round"
-                    strokeWidth="3"
-                    strokeDasharray={`${59}, 100`}
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <text
-                    textAnchor="middle"
-                    x="19"
-                    y="20.35"
-                    className="font-semibold fill-neutral-600 dark:fill-white/80 text-[0.5em]"
-                  >{`${59}%`}</text>
-                </svg>
-
-                <p className="text-sm font-medium text-neutral-500 dark:text-neutral-500">
-                  59% of total perfection
-                </p>
+                <PercentageIndicator
+                  percentage={59}
+                  className="h-32 w-32 lg:h-48 lg:w-48"
+                />
               </div>
             </Card>
 
