@@ -35,24 +35,10 @@ function getMonstersKilled(specificMonstersKilled: any): Map<string, number> {
   }
 }
 
-type category =
-  | "Slimes"
-  | "Void Spirits"
-  | "Bats"
-  | "Skeletons"
-  | "Cave Insects"
-  | "Duggies"
-  | "Dust Sprites"
-  | "Rock Crabs"
-  | "Mummies"
-  | "Pepper Rex"
-  | "Serpents"
-  | "Magma Sprites";
-
 export interface MonstersRet {
   deepestMineLevel: number;
   deepestSkullCavernLevel: number;
-  monstersKilled: Record<category, number>;
+  monstersKilled: Record<string, number>;
 }
 
 export const parseMonsters = (player: any): MonstersRet => {
@@ -67,7 +53,7 @@ export const parseMonsters = (player: any): MonstersRet => {
   let deepestSkullCavernLevel = Math.max(129, deepestMineLevel) - 120;
   deepestMineLevel = Math.min(120, deepestMineLevel);
 
-  let monstersKilled: Record<category, number> = {
+  let monstersKilled: Record<string, number> = {
     Slimes: 0,
     "Void Spirits": 0,
     Bats: 0,
