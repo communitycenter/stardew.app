@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { Construction } from "@/components/construction";
+import { PerfectionCard } from "@/components/cards/perfection-card";
 
 export default function Perfection() {
   return (
@@ -25,9 +25,90 @@ export default function Perfection() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8 justify-center items-center`}
+        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-8`}
       >
-        <Construction />
+        <div className="mx-auto w-full space-y-4 mt-4">
+          <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
+            Perfection Tracker
+          </h1>
+          <div className="grid grid-cols-1">
+            <PerfectionCard
+              title="Total Perfection"
+              description="59%"
+              percentage={59}
+              footer="59% of total perfection"
+            />
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <PerfectionCard
+              title="Produce & Forage Shipped"
+              description="124/145"
+              percentage={85}
+              footer="15% of total perfection"
+            />
+            <PerfectionCard
+              title="Obelisks on Farm"
+              description="2/4"
+              percentage={50}
+              footer="4% of total perfection"
+            />
+            <PerfectionCard
+              title="Golden Clock on Farm"
+              description="Missing"
+              percentage={0}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Monster Slayer Hero"
+              description="12/12"
+              percentage={100}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Great Friends"
+              description="33/34"
+              percentage={97}
+              footer="11% of total perfection"
+            />
+            <PerfectionCard
+              title="Farmer Level"
+              description="25/25"
+              percentage={100}
+              footer="5% of total perfection"
+            />
+            <PerfectionCard
+              title="Stardrops"
+              description="5/7"
+              percentage={71}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Cooking Recipes Made"
+              description="6/80"
+              percentage={7}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Crafting Recipes Made"
+              description="52/129"
+              percentage={40}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Fish Caught"
+              description="60/67"
+              percentage={89}
+              footer="10% of total perfection"
+            />
+            <PerfectionCard
+              title="Golden Walnuts"
+              description="128/130"
+              percentage={98}
+              footer="5% of total perfection"
+            />
+          </div>
+        </div>
+        {/* <PercentageIndicator percentage={20} /> */}
       </main>
     </>
   );
