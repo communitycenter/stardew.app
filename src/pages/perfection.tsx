@@ -123,17 +123,18 @@ export default function Perfection() {
     return farmerShipped / Object.keys(shippingItems).length;
   }, [activePlayer]);
 
-  const hasCompletedAllMonsterSlayerQuests = useMemo(() => {
-    if (!activePlayer) return false;
+  const slayerQuestsCompleted = useMemo(() => {
+    if (!activePlayer) return 0;
 
+    let count = 0;
     const monstersKilled = activePlayer.monsters.monstersKilled;
 
     for (const monster of Object.keys(monstersKilled)) {
-      if (monstersKilled[monster] < monsterGoals[monster].goal) {
-        return false;
+      if (monstersKilled[monster] >= monsterGoals[monster].goal) {
+        count++;
       }
     }
-    return true;
+    return count;
   }, [activePlayer]);
 
   const getPercentComplete = useCallback(() => {
@@ -144,7 +145,7 @@ export default function Perfection() {
     num += getFarmerItemsShippedPercent * 15; // 15% of the total
     num += activePlayer.perfection.numObelisks;
     num += activePlayer.perfection.goldenClock ? 10 : 0;
-    num += hasCompletedAllMonsterSlayerQuests ? 10 : 0;
+    num += slayerQuestsCompleted >= 12 ? 10 : 0;
     num += getMaxedFriendshipPercent * 11; // 11% of the total
     num += (Math.min(activePlayer.general.levels.Player, 25) / 25) * 5; // 5% of the total
     num += activePlayer.general.stardropsCount >= 7 ? 10 : 0;
@@ -157,7 +158,7 @@ export default function Perfection() {
   }, [
     activePlayer,
     getFarmerItemsShippedPercent,
-    hasCompletedAllMonsterSlayerQuests,
+    slayerQuestsCompleted,
     getMaxedFriendshipPercent,
     getCookedRecipesPercent,
     getCraftedRecipesPercent,
@@ -206,7 +207,7 @@ export default function Perfection() {
                   </CardHeader>
 
                   <PercentageIndicator
-                    percentage={59}
+                    percentage={Math.floor(getPercentComplete() * 100)}
                     className="h-32 w-32 lg:h-48 lg:w-48"
                   />
                 </div>
@@ -214,68 +215,83 @@ export default function Perfection() {
 
               <PerfectionCard
                 title="Produce & Forage Shipped"
-                description="124/145"
-                percentage={85}
+                description={`${
+                  activePlayer?.shipping.basicShippedCount ?? 0
+                }/145`}
+                percentage={Math.floor(getFarmerItemsShippedPercent * 100)}
                 footer="15% of total perfection"
               />
               <PerfectionCard
                 title="Obelisks on Farm"
-                description="2/4"
-                percentage={50}
+                description={`${activePlayer?.perfection.numObelisks ?? 0}/4`}
+                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                percentage={
+                  ((activePlayer?.perfection.numObelisks ?? 0) / 4) * 100
+                }
                 footer="4% of total perfection"
               />
               <PerfectionCard
                 title="Golden Clock on Farm"
-                description="Missing"
-                percentage={0}
+                description={`${
+                  activePlayer?.perfection.goldenClock ? "Completed" : "Missing"
+                }`}
+                percentage={activePlayer?.perfection.goldenClock ? 100 : 0}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Monster Slayer Hero"
-                description="12/12"
-                percentage={100}
+                description={`${slayerQuestsCompleted}/12`}
+                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                percentage={Math.floor(slayerQuestsCompleted / 12) * 100}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Great Friends"
-                description="33/34"
-                percentage={97}
+                description={`${activePlayer?.social.maxedCount ?? 0}/34`}
+                percentage={Math.floor(getMaxedFriendshipPercent * 100)}
                 footer="11% of total perfection"
               />
               <PerfectionCard
                 title="Farmer Level"
-                description="25/25"
-                percentage={100}
+                description={`${activePlayer?.general.levels.Player ?? 0}/25`}
+                percentage={Math.floor(
+                  ((activePlayer?.general.levels.Player ?? 0) / 25) * 100
+                )}
                 footer="5% of total perfection"
               />
               <PerfectionCard
                 title="Stardrops"
-                description="5/7"
-                percentage={71}
+                description={`${activePlayer?.general.stardropsCount ?? 0}/7`}
+                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                percentage={Math.floor(
+                  ((activePlayer?.general.stardropsCount ?? 0) / 7) * 100
+                )}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Cooking Recipes Made"
-                description="6/80"
-                percentage={7}
+                description={`${activePlayer?.cooking.cookedCount ?? 0}/80`}
+                percentage={Math.floor(getCookedRecipesPercent * 100)}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Crafting Recipes Made"
-                description="52/129"
-                percentage={40}
+                description={`${activePlayer?.crafting.craftedCount ?? 0}/129`}
+                percentage={Math.floor(getCraftedRecipesPercent * 100)}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Fish Caught"
-                description="60/67"
-                percentage={89}
+                description={`${activePlayer?.fishing.uniqueCaught ?? 0}/67`}
+                percentage={Math.floor(getFishCaughtPercent * 100)}
                 footer="10% of total perfection"
               />
               <PerfectionCard
                 title="Golden Walnuts"
-                description="128/130"
-                percentage={98}
+                description={`${activePlayer?.walnuts.foundCount ?? 0}/130`}
+                percentage={Math.floor(
+                  ((activePlayer?.walnuts.foundCount ?? 0) / 130) * 100
+                )}
                 footer="5% of total perfection"
               />
             </div>
