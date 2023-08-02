@@ -8,7 +8,12 @@ import type { Villager } from "@/types/items";
 import { useContext, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
-import { Separator } from "@/components/ui/separator";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { InfoCard } from "@/components/cards/info-card";
 import { VillagerCard } from "@/components/cards/villager-card";
 import { VillagerSheet } from "@/components/sheets/villager-sheet";
@@ -34,9 +39,6 @@ export default function Relationships() {
   const [open, setIsOpen] = useState(false);
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
-  // TODO: useEffect set data on activePlayer change (maybe not needed)
-
-  // TODO: getAchievementProgress
   const getAchievementProgress = (name: string) => {
     const five = new Set(["A New Friend", "Cliques", "Networking", "Popular"]);
     const ten = new Set(["Best Friends", "The Beloved Farmer"]);
@@ -89,7 +91,7 @@ export default function Relationships() {
   return (
     <>
       <Head>
-        <title>stardew.app | Social Tracke</title>
+        <title>stardew.app | Social Tracker</title>
         <meta
           name="description"
           content="Track and manage your relationships with villagers in Stardew Valley. Keep tabs on the villagers' heart levels, gifts, and interactions to deepen your connections. Monitor your progress towards reaching maximum heart levels and building strong relationships with the community."
@@ -115,96 +117,111 @@ export default function Relationships() {
             Social & Family Tracker
           </h1>
           {/* Info related to achievements */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Social & Family Information
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-              <InfoCard
-                title="Five Heart Relationships"
-                description={
-                  activePlayer?.social.fiveHeartCount.toString() ?? "No Info"
-                }
-                Icon={HeartIcon}
-              />
-              <InfoCard
-                title="Ten Heart Relationships"
-                description={
-                  activePlayer?.social.tenHeartCount.toString() ?? "No Info"
-                }
-                Icon={HeartIcon}
-              />
-              <InfoCard
-                title="Children"
-                description={
-                  activePlayer?.social.childrenCount.toString() ?? "No Info"
-                }
-                Icon={IconBabyCarriage}
-              />
-              <InfoCard
-                title="House Upgrade Level"
-                description={
-                  activePlayer?.social.houseUpgradeLevel.toString() ?? "No Info"
-                }
-                Icon={HomeIcon}
-              />
-              <InfoCard
-                title="Spouse"
-                description={activePlayer?.social.spouse ?? "No Info"}
-                Icon={UsersIcon}
-              />
-            </div>
-          </section>
-          <Separator />
+          <Accordion type="single" collapsible defaultValue="item-1">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Social & Family Information
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+                  <InfoCard
+                    title="Five Heart Relationships"
+                    description={
+                      activePlayer?.social.fiveHeartCount.toString() ??
+                      "No Info"
+                    }
+                    Icon={HeartIcon}
+                  />
+                  <InfoCard
+                    title="Ten Heart Relationships"
+                    description={
+                      activePlayer?.social.tenHeartCount.toString() ?? "No Info"
+                    }
+                    Icon={HeartIcon}
+                  />
+                  <InfoCard
+                    title="Children"
+                    description={
+                      activePlayer?.social.childrenCount.toString() ?? "No Info"
+                    }
+                    Icon={IconBabyCarriage}
+                  />
+                  <InfoCard
+                    title="House Upgrade Level"
+                    description={
+                      activePlayer?.social.houseUpgradeLevel.toString() ??
+                      "No Info"
+                    }
+                    Icon={HomeIcon}
+                  />
+                  <InfoCard
+                    title="Spouse"
+                    description={activePlayer?.social.spouse ?? "No Info"}
+                    Icon={UsersIcon}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Achievements
-            </h2>
-            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
-              Relationships
-            </h3>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("heart"))
-                .map((a) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(a.name);
-                  return (
-                    <AchievementCard
-                      key={a.name}
-                      achievement={a}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-            <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
-              Home & Family
-            </h3>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {Object.values(achievements)
-                .filter(
-                  (a) =>
-                    a.description.includes("house") ||
-                    a.description.includes("married")
-                )
-                .map((a) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(a.name);
-                  return (
-                    <AchievementCard
-                      key={a.name}
-                      achievement={a}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
-          <Separator />
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-1"
+            className="space-y-3"
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                Achievements
+              </AccordionTrigger>
+              <AccordionContent>
+                <section className="space-y-3">
+                  <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+                    Relationships
+                  </h3>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("heart"))
+                      .map((a) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(a.name);
+                        return (
+                          <AchievementCard
+                            key={a.name}
+                            achievement={a}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                  <h3 className="ml-1 text-base font-semibold text-gray-900 dark:text-white">
+                    Home & Family
+                  </h3>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {Object.values(achievements)
+                      .filter(
+                        (a) =>
+                          a.description.includes("house") ||
+                          a.description.includes("married")
+                      )
+                      .map((a) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(a.name);
+                        return (
+                          <AchievementCard
+                            key={a.name}
+                            achievement={a}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </section>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
           {/* Villagers Section */}
           <section className="space-y-3">
             <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
