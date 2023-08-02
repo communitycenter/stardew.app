@@ -18,8 +18,8 @@ import type { MonstersRet } from "@/lib/parsers/monsters";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { NotesRet } from "@/lib/parsers/notes";
 import type { ScrapsRet } from "@/lib/parsers/scraps";
+import type { PerfectionRet } from "@/lib/parsers/perfection";
 
-// TODO: Are we gonna specify the type of this or we just do any?
 interface Player {
   general: GeneralRet;
   fishing: FishRet;
@@ -32,6 +32,7 @@ interface Player {
   walnuts: WalnutRet;
   notes: NotesRet;
   scraps: ScrapsRet;
+  perfection: PerfectionRet;
   id: string;
 }
 

@@ -6,6 +6,7 @@ import { parseShipping } from "@/lib/parsers/shipping";
 import { parseMuseum } from "@/lib/parsers/museum";
 import { findChildren, parseSocial } from "@/lib/parsers/social";
 import { parseMonsters } from "@/lib/parsers/monsters";
+import { parsePerfection } from "@/lib/parsers/perfection";
 
 export {
   parseGeneral,
@@ -17,4 +18,5 @@ export {
   findChildren,
   parseSocial,
   parseMonsters,
+  parsePerfection,
 };

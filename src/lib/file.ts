@@ -11,6 +11,7 @@ import {
   findChildren,
   parseSocial,
   parseMonsters,
+  parsePerfection,
 } from "@/lib/parsers";
 import { parseWalnuts } from "./parsers/walnuts";
 import { parseNotes } from "./parsers/notes";
@@ -45,6 +46,9 @@ export function parseSaveFile(xml: string) {
 
     const parsedWalnuts = parseWalnuts(saveFile.SaveGame);
 
+    // obelisks and golden clock
+    const parsedPerfection = parsePerfection(saveFile.SaveGame);
+
     // Map of uniqueMultiplayerID to array of children names
     const children = findChildren(saveFile.SaveGame);
 
@@ -65,6 +69,7 @@ export function parseSaveFile(xml: string) {
         walnuts: parsedWalnuts,
         notes: parseNotes(player),
         scraps: parseScraps(player),
+        perfection: parsedPerfection,
       };
       processedPlayers.push(processedPlayer);
     });
