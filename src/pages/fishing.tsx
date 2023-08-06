@@ -91,7 +91,7 @@ export default function Fishing() {
           </h1>
           {/* Achievements Section */}
           <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               Achievements
             </h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -115,7 +115,7 @@ export default function Fishing() {
           {/* All Fish Section */}
           <Separator />
           <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Fish
             </h2>
             <div className="flex space-x-4">

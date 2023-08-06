@@ -8,6 +8,12 @@ import type { Recipe } from "@/types/recipe";
 import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeCard } from "@/components/cards/recipe-card";
@@ -83,32 +89,37 @@ export default function Cooking() {
             Cooking Tracker
           </h1>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Achievements
-            </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("Cook"))
-                .map((achievement) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(achievement.name);
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                  Achievements
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("Cook"))
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
 
-                  return (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* All Recipes Section */}
-          <Separator />
           <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Recipes
             </h2>
             <div className="flex space-x-4">

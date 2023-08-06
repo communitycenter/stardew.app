@@ -203,7 +203,7 @@ export default function Perfection() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Perfection Goals
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -333,7 +333,7 @@ export default function Perfection() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Monster Slayer Goals
                 </AccordionTrigger>
                 <AccordionContent asChild>

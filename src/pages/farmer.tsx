@@ -113,7 +113,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Farmer Information
                 </AccordionTrigger>
                 <AccordionContent>
@@ -190,7 +190,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Money Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -229,7 +229,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Skill Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -319,7 +319,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Quests Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -358,7 +358,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
                   Stardrops
                 </AccordionTrigger>
                 <AccordionContent asChild>
