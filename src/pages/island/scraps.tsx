@@ -4,12 +4,19 @@ import Head from "next/head";
 import scraps from "@/data/journal_scraps.json";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { PlayersContext } from "@/contexts/players-context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function IslandScraps() {
   const { activePlayer } = useContext(PlayersContext);
+  const [scrapsFound, setScrapsFound] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    if (activePlayer) {
+      setScrapsFound(new Set(activePlayer.scraps.found));
+    }
+  }, [activePlayer]);
 
   return (
     <>
@@ -37,7 +44,7 @@ export default function IslandScraps() {
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Journal Scraps Tracker{" "}
-            {activePlayer ? `(${activePlayer.scraps.total}/11)` : "(0/11)"}
+            {activePlayer ? `(${scrapsFound.size}/11)` : "(0/11)"}
           </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {Object.entries(scraps).map(([id, note]) => {
@@ -48,7 +55,7 @@ export default function IslandScraps() {
                   description={note.info}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/c/c4/Journal_Scrap.png"
                   completed={
-                    activePlayer ? activePlayer.scraps.found[id] : false
+                    activePlayer ? scrapsFound.has(parseInt(id)) : false
                   }
                 />
               );

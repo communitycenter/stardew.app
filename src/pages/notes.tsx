@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { PlayersContext } from "@/contexts/players-context";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import notes from "@/data/secret_notes.json";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { Inter } from "next/font/google";
@@ -10,6 +10,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function SecretNotes() {
   const { activePlayer } = useContext(PlayersContext);
+  const [notesSeen, setNotesSeen] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    if (activePlayer) {
+      setNotesSeen(new Set(activePlayer.notes.found));
+    }
+  }, [activePlayer]);
 
   return (
     <>
@@ -37,7 +44,7 @@ export default function SecretNotes() {
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Secret Notes Tracker{" "}
-            {activePlayer ? `(${activePlayer.notes.total}/25)` : "(0/25)"}
+            {activePlayer ? `(${notesSeen.size}/25)` : "(0/25)"}
           </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {Object.entries(notes).map(([id, note]) => {
@@ -47,9 +54,7 @@ export default function SecretNotes() {
                   title={note.name}
                   description={note.location}
                   iconURL="https:stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
-                  completed={
-                    activePlayer ? activePlayer.notes.found[id] : false
-                  }
+                  completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
                 />
               );
             })}

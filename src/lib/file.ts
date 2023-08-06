@@ -77,6 +77,7 @@ export function parseSaveFile(xml: string) {
     console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
+    console.log(e);
     if (e instanceof TypeError) {
       throw new Error(
         "Invalid file uploaded. Please upload a valid Stardew Valley save file."
