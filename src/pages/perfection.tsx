@@ -98,7 +98,9 @@ export default function Perfection() {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
     if (!activePlayer) return 0;
 
-    const cookedRecipes = activePlayer.cooking.cookedCount;
+    const cookedRecipes = Object.values(activePlayer?.cooking.recipes).filter(
+      (r) => r > 1
+    ).length;
 
     return cookedRecipes / Object.keys(cookingRecipes).length;
   }, [activePlayer]);
@@ -107,7 +109,7 @@ export default function Perfection() {
     // StardewValley.Utility.cs::getFishCaughtPercent()
     if (!activePlayer) return 0;
 
-    const fishCaught = activePlayer.fishing.uniqueCaught;
+    const fishCaught = activePlayer.fishing.fishCaught.length;
 
     return fishCaught / Object.keys(fish).length;
   }, [activePlayer]);
@@ -293,7 +295,9 @@ export default function Perfection() {
                     <PerfectionCard
                       title="Cooking Recipes Made"
                       description={`${
-                        activePlayer?.cooking.cookedCount ?? 0
+                        Object.values(
+                          activePlayer?.cooking.recipes ?? {}
+                        ).filter((r) => r > 1).length ?? 0
                       }/80`}
                       percentage={Math.floor(getCookedRecipesPercent * 100)}
                       footer="10% of total perfection"
@@ -309,7 +313,7 @@ export default function Perfection() {
                     <PerfectionCard
                       title="Fish Caught"
                       description={`${
-                        activePlayer?.fishing.uniqueCaught ?? 0
+                        activePlayer?.fishing.fishCaught.length ?? 0
                       }/67`}
                       percentage={Math.floor(getFishCaughtPercent * 100)}
                       footer="10% of total perfection"
