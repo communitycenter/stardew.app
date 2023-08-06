@@ -14,7 +14,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
@@ -92,7 +91,7 @@ export default function Cooking() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -119,9 +118,9 @@ export default function Cooking() {
           </Accordion>
           {/* All Recipes Section */}
           <section className="space-y-3">
-            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Recipes
-            </h2>
+            </h3>
             <div className="flex space-x-4">
               <FilterButton
                 target={"0"}

@@ -1,15 +1,22 @@
 import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
-import { Separator } from "@/components/ui/separator";
-import { FilterButton } from "@/components/filter-btn";
 import museum from "@/data/artifacts.json";
-import { BooleanCard } from "@/components/cards/boolean-card";
-import { FishType, TrinketItem } from "@/types/items";
+
+import { TrinketItem } from "@/types/items";
 import { useContext, useEffect, useState } from "react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { FilterButton } from "@/components/filter-btn";
+import { PlayersContext } from "@/contexts/players-context";
+import { BooleanCard } from "@/components/cards/boolean-card";
 import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
-import { PlayersContext } from "@/contexts/players-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
@@ -91,30 +98,35 @@ export default function Museum() {
             Museum Tracker
           </h1>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-              Achievements
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("museum"))
-                .map((achievement) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(achievement.name);
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  Achievements
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("museum"))
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
 
-                  return (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* Artifacts Section */}
-          <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Artifacts
@@ -154,7 +166,6 @@ export default function Museum() {
             </div>
           </section>
           {/* Minerals Section */}
-          <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Minerals

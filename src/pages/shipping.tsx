@@ -3,15 +3,16 @@ import Head from "next/head";
 import shipping_items from "@/data/shipping.json";
 import achievements from "@/data/achievements.json";
 
-import type { ShippingItem } from "@/types/items";
-
 import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
-import { Separator } from "@/components/ui/separator";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { FilterButton } from "@/components/filter-btn";
-import { RecipeCard } from "@/components/cards/recipe-card";
-import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { ShippingCard } from "@/components/cards/shipping-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
@@ -97,30 +98,35 @@ export default function Shipping() {
             Cooking Tracker
           </h1>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-              Achievements
-            </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("Ship"))
-                .map((achievement) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(achievement.name);
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  Achievements
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("Ship"))
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
 
-                  return (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* All Shipping Items Section */}
-          <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Items

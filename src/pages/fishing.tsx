@@ -8,6 +8,12 @@ import achievements from "@/data/achievements.json";
 import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
 import { FilterButton } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
@@ -90,30 +96,35 @@ export default function Fishing() {
             Fishing Tracker
           </h1>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-              Achievements
-            </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("fish"))
-                .map((a) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(a.name);
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  Achievements
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("fish"))
+                      .map((a) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(a.name);
 
-                  return (
-                    <AchievementCard
-                      key={a.id}
-                      achievement={a}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
+                        return (
+                          <AchievementCard
+                            key={a.id}
+                            achievement={a}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* All Fish Section */}
-          <Separator />
           <section className="space-y-3">
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Fish

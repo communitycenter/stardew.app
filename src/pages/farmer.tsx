@@ -113,7 +113,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
                   Farmer Information
                 </AccordionTrigger>
                 <AccordionContent>
@@ -190,7 +190,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
                   Money Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -229,7 +229,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
                   Skill Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -319,7 +319,7 @@ export default function Farmer() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
                   Quests Achievements
                 </AccordionTrigger>
                 <AccordionContent>
@@ -355,55 +355,47 @@ export default function Farmer() {
             </section>
           </Accordion>
           {/* Stardrops Achievements */}
-          <Accordion type="single" collapsible defaultValue="item-1" asChild>
-            <section className="space-y-3">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-                  Stardrops
-                </AccordionTrigger>
-                <AccordionContent asChild>
-                  <div className="space-y-3">
-                    {/* hardcoding this one bc its only one */}
-                    <AchievementCard
-                      achievement={stardrop_ach}
-                      completed={
-                        activePlayer
-                          ? activePlayer.general.stardropsCount >=
-                            Object.keys(STARDROPS).length
-                          : false
-                      }
-                      additionalDescription={
-                        activePlayer
-                          ? activePlayer.general.stardropsCount >=
-                            Object.keys(STARDROPS).length
-                            ? ""
-                            : ` - ${
-                                Object.keys(STARDROPS).length -
-                                activePlayer.general.stardropsCount
-                              } left`
-                          : ""
-                      }
-                    />
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-                      {Object.entries(STARDROPS).map(([key, value]) => (
-                        <DialogCard
-                          key={key}
-                          description={value.description}
-                          title={value.title}
-                          iconURL="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
-                          completed={
-                            activePlayer
-                              ? activePlayer.general.stardrops[key]
-                              : false
-                          }
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </section>
-          </Accordion>
+          <section className="space-y-3">
+            <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+              Stardrops
+            </h3>
+            <div className="space-y-3">
+              {/* hardcoding this one bc its only one */}
+              <AchievementCard
+                achievement={stardrop_ach}
+                completed={
+                  activePlayer
+                    ? activePlayer.general.stardropsCount >=
+                      Object.keys(STARDROPS).length
+                    : false
+                }
+                additionalDescription={
+                  activePlayer
+                    ? activePlayer.general.stardropsCount >=
+                      Object.keys(STARDROPS).length
+                      ? ""
+                      : ` - ${
+                          Object.keys(STARDROPS).length -
+                          activePlayer.general.stardropsCount
+                        } left`
+                    : ""
+                }
+              />
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {Object.entries(STARDROPS).map(([key, value]) => (
+                  <DialogCard
+                    key={key}
+                    description={value.description}
+                    title={value.title}
+                    iconURL="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
+                    completed={
+                      activePlayer ? activePlayer.general.stardrops[key] : false
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
       </main>
     </>
