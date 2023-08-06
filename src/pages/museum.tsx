@@ -127,44 +127,58 @@ export default function Museum() {
             </section>
           </Accordion>
           {/* Artifacts Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-              All Artifacts
-            </h2>
-            <div className="flex space-x-4">
-              <FilterButton
-                target={"0"}
-                _filter={_artifactFilter}
-                title="Not Donated"
-                setFilter={setArtifactFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_artifactFilter}
-                title="Donated"
-                setFilter={setArtifactFilter}
-              />
-            </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.values(museum.artifacts)
-                .filter((f) => {
-                  if (_artifactFilter === "0") {
-                    return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
-                  } else if (_artifactFilter === "2") {
-                    return museumArtifactCollected.has(parseInt(f.itemID)); // completed
-                  } else return true; // all
-                })
-                .map((f) => (
-                  <BooleanCard
-                    key={`artifact-${f.itemID}`}
-                    item={f}
-                    completed={museumArtifactCollected.has(parseInt(f.itemID))}
-                    setIsOpen={setIsOpen}
-                    setObject={setMuseumArtifact}
-                  />
-                ))}
-            </div>
-          </section>
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  All Artifacts
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="flex space-x-4">
+                      <FilterButton
+                        target={"0"}
+                        _filter={_artifactFilter}
+                        title="Not Donated"
+                        setFilter={setArtifactFilter}
+                      />
+                      <FilterButton
+                        target={"2"}
+                        _filter={_artifactFilter}
+                        title="Donated"
+                        setFilter={setArtifactFilter}
+                      />
+                    </div>
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                      {Object.values(museum.artifacts)
+                        .filter((f) => {
+                          if (_artifactFilter === "0") {
+                            return !museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            ); // incompleted
+                          } else if (_artifactFilter === "2") {
+                            return museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            ); // completed
+                          } else return true; // all
+                        })
+                        .map((f) => (
+                          <BooleanCard
+                            key={`artifact-${f.itemID}`}
+                            item={f}
+                            completed={museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            )}
+                            setIsOpen={setIsOpen}
+                            setObject={setMuseumArtifact}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* Minerals Section */}
           <section className="space-y-3">
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
