@@ -29,6 +29,7 @@ export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [playerRecipes, setPlayerRecipes] = useState({});
+  const [cookedCount, setCookedCount] = useState(0);
 
   const [_filter, setFilter] = useState("all");
 
@@ -40,6 +41,14 @@ export default function Cooking() {
     }
   }, [activePlayer]);
 
+  useEffect(() => {
+    if (activePlayer) {
+      setCookedCount(
+        Object.values(activePlayer.cooking.recipes).filter((r) => r > 1).length
+      );
+    }
+  }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
@@ -48,12 +57,11 @@ export default function Cooking() {
       return { completed, additionalDescription };
     }
 
-    completed =
-      activePlayer.cooking.cookedCount >= reqs[name as keyof typeof reqs];
+    completed = cookedCount >= reqs[name as keyof typeof reqs];
 
     if (!completed) {
       additionalDescription = ` - ${
-        reqs[name as keyof typeof reqs] - activePlayer.cooking.cookedCount
+        reqs[name as keyof typeof reqs] - cookedCount
       } more`;
     }
     return { completed, additionalDescription };

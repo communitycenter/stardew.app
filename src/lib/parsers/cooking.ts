@@ -2,8 +2,6 @@ import objects from "@/data/objects.json";
 import cookingRecipes from "@/data/cooking.json";
 
 export interface CookingRet {
-  knownCount: number;
-  cookedCount: number;
   recipes: { [key: string]: 0 | 1 | 2 };
 }
 
@@ -27,8 +25,6 @@ export function parseCooking(player: any): CookingRet {
       typeof player.cookingRecipes === "undefined"
     ) {
       return {
-        knownCount: 0,
-        cookedCount: 0,
         recipes,
       };
     }
@@ -120,8 +116,6 @@ export function parseCooking(player: any): CookingRet {
     }
 
     return {
-      knownCount: knownRecipes.size,
-      cookedCount: cookedRecipes.size,
       recipes,
     };
   } catch (e) {
