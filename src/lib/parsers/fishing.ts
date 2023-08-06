@@ -2,7 +2,6 @@ import fishes from "@/data/fish.json";
 
 export interface FishRet {
   totalCaught: number;
-  uniqueCaught: number;
   fishCaught: number[];
 }
 
@@ -16,7 +15,6 @@ export function parseFishing(player: any): FishRet {
   */
   try {
     const totalCaught = player.stats.fishCaught;
-    let uniqueCaught = 0;
 
     const fishCaught: number[] = [];
 
@@ -27,7 +25,6 @@ export function parseFishing(player: any): FishRet {
     ) {
       return {
         totalCaught,
-        uniqueCaught,
         fishCaught,
       };
     }
@@ -41,7 +38,6 @@ export function parseFishing(player: any): FishRet {
         // some things you can catch aren't fish or don't count
         if (!fishes.hasOwnProperty(itemID)) continue;
 
-        uniqueCaught++;
         fishCaught.push(parseInt(itemID));
       }
     } else {
@@ -51,14 +47,12 @@ export function parseFishing(player: any): FishRet {
 
       // some things you can catch aren't fish or don't count
       if (fishes.hasOwnProperty(itemID)) {
-        uniqueCaught++;
         fishCaught.push(parseInt(itemID));
       }
     }
 
     return {
       totalCaught,
-      uniqueCaught,
       fishCaught,
     };
   } catch (e) {
