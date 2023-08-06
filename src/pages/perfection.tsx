@@ -9,6 +9,12 @@ import craftingRecipes from "@/data/crafting.json";
 import { useCallback, useContext, useMemo } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { InfoCard } from "@/components/cards/info-card";
 import { PercentageIndicator } from "@/components/percentage";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -193,126 +199,160 @@ export default function Perfection() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection Tracker
           </h1>
-          <section className="space-y-4">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Goals
-            </h2>
-            <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
-              <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
-                <div className="flex flex-col items-center p-4">
-                  <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
-                    <CardTitle className="text-2xl font-semibold">
-                      Total Perfection
-                    </CardTitle>
-                  </CardHeader>
+          {/* Perfection Goals */}
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                  Perfection Goals
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
+                    <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
+                      <div className="flex flex-col items-center p-4">
+                        <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
+                          <CardTitle className="text-2xl font-semibold">
+                            Total Perfection
+                          </CardTitle>
+                        </CardHeader>
 
-                  <PercentageIndicator
-                    percentage={Math.floor(getPercentComplete() * 100)}
-                    className="h-32 w-32 lg:h-48 lg:w-48"
-                  />
-                </div>
-              </Card>
+                        <PercentageIndicator
+                          percentage={Math.floor(getPercentComplete() * 100)}
+                          className="h-32 w-32 lg:h-48 lg:w-48"
+                        />
+                      </div>
+                    </Card>
 
-              <PerfectionCard
-                title="Produce & Forage Shipped"
-                description={`${
-                  activePlayer?.shipping.basicShippedCount ?? 0
-                }/145`}
-                percentage={Math.floor(getFarmerItemsShippedPercent * 100)}
-                footer="15% of total perfection"
-              />
-              <PerfectionCard
-                title="Obelisks on Farm"
-                description={`${activePlayer?.perfection.numObelisks ?? 0}/4`}
-                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
-                percentage={
-                  ((activePlayer?.perfection.numObelisks ?? 0) / 4) * 100
-                }
-                footer="4% of total perfection"
-              />
-              <PerfectionCard
-                title="Golden Clock on Farm"
-                description={`${
-                  activePlayer?.perfection.goldenClock ? "Completed" : "Missing"
-                }`}
-                percentage={activePlayer?.perfection.goldenClock ? 100 : 0}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Monster Slayer Hero"
-                description={`${slayerQuestsCompleted}/12`}
-                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
-                percentage={Math.floor(slayerQuestsCompleted / 12) * 100}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Great Friends"
-                description={`${activePlayer?.social.maxedCount ?? 0}/34`}
-                percentage={Math.floor(getMaxedFriendshipPercent * 100)}
-                footer="11% of total perfection"
-              />
-              <PerfectionCard
-                title="Farmer Level"
-                description={`${activePlayer?.general.levels.Player ?? 0}/25`}
-                percentage={Math.floor(
-                  ((activePlayer?.general.levels.Player ?? 0) / 25) * 100
-                )}
-                footer="5% of total perfection"
-              />
-              <PerfectionCard
-                title="Stardrops"
-                description={`${activePlayer?.general.stardropsCount ?? 0}/7`}
-                // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
-                percentage={Math.floor(
-                  ((activePlayer?.general.stardropsCount ?? 0) / 7) * 100
-                )}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Cooking Recipes Made"
-                description={`${activePlayer?.cooking.cookedCount ?? 0}/80`}
-                percentage={Math.floor(getCookedRecipesPercent * 100)}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Crafting Recipes Made"
-                description={`${activePlayer?.crafting.craftedCount ?? 0}/129`}
-                percentage={Math.floor(getCraftedRecipesPercent * 100)}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Fish Caught"
-                description={`${activePlayer?.fishing.uniqueCaught ?? 0}/67`}
-                percentage={Math.floor(getFishCaughtPercent * 100)}
-                footer="10% of total perfection"
-              />
-              <PerfectionCard
-                title="Golden Walnuts"
-                description={`${activePlayer?.walnuts.foundCount ?? 0}/130`}
-                percentage={Math.floor(
-                  ((activePlayer?.walnuts.foundCount ?? 0) / 130) * 100
-                )}
-                footer="5% of total perfection"
-              />
-            </div>
-          </section>
-          <section className="space-y-4">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Monster Slayer Goals
-            </h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.keys(monsterGoals).map((monster) => (
-                <InfoCard
-                  key={monster}
-                  title={monster}
-                  sourceURL={monsterGoals[monster].iconURL}
-                  description={`${
-                    activePlayer?.monsters.monstersKilled[monster] ?? 0
-                  }/${monsterGoals[monster].goal}`}
-                />
-              ))}
-            </div>
-          </section>
+                    <PerfectionCard
+                      title="Produce & Forage Shipped"
+                      description={`${
+                        activePlayer?.shipping.basicShippedCount ?? 0
+                      }/145`}
+                      percentage={Math.floor(
+                        getFarmerItemsShippedPercent * 100
+                      )}
+                      footer="15% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Obelisks on Farm"
+                      description={`${
+                        activePlayer?.perfection.numObelisks ?? 0
+                      }/4`}
+                      // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                      percentage={
+                        ((activePlayer?.perfection.numObelisks ?? 0) / 4) * 100
+                      }
+                      footer="4% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Golden Clock on Farm"
+                      description={`${
+                        activePlayer?.perfection.goldenClock
+                          ? "Completed"
+                          : "Missing"
+                      }`}
+                      percentage={
+                        activePlayer?.perfection.goldenClock ? 100 : 0
+                      }
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Monster Slayer Hero"
+                      description={`${slayerQuestsCompleted}/12`}
+                      // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                      percentage={Math.floor(slayerQuestsCompleted / 12) * 100}
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Great Friends"
+                      description={`${activePlayer?.social.maxedCount ?? 0}/34`}
+                      percentage={Math.floor(getMaxedFriendshipPercent * 100)}
+                      footer="11% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Farmer Level"
+                      description={`${
+                        activePlayer?.general.levels.Player ?? 0
+                      }/25`}
+                      percentage={Math.floor(
+                        ((activePlayer?.general.levels.Player ?? 0) / 25) * 100
+                      )}
+                      footer="5% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Stardrops"
+                      description={`${
+                        activePlayer?.general.stardropsCount ?? 0
+                      }/7`}
+                      // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
+                      percentage={Math.floor(
+                        ((activePlayer?.general.stardropsCount ?? 0) / 7) * 100
+                      )}
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Cooking Recipes Made"
+                      description={`${
+                        activePlayer?.cooking.cookedCount ?? 0
+                      }/80`}
+                      percentage={Math.floor(getCookedRecipesPercent * 100)}
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Crafting Recipes Made"
+                      description={`${
+                        activePlayer?.crafting.craftedCount ?? 0
+                      }/129`}
+                      percentage={Math.floor(getCraftedRecipesPercent * 100)}
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Fish Caught"
+                      description={`${
+                        activePlayer?.fishing.uniqueCaught ?? 0
+                      }/67`}
+                      percentage={Math.floor(getFishCaughtPercent * 100)}
+                      footer="10% of total perfection"
+                    />
+                    <PerfectionCard
+                      title="Golden Walnuts"
+                      description={`${
+                        activePlayer?.walnuts.foundCount ?? 0
+                      }/130`}
+                      percentage={Math.floor(
+                        ((activePlayer?.walnuts.foundCount ?? 0) / 130) * 100
+                      )}
+                      footer="5% of total perfection"
+                    />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
+          {/* Monster Slayer Goals */}
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+                  Monster Slayer Goals
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    {Object.keys(monsterGoals).map((monster) => (
+                      <InfoCard
+                        key={monster}
+                        title={monster}
+                        sourceURL={monsterGoals[monster].iconURL}
+                        description={`${
+                          activePlayer?.monsters.monstersKilled[monster] ?? 0
+                        }/${monsterGoals[monster].goal}`}
+                      />
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
         </div>
       </main>
     </>

@@ -1,15 +1,22 @@
 import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
-import { Separator } from "@/components/ui/separator";
-import { FilterButton } from "@/components/filter-btn";
 import museum from "@/data/artifacts.json";
-import { BooleanCard } from "@/components/cards/boolean-card";
-import { FishType, TrinketItem } from "@/types/items";
+
+import { TrinketItem } from "@/types/items";
 import { useContext, useEffect, useState } from "react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { FilterButton } from "@/components/filter-btn";
+import { PlayersContext } from "@/contexts/players-context";
+import { BooleanCard } from "@/components/cards/boolean-card";
 import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
-import { PlayersContext } from "@/contexts/players-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
@@ -91,72 +98,90 @@ export default function Museum() {
             Museum Tracker
           </h1>
           {/* Achievements Section */}
-          <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              Achievements
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {Object.values(achievements)
-                .filter((a) => a.description.includes("museum"))
-                .map((achievement) => {
-                  const { completed, additionalDescription } =
-                    getAchievementProgress(achievement.name);
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  Achievements
+                </AccordionTrigger>
+                <AccordionContent asChild>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {Object.values(achievements)
+                      .filter((a) => a.description.includes("museum"))
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
 
-                  return (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      completed={completed}
-                      additionalDescription={additionalDescription}
-                    />
-                  );
-                })}
-            </div>
-          </section>
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* Artifacts Section */}
-          <Separator />
-          <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
-              All Artifacts
-            </h2>
-            <div className="flex space-x-4">
-              <FilterButton
-                target={"0"}
-                _filter={_artifactFilter}
-                title="Not Donated"
-                setFilter={setArtifactFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_artifactFilter}
-                title="Donated"
-                setFilter={setArtifactFilter}
-              />
-            </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.values(museum.artifacts)
-                .filter((f) => {
-                  if (_artifactFilter === "0") {
-                    return !museumArtifactCollected.has(parseInt(f.itemID)); // incompleted
-                  } else if (_artifactFilter === "2") {
-                    return museumArtifactCollected.has(parseInt(f.itemID)); // completed
-                  } else return true; // all
-                })
-                .map((f) => (
-                  <BooleanCard
-                    key={`artifact-${f.itemID}`}
-                    item={f}
-                    completed={museumArtifactCollected.has(parseInt(f.itemID))}
-                    setIsOpen={setIsOpen}
-                    setObject={setMuseumArtifact}
-                  />
-                ))}
-            </div>
-          </section>
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                  All Artifacts
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="flex space-x-4">
+                      <FilterButton
+                        target={"0"}
+                        _filter={_artifactFilter}
+                        title="Not Donated"
+                        setFilter={setArtifactFilter}
+                      />
+                      <FilterButton
+                        target={"2"}
+                        _filter={_artifactFilter}
+                        title="Donated"
+                        setFilter={setArtifactFilter}
+                      />
+                    </div>
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                      {Object.values(museum.artifacts)
+                        .filter((f) => {
+                          if (_artifactFilter === "0") {
+                            return !museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            ); // incompleted
+                          } else if (_artifactFilter === "2") {
+                            return museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            ); // completed
+                          } else return true; // all
+                        })
+                        .map((f) => (
+                          <BooleanCard
+                            key={`artifact-${f.itemID}`}
+                            item={f}
+                            completed={museumArtifactCollected.has(
+                              parseInt(f.itemID)
+                            )}
+                            setIsOpen={setIsOpen}
+                            setObject={setMuseumArtifact}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
           {/* Minerals Section */}
-          <Separator />
           <section className="space-y-3">
-            <h2 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white md:text-xl">
+            <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Minerals
             </h2>
             <div className="flex space-x-4">
