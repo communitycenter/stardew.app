@@ -22,9 +22,9 @@ export const PercentageIndicator = ({ percentage, className }: Props) => {
       />
       <text
         textAnchor="middle"
-        x="19"
-        y="20.35"
-        className="font-semibold fill-neutral-600 dark:fill-white/80 text-[0.5em]"
+        x="18.5"
+        y="21"
+        className="font-semibold fill-neutral-600 dark:fill-white/80 text-[0.5em] -m-1"
       >{`${percentage}%`}</text>
     </svg>
   );
