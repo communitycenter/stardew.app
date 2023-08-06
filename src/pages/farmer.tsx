@@ -12,7 +12,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
 import { InfoCard } from "@/components/cards/info-card";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
