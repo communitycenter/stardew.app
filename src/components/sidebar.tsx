@@ -32,21 +32,21 @@ import {
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const miscNavigation = [
+export const miscNavigation = [
   { name: "Bundles", href: "/bundles", icon: IconBox },
   { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
   { name: "Secret Notes", href: "/notes", icon: IconNote },
   { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
 ];
 
-const playerNavigation = [
+export const playerNavigation = [
   { name: "Home", href: "/", icon: IconHome2 },
   { name: "Farmer", href: "/farmer", icon: IconId },
   { name: "Perfection", href: "/perfection", icon: IconAward },
   { name: "Relationships", href: "/relationships", icon: IconHeart },
 ];
 
-const collectionsNavigation = [
+export const collectionsNavigation = [
   { name: "Cooking", href: "/cooking", icon: IconEgg },
   { name: "Crafting", href: "/crafting", icon: IconHammer },
   { name: "Fishing", href: "/fishing", icon: IconFishHook },
@@ -54,7 +54,7 @@ const collectionsNavigation = [
   { name: "Museum & Artifacts", href: "/museum", icon: IconBuildingWarehouse },
 ];
 
-const SidebarCategory = ({ children }: { children: string }) => (
+export const SidebarCategory = ({ children }: { children: string }) => (
   <h2 className="mt-4 mb-2 px-4 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
     {children}
   </h2>

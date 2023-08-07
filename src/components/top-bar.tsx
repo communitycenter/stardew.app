@@ -7,6 +7,7 @@ import { parseSaveFile } from "@/lib/file";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
+import { MobileNav } from "@/components/sheets/mobile-nav";
 import { PresetSelector } from "@/components/preset-selector";
 
 import { PlayersContext } from "@/contexts/players-context";
@@ -18,6 +19,7 @@ export function Topbar() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [loading, setLoading] = useState(false);
+  const [open, setIsOpen] = useState(false);
 
   const { toast } = useToast();
   const { setPlayers } = useContext(PlayersContext);
@@ -60,12 +62,12 @@ export function Topbar() {
   };
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7 bg-white dark:bg-neutral-950">
         <div className="flex flex-shrink-0 items-center">
           <Image
-            width={"36"}
-            height={"36"}
+            width={36}
+            height={36}
             className="h-9 w-auto"
             src="/favicon.png"
             alt="stardew.app logo"
@@ -74,7 +76,7 @@ export function Topbar() {
         </div>
         {/* Mobile Menu */}
         <div className="md:hidden flex justify-end">
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => setIsOpen(true)}>
             <HamburgerMenuIcon className="h-4 w-4" />
           </Button>
         </div>
@@ -103,8 +105,9 @@ export function Topbar() {
             Log In With Discord
           </Button>
         </div>
+        <MobileNav open={open} setIsOpen={setIsOpen} inputRef={inputRef} />
       </div>
       <Separator />
-    </div>
+    </>
   );
 }
