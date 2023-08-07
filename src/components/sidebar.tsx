@@ -66,7 +66,7 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4">
-        <div className="px-3 py-2">
+        <nav className="px-3 py-2">
           <SidebarCategory>Player</SidebarCategory>
           <div className="space-y-1">
             {playerNavigation.map((item) => (
@@ -131,7 +131,7 @@ export function Sidebar({ className }: SidebarProps) {
               </Button>
             ))}
           </div>
-        </div>
+        </nav>
         <div className="grid grid-cols-3 pb-4 gap-2 fixed bottom-0 w-72 px-3">
           <TooltipProvider>
             <Tooltip>
