@@ -21,7 +21,16 @@ const semverSatisfies = require("semver/functions/satisfies");
 
 export function parseSaveFile(xml: string) {
   const parser = new XMLParser({ ignoreAttributes: false });
-  const saveFile = parser.parse(xml);
+  let saveFile: any = null;
+  try {
+    saveFile = parser.parse(xml);
+  } catch (e) {
+    if (e instanceof TypeError) {
+      throw new Error(
+        "Invalid file uploaded. Please upload a valid Stardew Valley save file."
+      );
+    } else throw e;
+  }
 
   try {
     const version = saveFile.SaveGame.gameVersion;
@@ -74,10 +83,9 @@ export function parseSaveFile(xml: string) {
       processedPlayers.push(processedPlayer);
     });
 
-    console.log(processedPlayers);
+    // console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
-    console.log(e);
     if (e instanceof TypeError) {
       throw new Error(
         "Invalid file uploaded. Please upload a valid Stardew Valley save file."
