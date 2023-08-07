@@ -1,21 +1,26 @@
-import { ChangeEvent, useContext, useRef } from "react";
+import Image from "next/image";
+
+import { ChangeEvent, useContext, useRef, useState } from "react";
+
+import { parseSaveFile } from "@/lib/file";
 
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
 import { PresetSelector } from "@/components/preset-selector";
-import Image from "next/image";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-
-import { parseSaveFile } from "@/lib/file";
+import { IconLoader2 } from "@tabler/icons-react";
 
 export function Topbar() {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const [loading, setLoading] = useState(false);
+
   const { toast } = useToast();
   const { setPlayers } = useContext(PlayersContext);
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -35,16 +40,20 @@ export function Topbar() {
 
     const reader = new FileReader();
 
+    reader.onloadstart = () => setLoading(true);
+
     reader.onload = async function (event) {
       try {
         const players = parseSaveFile(event.target?.result as string);
         setPlayers(players);
+        setLoading(false);
       } catch (err) {
         toast({
           variant: "destructive",
           title: "Error Parsing File",
           description: err instanceof Error ? err.message : "Unknown error.",
         });
+        setLoading(false);
       }
     };
     reader.readAsText(file);
@@ -75,9 +84,11 @@ export function Topbar() {
           <Button
             variant="secondary"
             onClick={() => inputRef.current?.click()}
-            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
+            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50 w-20"
+            disabled={loading}
           >
-            Upload
+            {!loading && "Upload"}
+            {loading && <IconLoader2 className="animate-spin h-4 w-4" />}
             <input
               type="file"
               ref={inputRef}
@@ -85,7 +96,10 @@ export function Topbar() {
               onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
             />
           </Button>
-          <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white">
+          <Button
+            className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
+            disabled
+          >
             Log In With Discord
           </Button>
         </div>
