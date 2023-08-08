@@ -5,7 +5,7 @@ import villagers from "@/data/villagers.json";
 
 import type { Villager } from "@/types/items";
 
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -39,6 +39,30 @@ export default function Relationships() {
   const [open, setIsOpen] = useState(false);
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
+  const fiveHeartCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    let fiveHeartCount = 0;
+    for (const relationship of Object.values(
+      activePlayer.social.relationships
+    )) {
+      if (relationship.points >= 250 * 5) fiveHeartCount++;
+    }
+    return fiveHeartCount;
+  }, [activePlayer]);
+
+  const tenHeartCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    let tenHeartCount = 0;
+    for (const relationship of Object.values(
+      activePlayer.social.relationships
+    )) {
+      if (relationship.points >= 250 * 10) tenHeartCount++;
+    }
+    return tenHeartCount;
+  }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
     const five = new Set(["A New Friend", "Cliques", "Networking", "Popular"]);
     const ten = new Set(["Best Friends", "The Beloved Farmer"]);
@@ -52,19 +76,15 @@ export default function Relationships() {
 
     if (five.has(name)) {
       // use 5 heart count relationships
-      completed = activePlayer.social.fiveHeartCount >= reqs[name];
+      completed = fiveHeartCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          reqs[name] - activePlayer.social.fiveHeartCount
-        } more`;
+        additionalDescription = ` - ${reqs[name] - fiveHeartCount} more`;
       }
     } else if (ten.has(name)) {
       // use 10 heart count relationships
-      completed = activePlayer.social.tenHeartCount >= reqs[name];
+      completed = tenHeartCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          reqs[name] - activePlayer.social.tenHeartCount
-        } more`;
+        additionalDescription = ` - ${reqs[name] - tenHeartCount} more`;
       }
     } else if (house.has(name)) {
       // house upgrades
@@ -127,18 +147,12 @@ export default function Relationships() {
                   <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
                     <InfoCard
                       title="Five Heart Relationships"
-                      description={
-                        activePlayer?.social.fiveHeartCount.toString() ??
-                        "No Info"
-                      }
+                      description={fiveHeartCount.toString() ?? "No Info"}
                       Icon={HeartIcon}
                     />
                     <InfoCard
                       title="Ten Heart Relationships"
-                      description={
-                        activePlayer?.social.tenHeartCount.toString() ??
-                        "No Info"
-                      }
+                      description={tenHeartCount.toString() ?? "No Info"}
                       Icon={HeartIcon}
                     />
                     <InfoCard

@@ -114,14 +114,29 @@ export default function Perfection() {
     return fishCaught / Object.keys(fish).length;
   }, [activePlayer]);
 
+  const getMaxedFrienshipsCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    let maxedFriendships = 0;
+    for (const key of Object.keys(activePlayer.social.relationships)) {
+      const name = key as keyof typeof villagers;
+      const isDateable = villagers[name].datable;
+      const friendshipPoints = activePlayer.social.relationships[name].points;
+
+      // check if hearts are maxed, for non-dateable NPCs its 250 * 10
+      // for dateable NPCs its 250 * 8 (doesn't matter if they are dating or not)
+      if (friendshipPoints >= (isDateable ? 250 * 8 : 250 * 10))
+        maxedFriendships++;
+    }
+    return maxedFriendships;
+  }, [activePlayer]);
+
   const getMaxedFriendshipPercent = useMemo(() => {
     // StardewValley.Utility.cs::getMaxedFriendshipPercent()
     if (!activePlayer) return 0;
 
-    const maxedFriendships = activePlayer.social.maxedCount;
-
-    return maxedFriendships / Object.keys(villagers).length;
-  }, [activePlayer]);
+    return getMaxedFrienshipsCount / Object.keys(villagers).length;
+  }, [activePlayer, getMaxedFrienshipsCount]);
 
   const getFarmerItemsShippedPercent = useMemo(() => {
     if (!activePlayer) return 0;
@@ -284,7 +299,7 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Great Friends"
-                      description={`${activePlayer?.social.maxedCount ?? 0}/34`}
+                      description={`${getMaxedFrienshipsCount ?? 0}/34`}
                       percentage={Math.floor(getMaxedFriendshipPercent * 100)}
                       footer="11% of total perfection"
                     />

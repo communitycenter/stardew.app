@@ -48,9 +48,6 @@ interface Relationship {
 }
 
 export interface SocialRet {
-  fiveHeartCount: number;
-  tenHeartCount: number;
-  maxedCount: number;
   childrenCount: number;
   houseUpgradeLevel: number;
   spouse: string | null;
@@ -73,9 +70,6 @@ export function parseSocial(
       - Best Friends (10 hearts with any NPC).
       - The Beloved Farmer (10 hearts with 8 NPCs).
   */
-  let fiveHeartCount = 0;
-  let tenHeartCount = 0;
-  let maxedCount = 0;
   let childrenCount = 0;
   let relationships: { [key: string]: Relationship } = {};
 
@@ -88,9 +82,6 @@ export function parseSocial(
   // loop through friendshipData to find relationships
   if (!player.friendshipData) {
     return {
-      fiveHeartCount,
-      tenHeartCount,
-      maxedCount,
       childrenCount,
       houseUpgradeLevel,
       spouse,
@@ -108,8 +99,6 @@ export function parseSocial(
       if (!(name in villagers)) continue;
       // TODO: if we need to check children, we can do it here
       const friendshipPoints = relationship.value.Friendship.Points;
-      if (friendshipPoints >= 1250) fiveHeartCount++;
-      if (friendshipPoints >= 2500) tenHeartCount++;
       const status = relationship.value.Friendship.Status;
 
       if (status === "Married" || status === "Dating") {
@@ -117,11 +106,6 @@ export function parseSocial(
       } else {
         relationships[name] = { points: friendshipPoints };
       }
-
-      // check if hearts are maxed, for non-dateable NPCs its 250 * 10
-      // for dateable NPCs its 250 * 8 (doesn't matter if they are dating or not)
-      const isDateable = villagers[name as keyof typeof villagers].datable;
-      if (friendshipPoints >= (isDateable ? 250 * 8 : 250 * 10)) maxedCount++;
     }
   } else {
     // only one relationship
@@ -131,8 +115,6 @@ export function parseSocial(
     // check if NPC is a valid NPC
     if (name in villagers) {
       const friendshipPoints = relationship.value.Friendship.Points;
-      if (friendshipPoints >= 1250) fiveHeartCount++;
-      if (friendshipPoints >= 2500) tenHeartCount++;
       const status = relationship.value.Friendship.Status;
 
       if (status === "Married" || status === "Dating") {
@@ -144,9 +126,6 @@ export function parseSocial(
   }
 
   return {
-    fiveHeartCount,
-    tenHeartCount,
-    maxedCount,
     childrenCount,
     houseUpgradeLevel,
     spouse,
