@@ -6,65 +6,52 @@ function msToTime(time: number): string {
 }
 /* ---------------------------- stardrops parser ---------------------------- */
 interface StardropsRet {
-  stardropsCount: number;
-  stardrops: Record<string, boolean>;
+  stardrops: string[];
 }
 
-const STARDROPS = {
-  CF_Fair: "Can be purchased at the Stardew Valley Fair for 2,000 star tokens.",
-  CF_Fish:
-    "Received in mail from Willy after completing the Master Angler Achievement.",
-  CF_Mines: "Obtained from the treasure chest on floor 100 in The Mines.",
-  CF_Sewer: "Can be purchased from Krobus for 20,000g in The Sewers.",
-  CF_Spouse:
-    "Obtained from spouse after reaching a friendship level of 12.5 hearts.",
-  CF_Statue:
-    "Obtained from Old Master Cannoli in the Secret Woods after giving him a Sweet Gem Berry.",
-  museumComplete: "Reward for donating all 95 items to the Museum.",
-};
+const STARDROPS = new Set<string>([
+  "CF_Fair",
+  "CF_Fish",
+  "CF_Mines",
+  "CF_Sewer",
+  "CF_Spouse",
+  "CF_Statue",
+  "museumComplete",
+]);
 
 function parseStardrops(player: any): StardropsRet {
   /*
-        Achievements Relevant:
-        - Mystery Of The Stardrops (find every stardrop).
-    */
+    Achievements Relevant:
+      - Mystery Of The Stardrops (find every stardrop).
+  */
   try {
-    let count = 0;
-    let stardrops: Record<string, boolean> = {};
-
-    // initialize stardrops
-    for (const key in STARDROPS) {
-      stardrops[key] = false;
-    }
+    let stardrops: string[] = [];
 
     // look through the player's mail for the stardrops
     if (!player.mailReceived || typeof player.mailReceived !== "object") {
       throw new Error("mailReceived is not an object");
     }
 
-    if (typeof player.mailReceived.string === "object") {
+    if (Array.isArray(player.mailReceived.string)) {
       for (const idx in player.mailReceived.string) {
         let mail = player.mailReceived.string[idx];
-        if (STARDROPS.hasOwnProperty(mail)) {
-          count++;
-          stardrops[mail] = true;
+        if (STARDROPS.has(mail)) {
+          stardrops.push(mail);
         }
       }
 
       // early return if all stardrops are found
-      if (count === Object.keys(STARDROPS).length) {
-        return { stardropsCount: count, stardrops };
+      if (stardrops.length === Object.keys(STARDROPS).length) {
+        return { stardrops };
       }
     } else {
       // only one mail received
-      if (STARDROPS.hasOwnProperty(player.mailReceived.string)) {
-        count++;
-        stardrops[player.mailReceived.string] = true;
+      if (STARDROPS.has(player.mailReceived.string)) {
+        stardrops.push(player.mailReceived.string);
       }
     }
 
     return {
-      stardropsCount: count,
       stardrops,
     };
   } catch (error) {
@@ -73,9 +60,9 @@ function parseStardrops(player: any): StardropsRet {
 }
 
 /* ------------------------------ skills parser ----------------------------- */
+type Skill = "farming" | "fishing" | "foraging" | "mining" | "combat" | "luck";
 interface SkillsRet {
-  levels: { [key: string]: number }; // skills and levels
-  maxLevelCount: number; // used for determing achievement completion
+  skills: Record<Skill, number>;
 }
 
 function parseSkills(player: any): SkillsRet {
@@ -95,26 +82,25 @@ function parseSkills(player: any): SkillsRet {
     ];
 
     // formula for player level is (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
-    let maxLevelCount = 0;
     // as we loop through the levels, we can check if the level is 10 and increment maxLevelCount
-    const playerLevel = Math.floor(
-      skillLevels.reduce((prev, curr) => {
-        if (curr === 10) maxLevelCount++;
-        return prev + curr;
-      }, 0) / 2
-    );
+    // let maxLevelCount = 0;
+    // const playerLevel = Math.floor(
+    //   skillLevels.reduce((prev, curr) => {
+    //     if (curr === 10) maxLevelCount++;
+    //     return prev + curr;
+    //   }, 0) / 2
+    // );
 
-    const levels = {
-      Player: playerLevel,
-      Farming: skillLevels[0],
-      Fishing: skillLevels[1],
-      Foraging: skillLevels[2],
-      Mining: skillLevels[3],
-      Combat: skillLevels[4],
-      Luck: skillLevels[5],
+    const skills = {
+      farming: skillLevels[0],
+      fishing: skillLevels[1],
+      foraging: skillLevels[2],
+      mining: skillLevels[3],
+      combat: skillLevels[4],
+      luck: skillLevels[5], // unused as of 1.5
     };
 
-    return { levels, maxLevelCount };
+    return { skills };
   } catch (error) {
     throw error;
   }
@@ -136,11 +122,9 @@ export interface GeneralRet {
   timePlayed: string;
   farmInfo: string;
   totalMoneyEarned: number;
-  levels: { [key: string]: number };
-  maxLevelCount: number;
+  skills: Record<Skill, number>;
   questsCompleted: number;
-  stardropsCount: number;
-  stardrops: Record<string, boolean>;
+  stardrops: string[];
 }
 
 export function parseGeneral(player: any, whichFarm: number): GeneralRet {
@@ -153,18 +137,16 @@ export function parseGeneral(player: any, whichFarm: number): GeneralRet {
       farmTypes[whichFarm % farmTypes.length]
     })`;
 
-    const { levels, maxLevelCount } = parseSkills(player);
-    const { stardropsCount, stardrops } = parseStardrops(player);
+    const { skills } = parseSkills(player);
+    const { stardrops } = parseStardrops(player);
 
     return {
       name,
       timePlayed,
       farmInfo,
       totalMoneyEarned,
-      levels,
-      maxLevelCount,
+      skills,
       questsCompleted,
-      stardropsCount,
       stardrops,
     };
   } catch (e) {

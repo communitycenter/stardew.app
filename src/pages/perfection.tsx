@@ -6,7 +6,7 @@ import shippingItems from "@/data/shipping.json";
 import cookingRecipes from "@/data/cooking.json";
 import craftingRecipes from "@/data/crafting.json";
 
-import { useCallback, useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -145,7 +145,23 @@ export default function Perfection() {
     return count;
   }, [activePlayer]);
 
-  const getPercentComplete = useCallback(() => {
+  const playerLevel = useMemo(() => {
+    // formula for player level is
+    // (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
+    let playerLevel = 0;
+    if (activePlayer) {
+      // luck is unused as of 1.5
+      const { farming, fishing, foraging, mining, combat } =
+        activePlayer.general.skills;
+
+      playerLevel = Math.floor(
+        (farming + fishing + foraging + mining + combat) / 2
+      );
+    }
+    return playerLevel;
+  }, [activePlayer]);
+
+  const getPercentComplete = useMemo(() => {
     if (!activePlayer) return 0;
 
     let num = 0;
@@ -155,8 +171,8 @@ export default function Perfection() {
     num += activePlayer.perfection.goldenClock ? 10 : 0;
     num += slayerQuestsCompleted >= 12 ? 10 : 0;
     num += getMaxedFriendshipPercent * 11; // 11% of the total
-    num += (Math.min(activePlayer.general.levels.Player, 25) / 25) * 5; // 5% of the total
-    num += activePlayer.general.stardropsCount >= 7 ? 10 : 0;
+    num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
+    num += activePlayer.general.stardrops.length >= 7 ? 10 : 0;
     num += getCookedRecipesPercent * 10; // 10% of the total
     num += getCraftedRecipesPercent * 10; // 10% of the total
     num += getFishCaughtPercent * 10; // 10% of the total
@@ -168,6 +184,7 @@ export default function Perfection() {
     getFarmerItemsShippedPercent,
     slayerQuestsCompleted,
     getMaxedFriendshipPercent,
+    playerLevel,
     getCookedRecipesPercent,
     getCraftedRecipesPercent,
     getFishCaughtPercent,
@@ -219,7 +236,7 @@ export default function Perfection() {
                         </CardHeader>
 
                         <PercentageIndicator
-                          percentage={Math.floor(getPercentComplete() * 100)}
+                          percentage={Math.floor(getPercentComplete * 100)}
                           className="h-32 w-32 lg:h-48 lg:w-48"
                         />
                       </div>
@@ -273,22 +290,19 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Farmer Level"
-                      description={`${
-                        activePlayer?.general.levels.Player ?? 0
-                      }/25`}
-                      percentage={Math.floor(
-                        ((activePlayer?.general.levels.Player ?? 0) / 25) * 100
-                      )}
+                      description={`${playerLevel}/25`}
+                      percentage={Math.floor(((playerLevel ?? 0) / 25) * 100)}
                       footer="5% of total perfection"
                     />
                     <PerfectionCard
                       title="Stardrops"
                       description={`${
-                        activePlayer?.general.stardropsCount ?? 0
+                        activePlayer?.general.stardrops.length ?? 0
                       }/7`}
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(
-                        ((activePlayer?.general.stardropsCount ?? 0) / 7) * 100
+                        ((activePlayer?.general.stardrops.length ?? 0) / 7) *
+                          100
                       )}
                       footer="10% of total perfection"
                     />

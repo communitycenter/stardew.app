@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
 
-import { useContext } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -84,6 +84,42 @@ const reqs: Record<string, number> = {
 export default function Farmer() {
   const { activePlayer } = useContext(PlayersContext);
 
+  const [stardrops, setStardrops] = useState(new Set());
+
+  const playerLevel = useMemo(() => {
+    // formula for player level is
+    // (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
+    let playerLevel = 0;
+    if (activePlayer) {
+      // luck is unused as of 1.5
+      const { farming, fishing, foraging, mining, combat } =
+        activePlayer.general.skills;
+
+      playerLevel = Math.floor(
+        (farming + fishing + foraging + mining + combat) / 2
+      );
+    }
+    return playerLevel;
+  }, [activePlayer]);
+
+  const maxLevelCount = useMemo(() => {
+    // count how many skills the player has at level 10 (max)
+    let maxLevelCount = 0;
+    if (activePlayer) {
+      // iterate over each skill and count how many are at level 10
+      Object.values(activePlayer.general.skills).forEach((skill) => {
+        if (skill >= 10) maxLevelCount++;
+      });
+    }
+    return maxLevelCount;
+  }, [activePlayer]);
+
+  useEffect(() => {
+    if (activePlayer) {
+      setStardrops(new Set(activePlayer.general.stardrops));
+    }
+  }, [activePlayer]);
+
   return (
     <>
       <Head>
@@ -157,9 +193,7 @@ export default function Farmer() {
                     <InfoCard
                       title="Farmer Level"
                       description={
-                        activePlayer
-                          ? `${activePlayer.general.levels.Player}/25`
-                          : "No Info Found"
+                        activePlayer ? playerLevel.toString() : "No Info Found"
                       }
                       Icon={ChartBarIcon}
                     />
@@ -176,7 +210,7 @@ export default function Farmer() {
                       title="Stardrops Found"
                       description={
                         activePlayer
-                          ? activePlayer.general.stardropsCount.toString()
+                          ? stardrops.size.toString()
                           : "No Info Found"
                       }
                       Icon={StarIcon}
@@ -243,22 +277,13 @@ export default function Farmer() {
                           <AchievementCard
                             key={achievement.id}
                             achievement={achievement}
-                            completed={
-                              activePlayer
-                                ? activePlayer.general.maxLevelCount >=
-                                  reqs[achievement.name]
-                                : false
-                            }
+                            completed={maxLevelCount >= reqs[achievement.name]}
                             additionalDescription={
-                              activePlayer
-                                ? activePlayer.general.maxLevelCount >=
-                                  reqs[achievement.name]
-                                  ? ""
-                                  : ` - ${(
-                                      reqs[achievement.name] -
-                                      activePlayer.general.maxLevelCount
-                                    ).toLocaleString()} left`
-                                : ""
+                              maxLevelCount >= reqs[achievement.name]
+                                ? ""
+                                : ` - ${
+                                    reqs[achievement.name] - maxLevelCount
+                                  } left`
                             }
                           />
                         ))}
@@ -266,47 +291,37 @@ export default function Farmer() {
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
                       <InfoCard
                         title="Farming"
-                        description={
-                          activePlayer
-                            ? `Level ${activePlayer.general.levels.Farming}`
-                            : "Level 0"
-                        }
+                        description={`Level ${
+                          activePlayer?.general.skills.farming ?? 0
+                        }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Fishing"
-                        description={
-                          activePlayer
-                            ? `Level ${activePlayer.general.levels.Fishing}`
-                            : "Level 0"
-                        }
+                        description={`Level ${
+                          activePlayer?.general.skills.fishing ?? 0
+                        }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Foraging"
-                        description={
-                          activePlayer
-                            ? `Level ${activePlayer.general.levels.Foraging}`
-                            : "Level 0"
-                        }
+                        description={`Level ${
+                          activePlayer?.general.skills.foraging ?? 0
+                        }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Mining"
-                        description={
-                          activePlayer
-                            ? `Level ${activePlayer.general.levels.Mining}`
-                            : "Level 0"
-                        }
+                        description={`Level ${
+                          activePlayer?.general.skills.mining ?? 0
+                        }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Combat"
-                        description={
-                          activePlayer
-                            ? `Level ${activePlayer.general.levels.Combat}`
-                            : "Level 0"
-                        }
+                        description={`Level ${
+                          activePlayer?.general.skills.combat ?? 0
+                        }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
                       />
                     </div>
@@ -363,22 +378,13 @@ export default function Farmer() {
               {/* hardcoding this one bc its only one */}
               <AchievementCard
                 achievement={stardrop_ach}
-                completed={
-                  activePlayer
-                    ? activePlayer.general.stardropsCount >=
-                      Object.keys(STARDROPS).length
-                    : false
-                }
+                completed={stardrops.size >= Object.keys(STARDROPS).length}
                 additionalDescription={
-                  activePlayer
-                    ? activePlayer.general.stardropsCount >=
-                      Object.keys(STARDROPS).length
-                      ? ""
-                      : ` - ${
-                          Object.keys(STARDROPS).length -
-                          activePlayer.general.stardropsCount
-                        } left`
-                    : ""
+                  stardrops.size >= Object.keys(STARDROPS).length
+                    ? ""
+                    : ` - ${
+                        Object.keys(STARDROPS).length - stardrops.size
+                      } left`
                 }
               />
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -388,9 +394,7 @@ export default function Farmer() {
                     description={value.description}
                     title={value.title}
                     iconURL="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
-                    completed={
-                      activePlayer ? activePlayer.general.stardrops[key] : false
-                    }
+                    completed={stardrops.has(key)}
                   />
                 ))}
               </div>
