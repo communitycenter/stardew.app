@@ -148,13 +148,17 @@ export default function Perfection() {
     return getMaxedFrienshipsCount / Object.keys(villagers).length;
   }, [activePlayer, getMaxedFrienshipsCount]);
 
+  const basicShippedCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    return Object.keys(activePlayer.shipping.shipped).length;
+  }, [activePlayer]);
+
   const getFarmerItemsShippedPercent = useMemo(() => {
     if (!activePlayer) return 0;
 
-    const farmerShipped = activePlayer.shipping.basicShippedCount;
-
-    return farmerShipped / Object.keys(shippingItems).length;
-  }, [activePlayer]);
+    return basicShippedCount / Object.keys(shippingItems).length;
+  }, [activePlayer, basicShippedCount]);
 
   const slayerQuestsCompleted = useMemo(() => {
     if (!activePlayer) return 0;
@@ -269,9 +273,7 @@ export default function Perfection() {
 
                     <PerfectionCard
                       title="Produce & Forage Shipped"
-                      description={`${
-                        activePlayer?.shipping.basicShippedCount ?? 0
-                      }/145`}
+                      description={`${basicShippedCount ?? 0}/145`}
                       percentage={Math.floor(
                         getFarmerItemsShippedPercent * 100
                       )}

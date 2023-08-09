@@ -3,7 +3,7 @@ import Head from "next/head";
 import shipping_items from "@/data/shipping.json";
 import achievements from "@/data/achievements.json";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -16,7 +16,7 @@ import { FilterButton } from "@/components/filter-btn";
 import { ShippingCard } from "@/components/cards/shipping-card";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
-const reqs = {
+const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
     .length,
   "Full Shipment": Object.keys(shipping_items).length,
@@ -35,6 +35,32 @@ export default function Shipping() {
     }
   }, [activePlayer]);
 
+  const [polycultureCount, monocultureAchieved, basicShippedCount] =
+    useMemo(() => {
+      if (!activePlayer) return [0, false, 0];
+
+      let polycultureCount = 0;
+      let monocultureAchieved = false;
+      let basicShippedCount = 0;
+
+      Object.keys(activePlayer.shipping.shipped).forEach((key) => {
+        // Polyculture calculation
+        if (shipping_items[key as keyof typeof shipping_items].polyculture) {
+          if (activePlayer.shipping.shipped[key] >= 15) polycultureCount++;
+        }
+
+        // Monoculture calculation
+        if (shipping_items[key as keyof typeof shipping_items].monoculture) {
+          if (activePlayer.shipping.shipped[key] >= 300)
+            monocultureAchieved = true;
+        }
+
+        // Basic Shipped calculation
+        basicShippedCount++;
+      });
+      return [polycultureCount, monocultureAchieved, basicShippedCount];
+    }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
@@ -44,27 +70,20 @@ export default function Shipping() {
     }
 
     if (name === "Monoculture") {
-      completed = activePlayer.shipping.monoculture;
+      completed = monocultureAchieved;
       return { completed, additionalDescription };
     } else if (name === "Polyculture") {
-      completed = activePlayer.shipping.polycultureCount >= reqs[name];
+      completed = polycultureCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          reqs[name] - activePlayer.shipping.polycultureCount
-        } more`;
+        additionalDescription = ` - ${reqs[name] - polycultureCount} more`;
       }
       return { completed, additionalDescription };
     }
 
-    completed =
-      activePlayer.shipping.basicShippedCount >=
-      reqs[name as keyof typeof reqs];
+    completed = basicShippedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${
-        reqs[name as keyof typeof reqs] -
-        activePlayer.shipping.basicShippedCount
-      } more`;
+      additionalDescription = ` - ${reqs[name] - basicShippedCount} more`;
     }
     return { completed, additionalDescription };
   };
