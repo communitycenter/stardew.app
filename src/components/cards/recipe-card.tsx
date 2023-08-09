@@ -3,11 +3,12 @@ import Image from "next/image";
 import objects from "@/data/objects.json";
 import bigCraftables from "@/data/big_craftables.json";
 
+import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
 import { Recipe, CraftingRecipe } from "@/types/recipe";
 
-import { cn } from "@/lib/utils";
+import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props<T extends Recipe> {
   recipe: T;
@@ -92,6 +93,7 @@ export const RecipeCard = <T extends Recipe>({
           {description}
         </p>
       </div>
+      <IconChevronRight className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
     </button>
   );
 };
