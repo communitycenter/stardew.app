@@ -66,6 +66,7 @@ export function parseSaveFile(xml: string) {
     players.forEach((player) => {
       // in here is where we'll call all our parsers and create the player object we'll use
       let processedPlayer = {
+        _id: player.UniqueMultiplayerID,
         general: parseGeneral(player, saveFile.SaveGame.whichFarm),
         fishing: parseFishing(player),
         cooking: parseCooking(player),
@@ -74,7 +75,6 @@ export function parseSaveFile(xml: string) {
         museum: parsedMuseum,
         social: parseSocial(player, children),
         monsters: parseMonsters(player),
-        id: player.UniqueMultiplayerID,
         walnuts: parsedWalnuts,
         notes: parseNotes(player),
         scraps: parseScraps(player),

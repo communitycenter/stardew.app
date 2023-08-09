@@ -77,12 +77,14 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
               )}
               <div className="grid grid-cols-2 gap-2">
                 {players &&
-                  players.map((player: any) => (
+                  players.map((player) => (
                     <Button
                       variant={
-                        activePlayer?.id === player.id ? "outline" : "secondary"
+                        activePlayer?._id === player._id
+                          ? "outline"
+                          : "secondary"
                       }
-                      key={player.id}
+                      key={player._id}
                       onClick={() => {
                         {
                           setActivePlayer(player);

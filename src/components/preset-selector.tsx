@@ -50,7 +50,7 @@ export function PresetSelector() {
             {players
               ? players.map((player: any) => (
                   <CommandItem
-                    key={player.id}
+                    key={player._id}
                     onSelect={() => {
                       setActivePlayer(player);
                       setOpen(false);

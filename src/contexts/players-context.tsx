@@ -21,6 +21,7 @@ import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
 
 interface Player {
+  _id: string;
   general: GeneralRet;
   fishing: FishRet;
   cooking: CookingRet;
@@ -33,7 +34,6 @@ interface Player {
   notes: NotesRet;
   scraps: ScrapsRet;
   perfection: PerfectionRet;
-  id: string;
 }
 
 interface PlayersContextProps {

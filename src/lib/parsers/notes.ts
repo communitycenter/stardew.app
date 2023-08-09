@@ -1,5 +1,3 @@
-import notes from "@/data/secret_notes.json";
-
 export interface NotesRet {
   found: number[];
 }
