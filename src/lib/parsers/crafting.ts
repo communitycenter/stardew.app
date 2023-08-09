@@ -3,8 +3,6 @@ import craftingRecipes from "@/data/crafting.json";
 import bigCraftables from "@/data/big_craftables.json";
 
 export interface CraftingRet {
-  knownCount: number;
-  craftedCount: number;
   recipes: { [key: string]: 0 | 1 | 2 };
 }
 
@@ -17,9 +15,6 @@ export function parseCrafting(player: any): CraftingRet {
   */
 
   try {
-    let knownRecipes = new Set<string>();
-    let craftedRecipes = new Set<string>();
-
     // 0 = unknown, 1 = known, 2 = crafted
     // 0 might be unused, we can just check if key exists
     let recipes: { [key: string]: 0 | 1 | 2 } = {};
@@ -28,13 +23,10 @@ export function parseCrafting(player: any): CraftingRet {
       !player.craftingRecipes ||
       typeof player.craftingRecipes === "undefined"
     ) {
-      return {
-        knownCount: 0,
-        craftedCount: 0,
-        recipes,
-      };
+      return { recipes };
     }
 
+    // copy from console output of processors/crafting.py
     const translations = {
       "Transmute (Fe)": "Iron Bar",
       "Transmute (Au)": "Gold Bar",
@@ -45,7 +37,6 @@ export function parseCrafting(player: any): CraftingRet {
       "Oil Of Garlic": "Oil of Garlic",
     };
 
-    // copy from console output of processors/crafting.py
     // we need to look up the itemID for the recipes so we'll create a map
     let name_to_id: Map<string, string> = new Map();
     for (const key in craftingRecipes) {
@@ -79,12 +70,10 @@ export function parseCrafting(player: any): CraftingRet {
 
         // make sure its a valid recipe
         if (itemID && itemID in craftingRecipes) {
-          knownRecipes.add(itemID);
           recipes[itemID] = 1;
 
           // check if the player has crafted this recipe
           if (count > 0) {
-            craftedRecipes.add(itemID);
             recipes[itemID] = 2;
           }
         }
@@ -101,22 +90,16 @@ export function parseCrafting(player: any): CraftingRet {
 
       let itemID = name_to_id.get(name);
       if (itemID && itemID in craftingRecipes) {
-        knownRecipes.add(itemID);
         recipes[itemID] = 1;
 
         // check if the player has crafted this recipe
         if (count > 0) {
-          craftedRecipes.add(itemID);
           recipes[itemID] = 2;
         }
       }
     }
 
-    return {
-      knownCount: knownRecipes.size,
-      craftedCount: craftedRecipes.size,
-      recipes,
-    };
+    return { recipes };
   } catch (e) {
     let msg = "";
     if (e instanceof Error) {

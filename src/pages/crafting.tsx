@@ -5,7 +5,7 @@ import achievements from "@/data/achievements.json";
 
 import type { CraftingRecipe } from "@/types/recipe";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -19,7 +19,7 @@ import { RecipeCard } from "@/components/cards/recipe-card";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
-const reqs = {
+const reqs: Record<string, number> = {
   "D.I.Y.": 15,
   Artisan: 30,
   "Craft Master": Object.keys(recipes).length,
@@ -40,6 +40,14 @@ export default function Crafting() {
     }
   }, [activePlayer]);
 
+  // calculate craftedCount here (all values of 2)
+  const craftedCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
+      .length;
+  }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
@@ -48,13 +56,10 @@ export default function Crafting() {
       return { completed, additionalDescription };
     }
 
-    completed =
-      activePlayer.crafting.craftedCount >= reqs[name as keyof typeof reqs];
+    completed = craftedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${
-        reqs[name as keyof typeof reqs] - activePlayer.crafting.craftedCount
-      } more`;
+      additionalDescription = ` - ${reqs[name] - craftedCount} more`;
     }
 
     return { completed, additionalDescription };

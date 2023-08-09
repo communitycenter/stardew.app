@@ -81,29 +81,39 @@ const monsterGoals: Record<string, any> = {
 export default function Perfection() {
   const { activePlayer } = useContext(PlayersContext);
 
+  const craftedCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    // find all recipes that have a value of 2 (crafted)
+    return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
+      .length;
+  }, [activePlayer]);
+
   // StardewValley.Utility.cs::percentGameComplete()
   const getCraftedRecipesPercent = useMemo(() => {
     // StardewValley.Utility.cs::getCraftedRecipesPercent()
     if (!activePlayer) return 0;
 
-    const craftedRecipes = activePlayer.crafting.craftedCount;
-
     // TODO: we don't include the wedding ring so no need to -1
     //       but, apparently in multiplayer the wedding ring is required
     //       i can't find the code that does this though
-    return craftedRecipes / Object.keys(craftingRecipes).length;
+    return craftedCount / Object.keys(craftingRecipes).length;
+  }, [activePlayer, craftedCount]);
+
+  const cookedCount = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    // find all recipes that have a value of 2 (cooked)
+    return Object.values(activePlayer.cooking.recipes).filter((r) => r === 2)
+      .length;
   }, [activePlayer]);
 
   const getCookedRecipesPercent = useMemo(() => {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
     if (!activePlayer) return 0;
 
-    const cookedRecipes = Object.values(activePlayer?.cooking.recipes).filter(
-      (r) => r > 1
-    ).length;
-
-    return cookedRecipes / Object.keys(cookingRecipes).length;
-  }, [activePlayer]);
+    return cookedCount / Object.keys(cookingRecipes).length;
+  }, [activePlayer, cookedCount]);
 
   const getFishCaughtPercent = useMemo(() => {
     // StardewValley.Utility.cs::getFishCaughtPercent()
@@ -323,19 +333,13 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Cooking Recipes Made"
-                      description={`${
-                        Object.values(
-                          activePlayer?.cooking.recipes ?? {}
-                        ).filter((r) => r > 1).length ?? 0
-                      }/80`}
+                      description={`${cookedCount}/80`}
                       percentage={Math.floor(getCookedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
                       title="Crafting Recipes Made"
-                      description={`${
-                        activePlayer?.crafting.craftedCount ?? 0
-                      }/129`}
+                      description={`${craftedCount}/129`}
                       percentage={Math.floor(getCraftedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
