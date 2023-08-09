@@ -22,7 +22,7 @@ import type { PerfectionRet } from "@/lib/parsers/perfection";
 
 interface Player {
   _id: string;
-  general: GeneralRet;
+  general: GeneralRet | undefined;
   fishing: FishRet;
   cooking: CookingRet;
   crafting: CraftingRet;

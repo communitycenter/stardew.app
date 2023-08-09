@@ -118,13 +118,13 @@ const farmTypes = [
 ];
 
 export interface GeneralRet {
-  name: string;
-  timePlayed: string;
-  farmInfo: string;
-  totalMoneyEarned: number;
-  skills: Record<Skill, number>;
-  questsCompleted: number;
-  stardrops: string[];
+  name: string | undefined;
+  timePlayed: string | undefined;
+  farmInfo: string | undefined;
+  totalMoneyEarned: number | undefined;
+  skills: Record<Skill, number> | undefined;
+  questsCompleted: number | undefined;
+  stardrops: string[] | undefined;
 }
 
 export function parseGeneral(player: any, whichFarm: number): GeneralRet {

@@ -180,12 +180,14 @@ export default function Perfection() {
     let playerLevel = 0;
     if (activePlayer) {
       // luck is unused as of 1.5
-      const { farming, fishing, foraging, mining, combat } =
-        activePlayer.general.skills;
+      if (activePlayer.general?.skills) {
+        const { farming, fishing, foraging, mining, combat } =
+          activePlayer.general.skills;
 
-      playerLevel = Math.floor(
-        (farming + fishing + foraging + mining + combat) / 2
-      );
+        playerLevel = Math.floor(
+          (farming + fishing + foraging + mining + combat) / 2
+        );
+      }
     }
     return playerLevel;
   }, [activePlayer]);
@@ -201,7 +203,7 @@ export default function Perfection() {
     num += slayerQuestsCompleted >= 12 ? 10 : 0;
     num += getMaxedFriendshipPercent * 11; // 11% of the total
     num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
-    num += activePlayer.general.stardrops.length >= 7 ? 10 : 0;
+    num += activePlayer.general?.stardrops?.length ?? 0 >= 7 ? 10 : 0;
     num += getCookedRecipesPercent * 10; // 10% of the total
     num += getCraftedRecipesPercent * 10; // 10% of the total
     num += getFishCaughtPercent * 10; // 10% of the total
@@ -324,11 +326,11 @@ export default function Perfection() {
                     <PerfectionCard
                       title="Stardrops"
                       description={`${
-                        activePlayer?.general.stardrops.length ?? 0
+                        activePlayer?.general?.stardrops?.length ?? 0
                       }/7`}
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(
-                        ((activePlayer?.general.stardrops.length ?? 0) / 7) *
+                        ((activePlayer?.general?.stardrops?.length ?? 0) / 7) *
                           100
                       )}
                       footer="10% of total perfection"

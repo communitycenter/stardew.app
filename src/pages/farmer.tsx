@@ -86,18 +86,26 @@ export default function Farmer() {
 
   const [stardrops, setStardrops] = useState(new Set());
 
+  useEffect(() => {
+    if (activePlayer) {
+      setStardrops(new Set(activePlayer?.general?.stardrops ?? []));
+    }
+  }, [activePlayer]);
+
   const playerLevel = useMemo(() => {
     // formula for player level is
     // (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
     let playerLevel = 0;
     if (activePlayer) {
       // luck is unused as of 1.5
-      const { farming, fishing, foraging, mining, combat } =
-        activePlayer.general.skills;
+      if (activePlayer.general?.skills) {
+        const { farming, fishing, foraging, mining, combat } =
+          activePlayer.general.skills;
 
-      playerLevel = Math.floor(
-        (farming + fishing + foraging + mining + combat) / 2
-      );
+        playerLevel = Math.floor(
+          (farming + fishing + foraging + mining + combat) / 2
+        );
+      }
     }
     return playerLevel;
   }, [activePlayer]);
@@ -106,19 +114,60 @@ export default function Farmer() {
     // count how many skills the player has at level 10 (max)
     let maxLevelCount = 0;
     if (activePlayer) {
-      // iterate over each skill and count how many are at level 10
-      Object.values(activePlayer.general.skills).forEach((skill) => {
-        if (skill >= 10) maxLevelCount++;
-      });
+      if (activePlayer.general?.skills) {
+        // iterate over each skill and count how many are at level 10
+        Object.values(activePlayer.general.skills).forEach((skill) => {
+          if (skill >= 10) maxLevelCount++;
+        });
+      }
     }
     return maxLevelCount;
   }, [activePlayer]);
 
-  useEffect(() => {
+  const getAchievementProgress = (name: string) => {
+    let completed = false;
+    let additionalDescription = "";
+
     if (activePlayer) {
-      setStardrops(new Set(activePlayer.general.stardrops));
+      const money = new Set([
+        "Greenhorn",
+        "Cowpoke",
+        "Homesteader",
+        "Millionaire",
+        "Legend",
+      ]);
+      const skills = new Set(["Singular Talent", "Master Of The Five Ways"]);
+      const quests = new Set(["Gofer", "A Big Help"]);
+
+      if (money.has(name)) {
+        // use general.totalMoneyEarned and compare to reqs
+        const moneyEarned = activePlayer.general?.totalMoneyEarned ?? 0;
+
+        if (moneyEarned >= reqs[name]) completed = true;
+        else {
+          additionalDescription = ` - ${(
+            reqs[name] - moneyEarned
+          ).toLocaleString()}g left`;
+        }
+      } else if (skills.has(name)) {
+        // use maxLevelCount and compare to reqs
+        if (maxLevelCount >= reqs[name]) completed = true;
+        else {
+          additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
+        }
+      } else if (quests.has(name)) {
+        // use general.questsCompleted and compare to reqs
+        const questsCompleted = activePlayer.general?.questsCompleted ?? 0;
+
+        if (questsCompleted >= reqs[name]) completed = true;
+        else {
+          additionalDescription = ` - ${reqs[name] - questsCompleted} left`;
+        }
+      }
     }
-  }, [activePlayer]);
+
+    return { completed, additionalDescription };
+  };
 
   return (
     <>
@@ -225,29 +274,19 @@ export default function Farmer() {
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                     {Object.values(achievements)
                       .filter((achievement) => achievement.id <= 4)
-                      .map((achievement) => (
-                        <AchievementCard
-                          key={achievement.id}
-                          achievement={achievement}
-                          completed={
-                            activePlayer
-                              ? activePlayer.general.totalMoneyEarned >=
-                                reqs[achievement.name]
-                              : false
-                          }
-                          additionalDescription={
-                            activePlayer
-                              ? activePlayer.general.totalMoneyEarned >=
-                                reqs[achievement.name]
-                                ? ""
-                                : ` - ${(
-                                    reqs[achievement.name] -
-                                    activePlayer.general.totalMoneyEarned
-                                  ).toLocaleString()}g left`
-                              : ""
-                          }
-                        />
-                      ))}
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
+
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -267,54 +306,53 @@ export default function Farmer() {
                         .filter((achievement) =>
                           achievement.description.includes("skill")
                         )
-                        .map((achievement) => (
-                          <AchievementCard
-                            key={achievement.id}
-                            achievement={achievement}
-                            completed={maxLevelCount >= reqs[achievement.name]}
-                            additionalDescription={
-                              maxLevelCount >= reqs[achievement.name]
-                                ? ""
-                                : ` - ${
-                                    reqs[achievement.name] - maxLevelCount
-                                  } left`
-                            }
-                          />
-                        ))}
+                        .map((achievement) => {
+                          const { completed, additionalDescription } =
+                            getAchievementProgress(achievement.name);
+
+                          return (
+                            <AchievementCard
+                              key={achievement.id}
+                              achievement={achievement}
+                              completed={completed}
+                              additionalDescription={additionalDescription}
+                            />
+                          );
+                        })}
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
                       <InfoCard
                         title="Farming"
                         description={`Level ${
-                          activePlayer?.general.skills.farming ?? 0
+                          activePlayer?.general?.skills?.farming ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Fishing"
                         description={`Level ${
-                          activePlayer?.general.skills.fishing ?? 0
+                          activePlayer?.general?.skills?.fishing ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Foraging"
                         description={`Level ${
-                          activePlayer?.general.skills.foraging ?? 0
+                          activePlayer?.general?.skills?.foraging ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Mining"
                         description={`Level ${
-                          activePlayer?.general.skills.mining ?? 0
+                          activePlayer?.general?.skills?.mining ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
                       />
                       <InfoCard
                         title="Combat"
                         description={`Level ${
-                          activePlayer?.general.skills.combat ?? 0
+                          activePlayer?.general?.skills?.combat ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
                       />
@@ -335,29 +373,19 @@ export default function Farmer() {
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {Object.values(achievements)
                       .filter((a) => a.description.includes("requests"))
-                      .map((achievement) => (
-                        <AchievementCard
-                          key={achievement.id}
-                          achievement={achievement}
-                          completed={
-                            activePlayer
-                              ? activePlayer.general.questsCompleted >=
-                                reqs[achievement.name]
-                              : false
-                          }
-                          additionalDescription={
-                            activePlayer
-                              ? activePlayer.general.questsCompleted >=
-                                reqs[achievement.name]
-                                ? ""
-                                : ` - ${
-                                    reqs[achievement.name] -
-                                    activePlayer.general.questsCompleted
-                                  } left`
-                              : ""
-                          }
-                        />
-                      ))}
+                      .map((achievement) => {
+                        const { completed, additionalDescription } =
+                          getAchievementProgress(achievement.name);
+
+                        return (
+                          <AchievementCard
+                            key={achievement.id}
+                            achievement={achievement}
+                            completed={completed}
+                            additionalDescription={additionalDescription}
+                          />
+                        );
+                      })}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -374,11 +402,13 @@ export default function Farmer() {
                 achievement={stardrop_ach}
                 completed={stardrops.size >= Object.keys(STARDROPS).length}
                 additionalDescription={
-                  stardrops.size >= Object.keys(STARDROPS).length
-                    ? ""
-                    : ` - ${
-                        Object.keys(STARDROPS).length - stardrops.size
-                      } left`
+                  activePlayer
+                    ? stardrops.size >= Object.keys(STARDROPS).length
+                      ? ""
+                      : ` - ${
+                          Object.keys(STARDROPS).length - stardrops.size
+                        } left`
+                    : ""
                 }
               />
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
