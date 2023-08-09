@@ -157,34 +157,28 @@ export default function Farmer() {
                     <InfoCard
                       title="Player Name"
                       description={
-                        activePlayer
-                          ? activePlayer.general.name
-                          : "No Info Found"
+                        activePlayer?.general?.name ?? "No Info Found"
                       }
                       Icon={UserIcon}
                     />
                     <InfoCard
                       title="Farm Information"
                       description={
-                        activePlayer
-                          ? activePlayer.general.farmInfo
-                          : "No Info Found"
+                        activePlayer?.general?.farmInfo ?? "No Info Found"
                       }
                       Icon={HomeIcon}
                     />
                     <InfoCard
                       title="Playtime"
                       description={
-                        activePlayer
-                          ? activePlayer.general.timePlayed
-                          : "No Info Found"
+                        activePlayer?.general?.timePlayed ?? "No Info Found"
                       }
                       Icon={ClockIcon}
                     />
                     <InfoCard
                       title="Money Earned"
                       description={
-                        activePlayer
+                        activePlayer?.general?.totalMoneyEarned
                           ? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
                           : "No Info Found"
                       }
@@ -200,7 +194,7 @@ export default function Farmer() {
                     <InfoCard
                       title="Quests Completed"
                       description={
-                        activePlayer
+                        activePlayer?.general?.questsCompleted
                           ? activePlayer.general.questsCompleted.toString()
                           : "No Info Found"
                       }
