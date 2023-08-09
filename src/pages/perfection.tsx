@@ -203,7 +203,7 @@ export default function Perfection() {
     num += slayerQuestsCompleted >= 12 ? 10 : 0;
     num += getMaxedFriendshipPercent * 11; // 11% of the total
     num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
-    num += activePlayer.general?.stardrops?.length ?? 0 >= 7 ? 10 : 0;
+    num += (activePlayer.general?.stardrops?.length ?? 0) >= 7 ? 10 : 0;
     num += getCookedRecipesPercent * 10; // 10% of the total
     num += getCraftedRecipesPercent * 10; // 10% of the total
     num += getFishCaughtPercent * 10; // 10% of the total
@@ -371,29 +371,23 @@ export default function Perfection() {
             </section>
           </Accordion>
           {/* Monster Slayer Goals */}
-          <Accordion type="single" collapsible defaultValue="item-1" asChild>
-            <section className="space-y-3">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-                  Monster Slayer Goals
-                </AccordionTrigger>
-                <AccordionContent asChild>
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-                    {Object.keys(monsterGoals).map((monster) => (
-                      <InfoCard
-                        key={monster}
-                        title={monster}
-                        sourceURL={monsterGoals[monster].iconURL}
-                        description={`${
-                          activePlayer?.monsters.monstersKilled[monster] ?? 0
-                        }/${monsterGoals[monster].goal}`}
-                      />
-                    ))}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </section>
-          </Accordion>
+          <section className="space-y-3">
+            <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+              Monster Slayer Goals
+            </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {Object.keys(monsterGoals).map((monster) => (
+                <InfoCard
+                  key={monster}
+                  title={monster}
+                  sourceURL={monsterGoals[monster].iconURL}
+                  description={`${
+                    activePlayer?.monsters.monstersKilled[monster] ?? 0
+                  }/${monsterGoals[monster].goal}`}
+                />
+              ))}
+            </div>
+          </section>
         </div>
       </main>
     </>
