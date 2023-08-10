@@ -39,14 +39,17 @@ export default function Museum() {
 
   useEffect(() => {
     if (activePlayer && activePlayer.museum) {
-      setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts));
-      setMuseumMineralCollected(new Set(activePlayer.museum.minerals));
+      setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts ?? []));
+      setMuseumMineralCollected(new Set(activePlayer.museum.minerals ?? []));
     }
   }, [activePlayer]);
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
+
+    if (!activePlayer || !activePlayer.museum)
+      return { completed, additionalDescription };
 
     if (name === "Treasure Trove") {
       completed =
