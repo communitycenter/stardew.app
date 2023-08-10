@@ -16,7 +16,7 @@ export default function IslandWalnuts() {
   const [_filter, setFilter] = useState("all");
 
   useEffect(() => {
-    if (activePlayer) {
+    if (activePlayer && activePlayer.walnuts) {
       // take the walnut IDs in walnutFound and add them to a set
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
@@ -69,7 +69,7 @@ export default function IslandWalnuts() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Golden Walnut Tracker{" "}
             {activePlayer
-              ? `(${activePlayer.walnuts.foundCount}/130)`
+              ? `(${activePlayer.walnuts?.foundCount ?? 0}/130)`
               : "(0/130)"}
           </h1>
           <div className="flex space-x-4">

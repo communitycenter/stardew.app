@@ -1,7 +1,7 @@
 import fishes from "@/data/fish.json";
 
 export interface FishRet {
-  totalCaught: number;
+  totalCaught?: number;
   fishCaught: number[];
 }
 

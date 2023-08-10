@@ -48,9 +48,9 @@ interface Relationship {
 }
 
 export interface SocialRet {
-  childrenCount: number;
-  houseUpgradeLevel: number;
-  spouse: string | null;
+  childrenCount?: number;
+  houseUpgradeLevel?: number;
+  spouse?: string;
   relationships: { [key: string]: Relationship };
 }
 
@@ -74,7 +74,7 @@ export function parseSocial(
   let relationships: { [key: string]: Relationship } = {};
 
   let houseUpgradeLevel: number = player.houseUpgradeLevel;
-  let spouse = player.spouse ? player.spouse : null;
+  let spouse = player.spouse ? player.spouse : undefined;
 
   // look up the number of children by UniqueMultiplayerID if it exists in children map
   childrenCount = children.get(player.UniqueMultiplayerID) ?? 0;

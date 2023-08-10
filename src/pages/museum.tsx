@@ -38,7 +38,7 @@ export default function Museum() {
   const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
-    if (activePlayer) {
+    if (activePlayer && activePlayer.museum) {
       setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts));
       setMuseumMineralCollected(new Set(activePlayer.museum.minerals));
     }

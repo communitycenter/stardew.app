@@ -22,18 +22,18 @@ import type { PerfectionRet } from "@/lib/parsers/perfection";
 
 interface Player {
   _id: string;
-  general: GeneralRet | undefined;
-  fishing: FishRet;
-  cooking: CookingRet;
-  crafting: CraftingRet;
-  shipping: ShippingRet;
-  museum: MuseumRet;
-  social: SocialRet;
-  monsters: MonstersRet;
+  general?: GeneralRet;
+  fishing?: FishRet;
+  cooking?: CookingRet;
+  crafting?: CraftingRet;
+  shipping?: ShippingRet;
+  museum?: MuseumRet;
+  social?: SocialRet;
+  monsters?: MonstersRet;
   walnuts: WalnutRet;
-  notes: NotesRet;
-  scraps: ScrapsRet;
-  perfection: PerfectionRet;
+  notes?: NotesRet;
+  scraps?: ScrapsRet;
+  perfection?: PerfectionRet;
 }
 
 interface PlayersContextProps {

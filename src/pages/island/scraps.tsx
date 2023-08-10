@@ -13,7 +13,7 @@ export default function IslandScraps() {
   const [scrapsFound, setScrapsFound] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    if (activePlayer) {
+    if (activePlayer && activePlayer.scraps) {
       setScrapsFound(new Set(activePlayer.scraps.found));
     }
   }, [activePlayer]);

@@ -36,13 +36,15 @@ export default function Crafting() {
 
   useEffect(() => {
     if (activePlayer) {
-      setPlayerRecipes(activePlayer.crafting.recipes);
+      if (activePlayer.crafting?.recipes) {
+        setPlayerRecipes(activePlayer.crafting.recipes);
+      }
     }
   }, [activePlayer]);
 
   // calculate craftedCount here (all values of 2)
   const craftedCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.crafting) return 0;
 
     return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
       .length;

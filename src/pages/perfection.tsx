@@ -82,7 +82,7 @@ export default function Perfection() {
   const { activePlayer } = useContext(PlayersContext);
 
   const craftedCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.crafting) return 0;
 
     // find all recipes that have a value of 2 (crafted)
     return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
@@ -101,7 +101,7 @@ export default function Perfection() {
   }, [activePlayer, craftedCount]);
 
   const cookedCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.cooking) return 0;
 
     // find all recipes that have a value of 2 (cooked)
     return Object.values(activePlayer.cooking.recipes).filter((r) => r === 2)
@@ -119,13 +119,13 @@ export default function Perfection() {
     // StardewValley.Utility.cs::getFishCaughtPercent()
     if (!activePlayer) return 0;
 
-    const fishCaught = activePlayer.fishing.fishCaught.length;
+    const fishCaught = activePlayer?.fishing?.fishCaught?.length ?? 0;
 
     return fishCaught / Object.keys(fish).length;
   }, [activePlayer]);
 
   const getMaxedFrienshipsCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.social) return 0;
 
     let maxedFriendships = 0;
     for (const key of Object.keys(activePlayer.social.relationships)) {
@@ -149,7 +149,7 @@ export default function Perfection() {
   }, [activePlayer, getMaxedFrienshipsCount]);
 
   const basicShippedCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.shipping) return 0;
 
     return Object.keys(activePlayer.shipping.shipped).length;
   }, [activePlayer]);
@@ -164,7 +164,7 @@ export default function Perfection() {
     if (!activePlayer) return 0;
 
     let count = 0;
-    const monstersKilled = activePlayer.monsters.monstersKilled;
+    const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
 
     for (const monster of Object.keys(monstersKilled)) {
       if (monstersKilled[monster] >= monsterGoals[monster].goal) {
@@ -198,8 +198,8 @@ export default function Perfection() {
     let num = 0;
 
     num += getFarmerItemsShippedPercent * 15; // 15% of the total
-    num += activePlayer.perfection.numObelisks;
-    num += activePlayer.perfection.goldenClock ? 10 : 0;
+    num += activePlayer.perfection?.numObelisks ?? 0;
+    num += activePlayer.perfection?.goldenClock ? 10 : 0;
     num += slayerQuestsCompleted >= 12 ? 10 : 0;
     num += getMaxedFriendshipPercent * 11; // 11% of the total
     num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
@@ -284,23 +284,23 @@ export default function Perfection() {
                     <PerfectionCard
                       title="Obelisks on Farm"
                       description={`${
-                        activePlayer?.perfection.numObelisks ?? 0
+                        activePlayer?.perfection?.numObelisks ?? 0
                       }/4`}
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={
-                        ((activePlayer?.perfection.numObelisks ?? 0) / 4) * 100
+                        ((activePlayer?.perfection?.numObelisks ?? 0) / 4) * 100
                       }
                       footer="4% of total perfection"
                     />
                     <PerfectionCard
                       title="Golden Clock on Farm"
                       description={`${
-                        activePlayer?.perfection.goldenClock
+                        activePlayer?.perfection?.goldenClock
                           ? "Completed"
                           : "Missing"
                       }`}
                       percentage={
-                        activePlayer?.perfection.goldenClock ? 100 : 0
+                        activePlayer?.perfection?.goldenClock ? 100 : 0
                       }
                       footer="10% of total perfection"
                     />
@@ -350,7 +350,7 @@ export default function Perfection() {
                     <PerfectionCard
                       title="Fish Caught"
                       description={`${
-                        activePlayer?.fishing.fishCaught.length ?? 0
+                        activePlayer?.fishing?.fishCaught?.length ?? 0
                       }/67`}
                       percentage={Math.floor(getFishCaughtPercent * 100)}
                       footer="10% of total perfection"
@@ -382,7 +382,7 @@ export default function Perfection() {
                   title={monster}
                   sourceURL={monsterGoals[monster].iconURL}
                   description={`${
-                    activePlayer?.monsters.monstersKilled[monster] ?? 0
+                    activePlayer?.monsters?.monstersKilled[monster] ?? 0
                   }/${monsterGoals[monster].goal}`}
                 />
               ))}

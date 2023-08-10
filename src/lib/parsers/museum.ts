@@ -1,8 +1,8 @@
 import objects from "@/data/objects.json";
 
 export interface MuseumRet {
-  artifacts: number[];
-  minerals: number[];
+  artifacts?: number[];
+  minerals?: number[];
 }
 
 export function parseMuseum(museumLocation: any): MuseumRet {

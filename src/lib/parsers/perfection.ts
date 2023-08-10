@@ -1,6 +1,6 @@
 export interface PerfectionRet {
-  numObelisks: number;
-  goldenClock: boolean;
+  numObelisks?: number;
+  goldenClock?: boolean;
 }
 
 export const parsePerfection = (SaveGame: any): PerfectionRet => {

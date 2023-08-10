@@ -36,8 +36,8 @@ function getMonstersKilled(specificMonstersKilled: any): Map<string, number> {
 }
 
 export interface MonstersRet {
-  deepestMineLevel: number;
-  deepestSkullCavernLevel: number;
+  deepestMineLevel?: number;
+  deepestSkullCavernLevel?: number;
   monstersKilled: Record<string, number>;
 }
 

@@ -30,14 +30,14 @@ export default function Shipping() {
   const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
-    if (activePlayer) {
+    if (activePlayer && activePlayer.shipping) {
       setBasicShipped(activePlayer.shipping.shipped);
     }
   }, [activePlayer]);
 
   const [polycultureCount, monocultureAchieved, basicShippedCount] =
     useMemo(() => {
-      if (!activePlayer) return [0, false, 0];
+      if (!activePlayer || !activePlayer.shipping) return [0, false, 0];
 
       let polycultureCount = 0;
       let monocultureAchieved = false;
@@ -46,12 +46,13 @@ export default function Shipping() {
       Object.keys(activePlayer.shipping.shipped).forEach((key) => {
         // Polyculture calculation
         if (shipping_items[key as keyof typeof shipping_items].polyculture) {
-          if (activePlayer.shipping.shipped[key] >= 15) polycultureCount++;
+          if ((activePlayer.shipping?.shipped[key] ?? 0) >= 15)
+            polycultureCount++;
         }
 
         // Monoculture calculation
         if (shipping_items[key as keyof typeof shipping_items].monoculture) {
-          if (activePlayer.shipping.shipped[key] >= 300)
+          if ((activePlayer.shipping?.shipped[key] ?? 0) >= 300)
             monocultureAchieved = true;
         }
 

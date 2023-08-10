@@ -5,7 +5,7 @@ import achievements from "@/data/achievements.json";
 
 import type { Recipe } from "@/types/recipe";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -29,7 +29,6 @@ export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [playerRecipes, setPlayerRecipes] = useState({});
-  const [cookedCount, setCookedCount] = useState(0);
 
   const [_filter, setFilter] = useState("all");
 
@@ -37,16 +36,17 @@ export default function Cooking() {
 
   useEffect(() => {
     if (activePlayer) {
-      setPlayerRecipes(activePlayer.cooking.recipes);
+      if (activePlayer.cooking?.recipes) {
+        setPlayerRecipes(activePlayer.cooking.recipes);
+      }
     }
   }, [activePlayer]);
 
-  useEffect(() => {
-    if (activePlayer) {
-      setCookedCount(
-        Object.values(activePlayer.cooking.recipes).filter((r) => r > 1).length
-      );
-    }
+  const cookedCount = useMemo(() => {
+    if (!activePlayer || !activePlayer.cooking) return 0;
+
+    return Object.values(activePlayer.cooking.recipes).filter((r) => r > 1)
+      .length;
   }, [activePlayer]);
 
   const getAchievementProgress = (name: string) => {

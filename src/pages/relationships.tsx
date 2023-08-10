@@ -40,7 +40,7 @@ export default function Relationships() {
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
   const fiveHeartCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.social) return 0;
 
     let fiveHeartCount = 0;
     for (const relationship of Object.values(
@@ -52,7 +52,7 @@ export default function Relationships() {
   }, [activePlayer]);
 
   const tenHeartCount = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.social) return 0;
 
     let tenHeartCount = 0;
     for (const relationship of Object.values(
@@ -70,7 +70,7 @@ export default function Relationships() {
     let completed = false;
     let additionalDescription = "";
 
-    if (!activePlayer) {
+    if (!activePlayer || !activePlayer.social) {
       return { completed, additionalDescription };
     }
 
@@ -88,7 +88,7 @@ export default function Relationships() {
       }
     } else if (house.has(name)) {
       // house upgrades
-      completed = activePlayer.social.houseUpgradeLevel >= reqs[name];
+      completed = (activePlayer.social.houseUpgradeLevel ?? 0) >= reqs[name];
       if (!completed) {
         additionalDescription = ` - ${activePlayer.social.houseUpgradeLevel}/${reqs[name]}`;
       }
@@ -97,7 +97,7 @@ export default function Relationships() {
       if (
         activePlayer.social.spouse &&
         activePlayer.social.spouse !== "" &&
-        activePlayer.social.childrenCount >= 2
+        (activePlayer.social.childrenCount ?? 0) >= 2
       ) {
         completed = true;
       }
@@ -158,7 +158,7 @@ export default function Relationships() {
                     <InfoCard
                       title="Children"
                       description={
-                        activePlayer?.social.childrenCount.toString() ??
+                        (activePlayer?.social?.childrenCount ?? 0).toString() ??
                         "No Info"
                       }
                       Icon={IconBabyCarriage}
@@ -166,14 +166,15 @@ export default function Relationships() {
                     <InfoCard
                       title="House Upgrade Level"
                       description={
-                        activePlayer?.social.houseUpgradeLevel.toString() ??
-                        "No Info"
+                        (
+                          activePlayer?.social?.houseUpgradeLevel ?? 0
+                        ).toString() ?? "No Info"
                       }
                       Icon={HomeIcon}
                     />
                     <InfoCard
                       title="Spouse"
-                      description={activePlayer?.social.spouse ?? "No Info"}
+                      description={activePlayer?.social?.spouse ?? "No Info"}
                       Icon={UsersIcon}
                     />
                   </div>
@@ -248,10 +249,10 @@ export default function Relationships() {
                   key={v.name}
                   villager={v}
                   points={
-                    activePlayer?.social.relationships[v.name]?.points ?? 0
+                    activePlayer?.social?.relationships[v.name]?.points ?? 0
                   }
                   status={
-                    activePlayer?.social.relationships[v.name]?.status ?? null
+                    activePlayer?.social?.relationships[v.name]?.status ?? null
                   }
                   setIsOpen={setIsOpen}
                   setVillager={setVillager}

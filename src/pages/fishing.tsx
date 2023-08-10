@@ -38,7 +38,7 @@ export default function Fishing() {
 
   useEffect(() => {
     if (activePlayer) {
-      setFishCaught(new Set(activePlayer.fishing.fishCaught));
+      setFishCaught(new Set(activePlayer?.fishing?.fishCaught ?? []));
     }
   }, [activePlayer]);
 
@@ -50,11 +50,10 @@ export default function Fishing() {
     }
 
     if (name === "Mother Catch") {
-      completed = activePlayer.fishing.totalCaught >= reqs[name];
+      const totalCaught = activePlayer?.fishing?.totalCaught ?? 0;
+      completed = totalCaught >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          100 - activePlayer.fishing.totalCaught
-        } more`;
+        additionalDescription = ` - ${reqs[name] - totalCaught} more`;
       }
     } else {
       completed = fishCaught.size >= reqs[name as keyof typeof reqs];
