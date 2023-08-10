@@ -37,7 +37,7 @@ export function PresetSelector() {
           className="flex-1 justify-between md:max-w-[200px]"
         >
           <p className="w-full max-w-full truncate text-left">
-            {activePlayer ? activePlayer.general.name : "Load a farmhand..."}
+            {activePlayer?.general?.name ?? "Load a farmhand..."}
           </p>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -63,7 +63,7 @@ export function PresetSelector() {
                     <CheckIcon
                       className={cn(
                         "ml-auto h-4 w-4",
-                        activePlayer?.general.name === player.general.name
+                        activePlayer?.general?.name === player.general.name
                           ? "opacity-100"
                           : "opacity-0"
                       )}

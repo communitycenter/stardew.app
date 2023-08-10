@@ -22,7 +22,6 @@ import {
   miscNavigation,
   playerNavigation,
   collectionsNavigation,
-  SidebarCategory,
 } from "@/components/sidebar";
 
 interface Props {
@@ -93,7 +92,7 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
                       }}
                       className="truncate"
                     >
-                      {player.general.name}
+                      {player.general?.name ?? "Unknown"}
                     </Button>
                   ))}
               </div>
