@@ -49,6 +49,7 @@ export default async function handler(
     );
 
     if (!discord.ok) {
+      console.log(await discord.json())
       res.status(400).end();
       return;
     }
@@ -78,13 +79,20 @@ export default async function handler(
         user = discordUser;
         cookieSecret = user.cookie_secret;
       } else {
-        user = (await conn.execute('INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)', [
+        await conn.execute('INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)', [
             uid as string,
             discordUserData.id,
             discordUserData.username,
             discordUserData.avatar,
             cookieSecret,
-				]))?.rows[0] as SqlUser
+				])
+        user = {
+          id: uid as string,
+          discord_id: discordUserData.id,
+          discord_name: discordUserData.username,
+          discord_avatar: discordUserData.avatar,
+          cookie_secret: cookieSecret,
+        }
       }
     }
 
