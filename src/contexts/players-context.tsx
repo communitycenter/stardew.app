@@ -5,6 +5,8 @@ import {
   SetStateAction,
   Dispatch,
   useEffect,
+  useCallback,
+  useMemo,
 } from "react";
 
 import type { FishRet } from "@/lib/parsers/fishing";
@@ -19,6 +21,7 @@ import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { NotesRet } from "@/lib/parsers/notes";
 import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
+import useSWR from "swr";
 
 interface Player {
   _id: string;
@@ -37,32 +40,93 @@ interface Player {
 }
 
 interface PlayersContextProps {
-  players: Player[] | null;
-  setPlayers: Dispatch<SetStateAction<Player[] | null>>;
-  activePlayer: Player | null;
-  setActivePlayer: Dispatch<SetStateAction<Player | null>>;
+  players?: Player[];
+  uploadPlayers: (players: Player[]) => void;
+  patchPlayer: (patch: Partial<Player>) => Promise<void>;
+  activePlayer?: Player;
+  setActivePlayer: (player?: Player) => void;
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
-  players: null,
-  setPlayers: () => {},
-  activePlayer: null,
+  uploadPlayers: () => {},
+  patchPlayer: () => Promise.resolve(),
   setActivePlayer: () => {},
 });
 
+export function isObject(item: any) {
+  return (item && typeof item === 'object' && !Array.isArray(item));
+}
+
+export function mergeDeep(target: any, ...sources: any[]) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return mergeDeep(target, ...sources);
+}
+
+// @ts-ignore - idk man it doesnt like ...args: any
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-  const [players, setPlayers] = useState<Player[] | null>(null);
-  const [activePlayer, setActivePlayer] = useState<Player | null>(null);
+  const api = useSWR<Player[]>("/api/saves", fetcher);
+  const [activePlayerId, setActivePlayerId] = useState<string>();
+  const players = useMemo(() => api.data ?? [], [api.data]);
+  const activePlayer = useMemo(() => players.find((p) => p._id === activePlayerId), [players, activePlayerId]);
 
   useEffect(() => {
-    if (players) {
-      setActivePlayer(players[0]);
+    if (!activePlayerId && players.length > 0) {
+      setActivePlayerId(players[0]._id);
     }
-  }, [players]);
+  }, [activePlayerId, players]);
+  
+  const patchPlayer = useCallback(async (patch: Partial<Player>) => {
+    if (!activePlayer) return;
+    const patchPlayers = (players: Player[] | undefined) => (players ?? []).map((p) => {
+      if (p._id === activePlayer._id) {
+        return mergeDeep(p, patch);
+      }
+      return p;
+    });
+    await api.mutate(async (currentPlayers: Player[] | undefined) => {
+      await fetch(`/api/saves/${activePlayer._id}`, {
+        method: "PATCH",
+        body: JSON.stringify(patch),
+      });
+      return patchPlayers(currentPlayers);
+    }, { optimisticData: patchPlayers });
+  }, [activePlayer, api]);
+
+  const uploadPlayers = useCallback(async (players: Player[]) => {
+    await fetch("/api/saves", {
+      method: "POST",
+      body: JSON.stringify(players),
+    });
+    await api.mutate(players)
+    setActivePlayerId(players[0]._id);
+  }, [api, setActivePlayerId]);
+
+  const setActivePlayer = useCallback((player?: Player) => {
+    if (!player) {
+      setActivePlayerId(undefined);
+      return;
+    }
+    setActivePlayerId(player._id);
+  }, []);
 
   return (
     <PlayersContext.Provider
-      value={{ players, setPlayers, activePlayer, setActivePlayer }}
+      value={{ players, uploadPlayers, patchPlayer, activePlayer, setActivePlayer }}
     >
       {children}
     </PlayersContext.Provider>

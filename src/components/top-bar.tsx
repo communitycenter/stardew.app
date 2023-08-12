@@ -22,7 +22,7 @@ export function Topbar() {
   const [open, setIsOpen] = useState(false);
 
   const { toast } = useToast();
-  const { setPlayers } = useContext(PlayersContext);
+  const { uploadPlayers } = useContext(PlayersContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ export function Topbar() {
     reader.onload = async function (event) {
       try {
         const players = parseSaveFile(event.target?.result as string);
-        setPlayers(players);
+        await uploadPlayers(players);
         setLoading(false);
       } catch (err) {
         toast({
