@@ -75,11 +75,9 @@ export function mergeDeep(target: any, ...sources: any[]) {
   return mergeDeep(target, ...sources);
 }
 
-// @ts-ignore - idk man it doesnt like ...args: any
-const fetcher = (...args) => fetch(...args).then(res => res.json())
-
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-  const api = useSWR<Player[]>("/api/saves", fetcher);
+  // @ts-expect-error
+  const api = useSWR<Player[]>("/api/saves", (...args) => fetch(...args).then(res => res.json()));
   const [activePlayerId, setActivePlayerId] = useState<string>();
   const players = useMemo(() => api.data ?? [], [api.data]);
   const activePlayer = useMemo(() => players.find((p) => p._id === activePlayerId), [players, activePlayerId]);

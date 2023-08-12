@@ -14,8 +14,12 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { IconLoader2 } from "@tabler/icons-react";
+import Link from "next/link";
+import useSWR from "swr";
 
 export function Topbar() {
+  // @ts-expect-error
+  const api = useSWR<Player>("/api", (...args) => fetch(...args).then(res => res.json()), { refreshInterval: 0, revalidateOnFocus: false });
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [loading, setLoading] = useState(false);
@@ -98,12 +102,11 @@ export function Topbar() {
               onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
             />
           </Button>
-          <Button
-            className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-            disabled
-          >
-            Log In With Discord
-          </Button>
+          {!api.data?.discord_id && <Link href="/api/oauth">
+            <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white">
+              Log In With Discord
+            </Button>
+          </Link>}
         </div>
         <MobileNav open={open} setIsOpen={setIsOpen} inputRef={inputRef} />
       </div>
