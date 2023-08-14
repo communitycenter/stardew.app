@@ -35,10 +35,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setDeletionOpen: Dispatch<SetStateAction<boolean>>;
   inputRef: MutableRefObject<HTMLInputElement | null>;
 }
 
-export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
+export const MobileNav = ({
+  open,
+  setIsOpen,
+  inputRef,
+  setDeletionOpen,
+}: Props) => {
   const api = useSWR<User>(
     "/api",
     // @ts-expect-error
@@ -72,7 +78,7 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
             {/* Upload, Login with Discord */}
             <div className="grid grid-cols-1 gap-2">
               <Button
-                variant="secondary"
+                variant="default"
                 onClick={() => inputRef.current?.click()}
               >
                 Upload
@@ -80,15 +86,15 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
               {/* TODO: remove disabled when implemented */}
               {!api.data?.discord_id && (
                 <Button
-                  disabled
                   className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
+                  asChild
                 >
-                  Log In With Discord
+                  <Link href="/api/oauth">Log In With Discord</Link>
                 </Button>
               )}
               {api.data?.discord_id && (
                 <>
-                  <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white space-x-2 px-2.5">
+                  <Button className="space-x-2 px-2.5" variant="secondary">
                     <Avatar className="h-6 w-6">
                       <AvatarImage
                         src={`https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`}
@@ -97,40 +103,47 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
                         {api.data?.discord_name.slice(0, 1).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <span>{api.data?.discord_name}</span>
+                    <span className="truncate">{api.data.discord_name}</span>
                   </Button>
-                  <Button disabled={true}>Delete save</Button>
-                  <Button
-                    onClick={() => {
-                      deleteCookie("token", {
-                        maxAge: 0,
-                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                          ? "localhost"
-                          : "stardew.app",
-                      });
-                      deleteCookie("uid", {
-                        maxAge: 0,
-                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                          ? "localhost"
-                          : "stardew.app",
-                      });
-                      deleteCookie("oauth_state", {
-                        maxAge: 0,
-                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                          ? "localhost"
-                          : "stardew.app",
-                      });
-                      deleteCookie("discord_user", {
-                        maxAge: 0,
-                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                          ? "localhost"
-                          : "stardew.app",
-                      });
-                      return (window.location.href = "/");
-                    }}
-                  >
-                    Log out
-                  </Button>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Button
+                      variant="destructive"
+                      onClick={() => setDeletionOpen(true)}
+                    >
+                      Delete save
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        deleteCookie("token", {
+                          maxAge: 0,
+                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            ? "localhost"
+                            : "stardew.app",
+                        });
+                        deleteCookie("uid", {
+                          maxAge: 0,
+                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            ? "localhost"
+                            : "stardew.app",
+                        });
+                        deleteCookie("oauth_state", {
+                          maxAge: 0,
+                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            ? "localhost"
+                            : "stardew.app",
+                        });
+                        deleteCookie("discord_user", {
+                          maxAge: 0,
+                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            ? "localhost"
+                            : "stardew.app",
+                        });
+                        return (window.location.href = "/");
+                      }}
+                    >
+                      Log out
+                    </Button>
+                  </div>
                 </>
               )}
             </div>

@@ -209,6 +209,7 @@ export function Topbar() {
       <MobileNav
         open={mobileOpen}
         setIsOpen={setMobileOpen}
+        setDeletionOpen={setDeletionOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />

@@ -24,7 +24,7 @@ export const DeletionDialog = ({ open, setOpen }: Props) => {
           This action cannot be undone. This will permanently delete all of your
           stored data.
         </DialogDescription>
-        <DialogFooter>
+        <DialogFooter className="gap-3 sm:gap-0">
           <Button onClick={() => setOpen(false)}>Cancel</Button>
           <Button disabled variant="destructive">
             Delete
