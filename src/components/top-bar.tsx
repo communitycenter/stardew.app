@@ -43,6 +43,7 @@ export function Topbar() {
   // @ts-expect-error
   const api = useSWR<Player>(
     "/api",
+    // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
     { refreshInterval: 0, revalidateOnFocus: false }
   );
