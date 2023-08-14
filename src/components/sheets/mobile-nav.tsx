@@ -3,7 +3,13 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { Dispatch, MutableRefObject, SetStateAction, useContext } from "react";
+import {
+  Dispatch,
+  MutableRefObject,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -23,6 +29,10 @@ import {
   playerNavigation,
   collectionsNavigation,
 } from "@/components/sidebar";
+import { Player } from "@/pages/api/saves";
+import useSWR from "swr";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { deleteCookie } from "cookies-next";
 
 interface Props {
   open: boolean;
@@ -31,8 +41,17 @@ interface Props {
 }
 
 export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
+  const api = useSWR<Player>(
+    "/api",
+    // @ts-expect-error
+    (...args) => fetch(...args).then((res) => res.json()),
+    { refreshInterval: 0, revalidateOnFocus: false }
+  );
+
   const pathname = usePathname();
+  const [loading, setLoading] = useState(false);
   const { players, activePlayer, setActivePlayer } = useContext(PlayersContext);
+
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
       <SheetContent className="overflow-y-auto">
@@ -53,7 +72,7 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
             <h3 className="font-semibold">Actions</h3>
             <Separator />
             {/* Upload, Login with Discord */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2">
               <Button
                 variant="secondary"
                 onClick={() => inputRef.current?.click()}
@@ -61,19 +80,67 @@ export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
                 Upload
               </Button>
               {/* TODO: remove disabled when implemented */}
-              <Button disabled>
-                <DiscordLogoIcon className="mr-2 w-4 h-4" />
-                Log In
-              </Button>
+              {!api.data?.discord_id && (
+                <Button
+                  disabled
+                  className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
+                >
+                  Log In With Discord
+                </Button>
+              )}
+              {api.data?.discord_id && (
+                <>
+                  <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white space-x-2 px-2.5">
+                    <Avatar className="h-6 w-6">
+                      <AvatarImage
+                        src={`https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`}
+                      />
+                      <AvatarFallback>
+                        {api.data?.discord_name.slice(0, 1).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span>{api.data?.discord_name}</span>
+                  </Button>
+                  <Button disabled={true}>Delete save</Button>
+                  <Button
+                    onClick={() => {
+                      deleteCookie("token", {
+                        maxAge: 0,
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("uid", {
+                        maxAge: 0,
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("oauth_state", {
+                        maxAge: 0,
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      deleteCookie("discord_user", {
+                        maxAge: 0,
+                        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          ? "localhost"
+                          : "stardew.app",
+                      });
+                      return (window.location.href = "/");
+                    }}
+                  >
+                    Log out
+                  </Button>
+                </>
+              )}
             </div>
             {/* Player Selection */}
             <section className="space-y-2">
-              <h4 className="text-sm font-semibold">Select Farmhand</h4>
-              {!players && (
-                <Button disabled className="w-full">
-                  No player data
-                </Button>
-              )}
+              {players?.length ? (
+                <h4 className="text-sm font-semibold">Select Farmhand</h4>
+              ) : null}
               <div className="grid grid-cols-2 gap-2">
                 {players &&
                   players.map((player) => (
