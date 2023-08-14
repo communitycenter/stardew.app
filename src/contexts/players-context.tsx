@@ -1,9 +1,9 @@
+import useSWR from "swr";
+
 import {
   createContext,
   useState,
   ReactNode,
-  SetStateAction,
-  Dispatch,
   useEffect,
   useCallback,
   useMemo,
@@ -21,7 +21,6 @@ import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { NotesRet } from "@/lib/parsers/notes";
 import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
-import useSWR from "swr";
 
 interface Player {
   _id: string;
@@ -54,7 +53,7 @@ export const PlayersContext = createContext<PlayersContextProps>({
 });
 
 export function isObject(item: any) {
-  return (item && typeof item === 'object' && !Array.isArray(item));
+  return item && typeof item === "object" && !Array.isArray(item);
 }
 
 export function mergeDeep(target: any, ...sources: any[]) {
@@ -76,43 +75,58 @@ export function mergeDeep(target: any, ...sources: any[]) {
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-  // @ts-expect-error
-  const api = useSWR<Player[]>("/api/saves", (...args) => fetch(...args).then(res => res.json()));
+  const api = useSWR<Player[]>("/api/saves", (...args) =>
+    // @ts-expect-error
+    fetch(...args).then((res) => res.json())
+  );
   const [activePlayerId, setActivePlayerId] = useState<string>();
   const players = useMemo(() => api.data ?? [], [api.data]);
-  const activePlayer = useMemo(() => players.find((p) => p._id === activePlayerId), [players, activePlayerId]);
+  const activePlayer = useMemo(
+    () => players.find((p) => p._id === activePlayerId),
+    [players, activePlayerId]
+  );
 
   useEffect(() => {
     if (!activePlayerId && players.length > 0) {
       setActivePlayerId(players[0]._id);
     }
   }, [activePlayerId, players]);
-  
-  const patchPlayer = useCallback(async (patch: Partial<Player>) => {
-    if (!activePlayer) return;
-    const patchPlayers = (players: Player[] | undefined) => (players ?? []).map((p) => {
-      if (p._id === activePlayer._id) {
-        return mergeDeep(p, patch);
-      }
-      return p;
-    });
-    await api.mutate(async (currentPlayers: Player[] | undefined) => {
-      await fetch(`/api/saves/${activePlayer._id}`, {
-        method: "PATCH",
-        body: JSON.stringify(patch),
-      });
-      return patchPlayers(currentPlayers);
-    }, { optimisticData: patchPlayers });
-  }, [activePlayer, api]);
 
-  const uploadPlayers = useCallback(async (players: Player[]) => {
-    await fetch("/api/saves", {
-      method: "POST",
-      body: JSON.stringify(players),
-    });
-    await api.mutate(players)
-    setActivePlayerId(players[0]._id);
-  }, [api, setActivePlayerId]);
+  const patchPlayer = useCallback(
+    async (patch: Partial<Player>) => {
+      if (!activePlayer) return;
+      const patchPlayers = (players: Player[] | undefined) =>
+        (players ?? []).map((p) => {
+          if (p._id === activePlayer._id) {
+            return mergeDeep(p, patch);
+          }
+          return p;
+        });
+      await api.mutate(
+        async (currentPlayers: Player[] | undefined) => {
+          await fetch(`/api/saves/${activePlayer._id}`, {
+            method: "PATCH",
+            body: JSON.stringify(patch),
+          });
+          return patchPlayers(currentPlayers);
+        },
+        { optimisticData: patchPlayers }
+      );
+    },
+    [activePlayer, api]
+  );
+
+  const uploadPlayers = useCallback(
+    async (players: Player[]) => {
+      await fetch("/api/saves", {
+        method: "POST",
+        body: JSON.stringify(players),
+      });
+      await api.mutate(players);
+      setActivePlayerId(players[0]._id);
+    },
+    [api, setActivePlayerId]
+  );
 
   const setActivePlayer = useCallback((player?: Player) => {
     if (!player) {
@@ -124,7 +138,13 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <PlayersContext.Provider
-      value={{ players, uploadPlayers, patchPlayer, activePlayer, setActivePlayer }}
+      value={{
+        players,
+        uploadPlayers,
+        patchPlayer,
+        activePlayer,
+        setActivePlayer,
+      }}
     >
       {children}
     </PlayersContext.Provider>

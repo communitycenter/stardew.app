@@ -1,8 +1,9 @@
+import useSWR from "swr";
 import Link from "next/link";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import type { User } from "@/components/top-bar";
+
 import {
   Dispatch,
   MutableRefObject,
@@ -10,9 +11,17 @@ import {
   useContext,
   useState,
 } from "react";
+import { cn } from "@/lib/utils";
+import { deleteCookie } from "cookies-next";
+import { usePathname } from "next/navigation";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import {
+  miscNavigation,
+  playerNavigation,
+  collectionsNavigation,
+} from "@/components/sidebar";
 import {
   Sheet,
   SheetTitle,
@@ -21,18 +30,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
-import { DiscordLogoIcon } from "@radix-ui/react-icons";
-
-import {
-  miscNavigation,
-  playerNavigation,
-  collectionsNavigation,
-} from "@/components/sidebar";
-import { Player } from "@/pages/api/saves";
-import useSWR from "swr";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { deleteCookie } from "cookies-next";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Props {
   open: boolean;
@@ -41,7 +39,7 @@ interface Props {
 }
 
 export const MobileNav = ({ open, setIsOpen, inputRef }: Props) => {
-  const api = useSWR<Player>(
+  const api = useSWR<User>(
     "/api",
     // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
