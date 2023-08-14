@@ -88,6 +88,7 @@ export const MobileNav = ({
                 <Button
                   className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
                   asChild
+                  disabled
                 >
                   <Link href="/api/oauth">Log In With Discord</Link>
                 </Button>
