@@ -32,7 +32,7 @@ export interface PlayerType {
   museum?: MuseumRet;
   social?: SocialRet;
   monsters?: MonstersRet;
-  walnuts: WalnutRet;
+  walnuts?: WalnutRet;
   notes?: NotesRet;
   scraps?: ScrapsRet;
   perfection?: PerfectionRet;
