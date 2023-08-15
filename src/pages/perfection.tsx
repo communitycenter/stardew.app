@@ -174,6 +174,14 @@ export default function Perfection() {
     return count;
   }, [activePlayer]);
 
+  const getWalnutsFound = useMemo(() => {
+    if (!activePlayer) return 0;
+
+    const walnutsFoundObject = activePlayer?.walnuts?.found ?? {};
+
+    return Object.entries(walnutsFoundObject).reduce((a, b) => a + b[1], 0);
+  }, [activePlayer]);
+
   const playerLevel = useMemo(() => {
     // formula for player level is
     // (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
@@ -207,7 +215,7 @@ export default function Perfection() {
     num += getCookedRecipesPercent * 10; // 10% of the total
     num += getCraftedRecipesPercent * 10; // 10% of the total
     num += getFishCaughtPercent * 10; // 10% of the total
-    num += (activePlayer.walnuts.foundCount / 130) * 5;
+    num += (getWalnutsFound / 130) * 5;
 
     return num / 100;
   }, [
@@ -219,6 +227,7 @@ export default function Perfection() {
     getCookedRecipesPercent,
     getCraftedRecipesPercent,
     getFishCaughtPercent,
+    getWalnutsFound,
   ]);
 
   return (
@@ -357,11 +366,9 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Golden Walnuts"
-                      description={`${
-                        activePlayer?.walnuts.foundCount ?? 0
-                      }/130`}
+                      description={`${getWalnutsFound ?? 0}/130`}
                       percentage={Math.floor(
-                        ((activePlayer?.walnuts.foundCount ?? 0) / 130) * 100
+                        ((getWalnutsFound ?? 0) / 130) * 100
                       )}
                       footer="5% of total perfection"
                     />

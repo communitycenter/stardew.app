@@ -2,13 +2,12 @@ import allWalnuts from "@/data/walnuts.json";
 import { WalnutType, WalnutMapType } from "@/types/items";
 
 export interface WalnutRet {
-  foundCount: number;
   found: { [key: string]: number };
 }
 
 export const walnuts = allWalnuts as unknown as { [key: string]: WalnutType };
 
-export function parseWalnuts(save: any): any {
+export function parseWalnuts(save: any): WalnutRet {
   //   if (!player.mailReceived.string.includes("Visited_Island")) return;
 
   const collectedGoldenWalnuts: string[] =
@@ -32,13 +31,7 @@ export function parseWalnuts(save: any): any {
     trackedWalnutObject[k.key.string as string] = k.value.int as number;
   });
 
-  const countedWalnuts = Object.entries(trackedWalnutObject).reduce(
-    (a, b) => a + b[1],
-    0
-  );
-
   return {
-    foundCount: countedWalnuts,
     found: trackedWalnutObject,
   };
 }
