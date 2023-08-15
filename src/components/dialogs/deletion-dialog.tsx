@@ -19,7 +19,11 @@ export const DeletionDialog = ({ open, setOpen }: Props) => {
       method: "DELETE",
     });
 
-    if (res.ok) setOpen(false);
+    if (res.ok) {
+      setOpen(false);
+      // TODO: might be better to just reset the players context
+      window.location.reload();
+    }
   };
 
   return (
