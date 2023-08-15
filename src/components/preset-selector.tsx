@@ -1,10 +1,8 @@
+import { cn } from "@/lib/utils";
 import { useContext, useState } from "react";
 
-import { cn } from "@/lib/utils";
+import { PlayersContext } from "@/contexts/players-context";
 
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-
-import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -17,13 +15,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
 export function PresetSelector() {
   const [open, setOpen] = useState(false);
-  const { toast } = useToast();
   const { players, activePlayer, setActivePlayer } = useContext(PlayersContext);
 
   return (
@@ -63,7 +60,7 @@ export function PresetSelector() {
                     <CheckIcon
                       className={cn(
                         "ml-auto h-4 w-4",
-                        activePlayer?.general?.name === player.general.name
+                        activePlayer?._id === player._id
                           ? "opacity-100"
                           : "opacity-0"
                       )}
