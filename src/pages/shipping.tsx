@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
 import achievements from "@/data/achievements.json";
 
@@ -14,6 +15,7 @@ import {
 } from "@/components/ui/accordion";
 import { FilterButton } from "@/components/filter-btn";
 import { ShippingCard } from "@/components/cards/shipping-card";
+import { Command, CommandInput } from "@/components/ui/command";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs: Record<string, number> = {
@@ -25,6 +27,7 @@ const reqs: Record<string, number> = {
 export default function Shipping() {
   const [basicShipped, setBasicShipped] = useState({});
 
+  const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
@@ -76,7 +79,7 @@ export default function Shipping() {
     } else if (name === "Polyculture") {
       completed = polycultureCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${reqs[name] - polycultureCount} more`;
+        additionalDescription = ` - ${reqs[name] - polycultureCount} left`;
       }
       return { completed, additionalDescription };
     }
@@ -84,7 +87,7 @@ export default function Shipping() {
     completed = basicShippedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${reqs[name] - basicShippedCount} more`;
+      additionalDescription = ` - ${reqs[name] - basicShippedCount} left`;
     }
     return { completed, additionalDescription };
   };
@@ -151,28 +154,46 @@ export default function Shipping() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Items
             </h2>
-            <div className="flex space-x-4">
+            {/* Filters */}
+            <div className="grid grid-cols-2 gap-3 sm:flex">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Unshipped"
+                title={`Unshipped (${
+                  Object.keys(shipping_items).length - basicShippedCount
+                })`}
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"1"}
                 _filter={_filter}
-                title="Polyculture"
+                title={`Polyculture (${
+                  reqs["Polyculture"] - polycultureCount
+                })`}
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_filter}
-                title="Completed"
+                title={`Completed (${basicShippedCount})`}
                 setFilter={setFilter}
               />
             </div>
+            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <CommandInput
+                onValueChange={(v) => setSearch(v)}
+                placeholder="Search Recipes"
+              />
+            </Command>
+            {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(shipping_items)
+                .filter((i) => {
+                  if (!search) return true;
+                  const name =
+                    objects[i.itemID.toString() as keyof typeof objects].name;
+                  return name.toLowerCase().includes(search.toLowerCase());
+                })
                 .filter((i) => {
                   if (_filter === "0") {
                     // Item not shipped

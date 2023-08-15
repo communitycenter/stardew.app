@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+import objects from "@/data/objects.json";
 import recipes from "@/data/cooking.json";
 import achievements from "@/data/achievements.json";
 
@@ -17,6 +18,7 @@ import {
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
+import { Command, CommandInput } from "@/components/ui/command";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs = {
@@ -30,6 +32,7 @@ export default function Cooking() {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [playerRecipes, setPlayerRecipes] = useState({});
 
+  const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
@@ -46,6 +49,14 @@ export default function Cooking() {
     if (!activePlayer || !activePlayer.cooking) return 0;
 
     return Object.values(activePlayer.cooking.recipes).filter((r) => r > 1)
+      .length;
+  }, [activePlayer]);
+
+  // tracks how many recipes the players knows but has not cooked
+  const knownCount = useMemo(() => {
+    if (!activePlayer || !activePlayer.cooking) return 0;
+
+    return Object.values(activePlayer.cooking.recipes).filter((r) => r === 1)
       .length;
   }, [activePlayer]);
 
@@ -129,28 +140,44 @@ export default function Cooking() {
             <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Recipes
             </h3>
-            <div className="flex space-x-4">
+            {/* Filters */}
+            <div className="grid grid-cols-2 gap-3 sm:flex">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Unknown"
+                title={`Unknown (${
+                  Object.keys(recipes).length - (knownCount + cookedCount)
+                })`}
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"1"}
                 _filter={_filter}
-                title="Known"
+                title={`Known (${knownCount})`}
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_filter}
-                title="Cooked"
+                title={`Cooked (${cookedCount})`}
                 setFilter={setFilter}
               />
             </div>
+            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <CommandInput
+                onValueChange={(v) => setSearch(v)}
+                placeholder="Search Recipes"
+              />
+            </Command>
+            {/* Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)
+                .filter((r) => {
+                  if (!search) return true;
+                  const name =
+                    objects[r.itemID.toString() as keyof typeof objects].name;
+                  return name.toLowerCase().includes(search.toLowerCase());
+                })
                 .filter((r) => {
                   if (_filter === "0") {
                     // unknown recipes (not in playerRecipes)

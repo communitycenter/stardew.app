@@ -3,6 +3,7 @@ import Head from "next/head";
 import type { FishType } from "@/types/items";
 
 import fishes from "@/data/fish.json";
+import objects from "@/data/objects.json";
 import achievements from "@/data/achievements.json";
 
 import { useContext, useEffect, useState } from "react";
@@ -14,10 +15,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
 import { FilterButton } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import { BooleanCard } from "@/components/cards/boolean-card";
+import { Command, CommandInput } from "@/components/ui/command";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs = {
@@ -32,6 +33,7 @@ export default function Fishing() {
   const [fish, setFish] = useState<FishType | null>(null);
   const [fishCaught, setFishCaught] = useState<Set<number>>(new Set());
 
+  const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
@@ -128,22 +130,38 @@ export default function Fishing() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Fish
             </h2>
-            <div className="flex space-x-4">
+            {/* Filters */}
+            <div className="grid grid-cols-2 gap-3 sm:flex">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
-                title="Incomplete"
+                title={`Incomplete (${
+                  Object.keys(fishes).length - fishCaught.size
+                })`}
                 setFilter={setFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_filter}
-                title="Completed"
+                title={`Completed (${fishCaught.size})`}
                 setFilter={setFilter}
               />
             </div>
+            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <CommandInput
+                onValueChange={(v) => setSearch(v)}
+                placeholder="Search Fish"
+              />
+            </Command>
+            {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(fishes)
+                .filter((f) => {
+                  if (!search) return true;
+                  const name =
+                    objects[f.itemID.toString() as keyof typeof objects].name;
+                  return name.toLowerCase().includes(search.toLowerCase());
+                })
                 .filter((f) => {
                   if (_filter === "0") {
                     return !fishCaught.has(f.itemID); // incompleted
