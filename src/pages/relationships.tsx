@@ -5,7 +5,7 @@ import villagers from "@/data/villagers.json";
 
 import type { Villager } from "@/types/items";
 
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/accordion";
 import { InfoCard } from "@/components/cards/info-card";
 import { VillagerCard } from "@/components/cards/villager-card";
+import { Command, CommandInput } from "@/components/ui/command";
 import { VillagerSheet } from "@/components/sheets/villager-sheet";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
@@ -37,6 +38,7 @@ export default function Relationships() {
   const { activePlayer } = useContext(PlayersContext);
 
   const [open, setIsOpen] = useState(false);
+  const [_filter, setFilter] = useState("");
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
   const fiveHeartCount = useMemo(() => {
@@ -107,6 +109,10 @@ export default function Relationships() {
     }
     return { completed, additionalDescription };
   };
+
+  useEffect(() => {
+    console.log(_filter);
+  }, [_filter]);
 
   return (
     <>
@@ -243,21 +249,35 @@ export default function Relationships() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Villagers
             </h2>
+            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <CommandInput
+                onValueChange={(v) => setFilter(v)}
+                placeholder="Search Villagers"
+              />
+            </Command>
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
-              {Object.values(villagers).map((v) => (
-                <VillagerCard
-                  key={v.name}
-                  villager={v}
-                  points={
-                    activePlayer?.social?.relationships[v.name]?.points ?? 0
+              {Object.values(villagers)
+                .filter((v) => {
+                  if (!_filter) return true;
+                  else {
+                    return v.name.toLowerCase().includes(_filter.toLowerCase());
                   }
-                  status={
-                    activePlayer?.social?.relationships[v.name]?.status ?? null
-                  }
-                  setIsOpen={setIsOpen}
-                  setVillager={setVillager}
-                />
-              ))}
+                })
+                .map((v) => (
+                  <VillagerCard
+                    key={v.name}
+                    villager={v}
+                    points={
+                      activePlayer?.social?.relationships[v.name]?.points ?? 0
+                    }
+                    status={
+                      activePlayer?.social?.relationships[v.name]?.status ??
+                      null
+                    }
+                    setIsOpen={setIsOpen}
+                    setVillager={setVillager}
+                  />
+                ))}
             </div>
           </section>
         </div>
