@@ -14,6 +14,14 @@ interface Props {
 }
 
 export const DeletionDialog = ({ open, setOpen }: Props) => {
+  const deleteData = async () => {
+    const res = await fetch("/api/saves", {
+      method: "DELETE",
+    });
+
+    if (res.ok) setOpen(false);
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -26,7 +34,7 @@ export const DeletionDialog = ({ open, setOpen }: Props) => {
         </DialogDescription>
         <DialogFooter className="gap-3 sm:gap-0">
           <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button disabled variant="destructive">
+          <Button disabled variant="destructive" onClick={() => deleteData()}>
             Delete
           </Button>
         </DialogFooter>

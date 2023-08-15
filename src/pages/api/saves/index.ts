@@ -1,22 +1,22 @@
 import { getCookie, setCookie } from "cookies-next";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Client } from '@planetscale/database'
+import { Client } from "@planetscale/database";
 import crypto from "crypto";
 
 const client = new Client({
-	url: process.env.DATABASE_URL,
-})
+  url: process.env.DATABASE_URL,
+});
 
-export const conn = client.connection()
+export const conn = client.connection();
 
 type Data = Record<string, any>;
 
 export interface SqlUser {
-	id: string
-	discord_id: string
-	cookie_secret: string
-	discord_avatar: string
-	discord_name: string
+  id: string;
+  discord_id: string;
+  cookie_secret: string;
+  discord_avatar: string;
+  discord_name: string;
 }
 
 export interface Player {
@@ -42,7 +42,9 @@ export async function getUID(
   let uid = getCookie("uid", { req, res });
   if (uid) {
     // uids can be anonymous, so we need to check if the user exists
-		const user = (await conn.execute('SELECT * FROM Users WHERE id = ? LIMIT 1', [uid]))?.rows[0] as SqlUser | undefined
+    const user = (
+      await conn.execute("SELECT * FROM Users WHERE id = ? LIMIT 1", [uid])
+    )?.rows[0] as SqlUser | undefined;
 
     if (user) {
       // user exists, so we check if the user is authenticated
@@ -104,8 +106,12 @@ export const verifyToken = (token: string, key: string) => {
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);
-	const players = (await conn.execute('SELECT * FROM Saves WHERE user_id = ?', [uid]))?.rows as any[] | undefined
-	res.json(players)
+
+  const players = (
+    await conn.execute("SELECT * FROM Saves WHERE user_id = ?", [uid])
+  )?.rows as any[] | undefined;
+
+  res.json(players);
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
@@ -113,32 +119,46 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
   const players = JSON.parse(req.body) as Player[];
   for (const player of players) {
     try {
-      const r = await conn.execute(`
+      const r = await conn.execute(
+        `
         REPLACE INTO Saves (_id, user_id, general, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `, [
-        player._id,
-        uid,
-        player.general ? JSON.stringify(player.general) : '{}',
-        player.fishing ? JSON.stringify(player.fishing) : '{}',
-        player.cooking ? JSON.stringify(player.cooking) : '{}',
-        player.crafting ? JSON.stringify(player.crafting) : '{}',
-        player.shipping ? JSON.stringify(player.shipping) : '{}',
-        player.museum ? JSON.stringify(player.museum) : '{}',
-        player.social ? JSON.stringify(player.social) : '{}',
-        player.monsters ? JSON.stringify(player.monsters) : '{}',
-        player.walnuts ? JSON.stringify(player.walnuts) : '{}',
-        player.notes ? JSON.stringify(player.notes) : '{}',
-        player.scraps ? JSON.stringify(player.scraps) : '{}',
-        player.perfection ? JSON.stringify(player.perfection) : '{}',
-      ])
-      console.log(r)
+      `,
+        [
+          player._id,
+          uid,
+          player.general ? JSON.stringify(player.general) : "{}",
+          player.fishing ? JSON.stringify(player.fishing) : "{}",
+          player.cooking ? JSON.stringify(player.cooking) : "{}",
+          player.crafting ? JSON.stringify(player.crafting) : "{}",
+          player.shipping ? JSON.stringify(player.shipping) : "{}",
+          player.museum ? JSON.stringify(player.museum) : "{}",
+          player.social ? JSON.stringify(player.social) : "{}",
+          player.monsters ? JSON.stringify(player.monsters) : "{}",
+          player.walnuts ? JSON.stringify(player.walnuts) : "{}",
+          player.notes ? JSON.stringify(player.notes) : "{}",
+          player.scraps ? JSON.stringify(player.scraps) : "{}",
+          player.perfection ? JSON.stringify(player.perfection) : "{}",
+        ]
+      );
+      // console.log(r);
       res.status(200).end();
     } catch (e) {
-      console.log(e)
+      // console.log(e);
       res.status(500).end();
     }
   }
+}
+
+async function _delete(req: NextApiRequest, res: NextApiResponse) {
+  const uid = await getUID(req, res);
+  const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+    uid,
+  ]);
+
+  // console.log(result.rowsAffected)
+
+  res.status(204).end();
 }
 
 export default async function handler(
@@ -151,6 +171,8 @@ export default async function handler(
         return await get(req, res);
       case "POST":
         return await post(req, res);
+      case "DELETE":
+        return await _delete(req, res);
     }
     res.status(405).end();
   } catch (e: any) {
