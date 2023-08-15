@@ -22,7 +22,7 @@ import type { NotesRet } from "@/lib/parsers/notes";
 import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
 
-interface Player {
+export interface PlayerType {
   _id: string;
   general?: GeneralRet;
   fishing?: FishRet;
@@ -39,11 +39,11 @@ interface Player {
 }
 
 interface PlayersContextProps {
-  players?: Player[];
-  uploadPlayers: (players: Player[]) => void;
-  patchPlayer: (patch: Partial<Player>) => Promise<void>;
-  activePlayer?: Player;
-  setActivePlayer: (player?: Player) => void;
+  players?: PlayerType[];
+  uploadPlayers: (players: PlayerType[]) => void;
+  patchPlayer: (patch: Partial<PlayerType>) => Promise<void>;
+  activePlayer?: PlayerType;
+  setActivePlayer: (player?: PlayerType) => void;
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
@@ -75,7 +75,7 @@ export function mergeDeep(target: any, ...sources: any[]) {
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-  const api = useSWR<Player[]>("/api/saves", (...args) =>
+  const api = useSWR<PlayerType[]>("/api/saves", (...args) =>
     // @ts-expect-error
     fetch(...args).then((res) => res.json())
   );
@@ -93,9 +93,9 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
   }, [activePlayerId, players]);
 
   const patchPlayer = useCallback(
-    async (patch: Partial<Player>) => {
+    async (patch: Partial<PlayerType>) => {
       if (!activePlayer) return;
-      const patchPlayers = (players: Player[] | undefined) =>
+      const patchPlayers = (players: PlayerType[] | undefined) =>
         (players ?? []).map((p) => {
           if (p._id === activePlayer._id) {
             return mergeDeep(p, patch);
@@ -103,7 +103,7 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
           return p;
         });
       await api.mutate(
-        async (currentPlayers: Player[] | undefined) => {
+        async (currentPlayers: PlayerType[] | undefined) => {
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
             body: JSON.stringify(patch),
@@ -117,7 +117,7 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const uploadPlayers = useCallback(
-    async (players: Player[]) => {
+    async (players: PlayerType[]) => {
       await fetch("/api/saves", {
         method: "POST",
         body: JSON.stringify(players),
@@ -128,7 +128,7 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
     [api, setActivePlayerId]
   );
 
-  const setActivePlayer = useCallback((player?: Player) => {
+  const setActivePlayer = useCallback((player?: PlayerType) => {
     if (!player) {
       setActivePlayerId(undefined);
       return;

@@ -34,7 +34,7 @@ export const DeletionDialog = ({ open, setOpen }: Props) => {
         </DialogDescription>
         <DialogFooter className="gap-3 sm:gap-0">
           <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button disabled variant="destructive" onClick={() => deleteData()}>
+          <Button variant="destructive" onClick={() => deleteData()}>
             Delete
           </Button>
         </DialogFooter>
