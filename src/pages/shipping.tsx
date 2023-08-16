@@ -155,36 +155,38 @@ export default function Shipping() {
               All Items
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-2 gap-3 sm:flex">
-              <FilterButton
-                target={"0"}
-                _filter={_filter}
-                title={`Unshipped (${
-                  Object.keys(shipping_items).length - basicShippedCount
-                })`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"1"}
-                _filter={_filter}
-                title={`Polyculture (${
-                  reqs["Polyculture"] - polycultureCount
-                })`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_filter}
-                title={`Completed (${basicShippedCount})`}
-                setFilter={setFilter}
-              />
+            <div className="grid grid-cols-1 xl:flex justify-between gap-2">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+                <FilterButton
+                  target={"0"}
+                  _filter={_filter}
+                  title={`Unshipped (${
+                    Object.keys(shipping_items).length - basicShippedCount
+                  })`}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"1"}
+                  _filter={_filter}
+                  title={`Polyculture (${
+                    reqs["Polyculture"] - polycultureCount
+                  })`}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"2"}
+                  _filter={_filter}
+                  title={`Completed (${basicShippedCount})`}
+                  setFilter={setFilter}
+                />
+              </div>
+              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Recipes"
+                />
+              </Command>
             </div>
-            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-              <CommandInput
-                onValueChange={(v) => setSearch(v)}
-                placeholder="Search Recipes"
-              />
-            </Command>
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(shipping_items)

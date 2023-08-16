@@ -152,34 +152,36 @@ export default function Crafting() {
               All Recipes
             </h3>
             {/* Filters */}
-            <div className="grid grid-cols-2 gap-3 sm:flex">
-              <FilterButton
-                target={"0"}
-                _filter={_filter}
-                title={`Unknown (${
-                  Object.keys(recipes).length - (knownCount + craftedCount)
-                })`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"1"}
-                _filter={_filter}
-                title={`Known (${knownCount})`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_filter}
-                title={`Crafted (${craftedCount})`}
-                setFilter={setFilter}
-              />
+            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+                <FilterButton
+                  target={"0"}
+                  _filter={_filter}
+                  title={`Unknown (${
+                    Object.keys(recipes).length - (knownCount + craftedCount)
+                  })`}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"1"}
+                  _filter={_filter}
+                  title={`Known (${knownCount})`}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"2"}
+                  _filter={_filter}
+                  title={`Crafted (${craftedCount})`}
+                  setFilter={setFilter}
+                />
+              </div>
+              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Recipes"
+                />
+              </Command>
             </div>
-            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-              <CommandInput
-                onValueChange={(v) => setSearch(v)}
-                placeholder="Search Recipes"
-              />
-            </Command>
             {/* Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)

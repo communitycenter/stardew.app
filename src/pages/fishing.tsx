@@ -131,28 +131,30 @@ export default function Fishing() {
               All Fish
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-2 gap-3 sm:flex">
-              <FilterButton
-                target={"0"}
-                _filter={_filter}
-                title={`Incomplete (${
-                  Object.keys(fishes).length - fishCaught.size
-                })`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_filter}
-                title={`Completed (${fishCaught.size})`}
-                setFilter={setFilter}
-              />
+            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+                <FilterButton
+                  target={"0"}
+                  _filter={_filter}
+                  title={`Incomplete (${
+                    Object.keys(fishes).length - fishCaught.size
+                  })`}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"2"}
+                  _filter={_filter}
+                  title={`Completed (${fishCaught.size})`}
+                  setFilter={setFilter}
+                />
+              </div>
+              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Fish"
+                />
+              </Command>
             </div>
-            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-              <CommandInput
-                onValueChange={(v) => setSearch(v)}
-                placeholder="Search Fish"
-              />
-            </Command>
             {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(fishes)
