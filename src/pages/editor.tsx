@@ -37,10 +37,10 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8 items-center justify-center`}
+        className={`flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 px-0 md:px-8 md:items-center justify-center`}
       >
         <div className="mx-auto max-w-xl space-y-4">
-          <Card>
+          <Card className="border-0 md:border">
             <CardHeader>
               {/* TODO: check based on if the players array is populated? But then would we only allow CREATION of 1 farmhand? */}
               <CardTitle>Create/Edit Farmhand</CardTitle>
