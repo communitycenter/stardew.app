@@ -117,13 +117,18 @@ export default function Editor() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="numObelisks">Number of Obelisks</Label>
-                    <Input
-                      id="numObelisks"
-                      placeholder="0-4"
-                      type="number"
-                      min={0}
-                      max={4}
-                    />
+                    <Select>
+                      <SelectTrigger id="numObelisks">
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="goldenClock">Golden Clock</Label>
@@ -141,76 +146,138 @@ export default function Editor() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="childrenCount">Children Count</Label>
-                    <Input
-                      id="childrenCount"
-                      placeholder="0-2"
-                      type="number"
-                      min={0}
-                      max={2}
-                    />
+                    <Select>
+                      <SelectTrigger id="childrenCount">
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="flex flex-col space-y-2">
-                    <Label htmlFor="houseUpgradeLevel">Children Count</Label>
-                    <Input
-                      id="houseUpgradeLevel"
-                      placeholder="0-3"
-                      type="number"
-                      min={0}
-                      max={3}
-                    />
+                    <Label htmlFor="houseUpgradeLevel">House Upgrade</Label>
+                    <Select>
+                      <SelectTrigger id="houseUpgradeLevel">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
                 {/* Skills */}
                 <div className="grid grid-cols-3 gap-4 items-center">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="farming">Farming</Label>
-                    <Input
-                      id="farming"
-                      placeholder="0-10"
-                      type="number"
-                      min={0}
-                      max={10}
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <Label htmlFor="farming">Farming</Label>
-                    <Input
-                      id="farming"
-                      placeholder="0-10"
-                      type="number"
-                      min={0}
-                      max={10}
-                    />
+                    <Select>
+                      <SelectTrigger id="farming">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                        <SelectItem value="6">6</SelectItem>
+                        <SelectItem value="7">7</SelectItem>
+                        <SelectItem value="8">8</SelectItem>
+                        <SelectItem value="9">9</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="fishing">Fishing</Label>
-                    <Input
-                      id="fishing"
-                      placeholder="0-10"
-                      type="number"
-                      min={0}
-                      max={10}
-                    />
+                    <Select>
+                      <SelectTrigger id="fishing">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                        <SelectItem value="6">6</SelectItem>
+                        <SelectItem value="7">7</SelectItem>
+                        <SelectItem value="8">8</SelectItem>
+                        <SelectItem value="9">9</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="foraging">Foraging</Label>
-                    <Input
-                      id="foraging"
-                      placeholder="0-10"
-                      type="number"
-                      min={0}
-                      max={10}
-                    />
+                    <Select>
+                      <SelectTrigger id="foraging">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                        <SelectItem value="6">6</SelectItem>
+                        <SelectItem value="7">7</SelectItem>
+                        <SelectItem value="8">8</SelectItem>
+                        <SelectItem value="9">9</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="mining">Mining</Label>
-                    <Input
-                      id="mining"
-                      placeholder="0-10"
-                      type="number"
-                      min={0}
-                      max={10}
-                    />
+                    <Select>
+                      <SelectTrigger id="mining">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                        <SelectItem value="6">6</SelectItem>
+                        <SelectItem value="7">7</SelectItem>
+                        <SelectItem value="8">8</SelectItem>
+                        <SelectItem value="9">9</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <Label htmlFor="combat">Combat</Label>
+                    <Select>
+                      <SelectTrigger id="combat">
+                        <SelectValue placeholder="Level" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                        <SelectItem value="6">6</SelectItem>
+                        <SelectItem value="7">7</SelectItem>
+                        <SelectItem value="8">8</SelectItem>
+                        <SelectItem value="9">9</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </form>
