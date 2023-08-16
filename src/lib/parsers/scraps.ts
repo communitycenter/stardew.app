@@ -1,5 +1,3 @@
-import scraps from "@/data/journal_scraps.json";
-
 export interface ScrapsRet {
   found: number[];
 }
