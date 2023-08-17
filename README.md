@@ -87,6 +87,13 @@ Stardew.app has been contributed to by the lovely people below <3
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/AndrewPetz">
+            <img src="https://avatars.githubusercontent.com/u/7032619?v=4" width="100;" alt="AndrewPetz"/>
+            <br />
+            <sub><b>Andrew Petz</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/caoimhebyrne">
             <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
             <br />
