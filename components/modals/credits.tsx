@@ -73,7 +73,7 @@ export default function CreditsModal({ isOpen, setOpen }: Props) {
                       </a>{" "}
                       - however, we&apos;ve had some incredible help from
                       contributors over on our{" "}
-                      <a href="https://github.com/stardewapp/stardew.app">
+                      <a href="https://github.com/communitycenter/stardew.app">
                         GitHub
                       </a>
                       .

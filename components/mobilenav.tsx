@@ -95,7 +95,7 @@ const MobileNav = ({
 
                   <div className="flex space-x-2">
                     {/* Github Icon */}
-                    <a href="https://github.com/stardewapp">
+                    <a href="https://github.com/communitycenter/stardew.app">
                       <label className="flex cursor-pointer flex-col items-center rounded-md bg-[#f7f7f7] p-1 text-white hover:bg-gray-200 dark:bg-[#1f1f1f] hover:dark:bg-[#2a2a2a]">
                         <FaGithub
                           className="h-5 w-5 text-black dark:text-white"
