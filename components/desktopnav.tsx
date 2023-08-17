@@ -51,7 +51,7 @@ const DesktopNav = ({
                   </label>
                 </a>
                 <a
-                  href="https://github.com/stardewapp"
+                  href="https://github.com/communitycenter/stardew.app"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
