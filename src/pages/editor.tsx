@@ -53,7 +53,7 @@ export default function Editor() {
               <form className="grid gap-4">
                 {/* General Section */}
                 {/* Name & Quests */}
-                <div className="grid grid-cols-2 gap-4 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input id="name" placeholder="Jack" required />
@@ -68,7 +68,7 @@ export default function Editor() {
                   </div>
                 </div>
                 {/* Farm Name & Type */}
-                <div className="grid grid-cols-2 gap-4 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="farmInfo">Farm Name</Label>
                     {/* TODO: we could automatically append "Farm" to the state value to have consistent values. Also have to make sure no special characters are allowed */}
@@ -95,7 +95,7 @@ export default function Editor() {
                   </div>
                 </div>
                 {/* Money Earned & Fish Caught */}
-                <div className="grid grid-cols-2 gap-4 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="totalMoneyEarned">Money Earned</Label>
                     <CardDescription>A rough estimate is fine!</CardDescription>
@@ -145,7 +145,7 @@ export default function Editor() {
                 {/* Children Count & House Upgrade Level */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-2">
-                    <Label htmlFor="childrenCount">Children Count</Label>
+                    <Label htmlFor="childrenCount">Number of Children</Label>
                     <Select>
                       <SelectTrigger id="childrenCount">
                         <SelectValue placeholder="Select" />
@@ -173,7 +173,7 @@ export default function Editor() {
                   </div>
                 </div>
                 {/* Skills */}
-                <div className="grid grid-cols-3 gap-4 items-center">
+                <div className="grid grid-cols-3 gap-4">
                   <div className="flex flex-col space-y-2">
                     <Label htmlFor="farming">Farming</Label>
                     <Select>
