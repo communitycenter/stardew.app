@@ -1,9 +1,11 @@
 import Head from "next/head";
 
 import { z } from "zod";
+import { useContext, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { FormEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Form,
@@ -18,7 +20,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -30,20 +31,20 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
 const formSchema = z.object({
   name: z
     .string()
+    .min(1)
     .max(32, {
       message: "Name must 32 characters or less",
     })
     .trim(),
   questsCompleted: z.coerce.number().nonnegative().int().max(100000).optional(),
-  farmName: z.string().max(32).trim(),
-  farmType: z.string().max(32).trim(),
+  farmName: z.string().min(1).max(32).trim(),
+  farmType: z.string().min(1).max(32).trim(),
   totalMoneyEarned: z.coerce
     .number()
     .nonnegative()
@@ -63,17 +64,28 @@ const formSchema = z.object({
 });
 
 export default function Editor() {
+  const { activePlayer } = useContext(PlayersContext);
+
+  const farmListInfo = useMemo(() => {
+    if (!activePlayer?.general?.farmInfo) return ["", undefined];
+
+    const farmName = activePlayer.general.farmInfo.split(" (")[0];
+    const farmType = activePlayer.general.farmInfo.split(" (")[1].slice(0, -1);
+
+    return [farmName, farmType];
+  }, [activePlayer]);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema as any),
     defaultValues: {
-      name: undefined,
-      questsCompleted: undefined,
-      farmName: undefined,
+      name: "",
+      questsCompleted: 0,
+      farmName: "",
       farmType: undefined,
-      totalMoneyEarned: undefined,
-      fishCaught: undefined,
+      totalMoneyEarned: 0,
+      fishCaught: 0,
       numObelisks: undefined,
-      goldenClock: undefined,
+      goldenClock: false,
       childrenCount: undefined,
       houseUpgradeLevel: undefined,
       farming: undefined,
@@ -83,6 +95,27 @@ export default function Editor() {
       combat: undefined,
     },
   });
+
+  // whenever activePlayer changes update the form
+  useEffect(() => {
+    form.reset({
+      name: activePlayer?.general?.name ?? "",
+      questsCompleted: activePlayer?.general?.questsCompleted ?? 0,
+      farmName: farmListInfo[0],
+      farmType: farmListInfo[1],
+      totalMoneyEarned: activePlayer?.general?.totalMoneyEarned ?? 0,
+      fishCaught: activePlayer?.fishing?.totalCaught ?? 0,
+      numObelisks: activePlayer?.perfection?.numObelisks ?? undefined,
+      goldenClock: activePlayer?.perfection?.goldenClock ?? false,
+      childrenCount: activePlayer?.social?.childrenCount ?? undefined,
+      houseUpgradeLevel: activePlayer?.social?.houseUpgradeLevel ?? undefined,
+      farming: activePlayer?.general?.skills?.farming ?? undefined,
+      fishing: activePlayer?.general?.skills?.fishing ?? undefined,
+      foraging: activePlayer?.general?.skills?.foraging ?? undefined,
+      mining: activePlayer?.general?.skills?.mining ?? undefined,
+      combat: activePlayer?.general?.skills?.combat ?? undefined,
+    });
+  }, [activePlayer, form, farmListInfo]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
@@ -130,7 +163,12 @@ export default function Editor() {
                         <FormItem>
                           <FormLabel htmlFor="name">Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Jack" {...field} />
+                            <Input
+                              id="name"
+                              autoComplete="off"
+                              placeholder="Jack"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -144,7 +182,7 @@ export default function Editor() {
                           <FormLabel htmlFor="questsCompleted">
                             Quests Completed
                           </FormLabel>
-                          <FormControl>
+                          <FormControl id="questsCompleted">
                             <Input type="number" placeholder="40" {...field} />
                           </FormControl>
                           <FormMessage />
@@ -161,7 +199,11 @@ export default function Editor() {
                         <FormItem>
                           <FormLabel htmlFor="farmName">Farm Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Flame Farm" {...field} />
+                            <Input
+                              id="farmName"
+                              placeholder="Flame Farm"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -170,6 +212,7 @@ export default function Editor() {
                     <FormField
                       control={form.control}
                       name="farmType"
+                      defaultValue={farmListInfo[1]}
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="farmType">Farm Type</FormLabel>
@@ -177,9 +220,12 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
-                            <FormControl>
+                            <FormControl id="farmType">
                               <SelectTrigger>
-                                <SelectValue placeholder="Select" />
+                                <SelectValue
+                                  placeholder="Select"
+                                  defaultValue={farmListInfo[1]}
+                                />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -218,6 +264,7 @@ export default function Editor() {
                           </FormDescription>
                           <FormControl>
                             <Input
+                              id="totalMoneyEarned"
                               type="number"
                               placeholder="1000000"
                               {...field}
@@ -237,7 +284,12 @@ export default function Editor() {
                           </FormLabel>
                           <FormDescription>Total amount caught</FormDescription>
                           <FormControl>
-                            <Input type="number" placeholder="100" {...field} />
+                            <Input
+                              id="fishCaught"
+                              type="number"
+                              placeholder="100"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -258,7 +310,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="numObelisks">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -288,6 +340,7 @@ export default function Editor() {
                               <Switch
                                 checked={field.value}
                                 onCheckedChange={field.onChange}
+                                id="goldenClock"
                               />
                               <FormDescription>
                                 has built golden clock?
@@ -313,7 +366,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="childrenCount">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -340,7 +393,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="houseUpgradeLevel">
                               <SelectTrigger>
                                 <SelectValue placeholder="Level" />
                               </SelectTrigger>
@@ -369,7 +422,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="farming">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -402,7 +455,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="fishing">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -435,7 +488,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="foraging">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -468,7 +521,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="mining">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
@@ -501,7 +554,7 @@ export default function Editor() {
                             onValueChange={field.onChange}
                             defaultValue={field.value as string | undefined}
                           >
-                            <FormControl>
+                            <FormControl id="combat">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
                               </SelectTrigger>
