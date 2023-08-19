@@ -1,9 +1,11 @@
 import Head from "next/head";
 
+import type { PlayerType } from "@/contexts/players-context";
+
 import { z } from "zod";
-import { useContext, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -34,6 +36,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
+function generateUniqueIdentifier() {
+  const timestamp = Date.now().toString(16);
+  const r = Math.random().toString(16).substring(2, 8);
+
+  const uniqueIdentifier = timestamp + r;
+  return uniqueIdentifier.substring(0, 32);
+}
+
 const formSchema = z.object({
   name: z
     .string()
@@ -41,10 +51,11 @@ const formSchema = z.object({
     .max(32, {
       message: "Name must 32 characters or less",
     })
-    .trim(),
+    .trim()
+    .nonempty(),
   questsCompleted: z.coerce.number().nonnegative().int().max(100000).optional(),
-  farmName: z.string().min(1).max(32).trim(),
-  farmType: z.string().min(1).max(32).trim(),
+  farmName: z.string().min(1).max(32).trim().nonempty(),
+  farmType: z.string().min(1).max(32).trim().nonempty(),
   totalMoneyEarned: z.coerce
     .number()
     .nonnegative()
@@ -64,7 +75,7 @@ const formSchema = z.object({
 });
 
 export default function Editor() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
   const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
   const [_numObelisks, _setNumObelisks] = useState<string | undefined>(
@@ -131,6 +142,7 @@ export default function Editor() {
       mining: activePlayer?.general?.skills?.mining ?? undefined,
       combat: activePlayer?.general?.skills?.combat ?? undefined,
     });
+    // TODO: bro there has to be a better way to do this
     _setFarmType(farmListInfo[1]);
     _setNumObelisks(
       activePlayer?.perfection?.numObelisks?.toString() ?? undefined
@@ -155,7 +167,49 @@ export default function Editor() {
   }, [activePlayer, form, farmListInfo]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    const player: PlayerType = {
+      _id: activePlayer?._id ?? generateUniqueIdentifier(),
+      general: {
+        name: values.name,
+        questsCompleted: values.questsCompleted,
+        farmInfo: `${values.farmName} (${values.farmType})`,
+        totalMoneyEarned: values.totalMoneyEarned,
+        skills: {
+          farming: values.farming ?? 0,
+          fishing: values.fishing ?? 0,
+          foraging: values.foraging ?? 0,
+          mining: values.mining ?? 0,
+          combat: values.combat ?? 0,
+          luck: 0,
+        },
+        timePlayed: activePlayer?.general?.timePlayed ?? undefined,
+        stardrops: activePlayer?.general?.stardrops ?? [],
+      },
+      fishing: {
+        totalCaught: values.fishCaught,
+        fishCaught: activePlayer?.fishing?.fishCaught ?? [],
+      },
+      social: {
+        relationships: activePlayer?.social?.relationships ?? {},
+        childrenCount: values.childrenCount ?? 0,
+        houseUpgradeLevel: values.houseUpgradeLevel ?? 0,
+        spouse: activePlayer?.social?.spouse ?? undefined,
+      },
+      perfection: {
+        numObelisks: values.numObelisks ?? 0,
+        goldenClock: values.goldenClock ?? false,
+      },
+      cooking: activePlayer?.cooking ?? undefined,
+      crafting: activePlayer?.crafting ?? undefined,
+      shipping: activePlayer?.shipping ?? undefined,
+      monsters: activePlayer?.monsters ?? undefined,
+      museum: activePlayer?.museum ?? undefined,
+      notes: activePlayer?.notes ?? undefined,
+      scraps: activePlayer?.scraps ?? undefined,
+      walnuts: activePlayer?.walnuts ?? undefined,
+    };
+
+    await uploadPlayers([player]);
   };
 
   return (
