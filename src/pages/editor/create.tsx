@@ -154,9 +154,9 @@ export default function Editor() {
           <Card className="border-0 md:border">
             <CardHeader>
               {/* TODO: check based on if the players array is populated? But then would we only allow CREATION of 1 farmhand? */}
-              <CardTitle>Create/Edit Farmhand</CardTitle>
+              <CardTitle>Create Farmhand</CardTitle>
               <CardDescription>
-                Edit your farmhand&apos;s important metadata. This will be used
+                Set your farmhand&apos;s important metadata. This will be used
                 to calculate completion of some achievements!
               </CardDescription>
             </CardHeader>
@@ -564,7 +564,7 @@ export default function Editor() {
                     />
                   </div>
                   <Button variant="default" type="submit">
-                    Save
+                    Create
                   </Button>
                 </form>
               </Form>
