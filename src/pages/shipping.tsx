@@ -33,14 +33,15 @@ export default function Shipping() {
   const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
-    if (activePlayer && activePlayer.shipping) {
+    if (activePlayer && activePlayer.shipping?.shipped) {
       setBasicShipped(activePlayer.shipping.shipped);
     }
   }, [activePlayer]);
 
   const [polycultureCount, monocultureAchieved, basicShippedCount] =
     useMemo(() => {
-      if (!activePlayer || !activePlayer.shipping) return [0, false, 0];
+      if (!activePlayer || !activePlayer.shipping?.shipped)
+        return [0, false, 0];
 
       let polycultureCount = 0;
       let monocultureAchieved = false;

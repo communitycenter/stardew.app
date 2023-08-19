@@ -75,32 +75,7 @@ const formSchema = z.object({
 });
 
 export default function Editor() {
-  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
-
-  const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
-  const [_numObelisks, _setNumObelisks] = useState<string | undefined>(
-    undefined
-  );
-  const [_childrenCount, _setChildrenCount] = useState<string | undefined>(
-    undefined
-  );
-  const [_houseUpgradeLevel, _setHouseUpgradeLevel] = useState<
-    string | undefined
-  >(undefined);
-  const [_farming, _setFarming] = useState<string | undefined>(undefined);
-  const [_fishing, _setFishing] = useState<string | undefined>(undefined);
-  const [_foraging, _setForaging] = useState<string | undefined>(undefined);
-  const [_mining, _setMining] = useState<string | undefined>(undefined);
-  const [_combat, _setCombat] = useState<string | undefined>(undefined);
-
-  const farmListInfo = useMemo(() => {
-    if (!activePlayer?.general?.farmInfo) return ["", undefined];
-
-    const farmName = activePlayer.general.farmInfo.split(" (")[0];
-    const farmType = activePlayer.general.farmInfo.split(" (")[1].slice(0, -1);
-
-    return [farmName, farmType];
-  }, [activePlayer]);
+  const { uploadPlayers } = useContext(PlayersContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema as any),
@@ -123,52 +98,9 @@ export default function Editor() {
     },
   });
 
-  // whenever activePlayer changes update the form
-  useEffect(() => {
-    form.reset({
-      name: activePlayer?.general?.name ?? "",
-      questsCompleted: activePlayer?.general?.questsCompleted ?? 0,
-      farmName: farmListInfo[0],
-      farmType: farmListInfo[1],
-      totalMoneyEarned: activePlayer?.general?.totalMoneyEarned ?? 0,
-      fishCaught: activePlayer?.fishing?.totalCaught ?? 0,
-      numObelisks: activePlayer?.perfection?.numObelisks ?? undefined,
-      goldenClock: activePlayer?.perfection?.goldenClock ?? false,
-      childrenCount: activePlayer?.social?.childrenCount ?? undefined,
-      houseUpgradeLevel: activePlayer?.social?.houseUpgradeLevel ?? undefined,
-      farming: activePlayer?.general?.skills?.farming ?? undefined,
-      fishing: activePlayer?.general?.skills?.fishing ?? undefined,
-      foraging: activePlayer?.general?.skills?.foraging ?? undefined,
-      mining: activePlayer?.general?.skills?.mining ?? undefined,
-      combat: activePlayer?.general?.skills?.combat ?? undefined,
-    });
-    // TODO: bro there has to be a better way to do this
-    _setFarmType(farmListInfo[1]);
-    _setNumObelisks(
-      activePlayer?.perfection?.numObelisks?.toString() ?? undefined
-    );
-    _setChildrenCount(
-      activePlayer?.social?.childrenCount?.toString() ?? undefined
-    );
-    _setHouseUpgradeLevel(
-      activePlayer?.social?.houseUpgradeLevel?.toString() ?? undefined
-    );
-    _setFarming(
-      activePlayer?.general?.skills?.farming?.toString() ?? undefined
-    );
-    _setFishing(
-      activePlayer?.general?.skills?.fishing?.toString() ?? undefined
-    );
-    _setForaging(
-      activePlayer?.general?.skills?.foraging?.toString() ?? undefined
-    );
-    _setMining(activePlayer?.general?.skills?.mining?.toString() ?? undefined);
-    _setCombat(activePlayer?.general?.skills?.combat?.toString() ?? undefined);
-  }, [activePlayer, form, farmListInfo]);
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const player: PlayerType = {
-      _id: activePlayer?._id ?? generateUniqueIdentifier(),
+      _id: generateUniqueIdentifier(),
       general: {
         name: values.name,
         questsCompleted: values.questsCompleted,
@@ -182,31 +114,21 @@ export default function Editor() {
           combat: values.combat ?? 0,
           luck: 0,
         },
-        timePlayed: activePlayer?.general?.timePlayed ?? undefined,
-        stardrops: activePlayer?.general?.stardrops ?? [],
       },
       fishing: {
         totalCaught: values.fishCaught,
-        fishCaught: activePlayer?.fishing?.fishCaught ?? [],
+        fishCaught: [],
       },
       social: {
-        relationships: activePlayer?.social?.relationships ?? {},
+        relationships: {},
         childrenCount: values.childrenCount ?? 0,
         houseUpgradeLevel: values.houseUpgradeLevel ?? 0,
-        spouse: activePlayer?.social?.spouse ?? undefined,
+        spouse: undefined,
       },
       perfection: {
         numObelisks: values.numObelisks ?? 0,
         goldenClock: values.goldenClock ?? false,
       },
-      cooking: activePlayer?.cooking ?? undefined,
-      crafting: activePlayer?.crafting ?? undefined,
-      shipping: activePlayer?.shipping ?? undefined,
-      monsters: activePlayer?.monsters ?? undefined,
-      museum: activePlayer?.museum ?? undefined,
-      notes: activePlayer?.notes ?? undefined,
-      scraps: activePlayer?.scraps ?? undefined,
-      walnuts: activePlayer?.walnuts ?? undefined,
     };
 
     await uploadPlayers([player]);
@@ -307,11 +229,8 @@ export default function Editor() {
                         <FormItem>
                           <FormLabel htmlFor="farmType">Farm Type</FormLabel>
                           <Select
-                            onValueChange={(value) => {
-                              field.onChange(value);
-                              _setFarmType(value);
-                            }}
-                            value={_farmType}
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
                           >
                             <FormControl id="farmType">
                               <SelectTrigger>
@@ -396,13 +315,7 @@ export default function Editor() {
                           <FormLabel htmlFor="numObelisks">
                             Number of Obelisks
                           </FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setNumObelisks(v);
-                            }}
-                            value={_numObelisks}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="numObelisks">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -455,13 +368,7 @@ export default function Editor() {
                           <FormLabel htmlFor="childrenCount">
                             Number of Children
                           </FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setChildrenCount(v);
-                            }}
-                            value={_childrenCount}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="childrenCount">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -485,13 +392,7 @@ export default function Editor() {
                           <FormLabel htmlFor="houseUpgradeLevel">
                             House Upgrade
                           </FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setHouseUpgradeLevel(v);
-                            }}
-                            value={_houseUpgradeLevel}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="houseUpgradeLevel">
                               <SelectTrigger>
                                 <SelectValue placeholder="Level" />
@@ -517,13 +418,7 @@ export default function Editor() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="farming">Farming</FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setFarming(v);
-                            }}
-                            value={_farming}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="farming">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -553,13 +448,7 @@ export default function Editor() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="fishing">Fishing</FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setFishing(v);
-                            }}
-                            value={_fishing}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="fishing">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -589,13 +478,7 @@ export default function Editor() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="foraging">Foraging</FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setForaging(v);
-                            }}
-                            value={_foraging}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="foraging">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -625,13 +508,7 @@ export default function Editor() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="mining">Mining</FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setMining(v);
-                            }}
-                            value={_mining}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="mining">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />
@@ -661,13 +538,7 @@ export default function Editor() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="combat">Combat</FormLabel>
-                          <Select
-                            onValueChange={(v) => {
-                              field.onChange(v);
-                              _setCombat(v);
-                            }}
-                            value={_combat}
-                          >
+                          <Select onValueChange={field.onChange}>
                             <FormControl id="combat">
                               <SelectTrigger>
                                 <SelectValue placeholder="Select" />

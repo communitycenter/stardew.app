@@ -48,7 +48,7 @@ export default function Crafting() {
 
   // calculate craftedCount here (all values of 2)
   const craftedCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.crafting) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
 
     return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
       .length;
@@ -56,7 +56,7 @@ export default function Crafting() {
 
   // tracks how many recipes the player knows but hasn't crafted
   const knownCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.crafting) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
 
     return Object.values(activePlayer.crafting.recipes).filter((r) => r === 1)
       .length;

@@ -82,7 +82,7 @@ export default function Perfection() {
   const { activePlayer } = useContext(PlayersContext);
 
   const craftedCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.crafting) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
 
     // find all recipes that have a value of 2 (crafted)
     return Object.values(activePlayer.crafting.recipes).filter((r) => r === 2)
@@ -92,7 +92,7 @@ export default function Perfection() {
   // StardewValley.Utility.cs::percentGameComplete()
   const getCraftedRecipesPercent = useMemo(() => {
     // StardewValley.Utility.cs::getCraftedRecipesPercent()
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
 
     // TODO: we don't include the wedding ring so no need to -1
     //       but, apparently in multiplayer the wedding ring is required
@@ -101,7 +101,7 @@ export default function Perfection() {
   }, [activePlayer, craftedCount]);
 
   const cookedCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.cooking) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
 
     // find all recipes that have a value of 2 (cooked)
     return Object.values(activePlayer.cooking.recipes).filter((r) => r === 2)
@@ -110,14 +110,14 @@ export default function Perfection() {
 
   const getCookedRecipesPercent = useMemo(() => {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
 
     return cookedCount / Object.keys(cookingRecipes).length;
   }, [activePlayer, cookedCount]);
 
   const getFishCaughtPercent = useMemo(() => {
     // StardewValley.Utility.cs::getFishCaughtPercent()
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.fishing?.fishCaught) return 0;
 
     const fishCaught = activePlayer?.fishing?.fishCaught?.length ?? 0;
 
@@ -125,7 +125,7 @@ export default function Perfection() {
   }, [activePlayer]);
 
   const getMaxedFrienshipsCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.social) return 0;
+    if (!activePlayer || !activePlayer.social?.relationships) return 0;
 
     let maxedFriendships = 0;
     for (const key of Object.keys(activePlayer.social.relationships)) {
@@ -143,25 +143,25 @@ export default function Perfection() {
 
   const getMaxedFriendshipPercent = useMemo(() => {
     // StardewValley.Utility.cs::getMaxedFriendshipPercent()
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.social?.relationships) return 0;
 
     return getMaxedFrienshipsCount / Object.keys(villagers).length;
   }, [activePlayer, getMaxedFrienshipsCount]);
 
   const basicShippedCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.shipping) return 0;
+    if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
 
     return Object.keys(activePlayer.shipping.shipped).length;
   }, [activePlayer]);
 
   const getFarmerItemsShippedPercent = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
 
     return basicShippedCount / Object.keys(shippingItems).length;
   }, [activePlayer, basicShippedCount]);
 
   const slayerQuestsCompleted = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.monsters?.monstersKilled) return 0;
 
     let count = 0;
     const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
@@ -175,7 +175,7 @@ export default function Perfection() {
   }, [activePlayer]);
 
   const getWalnutsFound = useMemo(() => {
-    if (!activePlayer) return 0;
+    if (!activePlayer || !activePlayer.walnuts?.found) return 0;
 
     const walnutsFoundObject = activePlayer?.walnuts?.found ?? {};
 
@@ -389,7 +389,7 @@ export default function Perfection() {
                   title={monster}
                   sourceURL={monsterGoals[monster].iconURL}
                   description={`${
-                    activePlayer?.monsters?.monstersKilled[monster] ?? 0
+                    activePlayer?.monsters?.monstersKilled?.[monster] ?? 0
                   }/${monsterGoals[monster].goal}`}
                 />
               ))}
