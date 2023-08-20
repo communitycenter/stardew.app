@@ -251,7 +251,9 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                 disabled={!activePlayer}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Set Hearts">{hearts}</SelectValue>
+                  <SelectValue placeholder="Set Hearts">
+                    {hearts + " hearts"}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -276,7 +278,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                   Remove Spouse
                 </Button>
               ) : activePlayer?.social?.relationships?.[villager.name]
-                  .status === "Dating" ? (
+                  ?.status === "Dating" ? (
                 <Button
                   variant="secondary"
                   onClick={() => handleStatusChange("Married", "setSpouse")}
