@@ -135,11 +135,12 @@ export function Topbar() {
           {/* Not Logged In */}
           {!api.data?.discord_id && (
             <Button
-              disabled
               className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-              asChild
+              // asChild
+              disabled
             >
-              <Link href="/api/oauth">Log In With Discord</Link>
+              {/* <Link href="/api/oauth">Log In With Discord</Link> */}
+              Log In With Discord
             </Button>
           )}
           {/* Logged In */}
