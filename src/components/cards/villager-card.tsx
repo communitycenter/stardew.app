@@ -2,9 +2,8 @@ import Image from "next/image";
 
 import type { Villager } from "@/types/items";
 
-import { Dispatch, SetStateAction } from "react";
-
 import { cn } from "@/lib/utils";
+import { Dispatch, SetStateAction } from "react";
 
 import { IconChevronRight } from "@tabler/icons-react";
 import { HeartIcon } from "@heroicons/react/24/outline";

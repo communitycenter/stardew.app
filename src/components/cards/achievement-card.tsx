@@ -28,7 +28,7 @@ export const AchievementCard = ({
   return (
     <div
       className={cn(
-        "flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm",
+        "flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors",
         checkedClass
       )}
     >

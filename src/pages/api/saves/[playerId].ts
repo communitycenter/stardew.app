@@ -43,7 +43,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 		])
 		res.status(200).end();
 	} catch (e) {
-		console.log(e)
+		// console.log(e)
 		res.status(500).end();
 	}
 }

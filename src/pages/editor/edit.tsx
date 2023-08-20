@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 import type { PlayerType } from "@/contexts/players-context";
 
@@ -36,7 +37,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
-import Link from "next/link";
 
 const formSchema = z.object({
   name: z
@@ -163,7 +163,6 @@ export default function Editor() {
   }, [activePlayer, form, farmListInfo]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("id:", activePlayer?._id);
     if (!activePlayer?._id) {
       toast({
         variant: "destructive",
@@ -222,6 +221,11 @@ export default function Editor() {
     };
 
     await uploadPlayers([player]);
+    toast({
+      variant: "default",
+      title: "Success",
+      description: "Successfully updated farmhand!",
+    });
   };
 
   return (

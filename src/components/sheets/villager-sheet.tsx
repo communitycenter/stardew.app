@@ -1,11 +1,20 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
-import villagers from "@/data/villagers.json";
 
 import type { Villager } from "@/types/items";
 
-import { Dispatch, SetStateAction } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Sheet,
@@ -14,6 +23,16 @@ import {
   SheetContent,
   SheetDescription,
 } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 // look at villagers.py console output for categories that appear
@@ -71,9 +90,142 @@ interface Props {
 }
 
 export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
+  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+
+  const [hearts, setHearts] = useState<string>("0");
+
+  useEffect(() => {
+    if (
+      !activePlayer ||
+      !activePlayer.social ||
+      !activePlayer.social.relationships ||
+      !activePlayer.social.relationships[villager.name]
+    )
+      return;
+
+    setHearts(
+      Math.floor(
+        activePlayer.social.relationships[villager.name].points / 250
+      ).toString()
+    );
+  }, [activePlayer, villager.name]);
+
+  const maxHeartCount = useMemo(() => {
+    if (activePlayer?.social?.spouse === villager.name) {
+      return 15;
+    }
+
+    return 11;
+  }, [activePlayer, villager.name]);
+
+  function shouldHeartBeDisabled(heart: number) {
+    if (heart >= 9 && villager.datable) {
+      // first check if the villager is the player's spouse
+      if (activePlayer?.social?.spouse === villager.name) {
+        return false;
+      }
+
+      // if the player has a spouse and this villager is datable, disable
+      if (
+        activePlayer?.social?.spouse &&
+        activePlayer.social.spouse !== villager.name
+      ) {
+        return true;
+      }
+
+      // no spouse, check if the player is dating this villager
+      if (
+        activePlayer?.social?.relationships?.[villager.name]?.status ===
+        "Dating"
+      ) {
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  async function handleHeartChange(_hearts: string) {
+    if (!activePlayer) return;
+
+    const patch = {
+      social: {
+        relationships: {
+          [villager.name]: {
+            points: parseInt(_hearts) * 250,
+          },
+        },
+      },
+    };
+
+    patchPlayer(patch);
+    setIsOpen(false);
+  }
+
+  async function handleStatusChange(status: string, action: string) {
+    if (!activePlayer) return;
+
+    let patch = {};
+    switch (action) {
+      case "removeSpouse":
+        patch = {
+          social: {
+            spouse: null,
+            relationships: {
+              [villager.name]: {
+                status: status,
+                points: 8 * 250,
+              },
+            },
+          },
+        };
+        break;
+      case "setSpouse":
+        // we have to recreate the entire social object because when you set a spouse, it should to reset the statuses of all other dateable villagers
+        // so on setSpouse action, recreate social object. If dateable villager, set status to null and set points to 8 * 250 if points are more than that
+        let relationships: Record<string, any> = {};
+        for (const [key, value] of Object.entries(
+          activePlayer?.social?.relationships ?? {}
+        )) {
+          if (value.status === "Dating") {
+            relationships[key] = {
+              status: key === villager.name ? "Married" : null,
+              points: value.points >= 8 * 250 ? 8 * 250 : value.points,
+            };
+          } else {
+            relationships[key] = value;
+          }
+        }
+
+        patch = {
+          social: {
+            spouse: villager.name,
+            relationships: relationships,
+          },
+        };
+
+        break;
+      case "setDating":
+        patch = {
+          social: {
+            relationships: {
+              [villager.name]: {
+                status: status,
+                points: parseInt(hearts) * 250,
+              },
+            },
+          },
+        };
+        break;
+    }
+
+    patchPlayer(patch);
+    setIsOpen(false);
+  }
+
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
-      <SheetContent className="overflow-y-scroll">
+      <SheetContent className="overflow-y-auto">
         <SheetHeader className="mt-4">
           <div className="flex justify-center">
             <Image
@@ -89,6 +241,71 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
           </SheetDescription>
         </SheetHeader>
         <div className="space-y-6 mt-4">
+          <section className="space-y-2">
+            <h3 className="font-semibold">Actions</h3>
+            <Separator />
+            <div className="grid grid-cols-2 gap-3">
+              <Select
+                value={hearts.toString()}
+                onValueChange={(val) => handleHeartChange(val)}
+                disabled={!activePlayer}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Set Hearts">{hearts}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Set Hearts</SelectLabel>
+                    {[...Array(maxHeartCount)].map((_, i) => (
+                      <SelectItem
+                        key={i}
+                        value={`${i}`}
+                        disabled={shouldHeartBeDisabled(i)}
+                      >
+                        {`${i}`}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {activePlayer?.social?.spouse === villager.name ? (
+                <Button
+                  variant="secondary"
+                  onClick={() => handleStatusChange("", "removeSpouse")}
+                >
+                  Remove Spouse
+                </Button>
+              ) : activePlayer?.social?.relationships?.[villager.name]
+                  .status === "Dating" ? (
+                <Button
+                  variant="secondary"
+                  onClick={() => handleStatusChange("Married", "setSpouse")}
+                >
+                  Set Spouse
+                </Button>
+              ) : (
+                <Button
+                  variant="secondary"
+                  onClick={() => handleStatusChange("Dating", "setDating")}
+                  disabled={
+                    !villager.datable ||
+                    typeof activePlayer?.social?.spouse === "string" ||
+                    !activePlayer
+                  }
+                >
+                  Set Dating
+                </Button>
+              )}
+            </div>
+            {!activePlayer && (
+              <p className="text-blue-500 dark:text-blue-400 text-sm">
+                <Link href="/editor/create" className="underline">
+                  Create a character
+                </Link>{" "}
+                to beginning editing stats.
+              </p>
+            )}
+          </section>
           <section className="space-y-2">
             <h3 className="font-semibold">Loved Gifts</h3>
             <Separator />

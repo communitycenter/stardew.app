@@ -3,9 +3,9 @@ import Head from "next/head";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { z } from "zod";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext, useEffect, useMemo, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -35,6 +35,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { useToast } from "@/components/ui/use-toast";
 
 function generateUniqueIdentifier() {
   const timestamp = Date.now().toString(16);
@@ -75,6 +76,8 @@ const formSchema = z.object({
 });
 
 export default function Editor() {
+  const { toast } = useToast();
+
   const { uploadPlayers } = useContext(PlayersContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -132,6 +135,11 @@ export default function Editor() {
     };
 
     await uploadPlayers([player]);
+    toast({
+      variant: "default",
+      title: "Success",
+      description: "Successfully created farmhand!",
+    });
   };
 
   return (
