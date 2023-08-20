@@ -202,6 +202,7 @@ export const VillagerCard = ({
           <ContextMenuItem
             inset
             onClick={() => handleStatusChange("", "removeSpouse")}
+            disabled={!activePlayer}
           >
             Remove Spouse
           </ContextMenuItem>
@@ -210,6 +211,7 @@ export const VillagerCard = ({
           <ContextMenuItem
             inset
             onClick={() => handleStatusChange("Married", "setSpouse")}
+            disabled={!activePlayer}
           >
             Set Spouse
           </ContextMenuItem>
@@ -232,7 +234,7 @@ export const VillagerCard = ({
             {[...Array(maxHeartCount)].map((_, i) => (
               <ContextMenuCheckboxItem
                 key={i}
-                disabled={shouldHeartBeDisabled(i)}
+                disabled={shouldHeartBeDisabled(i) || !activePlayer}
                 checked={hearts === i}
                 onClick={() => handleHeartChange(i.toString())}
               >

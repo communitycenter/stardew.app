@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
@@ -5,7 +6,16 @@ import bigCraftables from "@/data/big_craftables.json";
 
 import type { Recipe, CraftingRecipe } from "@/types/recipe";
 
-import { Dispatch, SetStateAction } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Sheet,
@@ -14,6 +24,15 @@ import {
   SheetContent,
   SheetDescription,
 } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectValue,
+  SelectContent,
+  SelectTrigger,
+} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 
 interface Props<T extends Recipe> {
@@ -42,6 +61,18 @@ export const RecipeSheet = <T extends Recipe>({
   setIsOpen,
   recipe,
 }: Props<T>) => {
+  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const [status, setStatus] = useState(0);
+
+  useEffect(() => {
+    if (!activePlayer || !recipe) return;
+    if (isCraftingRecipe(recipe)) {
+      setStatus(activePlayer.crafting?.recipes?.[recipe.itemID] ?? 0);
+    } else {
+      setStatus(activePlayer.cooking?.recipes?.[recipe.itemID] ?? 0);
+    }
+  }, [activePlayer, recipe]);
+
   // accepts any type that extends Recipe (CraftingRecipe, CookingRecipe, etc.)
   // returns true if the recipe is of type U and CraftingRecipe which for now
   // is just the type CraftingRecipes
@@ -78,6 +109,31 @@ export const RecipeSheet = <T extends Recipe>({
       : objects[recipe.itemID.toString() as keyof typeof objects].description
     : null;
 
+  async function handleStatusChange(newStatus: number | null) {
+    if (!activePlayer || !recipe) return;
+
+    const patch = {
+      [isCraftingRecipe(recipe) ? "crafting" : "cooking"]: {
+        recipes: {
+          [recipe.itemID]: newStatus,
+        },
+      },
+    };
+
+    patchPlayer(patch);
+    setIsOpen(false);
+  }
+
+  function shouldDisableButton(status: number) {
+    // if this is the current status, disable the button
+    if (!recipe) return true;
+    if (isCraftingRecipe(recipe)) {
+      return status === activePlayer?.crafting?.recipes?.[recipe.itemID];
+    } else {
+      return status === activePlayer?.cooking?.recipes?.[recipe.itemID];
+    }
+  }
+
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
       <SheetContent>
@@ -105,6 +161,56 @@ export const RecipeSheet = <T extends Recipe>({
         </SheetHeader>
         {recipe && (
           <div className="space-y-6 mt-4">
+            <section className="space-y-2">
+              <h3 className="font-semibold">Actions</h3>
+              <Separator />
+              <Select
+                value={status.toString()}
+                onValueChange={(val) => handleStatusChange(parseInt(val))}
+                disabled={!activePlayer}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Change Status...">
+                    {status === 0
+                      ? "Unknown"
+                      : status === 1
+                      ? "Known"
+                      : "Completed"}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Change Status</SelectLabel>
+                    <SelectItem value="0">
+                      <div className="flex items-center gap-2">
+                        <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+                        <p>Set Unknown</p>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="1">
+                      <div className="flex items-center gap-2">
+                        <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+                        <p>Set Known</p>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="2">
+                      <div className="flex items-center gap-2">
+                        <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+                        <p>Set Completed</p>
+                      </div>
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {!activePlayer && (
+                <p className="text-blue-500 dark:text-blue-400 text-sm">
+                  <Link href="/editor/create" className="underline">
+                    Create a character
+                  </Link>{" "}
+                  to beginning editing stats.
+                </p>
+              )}
+            </section>
             <section className="space-y-2">
               <h3 className="font-semibold">How to unlock</h3>
               <Separator />
