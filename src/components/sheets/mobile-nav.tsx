@@ -83,6 +83,18 @@ export const MobileNav = ({
               >
                 Upload
               </Button>
+              {activePlayer && (
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  asChild
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  <Link href="/editor/edit">Edit Farmhand</Link>
+                </Button>
+              )}
               {/* TODO: remove disabled when implemented */}
               {!api.data?.discord_id && (
                 <Button
@@ -175,6 +187,14 @@ export const MobileNav = ({
                     </Button>
                   ))}
               </div>
+              <Button
+                variant="secondary"
+                className="w-full"
+                asChild
+                onClick={() => setIsOpen(false)}
+              >
+                <Link href="/editor/create">New Farmhand</Link>
+              </Button>
             </section>
           </section>
           {/* Navigation */}
