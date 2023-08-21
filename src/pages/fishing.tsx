@@ -178,6 +178,7 @@ export default function Fishing() {
                     completed={fishCaught.has(f.itemID)}
                     setIsOpen={setIsOpen}
                     setObject={setFish}
+                    type="fish"
                   />
                 ))}
             </div>

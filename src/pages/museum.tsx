@@ -174,6 +174,7 @@ export default function Museum() {
                             )}
                             setIsOpen={setIsOpen}
                             setObject={setMuseumArtifact}
+                            type="artifact"
                           />
                         ))}
                     </div>
@@ -217,6 +218,7 @@ export default function Museum() {
                     completed={museumMineralCollected.has(parseInt(f.itemID))}
                     setIsOpen={setIsOpen}
                     setObject={setMuseumArtifact}
+                    type="mineral"
                   />
                 ))}
             </div>
