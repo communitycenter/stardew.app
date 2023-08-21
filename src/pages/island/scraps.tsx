@@ -57,6 +57,8 @@ export default function IslandScraps() {
                   completed={
                     activePlayer ? scrapsFound.has(parseInt(id)) : false
                   }
+                  _id={id}
+                  _type="scrap"
                 />
               );
             })}

@@ -108,6 +108,8 @@ export default function IslandWalnuts() {
                         : false
                       : false
                   }
+                  _id={id}
+                  _type="walnut"
                 />
               );
             })}

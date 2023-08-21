@@ -419,6 +419,8 @@ export default function Farmer() {
                     title={value.title}
                     iconURL="https://stardewvalleywiki.com/mediawiki/images/a/a5/Stardrop.png"
                     completed={stardrops.has(key)}
+                    _id={key}
+                    _type="stardrop"
                   />
                 ))}
               </div>

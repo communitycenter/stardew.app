@@ -1,15 +1,20 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
+import { useContext, useState } from "react";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
@@ -18,6 +23,8 @@ interface Props {
   description: string;
   iconURL: string;
   completed?: boolean;
+  _id: string;
+  _type: "stardrop" | "note" | "scrap" | "walnut";
 }
 
 export const DialogCard = ({
@@ -25,13 +32,71 @@ export const DialogCard = ({
   description,
   iconURL,
   completed,
+  _id,
+  _type,
 }: Props) => {
+  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+
+  const [open, setOpen] = useState(false);
+
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
 
+  async function handleStatusChange(status: boolean) {
+    if (!activePlayer) return;
+
+    let patch = {};
+    switch (_type) {
+      case "stardrop":
+        const stardrops = new Set(activePlayer.general?.stardrops ?? []);
+        if (status) stardrops.add(_id);
+        else stardrops.delete(_id);
+
+        patch = {
+          general: {
+            stardrops: Array.from(stardrops),
+          },
+        };
+        break;
+
+      case "note":
+        const notes = new Set(activePlayer.notes?.found ?? []);
+        if (status) notes.add(parseInt(_id));
+        else notes.delete(parseInt(_id));
+
+        patch = {
+          notes: {
+            found: Array.from(notes),
+          },
+        };
+        break;
+
+      case "scrap":
+        const scraps = new Set(activePlayer.scraps?.found ?? []);
+        if (status) scraps.add(parseInt(_id));
+        else scraps.delete(parseInt(_id));
+
+        patch = {
+          scraps: {
+            found: Array.from(scraps),
+          },
+        };
+        break;
+
+      case "walnut":
+        // TODO: jack gotta handle this i think idk
+        break;
+    }
+
+    if (Object.keys(patch).length === 0) return;
+
+    await patchPlayer(patch);
+    setOpen(false);
+  }
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <div
           className={cn(
@@ -51,6 +116,22 @@ export const DialogCard = ({
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
         <DialogDescription>{description}</DialogDescription>
+        <DialogFooter className="gap-4 sm:gap-0">
+          <Button
+            variant="secondary"
+            disabled={!activePlayer || !completed || _type === "walnut"}
+            onClick={() => handleStatusChange(false)}
+          >
+            Set Incomplete
+          </Button>
+          <Button
+            variant="secondary"
+            disabled={!activePlayer || completed || _type === "walnut"}
+            onClick={() => handleStatusChange(true)}
+          >
+            Set Completed
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
