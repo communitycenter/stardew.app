@@ -4,7 +4,7 @@ import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
 import achievements from "@/data/achievements.json";
 
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
@@ -25,22 +25,20 @@ const reqs: Record<string, number> = {
 };
 
 export default function Shipping() {
-  const [basicShipped, setBasicShipped] = useState({});
-
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
-  useEffect(() => {
-    if (activePlayer && activePlayer.shipping) {
-      setBasicShipped(activePlayer.shipping.shipped);
-    }
+  const basicShipped = useMemo(() => {
+    if (!activePlayer || !activePlayer.shipping?.shipped) return {};
+    return activePlayer.shipping.shipped;
   }, [activePlayer]);
 
   const [polycultureCount, monocultureAchieved, basicShippedCount] =
     useMemo(() => {
-      if (!activePlayer || !activePlayer.shipping) return [0, false, 0];
+      if (!activePlayer || !activePlayer.shipping?.shipped)
+        return [0, false, 0];
 
       let polycultureCount = 0;
       let monocultureAchieved = false;
@@ -202,13 +200,14 @@ export default function Shipping() {
                     return !(i.itemID in basicShipped);
                   } else if (_filter === "1") {
                     // Polyculture crops that need completing
+                    // TODO: should we show all polyculture crops here?
                     return (
                       i.itemID in basicShipped &&
                       i.itemID in shipping_items &&
                       shipping_items[
                         i.itemID.toString() as keyof typeof shipping_items
                       ].polyculture &&
-                      basicShipped[i.itemID as keyof typeof basicShipped] <= 15
+                      basicShipped[i.itemID as keyof typeof basicShipped]! < 15
                     );
                   } else if (_filter === "2") {
                     // Shipped/Completed (we won't check for monoculture here)
@@ -216,33 +215,14 @@ export default function Shipping() {
                       shipping_items[
                         i.itemID.toString() as keyof typeof shipping_items
                       ].polyculture
-                      ? basicShipped[i.itemID as keyof typeof basicShipped] >=
+                      ? basicShipped[i.itemID as keyof typeof basicShipped]! >=
                           15
-                      : basicShipped[i.itemID as keyof typeof basicShipped] >=
+                      : basicShipped[i.itemID as keyof typeof basicShipped]! >=
                           1;
                   } else return true; // all recipes
                 })
                 .map((i) => (
-                  <ShippingCard
-                    key={i.itemID}
-                    item={i}
-                    count={
-                      basicShipped[i.itemID as keyof typeof basicShipped] ?? 0
-                    }
-                    status={
-                      i.itemID in basicShipped
-                        ? shipping_items[
-                            i.itemID.toString() as keyof typeof shipping_items
-                          ].polyculture
-                          ? basicShipped[
-                              i.itemID as keyof typeof basicShipped
-                            ] >= 15
-                            ? 2
-                            : 1
-                          : 2
-                        : 0
-                    }
-                  />
+                  <ShippingCard key={i.itemID} item={i} />
                 ))}
             </div>
           </section>

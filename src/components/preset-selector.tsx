@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { PlayerType } from "@/contexts/players-context";
 
 import { cn } from "@/lib/utils";
@@ -7,10 +9,11 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Command,
+  CommandItem,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
+  CommandSeparator,
 } from "@/components/ui/command";
 import {
   Popover,
@@ -19,7 +22,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon, CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 
 export function PresetSelector() {
   const [open, setOpen] = useState(false);
@@ -82,6 +85,15 @@ export function PresetSelector() {
                 ))}
             </CommandGroup>
           ))}
+          <CommandSeparator />
+          <CommandGroup>
+            <CommandItem onSelect={() => setOpen(false)}>
+              <Link href="/editor/create" className="flex items-center">
+                <PlusIcon className="h-4 w-4 mr-2" />
+                <p className="w-full max-w-full truncate">New Farmhand</p>
+              </Link>
+            </CommandItem>
+          </CommandGroup>
         </Command>
       </PopoverContent>
     </Popover>

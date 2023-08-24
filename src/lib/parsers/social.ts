@@ -50,7 +50,7 @@ interface Relationship {
 export interface SocialRet {
   childrenCount?: number;
   houseUpgradeLevel?: number;
-  spouse?: string;
+  spouse?: string | null;
   relationships: { [key: string]: Relationship };
 }
 

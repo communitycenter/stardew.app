@@ -16,7 +16,7 @@ export default function IslandWalnuts() {
   const [_filter, setFilter] = useState("all");
 
   useEffect(() => {
-    if (activePlayer && activePlayer.walnuts) {
+    if (activePlayer && activePlayer.walnuts?.found) {
       // take the walnut IDs in walnutFound and add them to a set
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
@@ -103,11 +103,13 @@ export default function IslandWalnuts() {
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
                   completed={
                     activePlayer
-                      ? activePlayer.walnuts?.found[id]
-                        ? activePlayer.walnuts?.found[id] == walnut.num
+                      ? activePlayer.walnuts?.found?.[id]
+                        ? activePlayer.walnuts?.found?.[id] == walnut.num
                         : false
                       : false
                   }
+                  _id={id}
+                  _type="walnut"
                 />
               );
             })}

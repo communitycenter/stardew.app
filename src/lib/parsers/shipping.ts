@@ -4,7 +4,7 @@ export interface ShippingRet {
   // basicShippedCount: number; // how many items have they shipped at least one of?
   // polycultureCount: number; // how many crops have they shipped more than 15 of?
   // monoculture: boolean; // have they shipped more than 300 of any one crop?
-  shipped: { [key: string]: number }; // how many of each item have they shipped?
+  shipped: { [key: string]: number | null }; // how many of each item have they shipped?
 }
 
 export function parseShipping(player: any): ShippingRet {

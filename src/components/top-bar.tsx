@@ -51,7 +51,7 @@ export function Topbar() {
   const [deletionOpen, setDeletionOpen] = useState(false);
 
   const { toast } = useToast();
-  const { uploadPlayers } = useContext(PlayersContext);
+  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -112,6 +112,11 @@ export function Topbar() {
         {/* Desktop Version */}
         <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector />
+          {activePlayer && (
+            <Button variant="outline" asChild>
+              <Link href={`/editor/edit`}>Edit Player</Link>
+            </Button>
+          )}
           <Button
             variant="secondary"
             onClick={() => inputRef.current?.click()}
@@ -130,11 +135,12 @@ export function Topbar() {
           {/* Not Logged In */}
           {!api.data?.discord_id && (
             <Button
-              disabled
               className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-              asChild
+              // asChild
+              disabled
             >
-              <Link href="/api/oauth">Log In With Discord</Link>
+              {/* <Link href="/api/oauth">Log In With Discord</Link> */}
+              Log In With Discord
             </Button>
           )}
           {/* Logged In */}

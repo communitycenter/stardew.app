@@ -46,7 +46,7 @@ export default function Cooking() {
   }, [activePlayer]);
 
   const cookedCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.cooking) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
 
     return Object.values(activePlayer.cooking.recipes).filter((r) => r > 1)
       .length;
@@ -54,7 +54,7 @@ export default function Cooking() {
 
   // tracks how many recipes the players knows but has not cooked
   const knownCount = useMemo(() => {
-    if (!activePlayer || !activePlayer.cooking) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
 
     return Object.values(activePlayer.cooking.recipes).filter((r) => r === 1)
       .length;

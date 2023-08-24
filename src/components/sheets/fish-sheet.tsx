@@ -4,7 +4,9 @@ import objects from "@/data/objects.json";
 
 import type { FishType } from "@/types/items";
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext, useMemo } from "react";
+
+import { PlayersContext } from "@/contexts/players-context";
 
 import {
   Sheet,
@@ -13,6 +15,7 @@ import {
   SheetContent,
   SheetDescription,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 interface Props {
@@ -22,6 +25,19 @@ interface Props {
 }
 
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
+  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+
+  const fishCaught = useMemo(() => {
+    if (
+      !activePlayer ||
+      !activePlayer.fishing ||
+      !activePlayer.fishing.fishCaught
+    )
+      return new Set([]);
+
+    return new Set(activePlayer.fishing.fishCaught);
+  }, [activePlayer]);
+
   const iconURL = fish
     ? objects[fish.itemID.toString() as keyof typeof objects].iconURL
     : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
@@ -31,6 +47,22 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
 
   const description =
     fish && objects[fish.itemID.toString() as keyof typeof objects].description;
+
+  async function handleStatusChange(status: number) {
+    if (!activePlayer || !fish) return;
+
+    if (status === 2) fishCaught.add(fish.itemID);
+    if (status === 0) fishCaught.delete(fish.itemID);
+
+    const patch = {
+      fishing: {
+        fishCaught: Array.from(fishCaught),
+      },
+    };
+
+    await patchPlayer(patch);
+    setIsOpen(false);
+  }
 
   return (
     <Sheet open={open} onOpenChange={setIsOpen}>
@@ -53,6 +85,26 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
         </SheetHeader>
         {fish && (
           <div className="space-y-6 mt-4">
+            <section className="space-y-2">
+              <h3 className="font-semibold">Actions</h3>
+              <Separator />
+              <div className="grid grid-cols-2 gap-3">
+                <Button
+                  variant="secondary"
+                  disabled={!activePlayer || !fishCaught.has(fish.itemID)}
+                  onClick={() => handleStatusChange(0)}
+                >
+                  Set Uncaught
+                </Button>
+                <Button
+                  variant="secondary"
+                  disabled={!activePlayer || fishCaught.has(fish.itemID)}
+                  onClick={() => handleStatusChange(2)}
+                >
+                  Set Caught
+                </Button>
+              </div>
+            </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Location</h3>
               <Separator />

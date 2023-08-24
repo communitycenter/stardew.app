@@ -110,10 +110,6 @@ export default function Relationships() {
     return { completed, additionalDescription };
   };
 
-  useEffect(() => {
-    console.log(_filter);
-  }, [_filter]);
-
   return (
     <>
       <Head>
@@ -268,10 +264,10 @@ export default function Relationships() {
                     key={v.name}
                     villager={v}
                     points={
-                      activePlayer?.social?.relationships[v.name]?.points ?? 0
+                      activePlayer?.social?.relationships?.[v.name]?.points ?? 0
                     }
                     status={
-                      activePlayer?.social?.relationships[v.name]?.status ??
+                      activePlayer?.social?.relationships?.[v.name]?.status ??
                       null
                     }
                     setIsOpen={setIsOpen}

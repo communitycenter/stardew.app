@@ -83,14 +83,27 @@ export const MobileNav = ({
               >
                 Upload
               </Button>
+              {activePlayer && (
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  asChild
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  <Link href="/editor/edit">Edit Farmhand</Link>
+                </Button>
+              )}
               {/* TODO: remove disabled when implemented */}
               {!api.data?.discord_id && (
                 <Button
                   className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-                  asChild
+                  // asChild
                   disabled
                 >
-                  <Link href="/api/oauth">Log In With Discord</Link>
+                  {/* <Link href="/api/oauth">Log In With Discord</Link> */}
+                  Log In With Discord
                 </Button>
               )}
               {api.data?.discord_id && (
@@ -175,6 +188,14 @@ export const MobileNav = ({
                     </Button>
                   ))}
               </div>
+              <Button
+                variant="secondary"
+                className="w-full"
+                asChild
+                onClick={() => setIsOpen(false)}
+              >
+                <Link href="/editor/create">New Farmhand</Link>
+              </Button>
             </section>
           </section>
           {/* Navigation */}
