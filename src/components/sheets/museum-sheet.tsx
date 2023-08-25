@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
@@ -105,7 +106,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 <Button
                   variant="secondary"
                   disabled={
@@ -115,7 +116,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                   }
                   onClick={() => handleStatusChange(0)}
                 >
-                  Set Uncaught
+                  Set Incomplete
                 </Button>
                 <Button
                   variant="secondary"
@@ -126,9 +127,17 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                   }
                   onClick={() => handleStatusChange(2)}
                 >
-                  Set Caught
+                  Set Completed
                 </Button>
               </div>
+              {!activePlayer && (
+              <p className="text-blue-500 dark:text-blue-400 text-sm">
+                <Link href="/editor/create" className="underline">
+                  Create a character
+                </Link>{" "}
+                to beginning editing stats.
+              </p>
+            )}
             </section>
             <section className="space-y-2">
               {trinket.locations && (

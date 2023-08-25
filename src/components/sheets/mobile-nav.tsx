@@ -196,6 +196,16 @@ export const MobileNav = ({
               >
                 <Link href="/editor/create">New Farmhand</Link>
               </Button>
+              {activePlayer && (
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  asChild
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link href="/editor/edit">Edit Farmhand</Link>
+                </Button>
+              )}
             </section>
           </section>
           {/* Navigation */}

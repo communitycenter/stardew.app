@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -132,6 +133,14 @@ export const DialogCard = ({
             Set Completed
           </Button>
         </DialogFooter>
+        {!activePlayer && (
+              <p className="text-blue-500 dark:text-blue-400 text-sm">
+                <Link href="/editor/create" className="underline">
+                  Create a character
+                </Link>{" "}
+                to beginning editing stats.
+              </p>
+            )}
       </DialogContent>
     </Dialog>
   );

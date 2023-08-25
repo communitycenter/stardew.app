@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
@@ -88,7 +89,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 <Button
                   variant="secondary"
                   disabled={!activePlayer || !fishCaught.has(fish.itemID)}
@@ -104,6 +105,14 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   Set Caught
                 </Button>
               </div>
+              {!activePlayer && (
+              <p className="text-blue-500 dark:text-blue-400 text-sm">
+                <Link href="/editor/create" className="underline">
+                  Create a character
+                </Link>{" "}
+                to beginning editing stats.
+              </p>
+            )}
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Location</h3>
