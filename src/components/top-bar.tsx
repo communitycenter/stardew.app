@@ -45,7 +45,6 @@ export function Topbar() {
   );
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [loading, setLoading] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -71,20 +70,29 @@ export function Topbar() {
 
     const reader = new FileReader();
 
-    reader.onloadstart = () => setLoading(true);
+    reader.onloadstart = () => {
+      toast({
+        variant: "default",
+        title: "Uploading Save File",
+        description: "Please wait while we upload your save file.",
+      });
+    };
 
     reader.onload = async function (event) {
       try {
         const players = parseSaveFile(event.target?.result as string);
         await uploadPlayers(players);
-        setLoading(false);
+        toast({
+          variant: "default",
+          title: "Save File Uploaded",
+          description: "Your save file has been successfully uploaded.",
+        });
       } catch (err) {
         toast({
           variant: "destructive",
           title: "Error Parsing File",
           description: err instanceof Error ? err.message : "Unknown error.",
         });
-        setLoading(false);
       }
     };
     reader.readAsText(file);
@@ -120,11 +128,9 @@ export function Topbar() {
           <Button
             variant="secondary"
             onClick={() => inputRef.current?.click()}
-            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50 w-20"
-            disabled={loading}
+            className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
           >
-            {!loading && "Upload"}
-            {loading && <IconLoader2 className="animate-spin h-4 w-4" />}
+            Upload Save
             <input
               type="file"
               ref={inputRef}
