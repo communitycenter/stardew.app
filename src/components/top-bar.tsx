@@ -198,27 +198,19 @@ export function Topbar() {
                   onClick={() => {
                     deleteCookie("token", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                        ? "localhost"
-                        : "stardew.app",
+                      domain: "stardew.app",
                     });
                     deleteCookie("uid", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                        ? "localhost"
-                        : "stardew.app",
+                      domain: "stardew.app",
                     });
                     deleteCookie("oauth_state", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                        ? "localhost"
-                        : "stardew.app",
+                      domain: "stardew.app",
                     });
                     deleteCookie("discord_user", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-                        ? "localhost"
-                        : "stardew.app",
+                      domain: "stardew.app",
                     });
                     Fathom.trackGoal("ZMETRX0B", 0);
                     return (window.location.href = "/");

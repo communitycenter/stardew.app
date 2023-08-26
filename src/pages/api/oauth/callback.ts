@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
-import { createToken, conn, SqlUser } from "../saves"
+import { createToken, conn, SqlUser } from "../saves";
 
 type Data = Record<string, any>;
 
@@ -49,7 +49,7 @@ export default async function handler(
     );
 
     if (!discord.ok) {
-      console.log(await discord.json())
+      console.log(await discord.json());
       res.status(400).end();
       return;
     }
@@ -69,37 +69,46 @@ export default async function handler(
 
     const discordUserData = await discordUser.json();
 
-    let user = (await conn.execute('SELECT * FROM Users WHERE id = ? LIMIT 1', [uid]))?.rows[0] as SqlUser | undefined
+    let user = (
+      await conn.execute("SELECT * FROM Users WHERE id = ? LIMIT 1", [uid])
+    )?.rows[0] as SqlUser | undefined;
     let cookieSecret =
       user?.cookie_secret ?? crypto.randomBytes(16).toString("hex");
     if (!user) {
-      let discordUser = (await conn.execute('SELECT * FROM Users WHERE discord_id = ? LIMIT 1', [discordUserData.id]))?.rows[0] as SqlUser | undefined
+      let discordUser = (
+        await conn.execute("SELECT * FROM Users WHERE discord_id = ? LIMIT 1", [
+          discordUserData.id,
+        ])
+      )?.rows[0] as SqlUser | undefined;
 
       if (discordUser) {
         user = discordUser;
         cookieSecret = user.cookie_secret;
       } else {
-        await conn.execute('INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)', [
+        await conn.execute(
+          "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
+          [
             uid as string,
             discordUserData.id,
             discordUserData.username,
             discordUserData.avatar,
             cookieSecret,
-				])
+          ]
+        );
         user = {
           id: uid as string,
           discord_id: discordUserData.id,
           discord_name: discordUserData.username,
           discord_avatar: discordUserData.avatar,
           cookie_secret: cookieSecret,
-        }
+        };
       }
     }
 
     setCookie("uid", user.id, {
       req,
       res,
-      domain: process.env.NEXT_PUBLIC_DEVELOPMENT ? "localhost" : "stardew.app",
+      domain: "stardew.app",
       maxAge: 60 * 60 * 24 * 365,
     });
 
@@ -107,7 +116,7 @@ export default async function handler(
     setCookie("token", token.token, {
       req,
       res,
-      domain: process.env.NEXT_PUBLIC_DEVELOPMENT ? "localhost" : "stardew.app",
+      domain: "stardew.app",
       expires: new Date(token.expires * 1000),
     });
 
@@ -121,9 +130,7 @@ export default async function handler(
       {
         req,
         res,
-        domain: process.env.NEXT_PUBLIC_DEVELOPMENT
-          ? "localhost"
-          : "stardew.app",
+        domain: "stardew.app",
         expires: new Date(token.expires * 1000),
       }
     );
