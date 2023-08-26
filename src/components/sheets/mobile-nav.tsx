@@ -96,10 +96,7 @@ export const MobileNav = ({
                 </Button>
               )}
               {!api.data?.discord_id && (
-                <Button
-                  className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-                  asChild
-                >
+                <Button className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white">
                   {/* <Link href="/api/oauth">Log In With Discord</Link> */}
                   Log In With Discord
                 </Button>
