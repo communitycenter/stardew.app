@@ -84,6 +84,14 @@ export default async function handler(
       if (discordUser) {
         user = discordUser;
         cookieSecret = user.cookie_secret;
+
+        // update discord name if it has changed
+        if (discordUser.discord_name !== discordUserData.username) {
+          const r = await conn.execute(
+            "UPDATE Users SET discord_name = ? WHERE discord_id = ?",
+            [discordUserData.username, discordUserData.id]
+          );
+        }
       } else {
         await conn.execute(
           "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
