@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useContext, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
+import { walnuts as walnutType } from "@/lib/parsers/walnuts";
 
 import {
   Dialog,
@@ -88,7 +89,15 @@ export const DialogCard = ({
         break;
 
       case "walnut":
-        // TODO: jack gotta handle this i think idk
+        const walnuts = activePlayer.walnuts?.found ?? {};
+        if (status) walnuts[_id] = walnutType[_id].num;
+        else walnuts[_id] = 0;
+
+        patch = {
+          walnuts: {
+            found: walnuts,
+          },
+        };
         break;
     }
 
@@ -122,7 +131,7 @@ export const DialogCard = ({
         <DialogFooter className="gap-4 sm:gap-0">
           <Button
             variant="secondary"
-            disabled={!activePlayer || !completed || _type === "walnut"}
+            disabled={!activePlayer || !completed}
             onClick={() => {
               handleStatusChange(false);
               Fathom.trackGoal("OYQKZJFI", 0);
@@ -132,7 +141,7 @@ export const DialogCard = ({
           </Button>
           <Button
             variant="secondary"
-            disabled={!activePlayer || completed || _type === "walnut"}
+            disabled={!activePlayer || completed}
             onClick={() => {
               handleStatusChange(true);
               Fathom.trackGoal("VMKLGIUD", 0);
