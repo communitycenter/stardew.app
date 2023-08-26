@@ -3,10 +3,14 @@ import { getUID, conn } from "@/pages/api/saves";
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);
+
+  console.log("[api/index.ts]: uid =", uid);
   if (!uid) return res.status(401).end();
 
   const user = (await conn.execute("SELECT * FROM Users WHERE id = ?", [uid]))
     .rows?.[0];
+
+  console.log("[api/index.ts]: user =", user);
 
   return res.json(user);
 }
