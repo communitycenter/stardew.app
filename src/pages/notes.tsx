@@ -56,7 +56,7 @@ export default function SecretNotes() {
                   key={id}
                   title={note.name}
                   description={note.location}
-                  iconURL="https:stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
+                  iconURL="https://stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
                   completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
                   _id={id}
                   _type="note"
