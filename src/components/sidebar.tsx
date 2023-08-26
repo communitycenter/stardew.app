@@ -66,7 +66,71 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4">
-        <nav className="px-3 py-2">
+        <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+                  asChild
+                >
+                  <a href={"/discord"} target="_blank" rel="noreferrer">
+                    <IconBrandDiscord size={20} />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Join our Discord!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+                  asChild
+                >
+                  <a href={"/github"} target="_blank" rel="noreferrer">
+                    <IconBrandGithub size={20} />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>stardew.app&apos;s source!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
+                  asChild
+                >
+                  <a
+                    href={
+                      "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button"
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <IconShirt size={20} />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Generate a Stardew avatar!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        <nav className="px-3 pb-2">
           <SidebarCategory>Player</SidebarCategory>
           <div className="space-y-1">
             {playerNavigation.map((item) => (
@@ -132,70 +196,6 @@ export function Sidebar({ className }: SidebarProps) {
             ))}
           </div>
         </nav>
-        <div className="grid grid-cols-3 pb-4 gap-2 fixed bottom-0 w-72 px-3">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
-                  asChild
-                >
-                  <a href={"/discord"} target="_blank" rel="noreferrer">
-                    <IconBrandDiscord size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Join our Discord!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-neutral-800 hover:text-neutral-50"
-                  asChild
-                >
-                  <a href={"/github"} target="_blank" rel="noreferrer">
-                    <IconBrandGithub size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>stardew.app&apos;s source!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
-                  asChild
-                >
-                  <a
-                    href={
-                      "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button"
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <IconShirt size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Generate a Stardew avatar!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
       </div>
     </div>
   );
