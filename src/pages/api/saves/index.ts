@@ -69,7 +69,12 @@ export async function getUID(
   } else {
     // no uid, so we create an anonymous one
     uid = crypto.randomBytes(16).toString("hex");
-    setCookie("uid", uid, { req, res, maxAge: 60 * 60 * 24 * 365 });
+    setCookie("uid", uid, {
+      req,
+      res,
+      maxAge: 60 * 60 * 24 * 365,
+      domain: "stardew.app",
+    });
   }
   return uid;
 }
