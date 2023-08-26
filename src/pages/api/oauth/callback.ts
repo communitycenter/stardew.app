@@ -49,7 +49,7 @@ export default async function handler(
     );
 
     if (!discord.ok) {
-      console.log(await discord.json());
+      // console.log(await discord.json());
       res.status(400).end();
       return;
     }
