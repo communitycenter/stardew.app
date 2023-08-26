@@ -9,9 +9,30 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PlayersProvider } from "@/contexts/players-context";
 
+import * as Fathom from "fathom-client";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    Fathom.load("RZGVBJOJ", {
+      includedDomains: ["stardew.app"],
+    });
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
+    return () => {
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
+    };
+  });
+
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PlayersProvider>

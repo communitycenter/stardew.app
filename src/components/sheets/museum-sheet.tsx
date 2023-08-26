@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import * as Fathom from "fathom-client";
 
 interface Props {
   open: boolean;
@@ -114,7 +115,10 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     (!artifacts.has(parseInt(trinket.itemID)) &&
                       !minerals.has(parseInt(trinket.itemID)))
                   }
-                  onClick={() => handleStatusChange(0)}
+                  onClick={() => {
+                    handleStatusChange(0);
+                    Fathom.trackGoal("OYQKZJFI", 0);
+                  }}
                 >
                   Set Incomplete
                 </Button>
@@ -125,19 +129,22 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     artifacts.has(parseInt(trinket.itemID)) ||
                     minerals.has(parseInt(trinket.itemID))
                   }
-                  onClick={() => handleStatusChange(2)}
+                  onClick={() => {
+                    handleStatusChange(2);
+                    Fathom.trackGoal("VMKLGIUD", 0);
+                  }}
                 >
                   Set Completed
                 </Button>
               </div>
               {!activePlayer && (
-              <p className="text-blue-500 dark:text-blue-400 text-sm">
-                <Link href="/editor/create" className="underline">
-                  Create a character
-                </Link>{" "}
-                to beginning editing stats.
-              </p>
-            )}
+                <p className="text-blue-500 dark:text-blue-400 text-sm">
+                  <Link href="/editor/create" className="underline">
+                    Create a character
+                  </Link>{" "}
+                  to beginning editing stats.
+                </p>
+              )}
             </section>
             <section className="space-y-2">
               {trinket.locations && (

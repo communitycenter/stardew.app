@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import * as Fathom from "fathom-client";
 
 interface Props {
   open: boolean;
@@ -93,26 +94,32 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                 <Button
                   variant="secondary"
                   disabled={!activePlayer || !fishCaught.has(fish.itemID)}
-                  onClick={() => handleStatusChange(0)}
+                  onClick={() => {
+                    handleStatusChange(0);
+                    Fathom.trackGoal("OYQKZJFI", 0);
+                  }}
                 >
                   Set Uncaught
                 </Button>
                 <Button
                   variant="secondary"
                   disabled={!activePlayer || fishCaught.has(fish.itemID)}
-                  onClick={() => handleStatusChange(2)}
+                  onClick={() => {
+                    handleStatusChange(2);
+                    Fathom.trackGoal("VMKLGIUD", 0);
+                  }}
                 >
                   Set Caught
                 </Button>
               </div>
               {!activePlayer && (
-              <p className="text-blue-500 dark:text-blue-400 text-sm">
-                <Link href="/editor/create" className="underline">
-                  Create a character
-                </Link>{" "}
-                to beginning editing stats.
-              </p>
-            )}
+                <p className="text-blue-500 dark:text-blue-400 text-sm">
+                  <Link href="/editor/create" className="underline">
+                    Create a character
+                  </Link>{" "}
+                  to beginning editing stats.
+                </p>
+              )}
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Location</h3>

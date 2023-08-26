@@ -10,6 +10,8 @@ import { PlayersContext } from "@/contexts/players-context";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
+import * as Fathom from "fathom-client";
+
 export default function Home() {
   const { toast } = useToast();
 
@@ -98,12 +100,19 @@ export default function Home() {
             world of Stardew Valley.
           </p>
           <div className="grid grid-cols-2 gap-2">
-            <Button className="w-full" asChild>
+            <Button
+              className="w-full"
+              asChild
+              onClick={() => Fathom.trackGoal("H8PIRK79", 0)}
+            >
               <Link href="/editor/create">Create a Farmhand</Link>
             </Button>
             <Button
               className="w-full"
-              onClick={() => inputRef.current?.click()}
+              onClick={() => {
+                inputRef.current?.click();
+                Fathom.trackGoal("L85ILBEQ", 0);
+              }}
             >
               Upload Save
               <input
