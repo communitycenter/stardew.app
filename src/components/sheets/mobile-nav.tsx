@@ -95,12 +95,10 @@ export const MobileNav = ({
                   <Link href="/editor/edit">Edit Farmhand</Link>
                 </Button>
               )}
-              {/* TODO: remove disabled when implemented */}
               {!api.data?.discord_id && (
                 <Button
                   className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-                  // asChild
-                  disabled
+                  asChild
                 >
                   {/* <Link href="/api/oauth">Log In With Discord</Link> */}
                   Log In With Discord
