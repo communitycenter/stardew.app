@@ -29,6 +29,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -65,71 +66,72 @@ export function Sidebar({ className }: SidebarProps) {
 
   return (
     <div className={cn("pb-12", className)}>
-      <div className="space-y-4">
-        <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
-                  asChild
-                >
-                  <a href={"/discord"} target="_blank" rel="noreferrer">
-                    <IconBrandDiscord size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Join our Discord!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+      <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+                asChild
+              >
+                <a href={"/discord"} target="_blank" rel="noreferrer">
+                  <IconBrandDiscord size={20} />
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Join our Discord!</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-neutral-800 hover:text-neutral-50"
-                  asChild
-                >
-                  <a href={"/github"} target="_blank" rel="noreferrer">
-                    <IconBrandGithub size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>stardew.app&apos;s source!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full hover:bg-neutral-800 hover:text-neutral-50"
+                asChild
+              >
+                <a href={"/github"} target="_blank" rel="noreferrer">
+                  <IconBrandGithub size={20} />
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>stardew.app&apos;s source!</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
-                  asChild
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
+                asChild
+              >
+                <a
+                  href={
+                    "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button"
+                  }
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <a
-                    href={
-                      "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button"
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <IconShirt size={20} />
-                  </a>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Generate a Stardew avatar!</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
+                  <IconShirt size={20} />
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Generate a Stardew avatar!</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+      {/* TODO: SOMEONE PLEASE FIX THIS */}
+      <ScrollArea className="h-[590px]">
         <nav className="px-3 pb-2">
           <SidebarCategory>Player</SidebarCategory>
           <div className="space-y-1">
@@ -196,7 +198,7 @@ export function Sidebar({ className }: SidebarProps) {
             ))}
           </div>
         </nav>
-      </div>
+      </ScrollArea>
     </div>
   );
 }
