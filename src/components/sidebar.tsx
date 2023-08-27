@@ -65,8 +65,8 @@ export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <div className={cn("pb-12", className)}>
-      <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
+    <div className={className}>
+      {/* <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -129,76 +129,74 @@ export function Sidebar({ className }: SidebarProps) {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-      </div>
+      </div> */}
       {/* TODO: SOMEONE PLEASE FIX THIS */}
-      <ScrollArea className="h-[590px]">
-        <nav className="px-3 pb-2">
-          <SidebarCategory>Player</SidebarCategory>
-          <div className="space-y-1">
-            {playerNavigation.map((item) => (
-              <Button
-                key={item.href}
-                variant={pathname === item.href ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start",
-                  item.href === pathname
-                    ? ""
-                    : "text-neutral-600 dark:text-neutral-400"
-                )}
-                asChild
-              >
-                <Link href={item.href}>
-                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
-                  {item.name}
-                </Link>
-              </Button>
-            ))}
-          </div>
-          <SidebarCategory>Collections</SidebarCategory>
-          <div className="space-y-1">
-            {collectionsNavigation.map((item) => (
-              <Button
-                key={item.href}
-                variant={pathname === item.href ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start",
-                  item.href === pathname
-                    ? ""
-                    : "text-neutral-600 dark:text-neutral-400"
-                )}
-                asChild
-              >
-                <Link href={item.href}>
-                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
-                  {item.name}
-                </Link>
-              </Button>
-            ))}
-          </div>
+      <nav className="px-3 pb-2">
+        <SidebarCategory>Player</SidebarCategory>
+        <div className="space-y-1">
+          {playerNavigation.map((item) => (
+            <Button
+              key={item.href}
+              variant={pathname === item.href ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start",
+                item.href === pathname
+                  ? ""
+                  : "text-neutral-600 dark:text-neutral-400"
+              )}
+              asChild
+            >
+              <Link href={item.href}>
+                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                {item.name}
+              </Link>
+            </Button>
+          ))}
+        </div>
+        <SidebarCategory>Collections</SidebarCategory>
+        <div className="space-y-1">
+          {collectionsNavigation.map((item) => (
+            <Button
+              key={item.href}
+              variant={pathname === item.href ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start",
+                item.href === pathname
+                  ? ""
+                  : "text-neutral-600 dark:text-neutral-400"
+              )}
+              asChild
+            >
+              <Link href={item.href}>
+                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                {item.name}
+              </Link>
+            </Button>
+          ))}
+        </div>
 
-          <SidebarCategory>Misc</SidebarCategory>
-          <div className="space-y-1">
-            {miscNavigation.map((item) => (
-              <Button
-                key={item.href}
-                variant={pathname === item.href ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start",
-                  item.href === pathname
-                    ? ""
-                    : "text-neutral-600 dark:text-neutral-400"
-                )}
-                asChild
-              >
-                <Link href={item.href}>
-                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
-                  {item.name}
-                </Link>
-              </Button>
-            ))}
-          </div>
-        </nav>
-      </ScrollArea>
+        <SidebarCategory>Misc</SidebarCategory>
+        <div className="space-y-1">
+          {miscNavigation.map((item) => (
+            <Button
+              key={item.href}
+              variant={pathname === item.href ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start",
+                item.href === pathname
+                  ? ""
+                  : "text-neutral-600 dark:text-neutral-400"
+              )}
+              asChild
+            >
+              <Link href={item.href}>
+                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                {item.name}
+              </Link>
+            </Button>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 }

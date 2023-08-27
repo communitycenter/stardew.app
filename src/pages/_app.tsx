@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className="sticky top-0 z-10 dark:bg-neutral-950">
             <Topbar />
           </div>
-          <div className="">
+          <div>
             <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col" />
             <div className="md:pl-72">
               <Component {...pageProps} />
