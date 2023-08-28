@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Topbar />
           </div>
           <div>
-            <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col" />
+            <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col min-h-[calc(100vh-65px)] max-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip" />
             <div className="md:pl-72">
               <Component {...pageProps} />
               <Toaster />
