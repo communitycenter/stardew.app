@@ -34,7 +34,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
-  { name: "Bundles", href: "/bundles", icon: IconBox },
+  // { name: "Bundles", href: "/bundles", icon: IconBox },
   { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
   { name: "Secret Notes", href: "/notes", icon: IconNote },
   { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
@@ -66,7 +66,7 @@ export function Sidebar({ className }: SidebarProps) {
 
   return (
     <div className={className}>
-      {/* <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
+      <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -129,8 +129,7 @@ export function Sidebar({ className }: SidebarProps) {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-      </div> */}
-      {/* TODO: SOMEONE PLEASE FIX THIS */}
+      </div>
       <nav className="px-3 pb-2">
         <SidebarCategory>Player</SidebarCategory>
         <div className="space-y-1">
