@@ -30,6 +30,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { DiscordLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -53,6 +54,12 @@ export const collectionsNavigation = [
   { name: "Fishing", href: "/fishing", icon: IconFishHook },
   { name: "Shipping", href: "/shipping", icon: IconGardenCart },
   { name: "Museum & Artifacts", href: "/museum", icon: IconBuildingWarehouse },
+];
+
+export const linksNavigation = [
+  { name: "Discord", href: "/cooking", icon: DiscordLogoIcon },
+  { name: "GitHub", href: "/crafting", icon: GitHubLogoIcon },
+  { name: "stardew.me", href: "/fishing", icon: IconShirt },
 ];
 
 export const SidebarCategory = ({ children }: { children: string }) => (

@@ -21,6 +21,7 @@ import {
   miscNavigation,
   playerNavigation,
   collectionsNavigation,
+  linksNavigation,
 } from "@/components/sidebar";
 import {
   Sheet,
@@ -259,6 +260,33 @@ export const MobileNav = ({
               </h4>
               <div className="space-y-1">
                 {miscNavigation.map((item) => (
+                  <Button
+                    key={item.href}
+                    variant={pathname === item.href ? "secondary" : "ghost"}
+                    className={cn(
+                      "w-full justify-start",
+                      item.href === pathname
+                        ? ""
+                        : "text-neutral-600 dark:text-neutral-400"
+                    )}
+                    asChild
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Link href={item.href}>
+                      <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                      {item.name}
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+            </section>
+            {/* Links, because fuck link buttons */}
+            <section>
+              <h4 className="mt-4 mb-2 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
+                Links
+              </h4>
+              <div className="space-y-1">
+                {linksNavigation.map((item) => (
                   <Button
                     key={item.href}
                     variant={pathname === item.href ? "secondary" : "ghost"}
