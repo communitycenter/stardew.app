@@ -29,6 +29,11 @@ interface Props {
   setVillager: Dispatch<SetStateAction<Villager>>;
 }
 
+const classes = [
+  "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+  "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20",
+];
+
 export const VillagerCard = ({
   villager,
   points,
@@ -172,11 +177,26 @@ export const VillagerCard = ({
     await patchPlayer(patch);
   }
 
+  const _status = useMemo(() => {
+    if (!activePlayer || !activePlayer.social) return 0;
+
+    if (villager.datable) {
+      if (points >= 8 * 250) return 1;
+    } else {
+      if (points >= 10 * 250) return 1;
+    }
+
+    return 0;
+  }, [activePlayer, villager, points]);
+
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
         <button
-          className="overflow-x-clip flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          className={cn(
+            "overflow-x-clip flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
+            classes[_status]
+          )}
           onClick={() => {
             setVillager(villager);
             setIsOpen(true);
