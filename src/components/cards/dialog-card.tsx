@@ -129,26 +129,29 @@ export const DialogCard = ({
         </DialogHeader>
         <DialogDescription>{description}</DialogDescription>
         <DialogFooter className="gap-4 sm:gap-0">
-          <Button
-            variant="secondary"
-            disabled={!activePlayer || !completed}
-            onClick={() => {
-              handleStatusChange(false);
-              Fathom.trackGoal("OYQKZJFI", 0);
-            }}
-          >
-            Set Incomplete
-          </Button>
-          <Button
-            variant="secondary"
-            disabled={!activePlayer || completed}
-            onClick={() => {
-              handleStatusChange(true);
-              Fathom.trackGoal("VMKLGIUD", 0);
-            }}
-          >
-            Set Completed
-          </Button>
+          {completed ? (
+            <Button
+              variant="secondary"
+              disabled={!activePlayer || !completed}
+              onClick={() => {
+                handleStatusChange(false);
+                Fathom.trackGoal("OYQKZJFI", 0);
+              }}
+            >
+              Set Incomplete
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              disabled={!activePlayer || completed}
+              onClick={() => {
+                handleStatusChange(true);
+                Fathom.trackGoal("VMKLGIUD", 0);
+              }}
+            >
+              Set Completed
+            </Button>
+          )}
         </DialogFooter>
         {!activePlayer && (
           <p className="text-blue-500 dark:text-blue-400 text-sm">

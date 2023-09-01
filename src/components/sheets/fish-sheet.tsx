@@ -88,29 +88,30 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
         {fish && (
           <div className="space-y-6 mt-4">
             <section className="space-y-2">
-              <h3 className="font-semibold">Actions</h3>
-              <Separator />
               <div className="grid grid-cols-1 gap-3">
-                <Button
-                  variant="secondary"
-                  disabled={!activePlayer || !fishCaught.has(fish.itemID)}
-                  onClick={() => {
-                    handleStatusChange(0);
-                    Fathom.trackGoal("OYQKZJFI", 0);
-                  }}
-                >
-                  Set Uncaught
-                </Button>
-                <Button
-                  variant="secondary"
-                  disabled={!activePlayer || fishCaught.has(fish.itemID)}
-                  onClick={() => {
-                    handleStatusChange(2);
-                    Fathom.trackGoal("VMKLGIUD", 0);
-                  }}
-                >
-                  Set Caught
-                </Button>
+                {fishCaught.has(fish.itemID) ? (
+                  <Button
+                    variant="secondary"
+                    disabled={!activePlayer || !fishCaught.has(fish.itemID)}
+                    onClick={() => {
+                      handleStatusChange(0);
+                      Fathom.trackGoal("OYQKZJFI", 0);
+                    }}
+                  >
+                    Set Uncaught
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    disabled={!activePlayer || fishCaught.has(fish.itemID)}
+                    onClick={() => {
+                      handleStatusChange(2);
+                      Fathom.trackGoal("VMKLGIUD", 0);
+                    }}
+                  >
+                    Set Caught
+                  </Button>
+                )}
               </div>
               {!activePlayer && (
                 <p className="text-blue-500 dark:text-blue-400 text-sm">

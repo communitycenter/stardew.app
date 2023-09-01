@@ -115,31 +115,35 @@ export const BooleanCard = ({
           <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
         </button>
       </ContextMenuTrigger>
+
       <ContextMenuContent className="w-48">
-        <ContextMenuCheckboxItem
-          className="pl-8 gap-2"
-          checked={!completed}
-          disabled={!completed || !activePlayer}
-          onClick={() => {
-            handleStatusChange(0);
-            Fathom.trackGoal("OYQKZJFI", 0);
-          }}
-        >
-          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
-          <p>Set Incomplete</p>
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem
-          className="pl-8 gap-2"
-          checked={completed}
-          disabled={completed || !activePlayer}
-          onClick={() => {
-            handleStatusChange(2);
-            Fathom.trackGoal("VMKLGIUD", 0);
-          }}
-        >
-          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
-          Set Completed
-        </ContextMenuCheckboxItem>
+        {completed ? (
+          <ContextMenuCheckboxItem
+            className="pl-8 gap-2"
+            checked={!completed}
+            disabled={!completed || !activePlayer}
+            onClick={() => {
+              handleStatusChange(0);
+              Fathom.trackGoal("OYQKZJFI", 0);
+            }}
+          >
+            <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+            <p>Set Incomplete</p>
+          </ContextMenuCheckboxItem>
+        ) : (
+          <ContextMenuCheckboxItem
+            className="pl-8 gap-2"
+            checked={completed}
+            disabled={completed || !activePlayer}
+            onClick={() => {
+              handleStatusChange(2);
+              Fathom.trackGoal("VMKLGIUD", 0);
+            }}
+          >
+            <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+            Set Completed
+          </ContextMenuCheckboxItem>
+        )}
       </ContextMenuContent>
     </ContextMenu>
   );

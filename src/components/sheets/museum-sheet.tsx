@@ -105,37 +105,38 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
         {trinket && (
           <div className="space-y-6 mt-4">
             <section className="space-y-2">
-              <h3 className="font-semibold">Actions</h3>
-              <Separator />
               <div className="grid grid-cols-1 gap-3">
-                <Button
-                  variant="secondary"
-                  disabled={
-                    !activePlayer ||
-                    (!artifacts.has(parseInt(trinket.itemID)) &&
-                      !minerals.has(parseInt(trinket.itemID)))
-                  }
-                  onClick={() => {
-                    handleStatusChange(0);
-                    Fathom.trackGoal("OYQKZJFI", 0);
-                  }}
-                >
-                  Set Incomplete
-                </Button>
-                <Button
-                  variant="secondary"
-                  disabled={
-                    !activePlayer ||
-                    artifacts.has(parseInt(trinket.itemID)) ||
-                    minerals.has(parseInt(trinket.itemID))
-                  }
-                  onClick={() => {
-                    handleStatusChange(2);
-                    Fathom.trackGoal("VMKLGIUD", 0);
-                  }}
-                >
-                  Set Completed
-                </Button>
+                {artifacts.has(parseInt(trinket.itemID)) ? (
+                  <Button
+                    variant="secondary"
+                    disabled={
+                      !activePlayer ||
+                      (!artifacts.has(parseInt(trinket.itemID)) &&
+                        !minerals.has(parseInt(trinket.itemID)))
+                    }
+                    onClick={() => {
+                      handleStatusChange(0);
+                      Fathom.trackGoal("OYQKZJFI", 0);
+                    }}
+                  >
+                    Set Incomplete
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    disabled={
+                      !activePlayer ||
+                      artifacts.has(parseInt(trinket.itemID)) ||
+                      minerals.has(parseInt(trinket.itemID))
+                    }
+                    onClick={() => {
+                      handleStatusChange(2);
+                      Fathom.trackGoal("VMKLGIUD", 0);
+                    }}
+                  >
+                    Set Completed
+                  </Button>
+                )}
               </div>
               {!activePlayer && (
                 <p className="text-blue-500 dark:text-blue-400 text-sm">
