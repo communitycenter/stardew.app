@@ -87,7 +87,7 @@ export function Sidebar({ className }: SidebarProps) {
                 </a>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent side="bottom">
               <p>Join our Discord!</p>
             </TooltipContent>
           </Tooltip>
@@ -106,7 +106,7 @@ export function Sidebar({ className }: SidebarProps) {
                 </a>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent side="bottom">
               <p>stardew.app&apos;s source!</p>
             </TooltipContent>
           </Tooltip>
@@ -131,7 +131,7 @@ export function Sidebar({ className }: SidebarProps) {
                 </a>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent side="bottom">
               <p>Generate a Stardew avatar!</p>
             </TooltipContent>
           </Tooltip>
