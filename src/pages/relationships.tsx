@@ -14,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FilterButton } from "@/components/filter-btn";
 import { InfoCard } from "@/components/cards/info-card";
 import { VillagerCard } from "@/components/cards/villager-card";
 import { Command, CommandInput } from "@/components/ui/command";
@@ -38,7 +39,8 @@ export default function Relationships() {
   const { activePlayer } = useContext(PlayersContext);
 
   const [open, setIsOpen] = useState(false);
-  const [_filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
+  const [_filter, setFilter] = useState("all");
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
 
   const fiveHeartCount = useMemo(() => {
@@ -108,6 +110,16 @@ export default function Relationships() {
       }
     }
     return { completed, additionalDescription };
+  };
+
+  const isVillagerCompleted = (villager: Villager) => {
+    if (!activePlayer || !activePlayer.social) return false;
+
+    const points =
+      activePlayer.social.relationships?.[villager.name]?.points ?? 0;
+
+    if (villager.datable) return points >= 250 * 8;
+    else return points >= 250 * 10;
   };
 
   return (
@@ -245,18 +257,44 @@ export default function Relationships() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Villagers
             </h2>
-            <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-              <CommandInput
-                onValueChange={(v) => setFilter(v)}
-                placeholder="Search Villagers"
-              />
-            </Command>
+            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+                <FilterButton
+                  target={"0"}
+                  _filter={_filter}
+                  title={"Incomplete"}
+                  setFilter={setFilter}
+                />
+                <FilterButton
+                  target={"2"}
+                  _filter={_filter}
+                  title="Completed"
+                  setFilter={setFilter}
+                />
+              </div>
+              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Villagers"
+                />
+              </Command>
+            </div>
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
               {Object.values(villagers)
                 .filter((v) => {
-                  if (!_filter) return true;
+                  if (!search) return true;
                   else {
-                    return v.name.toLowerCase().includes(_filter.toLowerCase());
+                    return v.name.toLowerCase().includes(search.toLowerCase());
+                  }
+                })
+                .filter((v) => {
+                  switch (_filter) {
+                    case "all":
+                      return true;
+                    case "0":
+                      return !isVillagerCompleted(v);
+                    case "2":
+                      return isVillagerCompleted(v);
                   }
                 })
                 .map((v) => (
