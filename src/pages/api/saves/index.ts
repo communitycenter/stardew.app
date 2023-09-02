@@ -73,7 +73,7 @@ export async function getUID(
       req,
       res,
       maxAge: 60 * 60 * 24 * 365,
-      domain: "stardew.app",
+      domain: "localhost",
     });
   }
   return uid;

@@ -14,18 +14,21 @@ export default async function handler(
     const state = getCookie("oauth_state", { req });
     if (!state) {
       res.status(400).end();
+      console.log("[OAuth] No state cookie");
       return;
     }
 
     const uid = getCookie("uid", { req });
     if (!uid) {
       res.status(400).end();
+      console.log("[OAuth] No UID cookie");
       return;
     }
 
     const code = req.query.code as string;
     if (!code) {
       res.status(400).end();
+      console.log("[OAuth] No code");
       return;
     }
 
@@ -49,12 +52,14 @@ export default async function handler(
     );
 
     if (!discord.ok) {
-      // console.log(await discord.json());
       res.status(400).end();
+      console.log("[OAuth] Discord error");
       return;
     }
 
     const discordData = await discord.json();
+
+    console.log("discordData", discordData);
 
     const discordUser = await fetch(`https://discord.com/api/users/@me`, {
       headers: {
@@ -64,6 +69,7 @@ export default async function handler(
 
     if (!discordUser.ok) {
       res.status(400).end();
+      console.log("[OAuth] Discord user error");
       return;
     }
 
@@ -160,5 +166,6 @@ export default async function handler(
     );
   } catch (e: any) {
     res.status(500).send(e.message);
+    console.log("[OAuth] Error", e);
   }
 }
