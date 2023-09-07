@@ -27,7 +27,7 @@ export function parseSaveFile(xml: string) {
   } catch (e) {
     if (e instanceof TypeError) {
       throw new Error(
-        "Invalid file uploaded. Please upload a valid Stardew Valley save file."
+        "Invalid file uploaded. Couldn't parse XML. Please upload a valid Stardew Valley save file."
       );
     } else throw e;
   }
@@ -86,10 +86,6 @@ export function parseSaveFile(xml: string) {
     // console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
-    if (e instanceof TypeError) {
-      throw new Error(
-        "Invalid file uploaded. Please upload a valid Stardew Valley save file."
-      );
-    } else throw e;
+    throw e;
   }
 }
