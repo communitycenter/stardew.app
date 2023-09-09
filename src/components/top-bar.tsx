@@ -89,6 +89,10 @@ export function Topbar() {
           description: "Your save file has been successfully uploaded.",
         });
       } catch (err) {
+        console.error(
+          "[DEBUG] There's been an error parsing your save file. Please screenshot the text below, and send it in #bug-reports"
+        );
+        console.error(err);
         toast({
           variant: "destructive",
           title: "Error Parsing File",
