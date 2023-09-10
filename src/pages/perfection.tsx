@@ -19,6 +19,7 @@ import { InfoCard } from "@/components/cards/info-card";
 import { PercentageIndicator } from "@/components/percentage";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { PerfectionCard } from "@/components/cards/perfection-card";
+import { InputCard } from "@/components/cards/input-card";
 
 const monsterGoals: Record<string, any> = {
   Slimes: {
@@ -384,13 +385,15 @@ export default function Perfection() {
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.keys(monsterGoals).map((monster) => (
-                <InfoCard
+                <InputCard
                   key={monster}
                   title={monster}
-                  sourceURL={monsterGoals[monster].iconURL}
-                  description={`${
-                    activePlayer?.monsters?.monstersKilled?.[monster] ?? 0
-                  }/${monsterGoals[monster].goal}`}
+                  iconURL={monsterGoals[monster].iconURL}
+                  currentValue={
+                    activePlayer?.monsters?.monstersKilled?.[monster]
+                  }
+                  maxValue={monsterGoals[monster].goal}
+                  description="You can find this number in the Adventurer's Guild."
                 />
               ))}
             </div>
