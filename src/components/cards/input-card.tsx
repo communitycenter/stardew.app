@@ -23,7 +23,6 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { toast } from "../ui/use-toast";
 interface Props {
   title: string;
   description?: string;
@@ -56,17 +55,6 @@ export const InputCard = ({
   const form = useForm<z.infer<typeof inputSchema>>({
     resolver: zodResolver(inputSchema),
   });
-
-  function onSubmit(data: z.infer<typeof inputSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
 
   async function handleSave() {
     if (!activePlayer) return;
@@ -135,10 +123,7 @@ export const InputCard = ({
         </DialogHeader>
         <DialogDescription>
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-6"
-            >
+            <form className="w-full space-y-6">
               <FormField
                 control={form.control}
                 name="input"
@@ -146,13 +131,16 @@ export const InputCard = ({
                   <FormItem>
                     <div className="flex justify-between">
                       <div className="flex w-2/3 items-center space-x-2">
-                        <Input
-                          type="number"
-                          min={0}
-                          defaultValue={(currentValue ?? 0).toString()}
-                          onChange={(e) => setValue(parseInt(e.target.value))}
-                          disabled={!activePlayer}
-                        />
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={0}
+                            defaultValue={currentValue ?? 0}
+                            onChange={(e) => setValue(parseInt(e.target.value))}
+                            disabled={!activePlayer}
+                          />
+                        </FormControl>
+
                         <p>/{maxValue}</p>
                       </div>
 
@@ -164,7 +152,6 @@ export const InputCard = ({
                         Submit
                       </Button>
                     </div>
-                    <FormControl></FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
