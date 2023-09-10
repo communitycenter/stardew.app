@@ -34,6 +34,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props<T extends Recipe> {
   open: boolean;
@@ -202,14 +203,7 @@ export const RecipeSheet = <T extends Recipe>({
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {!activePlayer && (
-                <p className="text-blue-500 dark:text-blue-400 text-sm">
-                  <Link href="/editor/create" className="underline">
-                    Create a character
-                  </Link>{" "}
-                  to beginning editing stats.
-                </p>
-              )}
+              <div>{!activePlayer && <CreatePlayerRedirect />}</div>
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">How to unlock</h3>

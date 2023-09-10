@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { IconChevronRight } from "@tabler/icons-react";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   item: ShippingItem;
@@ -141,6 +142,7 @@ export const ShippingCard = ({ item }: Props) => {
           min={0}
           defaultValue={_count ?? 0}
           onChange={(e) => setValue(parseInt(e.target.value))}
+          disabled={!activePlayer}
         />
         <DialogFooter className="sm:justify-between gap-3 sm:gap-0">
           <Button variant="outline" asChild>
@@ -156,12 +158,19 @@ export const ShippingCard = ({ item }: Props) => {
             </a>
           </Button>
           <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-3 sm:gap-0">
-            <Button variant="secondary" onClick={() => setOpen(false)}>
+            <Button
+              disabled={!activePlayer}
+              variant="secondary"
+              onClick={() => setOpen(false)}
+            >
               Cancel
             </Button>
-            <Button onClick={() => handleSave()}>Save</Button>
+            <Button disabled={!activePlayer} onClick={() => handleSave()}>
+              Save
+            </Button>
           </div>
         </DialogFooter>
+        {!activePlayer && <CreatePlayerRedirect />}
       </DialogContent>
     </Dialog>
   );

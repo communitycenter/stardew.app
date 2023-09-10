@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import * as Fathom from "fathom-client";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   open: boolean;
@@ -112,15 +113,8 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                     Set Caught
                   </Button>
                 )}
+                {!activePlayer && <CreatePlayerRedirect />}
               </div>
-              {!activePlayer && (
-                <p className="text-blue-500 dark:text-blue-400 text-sm">
-                  <Link href="/editor/create" className="underline">
-                    Create a character
-                  </Link>{" "}
-                  to beginning editing stats.
-                </p>
-              )}
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Location</h3>

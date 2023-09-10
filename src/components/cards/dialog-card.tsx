@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 import * as Fathom from "fathom-client";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   title: string;
@@ -153,14 +154,7 @@ export const DialogCard = ({
             </Button>
           )}
         </DialogFooter>
-        {!activePlayer && (
-          <p className="text-blue-500 dark:text-blue-400 text-sm">
-            <Link href="/editor/create" className="underline">
-              Create a character
-            </Link>{" "}
-            to beginning editing stats.
-          </p>
-        )}
+        {!activePlayer && <CreatePlayerRedirect />}
       </DialogContent>
     </Dialog>
   );

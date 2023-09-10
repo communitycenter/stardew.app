@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 // look at villagers.py console output for categories that appear
 const categories: Record<string, { name: string; iconURL: string }> = {
@@ -299,14 +300,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                 </Button>
               )}
             </div>
-            {!activePlayer && (
-              <p className="text-blue-500 dark:text-blue-400 text-sm">
-                <Link href="/editor/create" className="underline">
-                  Create a character
-                </Link>{" "}
-                to beginning editing stats.
-              </p>
-            )}
+            <div>{!activePlayer && <CreatePlayerRedirect />}</div>
           </section>
           <section className="space-y-2">
             <h3 className="font-semibold">Loved Gifts</h3>
