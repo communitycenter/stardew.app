@@ -43,13 +43,7 @@ export const InputCard = ({
   const [value, setValue] = useState(0);
 
   const inputSchema = z.object({
-    input: z.coerce
-      .number()
-      .nonnegative()
-      .int()
-      .max(maxValue, {
-        message: `Input cannot be larger than ${maxValue}.`,
-      }),
+    input: z.coerce.number().nonnegative().int(),
   });
 
   const form = useForm<z.infer<typeof inputSchema>>({
@@ -140,7 +134,6 @@ export const InputCard = ({
                             disabled={!activePlayer}
                           />
                         </FormControl>
-
                         <p>/{maxValue}</p>
                       </div>
 
