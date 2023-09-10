@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { setCookie } from "cookies-next";
 import crypto from "crypto";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = Record<string, any>;
 

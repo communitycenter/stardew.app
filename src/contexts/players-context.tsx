@@ -1,26 +1,26 @@
 import useSWR from "swr";
 
 import {
-  createContext,
-  useState,
   ReactNode,
-  useEffect,
+  createContext,
   useCallback,
+  useEffect,
   useMemo,
+  useState,
 } from "react";
 
-import type { FishRet } from "@/lib/parsers/fishing";
 import type { CookingRet } from "@/lib/parsers/cooking";
-import type { GeneralRet } from "@/lib/parsers/general";
 import type { CraftingRet } from "@/lib/parsers/crafting";
-import type { ShippingRet } from "@/lib/parsers/shipping";
-import type { MuseumRet } from "@/lib/parsers/museum";
-import type { SocialRet } from "@/lib/parsers/social";
+import type { FishRet } from "@/lib/parsers/fishing";
+import type { GeneralRet } from "@/lib/parsers/general";
 import type { MonstersRet } from "@/lib/parsers/monsters";
-import type { WalnutRet } from "@/lib/parsers/walnuts";
+import type { MuseumRet } from "@/lib/parsers/museum";
 import type { NotesRet } from "@/lib/parsers/notes";
-import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
+import type { ScrapsRet } from "@/lib/parsers/scraps";
+import type { ShippingRet } from "@/lib/parsers/shipping";
+import type { SocialRet } from "@/lib/parsers/social";
+import type { WalnutRet } from "@/lib/parsers/walnuts";
 
 export interface PlayerType {
   _id: string;

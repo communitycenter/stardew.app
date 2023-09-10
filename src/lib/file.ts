@@ -1,21 +1,21 @@
 import { XMLParser } from "fast-xml-parser";
 
-import { findAllByKey } from "@/lib/utils";
 import {
-  parseGeneral,
-  parseFishing,
+  findChildren,
   parseCooking,
   parseCrafting,
-  parseShipping,
-  parseMuseum,
-  findChildren,
-  parseSocial,
+  parseFishing,
+  parseGeneral,
   parseMonsters,
+  parseMuseum,
   parsePerfection,
+  parseShipping,
+  parseSocial,
 } from "@/lib/parsers";
-import { parseWalnuts } from "./parsers/walnuts";
+import { findAllByKey } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
 import { parseScraps } from "./parsers/scraps";
+import { parseWalnuts } from "./parsers/walnuts";
 
 const semverSatisfies = require("semver/functions/satisfies");
 

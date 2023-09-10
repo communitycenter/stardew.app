@@ -1,6 +1,6 @@
-import objects from "@/data/objects.json";
-import craftingRecipes from "@/data/crafting.json";
 import bigCraftables from "@/data/big_craftables.json";
+import craftingRecipes from "@/data/crafting.json";
+import objects from "@/data/objects.json";
 
 export interface CraftingRet {
   recipes: { [key: string]: 0 | 1 | 2 };

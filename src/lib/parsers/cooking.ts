@@ -1,5 +1,5 @@
-import objects from "@/data/objects.json";
 import cookingRecipes from "@/data/cooking.json";
+import objects from "@/data/objects.json";
 
 export interface CookingRet {
   recipes: { [key: string]: 0 | 1 | 2 };

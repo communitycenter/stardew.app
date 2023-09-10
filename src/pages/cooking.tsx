@@ -1,25 +1,25 @@
 import Head from "next/head";
 
-import objects from "@/data/objects.json";
-import recipes from "@/data/cooking.json";
 import achievements from "@/data/achievements.json";
+import recipes from "@/data/cooking.json";
+import objects from "@/data/objects.json";
 
 import type { Recipe } from "@/types/recipe";
 
-import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
+import { useContext, useEffect, useMemo, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { RecipeCard } from "@/components/cards/recipe-card";
+import { FilterButton } from "@/components/filter-btn";
+import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { RecipeCard } from "@/components/cards/recipe-card";
-import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { Command, CommandInput } from "@/components/ui/command";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs = {
   Cook: 10,

@@ -1,5 +1,5 @@
+import { conn, getUID } from "@/pages/api/saves";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getUID, conn } from "@/pages/api/saves";
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);

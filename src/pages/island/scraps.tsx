@@ -1,9 +1,8 @@
-import { Construction } from "@/components/construction";
-import { Inter } from "next/font/google";
-import Head from "next/head";
-import scraps from "@/data/journal_scraps.json";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { PlayersContext } from "@/contexts/players-context";
+import scraps from "@/data/journal_scraps.json";
+import { Inter } from "next/font/google";
+import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -2,24 +2,24 @@ import Head from "next/head";
 
 import type { FishType } from "@/types/items";
 
+import achievements from "@/data/achievements.json";
 import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
-import achievements from "@/data/achievements.json";
 
-import { useContext, useEffect, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
+import { useContext, useEffect, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { BooleanCard } from "@/components/cards/boolean-card";
+import { FilterButton } from "@/components/filter-btn";
+import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { FishSheet } from "@/components/sheets/fish-sheet";
-import { BooleanCard } from "@/components/cards/boolean-card";
 import { Command, CommandInput } from "@/components/ui/command";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs = {
   Fisherman: 10,

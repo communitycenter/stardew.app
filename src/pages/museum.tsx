@@ -6,17 +6,17 @@ import museum from "@/data/artifacts.json";
 import { TrinketItem } from "@/types/items";
 import { useContext, useEffect, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { BooleanCard } from "@/components/cards/boolean-card";
+import { FilterButton } from "@/components/filter-btn";
+import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
 import { PlayersContext } from "@/contexts/players-context";
-import { BooleanCard } from "@/components/cards/boolean-card";
-import { MuseumSheet } from "@/components/sheets/museum-sheet";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);

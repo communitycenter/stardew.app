@@ -1,21 +1,20 @@
 import { PlayersContext } from "@/contexts/players-context";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import { Button } from "../ui/button";
 import {
-  DialogHeader,
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogTitle,
   DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "../ui/dialog";
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { toast } from "../ui/use-toast";
 import {
   Form,
   FormControl,
@@ -23,7 +22,8 @@ import {
   FormItem,
   FormMessage,
 } from "../ui/form";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
+import { Input } from "../ui/input";
+import { toast } from "../ui/use-toast";
 interface Props {
   title: string;
   description?: string;

@@ -5,7 +5,7 @@ import { walnuts } from "@/lib/parsers/walnuts";
 
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { useContext, useEffect, useState, useMemo } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 

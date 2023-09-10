@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import objects from "@/data/objects.json";
 import bigCraftables from "@/data/big_craftables.json";
+import objects from "@/data/objects.json";
 
-import type { Recipe, CraftingRecipe } from "@/types/recipe";
+import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction, useContext } from "react";
@@ -12,9 +12,9 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
-  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";

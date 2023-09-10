@@ -1,7 +1,7 @@
-import { getCookie, setCookie } from "cookies-next";
-import { NextApiRequest, NextApiResponse } from "next";
 import { Client } from "@planetscale/database";
+import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const client = new Client({
   url: process.env.DATABASE_URL,

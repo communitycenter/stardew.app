@@ -3,16 +3,17 @@ import Link from "next/link";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { cn } from "@/lib/utils";
-import { useContext, useState, useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { Button } from "@/components/ui/button";
 import {
   Command,
-  CommandItem,
   CommandEmpty,
   CommandGroup,
   CommandInput,
+  CommandItem,
   CommandSeparator,
 } from "@/components/ui/command";
 import {
@@ -20,7 +21,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
 
 import { CaretSortIcon, CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 

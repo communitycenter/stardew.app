@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -7,6 +6,7 @@ import { useContext, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 import { walnuts as walnutType } from "@/lib/parsers/walnuts";
 
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +16,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 

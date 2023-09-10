@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
@@ -16,24 +15,24 @@ import {
 
 import { PlayersContext } from "@/contexts/players-context";
 
-import {
-  Sheet,
-  SheetTitle,
-  SheetHeader,
-  SheetContent,
-  SheetDescription,
-} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import {
   Select,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectValue,
   SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
   SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 // look at villagers.py console output for categories that appear

@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
-import { createToken, conn, SqlUser } from "../saves";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { SqlUser, conn, createToken } from "../saves";
 
 type Data = Record<string, any>;
 

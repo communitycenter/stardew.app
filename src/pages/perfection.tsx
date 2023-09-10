@@ -1,25 +1,24 @@
 import Head from "next/head";
 
-import fish from "@/data/fish.json";
-import villagers from "@/data/villagers.json";
-import shippingItems from "@/data/shipping.json";
 import cookingRecipes from "@/data/cooking.json";
 import craftingRecipes from "@/data/crafting.json";
+import fish from "@/data/fish.json";
+import shippingItems from "@/data/shipping.json";
+import villagers from "@/data/villagers.json";
 
-import { useContext, useMemo } from "react";
 import { PlayersContext } from "@/contexts/players-context";
+import { useContext, useMemo } from "react";
 
+import { InputCard } from "@/components/cards/input-card";
+import { PerfectionCard } from "@/components/cards/perfection-card";
+import { PercentageIndicator } from "@/components/percentage";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { InfoCard } from "@/components/cards/info-card";
-import { PercentageIndicator } from "@/components/percentage";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { PerfectionCard } from "@/components/cards/perfection-card";
-import { InputCard } from "@/components/cards/input-card";
 
 const monsterGoals: Record<string, any> = {
   Slimes: {

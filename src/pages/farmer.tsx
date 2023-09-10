@@ -6,24 +6,24 @@ import { useContext, useEffect, useMemo, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { DialogCard } from "@/components/cards/dialog-card";
+import { InfoCard } from "@/components/cards/info-card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { InfoCard } from "@/components/cards/info-card";
-import { DialogCard } from "@/components/cards/dialog-card";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 import {
-  UserIcon,
-  HomeIcon,
+  BriefcaseIcon,
+  ChartBarIcon,
   ClockIcon,
   CurrencyDollarIcon,
-  ChartBarIcon,
-  BriefcaseIcon,
+  HomeIcon,
   StarIcon,
+  UserIcon,
 } from "@heroicons/react/24/solid";
 
 const STARDROPS = {

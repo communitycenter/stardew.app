@@ -1,39 +1,37 @@
-import Link from "next/link";
 import Image from "next/image";
 
-import objects from "@/data/objects.json";
 import bigCraftables from "@/data/big_craftables.json";
+import objects from "@/data/objects.json";
 
-import type { Recipe, CraftingRecipe } from "@/types/recipe";
+import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import {
   Dispatch,
   SetStateAction,
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
-  Sheet,
-  SheetTitle,
-  SheetHeader,
-  SheetContent,
-  SheetDescription,
-} from "@/components/ui/sheet";
-import {
   Select,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectValue,
   SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
   SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props<T extends Recipe> {

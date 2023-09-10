@@ -1,26 +1,25 @@
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
 import {
-  IconHome2,
-  IconHeart,
-  IconFishHook,
-  IconEgg,
-  IconId,
-  IconHammer,
-  IconGardenCart,
-  IconBox,
-  IconShirt,
   IconAward,
-  IconBrandGithub,
-  IconBrandDiscord,
-  IconBuildingWarehouse,
   IconBook,
+  IconBrandDiscord,
+  IconBrandGithub,
+  IconBuildingWarehouse,
+  IconEgg,
+  IconFishHook,
+  IconGardenCart,
+  IconHammer,
+  IconHeart,
+  IconHome2,
+  IconId,
   IconNote,
   IconProgress,
+  IconShirt,
 } from "@tabler/icons-react";
 
 import {
@@ -29,7 +28,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { DiscordLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}

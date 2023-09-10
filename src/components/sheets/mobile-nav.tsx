@@ -1,9 +1,12 @@
-import useSWR from "swr";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import useSWR from "swr";
 
 import type { User } from "@/components/top-bar";
 
+import { cn } from "@/lib/utils";
+import { deleteCookie } from "cookies-next";
+import { usePathname } from "next/navigation";
 import {
   Dispatch,
   MutableRefObject,
@@ -11,27 +14,24 @@ import {
   useContext,
   useState,
 } from "react";
-import { cn } from "@/lib/utils";
-import { deleteCookie } from "cookies-next";
-import { usePathname } from "next/navigation";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
-  miscNavigation,
-  playerNavigation,
   collectionsNavigation,
   linksNavigation,
+  miscNavigation,
+  playerNavigation,
 } from "@/components/sidebar";
-import {
-  Sheet,
-  SheetTitle,
-  SheetHeader,
-  SheetContent,
-} from "@/components/ui/sheet";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 interface Props {
   open: boolean;

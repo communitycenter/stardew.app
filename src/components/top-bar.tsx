@@ -1,6 +1,6 @@
-import useSWR from "swr";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import useSWR from "swr";
 
 import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
@@ -8,6 +8,11 @@ import { ChangeEvent, useContext, useRef, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { CreditsDialog } from "@/components/dialogs/credits-dialog";
+import { PresetSelector } from "@/components/preset-selector";
+import { MobileNav } from "@/components/sheets/mobile-nav";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,16 +21,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { Separator } from "@/components/ui/separator";
-import { MobileNav } from "@/components/sheets/mobile-nav";
-import { PresetSelector } from "@/components/preset-selector";
-import { CreditsDialog } from "@/components/dialogs/credits-dialog";
+import { useToast } from "@/components/ui/use-toast";
 import { DeletionDialog } from "./dialogs/deletion-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { IconLoader2 } from "@tabler/icons-react";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Fathom from "fathom-client";
 

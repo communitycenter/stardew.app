@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
@@ -9,15 +8,15 @@ import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import * as Fathom from "fathom-client";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 

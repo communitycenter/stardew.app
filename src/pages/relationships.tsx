@@ -5,24 +5,24 @@ import villagers from "@/data/villagers.json";
 
 import type { Villager } from "@/types/items";
 
-import { useContext, useEffect, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
+import { useContext, useMemo, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { InfoCard } from "@/components/cards/info-card";
+import { VillagerCard } from "@/components/cards/villager-card";
+import { FilterButton } from "@/components/filter-btn";
+import { VillagerSheet } from "@/components/sheets/villager-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { InfoCard } from "@/components/cards/info-card";
-import { VillagerCard } from "@/components/cards/villager-card";
 import { Command, CommandInput } from "@/components/ui/command";
-import { VillagerSheet } from "@/components/sheets/villager-sheet";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
-import { IconBabyCarriage } from "@tabler/icons-react";
 import { HeartIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { IconBabyCarriage } from "@tabler/icons-react";
 
 const reqs: Record<string, number> = {
   "A New Friend": 1,

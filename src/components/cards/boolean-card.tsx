@@ -5,15 +5,15 @@ import objects from "@/data/objects.json";
 import type { FishType, TrinketItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useContext, useMemo } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
-  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";

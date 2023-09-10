@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 
-import { Topbar } from "@/components/top-bar";
 import { Sidebar } from "@/components/sidebar";
+import { Topbar } from "@/components/top-bar";
 import { Toaster } from "@/components/ui/toaster";
 
 import { ThemeProvider } from "@/components/theme-provider";

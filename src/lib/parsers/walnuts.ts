@@ -1,5 +1,5 @@
 import allWalnuts from "@/data/walnuts.json";
-import { WalnutType, WalnutMapType } from "@/types/items";
+import { WalnutType } from "@/types/items";
 
 export interface WalnutRet {
   found: { [key: string]: number };
