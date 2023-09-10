@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { IconChevronRight } from "@tabler/icons-react";
+import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -145,8 +145,9 @@ export const ShippingCard = ({ item }: Props) => {
           disabled={!activePlayer}
         />
         <DialogFooter className="sm:justify-between gap-3 sm:gap-0">
-          <Button variant="outline" asChild>
+          <Button variant="outline">
             <a
+              className="flex items-center"
               target="_blank"
               rel="noreferrer"
               href={`https://stardewvalleywiki.com/${name.replaceAll(
@@ -155,6 +156,7 @@ export const ShippingCard = ({ item }: Props) => {
               )}`}
             >
               Visit Wiki Page
+              <IconExternalLink className="h-4"></IconExternalLink>
             </a>
           </Button>
           <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-3 sm:gap-0">
