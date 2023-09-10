@@ -165,6 +165,7 @@ export default async function handler(
         method: "PUT",
         body: JSON.stringify({
           access_token: `${discordData.access_token}`,
+          roles: ["1150490180860530819"],
         }),
         headers: {
           Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
