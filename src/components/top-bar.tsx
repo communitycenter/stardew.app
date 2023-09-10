@@ -175,7 +175,7 @@ export function Topbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-[200px] mr-[26px]">
                 <DropdownMenuLabel className="text-xs text-gray-400 font-normal">
-                  stardew.app 2.0.0
+                  stardew.app 2.0.1
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
