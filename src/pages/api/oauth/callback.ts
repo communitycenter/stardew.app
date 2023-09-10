@@ -98,6 +98,14 @@ export default async function handler(
             [discordUserData.username, discordUserData.id]
           );
         }
+
+        // update discord avatar if the avatar hash changed
+        if (discordUser.discord_avatar !== discordUserData.avatar) {
+          const r = await conn.execute(
+            "UPDATE Users SET discord_avatar = ? WHERE discord_id = ?",
+            [discordUserData.avatar, discordUserData.id]
+          );
+        }
       } else {
         await conn.execute(
           "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
