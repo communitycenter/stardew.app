@@ -27,7 +27,7 @@ export function parseWalnuts(save: any): WalnutRet {
     ? walnuts.GoldenCoconut.num
     : 0;
 
-  if (!save.limitedNutDrops?.item.length)
+  if (!save.limitedNutDrops?.item?.length)
     return {
       found: trackedWalnutObject,
     };
