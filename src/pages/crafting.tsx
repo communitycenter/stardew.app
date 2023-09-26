@@ -115,7 +115,7 @@ export default function Crafting() {
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
-            Cooking Tracker
+            Crafting Tracker
           </h1>
           {/* Achievements Section */}
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
