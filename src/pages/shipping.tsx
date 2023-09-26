@@ -1,22 +1,22 @@
 import Head from "next/head";
 
+import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-import achievements from "@/data/achievements.json";
 
-import { useContext, useMemo, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
+import { useContext, useMemo, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { ShippingCard } from "@/components/cards/shipping-card";
+import { FilterButton } from "@/components/filter-btn";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { ShippingCard } from "@/components/cards/shipping-card";
 import { Command, CommandInput } from "@/components/ui/command";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
@@ -116,7 +116,7 @@ export default function Shipping() {
       >
         <div className="mx-auto w-full space-y-4 mt-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
-            Cooking Tracker
+            Shipping Tracker
           </h1>
           {/* Achievements Section */}
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
