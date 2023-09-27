@@ -3,7 +3,10 @@ export interface PerfectionRet {
   goldenClock?: boolean;
 }
 
-export const parsePerfection = (SaveGame: any): PerfectionRet => {
+export const parsePerfection = (
+  prefix: string,
+  SaveGame: any
+): PerfectionRet => {
   let numObelisks = 0;
   let goldenClock = false;
   // StardewValley.Utitility.cs::numObelisksOnFarm()
@@ -20,7 +23,7 @@ export const parsePerfection = (SaveGame: any): PerfectionRet => {
 
     // For now, we'll only look in the GameLocation named "Farm", if this is wrong, we'll fix it later
     for (const location of SaveGame.locations.GameLocation) {
-      if (!(location["@_xsi:type"] === "Farm")) continue;
+      if (!(location[`@_${prefix}:type`] === "Farm")) continue;
 
       // by default, there should be two buildings (shipping bin and greenhouse)
       for (const building of location.buildings.Building) {
