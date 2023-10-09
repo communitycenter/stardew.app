@@ -11,7 +11,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
-import { FilterButton } from "@/components/filter-btn";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
   Accordion,
@@ -28,6 +28,56 @@ const reqs = {
   "Mother Catch": 100,
 };
 
+const locations = [
+  {
+    value: "all",
+    label: "All Locations",
+  },
+  {
+    value: "ocean",
+    label: "Ocean",
+  },
+  {
+    value: "the mines",
+    label: "The Mines",
+  },
+  {
+    value: "ginger island",
+    label: "Ginger Island",
+  },
+  {
+    value: "crab pot",
+    label: "Crab Pots",
+  },
+  {
+    value: "river",
+    label: "River",
+  },
+  {
+    value: "mountain lake",
+    label: "Mountain Lake",
+  },
+  {
+    value: "town river",
+    label: "Town River",
+  },
+];
+
+const weather = [
+  {
+    value: "Both",
+    label: "Both",
+  },
+  {
+    value: "Sunny",
+    label: "Sunny",
+  },
+  {
+    value: "Rainy",
+    label: "Rainy",
+  },
+];
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -35,6 +85,8 @@ export default function Fishing() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+  const [_locationFilter, setLocationFilter] = useState("all");
+  const [_weatherFilter, setWeatherFilter] = useState("both");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -147,6 +199,22 @@ export default function Fishing() {
                   title={`Completed (${fishCaught.size})`}
                   setFilter={setFilter}
                 />
+                <FilterSearch
+                  target={"all"}
+                  _filter={_locationFilter}
+                  title={"Location"}
+                  data={locations}
+                  setFilter={setLocationFilter}
+                />
+                {_locationFilter !== "crab pot" && (
+                  <FilterSearch
+                    target={"all"}
+                    _filter={_weatherFilter}
+                    title={"Weather"}
+                    data={weather}
+                    setFilter={setWeatherFilter}
+                  />
+                )}
               </div>
               <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
                 <CommandInput
@@ -170,6 +238,31 @@ export default function Fishing() {
                   } else if (_filter === "2") {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
+                })
+                .filter((f) => {
+                  if (_locationFilter === "all") {
+                    return true;
+                  } else {
+                    return f.locations.some((location) =>
+                      location.toLowerCase().includes(_locationFilter)
+                    );
+                  }
+                })
+                .filter((f: any) => {
+                  if ("weather" in f) {
+                    console.log(f.weather, _weatherFilter);
+                    if (_weatherFilter === "both") {
+                      return true;
+                    } else {
+                      if (_weatherFilter === "Sunny") {
+                        return f.weather === "Sunny" || f.weather === "Both";
+                      } else if (_weatherFilter === "Rainy") {
+                        return f.weather === "Rainy" || f.weather === "Both";
+                      } else if (_weatherFilter === "Both") {
+                        return true;
+                      }
+                    }
+                  }
                 })
                 .map((f) => (
                   <BooleanCard
