@@ -103,7 +103,7 @@ const locations = [
 const weather = [
   {
     value: "Both",
-    label: "Both",
+    label: "All Weather",
   },
   {
     value: "Sunny",
