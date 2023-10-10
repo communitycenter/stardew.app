@@ -1,5 +1,5 @@
 <p align="center">
-    <img align=center src="https://stardew.app/icon.png" alt="Stardew.app Logo" width="100" /></br>
+    <img align=center src="https://stardew.app/favicon.png" alt="Stardew.app Logo" width="100" /></br>
 </p>
 
 <p align="center">
