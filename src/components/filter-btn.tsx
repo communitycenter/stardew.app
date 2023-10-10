@@ -17,6 +17,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CheckBadgeIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { Icon } from "@tabler/icons-react";
 
 interface ButtonProps {
   title: string;
@@ -35,6 +36,7 @@ interface SearchProps {
   target: string;
   _filter: string;
   data: DataItem[];
+  icon: Icon;
   setFilter: Dispatch<SetStateAction<string>>;
 }
 
@@ -83,6 +85,7 @@ export const FilterSearch = ({
   target,
   _filter,
   data,
+  icon,
   setFilter,
 }: SearchProps) => {
   const { activePlayer } = useContext(PlayersContext);
@@ -101,18 +104,16 @@ export const FilterSearch = ({
 
   console.log(value);
 
+  const Icon = icon;
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <div
           aria-expanded={open}
-          className="flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white p-2 pr-3 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 hover:bg-neutral-100 hover:dark:bg-neutral-800 hover:cursor-pointer disabled:hover:cursor-not-allowed disabled:hover:bg-white disabled:hover:dark:bg-neutral-950"
+          className="flex items-center border rounded-md space-x-3 px-3 text-sm outline-none text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-400 dark:border-neutral-800"
         >
-          <div
-            className={cn(
-              "h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950"
-            )}
-          />
+          <Icon className="h-4 w-4 shrink-0 opacity-50" />
           <p className="text-sm">
             {!value
               ? title
@@ -124,7 +125,9 @@ export const FilterSearch = ({
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search locations..." />
+          <CommandInput
+            placeholder={`Search ${title.toLocaleLowerCase()}s...`}
+          />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {data.map((item) => (
