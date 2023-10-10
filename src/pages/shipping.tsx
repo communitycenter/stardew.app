@@ -3,13 +3,14 @@ import Head from "next/head";
 import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
+const typedShippingItems: ShippingItem[] = shipping_items;
 
 import { PlayersContext } from "@/contexts/players-context";
 import { useContext, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { ShippingCard } from "@/components/cards/shipping-card";
-import { FilterButton } from "@/components/filter-btn";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import {
   Accordion,
   AccordionContent,
@@ -17,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+import { ShippingItem } from "@/types/items";
 
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
@@ -24,9 +26,29 @@ const reqs: Record<string, number> = {
   "Full Shipment": Object.keys(shipping_items).length,
 };
 
+const seasons = [
+  {
+    value: "spring",
+    label: "Spring",
+  },
+  {
+    value: "summer",
+    label: "Summer",
+  },
+  {
+    value: "fall",
+    label: "Fall",
+  },
+  {
+    value: "winter",
+    label: "Winter",
+  },
+];
+
 export default function Shipping() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+  const [_seasonFilter, setSeasonFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -177,6 +199,13 @@ export default function Shipping() {
                   title={`Completed (${basicShippedCount})`}
                   setFilter={setFilter}
                 />
+                <FilterSearch
+                  target={"all"}
+                  _filter={_seasonFilter}
+                  title={"Location"}
+                  data={seasons}
+                  setFilter={setSeasonFilter}
+                />
               </div>
               <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
                 <CommandInput
@@ -187,7 +216,7 @@ export default function Shipping() {
             </div>
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.values(shipping_items)
+              {Object.values(typedShippingItems)
                 .filter((i) => {
                   if (!search) return true;
                   const name =
@@ -220,6 +249,10 @@ export default function Shipping() {
                       : basicShipped[i.itemID as keyof typeof basicShipped]! >=
                           1;
                   } else return true; // all recipes
+                })
+                .filter((i) => {
+                  if (_seasonFilter === "all") return true;
+                  return i.seasons.includes(_seasonFilter);
                 })
                 .map((i) => (
                   <ShippingCard key={i.itemID} item={i} />
