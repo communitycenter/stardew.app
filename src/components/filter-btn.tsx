@@ -116,7 +116,7 @@ export const FilterSearch = ({
         >
           <Icon className="h-4 w-4 shrink-0 opacity-50" />
           <p className="text-sm">
-            {!value
+            {!value || value === "all" || value === "Both"
               ? title
               : data.find((item) => item.value === _filter)?.label}
           </p>
