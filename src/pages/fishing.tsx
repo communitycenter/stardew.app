@@ -38,7 +38,7 @@ const locations = [
     label: "Ocean",
   },
   {
-    value: "the mines",
+    value: "mines",
     label: "The Mines",
   },
   {
@@ -60,6 +60,42 @@ const locations = [
   {
     value: "town river",
     label: "Town River",
+  },
+  {
+    value: "fish pond",
+    label: "Fish Pond",
+  },
+  {
+    value: "cindersap forest",
+    label: "Cindersap Forest",
+  },
+  {
+    value: "volcano caldera",
+    label: "Volcano Caldera",
+  },
+  {
+    value: "Pirate Cove",
+    label: "Pirate Cove",
+  },
+  {
+    value: "monster drops",
+    label: "Monster Drops",
+  },
+  {
+    value: "the sewers",
+    label: "The Sewers",
+  },
+  {
+    value: "mutant bug lair",
+    label: "Mutant Bug Lair",
+  },
+  {
+    value: "witch's swamp",
+    label: "Witch's Swamp",
+  },
+  {
+    value: "the desert",
+    label: "The Desert",
   },
 ];
 
