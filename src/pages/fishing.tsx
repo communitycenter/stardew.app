@@ -20,6 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+import { IconCloud, IconMap } from "@tabler/icons-react";
 
 const reqs = {
   Fisherman: 10,
@@ -235,12 +236,15 @@ export default function Fishing() {
                   title={`Completed (${fishCaught.size})`}
                   setFilter={setFilter}
                 />
+              </div>
+              <div className="flex gap-2">
                 <FilterSearch
                   target={"all"}
                   _filter={_locationFilter}
                   title={"Location"}
                   data={locations}
                   setFilter={setLocationFilter}
+                  icon={IconMap}
                 />
                 {_locationFilter !== "crab pot" && (
                   <FilterSearch
@@ -249,15 +253,16 @@ export default function Fishing() {
                     title={"Weather"}
                     data={weather}
                     setFilter={setWeatherFilter}
+                    icon={IconCloud}
                   />
                 )}
+                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                  <CommandInput
+                    onValueChange={(v) => setSearch(v)}
+                    placeholder="Search Fish"
+                  />
+                </Command>
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                <CommandInput
-                  onValueChange={(v) => setSearch(v)}
-                  placeholder="Search Fish"
-                />
-              </Command>
             </div>
             {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">

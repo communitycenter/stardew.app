@@ -3,7 +3,7 @@ import Head from "next/head";
 import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-const typedShippingItems: ShippingItem[] = shipping_items;
+const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
 import { PlayersContext } from "@/contexts/players-context";
 import { useContext, useMemo, useState } from "react";
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
 import { ShippingItem } from "@/types/items";
+import { IconClock } from "@tabler/icons-react";
 
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
@@ -27,6 +28,10 @@ const reqs: Record<string, number> = {
 };
 
 const seasons = [
+  {
+    value: "all",
+    label: "All Seasons",
+  },
   {
     value: "spring",
     label: "Spring",
@@ -199,20 +204,23 @@ export default function Shipping() {
                   title={`Completed (${basicShippedCount})`}
                   setFilter={setFilter}
                 />
+              </div>
+              <div className="flex gap-2">
                 <FilterSearch
                   target={"all"}
                   _filter={_seasonFilter}
-                  title={"Location"}
+                  title={"Season"}
                   data={seasons}
                   setFilter={setSeasonFilter}
+                  icon={IconClock}
                 />
+                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                  <CommandInput
+                    onValueChange={(v) => setSearch(v)}
+                    placeholder="Search Recipes"
+                  />
+                </Command>
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                <CommandInput
-                  onValueChange={(v) => setSearch(v)}
-                  placeholder="Search Recipes"
-                />
-              </Command>
             </div>
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
