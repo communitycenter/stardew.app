@@ -16,7 +16,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CheckBadgeIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@radix-ui/react-icons";
 import { Icon } from "@tabler/icons-react";
 
 interface ButtonProps {
@@ -139,7 +140,7 @@ export const FilterSearch = ({
                   setOpen(false);
                 }}
               >
-                <CheckBadgeIcon
+                <CheckIcon
                   className={cn(
                     "mr-2 h-4 w-4",
                     value === item.value ? "opacity-100" : "opacity-0"
