@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { IconCloud, IconMap } from "@tabler/icons-react";
+import { IconClock, IconCloud } from "@tabler/icons-react";
 
 const reqs = {
   Fisherman: 10,
@@ -28,77 +28,6 @@ const reqs = {
   "Master Angler": Object.keys(fishes).length,
   "Mother Catch": 100,
 };
-
-const locations = [
-  {
-    value: "all",
-    label: "All Locations",
-  },
-  {
-    value: "ocean",
-    label: "Ocean",
-  },
-  {
-    value: "mines",
-    label: "The Mines",
-  },
-  {
-    value: "ginger island",
-    label: "Ginger Island",
-  },
-  {
-    value: "crab pot",
-    label: "Crab Pots",
-  },
-  {
-    value: "river",
-    label: "River",
-  },
-  {
-    value: "mountain lake",
-    label: "Mountain Lake",
-  },
-  {
-    value: "town river",
-    label: "Town River",
-  },
-  {
-    value: "fish pond",
-    label: "Fish Pond",
-  },
-  {
-    value: "cindersap forest",
-    label: "Cindersap Forest",
-  },
-  {
-    value: "volcano caldera",
-    label: "Volcano Caldera",
-  },
-  {
-    value: "Pirate Cove",
-    label: "Pirate Cove",
-  },
-  {
-    value: "monster drops",
-    label: "Monster Drops",
-  },
-  {
-    value: "the sewers",
-    label: "The Sewers",
-  },
-  {
-    value: "mutant bug lair",
-    label: "Mutant Bug Lair",
-  },
-  {
-    value: "witch's swamp",
-    label: "Witch's Swamp",
-  },
-  {
-    value: "the desert",
-    label: "The Desert",
-  },
-];
 
 const weather = [
   {
@@ -115,6 +44,29 @@ const weather = [
   },
 ];
 
+const seasons = [
+  {
+    value: "all",
+    label: "All Seasons",
+  },
+  {
+    value: "Spring",
+    label: "Spring",
+  },
+  {
+    value: "Summer",
+    label: "Summer",
+  },
+  {
+    value: "Fall",
+    label: "Fall",
+  },
+  {
+    value: "Winter",
+    label: "Winter",
+  },
+];
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -122,8 +74,8 @@ export default function Fishing() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
-  const [_locationFilter, setLocationFilter] = useState("all");
   const [_weatherFilter, setWeatherFilter] = useState("both");
+  const [_seasonFilter, setSeasonFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -240,22 +192,20 @@ export default function Fishing() {
               <div className="flex gap-2">
                 <FilterSearch
                   target={"all"}
-                  _filter={_locationFilter}
-                  title={"Location"}
-                  data={locations}
-                  setFilter={setLocationFilter}
-                  icon={IconMap}
+                  _filter={_seasonFilter}
+                  title={"Seasons"}
+                  data={seasons}
+                  setFilter={setSeasonFilter}
+                  icon={IconClock}
                 />
-                {_locationFilter !== "crab pot" && (
-                  <FilterSearch
-                    target={"all"}
-                    _filter={_weatherFilter}
-                    title={"Weather"}
-                    data={weather}
-                    setFilter={setWeatherFilter}
-                    icon={IconCloud}
-                  />
-                )}
+                <FilterSearch
+                  target={"all"}
+                  _filter={_weatherFilter}
+                  title={"Weather"}
+                  data={weather}
+                  setFilter={setWeatherFilter}
+                  icon={IconCloud}
+                />
                 <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
@@ -280,18 +230,8 @@ export default function Fishing() {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
                 })
-                .filter((f) => {
-                  if (_locationFilter === "all") {
-                    return true;
-                  } else {
-                    return f.locations.some((location) =>
-                      location.toLowerCase().includes(_locationFilter)
-                    );
-                  }
-                })
                 .filter((f: any) => {
                   if ("weather" in f) {
-                    console.log(f.weather, _weatherFilter);
                     if (_weatherFilter === "both") {
                       return true;
                     } else {
@@ -303,6 +243,12 @@ export default function Fishing() {
                         return true;
                       }
                     }
+                  }
+                })
+                .filter((f) => {
+                  if ("seasons" in f) {
+                    if (_seasonFilter === "all") return true;
+                    return f.seasons.includes(_seasonFilter);
                   }
                 })
                 .map((f) => (

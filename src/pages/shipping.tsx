@@ -209,7 +209,7 @@ export default function Shipping() {
                 <FilterSearch
                   target={"all"}
                   _filter={_seasonFilter}
-                  title={"Season"}
+                  title={"Seasons"}
                   data={seasons}
                   setFilter={setSeasonFilter}
                   icon={IconClock}

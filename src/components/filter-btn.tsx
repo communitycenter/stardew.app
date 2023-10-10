@@ -103,8 +103,6 @@ export const FilterSearch = ({
     });
   };
 
-  console.log(value);
-
   const Icon = icon;
 
   return (
@@ -127,7 +125,7 @@ export const FilterSearch = ({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput
-            placeholder={`Search ${title.toLocaleLowerCase()}s...`}
+            placeholder={`Search ${title.toLocaleLowerCase()}...`}
           />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
