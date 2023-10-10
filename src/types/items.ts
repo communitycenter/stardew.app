@@ -28,6 +28,7 @@ export interface ShippingItem {
   itemID: number;
   polyculture: boolean;
   monoculture: boolean;
+  seasons: string[];
 }
 
 export interface TrinketItem {
