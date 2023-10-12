@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
+import { version } from "../../package.json";
+
 import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
 import { ChangeEvent, useContext, useRef, useState } from "react";
@@ -175,7 +177,7 @@ export function Topbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-[200px] mr-[26px]">
                 <DropdownMenuLabel className="text-xs text-gray-400 font-normal">
-                  stardew.app 2.0.1
+                  stardew.app {version}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
