@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
-import { version } from "../../package.json";
+import packageJson from "../../package.json";
+const { version } = packageJson;
 
 import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
