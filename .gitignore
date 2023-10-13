@@ -41,3 +41,6 @@ venv/
 # vscode settings
 .vscode/
 .env
+
+# raw game data
+/src/research/raw_data/*.json
