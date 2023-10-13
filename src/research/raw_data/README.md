@@ -5,10 +5,12 @@ These files were taken from the unpacked version of `Stardew Valley/Content`. We
 ## More Information on File Formats
 
 - [Data/Achievements.json](https://stardewvalleywiki.com/Modding:Achievement_data)
-- [Data/Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
-- [Data/ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
+- [Data/BigCraftablesInformation.json](https://stardewvalleywiki.com/Modding:Items#Big_craftables)
+- Data/CookingChannel.json (N/A)
 - [Data/CookingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
 - [Data/CraftingRecipes.json](https://stardewvalleywiki.com/Modding:Recipe_data)
-- [Data/BigCraftablesInformation.json](https://stardewvalleywiki.com/Modding:Items#Big_craftables)
+- [Data/Crops.json](https://stardewvalleywiki.com/Modding:Crop_data)
+- [Data/Fish.json](https://stardewvalleywiki.com/Modding:Fish_data)
 - [Data/NPCDispositions.json](https://stardewvalleywiki.com/Modding:NPC_data)
 - [Data/NPCGiftTasts.json](https://stardewvalleywiki.com/Modding:Gift_taste_data)
+- [Data/ObjectInformation.json](https://stardewcommunitywiki.com/Modding:Object_data)
