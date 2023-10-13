@@ -29,6 +29,9 @@ import json
 with open("../raw_data/ObjectInformation.json", "r") as f:
     object_data = json.load(f)
 
+with open("../raw_data/Crops.json", "r") as f:
+    crops = json.load(f)
+
 
 def isIndexOkForBasicShippedCategory(index):
     # Objects.cs::isIndexOkForBasicShippedCategory()
@@ -62,6 +65,17 @@ def isPotentialBasicShippedCategory(index, category):
             return isIndexOkForBasicShippedCategory(index)
 
 
+# get the crops and their seasons
+crop_seasons = {}
+
+# split this into processable data
+for k, v in crops.items():
+    fields = v.split("/")
+
+    itemID = fields[3]
+    seasons = fields[1].split(" ")
+    crop_seasons[itemID] = seasons
+
 # find all items that count for polyculture (achievement 31)
 condition = "if (this.farmerShipped(24, 15) && this.farmerShipped(188, 15) && this.farmerShipped(190, 15) && this.farmerShipped(192, 15) && this.farmerShipped(248, 15) && this.farmerShipped(250, 15) && this.farmerShipped(252, 15) && this.farmerShipped(254, 15) && this.farmerShipped(256, 15) && this.farmerShipped(258, 15) && this.farmerShipped(260, 15) && this.farmerShipped(262, 15) && this.farmerShipped(264, 15) && this.farmerShipped(266, 15) && this.farmerShipped(268, 15) && this.farmerShipped(270, 15) && this.farmerShipped(272, 15) && this.farmerShipped(274, 15) && this.farmerShipped(276, 15) && this.farmerShipped(278, 15) && this.farmerShipped(280, 15) && this.farmerShipped(282, 15) && this.farmerShipped(284, 15) && this.farmerShipped(300, 15) && this.farmerShipped(304, 15) && this.farmerShipped(398, 15) && this.farmerShipped(400, 15) && this.farmerShipped(433, 15))"
 pattern = r"this\.farmerShipped\((\d+), 15\)"
@@ -91,6 +105,9 @@ for key, value in object_data.items():
             "itemID": int(key),
             "polyculture": int(key) in poly_ids,
             "monoculture": int(key) in mono_ids,
+            "seasons": crop_seasons.get(
+                key, []
+            ),  # empty list if not a crop, otherwise list of seasons
         }
 
 with open("../../data/shipping.json", "w") as f:

@@ -11,7 +11,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
-import { FilterButton } from "@/components/filter-btn";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
   Accordion,
@@ -20,6 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+import { IconClock, IconCloud } from "@tabler/icons-react";
 
 const reqs = {
   Fisherman: 10,
@@ -28,6 +29,44 @@ const reqs = {
   "Mother Catch": 100,
 };
 
+const weather = [
+  {
+    value: "Both",
+    label: "All Weather",
+  },
+  {
+    value: "Sunny",
+    label: "Sunny",
+  },
+  {
+    value: "Rainy",
+    label: "Rainy",
+  },
+];
+
+const seasons = [
+  {
+    value: "all",
+    label: "All Seasons",
+  },
+  {
+    value: "Spring",
+    label: "Spring",
+  },
+  {
+    value: "Summer",
+    label: "Summer",
+  },
+  {
+    value: "Fall",
+    label: "Fall",
+  },
+  {
+    value: "Winter",
+    label: "Winter",
+  },
+];
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -35,6 +74,8 @@ export default function Fishing() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+  const [_weatherFilter, setWeatherFilter] = useState("both");
+  const [_seasonFilter, setSeasonFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -148,12 +189,30 @@ export default function Fishing() {
                   setFilter={setFilter}
                 />
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                <CommandInput
-                  onValueChange={(v) => setSearch(v)}
-                  placeholder="Search Fish"
+              <div className="flex gap-2">
+                <FilterSearch
+                  target={"all"}
+                  _filter={_seasonFilter}
+                  title={"Seasons"}
+                  data={seasons}
+                  setFilter={setSeasonFilter}
+                  icon={IconClock}
                 />
-              </Command>
+                <FilterSearch
+                  target={"all"}
+                  _filter={_weatherFilter}
+                  title={"Weather"}
+                  data={weather}
+                  setFilter={setWeatherFilter}
+                  icon={IconCloud}
+                />
+                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                  <CommandInput
+                    onValueChange={(v) => setSearch(v)}
+                    placeholder="Search Fish"
+                  />
+                </Command>
+              </div>
             </div>
             {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -170,6 +229,27 @@ export default function Fishing() {
                   } else if (_filter === "2") {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
+                })
+                .filter((f: any) => {
+                  if ("weather" in f) {
+                    if (_weatherFilter === "both") {
+                      return true;
+                    } else {
+                      if (_weatherFilter === "Sunny") {
+                        return f.weather === "Sunny" || f.weather === "Both";
+                      } else if (_weatherFilter === "Rainy") {
+                        return f.weather === "Rainy" || f.weather === "Both";
+                      } else if (_weatherFilter === "Both") {
+                        return true;
+                      }
+                    }
+                  }
+                })
+                .filter((f) => {
+                  if ("seasons" in f) {
+                    if (_seasonFilter === "all") return true;
+                    return f.seasons.includes(_seasonFilter);
+                  }
                 })
                 .map((f) => (
                   <BooleanCard
