@@ -157,9 +157,18 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 
 async function _delete(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);
-  const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
-    uid,
-  ]);
+
+  if (!req.body) {
+    const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+      uid,
+    ]);
+  } else {
+    const { _id } = JSON.parse(req.body);
+    const result = await conn.execute(
+      "DELETE FROM Saves WHERE user_id = ? AND _id = ?",
+      [uid, _id]
+    );
+  }
 
   // console.log(result.rowsAffected)
 

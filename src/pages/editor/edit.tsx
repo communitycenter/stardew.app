@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 
 const formSchema = z.object({
   name: z
@@ -88,6 +89,8 @@ export default function Editor() {
   const [_foraging, _setForaging] = useState<string | undefined>(undefined);
   const [_mining, _setMining] = useState<string | undefined>(undefined);
   const [_combat, _setCombat] = useState<string | undefined>(undefined);
+
+  const [deletionOpen, setDeletionOpen] = useState(false);
 
   const farmListInfo = useMemo(() => {
     if (!activePlayer?.general?.farmInfo) return ["", undefined];
@@ -708,15 +711,31 @@ export default function Editor() {
                       )}
                     />
                   </div>
-                  <Button variant="default" type="submit">
-                    Save
-                  </Button>
+                  <div className="w-full gap-3 flex">
+                    <Button
+                      variant="destructive"
+                      type="button"
+                      className="w-1/4"
+                      disabled={!activePlayer?._id}
+                      onClick={() => setDeletionOpen(true)}
+                    >
+                      Delete
+                    </Button>
+                    <Button variant="default" type="submit" className="w-3/4">
+                      Save
+                    </Button>
+                  </div>
                 </form>
               </Form>
             </CardContent>
           </Card>
         </div>
       </main>
+      <DeletionDialog
+        open={deletionOpen}
+        setOpen={setDeletionOpen}
+        playerID={activePlayer?._id}
+      />
     </>
   );
 }

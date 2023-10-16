@@ -11,12 +11,14 @@ import {
 interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
+  playerID?: string;
 }
 
-export const DeletionDialog = ({ open, setOpen }: Props) => {
+export const DeletionDialog = ({ open, setOpen, playerID }: Props) => {
   const deleteData = async () => {
     const res = await fetch("/api/saves", {
       method: "DELETE",
+      body: playerID ? JSON.stringify({ _id: playerID }) : null,
     });
 
     if (res.ok) {
@@ -33,8 +35,14 @@ export const DeletionDialog = ({ open, setOpen }: Props) => {
           <DialogTitle>Are you absolutely sure?</DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          This action cannot be undone. This will permanently delete all of your
-          stored data.
+          This action cannot be undone. This will permanently delete{" "}
+          {playerID ? (
+            <>this farmhand&apos;s data.</>
+          ) : (
+            <>
+              <span className="font-bold">all farmhand data</span>.
+            </>
+          )}
         </DialogDescription>
         <DialogFooter className="gap-3 sm:gap-0">
           <Button onClick={() => setOpen(false)}>Cancel</Button>
