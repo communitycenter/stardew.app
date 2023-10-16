@@ -131,6 +131,7 @@ export function Topbar() {
             <Button
               variant="outline"
               onClick={() => Fathom.trackGoal("OWHYGHGB", 0)}
+              asChild
             >
               <Link href={`/editor/edit`}>Edit Player</Link>
             </Button>

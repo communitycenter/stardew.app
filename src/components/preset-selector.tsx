@@ -88,9 +88,9 @@ export function PresetSelector() {
           <CommandSeparator />
           <CommandGroup>
             <CommandItem onSelect={() => setOpen(false)}>
-              <Link href="/editor/create" className="flex items-center">
+              <Link href="/editor/create" className="flex items-center w-full">
                 <PlusIcon className="h-4 w-4 mr-2" />
-                <p className="w-full max-w-full truncate">New Farmhand</p>
+                New Farmhand
               </Link>
             </CommandItem>
           </CommandGroup>
