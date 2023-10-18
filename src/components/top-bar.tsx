@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
-import { DeletionDialog } from "./dialogs/deletion-dialog";
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import * as Fathom from "fathom-client";
@@ -205,19 +205,27 @@ export function Topbar() {
                   onClick={() => {
                     deleteCookie("token", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("uid", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("oauth_state", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("discord_user", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     Fathom.trackGoal("ZMETRX0B", 0);
                     return (window.location.href = "/");

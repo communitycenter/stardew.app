@@ -735,6 +735,7 @@ export default function Editor() {
         open={deletionOpen}
         setOpen={setDeletionOpen}
         playerID={activePlayer?._id}
+        type="player"
       />
     </>
   );

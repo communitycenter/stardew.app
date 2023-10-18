@@ -34,6 +34,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         progress: "progress 1s ease-out forwards",
       },
+      colors: {
+        "blurple": "#5865F2"
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
