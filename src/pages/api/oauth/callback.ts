@@ -101,12 +101,20 @@ export default async function handler(
 
         // update discord avatar if the avatar hash changed
         if (discordUser.discord_avatar !== discordUserData.avatar) {
+          // remove the "a_" prefix from animated avatars
+          const trimmedAvatar = discordUserData.avatar.startsWith("a_")
+            ? discordUserData.avatar.slice(2)
+            : discordUserData.avatar;
           const r = await conn.execute(
             "UPDATE Users SET discord_avatar = ? WHERE discord_id = ?",
-            [discordUserData.avatar, discordUserData.id]
+            [trimmedAvatar, discordUserData.id]
           );
         }
       } else {
+        const trimmedAvatar = discordUserData.avatar.startsWith("a_")
+          ? discordUserData.avatar.slice(2)
+          : discordUserData.avatar;
+
         await conn.execute(
           "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
           [
@@ -121,7 +129,7 @@ export default async function handler(
           id: uid as string,
           discord_id: discordUserData.id,
           discord_name: discordUserData.username,
-          discord_avatar: discordUserData.avatar,
+          discord_avatar: trimmedAvatar,
           cookie_secret: cookieSecret,
         };
       }
@@ -142,12 +150,16 @@ export default async function handler(
       expires: new Date(token.expires * 1000),
     });
 
+    const trimmedAvatar = discordUserData.avatar.startsWith("a_")
+      ? discordUserData.avatar.slice(2)
+      : discordUserData.avatar;
+
     setCookie(
       "discord_user",
       JSON.stringify({
         discord_id: discordUserData.id,
         discord_name: discordUserData.username,
-        discord_avatar: discordUserData.avatar,
+        discord_avatar: trimmedAvatar,
       }),
       {
         req,
