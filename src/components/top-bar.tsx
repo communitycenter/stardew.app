@@ -14,7 +14,7 @@ import { PlayersContext } from "@/contexts/players-context";
 import { CreditsDialog } from "@/components/dialogs/credits-dialog";
 import { PresetSelector } from "@/components/preset-selector";
 import { MobileNav } from "@/components/sheets/mobile-nav";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -166,12 +166,15 @@ export function Topbar() {
               <DropdownMenuTrigger asChild>
                 <Button className="space-x-2 px-2.5 max-w-[200px]">
                   <Avatar className="h-6 w-6">
-                    <AvatarImage
-                      src={`https://cdn.discordapp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
-                    />
-                    <AvatarFallback>
-                      {api.data?.discord_name.slice(0, 1).toUpperCase()}
-                    </AvatarFallback>
+                    {api.data.discord_avatar ? (
+                      <AvatarImage
+                        src={`https://cdn.discordapp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
+                      />
+                    ) : (
+                      <AvatarImage
+                        src={`https://cdn.discordapp.com/embed/avatars/0.png`}
+                      />
+                    )}
                   </Avatar>
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
