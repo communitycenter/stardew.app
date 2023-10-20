@@ -5,8 +5,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { getCookie, deleteCookie } from "cookies-next";
+
+import { PlayerType, PlayersContext } from "@/contexts/players-context";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -15,7 +17,7 @@ import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Card, CardTitle, CardHeader, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { IconCopy } from "@tabler/icons-react";
+import { IconCopy, IconInfoCircle, IconTrash } from "@tabler/icons-react";
 import { EyeIcon } from "@heroicons/react/24/outline";
 
 function InlineInput({ label, value }: { label: string; value: string }) {
@@ -55,6 +57,41 @@ function InlineInput({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
+
+function PlayerCard({ player }: { player: PlayerType }) {
+  return (
+    <div className="h-9 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 rounded-md flex items-center px-3">
+      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+        {player?.general?.name}
+      </p>
+      <Button size="icon" variant="ghost">
+        <IconTrash className="w-5 h-5" />
+      </Button>
+    </div>
+  );
+}
+
+function FarmCard({
+  farmInfo,
+  children,
+}: {
+  farmInfo: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardHeader className="border-b border-neutral-200 dark:border-neutral-800">
+        <CardTitle>{farmInfo}</CardTitle>
+      </CardHeader>
+      <CardContent className="p-5 space-y-3">{children}</CardContent>
+    </Card>
+  );
+}
+
+type GroupedPlayers = {
+  [key: string]: PlayerType[];
+};
+
 export default function Account() {
   const api = useSWR<User>(
     "/api",
@@ -64,9 +101,23 @@ export default function Account() {
   );
 
   const { toast } = useToast();
+  const { players } = useContext(PlayersContext);
 
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [inputType, setInputType] = useState<"password" | "text">("password");
+
+  // group players by farmInfo
+  const groupedPlayers: GroupedPlayers | undefined = useMemo(() => {
+    if (!players) return;
+    const groupedPlayers: GroupedPlayers = {};
+    players.forEach((player) => {
+      if (!groupedPlayers[player.general?.farmInfo!]) {
+        groupedPlayers[player.general?.farmInfo!] = [];
+      }
+      groupedPlayers[player.general?.farmInfo!].push(player);
+    });
+    return groupedPlayers;
+  }, [players]);
 
   return (
     <>
@@ -218,6 +269,29 @@ export default function Account() {
                 <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">
                   Manage and view your Stardew Valley Saves.
                 </p>
+
+                {/* Players/Farms */}
+                {players?.length === 0 && (
+                  <div className="flex items-center w-full bg-blue-200 rounded-md p-3 space-x-2">
+                    <IconInfoCircle className="w-5 h-5 text-blue-700" />
+                    <p className="text-blue-700 font-semibold text-center">
+                      No Players Found
+                    </p>
+                  </div>
+                )}
+
+                {/* Show farms and players */}
+                {groupedPlayers && (
+                  <>
+                    {Object.keys(groupedPlayers).map((farmInfo) => (
+                      <FarmCard key={farmInfo} farmInfo={farmInfo}>
+                        {groupedPlayers[farmInfo].map((player) => (
+                          <PlayerCard key={player._id} player={player} />
+                        ))}
+                      </FarmCard>
+                    ))}
+                  </>
+                )}
               </section>
             </TabsContent>
           </Tabs>
@@ -231,3 +305,5 @@ export default function Account() {
     </>
   );
 }
+
+// TODO: handle no players in saves section
