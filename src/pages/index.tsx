@@ -10,8 +10,6 @@ import { PlayersContext } from "@/contexts/players-context";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-import * as Fathom from "fathom-client";
-
 export default function Home() {
   const { toast } = useToast();
 
@@ -103,15 +101,15 @@ export default function Home() {
             <Button
               className="w-full"
               asChild
-              onClick={() => Fathom.trackGoal("H8PIRK79", 0)}
+              data-umami-event="Create a farmhand"
             >
               <Link href="/editor/create">Create a Farmhand</Link>
             </Button>
             <Button
               className="w-full"
+              data-umami-event="Upload save"
               onClick={() => {
                 inputRef.current?.click();
-                Fathom.trackGoal("L85ILBEQ", 0);
               }}
             >
               Upload Save

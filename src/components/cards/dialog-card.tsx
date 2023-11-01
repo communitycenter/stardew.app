@@ -19,7 +19,6 @@ import {
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
-import * as Fathom from "fathom-client";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -133,9 +132,9 @@ export const DialogCard = ({
             <Button
               variant="secondary"
               disabled={!activePlayer || !completed}
+              data-umami-event="Set incomplete"
               onClick={() => {
                 handleStatusChange(false);
-                Fathom.trackGoal("OYQKZJFI", 0);
               }}
             >
               Set Incomplete
@@ -144,9 +143,9 @@ export const DialogCard = ({
             <Button
               variant="secondary"
               disabled={!activePlayer || completed}
+              data-umami-event="Set completed"
               onClick={() => {
                 handleStatusChange(true);
-                Fathom.trackGoal("VMKLGIUD", 0);
               }}
             >
               Set Completed

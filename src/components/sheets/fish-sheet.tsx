@@ -17,7 +17,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import * as Fathom from "fathom-client";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -93,9 +92,9 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <Button
                     variant="secondary"
                     disabled={!activePlayer || !fishCaught.has(fish.itemID)}
+                    data-umami-event="Set incomplete"
                     onClick={() => {
                       handleStatusChange(0);
-                      Fathom.trackGoal("OYQKZJFI", 0);
                     }}
                   >
                     Set Uncaught
@@ -104,9 +103,9 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <Button
                     variant="secondary"
                     disabled={!activePlayer || fishCaught.has(fish.itemID)}
+                    data-umami-event="Set completed"
                     onClick={() => {
                       handleStatusChange(2);
-                      Fathom.trackGoal("VMKLGIUD", 0);
                     }}
                   >
                     Set Caught
