@@ -29,7 +29,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { DeletionDialog } from "./dialogs/deletion-dialog";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import * as Fathom from "fathom-client";
 
 export interface User {
   id: string;
@@ -128,19 +127,16 @@ export function Topbar() {
         <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector />
           {activePlayer && (
-            <Button
-              variant="outline"
-              onClick={() => Fathom.trackGoal("OWHYGHGB", 0)}
-            >
+            <Button variant="outline" data-umami-event="Edit player">
               <Link href={`/editor/edit`}>Edit Player</Link>
             </Button>
           )}
           <Button
             variant="secondary"
             onClick={() => {
-              Fathom.trackGoal("L85ILBEQ", 0);
               inputRef.current?.click();
             }}
+            data-umami-event="Upload save"
             className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
           >
             Upload Save
@@ -155,7 +151,7 @@ export function Topbar() {
           {!api.data?.discord_id && (
             <Button
               className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
-              onClick={() => Fathom.trackGoal("H8PIRK79", 0)}
+              data-umami-event="Log in"
             >
               <Link href="/api/oauth">Log In With Discord</Link>
             </Button>
@@ -185,9 +181,9 @@ export function Topbar() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
+                  data-umami-event="Open credits"
                   onClick={() => {
                     setCreditsOpen(true);
-                    Fathom.trackGoal("M3NR6ZVI", 0);
                   }}
                 >
                   Credits
@@ -195,15 +191,16 @@ export function Topbar() {
 
                 <DropdownMenuItem
                   className="focus:text-red-400 dark:focus:text-red-400"
+                  data-umami-event="Delete save data"
                   onClick={() => {
                     setDeletionOpen(true);
-                    Fathom.trackGoal("6HIPZBRK", 0);
                   }}
                 >
                   Delete Save Data
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
+                  data-umami-event="Log out"
                   onClick={() => {
                     deleteCookie("token", {
                       maxAge: 0,
@@ -221,7 +218,6 @@ export function Topbar() {
                       maxAge: 0,
                       domain: "stardew.app",
                     });
-                    Fathom.trackGoal("ZMETRX0B", 0);
                     return (window.location.href = "/");
                   }}
                 >

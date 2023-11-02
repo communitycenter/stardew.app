@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";
-import * as Fathom from "fathom-client";
 
 interface Props {
   item: FishType | TrinketItem | any;
@@ -122,9 +121,9 @@ export const BooleanCard = ({
             className="pl-8 gap-2"
             checked={!completed}
             disabled={!completed || !activePlayer}
+            data-umami-event="Set incomplete"
             onClick={() => {
               handleStatusChange(0);
-              Fathom.trackGoal("OYQKZJFI", 0);
             }}
           >
             <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
@@ -137,8 +136,8 @@ export const BooleanCard = ({
             disabled={completed || !activePlayer}
             onClick={() => {
               handleStatusChange(2);
-              Fathom.trackGoal("VMKLGIUD", 0);
             }}
+            data-umami-event="Set completed"
           >
             <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
             Set Completed
