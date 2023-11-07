@@ -128,7 +128,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       artifacts.has(parseInt(trinket.itemID)) ||
                       minerals.has(parseInt(trinket.itemID))
                     }
-                    data-umami-event="Set complete"
+                    data-umami-event="Set completed"
                     onClick={() => {
                       handleStatusChange(2);
                     }}
