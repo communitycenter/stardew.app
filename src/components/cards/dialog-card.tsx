@@ -132,7 +132,7 @@ export const DialogCard = ({
             <Button
               variant="secondary"
               disabled={!activePlayer || !completed}
-              data-umami-event="Set incomplete"
+              data-umami-event="Set incompleted"
               onClick={() => {
                 handleStatusChange(false);
               }}

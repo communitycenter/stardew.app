@@ -121,7 +121,7 @@ export const BooleanCard = ({
             className="pl-8 gap-2"
             checked={!completed}
             disabled={!completed || !activePlayer}
-            data-umami-event="Set incomplete"
+            data-umami-event="Set incompleted"
             onClick={() => {
               handleStatusChange(0);
             }}

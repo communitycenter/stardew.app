@@ -92,7 +92,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <Button
                     variant="secondary"
                     disabled={!activePlayer || !fishCaught.has(fish.itemID)}
-                    data-umami-event="Set incomplete"
+                    data-umami-event="Set incompleted"
                     onClick={() => {
                       handleStatusChange(0);
                     }}
