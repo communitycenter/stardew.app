@@ -398,10 +398,12 @@ export default function Farmer() {
                                 />
                               </TooltipTrigger>
                               <TooltipContent side="bottom">
-                                {playerExperiencePoints.mining
-                                  .experiencePointsRemaining < 0
-                                  ? `${playerExperiencePoints.farming.experiencePointsRemaining} XP remaining`
-                                  : "Max level"}
+                                {playerExperiencePoints.farming
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.farming.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.farming.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -426,10 +428,12 @@ export default function Farmer() {
                                 />
                               </TooltipTrigger>
                               <TooltipContent side="bottom">
-                                {playerExperiencePoints.mining
-                                  .experiencePointsRemaining === 0
-                                  ? `${playerExperiencePoints.fishing.experiencePointsRemaining} XP remaining`
-                                  : "Max level"}
+                                {playerExperiencePoints.fishing
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.fishing.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.fishing.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -454,10 +458,12 @@ export default function Farmer() {
                                 />
                               </TooltipTrigger>
                               <TooltipContent side="bottom">
-                                {playerExperiencePoints.mining
-                                  .experiencePointsRemaining === 0
-                                  ? `${playerExperiencePoints.foraging.experiencePointsRemaining} XP remaining`
-                                  : "Max level"}
+                                {playerExperiencePoints.foraging
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.foraging.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.foraging.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -483,9 +489,10 @@ export default function Farmer() {
                               </TooltipTrigger>
                               <TooltipContent side="bottom">
                                 {playerExperiencePoints.mining
-                                  .experiencePointsRemaining != 0
-                                  ? `${playerExperiencePoints.mining.experiencePointsRemaining} XP remaining`
-                                  : "Max level"}
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.mining.percentage === 100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.mining.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
@@ -510,10 +517,11 @@ export default function Farmer() {
                                 />
                               </TooltipTrigger>
                               <TooltipContent side="bottom">
-                                {playerExperiencePoints.mining
-                                  .experiencePointsRemaining === 0
-                                  ? `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`
-                                  : "Max level"}
+                                {playerExperiencePoints.combat
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.combat.percentage === 100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
