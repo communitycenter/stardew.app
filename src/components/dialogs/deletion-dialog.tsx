@@ -22,7 +22,11 @@ interface Props {
 }
 
 export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
-  const { activePlayer, players } = useContext(PlayersContext);
+  const { players } = useContext(PlayersContext);
+
+  const selectedPlayer = players?.filter(
+    (player) => player._id === playerID
+  )[0];
 
   const [verify, setVerify] = useState("");
 
@@ -93,6 +97,7 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
             below:
             <Input
               value={verify}
+              id="verify"
               onChange={(e) => setVerify(e.target.value)}
               className="text-black dark:text-white"
             />
@@ -136,24 +141,25 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
             </>
           )}
         </DialogDescription>
-        <DialogDescription>
-          The following farmhands will be deleted:
-          <ul className="list-disc list-inside">
-            {playerID ? (
-              <li>
-                {activePlayer?.general?.name +
-                  ` - ${activePlayer?.general?.farmInfo}`}
-              </li>
-            ) : (
-              <>
-                {players?.map((player) => (
-                  <li key={player._id}>
-                    {player.general?.name + ` - ${player.general?.farmInfo}`}
-                  </li>
-                ))}
-              </>
-            )}
-          </ul>
+        <DialogDescription asChild>
+          <span>
+            The following farmhands will be deleted:
+            <ul className="list-disc list-inside">
+              {playerID ? (
+                <li>
+                  {`${selectedPlayer?.general?.name} - ${selectedPlayer?.general?.farmInfo}`}
+                </li>
+              ) : (
+                <>
+                  {players?.map((player) => (
+                    <li key={player._id}>
+                      {player.general?.name + ` - ${player.general?.farmInfo}`}
+                    </li>
+                  ))}
+                </>
+              )}
+            </ul>
+          </span>
         </DialogDescription>
         <DialogFooter className="gap-3 sm:gap-0">
           <Button onClick={() => setOpen(false)}>Cancel</Button>

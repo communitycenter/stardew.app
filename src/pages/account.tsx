@@ -2,14 +2,19 @@ import type { User } from "@/components/top-bar";
 
 import useSWR from "swr";
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
 
-import React, { useContext, useMemo, useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useMemo, useState } from "react";
 import { getCookie, deleteCookie } from "cookies-next";
 
 import { PlayerType, PlayersContext } from "@/contexts/players-context";
 
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
@@ -17,8 +22,15 @@ import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Card, CardTitle, CardHeader, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { IconCopy, IconInfoCircle, IconTrash } from "@tabler/icons-react";
-import { EyeIcon } from "@heroicons/react/24/outline";
+import {
+  EyeIcon,
+  TrashIcon,
+  ClipboardIcon,
+  PencilSquareIcon,
+  CursorArrowRaysIcon,
+  InformationCircleIcon,
+  EllipsisHorizontalIcon,
+} from "@heroicons/react/24/outline";
 
 function InlineInput({ label, value }: { label: string; value: string }) {
   const { toast } = useToast();
@@ -35,6 +47,7 @@ function InlineInput({ label, value }: { label: string; value: string }) {
         <Input
           type="text"
           readOnly
+          autoComplete="off"
           id={label.replace(" ", "-").toLowerCase()}
           value={value}
           className="pr-9 border-l-0 rounded-l-none text-ellipsis"
@@ -51,7 +64,7 @@ function InlineInput({ label, value }: { label: string; value: string }) {
             });
           }}
         >
-          <IconCopy className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
+          <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
         </Button>
       </div>
     </div>
@@ -59,15 +72,79 @@ function InlineInput({ label, value }: { label: string; value: string }) {
 }
 
 function PlayerCard({ player }: { player: PlayerType }) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const { setActivePlayer } = useContext(PlayersContext);
+
+  const [deletionOpen, setDeletionOpen] = useState(false);
+
   return (
-    <div className="h-9 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 rounded-md flex items-center px-3">
-      <p className="text-neutral-500 dark:text-neutral-400 text-sm">
-        {player?.general?.name}
-      </p>
-      <Button size="icon" variant="ghost">
-        <IconTrash className="w-5 h-5" />
-      </Button>
-    </div>
+    <>
+      <div className="border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 rounded-md flex items-center p-4 justify-between space-x-2">
+        <div className="flex-col gap-1 overflow-hidden">
+          <p className="text-neutral-950 dark:text-white font-semibold text-sm text-ellipsis overflow-hidden">
+            {player.general?.name}
+          </p>
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden">
+            {player._id}
+          </p>
+        </div>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="icon" variant="ghost">
+              <EllipsisHorizontalIcon className="w-5 h-5" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-48" align="end">
+            <DropdownMenuItem
+              onClick={() => {
+                navigator.clipboard.writeText(player._id);
+                toast({
+                  title: "Copied!",
+                  description:
+                    "Your farmhand ID has been copied to your clipboard.",
+                });
+              }}
+            >
+              <ClipboardIcon className="mr-2 h-4 w-4" />
+              <span>Copy Farmhand ID</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                setActivePlayer(player);
+                toast({
+                  title: "Active Farmhand Changed!",
+                  description: `Your active farmhand has been changed to ${player.general?.name}.`,
+                });
+              }}
+            >
+              <CursorArrowRaysIcon className="mr-2 h-4 w-4" />
+              <span>Set Active Farmhand</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                setActivePlayer(player);
+                router.push(`/editor/edit`);
+              }}
+            >
+              <PencilSquareIcon className="mr-2 h-4 w-4" />
+              <span>Edit Farmhand</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setDeletionOpen(true)}>
+              <TrashIcon className="mr-2 h-4 w-4 text-red-400" />
+              <span className="text-red-400">Delete Farmhand</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <DeletionDialog
+        type="player"
+        open={deletionOpen}
+        playerID={player._id}
+        setOpen={setDeletionOpen}
+      />
+    </>
   );
 }
 
@@ -81,7 +158,9 @@ function FarmCard({
   return (
     <Card>
       <CardHeader className="border-b border-neutral-200 dark:border-neutral-800">
-        <CardTitle>{farmInfo}</CardTitle>
+        <CardTitle className="whitespace-nowrap overflow-hidden text-ellipsis">
+          {farmInfo}
+        </CardTitle>
       </CardHeader>
       <CardContent className="p-5 space-y-3">{children}</CardContent>
     </Card>
@@ -176,6 +255,7 @@ export default function Account() {
                     <div className="relative flex w-full items-center">
                       <Input
                         type={inputType}
+                        id="uid"
                         readOnly
                         value={getCookie("uid") as string}
                         className="pr-[72px] text-ellipsis"
@@ -207,7 +287,7 @@ export default function Account() {
                           });
                         }}
                       >
-                        <IconCopy className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
+                        <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
                       </Button>
                     </div>
                   </CardContent>
@@ -273,7 +353,7 @@ export default function Account() {
                 {/* Players/Farms */}
                 {players?.length === 0 && (
                   <div className="flex items-center w-full bg-blue-200 rounded-md p-3 space-x-2">
-                    <IconInfoCircle className="w-5 h-5 text-blue-700" />
+                    <InformationCircleIcon className="w-5 h-5 text-blue-700" />
                     <p className="text-blue-700 font-semibold text-center">
                       No Players Found
                     </p>
@@ -305,5 +385,3 @@ export default function Account() {
     </>
   );
 }
-
-// TODO: handle no players in saves section
