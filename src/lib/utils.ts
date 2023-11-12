@@ -14,6 +14,12 @@ export function findAllByKey(obj: any, searchKey: string) {
 
   Object.keys(obj).forEach((key) => {
     if (key === searchKey) {
+      let farmhand = obj[key];
+
+      if (!farmhand.name || !farmhand.UniqueMultiplayerID) {
+        return;
+      }
+
       results.push(obj[key]);
     } else if (typeof obj[key] === "object" && key !== "player") {
       results = results.concat(findAllByKey(obj[key], searchKey));
