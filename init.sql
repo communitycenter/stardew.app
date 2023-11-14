@@ -5,7 +5,7 @@ create table Users
 		id             varchar(64)  not null,
 		discord_id     varchar(191) not null,
 		cookie_secret  varchar(191) not null,
-		discord_avatar varchar(32)  not null,
+		discord_avatar varchar(64),
 		discord_name   varchar(64)  not null,
 		
 		constraint Users_pk

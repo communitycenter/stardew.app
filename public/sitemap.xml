@@ -1,0 +1,53 @@
+   <!-- public/sitemap.xml -->
+   <xml version="1.0" encoding="UTF-8">
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>https://stardew.app/</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/farmer</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/perfection</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+      <url>
+       <loc>https://stardew.app/relationships</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/cooking</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/crafting</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/fishing</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/shipping</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/museum</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/island/walnuts</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/notes</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+     <url>
+       <loc>https://stardew.app/island/scraps</loc>
+       <lastmod>2023-10-17</lastmod>
+     </url>
+   </urlset>
+</xml>

@@ -117,7 +117,10 @@ export const InputCard = ({
         </DialogHeader>
         <DialogDescription>
           <Form {...form}>
-            <form className="w-full space-y-6">
+            <form
+              className="w-full space-y-6"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <FormField
                 control={form.control}
                 name="input"

@@ -196,6 +196,29 @@ export default function Editor() {
           combat: values.combat ?? 0,
           luck: 0,
         },
+        experience: {
+          farming:
+            values.farming === activePlayer.general?.skills?.farming
+              ? activePlayer.general?.experience?.farming ?? 0
+              : 0,
+          fishing:
+            values.fishing === activePlayer.general?.skills?.fishing
+              ? activePlayer.general?.experience?.fishing ?? 0
+              : 0,
+          foraging:
+            values.foraging === activePlayer.general?.skills?.foraging
+              ? activePlayer.general?.experience?.foraging ?? 0
+              : 0,
+          mining:
+            values.mining === activePlayer.general?.skills?.mining
+              ? activePlayer.general?.experience?.mining ?? 0
+              : 0,
+          combat:
+            values.combat === activePlayer.general?.skills?.combat
+              ? activePlayer.general?.experience?.combat ?? 0
+              : 0,
+          luck: 0,
+        },
         timePlayed: activePlayer?.general?.timePlayed ?? undefined,
         stardrops: activePlayer?.general?.stardrops ?? [],
       },

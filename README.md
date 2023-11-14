@@ -38,6 +38,41 @@ Stardew.app has been contributed to by the lovely people below <3
 <table>
 <tr>
     <td align="center">
+        <a href="https://github.com/dannykd">
+            <img src="https://avatars.githubusercontent.com/u/92613890?v=4" width="100;" alt="dannykd"/>
+            <br />
+            <sub><b>Danny Doan</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/cnrad">
+            <img src="https://avatars.githubusercontent.com/u/83192247?v=4" width="100;" alt="cnrad"/>
+            <br />
+            <sub><b>Conrad Crawford</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/lucaspr98">
+            <img src="https://avatars.githubusercontent.com/u/19675844?v=4" width="100;" alt="lucaspr98"/>
+            <br />
+            <sub><b>Lucas Ramos</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Neesh774">
+            <img src="https://avatars.githubusercontent.com/u/51027259?v=4" width="100;" alt="Neesh774"/>
+            <br />
+            <sub><b>Kanishq Kancharla</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/nebulatgs">
+            <img src="https://avatars.githubusercontent.com/u/43934463?v=4" width="100;" alt="nebulatgs"/>
+            <br />
+            <sub><b>Nebula</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/jacc">
             <img src="https://avatars.githubusercontent.com/u/6956351?v=4" width="100;" alt="jacc"/>
             <br />

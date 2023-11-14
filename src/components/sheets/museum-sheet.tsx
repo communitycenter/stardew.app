@@ -17,7 +17,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import * as Fathom from "fathom-client";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -114,9 +113,9 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       (!artifacts.has(parseInt(trinket.itemID)) &&
                         !minerals.has(parseInt(trinket.itemID)))
                     }
+                    data-umami-event="Set incompleted"
                     onClick={() => {
                       handleStatusChange(0);
-                      Fathom.trackGoal("OYQKZJFI", 0);
                     }}
                   >
                     Set Incomplete
@@ -129,9 +128,9 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       artifacts.has(parseInt(trinket.itemID)) ||
                       minerals.has(parseInt(trinket.itemID))
                     }
+                    data-umami-event="Set completed"
                     onClick={() => {
                       handleStatusChange(2);
-                      Fathom.trackGoal("VMKLGIUD", 0);
                     }}
                   >
                     Set Completed
