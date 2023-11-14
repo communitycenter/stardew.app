@@ -10,8 +10,13 @@ export const walnuts = allWalnuts as unknown as { [key: string]: WalnutType };
 export function parseWalnuts(save: any): WalnutRet {
   //   if (!player.mailReceived.string.includes("Visited_Island")) return;
 
-  const collectedGoldenWalnuts: string[] =
-    save.collectedNutTracker.string ?? [];
+  let collectedGoldenWalnuts: string[] = [];
+
+  if (Array.isArray(save.collectedNutTracker.string)) {
+    collectedGoldenWalnuts = save.collectedNutTracker.string;
+  } else {
+    collectedGoldenWalnuts.push(save.collectedNutTracker.string);
+  }
 
   const internalWalnutIds = Object.keys(walnuts);
 
