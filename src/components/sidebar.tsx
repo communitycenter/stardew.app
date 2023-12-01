@@ -55,9 +55,9 @@ export const collectionsNavigation = [
 ];
 
 export const linksNavigation = [
-  { name: "Discord", href: "/cooking", icon: DiscordLogoIcon },
-  { name: "GitHub", href: "/crafting", icon: GitHubLogoIcon },
-  { name: "stardew.me", href: "/fishing", icon: IconShirt },
+  { name: "Discord", href: "https://discord.gg/NkgNVZwQ2M", icon: DiscordLogoIcon },
+  { name: "GitHub", href: "https://github.com/communitycenter/stardew.app", icon: GitHubLogoIcon },
+  { name: "stardew.me", href: "https://stardew.me", icon: IconShirt },
 ];
 
 export const SidebarCategory = ({ children }: { children: string }) => (
