@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { IconClock, IconCloud } from "@tabler/icons-react";
+import { IconClock, IconCloud, IconMapPin } from "@tabler/icons-react";
 
 const reqs = {
   Fisherman: 10,
@@ -67,6 +67,36 @@ const seasons = [
   },
 ];
 
+const type = [
+  {
+    value: "all",
+    label: "All Types",
+  },
+  {
+    value: "caught",
+    label: "Caught",
+  },
+  {
+    value: "trap",
+    label: "Crab Pot",
+  },
+];
+
+const location = [
+  {
+    value: "all",
+    label: "All Locations",
+  },
+  {
+    value: "freshwater",
+    label: "Freshwater",
+  },
+  {
+    value: "saltwater",
+    label: "Saltwater",
+  },
+];
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -74,8 +104,13 @@ export default function Fishing() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+
+  const [_typeFilter, setTypeFilter] = useState("all");
+
   const [_weatherFilter, setWeatherFilter] = useState("both");
   const [_seasonFilter, setSeasonFilter] = useState("all");
+
+  const [_locationFilter, setLocationFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -192,20 +227,44 @@ export default function Fishing() {
               <div className="flex gap-2">
                 <FilterSearch
                   target={"all"}
-                  _filter={_seasonFilter}
-                  title={"Seasons"}
-                  data={seasons}
-                  setFilter={setSeasonFilter}
+                  _filter={_typeFilter}
+                  title={"Type"}
+                  data={type}
+                  setFilter={setTypeFilter}
                   icon={IconClock}
                 />
-                <FilterSearch
-                  target={"all"}
-                  _filter={_weatherFilter}
-                  title={"Weather"}
-                  data={weather}
-                  setFilter={setWeatherFilter}
-                  icon={IconCloud}
-                />
+                {_typeFilter === "caught" && (
+                  <>
+                    <FilterSearch
+                      target={"all"}
+                      _filter={_seasonFilter}
+                      title={"Seasons"}
+                      data={seasons}
+                      setFilter={setSeasonFilter}
+                      icon={IconClock}
+                    />
+                    <FilterSearch
+                      target={"all"}
+                      _filter={_weatherFilter}
+                      title={"Weather"}
+                      data={weather}
+                      setFilter={setWeatherFilter}
+                      icon={IconCloud}
+                    />
+                  </>
+                )}
+
+                {_typeFilter === "trap" && (
+                  <FilterSearch
+                    target={"all"}
+                    _filter={_locationFilter}
+                    title={"Location"}
+                    data={location}
+                    setFilter={setLocationFilter}
+                    icon={IconMapPin}
+                  />
+                )}
+
                 <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
@@ -230,8 +289,13 @@ export default function Fishing() {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
                 })
-                .filter((f: any) => {
-                  if ("weather" in f) {
+                .filter((f) => {
+                  if (_typeFilter === "all") return true;
+                  if (_typeFilter === "caught") return !f.trapFish;
+                  if (_typeFilter === "trap") return f.trapFish;
+                })
+                .filter((f) => {
+                  if ("weather" in f && f.trapFish === false) {
                     if (_weatherFilter === "both") {
                       return true;
                     } else {
@@ -243,13 +307,27 @@ export default function Fishing() {
                         return true;
                       }
                     }
+                  } else {
+                    return true;
                   }
                 })
                 .filter((f) => {
-                  if ("seasons" in f) {
+                  if ("seasons" in f && f.trapFish === false) {
                     if (_seasonFilter === "all") return true;
                     return f.seasons.includes(_seasonFilter);
                   }
+                  return true;
+                })
+                .filter((f) => {
+                  if (_typeFilter === "trap") {
+                    if (_locationFilter === "all") return true;
+                    if (_locationFilter === "freshwater") {
+                      return f.locations.includes("Crab Pot: Freshwater");
+                    } else if (_locationFilter === "saltwater") {
+                      return f.locations.includes("Crab Pot: Saltwater");
+                    }
+                  }
+                  return true;
                 })
                 .map((f) => (
                   <BooleanCard

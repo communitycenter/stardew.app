@@ -205,8 +205,6 @@ export default function Farmer() {
       const currentExperience = activePlayer.general.experience[skillName];
       const nextLevelExperience = experienceRequired[currentLevel + 1];
 
-      console.log(currentExperience, nextLevelExperience);
-
       return {
         percentage: (currentExperience / nextLevelExperience) * 100,
         experiencePointsRemaining: nextLevelExperience - currentExperience,
