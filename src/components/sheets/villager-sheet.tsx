@@ -33,7 +33,16 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { useMediaQuery } from "@react-hook/media-query";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "../ui/drawer";
 
 // look at villagers.py console output for categories that appear
 const categories: Record<string, { name: string; iconURL: string }> = {
@@ -93,6 +102,8 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
 
   const [hearts, setHearts] = useState<string>("0");
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     if (
@@ -223,150 +234,301 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
     setIsOpen(false);
   }
 
-  return (
-    <Sheet open={open} onOpenChange={setIsOpen}>
-      <SheetContent className="overflow-y-auto">
-        <SheetHeader className="mt-4">
-          <div className="flex justify-center">
-            <Image
-              src={villager.iconURL}
-              alt={villager.name}
-              height={64}
-              width={64}
-            />
-          </div>
-          <SheetTitle className="text-center">{villager.name}</SheetTitle>
-          <SheetDescription className="text-center italic">
-            {villager.birthday}
-          </SheetDescription>
-        </SheetHeader>
-        <div className="space-y-6 mt-4">
-          <section className="space-y-2">
-            <h3 className="font-semibold">Actions</h3>
-            <Separator />
-            <div className="grid grid-cols-2 gap-3">
-              <Select
-                value={hearts.toString()}
-                onValueChange={(val) => handleHeartChange(val)}
-                disabled={!activePlayer}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Set Hearts">
-                    {hearts + " hearts"}
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Set Hearts</SelectLabel>
-                    {[...Array(maxHeartCount)].map((_, i) => (
-                      <SelectItem
-                        key={i}
-                        value={`${i}`}
-                        disabled={shouldHeartBeDisabled(i)}
-                      >
-                        {`${i}`}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              {activePlayer?.social?.spouse === villager.name ? (
-                <Button
-                  variant="secondary"
-                  onClick={() => handleStatusChange("", "removeSpouse")}
-                >
-                  Remove Spouse
-                </Button>
-              ) : activePlayer?.social?.relationships?.[villager.name]
-                  ?.status === "Dating" ? (
-                <Button
-                  variant="secondary"
-                  onClick={() => handleStatusChange("Married", "setSpouse")}
-                >
-                  Set Spouse
-                </Button>
-              ) : (
-                <Button
-                  variant="secondary"
-                  onClick={() => handleStatusChange("Dating", "setDating")}
-                  disabled={
-                    !villager.datable ||
-                    typeof activePlayer?.social?.spouse === "string" ||
-                    !activePlayer
-                  }
-                >
-                  Set Dating
-                </Button>
-              )}
+  if (isDesktop) {
+    return (
+      <Sheet open={open} onOpenChange={setIsOpen}>
+        <SheetContent className="overflow-y-auto">
+          <SheetHeader className="mt-4">
+            <div className="flex justify-center">
+              <Image
+                src={villager.iconURL}
+                alt={villager.name}
+                height={64}
+                width={64}
+              />
             </div>
-            <div>{!activePlayer && <CreatePlayerRedirect />}</div>
-          </section>
-          <section className="space-y-2">
-            <h3 className="font-semibold">Loved Gifts</h3>
-            <Separator />
-            <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
-              {villager.loves.map((itemID) => {
-                let item;
-                if (itemID > 0) {
-                  item = objects[itemID.toString() as keyof typeof objects];
-                } else {
-                  item = { ...categories[itemID] };
-                }
-                return (
-                  <li
-                    key={itemID}
-                    className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+            <SheetTitle className="text-center">{villager.name}</SheetTitle>
+            <SheetDescription className="text-center italic">
+              {villager.birthday}
+            </SheetDescription>
+          </SheetHeader>
+          <div className="space-y-6 mt-4">
+            <section className="space-y-2">
+              <h3 className="font-semibold">Actions</h3>
+              <Separator />
+              <div className="grid grid-cols-2 gap-3">
+                <Select
+                  value={hearts.toString()}
+                  onValueChange={(val) => handleHeartChange(val)}
+                  disabled={!activePlayer}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Set Hearts">
+                      {hearts + " hearts"}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Set Hearts</SelectLabel>
+                      {[...Array(maxHeartCount)].map((_, i) => (
+                        <SelectItem
+                          key={i}
+                          value={`${i}`}
+                          disabled={shouldHeartBeDisabled(i)}
+                        >
+                          {`${i}`}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                {activePlayer?.social?.spouse === villager.name ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("", "removeSpouse")}
                   >
-                    <div className="flex items-center space-x-1">
-                      <Image
-                        src={item.iconURL}
-                        alt={item.name}
-                        width={24}
-                        height={24}
-                        quality={25}
-                      />
-                      <p className="font-semibold truncate">• {item.name}</p>
-                    </div>
-                    {}
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-          <section className="space-y-2">
-            <h3 className="font-semibold">Likes</h3>
-            <Separator />
-            <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
-              {villager.likes.map((itemID) => {
-                let item;
-                if (itemID > 0) {
-                  item = objects[itemID.toString() as keyof typeof objects];
-                } else {
-                  item = { ...categories[itemID] };
-                }
-                return (
-                  <li
-                    key={itemID}
-                    className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                    Remove Spouse
+                  </Button>
+                ) : activePlayer?.social?.relationships?.[villager.name]
+                    ?.status === "Dating" ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("Married", "setSpouse")}
                   >
-                    <div className="flex items-center space-x-1">
-                      <Image
-                        src={item.iconURL}
-                        alt={item.name}
-                        width={24}
-                        height={24}
-                        quality={25}
-                      />
-                      <p className="font-semibold truncate">• {item.name}</p>
-                    </div>
-                    {}
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        </div>
-      </SheetContent>
-    </Sheet>
+                    Set Spouse
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("Dating", "setDating")}
+                    disabled={
+                      !villager.datable ||
+                      typeof activePlayer?.social?.spouse === "string" ||
+                      !activePlayer
+                    }
+                  >
+                    Set Dating
+                  </Button>
+                )}
+              </div>
+              <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+            </section>
+            <section className="space-y-2">
+              <h3 className="font-semibold">Loved Gifts</h3>
+              <Separator />
+              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+                {villager.loves.map((itemID) => {
+                  let item;
+                  if (itemID > 0) {
+                    item = objects[itemID.toString() as keyof typeof objects];
+                  } else {
+                    item = { ...categories[itemID] };
+                  }
+                  return (
+                    <li
+                      key={itemID}
+                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <Image
+                          src={item.iconURL}
+                          alt={item.name}
+                          width={24}
+                          height={24}
+                          quality={25}
+                        />
+                        <p className="font-semibold truncate">• {item.name}</p>
+                      </div>
+                      {}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+            <section className="space-y-2">
+              <h3 className="font-semibold">Likes</h3>
+              <Separator />
+              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+                {villager.likes.map((itemID) => {
+                  let item;
+                  if (itemID > 0) {
+                    item = objects[itemID.toString() as keyof typeof objects];
+                  } else {
+                    item = { ...categories[itemID] };
+                  }
+                  return (
+                    <li
+                      key={itemID}
+                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <Image
+                          src={item.iconURL}
+                          alt={item.name}
+                          width={24}
+                          height={24}
+                          quality={25}
+                        />
+                        <p className="font-semibold truncate">• {item.name}</p>
+                      </div>
+                      {}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          </div>
+        </SheetContent>
+      </Sheet>
+    );
+  }
+
+  return (
+    <Drawer open={open} onOpenChange={setIsOpen}>
+      <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
+        <ScrollArea className="overflow-auto">
+          <DrawerHeader className="mt-4 -mb-4">
+            <div className="flex justify-center">
+              <Image
+                src={villager.iconURL}
+                alt={villager.name}
+                height={64}
+                width={64}
+              />
+            </div>
+            <DrawerTitle className="text-center">{villager.name}</DrawerTitle>
+            <DrawerDescription className="text-center italic">
+              {villager.birthday}
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="space-y-6 p-6">
+            <section className="space-y-2">
+              <h3 className="font-semibold">Actions</h3>
+              <Separator />
+              <div className="grid grid-cols-2 gap-3">
+                <Select
+                  value={hearts.toString()}
+                  onValueChange={(val) => handleHeartChange(val)}
+                  disabled={!activePlayer}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Set Hearts">
+                      {hearts + " hearts"}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Set Hearts</SelectLabel>
+                      {[...Array(maxHeartCount)].map((_, i) => (
+                        <SelectItem
+                          key={i}
+                          value={`${i}`}
+                          disabled={shouldHeartBeDisabled(i)}
+                        >
+                          {`${i}`}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                {activePlayer?.social?.spouse === villager.name ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("", "removeSpouse")}
+                  >
+                    Remove Spouse
+                  </Button>
+                ) : activePlayer?.social?.relationships?.[villager.name]
+                    ?.status === "Dating" ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("Married", "setSpouse")}
+                  >
+                    Set Spouse
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleStatusChange("Dating", "setDating")}
+                    disabled={
+                      !villager.datable ||
+                      typeof activePlayer?.social?.spouse === "string" ||
+                      !activePlayer
+                    }
+                  >
+                    Set Dating
+                  </Button>
+                )}
+              </div>
+              <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+            </section>
+            <section className="space-y-2">
+              <h3 className="font-semibold">Loved Gifts</h3>
+              <Separator />
+              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+                {villager.loves.map((itemID) => {
+                  let item;
+                  if (itemID > 0) {
+                    item = objects[itemID.toString() as keyof typeof objects];
+                  } else {
+                    item = { ...categories[itemID] };
+                  }
+                  return (
+                    <li
+                      key={itemID}
+                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <Image
+                          src={item.iconURL}
+                          alt={item.name}
+                          width={24}
+                          height={24}
+                          quality={25}
+                        />
+                        <p className="font-semibold truncate">• {item.name}</p>
+                      </div>
+                      {}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+            <section className="space-y-2">
+              <h3 className="font-semibold">Likes</h3>
+              <Separator />
+              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+                {villager.likes.map((itemID) => {
+                  let item;
+                  if (itemID > 0) {
+                    item = objects[itemID.toString() as keyof typeof objects];
+                  } else {
+                    item = { ...categories[itemID] };
+                  }
+                  return (
+                    <li
+                      key={itemID}
+                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                    >
+                      <div className="flex items-center space-x-1">
+                        <Image
+                          src={item.iconURL}
+                          alt={item.name}
+                          width={24}
+                          height={24}
+                          quality={25}
+                        />
+                        <p className="font-semibold truncate">• {item.name}</p>
+                      </div>
+                      {}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          </div>
+        </ScrollArea>
+      </DrawerContent>
+    </Drawer>
   );
 };
