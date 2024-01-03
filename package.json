@@ -29,6 +29,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.0.6",
+    "@react-hook/media-query": "^1.1.1",
     "@tabler/icons-react": "^2.30.0",
     "@types/node": "20.4.0",
     "@types/react": "18.2.14",
@@ -53,6 +54,7 @@
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
+    "vaul": "^0.8.0",
     "zod": "^3.22.1"
   }
 }
