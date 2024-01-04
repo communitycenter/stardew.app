@@ -125,7 +125,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
                   {name && (
-                    <Button variant="outline">
+                    <Button
+                      variant="outline"
+                      data-umami-event="Visit wiki"
+                      asChild
+                    >
                       <a
                         className="flex items-center"
                         target="_blank"
@@ -251,7 +255,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
                   {name && (
-                    <Button variant="outline" data-umami-event="Visit wiki">
+                    <Button
+                      variant="outline"
+                      data-umami-event="Visit wiki"
+                      asChild
+                    >
                       <a
                         className="flex items-center"
                         target="_blank"
