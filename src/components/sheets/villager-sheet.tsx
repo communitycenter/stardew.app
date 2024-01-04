@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useMediaQuery } from "@react-hook/media-query";
+import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -256,7 +257,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <Select
                   value={hearts.toString()}
                   onValueChange={(val) => handleHeartChange(val)}
@@ -312,6 +313,27 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                 )}
               </div>
               <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+              {villager.name && (
+                <Button
+                  variant="outline"
+                  data-umami-event="Visit wiki"
+                  asChild
+                  className="w-full"
+                >
+                  <a
+                    className="flex items-center"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://stardewvalleywiki.com/${villager.name.replaceAll(
+                      " ",
+                      "_"
+                    )}`}
+                  >
+                    Visit Wiki Page
+                    <IconExternalLink className="h-4"></IconExternalLink>
+                  </a>
+                </Button>
+              )}
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Loved Gifts</h3>
@@ -405,7 +427,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <Select
                   value={hearts.toString()}
                   onValueChange={(val) => handleHeartChange(val)}
@@ -461,6 +483,27 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                 )}
               </div>
               <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+              {villager.name && (
+                <Button
+                  variant="outline"
+                  data-umami-event="Visit wiki"
+                  asChild
+                  className="w-full"
+                >
+                  <a
+                    className="flex items-center"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://stardewvalleywiki.com/${villager.name.replaceAll(
+                      " ",
+                      "_"
+                    )}`}
+                  >
+                    Visit Wiki Page
+                    <IconExternalLink className="h-4"></IconExternalLink>
+                  </a>
+                </Button>
+              )}
             </section>
             <section className="space-y-2">
               <h3 className="font-semibold">Loved Gifts</h3>
