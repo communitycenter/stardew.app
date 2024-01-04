@@ -11,6 +11,7 @@ import { PlayersContext } from "@/contexts/players-context";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useMediaQuery } from "@react-hook/media-query";
+import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -98,7 +99,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
           {fish && (
             <div className="space-y-6 mt-4">
               <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {fishCaught.has(fish.itemID) ? (
                     <Button
                       variant="secondary"
@@ -123,6 +124,22 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                     </Button>
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
+                  {name && (
+                    <Button variant="outline">
+                      <a
+                        className="flex items-center"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={`https://stardewvalleywiki.com/${name.replaceAll(
+                          " ",
+                          "_"
+                        )}`}
+                      >
+                        Visit Wiki Page
+                        <IconExternalLink className="h-4"></IconExternalLink>
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </section>
               <section className="space-y-2">
@@ -208,7 +225,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
           {fish && (
             <div className="space-y-6 p-6">
               <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {fishCaught.has(fish.itemID) ? (
                     <Button
                       variant="secondary"
@@ -233,6 +250,22 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                     </Button>
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
+                  {name && (
+                    <Button variant="outline" data-umami-event="Visit wiki">
+                      <a
+                        className="flex items-center"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={`https://stardewvalleywiki.com/${name.replaceAll(
+                          " ",
+                          "_"
+                        )}`}
+                      >
+                        Visit Wiki Page
+                        <IconExternalLink className="h-4"></IconExternalLink>
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </section>
               <section className="space-y-2">
