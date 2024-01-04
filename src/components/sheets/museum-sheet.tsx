@@ -18,6 +18,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -116,7 +117,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
           {trinket && (
             <div className="space-y-6 mt-4">
               <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {artifacts.has(parseInt(trinket.itemID)) ? (
                     <Button
                       variant="secondary"
@@ -149,6 +150,26 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     </Button>
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
+                  {name && (
+                    <Button
+                      variant="outline"
+                      data-umami-event="Visit wiki"
+                      asChild
+                    >
+                      <a
+                        className="flex items-center"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={`https://stardewvalleywiki.com/${name.replaceAll(
+                          " ",
+                          "_"
+                        )}`}
+                      >
+                        Visit Wiki Page
+                        <IconExternalLink className="h-4"></IconExternalLink>
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </section>
               <section className="space-y-2">
@@ -217,7 +238,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
           {trinket && (
             <div className="space-y-6 p-6">
               <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {artifacts.has(parseInt(trinket.itemID)) ? (
                     <Button
                       variant="secondary"
@@ -250,6 +271,26 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     </Button>
                   )}
                   {!activePlayer && <CreatePlayerRedirect />}
+                  {name && (
+                    <Button
+                      variant="outline"
+                      data-umami-event="Visit wiki"
+                      asChild
+                    >
+                      <a
+                        className="flex items-center"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={`https://stardewvalleywiki.com/${name.replaceAll(
+                          " ",
+                          "_"
+                        )}`}
+                      >
+                        Visit Wiki Page
+                        <IconExternalLink className="h-4"></IconExternalLink>
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </section>
               <section className="space-y-2">
