@@ -33,7 +33,9 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useMediaQuery } from "@react-hook/media-query";
+import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
+import { Button } from "../ui/button";
 import {
   Drawer,
   DrawerContent,
@@ -213,6 +215,27 @@ export const RecipeSheet = <T extends Recipe>({
                   </SelectContent>
                 </Select>
                 <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+                {name && (
+                  <Button
+                    variant="outline"
+                    data-umami-event="Visit wiki"
+                    asChild
+                    className="w-full"
+                  >
+                    <a
+                      className="flex items-center"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={`https://stardewvalleywiki.com/${name.replaceAll(
+                        " ",
+                        "_"
+                      )}`}
+                    >
+                      Visit Wiki Page
+                      <IconExternalLink className="h-4"></IconExternalLink>
+                    </a>
+                  </Button>
+                )}
               </section>
               <section className="space-y-2">
                 <h3 className="font-semibold">How to unlock</h3>
@@ -341,6 +364,27 @@ export const RecipeSheet = <T extends Recipe>({
                   </SelectContent>
                 </Select>
                 <div>{!activePlayer && <CreatePlayerRedirect />}</div>
+                {name && (
+                  <Button
+                    variant="outline"
+                    data-umami-event="Visit wiki"
+                    asChild
+                    className="w-full"
+                  >
+                    <a
+                      className="flex items-center"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={`https://stardewvalleywiki.com/${name.replaceAll(
+                        " ",
+                        "_"
+                      )}`}
+                    >
+                      Visit Wiki Page
+                      <IconExternalLink className="h-4"></IconExternalLink>
+                    </a>
+                  </Button>
+                )}
               </section>
               <section className="space-y-2">
                 <h3 className="font-semibold">How to unlock</h3>
