@@ -243,13 +243,13 @@ export default function Fishing() {
                         return true;
                       }
                     }
-                  }
+                  } else return true;
                 })
                 .filter((f) => {
                   if ("seasons" in f) {
                     if (_seasonFilter === "all") return true;
                     return f.seasons.includes(_seasonFilter);
-                  }
+                  } else return true;
                 })
                 .map((f) => (
                   <BooleanCard
