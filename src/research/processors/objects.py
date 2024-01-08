@@ -77,4 +77,4 @@ for key, value in tqdm(object_info.items()):
     }
 
 with open("../../data/objects.json", "w") as f:
-    json.dump(objects, f, separators=(",", ":"), sort_keys=True)
+    json.dump(objects, f, indent=2)
