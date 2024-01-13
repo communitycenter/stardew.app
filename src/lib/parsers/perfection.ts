@@ -25,8 +25,22 @@ export const parsePerfection = (
     for (const location of SaveGame.locations.GameLocation) {
       if (!(location[`@_${prefix}:type`] === "Farm")) continue;
 
-      // by default, there should be two buildings (shipping bin and greenhouse)
-      for (const building of location.buildings.Building) {
+      if (!location.buildings) return { numObelisks, goldenClock };
+
+      // check to see if there are multiple buildings
+      if (Array.isArray(location.buildings.Building)) {
+        for (const building of location.buildings.Building) {
+          if (obelisks.has(building.buildingType)) {
+            // check if building is done being built
+            if (building.daysOfConstructionLeft <= 0) numObelisks++;
+          } else if (building.buildingType === "Gold Clock") {
+            // check if building is done being built
+            if (building.daysOfConstructionLeft <= 0) goldenClock = true;
+          }
+        }
+      } else {
+        // only one building
+        const building = location.buildings.Building;
         if (obelisks.has(building.buildingType)) {
           // check if building is done being built
           if (building.daysOfConstructionLeft <= 0) numObelisks++;

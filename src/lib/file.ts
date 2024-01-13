@@ -52,7 +52,7 @@ export function parseSaveFile(xml: string) {
     const prefix =
       typeof saveFile.SaveGame["@_xmlns:xsi"] === "undefined" ? "p3" : "xsi";
 
-    console.log(prefix === "xsi" ? "PC" : "Mobile");
+    // console.log(prefix === "xsi" ? "PC" : "Mobile");
 
     const parsedMuseum = parseMuseum(
       saveFile.SaveGame.locations.GameLocation.find(

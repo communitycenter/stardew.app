@@ -37,6 +37,7 @@ next-env.d.ts
 
 # venv for python processors
 venv/
+.venv/
 
 # vscode settings
 .vscode/

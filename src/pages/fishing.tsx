@@ -307,9 +307,7 @@ export default function Fishing() {
                         return true;
                       }
                     }
-                  } else {
-                    return true;
-                  }
+                  } else return true;
                 })
                 .filter((f) => {
                   if ("seasons" in f && f.trapFish === false) {
