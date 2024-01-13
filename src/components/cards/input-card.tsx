@@ -1,10 +1,10 @@
 import { PlayersContext } from "@/contexts/players-context";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import * as v from "valibot";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import { Button } from "../ui/button";
 import {
@@ -42,12 +42,12 @@ export const InputCard = ({
 }: Props) => {
   const [value, setValue] = useState(0);
 
-  const inputSchema = z.object({
-    input: z.coerce.number().nonnegative().int(),
+  const inputSchema = v.object({
+    input: v.number([v.minValue(0)]),
   });
 
-  const form = useForm<z.infer<typeof inputSchema>>({
-    resolver: zodResolver(inputSchema),
+  const form = useForm<v.Input<typeof inputSchema>>({
+    resolver: valibotResolver(inputSchema),
   });
 
   async function handleSave() {

@@ -3,13 +3,14 @@ import Link from "next/link";
 
 import type { PlayerType } from "@/contexts/players-context";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import * as v from "valibot";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -37,38 +38,61 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
-import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(1)
-    .max(32, {
-      message: "Name must 32 characters or less",
-    })
-    .trim()
-    .nonempty(),
-  questsCompleted: z.coerce.number().nonnegative().int().max(100000).optional(),
-  farmName: z.string().min(1).max(32).trim().nonempty(),
-  farmType: z.string().min(1).max(32).trim().nonempty(),
-  totalMoneyEarned: z.coerce
-    .number()
-    .nonnegative()
-    .int()
-    .max(1000000000)
-    .optional(),
-  fishCaught: z.coerce.number().nonnegative().int().max(100000).optional(),
-  numObelisks: z.coerce.number().nonnegative().int().max(4).optional(),
-  goldenClock: z.boolean().optional(),
-  childrenCount: z.coerce.number().nonnegative().int().max(2).optional(),
-  houseUpgradeLevel: z.coerce.number().nonnegative().int().max(3).optional(),
-  farming: z.coerce.number().nonnegative().int().max(10).optional(),
-  fishing: z.coerce.number().nonnegative().int().max(10).optional(),
-  foraging: z.coerce.number().nonnegative().int().max(10).optional(),
-  mining: z.coerce.number().nonnegative().int().max(10).optional(),
-  combat: z.coerce.number().nonnegative().int().max(10).optional(),
+const formSchema = v.object({
+  name: v.string([
+    v.minLength(1),
+    v.maxLength(32, "Name must be 32 characters or less"),
+    v.toTrimmed(),
+  ]),
+  questsCompleted: v.coerce(
+    v.number([v.toMinValue(0), v.toMaxValue(1000)]),
+    Number
+  ),
+  farmName: v.string([
+    v.minLength(1),
+    v.maxLength(32, "Name must be 32 characters or less"),
+    v.toTrimmed(),
+  ]),
+  farmType: v.string([v.minLength(1), v.maxLength(32), v.toTrimmed()]),
+  totalMoneyEarned: v.optional(
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
+      Number
+    )
+  ),
+  fishCaught: v.optional(
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
+      Number
+    )
+  ),
+  numObelisks: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number)
+  ),
+  goldenClock: v.optional(v.boolean()),
+  childrenCount: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number)
+  ),
+  houseUpgradeLevel: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number)
+  ),
+  farming: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  fishing: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  foraging: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  mining: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  combat: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
 });
-
 export default function Editor() {
   const { toast } = useToast();
 
@@ -101,8 +125,8 @@ export default function Editor() {
     return [farmName, farmType];
   }, [activePlayer]);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema as any),
+  const form = useForm<v.Input<typeof formSchema>>({
+    resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
       questsCompleted: 0,
@@ -165,7 +189,7 @@ export default function Editor() {
     _setCombat(activePlayer?.general?.skills?.combat?.toString() ?? undefined);
   }, [activePlayer, form, farmListInfo]);
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: v.Input<typeof formSchema>) => {
     if (!activePlayer?._id) {
       toast({
         variant: "destructive",
