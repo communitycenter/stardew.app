@@ -7,26 +7,35 @@ import { Topbar } from "@/components/top-bar";
 import { Toaster } from "@/components/ui/toaster";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { MixpanelProvider } from "@/contexts/mixpanel-context";
 import { PlayersProvider } from "@/contexts/players-context";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const MIXPANEL_TOKEN = process.env.MIXPANEL_API;
+const MIXPANEL_CONFIG = {
+  debug: true,
+  ignore_dnt: true,
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PlayersProvider>
-        <div className={`${inter.className}`}>
-          <div className="sticky top-0 z-10 dark:bg-neutral-950">
-            <Topbar />
-          </div>
-          <div>
-            <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col min-h-[calc(100vh-65px)] max-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip" />
-            <div className="md:pl-72">
-              <Component {...pageProps} />
-              <Toaster />
+        <MixpanelProvider config={MIXPANEL_CONFIG} token={MIXPANEL_TOKEN}>
+          <div className={`${inter.className}`}>
+            <div className="sticky top-0 z-10 dark:bg-neutral-950">
+              <Topbar />
+            </div>
+            <div>
+              <Sidebar className="hidden md:flex md:fixed md:w-72 md:flex-col min-h-[calc(100vh-65px)] max-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip" />
+              <div className="md:pl-72">
+                <Component {...pageProps} />
+                <Toaster />
+              </div>
             </div>
           </div>
-        </div>
+        </MixpanelProvider>
       </PlayersProvider>
     </ThemeProvider>
   );

@@ -1,3 +1,4 @@
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { PlayersContext } from "@/contexts/players-context";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -41,6 +42,7 @@ export const InputCard = ({
   maxValue,
 }: Props) => {
   const [value, setValue] = useState(0);
+  const mixpanel = useMixpanel();
 
   const inputSchema = v.object({
     input: v.number([v.minValue(0)]),
@@ -143,7 +145,13 @@ export const InputCard = ({
                       <Button
                         disabled={!activePlayer}
                         type="submit"
-                        onClick={() => handleSave()}
+                        onClick={() => {
+                          handleSave();
+                          mixpanel?.track("Value Input", {
+                            Value: value,
+                            "Card type": "Input card",
+                          });
+                        }}
                       >
                         Submit
                       </Button>

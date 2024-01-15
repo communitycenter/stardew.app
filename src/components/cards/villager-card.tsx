@@ -9,17 +9,18 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import {
   ContextMenu,
-  ContextMenuSub,
-  ContextMenuItem,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
-  ContextMenuTrigger,
+  ContextMenuItem,
+  ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuCheckboxItem,
+  ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
-import { IconChevronRight } from "@tabler/icons-react";
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props {
   villager: Villager;
@@ -42,6 +43,7 @@ export const VillagerCard = ({
   setVillager,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   const maxHeartCount = useMemo(() => {
     if (activePlayer?.social?.spouse === villager.name) {
@@ -221,7 +223,13 @@ export const VillagerCard = ({
         {activePlayer?.social?.spouse === villager.name ? (
           <ContextMenuItem
             inset
-            onClick={() => handleStatusChange("", "removeSpouse")}
+            onClick={() => {
+              handleStatusChange("", "removeSpouse");
+              mixpanel?.track("Context Button Clicked", {
+                Action: "Remove Spouse",
+                "Card Type": "Village card",
+              });
+            }}
             disabled={!activePlayer}
           >
             Remove Spouse
@@ -230,7 +238,13 @@ export const VillagerCard = ({
           "Dating" ? (
           <ContextMenuItem
             inset
-            onClick={() => handleStatusChange("Married", "setSpouse")}
+            onClick={() => {
+              handleStatusChange("Married", "setSpouse");
+              mixpanel?.track("Context Button Clicked", {
+                Action: "Set Spouse",
+                "Card Type": "Village card",
+              });
+            }}
             disabled={!activePlayer}
           >
             Set Spouse
@@ -243,7 +257,13 @@ export const VillagerCard = ({
               typeof activePlayer?.social?.spouse === "string" ||
               !activePlayer
             }
-            onClick={() => handleStatusChange("Dating", "setDating")}
+            onClick={() => {
+              handleStatusChange("Dating", "setDating");
+              mixpanel?.track("Context Button Clicked", {
+                Action: "Set Dating",
+                "Card Type": "Village card",
+              });
+            }}
           >
             Set Dating
           </ContextMenuItem>

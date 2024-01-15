@@ -19,6 +19,7 @@ import {
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -39,6 +40,7 @@ export const DialogCard = ({
   _type,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   const [open, setOpen] = useState(false);
 
@@ -135,6 +137,11 @@ export const DialogCard = ({
               data-umami-event="Set incompleted"
               onClick={() => {
                 handleStatusChange(false);
+                mixpanel?.track("Button Clicked", {
+                  Action: "Set Incomplete",
+                  Item: _type.toLocaleUpperCase(),
+                  "Card Type": "Dialog card",
+                });
               }}
             >
               Set Incomplete
@@ -146,6 +153,11 @@ export const DialogCard = ({
               data-umami-event="Set completed"
               onClick={() => {
                 handleStatusChange(true);
+                mixpanel?.track("Button Clicked", {
+                  Action: "Set Complete",
+                  Item: _type.toLocaleUpperCase(),
+                  "Card Type": "Dialog card",
+                });
               }}
             >
               Set Completed

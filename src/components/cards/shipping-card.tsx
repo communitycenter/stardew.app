@@ -22,6 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
@@ -37,6 +38,7 @@ const classes = [
 
 export const ShippingCard = ({ item }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
@@ -167,7 +169,16 @@ export const ShippingCard = ({ item }: Props) => {
             >
               Cancel
             </Button>
-            <Button disabled={!activePlayer} onClick={() => handleSave()}>
+            <Button
+              disabled={!activePlayer}
+              onClick={() => {
+                handleSave();
+                mixpanel?.track("Value Input", {
+                  Value: value,
+                  "Card type": "Shipping card",
+                });
+              }}
+            >
               Save
             </Button>
           </div>

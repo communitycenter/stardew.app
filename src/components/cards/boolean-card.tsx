@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";
+import mixpanel from "mixpanel-browser";
 
 interface Props {
   item: FishType | TrinketItem | any;
@@ -136,6 +137,10 @@ export const BooleanCard = ({
             disabled={completed || !activePlayer}
             onClick={() => {
               handleStatusChange(2);
+              mixpanel.track("Set completed", {
+                item: name,
+                type,
+              });
             }}
             data-umami-event="Set completed"
           >

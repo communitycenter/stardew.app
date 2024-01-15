@@ -28,6 +28,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export interface User {
@@ -53,6 +54,7 @@ export function Topbar() {
 
   const { toast } = useToast();
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -226,6 +228,8 @@ export function Topbar() {
                         ? "localhost"
                         : "stardew.app",
                     });
+
+                    mixpanel?.reset();
                     return (window.location.href = "/");
                   }}
                 >
