@@ -37,7 +37,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 const formSchema = v.object({
   name: v.string([
@@ -94,8 +94,6 @@ const formSchema = v.object({
   ),
 });
 export default function Editor() {
-  const { toast } = useToast();
-
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
   const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
@@ -191,9 +189,7 @@ export default function Editor() {
 
   const onSubmit = async (values: v.Input<typeof formSchema>) => {
     if (!activePlayer?._id) {
-      toast({
-        variant: "destructive",
-        title: "Error",
+      toast.error("An error occurred creating your farmhand.", {
         description: (
           <>
             No active player found. Try{" "}
@@ -271,11 +267,7 @@ export default function Editor() {
     };
 
     await uploadPlayers([player]);
-    toast({
-      variant: "default",
-      title: "Success",
-      description: "Successfully updated farmhand!",
-    });
+    toast.success("Successfully updated farmhand!");
   };
 
   return (

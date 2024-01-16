@@ -1,40 +1,37 @@
 import type { User } from "@/components/top-bar";
 
-import useSWR from "swr";
 import Head from "next/head";
+import useSWR from "swr";
 
+import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useContext, useMemo, useState } from "react";
-import { getCookie, deleteCookie } from "cookies-next";
 
 import { PlayerType, PlayersContext } from "@/contexts/players-context";
 
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   DropdownMenu,
-  DropdownMenuItem,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
-import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
-import { Card, CardTitle, CardHeader, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import {
-  EyeIcon,
-  TrashIcon,
   ClipboardIcon,
-  PencilSquareIcon,
   CursorArrowRaysIcon,
-  InformationCircleIcon,
   EllipsisHorizontalIcon,
+  EyeIcon,
+  InformationCircleIcon,
+  PencilSquareIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
+import { toast } from "sonner";
 
 function InlineInput({ label, value }: { label: string; value: string }) {
-  const { toast } = useToast();
-
   return (
     <div className="flex items-center w-full">
       <label
@@ -58,10 +55,7 @@ function InlineInput({ label, value }: { label: string; value: string }) {
           className="absolute right-0 group hover:bg-inherit dark:hover:bg-inherit"
           onClick={() => {
             navigator.clipboard.writeText(value);
-            toast({
-              title: "Copied!",
-              description: `Your ${label} has been copied to your clipboard.`,
-            });
+            toast.info(`Your ${label} has been copied to your clipboard.`);
           }}
         >
           <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
@@ -73,7 +67,6 @@ function InlineInput({ label, value }: { label: string; value: string }) {
 
 function PlayerCard({ player }: { player: PlayerType }) {
   const router = useRouter();
-  const { toast } = useToast();
   const { setActivePlayer } = useContext(PlayersContext);
 
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -100,11 +93,9 @@ function PlayerCard({ player }: { player: PlayerType }) {
             <DropdownMenuItem
               onClick={() => {
                 navigator.clipboard.writeText(player._id);
-                toast({
-                  title: "Copied!",
-                  description:
-                    "Your farmhand ID has been copied to your clipboard.",
-                });
+                toast.info(
+                  "Your farmhand ID has been copied to your clipboard."
+                );
               }}
             >
               <ClipboardIcon className="mr-2 h-4 w-4" />
@@ -113,10 +104,9 @@ function PlayerCard({ player }: { player: PlayerType }) {
             <DropdownMenuItem
               onClick={() => {
                 setActivePlayer(player);
-                toast({
-                  title: "Active Farmhand Changed!",
-                  description: `Your active farmhand has been changed to ${player.general?.name}.`,
-                });
+                toast.info(
+                  `Your active farmhand has been changed to ${player.general?.name}.`
+                );
               }}
             >
               <CursorArrowRaysIcon className="mr-2 h-4 w-4" />
@@ -179,7 +169,6 @@ export default function Account() {
     { refreshInterval: 0, revalidateOnFocus: false }
   );
 
-  const { toast } = useToast();
   const { players } = useContext(PlayersContext);
 
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -280,11 +269,9 @@ export default function Account() {
                           navigator.clipboard.writeText(
                             getCookie("uid") as string
                           );
-                          toast({
-                            title: "Copied!",
-                            description:
-                              "Your user ID has been copied to your clipboard.",
-                          });
+                          toast.info(
+                            "Your user ID has been copied to your clipboard."
+                          );
                         }}
                       >
                         <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />

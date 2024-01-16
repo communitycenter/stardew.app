@@ -26,11 +26,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/components/ui/use-toast";
 
 import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-
+import { toast } from "sonner";
 export interface User {
   id: string;
   discord_id: string;
@@ -52,7 +51,6 @@ export function Topbar() {
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
 
-  const { toast } = useToast();
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
   const mixpanel = useMixpanel();
 
@@ -74,9 +72,7 @@ export function Topbar() {
     if (typeof file === "undefined" || !file) return;
 
     if (file.type !== "") {
-      toast({
-        variant: "destructive",
-        title: "Invalid File Type",
+      toast.error("Invalid file type", {
         description: "Please upload a Stardew Valley save file.",
       });
       return;
@@ -84,35 +80,36 @@ export function Topbar() {
 
     const reader = new FileReader();
 
+    let uploadPromise;
+
     reader.onloadstart = () => {
-      toast({
-        variant: "default",
-        title: "Uploading Save File",
-        description: "Please wait while we upload your save file.",
+      uploadPromise = new Promise((resolve, reject) => {
+        reader.onload = async function (event) {
+          try {
+            const players = parseSaveFile(event.target?.result as string);
+            await uploadPlayers(players);
+            resolve("Your save file was successfully uploaded!");
+            mixpanel?.track("Upload Save File", {
+              Players: players.length,
+            });
+          } catch (err) {
+            reject(err instanceof Error ? err.message : "Unknown error.");
+          }
+        };
       });
+
+      // Start the loading toast
+      toast.promise(uploadPromise, {
+        loading: "Uploading your save file...",
+        success: (data) => `${data}`,
+        error: (err) => `There was an error parsing your save file:\n${err}`,
+      });
+
+      // Reset the input
+      e.target.value = "";
+      uploadPromise = null;
     };
 
-    reader.onload = async function (event) {
-      try {
-        const players = parseSaveFile(event.target?.result as string);
-        await uploadPlayers(players);
-        toast({
-          variant: "default",
-          title: "Save File Uploaded",
-          description: "Your save file has been successfully uploaded.",
-        });
-      } catch (err) {
-        console.error(
-          "[DEBUG] There's been an error parsing your save file. Please screenshot the text below, and send it in #bug-reports"
-        );
-        console.error(err);
-        toast({
-          variant: "destructive",
-          title: "Error Parsing File",
-          description: err instanceof Error ? err.message : "Unknown error.",
-        });
-      }
-    };
     reader.readAsText(file);
   };
 

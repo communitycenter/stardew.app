@@ -35,7 +35,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 function generateUniqueIdentifier() {
   const timestamp = Date.now().toString(16);
@@ -101,8 +101,6 @@ const formSchema = v.object({
 });
 
 export default function Editor() {
-  const { toast } = useToast();
-
   const { uploadPlayers } = useContext(PlayersContext);
 
   const form = useForm<v.Input<typeof formSchema>>({
@@ -160,11 +158,7 @@ export default function Editor() {
     };
 
     await uploadPlayers([player]);
-    toast({
-      variant: "default",
-      title: "Success",
-      description: "Successfully created farmhand!",
-    });
+    toast.success("Successfully created your farmer!");
   };
 
   return (
