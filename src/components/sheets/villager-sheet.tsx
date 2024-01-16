@@ -36,6 +36,7 @@ import {
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconExternalLink } from "@tabler/icons-react";
+import clsx from "clsx";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -257,7 +258,12 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
-              <div className="grid grid-cols-2 gap-2">
+              <div
+                className={clsx(
+                  "grid gap-2",
+                  villager.datable ? "grid-cols-2" : "grid-cols-1"
+                )}
+              >
                 <Select
                   value={hearts.toString()}
                   onValueChange={(val) => handleHeartChange(val)}
@@ -299,17 +305,19 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                     Set Spouse
                   </Button>
                 ) : (
-                  <Button
-                    variant="secondary"
-                    onClick={() => handleStatusChange("Dating", "setDating")}
-                    disabled={
-                      !villager.datable ||
-                      typeof activePlayer?.social?.spouse === "string" ||
-                      !activePlayer
-                    }
-                  >
-                    Set Dating
-                  </Button>
+                  villager.datable && (
+                    <Button
+                      variant="secondary"
+                      onClick={() => handleStatusChange("Dating", "setDating")}
+                      disabled={
+                        !villager.datable ||
+                        typeof activePlayer?.social?.spouse === "string" ||
+                        !activePlayer
+                      }
+                    >
+                      Set Dating
+                    </Button>
+                  )
                 )}
               </div>
               <div>{!activePlayer && <CreatePlayerRedirect />}</div>
