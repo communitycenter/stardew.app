@@ -24,6 +24,11 @@ export default function SecretNotes() {
   return (
     <>
       <Head>
+        <title>stardew.app | Secret Notes</title>
+        <meta
+          name="title"
+          content="Stardew Valley Secret Notes Locations | stardew.app"
+        />
         <meta
           name="description"
           content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."

@@ -147,7 +147,11 @@ export default function Fishing() {
   return (
     <>
       <Head>
-        <title>stardew.app | Fishing Tracker</title>
+        <title>stardew.app | Fishing</title>
+        <meta
+          name="title"
+          content="Stardew Valley Fishing Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track your Stardew Valley fishing progress and optimize your angling skills. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."

@@ -228,7 +228,11 @@ export default function Farmer() {
   return (
     <>
       <Head>
-        <title>stardew.app | Farmer Tracker</title>
+        <title>stardew.app | Farmer</title>
+        <meta
+          name="title"
+          content="Stardew Valley Player Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track and manage your achievements and Stardrops in Stardew Valley. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."

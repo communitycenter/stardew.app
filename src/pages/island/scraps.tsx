@@ -20,6 +20,8 @@ export default function IslandScraps() {
   return (
     <>
       <Head>
+        <meta name="title" content="stardew.app | Journal Scraps Tracker" />
+        <title>stardew.app | Journal Scraps</title>
         <meta
           name="description"
           content="Track and discover Ginger Island journal scraps in Stardew Valley. Keep tabs on the journal scraps you've found and uncover the hidden stories and lore of Ginger Island. Monitor your progress towards completing the Ginger Island journal scrap collection and unravel the island's secrets."
