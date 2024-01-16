@@ -4,14 +4,13 @@ import Image from "next/image";
 import { parseSaveFile } from "@/lib/file";
 import { ChangeEvent, useContext, useRef } from "react";
 
+import { toast } from "sonner";
+
 import { PlayersContext } from "@/contexts/players-context";
 
-import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 
 export default function Home() {
-  const { toast } = useToast();
-
   const { uploadPlayers } = useContext(PlayersContext);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -24,9 +23,7 @@ export default function Home() {
     if (typeof file === "undefined" || !file) return;
 
     if (file.type !== "") {
-      toast({
-        variant: "destructive",
-        title: "Invalid File Type",
+      toast.error("Invalid File Type", {
         description: "Please upload a Stardew Valley save file.",
       });
       return;
@@ -35,9 +32,7 @@ export default function Home() {
     const reader = new FileReader();
 
     reader.onloadstart = () => {
-      toast({
-        variant: "default",
-        title: "Uploading Save File",
+      toast.loading("Uploading Save File", {
         description: "Please wait while we upload your save file.",
       });
     };
@@ -46,15 +41,11 @@ export default function Home() {
       try {
         const players = parseSaveFile(event.target?.result as string);
         await uploadPlayers(players);
-        toast({
-          variant: "default",
-          title: "Save File Uploaded",
-          description: "Your save file has been successfully uploaded.",
+        toast.success("Uploaded Save File", {
+          description: "Your save file has been uploaded successfully",
         });
       } catch (err) {
-        toast({
-          variant: "destructive",
-          title: "Error Parsing File",
+        toast.error("Error Parsing File", {
           description: err instanceof Error ? err.message : "Unknown error.",
         });
       }

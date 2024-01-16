@@ -4,9 +4,9 @@ import { Inter } from "next/font/google";
 
 import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/top-bar";
-import { Toaster } from "@/components/ui/toaster";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { MixpanelProvider } from "@/contexts/mixpanel-context";
 import { PlayersProvider } from "@/contexts/players-context";
 
