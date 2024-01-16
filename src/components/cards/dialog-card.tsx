@@ -138,7 +138,7 @@ export const DialogCard = ({
               onClick={() => {
                 handleStatusChange(false);
                 mixpanel?.track("Button Clicked", {
-                  Action: "Set Incomplete",
+                  Action: "Set Incompleted",
                   Item: _type.toLocaleUpperCase(),
                   "Card Type": "Dialog card",
                 });
@@ -154,7 +154,7 @@ export const DialogCard = ({
               onClick={() => {
                 handleStatusChange(true);
                 mixpanel?.track("Button Clicked", {
-                  Action: "Set Complete",
+                  Action: "Set Completed",
                   Item: _type.toLocaleUpperCase(),
                   "Card Type": "Dialog card",
                 });

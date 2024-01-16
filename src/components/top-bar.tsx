@@ -7,7 +7,7 @@ const { version } = packageJson;
 
 import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -55,6 +55,16 @@ export function Topbar() {
   const { toast } = useToast();
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
   const mixpanel = useMixpanel();
+
+  useEffect(() => {
+    mixpanel?.identify(api.data?.discord_id);
+
+    mixpanel?.people?.set({
+      discord_id: api.data?.discord_id,
+      $name: api.data?.discord_name,
+      $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
+    });
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

@@ -16,8 +16,8 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
-import mixpanel from "mixpanel-browser";
 
 interface Props {
   item: FishType | TrinketItem | any;
@@ -35,6 +35,7 @@ export const BooleanCard = ({
   type,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   const iconURL =
     objects[item.itemID.toString() as keyof typeof objects].iconURL;
@@ -125,6 +126,11 @@ export const BooleanCard = ({
             data-umami-event="Set incompleted"
             onClick={() => {
               handleStatusChange(0);
+              mixpanel?.track("Context Button Clicked", {
+                Action: "Set Incompleted",
+                Type: type,
+                "Card Type": "Recipe card",
+              });
             }}
           >
             <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
@@ -137,9 +143,10 @@ export const BooleanCard = ({
             disabled={completed || !activePlayer}
             onClick={() => {
               handleStatusChange(2);
-              mixpanel.track("Set completed", {
-                item: name,
-                type,
+              mixpanel?.track("Context Button Clicked", {
+                Action: "Set Completed",
+                Item: name,
+                "Card Type": "Boolean card",
               });
             }}
             data-umami-event="Set completed"

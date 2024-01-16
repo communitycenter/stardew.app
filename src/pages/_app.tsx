@@ -12,7 +12,7 @@ import { PlayersProvider } from "@/contexts/players-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const MIXPANEL_TOKEN = process.env.MIXPANEL_API;
+const MIXPANEL_TOKEN = "affd98626f41a3c53107a93787689786";
 const MIXPANEL_CONFIG = {
   debug: true,
   ignore_dnt: true,
