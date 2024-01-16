@@ -17,6 +17,16 @@ const nextConfig = {
         destination: "https://github.com/communitycenter/stardew.app",
         permanent: true,
       },
+      {
+        source: "/social",
+        destination: "/relationships",
+        permanent: true,
+      },
+      {
+        source: "/artifacts",
+        destination: "/museum",
+        permanent: true,
+      },
     ];
   },
   images: {
