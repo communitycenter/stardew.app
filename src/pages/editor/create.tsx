@@ -3,7 +3,7 @@ import Head from "next/head";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as v from "valibot";
 
@@ -36,6 +36,9 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
+
+// import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 
 function generateUniqueIdentifier() {
   const timestamp = Date.now().toString(16);
@@ -102,6 +105,8 @@ const formSchema = v.object({
 
 export default function Editor() {
   const { uploadPlayers } = useContext(PlayersContext);
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const form = useForm<v.Input<typeof formSchema>>({
     resolver: valibotResolver(formSchema as any),
@@ -186,6 +191,11 @@ export default function Editor() {
                 Set your farmhand&apos;s important metadata. This will be used
                 to calculate completion of some achievements!
               </CardDescription>
+              <CardDescription>
+                Only fields marked with a{" "}
+                <span className="text-red-500 dark:text-red-500">*</span> are
+                required.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -201,7 +211,12 @@ export default function Editor() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel htmlFor="name">Name</FormLabel>
+                          <FormLabel htmlFor="name">
+                            Name{" "}
+                            <span className="text-red-500 dark:text-red-500">
+                              *
+                            </span>
+                          </FormLabel>
                           <FormControl>
                             <Input
                               id="name"
@@ -237,7 +252,12 @@ export default function Editor() {
                       name="farmName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel htmlFor="farmName">Farm Name</FormLabel>
+                          <FormLabel htmlFor="farmName">
+                            Farm Name{" "}
+                            <span className="text-red-500 dark:text-red-500">
+                              *
+                            </span>
+                          </FormLabel>
                           <FormControl>
                             <Input
                               id="farmName"
@@ -254,7 +274,12 @@ export default function Editor() {
                       name="farmType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel htmlFor="farmType">Farm Type</FormLabel>
+                          <FormLabel htmlFor="farmType">
+                            Farm Type{" "}
+                            <span className="text-red-500 dark:text-red-500">
+                              *
+                            </span>
+                          </FormLabel>
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
@@ -285,311 +310,329 @@ export default function Editor() {
                       )}
                     />
                   </div>
-                  {/* Money Earned & Fish Caught */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="totalMoneyEarned"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="totalMoneyEarned">
-                            Money Earned
-                          </FormLabel>
-                          <FormDescription>
-                            A rough estimate is fine!
-                          </FormDescription>
-                          <FormControl>
-                            <Input
-                              id="totalMoneyEarned"
-                              type="number"
-                              placeholder="1000000"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="fishCaught"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="fishCaught">
-                            Fish Caught
-                          </FormLabel>
-                          <FormDescription>Total amount caught</FormDescription>
-                          <FormControl>
-                            <Input
-                              id="fishCaught"
-                              type="number"
-                              placeholder="100"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  {/* Number of obelisks (0-4) & golden clock true/false */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="numObelisks"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="numObelisks">
-                            Number of Obelisks
-                          </FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="numObelisks">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="goldenClock"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="goldenClock">
-                            Golden Clock
-                          </FormLabel>
-                          <FormControl>
-                            <div className="flex space-x-2 items-center">
-                              <Switch
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                                id="goldenClock"
-                              />
+
+                  {isExpanded && (
+                    <>
+                      {/* Money Earned & Fish Caught */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="totalMoneyEarned"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="totalMoneyEarned">
+                                Money Earned
+                              </FormLabel>
                               <FormDescription>
-                                has built golden clock?
+                                A rough estimate is fine!
                               </FormDescription>
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  {/* Children Count & House Upgrade Level */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="childrenCount"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="childrenCount">
-                            Number of Children
-                          </FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="childrenCount">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="houseUpgradeLevel"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="houseUpgradeLevel">
-                            House Upgrade
-                          </FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="houseUpgradeLevel">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Level" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  {/* Skills */}
-                  <div className="grid grid-cols-3 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="farming"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="farming">Farming</FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="farming">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                              <SelectItem value="5">5</SelectItem>
-                              <SelectItem value="6">6</SelectItem>
-                              <SelectItem value="7">7</SelectItem>
-                              <SelectItem value="8">8</SelectItem>
-                              <SelectItem value="9">9</SelectItem>
-                              <SelectItem value="10">10</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="fishing"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="fishing">Fishing</FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="fishing">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                              <SelectItem value="5">5</SelectItem>
-                              <SelectItem value="6">6</SelectItem>
-                              <SelectItem value="7">7</SelectItem>
-                              <SelectItem value="8">8</SelectItem>
-                              <SelectItem value="9">9</SelectItem>
-                              <SelectItem value="10">10</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="foraging"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="foraging">Foraging</FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="foraging">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                              <SelectItem value="5">5</SelectItem>
-                              <SelectItem value="6">6</SelectItem>
-                              <SelectItem value="7">7</SelectItem>
-                              <SelectItem value="8">8</SelectItem>
-                              <SelectItem value="9">9</SelectItem>
-                              <SelectItem value="10">10</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="mining"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="mining">Mining</FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="mining">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                              <SelectItem value="5">5</SelectItem>
-                              <SelectItem value="6">6</SelectItem>
-                              <SelectItem value="7">7</SelectItem>
-                              <SelectItem value="8">8</SelectItem>
-                              <SelectItem value="9">9</SelectItem>
-                              <SelectItem value="10">10</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="combat"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="combat">Combat</FormLabel>
-                          <Select onValueChange={field.onChange}>
-                            <FormControl id="combat">
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="0">0</SelectItem>
-                              <SelectItem value="1">1</SelectItem>
-                              <SelectItem value="2">2</SelectItem>
-                              <SelectItem value="3">3</SelectItem>
-                              <SelectItem value="4">4</SelectItem>
-                              <SelectItem value="5">5</SelectItem>
-                              <SelectItem value="6">6</SelectItem>
-                              <SelectItem value="7">7</SelectItem>
-                              <SelectItem value="8">8</SelectItem>
-                              <SelectItem value="9">9</SelectItem>
-                              <SelectItem value="10">10</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                              <FormControl>
+                                <Input
+                                  id="totalMoneyEarned"
+                                  type="number"
+                                  placeholder="1000000"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="fishCaught"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="fishCaught">
+                                Fish Caught
+                              </FormLabel>
+                              <FormDescription>
+                                Total amount caught
+                              </FormDescription>
+                              <FormControl>
+                                <Input
+                                  id="fishCaught"
+                                  type="number"
+                                  placeholder="100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      {/* Number of obelisks (0-4) & golden clock true/false */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="numObelisks"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="numObelisks">
+                                Number of Obelisks
+                              </FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="numObelisks">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="goldenClock"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="goldenClock">
+                                Golden Clock
+                              </FormLabel>
+                              <FormControl>
+                                <div className="flex space-x-2 items-center">
+                                  <Switch
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                    id="goldenClock"
+                                  />
+                                  <FormDescription>
+                                    has built golden clock?
+                                  </FormDescription>
+                                </div>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      {/* Children Count & House Upgrade Level */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="childrenCount"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="childrenCount">
+                                Number of Children
+                              </FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="childrenCount">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="houseUpgradeLevel"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="houseUpgradeLevel">
+                                House Upgrade
+                              </FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="houseUpgradeLevel">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Level" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      {/* Skills */}
+                      <div className="grid grid-cols-3 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="farming"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="farming">Farming</FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="farming">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                  <SelectItem value="5">5</SelectItem>
+                                  <SelectItem value="6">6</SelectItem>
+                                  <SelectItem value="7">7</SelectItem>
+                                  <SelectItem value="8">8</SelectItem>
+                                  <SelectItem value="9">9</SelectItem>
+                                  <SelectItem value="10">10</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="fishing"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="fishing">Fishing</FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="fishing">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                  <SelectItem value="5">5</SelectItem>
+                                  <SelectItem value="6">6</SelectItem>
+                                  <SelectItem value="7">7</SelectItem>
+                                  <SelectItem value="8">8</SelectItem>
+                                  <SelectItem value="9">9</SelectItem>
+                                  <SelectItem value="10">10</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="foraging"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="foraging">Foraging</FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="foraging">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                  <SelectItem value="5">5</SelectItem>
+                                  <SelectItem value="6">6</SelectItem>
+                                  <SelectItem value="7">7</SelectItem>
+                                  <SelectItem value="8">8</SelectItem>
+                                  <SelectItem value="9">9</SelectItem>
+                                  <SelectItem value="10">10</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="mining"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="mining">Mining</FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="mining">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                  <SelectItem value="5">5</SelectItem>
+                                  <SelectItem value="6">6</SelectItem>
+                                  <SelectItem value="7">7</SelectItem>
+                                  <SelectItem value="8">8</SelectItem>
+                                  <SelectItem value="9">9</SelectItem>
+                                  <SelectItem value="10">10</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="combat"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="combat">Combat</FormLabel>
+                              <Select onValueChange={field.onChange}>
+                                <FormControl id="combat">
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="0">0</SelectItem>
+                                  <SelectItem value="1">1</SelectItem>
+                                  <SelectItem value="2">2</SelectItem>
+                                  <SelectItem value="3">3</SelectItem>
+                                  <SelectItem value="4">4</SelectItem>
+                                  <SelectItem value="5">5</SelectItem>
+                                  <SelectItem value="6">6</SelectItem>
+                                  <SelectItem value="7">7</SelectItem>
+                                  <SelectItem value="8">8</SelectItem>
+                                  <SelectItem value="9">9</SelectItem>
+                                  <SelectItem value="10">10</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </>
+                  )}
+                  <Button
+                    variant="outline"
+                    type="button"
+                    onClick={() => setIsExpanded((p) => !p)}
+                  >
+                    {isExpanded ? (
+                      <ChevronUpIcon className="w-5 h-5" />
+                    ) : (
+                      <ChevronDownIcon className="w-5 h-5" />
+                    )}
+                  </Button>
                   <Button variant="default" type="submit">
                     Create
                   </Button>
