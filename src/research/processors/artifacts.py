@@ -38,7 +38,8 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
     iconURL = tr.find("td").find("img")["src"]
 
     # Get the text value of the 3rd and 4th <td> tags
-    name = tr.find_all("td")[1].text.strip()
+    name = tr.find_all("td")[1].find("a").get("title").strip()
+
     description = tr.find_all("td")[2].text.strip()
     locations = re.sub(
         r"\[\d+\]",
@@ -52,7 +53,7 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
             "name", ""
         ).lower()  # Get the item name (convert to lowercase for case-insensitive match)
 
-        if name.lower() in item_name:
+        if name.lower() == item_name:
             itemId = item_id
 
     # Add the achievement to the dictionary
@@ -1031,7 +1032,7 @@ for html in htmlobj:
                 "name", ""
             ).lower()  # Get the item name (convert to lowercase for case-insensitive match)
 
-            if name.lower() in item_name:
+            if name.lower() == item_name:
                 itemId = item_id
 
         minerals[name] = {
@@ -1041,4 +1042,4 @@ for html in htmlobj:
         }
 
 with open("../../data/artifacts.json", "w") as f:
-    json.dump({"artifacts": artifacts, "minerals": minerals}, f, separators=(",", ":"))
+    json.dump({"artifacts": artifacts, "minerals": minerals}, f, indent=2)
