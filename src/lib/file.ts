@@ -46,6 +46,7 @@ export function parseSaveFile(xml: string) {
     let players: any[] = [];
     // searches for all players in the save file and returns an array
     // objects are unprocessed and will be used to parse each player's data
+
     players = findAllByKey(saveFile.SaveGame, "farmhand");
 
     // find the prefix to use for attributes (xsi for pc, p3 for mobile)
@@ -80,7 +81,11 @@ export function parseSaveFile(xml: string) {
         crafting: parseCrafting(player),
         shipping: parseShipping(player),
         museum: parsedMuseum,
-        social: parseSocial(player, children),
+        social: parseSocial(
+          player,
+          children,
+          saveFile.SaveGame.farmerFriendships
+        ),
         monsters: parseMonsters(player),
         walnuts: parsedWalnuts,
         notes: parseNotes(player),
@@ -90,7 +95,6 @@ export function parseSaveFile(xml: string) {
       processedPlayers.push(processedPlayer);
     });
 
-    // console.log(processedPlayers);
     return processedPlayers;
   } catch (e) {
     throw e;
