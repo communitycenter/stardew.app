@@ -3,6 +3,14 @@ export interface NotesRet {
 }
 
 export function parseNotes(player: any) {
+  if (!player.secretNotesSeen) return { found: [] };
+
+  if (!Array.isArray(player.secretNotesSeen.int)) {
+    return {
+      found: [player.secretNotesSeen.int],
+    };
+  }
+
   return {
     found: [
       ...(player.secretNotesSeen.int?.filter(
