@@ -1,1 +1,1137 @@
-{"10":{"ingredients":[{"itemID":388,"quantity":40},{"itemID":382,"quantity":8},{"itemID":335,"quantity":1},{"itemID":724,"quantity":1}],"isBigCraftable":true,"itemID":10,"unlockConditions":"Reach level 3 in Farming skill."},"105":{"ingredients":[{"itemID":388,"quantity":40},{"itemID":334,"quantity":2}],"isBigCraftable":true,"itemID":105,"unlockConditions":"Reach level 3 in Foraging skill."},"108":{"ingredients":[{"itemID":388,"quantity":15},{"itemID":427,"quantity":1},{"itemID":429,"quantity":1},{"itemID":453,"quantity":1},{"itemID":455,"quantity":1}],"isBigCraftable":true,"itemID":108,"unlockConditions":"Flower Dance (1,000g)"},"114":{"ingredients":[{"itemID":388,"quantity":20},{"itemID":334,"quantity":2}],"isBigCraftable":true,"itemID":114,"unlockConditions":"Reach level 4 in Foraging skill."},"12":{"ingredients":[{"itemID":388,"quantity":30},{"itemID":334,"quantity":1},{"itemID":335,"quantity":1},{"itemID":725,"quantity":1}],"isBigCraftable":true,"itemID":12,"unlockConditions":"Reach level 8 in Farming skill."},"13":{"ingredients":[{"itemID":378,"quantity":20},{"itemID":390,"quantity":25}],"isBigCraftable":true,"itemID":13,"unlockConditions":"Reach farmer level 2."},"130":{"ingredients":[{"itemID":388,"quantity":50}],"isBigCraftable":true,"itemID":130,"unlockConditions":"Starter Recipe - no steps required!"},"143":{"ingredients":[{"itemID":388,"quantity":10},{"itemID":382,"quantity":1},{"itemID":771,"quantity":5}],"isBigCraftable":true,"itemID":143,"unlockConditions":"Carpenter's Shop (250g)"},"144":{"ingredients":[{"itemID":390,"quantity":10},{"itemID":382,"quantity":1},{"itemID":771,"quantity":5}],"isBigCraftable":true,"itemID":144,"unlockConditions":"Carpenter's Shop (400g)"},"145":{"ingredients":[{"itemID":336,"quantity":1},{"itemID":382,"quantity":1},{"itemID":771,"quantity":5}],"isBigCraftable":true,"itemID":145,"unlockConditions":"Carpenter's Shop(1,000g)"},"146":{"ingredients":[{"itemID":390,"quantity":10},{"itemID":388,"quantity":10},{"itemID":771,"quantity":10}],"isBigCraftable":true,"itemID":146,"unlockConditions":"Starter Recipe - no steps required!"},"147":{"ingredients":[{"itemID":709,"quantity":5},{"itemID":382,"quantity":1}],"isBigCraftable":true,"itemID":147,"unlockConditions":"Carpenter's Shop (800g)"},"148":{"ingredients":[{"itemID":709,"quantity":10},{"itemID":382,"quantity":1}],"isBigCraftable":true,"itemID":148,"unlockConditions":"Carpenter's Shop(2,000g)"},"149":{"ingredients":[{"itemID":881,"quantity":10}],"isBigCraftable":true,"itemID":149,"unlockConditions":"Carpenter's Shop(3,000g)"},"15":{"ingredients":[{"itemID":388,"quantity":50},{"itemID":390,"quantity":40},{"itemID":382,"quantity":8}],"isBigCraftable":true,"itemID":15,"unlockConditions":"Reach level 4 in Farming skill."},"150":{"ingredients":[{"itemID":388,"quantity":50},{"itemID":768,"quantity":1},{"itemID":382,"quantity":1}],"isBigCraftable":true,"itemID":150,"unlockConditions":"Carpenter's Shop (800g)"},"151":{"ingredients":[{"itemID":567,"quantity":1},{"itemID":62,"quantity":1},{"itemID":390,"quantity":100}],"isBigCraftable":true,"itemID":151,"unlockConditions":"Carpenter's Shop(5,000g)"},"152":{"ingredients":[{"itemID":388,"quantity":50},{"itemID":787,"quantity":1}],"isBigCraftable":true,"itemID":152,"unlockConditions":"Carpenter's Shop (500g)"},"153":{"ingredients":[{"itemID":335,"quantity":1},{"itemID":787,"quantity":1}],"isBigCraftable":true,"itemID":153,"unlockConditions":"Carpenter's Shop(1,000g)"},"154":{"ingredients":[{"itemID":709,"quantity":25},{"itemID":336,"quantity":1},{"itemID":335,"quantity":1},{"itemID":771,"quantity":50}],"isBigCraftable":true,"itemID":154,"unlockConditions":"Reach level 8 in Fishing skill."},"156":{"ingredients":[{"itemID":337,"quantity":2},{"itemID":766,"quantity":100}],"isBigCraftable":true,"itemID":156,"unlockConditions":"Reach level 8 in Combat skill."},"158":{"ingredients":[{"itemID":382,"quantity":25},{"itemID":82,"quantity":1},{"itemID":787,"quantity":1}],"isBigCraftable":true,"itemID":158,"unlockConditions":"Reach level 6 in Combat skill."},"16":{"ingredients":[{"itemID":388,"quantity":45},{"itemID":390,"quantity":45},{"itemID":709,"quantity":10},{"itemID":334,"quantity":1}],"isBigCraftable":true,"itemID":16,"unlockConditions":"Reach level 6 in Farming skill."},"163":{"ingredients":[{"itemID":388,"quantity":20},{"itemID":709,"quantity":1}],"isBigCraftable":true,"itemID":163,"unlockConditions":"Final Farmhouse upgrade"},"167":{"ingredients":[{"itemID":388,"quantity":50},{"itemID":386,"quantity":1},{"itemID":771,"quantity":40}],"isBigCraftable":true,"itemID":167,"unlockConditions":"Letter after collecting all rarecrows"},"17":{"ingredients":[{"itemID":388,"quantity":60},{"itemID":771,"quantity":30},{"itemID":726,"quantity":1}],"isBigCraftable":true,"itemID":17,"unlockConditions":"Reach level 7 in Farming skill."},"182":{"ingredients":[{"itemID":336,"quantity":2},{"itemID":390,"quantity":50},{"itemID":72,"quantity":1}],"isBigCraftable":true,"itemID":182,"unlockConditions":"\"Cave Patrol\" Special Order"},"19":{"ingredients":[{"itemID":766,"quantity":50},{"itemID":709,"quantity":20},{"itemID":336,"quantity":1}],"isBigCraftable":true,"itemID":19,"unlockConditions":"Reach level 8 in Farming skill."},"20":{"ingredients":[{"itemID":388,"quantity":25},{"itemID":390,"quantity":25},{"itemID":335,"quantity":1}],"isBigCraftable":true,"itemID":20,"unlockConditions":"Reach level 4 in Fishing skill."},"209":{"ingredients":[{"itemID":335,"quantity":2},{"itemID":787,"quantity":1}],"isBigCraftable":true,"itemID":209,"unlockConditions":"Gus\u00a0(5-heart event)"},"21":{"ingredients":[{"itemID":390,"quantity":99},{"itemID":336,"quantity":5},{"itemID":337,"quantity":2},{"itemID":787,"quantity":1}],"isBigCraftable":true,"itemID":21,"unlockConditions":"Reach level 9 in Mining skill."},"231":{"ingredients":[{"itemID":338,"quantity":10},{"itemID":335,"quantity":5},{"itemID":336,"quantity":5}],"isBigCraftable":true,"itemID":231,"unlockConditions":"\"Island Ingredients\" Special Order"},"232":{"ingredients":[{"itemID":390,"quantity":50}],"isBigCraftable":true,"itemID":232,"unlockConditions":"\"Robin's Resource Rush\" Special Order"},"238":{"ingredients":[{"itemID":709,"quantity":30},{"itemID":768,"quantity":20},{"itemID":336,"quantity":3}],"isBigCraftable":true,"itemID":238,"unlockConditions":"\"A Curious Substance\" special order"},"239":{"ingredients":[{"itemID":122,"quantity":1},{"itemID":787,"quantity":1},{"itemID":338,"quantity":10}],"isBigCraftable":true,"itemID":239,"unlockConditions":"Special Order"},"24":{"ingredients":[{"itemID":388,"quantity":15},{"itemID":390,"quantity":15},{"itemID":86,"quantity":1},{"itemID":334,"quantity":1}],"isBigCraftable":true,"itemID":24,"unlockConditions":"Reach level 2 in Farming skill."},"25":{"ingredients":[{"itemID":388,"quantity":25},{"itemID":382,"quantity":10},{"itemID":336,"quantity":1}],"isBigCraftable":true,"itemID":25,"unlockConditions":"Reach level 9 in Farming skill."},"251":{"ingredients":[{"itemID":-777,"quantity":2},{"itemID":771,"quantity":5},{"itemID":388,"quantity":5}],"isBigCraftable":false,"itemID":251,"unlockConditions":"Mail the day after Caroline's 2-heart event."},"254":{"ingredients":[{"itemID":881,"quantity":50},{"itemID":709,"quantity":50},{"itemID":848,"quantity":20}],"isBigCraftable":true,"itemID":254,"unlockConditions":"Professor Snail"},"261":{"ingredients":[{"itemID":709,"quantity":2},{"itemID":88,"quantity":1},{"itemID":386,"quantity":4}],"isBigCraftable":false,"itemID":261,"unlockConditions":"Desert Trader for  Iridium Bar\u00a0(10)"},"264":{"ingredients":[{"itemID":709,"quantity":30},{"itemID":910,"quantity":1}],"isBigCraftable":true,"itemID":264,"unlockConditions":"Qi's Secret Walnut Room for 20 Qi Gems"},"275":{"ingredients":[{"itemID":709,"quantity":10},{"itemID":337,"quantity":1},{"itemID":910,"quantity":1}],"isBigCraftable":true,"itemID":275,"unlockConditions":"Qi's Walnut Room for 50 Qi Gems"},"286":{"ingredients":[{"itemID":378,"quantity":4},{"itemID":382,"quantity":1}],"isBigCraftable":false,"itemID":286,"unlockConditions":"Reach level 1 in Mining skill."},"287":{"ingredients":[{"itemID":380,"quantity":4},{"itemID":382,"quantity":1}],"isBigCraftable":false,"itemID":287,"unlockConditions":"Reach level 6 in Mining skill."},"288":{"ingredients":[{"itemID":384,"quantity":4},{"itemID":768,"quantity":1},{"itemID":769,"quantity":1}],"isBigCraftable":false,"itemID":288,"unlockConditions":"Reach level 8 in Mining skill."},"293":{"ingredients":[{"itemID":330,"quantity":2},{"itemID":390,"quantity":5}],"isBigCraftable":false,"itemID":293,"unlockConditions":"Carpenter's Shop for 500g"},"297":{"ingredients":[{"itemID":771,"quantity":10}],"isBigCraftable":false,"itemID":297,"unlockConditions":"Pierre's for 1,000g"},"298":{"ingredients":[{"itemID":709,"quantity":1}],"isBigCraftable":false,"itemID":298,"unlockConditions":"Reach level 6 in Farming skill."},"322":{"ingredients":[{"itemID":388,"quantity":2}],"isBigCraftable":false,"itemID":322,"unlockConditions":"Starter Recipe - no steps required!"},"323":{"ingredients":[{"itemID":390,"quantity":2}],"isBigCraftable":false,"itemID":323,"unlockConditions":"Reach level 2 in Farming skill."},"324":{"ingredients":[{"itemID":335,"quantity":1}],"isBigCraftable":false,"itemID":324,"unlockConditions":"Reach level 4 in Farming skill."},"325":{"ingredients":[{"itemID":388,"quantity":10}],"isBigCraftable":false,"itemID":325,"unlockConditions":"Starter Recipe - no steps required!"},"328":{"ingredients":[{"itemID":388,"quantity":1}],"isBigCraftable":false,"itemID":328,"unlockConditions":"Carpenter's Shop for 100g"},"329":{"ingredients":[{"itemID":390,"quantity":1}],"isBigCraftable":false,"itemID":329,"unlockConditions":"Carpenter's Shop for 100g"},"331":{"ingredients":[{"itemID":388,"quantity":1}],"isBigCraftable":false,"itemID":331,"unlockConditions":"Dwarf for 500g"},"333":{"ingredients":[{"itemID":338,"quantity":1}],"isBigCraftable":false,"itemID":333,"unlockConditions":"Krobus for 500g"},"335":{"ingredients":[{"itemID":334,"quantity":3}],"isBigCraftable":false,"itemID":335,"unlockConditions":"Reach level 4 in Mining skill."},"336":{"ingredients":[{"itemID":335,"quantity":2}],"isBigCraftable":false,"itemID":336,"unlockConditions":"Reach level 7 in Mining skill."},"368":{"ingredients":[{"itemID":92,"quantity":2}],"isBigCraftable":false,"itemID":368,"unlockConditions":"Reach level 1 in Farming skill."},"369":{"ingredients":[{"itemID":92,"quantity":2},{"itemID":-4,"quantity":1}],"isBigCraftable":false,"itemID":369,"unlockConditions":"Reach level 9 in Farming skill."},"37":{"ingredients":[{"itemID":388,"quantity":25}],"isBigCraftable":true,"itemID":37,"unlockConditions":"Starter Recipe - no steps required!"},"370":{"ingredients":[{"itemID":390,"quantity":2}],"isBigCraftable":false,"itemID":370,"unlockConditions":"Reach level 4 in Farming skill."},"371":{"ingredients":[{"itemID":390,"quantity":3},{"itemID":330,"quantity":1}],"isBigCraftable":false,"itemID":371,"unlockConditions":"Reach level 7 in Farming skill."},"38":{"ingredients":[{"itemID":390,"quantity":25}],"isBigCraftable":true,"itemID":38,"unlockConditions":"Starter Recipe - no steps required!"},"39":{"ingredients":[{"itemID":767,"quantity":5},{"itemID":881,"quantity":5}],"isBigCraftable":true,"itemID":39,"unlockConditions":"Reach 3 hearts with Krobus."},"401":{"ingredients":[{"itemID":388,"quantity":1},{"itemID":771,"quantity":1}],"isBigCraftable":false,"itemID":401,"unlockConditions":"Carpenter's Shop for 200g"},"403":{"ingredients":[{"itemID":309,"quantity":1},{"itemID":310,"quantity":1},{"itemID":311,"quantity":1}],"isBigCraftable":false,"itemID":403,"unlockConditions":"Reach level 1 in Foraging skill."},"405":{"ingredients":[{"itemID":388,"quantity":1}],"isBigCraftable":false,"itemID":405,"unlockConditions":"Starter Recipe - no steps required!"},"407":{"ingredients":[{"itemID":390,"quantity":1}],"isBigCraftable":false,"itemID":407,"unlockConditions":"Starter Recipe - no steps required!"},"409":{"ingredients":[{"itemID":338,"quantity":1}],"isBigCraftable":false,"itemID":409,"unlockConditions":"Carpenter's Shop for 200g"},"411":{"ingredients":[{"itemID":390,"quantity":1}],"isBigCraftable":false,"itemID":411,"unlockConditions":"Starter Recipe - no steps required!"},"415":{"ingredients":[{"itemID":390,"quantity":1}],"isBigCraftable":false,"itemID":415,"unlockConditions":"Carpenter's Shop for 100g"},"441":{"ingredients":[{"itemID":335,"quantity":1},{"itemID":382,"quantity":2}],"isBigCraftable":false,"itemID":441,"unlockConditions":"Reach level 8 in Combat skill."},"463":{"ingredients":[{"itemID":390,"quantity":10},{"itemID":378,"quantity":2},{"itemID":771,"quantity":20}],"isBigCraftable":false,"itemID":463,"unlockConditions":"Robin\u00a0(6-heart event)"},"464":{"ingredients":[{"itemID":388,"quantity":10},{"itemID":378,"quantity":2},{"itemID":771,"quantity":20}],"isBigCraftable":false,"itemID":464,"unlockConditions":"Robin\u00a0(6-heart event)"},"465":{"ingredients":[{"itemID":726,"quantity":1},{"itemID":372,"quantity":1}],"isBigCraftable":false,"itemID":465,"unlockConditions":"Reach level 3 in Farming skill."},"466":{"ingredients":[{"itemID":725,"quantity":1},{"itemID":393,"quantity":1}],"isBigCraftable":false,"itemID":466,"unlockConditions":"Reach level 8 in Farming skill."},"495":{"ingredients":[{"itemID":16,"quantity":1},{"itemID":18,"quantity":1},{"itemID":20,"quantity":1},{"itemID":22,"quantity":1}],"isBigCraftable":false,"itemID":495,"unlockConditions":"Reach level 1 in Foraging skill."},"496":{"ingredients":[{"itemID":396,"quantity":1},{"itemID":398,"quantity":1},{"itemID":402,"quantity":1}],"isBigCraftable":false,"itemID":496,"unlockConditions":"Reach level 4 in Foraging skill."},"497":{"ingredients":[{"itemID":404,"quantity":1},{"itemID":406,"quantity":1},{"itemID":408,"quantity":1},{"itemID":410,"quantity":1}],"isBigCraftable":false,"itemID":497,"unlockConditions":"Reach level 6 in Foraging skill."},"498":{"ingredients":[{"itemID":412,"quantity":1},{"itemID":414,"quantity":1},{"itemID":416,"quantity":1},{"itemID":418,"quantity":1}],"isBigCraftable":false,"itemID":498,"unlockConditions":"Reach level 7 in Foraging skill."},"499":{"ingredients":[{"itemID":114,"quantity":1}],"isBigCraftable":false,"itemID":499,"unlockConditions":"Donating Ancient Seed artifact to Museum"},"521":{"ingredients":[{"itemID":335,"quantity":10},{"itemID":382,"quantity":25},{"itemID":84,"quantity":10}],"isBigCraftable":false,"itemID":521,"unlockConditions":"Reach level 4 in Combat skill."},"524":{"ingredients":[{"itemID":336,"quantity":5},{"itemID":335,"quantity":5},{"itemID":72,"quantity":1}],"isBigCraftable":false,"itemID":524,"unlockConditions":"Reach level 7 in Combat skill."},"525":{"ingredients":[{"itemID":334,"quantity":2},{"itemID":684,"quantity":25},{"itemID":766,"quantity":25}],"isBigCraftable":false,"itemID":525,"unlockConditions":"Reach level 1 in Combat skill."},"527":{"ingredients":[{"itemID":337,"quantity":5},{"itemID":768,"quantity":50},{"itemID":769,"quantity":50}],"isBigCraftable":false,"itemID":527,"unlockConditions":"Reach level 9 in Combat skill."},"599":{"ingredients":[{"itemID":334,"quantity":1},{"itemID":335,"quantity":1}],"isBigCraftable":false,"itemID":599,"unlockConditions":"Reach level 2 in Farming skill."},"62":{"ingredients":[{"itemID":330,"quantity":1},{"itemID":390,"quantity":10},{"itemID":338,"quantity":1}],"isBigCraftable":true,"itemID":62,"unlockConditions":"Evelyn cutscene after completing the Greenhouse"},"621":{"ingredients":[{"itemID":335,"quantity":1},{"itemID":336,"quantity":1},{"itemID":338,"quantity":1}],"isBigCraftable":false,"itemID":621,"unlockConditions":"Reach level 6 in Farming skill."},"645":{"ingredients":[{"itemID":336,"quantity":1},{"itemID":337,"quantity":1},{"itemID":787,"quantity":1}],"isBigCraftable":false,"itemID":645,"unlockConditions":"Reach level 9 in Farming skill."},"681":{"ingredients":[{"itemID":709,"quantity":1},{"itemID":432,"quantity":1},{"itemID":726,"quantity":5}],"isBigCraftable":false,"itemID":681,"unlockConditions":"Reach level 9 in Foraging skill."},"685":{"ingredients":[{"itemID":684,"quantity":1}],"isBigCraftable":false,"itemID":685,"unlockConditions":"Reach level 2 in Fishing skill."},"686":{"ingredients":[{"itemID":335,"quantity":2}],"isBigCraftable":false,"itemID":686,"unlockConditions":"Reach level 6 in Fishing skill."},"687":{"ingredients":[{"itemID":335,"quantity":2},{"itemID":428,"quantity":1}],"isBigCraftable":false,"itemID":687,"unlockConditions":"Reach level 8 in Fishing skill."},"688":{"ingredients":[{"itemID":709,"quantity":1},{"itemID":340,"quantity":1},{"itemID":771,"quantity":20}],"isBigCraftable":false,"itemID":688,"unlockConditions":"Reach level 8 in Foraging skill."},"689":{"ingredients":[{"itemID":709,"quantity":1},{"itemID":335,"quantity":1},{"itemID":390,"quantity":25}],"isBigCraftable":false,"itemID":689,"unlockConditions":"Reach level 7 in Foraging skill."},"690":{"ingredients":[{"itemID":709,"quantity":1},{"itemID":393,"quantity":2},{"itemID":771,"quantity":10}],"isBigCraftable":false,"itemID":690,"unlockConditions":"Reach level 6 in Foraging skill."},"691":{"ingredients":[{"itemID":334,"quantity":1},{"itemID":335,"quantity":1},{"itemID":336,"quantity":1}],"isBigCraftable":false,"itemID":691,"unlockConditions":"Reach level 8 in Fishing skill."},"693":{"ingredients":[{"itemID":336,"quantity":2}],"isBigCraftable":false,"itemID":693,"unlockConditions":"Reach level 7 in Fishing skill."},"694":{"ingredients":[{"itemID":334,"quantity":1},{"itemID":92,"quantity":10}],"isBigCraftable":false,"itemID":694,"unlockConditions":"Reach level 6 in Fishing skill."},"695":{"ingredients":[{"itemID":388,"quantity":10},{"itemID":709,"quantity":5},{"itemID":766,"quantity":10}],"isBigCraftable":false,"itemID":695,"unlockConditions":"Reach level 7 in Fishing skill."},"703":{"ingredients":[{"itemID":335,"quantity":1}],"isBigCraftable":false,"itemID":703,"unlockConditions":"Reach level 9 in Fishing skill."},"71":{"ingredients":[{"itemID":390,"quantity":99}],"isBigCraftable":true,"itemID":71,"unlockConditions":"Reach level 2 in Mining skill."},"710":{"ingredients":[{"itemID":388,"quantity":40},{"itemID":335,"quantity":3}],"isBigCraftable":false,"itemID":710,"unlockConditions":"Reach level 3 in Fishing skill."},"746":{"ingredients":[{"itemID":276,"quantity":1},{"itemID":93,"quantity":1}],"isBigCraftable":false,"itemID":746,"unlockConditions":"Spirit's Eve (2,000g)"},"772":{"ingredients":[{"itemID":248,"quantity":10},{"itemID":247,"quantity":1}],"isBigCraftable":false,"itemID":772,"unlockConditions":"Reach level 6 in Combat skill."},"773":{"ingredients":[{"itemID":420,"quantity":1},{"itemID":422,"quantity":1},{"itemID":257,"quantity":1},{"itemID":281,"quantity":1}],"isBigCraftable":false,"itemID":773,"unlockConditions":"Reach level 2 in Combat skill."},"774":{"ingredients":[{"itemID":771,"quantity":10},{"itemID":684,"quantity":5},{"itemID":766,"quantity":5}],"isBigCraftable":false,"itemID":774,"unlockConditions":"Linus\u00a0(4-heart event)"},"8":{"ingredients":[{"itemID":388,"quantity":50},{"itemID":382,"quantity":1},{"itemID":771,"quantity":20}],"isBigCraftable":true,"itemID":8,"unlockConditions":"Reach level 1 in Farming skill."},"805":{"ingredients":[{"itemID":771,"quantity":5},{"itemID":390,"quantity":5}],"isBigCraftable":false,"itemID":805,"unlockConditions":"Reach level 7 in Foraging skill."},"83":{"ingredients":[{"itemID":382,"quantity":5},{"itemID":390,"quantity":25}],"isBigCraftable":true,"itemID":83,"unlockConditions":"Krobus (1,000g)"},"839":{"ingredients":[{"itemID":881,"quantity":50},{"itemID":390,"quantity":50},{"itemID":336,"quantity":1}],"isBigCraftable":false,"itemID":839,"unlockConditions":"Reach level 7 in Combat skill."},"840":{"ingredients":[{"itemID":388,"quantity":1}],"isBigCraftable":false,"itemID":840,"unlockConditions":"Carpenter's Shop for 200g"},"841":{"ingredients":[{"itemID":390,"quantity":1}],"isBigCraftable":false,"itemID":841,"unlockConditions":"Carpenter's Shop for 200g"},"872":{"ingredients":[{"itemID":72,"quantity":1},{"itemID":595,"quantity":1}],"isBigCraftable":false,"itemID":872,"unlockConditions":"\"The Pirate's Wife\" quest"},"874":{"ingredients":[{"itemID":684,"quantity":10}],"isBigCraftable":false,"itemID":874,"unlockConditions":"Reach level 1 in Combat skill."},"877":{"ingredients":[{"itemID":334,"quantity":1},{"itemID":92,"quantity":20},{"itemID":768,"quantity":5}],"isBigCraftable":false,"itemID":877,"unlockConditions":"\"Juicy Bugs Wanted!\" Special Order"},"879":{"ingredients":[{"itemID":767,"quantity":30},{"itemID":766,"quantity":30}],"isBigCraftable":false,"itemID":879,"unlockConditions":"\"Prismatic Jelly\" Special Order"},"885":{"ingredients":[{"itemID":770,"quantity":1},{"itemID":92,"quantity":5},{"itemID":330,"quantity":1}],"isBigCraftable":false,"itemID":885,"unlockConditions":"\"Community Cleanup\" Special Order"},"886":{"ingredients":[{"itemID":709,"quantity":5},{"itemID":852,"quantity":1},{"itemID":829,"quantity":1}],"isBigCraftable":false,"itemID":886,"unlockConditions":"Volcano Dwarf for 10,000g"},"888":{"ingredients":[{"itemID":768,"quantity":5},{"itemID":335,"quantity":5}],"isBigCraftable":false,"itemID":888,"unlockConditions":"Reach level 4 in Mining skill."},"9":{"ingredients":[{"itemID":335,"quantity":1},{"itemID":338,"quantity":1},{"itemID":767,"quantity":5}],"isBigCraftable":true,"itemID":9,"unlockConditions":"Reach level 6 in Foraging skill."},"90":{"ingredients":[{"itemID":881,"quantity":10},{"itemID":330,"quantity":3},{"itemID":390,"quantity":20}],"isBigCraftable":true,"itemID":90,"unlockConditions":"\"Fragments of the past\" Special Order"},"908":{"ingredients":[{"itemID":909,"quantity":1},{"itemID":684,"quantity":3}],"isBigCraftable":false,"itemID":908,"unlockConditions":"Qi's Walnut Room for 20 Qi Gems"},"918":{"ingredients":[{"itemID":909,"quantity":1},{"itemID":881,"quantity":3},{"itemID":768,"quantity":1}],"isBigCraftable":false,"itemID":918,"unlockConditions":"Qi's Walnut Room for 30 Qi Gems"},"919":{"ingredients":[{"itemID":337,"quantity":1},{"itemID":92,"quantity":40}],"isBigCraftable":false,"itemID":919,"unlockConditions":"Qi's Walnut Roomfor 20 Qi Gems"},"920":{"ingredients":[{"itemID":390,"quantity":5},{"itemID":771,"quantity":3},{"itemID":330,"quantity":1}],"isBigCraftable":false,"itemID":920,"unlockConditions":"Island Trader for  Cinder Shard\u00a0(50)"},"926":{"ingredients":[{"itemID":388,"quantity":15},{"itemID":771,"quantity":10},{"itemID":382,"quantity":3}],"isBigCraftable":false,"itemID":926,"unlockConditions":"Reach level 9 in Foraging skill."},"93":{"ingredients":[{"itemID":388,"quantity":1},{"itemID":92,"quantity":2}],"isBigCraftable":false,"itemID":93,"unlockConditions":"Starter Recipe - no steps required!"}}
+{
+  "10": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 40 },
+      { "itemID": 382, "quantity": 8 },
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 724, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 10,
+    "unlockConditions": "Reach level 3 in Farming skill."
+  },
+  "105": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 40 },
+      { "itemID": 334, "quantity": 2 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 105,
+    "unlockConditions": "Reach level 3 in Foraging skill."
+  },
+  "108": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 15 },
+      { "itemID": 427, "quantity": 1 },
+      { "itemID": 429, "quantity": 1 },
+      { "itemID": 453, "quantity": 1 },
+      { "itemID": 455, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 108,
+    "unlockConditions": "Flower Dance (1,000g)"
+  },
+  "114": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 20 },
+      { "itemID": 334, "quantity": 2 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 114,
+    "unlockConditions": "Reach level 4 in Foraging skill."
+  },
+  "12": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 30 },
+      { "itemID": 334, "quantity": 1 },
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 725, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 12,
+    "unlockConditions": "Reach level 8 in Farming skill."
+  },
+  "13": {
+    "ingredients": [
+      { "itemID": 378, "quantity": 20 },
+      { "itemID": 390, "quantity": 25 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 13,
+    "unlockConditions": "Reach farmer level 2."
+  },
+  "130": {
+    "ingredients": [{ "itemID": 388, "quantity": 50 }],
+    "isBigCraftable": true,
+    "itemID": 130,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "143": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 10 },
+      { "itemID": 382, "quantity": 1 },
+      { "itemID": 771, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 143,
+    "unlockConditions": "Carpenter's Shop (250g)"
+  },
+  "144": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 10 },
+      { "itemID": 382, "quantity": 1 },
+      { "itemID": 771, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 144,
+    "unlockConditions": "Carpenter's Shop (400g)"
+  },
+  "145": {
+    "ingredients": [
+      { "itemID": 336, "quantity": 1 },
+      { "itemID": 382, "quantity": 1 },
+      { "itemID": 771, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 145,
+    "unlockConditions": "Carpenter's Shop(1,000g)"
+  },
+  "146": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 10 },
+      { "itemID": 388, "quantity": 10 },
+      { "itemID": 771, "quantity": 10 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 146,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "147": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 5 },
+      { "itemID": 382, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 147,
+    "unlockConditions": "Carpenter's Shop (800g)"
+  },
+  "148": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 10 },
+      { "itemID": 382, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 148,
+    "unlockConditions": "Carpenter's Shop(2,000g)"
+  },
+  "149": {
+    "ingredients": [{ "itemID": 881, "quantity": 10 }],
+    "isBigCraftable": true,
+    "itemID": 149,
+    "unlockConditions": "Carpenter's Shop(3,000g)"
+  },
+  "15": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 50 },
+      { "itemID": 390, "quantity": 40 },
+      { "itemID": 382, "quantity": 8 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 15,
+    "unlockConditions": "Reach level 4 in Farming skill."
+  },
+  "150": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 50 },
+      { "itemID": 768, "quantity": 1 },
+      { "itemID": 382, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 150,
+    "unlockConditions": "Carpenter's Shop (800g)"
+  },
+  "151": {
+    "ingredients": [
+      { "itemID": 567, "quantity": 1 },
+      { "itemID": 62, "quantity": 1 },
+      { "itemID": 390, "quantity": 100 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 151,
+    "unlockConditions": "Carpenter's Shop(5,000g)"
+  },
+  "152": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 50 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 152,
+    "unlockConditions": "Carpenter's Shop (500g)"
+  },
+  "153": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 153,
+    "unlockConditions": "Carpenter's Shop(1,000g)"
+  },
+  "154": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 25 },
+      { "itemID": 336, "quantity": 1 },
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 771, "quantity": 50 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 154,
+    "unlockConditions": "Reach level 8 in Fishing skill."
+  },
+  "156": {
+    "ingredients": [
+      { "itemID": 337, "quantity": 2 },
+      { "itemID": 766, "quantity": 100 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 156,
+    "unlockConditions": "Reach level 8 in Combat skill."
+  },
+  "158": {
+    "ingredients": [
+      { "itemID": 382, "quantity": 25 },
+      { "itemID": 82, "quantity": 1 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 158,
+    "unlockConditions": "Reach level 6 in Combat skill."
+  },
+  "16": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 45 },
+      { "itemID": 390, "quantity": 45 },
+      { "itemID": 709, "quantity": 10 },
+      { "itemID": 334, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 16,
+    "unlockConditions": "Reach level 6 in Farming skill."
+  },
+  "163": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 20 },
+      { "itemID": 709, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 163,
+    "unlockConditions": "Final Farmhouse upgrade"
+  },
+  "167": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 50 },
+      { "itemID": 386, "quantity": 1 },
+      { "itemID": 771, "quantity": 40 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 167,
+    "unlockConditions": "Letter after collecting all rarecrows"
+  },
+  "17": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 60 },
+      { "itemID": 771, "quantity": 30 },
+      { "itemID": 726, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 17,
+    "unlockConditions": "Reach level 7 in Farming skill."
+  },
+  "182": {
+    "ingredients": [
+      { "itemID": 336, "quantity": 2 },
+      { "itemID": 390, "quantity": 50 },
+      { "itemID": 72, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 182,
+    "unlockConditions": "\"Cave Patrol\" Special Order"
+  },
+  "19": {
+    "ingredients": [
+      { "itemID": 766, "quantity": 50 },
+      { "itemID": 709, "quantity": 20 },
+      { "itemID": 336, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 19,
+    "unlockConditions": "Reach level 8 in Farming skill."
+  },
+  "20": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 25 },
+      { "itemID": 390, "quantity": 25 },
+      { "itemID": 335, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 20,
+    "unlockConditions": "Reach level 4 in Fishing skill."
+  },
+  "209": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 2 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 209,
+    "unlockConditions": "Gus\u00a0(5-heart event)"
+  },
+  "21": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 99 },
+      { "itemID": 336, "quantity": 5 },
+      { "itemID": 337, "quantity": 2 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 21,
+    "unlockConditions": "Reach level 9 in Mining skill."
+  },
+  "231": {
+    "ingredients": [
+      { "itemID": 338, "quantity": 10 },
+      { "itemID": 335, "quantity": 5 },
+      { "itemID": 336, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 231,
+    "unlockConditions": "\"Island Ingredients\" Special Order"
+  },
+  "232": {
+    "ingredients": [{ "itemID": 390, "quantity": 50 }],
+    "isBigCraftable": true,
+    "itemID": 232,
+    "unlockConditions": "\"Robin's Resource Rush\" Special Order"
+  },
+  "238": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 30 },
+      { "itemID": 768, "quantity": 20 },
+      { "itemID": 336, "quantity": 3 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 238,
+    "unlockConditions": "\"A Curious Substance\" special order"
+  },
+  "239": {
+    "ingredients": [
+      { "itemID": 122, "quantity": 1 },
+      { "itemID": 787, "quantity": 1 },
+      { "itemID": 338, "quantity": 10 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 239,
+    "unlockConditions": "Special Order"
+  },
+  "24": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 15 },
+      { "itemID": 390, "quantity": 15 },
+      { "itemID": 86, "quantity": 1 },
+      { "itemID": 334, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 24,
+    "unlockConditions": "Reach level 2 in Farming skill."
+  },
+  "25": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 25 },
+      { "itemID": 382, "quantity": 10 },
+      { "itemID": 336, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 25,
+    "unlockConditions": "Reach level 9 in Farming skill."
+  },
+  "251": {
+    "ingredients": [
+      { "itemID": -777, "quantity": 2 },
+      { "itemID": 771, "quantity": 5 },
+      { "itemID": 388, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 251,
+    "unlockConditions": "Mail the day after Caroline's 2-heart event."
+  },
+  "254": {
+    "ingredients": [
+      { "itemID": 881, "quantity": 50 },
+      { "itemID": 709, "quantity": 50 },
+      { "itemID": 848, "quantity": 20 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 254,
+    "unlockConditions": "Professor Snail"
+  },
+  "261": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 2 },
+      { "itemID": 88, "quantity": 1 },
+      { "itemID": 386, "quantity": 4 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 261,
+    "unlockConditions": "Desert Trader for  Iridium Bar\u00a0(10)"
+  },
+  "264": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 30 },
+      { "itemID": 910, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 264,
+    "unlockConditions": "Qi's Secret Walnut Room for 20 Qi Gems"
+  },
+  "275": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 10 },
+      { "itemID": 337, "quantity": 1 },
+      { "itemID": 910, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 275,
+    "unlockConditions": "Qi's Walnut Room for 50 Qi Gems"
+  },
+  "286": {
+    "ingredients": [
+      { "itemID": 378, "quantity": 4 },
+      { "itemID": 382, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 286,
+    "unlockConditions": "Reach level 1 in Mining skill."
+  },
+  "287": {
+    "ingredients": [
+      { "itemID": 380, "quantity": 4 },
+      { "itemID": 382, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 287,
+    "unlockConditions": "Reach level 6 in Mining skill."
+  },
+  "288": {
+    "ingredients": [
+      { "itemID": 384, "quantity": 4 },
+      { "itemID": 768, "quantity": 1 },
+      { "itemID": 769, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 288,
+    "unlockConditions": "Reach level 8 in Mining skill."
+  },
+  "293": {
+    "ingredients": [
+      { "itemID": 330, "quantity": 2 },
+      { "itemID": 390, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 293,
+    "unlockConditions": "Carpenter's Shop for 500g"
+  },
+  "297": {
+    "ingredients": [{ "itemID": 771, "quantity": 10 }],
+    "isBigCraftable": false,
+    "itemID": 297,
+    "unlockConditions": "Pierre's for 1,000g"
+  },
+  "298": {
+    "ingredients": [{ "itemID": 709, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 298,
+    "unlockConditions": "Reach level 6 in Farming skill."
+  },
+  "322": {
+    "ingredients": [{ "itemID": 388, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 322,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "323": {
+    "ingredients": [{ "itemID": 390, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 323,
+    "unlockConditions": "Reach level 2 in Farming skill."
+  },
+  "324": {
+    "ingredients": [{ "itemID": 335, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 324,
+    "unlockConditions": "Reach level 4 in Farming skill."
+  },
+  "325": {
+    "ingredients": [{ "itemID": 388, "quantity": 10 }],
+    "isBigCraftable": false,
+    "itemID": 325,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "328": {
+    "ingredients": [{ "itemID": 388, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 328,
+    "unlockConditions": "Carpenter's Shop for 100g"
+  },
+  "329": {
+    "ingredients": [{ "itemID": 390, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 329,
+    "unlockConditions": "Carpenter's Shop for 100g"
+  },
+  "331": {
+    "ingredients": [{ "itemID": 388, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 331,
+    "unlockConditions": "Dwarf for 500g"
+  },
+  "333": {
+    "ingredients": [{ "itemID": 338, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 333,
+    "unlockConditions": "Krobus for 500g"
+  },
+  "335": {
+    "ingredients": [{ "itemID": 334, "quantity": 3 }],
+    "isBigCraftable": false,
+    "itemID": 335,
+    "unlockConditions": "Reach level 4 in Mining skill."
+  },
+  "336": {
+    "ingredients": [{ "itemID": 335, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 336,
+    "unlockConditions": "Reach level 7 in Mining skill."
+  },
+  "368": {
+    "ingredients": [{ "itemID": 92, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 368,
+    "unlockConditions": "Reach level 1 in Farming skill."
+  },
+  "369": {
+    "ingredients": [
+      { "itemID": 92, "quantity": 2 },
+      { "itemID": -4, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 369,
+    "unlockConditions": "Reach level 9 in Farming skill."
+  },
+  "37": {
+    "ingredients": [{ "itemID": 388, "quantity": 25 }],
+    "isBigCraftable": true,
+    "itemID": 37,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "370": {
+    "ingredients": [{ "itemID": 390, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 370,
+    "unlockConditions": "Reach level 4 in Farming skill."
+  },
+  "371": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 3 },
+      { "itemID": 330, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 371,
+    "unlockConditions": "Reach level 7 in Farming skill."
+  },
+  "38": {
+    "ingredients": [{ "itemID": 390, "quantity": 25 }],
+    "isBigCraftable": true,
+    "itemID": 38,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "39": {
+    "ingredients": [
+      { "itemID": 767, "quantity": 5 },
+      { "itemID": 881, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 39,
+    "unlockConditions": "Reach 3 hearts with Krobus."
+  },
+  "401": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 1 },
+      { "itemID": 771, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 401,
+    "unlockConditions": "Carpenter's Shop for 200g"
+  },
+  "403": {
+    "ingredients": [
+      { "itemID": 309, "quantity": 1 },
+      { "itemID": 310, "quantity": 1 },
+      { "itemID": 311, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 403,
+    "unlockConditions": "Reach level 1 in Foraging skill."
+  },
+  "405": {
+    "ingredients": [{ "itemID": 388, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 405,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "407": {
+    "ingredients": [{ "itemID": 390, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 407,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "409": {
+    "ingredients": [{ "itemID": 338, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 409,
+    "unlockConditions": "Carpenter's Shop for 200g"
+  },
+  "411": {
+    "ingredients": [{ "itemID": 390, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 411,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "415": {
+    "ingredients": [{ "itemID": 390, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 415,
+    "unlockConditions": "Carpenter's Shop for 100g"
+  },
+  "441": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 382, "quantity": 2 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 441,
+    "unlockConditions": "Reach level 8 in Combat skill."
+  },
+  "463": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 10 },
+      { "itemID": 378, "quantity": 2 },
+      { "itemID": 771, "quantity": 20 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 463,
+    "unlockConditions": "Robin\u00a0(6-heart event)"
+  },
+  "464": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 10 },
+      { "itemID": 378, "quantity": 2 },
+      { "itemID": 771, "quantity": 20 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 464,
+    "unlockConditions": "Robin\u00a0(6-heart event)"
+  },
+  "465": {
+    "ingredients": [
+      { "itemID": 726, "quantity": 1 },
+      { "itemID": 372, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 465,
+    "unlockConditions": "Reach level 3 in Farming skill."
+  },
+  "466": {
+    "ingredients": [
+      { "itemID": 725, "quantity": 1 },
+      { "itemID": 393, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 466,
+    "unlockConditions": "Reach level 8 in Farming skill."
+  },
+  "495": {
+    "ingredients": [
+      { "itemID": 16, "quantity": 1 },
+      { "itemID": 18, "quantity": 1 },
+      { "itemID": 20, "quantity": 1 },
+      { "itemID": 22, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 495,
+    "unlockConditions": "Reach level 1 in Foraging skill."
+  },
+  "496": {
+    "ingredients": [
+      { "itemID": 396, "quantity": 1 },
+      { "itemID": 398, "quantity": 1 },
+      { "itemID": 402, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 496,
+    "unlockConditions": "Reach level 4 in Foraging skill."
+  },
+  "497": {
+    "ingredients": [
+      { "itemID": 404, "quantity": 1 },
+      { "itemID": 406, "quantity": 1 },
+      { "itemID": 408, "quantity": 1 },
+      { "itemID": 410, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 497,
+    "unlockConditions": "Reach level 6 in Foraging skill."
+  },
+  "498": {
+    "ingredients": [
+      { "itemID": 412, "quantity": 1 },
+      { "itemID": 414, "quantity": 1 },
+      { "itemID": 416, "quantity": 1 },
+      { "itemID": 418, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 498,
+    "unlockConditions": "Reach level 7 in Foraging skill."
+  },
+  "499": {
+    "ingredients": [{ "itemID": 114, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 499,
+    "unlockConditions": "Donating Ancient Seed artifact to Museum"
+  },
+  "521": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 10 },
+      { "itemID": 382, "quantity": 25 },
+      { "itemID": 84, "quantity": 10 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 521,
+    "unlockConditions": "Reach level 4 in Combat skill."
+  },
+  "524": {
+    "ingredients": [
+      { "itemID": 336, "quantity": 5 },
+      { "itemID": 335, "quantity": 5 },
+      { "itemID": 72, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 524,
+    "unlockConditions": "Reach level 7 in Combat skill."
+  },
+  "525": {
+    "ingredients": [
+      { "itemID": 334, "quantity": 2 },
+      { "itemID": 684, "quantity": 25 },
+      { "itemID": 766, "quantity": 25 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 525,
+    "unlockConditions": "Reach level 1 in Combat skill."
+  },
+  "527": {
+    "ingredients": [
+      { "itemID": 337, "quantity": 5 },
+      { "itemID": 768, "quantity": 50 },
+      { "itemID": 769, "quantity": 50 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 527,
+    "unlockConditions": "Reach level 9 in Combat skill."
+  },
+  "599": {
+    "ingredients": [
+      { "itemID": 334, "quantity": 1 },
+      { "itemID": 335, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 599,
+    "unlockConditions": "Reach level 2 in Farming skill."
+  },
+  "62": {
+    "ingredients": [
+      { "itemID": 330, "quantity": 1 },
+      { "itemID": 390, "quantity": 10 },
+      { "itemID": 338, "quantity": 1 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 62,
+    "unlockConditions": "Evelyn cutscene after completing the Greenhouse"
+  },
+  "621": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 336, "quantity": 1 },
+      { "itemID": 338, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 621,
+    "unlockConditions": "Reach level 6 in Farming skill."
+  },
+  "645": {
+    "ingredients": [
+      { "itemID": 336, "quantity": 1 },
+      { "itemID": 337, "quantity": 1 },
+      { "itemID": 787, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 645,
+    "unlockConditions": "Reach level 9 in Farming skill."
+  },
+  "681": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 1 },
+      { "itemID": 432, "quantity": 1 },
+      { "itemID": 726, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 681,
+    "unlockConditions": "Reach level 9 in Foraging skill."
+  },
+  "685": {
+    "ingredients": [{ "itemID": 684, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 685,
+    "unlockConditions": "Reach level 2 in Fishing skill."
+  },
+  "686": {
+    "ingredients": [{ "itemID": 335, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 686,
+    "unlockConditions": "Reach level 6 in Fishing skill."
+  },
+  "687": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 2 },
+      { "itemID": 428, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 687,
+    "unlockConditions": "Reach level 8 in Fishing skill."
+  },
+  "688": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 1 },
+      { "itemID": 340, "quantity": 1 },
+      { "itemID": 771, "quantity": 20 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 688,
+    "unlockConditions": "Reach level 8 in Foraging skill."
+  },
+  "689": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 1 },
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 390, "quantity": 25 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 689,
+    "unlockConditions": "Reach level 7 in Foraging skill."
+  },
+  "690": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 1 },
+      { "itemID": 393, "quantity": 2 },
+      { "itemID": 771, "quantity": 10 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 690,
+    "unlockConditions": "Reach level 6 in Foraging skill."
+  },
+  "691": {
+    "ingredients": [
+      { "itemID": 334, "quantity": 1 },
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 336, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 691,
+    "unlockConditions": "Reach level 8 in Fishing skill."
+  },
+  "693": {
+    "ingredients": [{ "itemID": 336, "quantity": 2 }],
+    "isBigCraftable": false,
+    "itemID": 693,
+    "unlockConditions": "Reach level 7 in Fishing skill."
+  },
+  "694": {
+    "ingredients": [
+      { "itemID": 334, "quantity": 1 },
+      { "itemID": 92, "quantity": 10 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 694,
+    "unlockConditions": "Reach level 6 in Fishing skill."
+  },
+  "695": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 10 },
+      { "itemID": 709, "quantity": 5 },
+      { "itemID": 766, "quantity": 10 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 695,
+    "unlockConditions": "Reach level 7 in Fishing skill."
+  },
+  "703": {
+    "ingredients": [{ "itemID": 335, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 703,
+    "unlockConditions": "Reach level 9 in Fishing skill."
+  },
+  "71": {
+    "ingredients": [{ "itemID": 390, "quantity": 99 }],
+    "isBigCraftable": true,
+    "itemID": 71,
+    "unlockConditions": "Reach level 2 in Mining skill."
+  },
+  "710": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 40 },
+      { "itemID": 335, "quantity": 3 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 710,
+    "unlockConditions": "Reach level 3 in Fishing skill."
+  },
+  "746": {
+    "ingredients": [
+      { "itemID": 276, "quantity": 1 },
+      { "itemID": 93, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 746,
+    "unlockConditions": "Spirit's Eve (2,000g)"
+  },
+  "772": {
+    "ingredients": [
+      { "itemID": 248, "quantity": 10 },
+      { "itemID": 247, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 772,
+    "unlockConditions": "Reach level 6 in Combat skill."
+  },
+  "773": {
+    "ingredients": [
+      { "itemID": 420, "quantity": 1 },
+      { "itemID": 422, "quantity": 1 },
+      { "itemID": 257, "quantity": 1 },
+      { "itemID": 281, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 773,
+    "unlockConditions": "Reach level 2 in Combat skill."
+  },
+  "774": {
+    "ingredients": [
+      { "itemID": 771, "quantity": 10 },
+      { "itemID": 684, "quantity": 5 },
+      { "itemID": 766, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 774,
+    "unlockConditions": "Linus\u00a0(4-heart event)"
+  },
+  "8": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 50 },
+      { "itemID": 382, "quantity": 1 },
+      { "itemID": 771, "quantity": 20 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 8,
+    "unlockConditions": "Reach level 1 in Farming skill."
+  },
+  "805": {
+    "ingredients": [
+      { "itemID": 771, "quantity": 5 },
+      { "itemID": 390, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 805,
+    "unlockConditions": "Reach level 7 in Foraging skill."
+  },
+  "83": {
+    "ingredients": [
+      { "itemID": 382, "quantity": 5 },
+      { "itemID": 390, "quantity": 25 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 83,
+    "unlockConditions": "Krobus (1,000g)"
+  },
+  "839": {
+    "ingredients": [
+      { "itemID": 881, "quantity": 50 },
+      { "itemID": 390, "quantity": 50 },
+      { "itemID": 336, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 839,
+    "unlockConditions": "Reach level 7 in Combat skill."
+  },
+  "840": {
+    "ingredients": [{ "itemID": 388, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 840,
+    "unlockConditions": "Carpenter's Shop for 200g"
+  },
+  "841": {
+    "ingredients": [{ "itemID": 390, "quantity": 1 }],
+    "isBigCraftable": false,
+    "itemID": 841,
+    "unlockConditions": "Carpenter's Shop for 200g"
+  },
+  "872": {
+    "ingredients": [
+      { "itemID": 72, "quantity": 1 },
+      { "itemID": 595, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 872,
+    "unlockConditions": "\"The Pirate's Wife\" quest"
+  },
+  "874": {
+    "ingredients": [{ "itemID": 684, "quantity": 10 }],
+    "isBigCraftable": false,
+    "itemID": 874,
+    "unlockConditions": "Reach level 1 in Combat skill."
+  },
+  "877": {
+    "ingredients": [
+      { "itemID": 334, "quantity": 1 },
+      { "itemID": 92, "quantity": 20 },
+      { "itemID": 768, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 877,
+    "unlockConditions": "\"Juicy Bugs Wanted!\" Special Order"
+  },
+  "879": {
+    "ingredients": [
+      { "itemID": 767, "quantity": 30 },
+      { "itemID": 766, "quantity": 30 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 879,
+    "unlockConditions": "\"Prismatic Jelly\" Special Order"
+  },
+  "885": {
+    "ingredients": [
+      { "itemID": 770, "quantity": 1 },
+      { "itemID": 92, "quantity": 5 },
+      { "itemID": 330, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 885,
+    "unlockConditions": "\"Community Cleanup\" Special Order"
+  },
+  "886": {
+    "ingredients": [
+      { "itemID": 709, "quantity": 5 },
+      { "itemID": 852, "quantity": 1 },
+      { "itemID": 829, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 886,
+    "unlockConditions": "Volcano Dwarf for 10,000g"
+  },
+  "888": {
+    "ingredients": [
+      { "itemID": 768, "quantity": 5 },
+      { "itemID": 335, "quantity": 5 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 888,
+    "unlockConditions": "Reach level 4 in Mining skill."
+  },
+  "9": {
+    "ingredients": [
+      { "itemID": 335, "quantity": 1 },
+      { "itemID": 338, "quantity": 1 },
+      { "itemID": 767, "quantity": 5 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 9,
+    "unlockConditions": "Reach level 6 in Foraging skill."
+  },
+  "90": {
+    "ingredients": [
+      { "itemID": 881, "quantity": 10 },
+      { "itemID": 330, "quantity": 3 },
+      { "itemID": 390, "quantity": 20 }
+    ],
+    "isBigCraftable": true,
+    "itemID": 90,
+    "unlockConditions": "\"Fragments of the past\" Special Order"
+  },
+  "908": {
+    "ingredients": [
+      { "itemID": 909, "quantity": 1 },
+      { "itemID": 684, "quantity": 3 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 908,
+    "unlockConditions": "Qi's Walnut Room for 20 Qi Gems"
+  },
+  "918": {
+    "ingredients": [
+      { "itemID": 909, "quantity": 1 },
+      { "itemID": 881, "quantity": 3 },
+      { "itemID": 768, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 918,
+    "unlockConditions": "Qi's Walnut Room for 30 Qi Gems"
+  },
+  "919": {
+    "ingredients": [
+      { "itemID": 337, "quantity": 1 },
+      { "itemID": 92, "quantity": 40 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 919,
+    "unlockConditions": "Qi's Walnut Roomfor 20 Qi Gems"
+  },
+  "920": {
+    "ingredients": [
+      { "itemID": 390, "quantity": 5 },
+      { "itemID": 771, "quantity": 3 },
+      { "itemID": 330, "quantity": 1 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 920,
+    "unlockConditions": "Island Trader for  Cinder Shard\u00a0(50)"
+  },
+  "926": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 15 },
+      { "itemID": 771, "quantity": 10 },
+      { "itemID": 382, "quantity": 3 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 926,
+    "unlockConditions": "Reach level 9 in Foraging skill."
+  },
+  "93": {
+    "ingredients": [
+      { "itemID": 388, "quantity": 1 },
+      { "itemID": 92, "quantity": 2 }
+    ],
+    "isBigCraftable": false,
+    "itemID": 93,
+    "unlockConditions": "Starter Recipe - no steps required!"
+  }
+}
