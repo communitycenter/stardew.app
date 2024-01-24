@@ -1,6 +1,7 @@
 # Scraping sprites from https://stardewvalleywiki.com/Modding:Items/Object_sprites
 # we won't import this file on the client side, only for processors
 
+import os
 import json
 import requests
 
@@ -8,13 +9,14 @@ from tqdm import tqdm
 from bs4 import BeautifulSoup
 
 
-sprites = {}
-url = "https://stardewvalleywiki.com/Modding:Items/Object_sprites"
-page = requests.get(url)
+URL = "https://stardewvalleywiki.com/Modding:Items/Object_sprites"
+page = requests.get(URL)
 soup = BeautifulSoup(page.text, "html.parser")
 
 empty_ids = set([23, 31, 173, 291, 925, 927, 929, 931, 932, 933, 934, 935])
+
 i = 0
+sprites = {}
 for a in tqdm(soup.find_all("a", {"class": "image"})):
     # Some of the itemIDs in the table are just empty images or not implemented
     # so we're just gonna skip those
@@ -38,5 +40,6 @@ for a in tqdm(soup.find_all("a", {"class": "image"})):
     sprites[f"{i}"] = f"https://stardewvalleywiki.com{iconURL}"
     i += 1
 
-    with open("./sprites.json", "w") as f:
-        json.dump(sprites, f, separators=(",", ":"), sort_keys=True)
+# save the sprites to a json file in content directory (only referenced by processors)
+with open(os.path.join(os.path.dirname(__file__), "content", "sprites.json"), "w") as f:
+    json.dump(sprites, f, indent=2, sort_keys=False)

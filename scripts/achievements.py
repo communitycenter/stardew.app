@@ -1,6 +1,5 @@
 # Parsing all achievements from wiki
 # iconURL, name, description
-# ! Run file from processors directory
 
 """
     Instead of processing the game files, we're gonna scrape the wiki for the
@@ -8,24 +7,20 @@
     means that we're not gonna have the accurate achievement IDs, but that's
     not a big deal.
 """
-
-import json
 import requests
 
 from tqdm import tqdm
 from bs4 import BeautifulSoup
 
-achievements = {}
+from helpers.utils import save_json
 
 URL = "https://stardewvalleywiki.com/Achievements"
-
 page = requests.get(URL)
-
 soup = BeautifulSoup(page.text, "html.parser")
-
-tbody = soup.find("table").find("tbody")
+tbody = soup.find("table").find("tbody")  # Get the table body
 
 id = 0
+achievements = {}
 # Loop through all the rows
 # For some stupid reason, the first row is the table header
 for tr in tqdm(tbody.find_all("tr")[1:]):
@@ -49,5 +44,5 @@ for tr in tqdm(tbody.find_all("tr")[1:]):
     }
     id += 1
 
-with open("../../data/achievements.json", "w") as f:
-    json.dump(achievements, f, separators=(",", ":"))
+# Save the achievements to a json file
+save_json(data=achievements, file_name="achievements.json", sort=False)
