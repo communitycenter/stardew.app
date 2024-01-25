@@ -12,7 +12,9 @@ export default function handler(
   setCookie("oauth_state", state, {
     req,
     res,
-    domain: "stardew.app",
+    domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
+      ? "localhost"
+      : "stardew.app",
     maxAge: 60 * 60 * 24 * 365,
   });
   res.redirect(

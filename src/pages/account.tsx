@@ -291,25 +291,25 @@ export default function Account() {
                       onClick={() => {
                         deleteCookie("token", {
                           maxAge: 0,
-                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
                             ? "localhost"
                             : "stardew.app",
                         });
                         deleteCookie("uid", {
                           maxAge: 0,
-                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
                             ? "localhost"
                             : "stardew.app",
                         });
                         deleteCookie("oauth_state", {
                           maxAge: 0,
-                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
                             ? "localhost"
                             : "stardew.app",
                         });
                         deleteCookie("discord_user", {
                           maxAge: 0,
-                          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
                             ? "localhost"
                             : "stardew.app",
                         });

@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   open: boolean;
@@ -52,25 +52,25 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
       if (type === "account") {
         deleteCookie("token", {
           maxAge: 0,
-          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("uid", {
           maxAge: 0,
-          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("oauth_state", {
           maxAge: 0,
-          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("discord_user", {
           maxAge: 0,
-          domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+          domain: Boolean(process.env.NEXT_PUBLIC_DEVELOPMENT)
             ? "localhost"
             : "stardew.app",
         });
