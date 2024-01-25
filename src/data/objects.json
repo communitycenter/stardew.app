@@ -2,20 +2,50 @@
   "0": {
     "name": "Weeds",
     "description": "A bunch of obnoxious weeds.",
-    "category": "Basic",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/54/Springobjects000.png"
   },
   "2": {
-    "name": "Stone",
-    "description": "A useful material when broken with the Pickaxe.",
-    "category": "Basic",
+    "name": "Diamond Stone",
+    "description": "Break apart to obtain diamonds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0e/Diamond_Node.png"
   },
   "4": {
-    "name": "Stone",
-    "description": "A useful material when chopped with the axe.",
-    "category": "Basic",
+    "name": "Ruby Stone",
+    "description": "Break apart to obtain rubies.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e8/Ruby_Node.png"
+  },
+  "6": {
+    "name": "Jade Stone",
+    "description": "Break apart to obtain jade.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Jade_Node.png"
+  },
+  "8": {
+    "name": "Amethyst Stone",
+    "description": "Break apart to obtain amethysts.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8f/Amethyst_Node.png"
+  },
+  "10": {
+    "name": "Topaz Stone",
+    "description": "Break apart to obtain topaz.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3f/Topaz_Node.png"
+  },
+  "12": {
+    "name": "Emerald Stone",
+    "description": "Break apart to obtain emeralds.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Emerald_Node.png"
+  },
+  "14": {
+    "name": "Aquamarine Stone",
+    "description": "Break apart to obtain aquamarines.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0a/Aquamarine_Node.png"
   },
   "16": {
     "name": "Wild Horseradish",
@@ -44,7 +74,7 @@
   "24": {
     "name": "Parsnip",
     "description": "A spring tuber closely related to the carrot. It has an earthy taste and is full of nutrients.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Parsnip.png"
   },
   "30": {
@@ -53,40 +83,124 @@
     "category": "Basic",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Springobjects030.png"
   },
+  "32": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fb/Stone_Index32.png"
+  },
+  "34": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Stone_Index34.png"
+  },
+  "36": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/49/Stone_Index36.png"
+  },
+  "38": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/70/Stone_Index38.png"
+  },
+  "40": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Stone_Index40.png"
+  },
+  "42": {
+    "name": "Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3a/Stone_Index42.png"
+  },
+  "44": {
+    "name": "Gem Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Gem_Node.png"
+  },
+  "46": {
+    "name": "Mystic Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4b/Mystic_Stone.png"
+  },
+  "48": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Stone_Index48.png"
+  },
+  "50": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f4/Stone_Index50.png"
+  },
+  "52": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/28/Stone_Index52.png"
+  },
+  "54": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Stone_Index54.png"
+  },
+  "56": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5c/Stone_Index56.png"
+  },
+  "58": {
+    "name": "Snowy Stone",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Stone_Index58.png"
+  },
   "60": {
     "name": "Emerald",
     "description": "A precious stone with a brilliant green color.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6a/Emerald.png"
   },
   "62": {
     "name": "Aquamarine",
     "description": "A shimmery blue-green gem.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a2/Aquamarine.png"
   },
   "64": {
     "name": "Ruby",
     "description": "A precious stone that is sought after for its rich color and beautiful luster.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a9/Ruby.png"
   },
   "66": {
     "name": "Amethyst",
     "description": "A purple variant of quartz.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Amethyst.png"
   },
   "68": {
     "name": "Topaz",
     "description": "Fairly common but still prized for its beauty.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a5/Topaz.png"
   },
   "70": {
     "name": "Jade",
     "description": "A pale green ornamental stone.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Jade.png"
   },
   "71": {
@@ -98,31 +212,31 @@
   "72": {
     "name": "Diamond",
     "description": "A rare and valuable gem.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ea/Diamond.png"
   },
   "74": {
     "name": "Prismatic Shard",
     "description": "A very rare and powerful substance with unknown origins.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/56/Prismatic_Shard.png"
   },
   "75": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Geode Stone",
+    "description": "Break apart to obtain geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Geode_Node.png"
   },
   "76": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Frozen Geode Stone",
+    "description": "Break apart to obtain frozen geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Frozen_Geode_Node.png"
   },
   "77": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Magma Geode Stone",
+    "description": "Break apart to obtain magma geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Magma_Geode_Node.png"
   },
   "78": {
@@ -140,37 +254,37 @@
   "80": {
     "name": "Quartz",
     "description": "A clear crystal commonly found in caves and mines.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Quartz.png"
   },
   "82": {
     "name": "Fire Quartz",
     "description": "A glowing red crystal commonly found near hot lava.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5b/Fire_Quartz.png"
   },
   "84": {
     "name": "Frozen Tear",
     "description": "A crystal fabled to be the frozen tears of a yeti.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Frozen_Tear.png"
   },
   "86": {
     "name": "Earth Crystal",
     "description": "A resinous substance found near the surface.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/74/Earth_Crystal.png"
   },
   "88": {
     "name": "Coconut",
     "description": "A seed of the coconut palm. It has many culinary uses.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2f/Coconut.png"
   },
   "90": {
     "name": "Cactus Fruit",
     "description": "The sweet fruit of the prickly pear cactus.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/32/Cactus_Fruit.png"
   },
   "92": {
@@ -192,45 +306,45 @@
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c1/Springobjects094.png"
   },
   "95": {
-    "name": "Stone",
-    "description": "Contains radioactive ore",
-    "category": "Basic",
+    "name": "Radioactive Stone",
+    "description": "Contains radioactive ore.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/48/Radioactive_Node.png"
   },
   "96": {
     "name": "Dwarf Scroll I",
     "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a red bow.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Dwarf_Scroll_I.png"
   },
   "97": {
     "name": "Dwarf Scroll II",
     "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a green ribbon.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Dwarf_Scroll_II.png"
   },
   "98": {
     "name": "Dwarf Scroll III",
     "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a blue rope.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Dwarf_Scroll_III.png"
   },
   "99": {
     "name": "Dwarf Scroll IV",
     "description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a golden chain.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Dwarf_Scroll_IV.png"
   },
   "100": {
     "name": "Chipped Amphora",
     "description": "An ancient vessel made of ceramic material. Used to transport both dry and wet goods.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png"
   },
   "101": {
     "name": "Arrowhead",
     "description": "A crudely fashioned point used for hunting.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d1/Arrowhead.png"
   },
   "102": {
@@ -242,151 +356,151 @@
   "103": {
     "name": "Ancient Doll",
     "description": "An ancient doll covered in grime. This doll may have been used as a toy, a decoration, or a prop in some kind of ritual.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Ancient_Doll.png"
   },
   "104": {
     "name": "Elvish Jewelry",
     "description": "Dirty but still beautiful. On the side is a flowing script thought by some to be the ancient language of the elves. No Elvish bones have ever been found.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Elvish_Jewelry.png"
   },
   "105": {
     "name": "Chewing Stick",
     "description": "Ancient people chewed on these to keep their teeth clean.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Chewing_Stick.png"
   },
   "106": {
     "name": "Ornamental Fan",
-    "description": "This exquisute fan most likely belonged to a noblewoman. Historians believe that the valley was a popular sixth-era vacation spot for the wealthy.",
-    "category": "Arch",
+    "description": "This exquisite fan most likely belonged to a noblewoman. Historians believe that the valley was a popular sixth-era vacation spot for the wealthy.",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ab/Ornamental_Fan.png"
   },
   "107": {
     "name": "Dinosaur Egg",
     "description": "A giant dino egg... The entire shell is still intact!",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a1/Dinosaur_Egg.png"
   },
   "108": {
     "name": "Rare Disc",
     "description": "A heavy black disc studded with peculiar red stones. When you hold it, you're overwhelmed with a feeling of dread.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Rare_Disc.png"
   },
   "109": {
     "name": "Ancient Sword",
     "description": "It's the remains of an ancient sword. Most of the blade has turned to rust, but the hilt is very finely crafted.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/76/Ancient_Sword.png"
   },
   "110": {
     "name": "Rusty Spoon",
     "description": "A plain old spoon, probably ten years old. Not very interesting.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Rusty_Spoon.png"
   },
   "111": {
     "name": "Rusty Spur",
     "description": "An old spur that was once attached to a cowboy's boot. People must have been raising animals in this area for many generations.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Rusty_Spur.png"
   },
   "112": {
     "name": "Rusty Cog",
     "description": "A well preserved cog that must have been part of some ancient machine. This could be dwarven technology.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/74/Rusty_Cog.png"
   },
   "113": {
     "name": "Chicken Statue",
     "description": "It's a statue of a chicken on a bronze base. The ancient people of this area must have been very fond of chickens.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/af/Chicken_Statue.png"
   },
   "114": {
     "name": "Ancient Seed",
     "description": "It's a dry old seed from some ancient plant. By all appearances it's long since dead...",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Springobjects114.png"
   },
   "115": {
     "name": "Prehistoric Tool",
     "description": "Some kind of gnarly old digging tool.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Prehistoric_Tool.png"
   },
   "116": {
     "name": "Dried Starfish",
     "description": "A starfish from the primordial ocean. It's an unusually pristine specimen!",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/df/Dried_Starfish.png"
   },
   "117": {
     "name": "Anchor",
     "description": "It may have belonged to ancient pirates.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c0/Anchor.png"
   },
   "118": {
     "name": "Glass Shards",
     "description": "A mixture of glass shards smoothed by centuries of ocean surf. These could have belonged to an ancient mosaic or necklace.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Glass_Shards.png"
   },
   "119": {
     "name": "Bone Flute",
     "description": "It's a prehistoric wind instrument carved from an animal's bone. It produces an eerie tone.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fc/Bone_Flute.png"
   },
   "120": {
     "name": "Prehistoric Handaxe",
     "description": "One of the earliest tools employed by humans. This \"crude\" tool was created by striking one rock with another to form a sharp edge.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/07/Prehistoric_Handaxe.png"
   },
   "121": {
     "name": "Dwarvish Helm",
     "description": "It's one of the helmets commonly worn by dwarves. The thick metal plating protects them from falling debris and stalactites.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8b/Dwarvish_Helm.png"
   },
   "122": {
     "name": "Dwarf Gadget",
     "description": "It's a piece of the advanced technology once known to the dwarves. It's still glowing and humming, but you're unable to understand how it works.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Dwarf_Gadget.png"
   },
   "123": {
     "name": "Ancient Drum",
     "description": "It's a drum made from wood and animal skin. It has a low, reverberating tone.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1e/Ancient_Drum.png"
   },
   "124": {
     "name": "Golden Mask",
     "description": "A creepy golden mask probably used in an ancient magic ritual. A socket in the forehead contains a large purple gemstone.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Golden_Mask.png"
   },
   "125": {
     "name": "Golden Relic",
-    "description": "It's a golden slab with heiroglyphs and pictures emblazoned onto the front.",
-    "category": "Arch",
+    "description": "It's a golden slab with hieroglyphs and pictures emblazoned onto the front.",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Golden_Relic.png"
   },
   "126": {
     "name": "Strange Doll (green)",
     "description": "???",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/39/Strange_Doll_%28green%29.png"
   },
   "127": {
     "name": "Strange Doll (yellow)",
     "description": "???",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ef/Strange_Doll_%28yellow%29.png"
   },
   "128": {
@@ -644,13 +758,13 @@
   "176": {
     "name": "Egg",
     "description": "A regular white chicken egg.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Egg.png"
   },
   "174": {
     "name": "Large Egg",
     "description": "It's an uncommonly large white egg!",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png"
   },
   "178": {
@@ -662,37 +776,37 @@
   "180": {
     "name": "Egg",
     "description": "A regular brown chicken egg.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Brown_Egg.png"
   },
   "182": {
     "name": "Large Egg",
     "description": "It's an uncommonly large brown egg!",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Large_Brown_Egg.png"
   },
   "184": {
     "name": "Milk",
     "description": "A jug of cow's milk.",
-    "category": "Animal Product, Milks",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png"
   },
   "186": {
     "name": "Large Milk",
     "description": "A large jug of cow's milk.",
-    "category": "Animal Product, Milks",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/67/Large_Milk.png"
   },
   "188": {
     "name": "Green Bean",
     "description": "A juicy little bean with a cool, crisp snap.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5c/Green_Bean.png"
   },
   "190": {
     "name": "Cauliflower",
     "description": "Valuable, but slow-growing. Despite its pale color, the florets are packed with nutrients.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Cauliflower.png"
   },
   "191": {
@@ -704,7 +818,7 @@
   "192": {
     "name": "Potato",
     "description": "A widely cultivated tuber.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c2/Potato.png"
   },
   "194": {
@@ -1028,25 +1142,25 @@
   "248": {
     "name": "Garlic",
     "description": "Adds a wonderful zestiness to dishes. High quality garlic can be pretty spicy.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Garlic.png"
   },
   "250": {
     "name": "Kale",
-    "description": "The waxy leaves are great in soups and stir frys.",
-    "category": "Vegetables",
+    "description": "The waxy leaves are great in soups and stir fries.",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d1/Kale.png"
   },
   "251": {
     "name": "Tea Sapling",
     "description": "Takes 20 days to mature. Produces tea leaves during the final week of each season, except winter. No watering necessary!",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Tea_Sapling.png"
   },
   "252": {
     "name": "Rhubarb",
     "description": "The stalks are extremely tart, but make a great dessert when sweetened.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Rhubarb.png"
   },
   "253": {
@@ -1058,13 +1172,13 @@
   "254": {
     "name": "Melon",
     "description": "A cool, sweet summer treat.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Melon.png"
   },
   "256": {
     "name": "Tomato",
     "description": "Rich and slightly tangy, the Tomato has a wide variety of culinary uses.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Tomato.png"
   },
   "257": {
@@ -1076,19 +1190,19 @@
   "258": {
     "name": "Blueberry",
     "description": "A popular berry reported to have many health benefits. The blue skin has the highest nutrient concentration.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Blueberry.png"
   },
   "259": {
     "name": "Fiddlehead Fern",
     "description": "The young shoots are an edible specialty.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/48/Fiddlehead_Fern.png"
   },
   "260": {
     "name": "Hot Pepper",
     "description": "Fiery hot with a hint of sweetness.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Hot_Pepper.png"
   },
   "261": {
@@ -1100,55 +1214,55 @@
   "262": {
     "name": "Wheat",
     "description": "One of the most widely cultivated grains. Makes a great flour for breads and cakes.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e2/Wheat.png"
   },
   "264": {
     "name": "Radish",
     "description": "A crisp and refreshing root vegetable with hints of pepper when eaten raw.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Radish.png"
   },
   "266": {
     "name": "Red Cabbage",
     "description": "Often used in salads and coleslaws. The color can range from purple to blue to green-yellow depending on soil conditions.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2d/Red_Cabbage.png"
   },
   "268": {
     "name": "Starfruit",
     "description": "An extremely juicy fruit that grows in hot, humid weather. Slightly sweet with a sour undertone.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/db/Starfruit.png"
   },
   "270": {
     "name": "Corn",
     "description": "One of the most popular grains. The sweet, fresh cobs are a summer favorite.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f8/Corn.png"
   },
   "271": {
     "name": "Unmilled Rice",
     "description": "Rice in its rawest form. Run this through a mill to increase the value.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fe/Unmilled_Rice.png"
   },
   "272": {
     "name": "Eggplant",
     "description": "A rich and wholesome relative of the tomato. Delicious fried or stewed.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8f/Eggplant.png"
   },
   "273": {
     "name": "Rice Shoot",
     "description": "Plant these in the spring. Takes 8 days to mature. Grows faster if planted near a body of water. Harvest with the scythe.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/84/Rice_Shoot.png"
   },
   "274": {
     "name": "Artichoke",
     "description": "The bud of a thistle plant. The spiny outer leaves conceal a fleshy, filling interior.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dd/Artichoke.png"
   },
   "275": {
@@ -1160,7 +1274,7 @@
   "276": {
     "name": "Pumpkin",
     "description": "A fall favorite, grown for its crunchy seeds and delicately flavored flesh. As a bonus, the hollow shell can be carved into a festive decoration.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/64/Pumpkin.png"
   },
   "277": {
@@ -1172,7 +1286,7 @@
   "278": {
     "name": "Bok Choy",
     "description": "The leafy greens and fibrous stalks are healthy and delicious.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/40/Bok_Choy.png"
   },
   "279": {
@@ -1184,7 +1298,7 @@
   "280": {
     "name": "Yam",
     "description": "A starchy tuber with a lot of culinary versatility.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/52/Yam.png"
   },
   "281": {
@@ -1196,7 +1310,7 @@
   "282": {
     "name": "Cranberries",
     "description": "These tart red berries are a traditional winter food.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Cranberries.png"
   },
   "283": {
@@ -1207,8 +1321,8 @@
   },
   "284": {
     "name": "Beet",
-    "description": "A sweet and earthy root vegatable. As a bonus, the leaves make a great salad.",
-    "category": "Vegetables",
+    "description": "A sweet and earthy root vegetable. As a bonus, the leaves make a great salad.",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Beet.png"
   },
   "286": {
@@ -1230,33 +1344,33 @@
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4f/Mega_Bomb.png"
   },
   "290": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Iron Stone",
+    "description": "Break apart to obtain iron ore.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ea/Iron_Node.png"
   },
   "293": {
     "name": "Brick Floor",
     "description": "Place on the ground to create paths or to decorate your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/29/Brick_Floor.png"
   },
   "294": {
     "name": "Twig",
-    "description": "...",
-    "category": "Crafting",
+    "description": "A broken branch. Chop with an axe to obtain wood.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Springobjects294.png"
   },
   "295": {
     "name": "Twig",
-    "description": "...",
-    "category": "Crafting",
+    "description": "A broken branch. Chop with an axe to obtain wood.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Springobjects295.png"
   },
   "296": {
     "name": "Salmonberry",
     "description": "A spring-time berry with the flavor of the forest.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Salmonberry.png"
   },
   "297": {
@@ -1274,25 +1388,25 @@
   "299": {
     "name": "Amaranth Seeds",
     "description": "Plant these in the fall. Takes 7 days to grow. Harvest with the scythe.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Amaranth_Seeds.png"
   },
   "300": {
     "name": "Amaranth",
     "description": "A purple grain cultivated by an ancient civilization.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f6/Amaranth.png"
   },
   "301": {
     "name": "Grape Starter",
     "description": "Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/de/Grape_Starter.png"
   },
   "302": {
     "name": "Hops Starter",
     "description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Hops_Starter.png"
   },
   "303": {
@@ -1304,13 +1418,13 @@
   "304": {
     "name": "Hops",
     "description": "A bitter, tangy flower used to flavor beer.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/59/Hops.png"
   },
   "305": {
     "name": "Void Egg",
     "description": "A jet-black egg with red flecks. It's warm to the touch.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Void_Egg.png"
   },
   "306": {
@@ -1334,73 +1448,73 @@
   "309": {
     "name": "Acorn",
     "description": "This can be planted to grow an oak tree.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cd/Acorn.png"
   },
   "310": {
     "name": "Maple Seed",
     "description": "This can be planted to grow a maple tree.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/36/Maple_Seed.png"
   },
   "311": {
     "name": "Pine Cone",
     "description": "This can be planted to grow a pine tree.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/90/Pine_Cone.png"
   },
   "313": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Springobjects313.png"
   },
   "314": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Springobjects314.png"
   },
   "315": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/15/Springobjects315.png"
   },
   "316": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6c/Springobjects316.png"
   },
   "317": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a1/Springobjects317.png"
   },
   "318": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Springobjects318.png"
   },
   "319": {
-    "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "name": "Ice Crystal",
+    "description": "Might contain refined quartz.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cb/Springobjects319.png"
   },
   "320": {
-    "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "name": "Ice Crystal",
+    "description": "Might contain refined quartz.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/24/Springobjects320.png"
   },
   "321": {
-    "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "name": "Ice Crystal",
+    "description": "Might contain refined quartz.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/12/Springobjects321.png"
   },
   "322": {
@@ -1436,61 +1550,61 @@
   "328": {
     "name": "Wood Floor",
     "description": "Place on the ground to create paths or to decorate your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Wood_Floor.png"
   },
   "329": {
     "name": "Stone Floor",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Stone_Floor.png"
   },
   "330": {
     "name": "Clay",
     "description": "Used in crafting and construction.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a2/Clay.png"
   },
   "331": {
     "name": "Weathered Floor",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2a/Weathered_Floor.png"
   },
   "333": {
     "name": "Crystal Floor",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a4/Crystal_Floor.png"
   },
   "334": {
     "name": "Copper Bar",
     "description": "A bar of pure copper.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Copper_Bar.png"
   },
   "335": {
     "name": "Iron Bar",
     "description": "A bar of pure iron.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6c/Iron_Bar.png"
   },
   "336": {
     "name": "Gold Bar",
     "description": "A bar of pure gold.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Gold_Bar.png"
   },
   "337": {
     "name": "Iridium Bar",
     "description": "A bar of pure iridium.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c4/Iridium_Bar.png"
   },
   "338": {
     "name": "Refined Quartz",
     "description": "A more pure form of quartz.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/98/Refined_Quartz.png"
   },
   "340": {
@@ -1502,7 +1616,7 @@
   "341": {
     "name": "Tea Set",
     "description": "Fine porcelain.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Tea_Set.png"
   },
   "342": {
@@ -1513,8 +1627,8 @@
   },
   "343": {
     "name": "Stone",
-    "description": "Stone.",
-    "category": "Basic",
+    "description": "Break apart to obtain stone.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2d/Stone_Index343.png"
   },
   "344": {
@@ -1532,7 +1646,7 @@
   "347": {
     "name": "Rare Seed",
     "description": "Sow in fall. Takes all season to grow.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5b/Rare_Seed.png"
   },
   "348": {
@@ -1562,25 +1676,25 @@
   "368": {
     "name": "Basic Fertilizer",
     "description": "Improves soil quality a little, increasing your chance to grow quality crops. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Basic_Fertilizer.png"
   },
   "369": {
     "name": "Quality Fertilizer",
     "description": "Improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a0/Quality_Fertilizer.png"
   },
   "370": {
     "name": "Basic Retaining Soil",
     "description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c7/Basic_Retaining_Soil.png"
   },
   "371": {
     "name": "Quality Retaining Soil",
     "description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0a/Quality_Retaining_Soil.png"
   },
   "372": {
@@ -1598,43 +1712,43 @@
   "378": {
     "name": "Copper Ore",
     "description": "A common ore that can be smelted into bars.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/78/Copper_Ore.png"
   },
   "380": {
     "name": "Iron Ore",
     "description": "A fairly common ore that can be smelted into bars.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/87/Iron_Ore.png"
   },
   "382": {
     "name": "Coal",
     "description": "A combustible rock that is useful for crafting and smelting.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a7/Coal.png"
   },
   "384": {
     "name": "Gold Ore",
     "description": "A precious ore that can be smelted into bars.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f7/Gold_Ore.png"
   },
   "386": {
     "name": "Iridium Ore",
     "description": "An exotic ore with many curious properties. Can be smelted into bars.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Iridium_Ore.png"
   },
   "388": {
     "name": "Wood",
     "description": "A sturdy, yet flexible plant material with a wide variety of uses.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/df/Wood.png"
   },
   "390": {
     "name": "Stone",
     "description": "A common material with many uses in crafting and building.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Stone.png"
   },
   "392": {
@@ -1664,7 +1778,7 @@
   "396": {
     "name": "Spice Berry",
     "description": "It fills the air with a pungent aroma.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c6/Spice_Berry.png"
   },
   "397": {
@@ -1676,7 +1790,7 @@
   "398": {
     "name": "Grape",
     "description": "A sweet cluster of fruit.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c2/Grape.png"
   },
   "399": {
@@ -1688,19 +1802,19 @@
   "400": {
     "name": "Strawberry",
     "description": "A sweet, juicy favorite with an appealing red color.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Strawberry.png"
   },
   "401": {
     "name": "Straw Floor",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Straw_Floor.png"
   },
   "402": {
     "name": "Sweet Pea",
     "description": "A fragrant summer flower.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Sweet_Pea.png"
   },
   "403": {
@@ -1718,19 +1832,19 @@
   "405": {
     "name": "Wood Path",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e3/Wood_Path.png"
   },
   "406": {
     "name": "Wild Plum",
     "description": "Tart and juicy with a pungent aroma.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Wild_Plum.png"
   },
   "407": {
     "name": "Gravel Path",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/15/Gravel_Path.png"
   },
   "408": {
@@ -1742,19 +1856,19 @@
   "409": {
     "name": "Crystal Path",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Crystal_Path.png"
   },
   "410": {
     "name": "Blackberry",
     "description": "An early-fall treat.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/25/Blackberry.png"
   },
   "411": {
     "name": "Cobblestone Path",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/90/Cobblestone_Path.png"
   },
   "412": {
@@ -1772,13 +1886,13 @@
   "414": {
     "name": "Crystal Fruit",
     "description": "A delicate fruit that pops up from the snow.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/16/Crystal_Fruit.png"
   },
   "415": {
     "name": "Stepping Stone Path",
     "description": "Place on the ground to create paths or to spruce up your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Stepping_Stone_Path.png"
   },
   "416": {
@@ -1796,7 +1910,7 @@
   "418": {
     "name": "Crocus",
     "description": "A flower that can bloom in the winter.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2f/Crocus.png"
   },
   "419": {
@@ -1814,7 +1928,7 @@
   "421": {
     "name": "Sunflower",
     "description": "A common misconception is that the flower turns so it's always facing the sun.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Sunflower.png"
   },
   "422": {
@@ -1862,7 +1976,7 @@
   "433": {
     "name": "Coffee Bean",
     "description": "Plant in spring or summer to grow a coffee plant. Place five beans in a keg to make coffee.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/33/Coffee_Bean.png"
   },
   "434": {
@@ -1874,7 +1988,7 @@
   "436": {
     "name": "Goat Milk",
     "description": "The milk of a goat.",
-    "category": "Animal Product, Milks",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/45/Goat_Milk.png"
   },
   "437": {
@@ -1886,7 +2000,7 @@
   "438": {
     "name": "L. Goat Milk",
     "description": "A gallon of creamy goat's milk.",
-    "category": "Animal Product, Milks",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Large_Goat_Milk.png"
   },
   "439": {
@@ -1898,7 +2012,7 @@
   "440": {
     "name": "Wool",
     "description": "Soft, fluffy wool.",
-    "category": "Animal Products",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/34/Wool.png"
   },
   "441": {
@@ -1910,19 +2024,19 @@
   "442": {
     "name": "Duck Egg",
     "description": "It's still warm.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Duck_Egg.png"
   },
   "444": {
     "name": "Duck Feather",
     "description": "It's so colorful.",
-    "category": "Animal Products",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f9/Duck_Feather.png"
   },
   "446": {
     "name": "Rabbit's Foot",
     "description": "Some say it's lucky.",
-    "category": "Animal Products",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Rabbit%27s_Foot.png"
   },
   "447": {
@@ -1939,20 +2053,20 @@
   },
   "450": {
     "name": "Stone",
-    "description": "Stone.",
-    "category": "asdf",
+    "description": "Break apart to obtain stone.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c9/Stone_Index450.png"
   },
   "452": {
     "name": "Weeds",
-    "description": "A cluster of dry old bushes.",
-    "category": "asdf",
+    "description": "A cluster of dry old bushes. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/63/Springobjects452.png"
   },
   "454": {
     "name": "Ancient Fruit",
     "description": "It's been dormant for eons.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Ancient_Fruit.png"
   },
   "456": {
@@ -2006,217 +2120,217 @@
   "465": {
     "name": "Speed-Gro",
     "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 10%. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/94/Speed-Gro.png"
   },
   "466": {
     "name": "Deluxe Speed-Gro",
     "description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 25%. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6d/Deluxe_Speed-Gro.png"
   },
   "472": {
     "name": "Parsnip Seeds",
     "description": "Plant these in the spring. Takes 4 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d3/Parsnip_Seeds.png"
   },
   "473": {
     "name": "Bean Starter",
     "description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Bean_Starter.png"
   },
   "474": {
     "name": "Cauliflower Seeds",
     "description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bb/Cauliflower_Seeds.png"
   },
   "475": {
     "name": "Potato Seeds",
     "description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/44/Potato_Seeds.png"
   },
   "476": {
     "name": "Garlic Seeds",
     "description": "Plant these in the spring. Takes 4 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Garlic_Seeds.png"
   },
   "477": {
     "name": "Kale Seeds",
     "description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/00/Kale_Seeds.png"
   },
   "478": {
     "name": "Rhubarb Seeds",
     "description": "Plant these in the spring. Takes 13 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/47/Rhubarb_Seeds.png"
   },
   "479": {
     "name": "Melon Seeds",
     "description": "Plant these in the summer. Takes 12 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png"
   },
   "480": {
     "name": "Tomato Seeds",
     "description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e3/Tomato_Seeds.png"
   },
   "481": {
     "name": "Blueberry Seeds",
     "description": "Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Blueberry_Seeds.png"
   },
   "482": {
     "name": "Pepper Seeds",
     "description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/67/Pepper_Seeds.png"
   },
   "483": {
     "name": "Wheat Seeds",
     "description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Wheat_Seeds.png"
   },
   "484": {
     "name": "Radish Seeds",
     "description": "Plant these in the summer. Takes 6 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b1/Radish_Seeds.png"
   },
   "485": {
     "name": "Red Cabbage Seeds",
     "description": "Plant these in the summer. Takes 9 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Red_Cabbage_Seeds.png"
   },
   "486": {
     "name": "Starfruit Seeds",
     "description": "Plant these in the summer. Takes 13 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Starfruit_Seeds.png"
   },
   "487": {
     "name": "Corn Seeds",
     "description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d1/Corn_Seeds.png"
   },
   "488": {
     "name": "Eggplant Seeds",
     "description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f9/Eggplant_Seeds.png"
   },
   "489": {
     "name": "Artichoke Seeds",
     "description": "Plant these in the fall. Takes 8 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/71/Artichoke_Seeds.png"
   },
   "490": {
     "name": "Pumpkin Seeds",
     "description": "Plant these in the fall. Takes 13 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/99/Pumpkin_Seeds.png"
   },
   "491": {
     "name": "Bok Choy Seeds",
     "description": "Plant these in the fall. Takes 4 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/21/Bok_Choy_Seeds.png"
   },
   "492": {
     "name": "Yam Seeds",
     "description": "Plant these in the fall. Takes 10 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Yam_Seeds.png"
   },
   "493": {
     "name": "Cranberry Seeds",
     "description": "Plant these in the fall. Takes 7 days to mature, and continues to produce after first harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Cranberry_Seeds.png"
   },
   "494": {
     "name": "Beet Seeds",
     "description": "Plant these in the fall. Takes 6 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a8/Beet_Seeds.png"
   },
   "495": {
     "name": "Spring Seeds",
     "description": "An assortment of wild spring seeds.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png"
   },
   "496": {
     "name": "Summer Seeds",
     "description": "An assortment of wild summer seeds.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c4/Summer_Seeds.png"
   },
   "497": {
     "name": "Fall Seeds",
     "description": "An assortment of wild fall seeds.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/55/Fall_Seeds.png"
   },
   "498": {
     "name": "Winter Seeds",
     "description": "An assortment of wild winter seeds.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/dd/Winter_Seeds.png"
   },
   "499": {
     "name": "Ancient Seeds",
     "description": "Could these still grow?",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Ancient_Seeds.png"
   },
   "427": {
     "name": "Tulip Bulb",
     "description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/42/Tulip_Bulb.png"
   },
   "429": {
     "name": "Jazz Seeds",
     "description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/95/Jazz_Seeds.png"
   },
   "453": {
     "name": "Poppy Seeds",
     "description": "Plant in summer. Produces a bright red flower in 7 days.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a2/Poppy_Seeds.png"
   },
   "455": {
     "name": "Spangle Seeds",
     "description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/85/Spangle_Seeds.png"
   },
   "431": {
     "name": "Sunflower Seeds",
     "description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1f/Sunflower_Seeds.png"
   },
   "425": {
     "name": "Fairy Seeds",
     "description": "Plant in fall. Takes 12 days to produce a mysterious flower. Assorted Colors.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/8e/Fairy_Seeds.png"
   },
   "516": {
@@ -2354,313 +2468,313 @@
   "538": {
     "name": "Alamite",
     "description": "Its distinctive fluorescence makes it a favorite among rock collectors.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7c/Alamite.png"
   },
   "539": {
     "name": "Bixite",
     "description": "A dark metallic Mineral sought after for its cubic structure.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/98/Bixite.png"
   },
   "540": {
     "name": "Baryte",
     "description": "The best specimens resemble a desert rose.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Baryte.png"
   },
   "541": {
     "name": "Aerinite",
     "description": "These crystals are curiously light.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6b/Aerinite.png"
   },
   "542": {
     "name": "Calcite",
     "description": "This yellow crystal is speckled with shimmering nodules.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Calcite.png"
   },
   "543": {
     "name": "Dolomite",
     "description": "It can occur in coral reefs, often near an underwater volcano.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Dolomite.png"
   },
   "544": {
     "name": "Esperite",
     "description": "The crystals glow bright green when stimulated.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/aa/Esperite.png"
   },
   "545": {
     "name": "Fluorapatite",
     "description": "Small amounts are found in human teeth.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Fluorapatite.png"
   },
   "546": {
     "name": "Geminite",
     "description": "Occurs in brilliant clusters.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/54/Geminite.png"
   },
   "547": {
     "name": "Helvite",
     "description": "It grows in a triangular column.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3f/Helvite.png"
   },
   "548": {
     "name": "Jamborite",
     "description": "The crystals are so tightly packed it almost looks fuzzy.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4b/Jamborite.png"
   },
   "549": {
     "name": "Jagoite",
     "description": "A high volume of tiny crystals makes it very glittery.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Jagoite.png"
   },
   "550": {
     "name": "Kyanite",
     "description": "The geometric faces are as smooth as glass.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e4/Kyanite.png"
   },
   "551": {
     "name": "Lunarite",
     "description": "The cratered white orbs form a tight cluster.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/06/Lunarite.png"
   },
   "552": {
     "name": "Malachite",
     "description": "A popular ornamental stone, used in sculpture and to make green paint.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/ad/Malachite.png"
   },
   "553": {
     "name": "Neptunite",
     "description": "A jet-black crystal that is unusually reflective.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/05/Neptunite.png"
   },
   "554": {
     "name": "Lemon Stone",
     "description": "Some claim the powdered crystal is a dwarvish delicacy.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/31/Lemon_Stone.png"
   },
   "555": {
     "name": "Nekoite",
     "description": "The delicate shards form a tiny pink meadow.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Nekoite.png"
   },
   "556": {
     "name": "Orpiment",
     "description": "Despite its high toxicity, this Mineral is widely used in manufacturing and folk medicine.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/41/Orpiment.png"
   },
   "557": {
     "name": "Petrified Slime",
     "description": "This little guy may be 100,000 years old.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/24/Petrified_Slime.png"
   },
   "558": {
     "name": "Thunder Egg",
     "description": "According to legend, angry thunder spirits would throw these stones at one another.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/14/Thunder_Egg.png"
   },
   "559": {
     "name": "Pyrite",
     "description": "Commonly known as \"Fool's Gold\".",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/64/Pyrite.png"
   },
   "560": {
     "name": "Ocean Stone",
     "description": "An old legend claims these stones are the mosaics of ancient mermaids.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Ocean_Stone.png"
   },
   "561": {
     "name": "Ghost Crystal",
     "description": "There is an aura of coldness around this crystal.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d0/Ghost_Crystal.png"
   },
   "562": {
     "name": "Tigerseye",
     "description": "A stripe of shimmering gold gives this gem a warm luster.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Tigerseye.png"
   },
   "563": {
     "name": "Jasper",
     "description": "When polished, this stone becomes attractively luminous. Prized by ancient peoples for thousands of years.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Jasper.png"
   },
   "564": {
     "name": "Opal",
     "description": "Its internal structure causes it to reflect a rainbow of light.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3c/Opal.png"
   },
   "565": {
     "name": "Fire Opal",
     "description": "A rare variety of opal, named for its red spots.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/60/Fire_Opal.png"
   },
   "566": {
     "name": "Celestine",
     "description": "Some early life forms had bones made from this.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Celestine.png"
   },
   "567": {
     "name": "Marble",
     "description": "A very popular material for sculptures and construction.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/82/Marble.png"
   },
   "568": {
     "name": "Sandstone",
     "description": "A common type of stone with red and brown striations.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d6/Sandstone.png"
   },
   "569": {
     "name": "Granite",
     "description": "A speckled Mineral that is commonly used in construction.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Granite.png"
   },
   "570": {
     "name": "Basalt",
     "description": "Forms near searing hot magma.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/22/Basalt.png"
   },
   "571": {
     "name": "Limestone",
     "description": "A very common type of stone. It's not worth very much.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4e/Limestone.png"
   },
   "572": {
     "name": "Soapstone",
     "description": "Because of its relatively soft consistency, this stone is very popular for carving.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/81/Soapstone.png"
   },
   "573": {
     "name": "Hematite",
     "description": "An iron-based Mineral with interesting magnetic properties.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b1/Hematite.png"
   },
   "574": {
     "name": "Mudstone",
     "description": "A fine-grained rock made from ancient clay or mud.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/52/Mudstone.png"
   },
   "575": {
     "name": "Obsidian",
     "description": "A volcanic glass that forms when lava cools rapidly.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/23/Obsidian.png"
   },
   "576": {
     "name": "Slate",
     "description": "It's extremely resistant to water, making it a good roofing material.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Slate.png"
   },
   "577": {
     "name": "Fairy Stone",
     "description": "An old miner's song suggests these are made from the bones of ancient fairies.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d9/Fairy_Stone.png"
   },
   "578": {
     "name": "Star Shards",
     "description": "No one knows how these form. Some scientists claim that the microscopic structure displays unnatural regularity.",
-    "category": "Minerals",
+    "category": "Mineral",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3f/Star_Shards.png"
   },
   "579": {
     "name": "Prehistoric Scapula",
     "description": "Commonly known as a \"shoulder blade\"... It's unclear what species it belonged to.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Prehistoric_Scapula.png"
   },
   "580": {
     "name": "Prehistoric Tibia",
     "description": "A thick and sturdy leg bone.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Prehistoric_Tibia.png"
   },
   "581": {
     "name": "Prehistoric Skull",
     "description": "This is definitely a mammalian skull.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/58/Prehistoric_Skull.png"
   },
   "582": {
     "name": "Skeletal Hand",
     "description": "It's a wonder all these ancient little pieces lasted so long.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Skeletal_Hand.png"
   },
   "583": {
     "name": "Prehistoric Rib",
     "description": "Little gouge marks on the side suggest that this rib was someone's dinner.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Prehistoric_Rib.png"
   },
   "584": {
     "name": "Prehistoric Vertebra",
     "description": "A segment of some prehistoric creature's spine.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Prehistoric_Vertebra.png"
   },
   "585": {
     "name": "Skeletal Tail",
     "description": "It's pretty short for a tail.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/29/Skeletal_Tail.png"
   },
   "586": {
     "name": "Nautilus Fossil",
     "description": "This must've washed up ages ago from an ancient coral reef. ",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Nautilus_Fossil.png"
   },
   "587": {
     "name": "Amphibian Fossil",
     "description": "The relatively short hind legs suggest some kind of primordial toad.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Amphibian_Fossil.png"
   },
   "588": {
     "name": "Palm Fossil",
     "description": "Palm Fossils are relatively common, but this happens to be a particularly well-preserved specimen.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Palm_Fossil.png"
   },
   "589": {
     "name": "Trilobite",
     "description": "A long extinct relative of the crab.",
-    "category": "Arch",
+    "category": "Artifact",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2b/Trilobite.png"
   },
   "590": {
@@ -2672,25 +2786,25 @@
   "591": {
     "name": "Tulip",
     "description": "The most popular spring flower. Has a very faint sweet smell.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cf/Tulip.png"
   },
   "593": {
     "name": "Summer Spangle",
     "description": "A tropical bloom that thrives in the humid summer air. Has a sweet, tangy aroma.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Summer_Spangle.png"
   },
   "595": {
     "name": "Fairy Rose",
     "description": "An old folk legend suggests that the sweet smell of this flower attracts fairies.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5c/Fairy_Rose.png"
   },
   "597": {
     "name": "Blue Jazz",
     "description": "The flower grows in a sphere to invite as many butterflies as possible.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2f/Blue_Jazz.png"
   },
   "599": {
@@ -2702,7 +2816,7 @@
   "376": {
     "name": "Poppy",
     "description": "In addition to its colorful flower, the Poppy has culinary and medicinal uses.",
-    "category": "Flowers",
+    "category": "Flower",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/37/Poppy.png"
   },
   "604": {
@@ -2731,7 +2845,7 @@
   },
   "608": {
     "name": "Pumpkin Pie",
-    "description": "Silky pumpkin cream in a flakey crust.",
+    "description": "Silky pumpkin cream in a flaky crust.",
     "category": "Cooking",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7d/Pumpkin_Pie.png"
   },
@@ -2762,7 +2876,7 @@
   "613": {
     "name": "Apple",
     "description": "A crisp fruit used for juice and cider.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7d/Apple.png"
   },
   "614": {
@@ -2810,115 +2924,115 @@
   "628": {
     "name": "Cherry Sapling",
     "description": "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/22/Cherry_Sapling.png"
   },
   "629": {
     "name": "Apricot Sapling",
     "description": "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Apricot_Sapling.png"
   },
   "630": {
     "name": "Orange Sapling",
     "description": "Takes 28 days to produce a mature Orange tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/08/Orange_Sapling.png"
   },
   "631": {
     "name": "Peach Sapling",
     "description": "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e3/Peach_Sapling.png"
   },
   "632": {
     "name": "Pomegranate Sapling",
     "description": "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/10/Pomegranate_Sapling.png"
   },
   "633": {
     "name": "Apple Sapling",
     "description": "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/68/Apple_Sapling.png"
   },
   "634": {
     "name": "Apricot",
     "description": "A tender little fruit with a rock-hard pit.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fc/Apricot.png"
   },
   "635": {
     "name": "Orange",
     "description": "Juicy, tangy, and bursting with sweet summer aroma.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/43/Orange.png"
   },
   "636": {
     "name": "Peach",
     "description": "It's almost fuzzy to the touch.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e2/Peach.png"
   },
   "637": {
     "name": "Pomegranate",
     "description": "Within the fruit are clusters of juicy seeds.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1b/Pomegranate.png"
   },
   "638": {
     "name": "Cherry",
     "description": "It's popular, and ripens sooner than most other fruits.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/20/Cherry.png"
   },
   "668": {
     "name": "Stone",
-    "description": "There's stone ore in this stone.",
-    "category": "Basic",
+    "description": "Break apart to obtain stone with a chance of coal.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/45/Stone_Index668.png"
   },
   "670": {
     "name": "Stone",
-    "description": "There's stone ore in this stone.",
-    "category": "Basic",
+    "description": "Break apart to obtain stone with a chance of coal.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/25/Stone_Index670.png"
   },
   "674": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Springobjects674.png"
   },
   "675": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/15/Springobjects675.png"
   },
   "676": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Springobjects676.png"
   },
   "677": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/ba/Springobjects677.png"
   },
   "678": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/96/Springobjects678.png"
   },
   "679": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/3e/Springobjects679.png"
   },
   "680": {
@@ -2954,13 +3068,13 @@
   "686": {
     "name": "Spinner",
     "description": "The shape makes it spin around in the water. Slightly increases the bite-rate when fishing.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7b/Spinner.png"
   },
   "687": {
     "name": "Dressed Spinner",
     "description": "The metal tab and colorful streamers create an enticing spectacle for fish. Increases the bite-rate when fishing.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/e8/Dressed_Spinner.png"
   },
   "688": {
@@ -2984,31 +3098,31 @@
   "691": {
     "name": "Barbed Hook",
     "description": "Makes your catch more secure, causing the \"fishing bar\" to cling to your catch. Works best on slow, weak fish.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4f/Barbed_Hook.png"
   },
   "692": {
     "name": "Lead Bobber",
     "description": "Adds weight to your \"fishing bar\", preventing it from bouncing along the bottom.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/cb/Lead_Bobber.png"
   },
   "693": {
     "name": "Treasure Hunter",
     "description": "Fish don't escape while collecting treasures. Also slightly increases the chance to find treasures.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/79/Treasure_Hunter.png"
   },
   "694": {
     "name": "Trap Bobber",
     "description": "Causes fish to escape slower when you aren't reeling them in.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/da/Trap_Bobber.png"
   },
   "695": {
     "name": "Cork Bobber",
     "description": "Slightly increases the size of your \"fishing bar\".",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0b/Cork_Bobber.png"
   },
   "698": {
@@ -3080,7 +3194,7 @@
   "709": {
     "name": "Hardwood",
     "description": "A special kind of wood with superior strength and beauty.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Hardwood.png"
   },
   "710": {
@@ -3146,19 +3260,19 @@
   "724": {
     "name": "Maple Syrup",
     "description": "A sweet syrup with a unique flavor.",
-    "category": "Artisan Goods, Syrups",
+    "category": "Artisan Goods",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6a/Maple_Syrup.png"
   },
   "725": {
     "name": "Oak Resin",
     "description": "A sticky, fragrant substance derived from oak sap.",
-    "category": "Artisan Goods, Syrups",
+    "category": "Artisan Goods",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/40/Oak_Resin.png"
   },
   "726": {
     "name": "Pine Tar",
     "description": "A pungent substance derived from pine sap.",
-    "category": "Artisan Goods, Syrups",
+    "category": "Artisan Goods",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ce/Pine_Tar.png"
   },
   "727": {
@@ -3209,10 +3323,16 @@
     "category": "Fish",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Woodskip.png"
   },
+  "742": {
+    "name": "Haley's Lost Bracelet",
+    "description": "A family heirloom.",
+    "category": "Quest",
+    "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/94/Springobjects742.png"
+  },
   "745": {
     "name": "Strawberry Seeds",
     "description": "Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Strawberry_Seeds.png"
   },
   "746": {
@@ -3241,38 +3361,38 @@
   },
   "750": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a7/Springobjects750.png"
   },
   "751": {
-    "name": "Stone",
+    "name": "Copper Stone",
     "description": "There's copper ore in this stone.",
-    "category": "Basic",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c8/Copper_Node.png"
   },
   "760": {
     "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/62/Stone_Index760.png"
   },
   "762": {
     "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "description": "Break apart to obtain stone, ores, or geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Stone_Index762.png"
   },
   "764": {
-    "name": "Stone",
-    "description": "gold ore",
-    "category": "Basic",
+    "name": "Gold Stone",
+    "description": "Break apart to obtain gold ore.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/88/Gold_Node.png"
   },
   "765": {
-    "name": "Stone",
-    "description": "iridium ore",
-    "category": "Basic",
+    "name": "Iridium Stone",
+    "description": "Break apart to obtain iridium ore.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4d/Iridium_Node.png"
   },
   "766": {
@@ -3302,13 +3422,13 @@
   "770": {
     "name": "Mixed Seeds",
     "description": "There's a little bit of everything here. Plant them and see what grows!",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/2e/Mixed_Seeds.png"
   },
   "771": {
     "name": "Fiber",
     "description": "Raw material sourced from plants.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/45/Fiber.png"
   },
   "772": {
@@ -3337,26 +3457,26 @@
   },
   "784": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Springobjects784.png"
   },
   "785": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/91/Springobjects785.png"
   },
   "786": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Springobjects786.png"
   },
   "787": {
     "name": "Battery Pack",
     "description": "It's fully charged with precious energy.",
-    "category": "Resources, Building Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/25/Battery_Pack.png"
   },
   "788": {
@@ -3379,20 +3499,20 @@
   },
   "792": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Cut to obtain wild seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/04/Springobjects792.png"
   },
   "793": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Cut to obtain wild seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/bc/Springobjects793.png"
   },
   "794": {
     "name": "Weeds",
-    "description": "Ugly weeds.",
-    "category": "Basic",
+    "description": "Ugly weeds. Cut to obtain wild seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0d/Springobjects794.png"
   },
   "795": {
@@ -3440,7 +3560,7 @@
   "802": {
     "name": "Cactus Seeds",
     "description": "Can only be grown indoors. Takes 12 days to mature, and then produces fruit every 3 days.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/09/Cactus_Seeds.png"
   },
   "803": {
@@ -3452,7 +3572,7 @@
   "805": {
     "name": "Tree Fertilizer",
     "description": "Sprinkle on a wild tree to ensure rapid growth, even in winter. Doesn't work on fruit trees.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Tree_Fertilizer.png"
   },
   "807": {
@@ -3506,7 +3626,7 @@
   "815": {
     "name": "Tea Leaves",
     "description": "The young leaves of the tea plant. Can be brewed into the popular, energizing beverage.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/5b/Tea_Leaves.png"
   },
   "267": {
@@ -3530,19 +3650,19 @@
   "292": {
     "name": "Mahogany Seed",
     "description": "This can be planted to grow a mahogany tree.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/84/Mahogany_Seed.png"
   },
   "289": {
     "name": "Ostrich Egg",
     "description": "It may be the world's largest egg.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Ostrich_Egg.png"
   },
   "25": {
-    "name": "Stone",
+    "name": "Mussel Stone",
     "description": "There's mussels in this stone.",
-    "category": "Basic",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/46/Mussel_Node.png"
   },
   "73": {
@@ -3554,13 +3674,13 @@
   "69": {
     "name": "Banana Sapling",
     "description": "Takes 28 days to produce a mature Banana tree. Bears fruit in the summer, or all year round when planted on Ginger Island.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/69/Banana_Sapling.png"
   },
   "91": {
     "name": "Banana",
     "description": "A sweet, starchy tropical fruit.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/69/Banana.png"
   },
   "791": {
@@ -3570,27 +3690,27 @@
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Golden_Coconut.png"
   },
   "816": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Fossil Stone",
+    "description": "Break apart to obtain fossils and bones.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/19/Bone_Node_1.png"
   },
   "817": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Fossil Stone",
+    "description": "Break apart to obtain fossils and bones.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/8/88/Bone_Node_2.png"
   },
   "818": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Clay Stone",
+    "description": "Break apart to obtain clay.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1f/Clay_Node.png"
   },
   "819": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Omni Geode Stone",
+    "description": "Break apart to obtain omni geodes.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0c/Omni_Geode_Node.png"
   },
   "820": {
@@ -3656,37 +3776,37 @@
   "830": {
     "name": "Taro Root",
     "description": "This starchy root is one of the most ancient crops.",
-    "category": "Vegetables",
+    "category": "Vegetable",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Taro_Root.png"
   },
   "831": {
     "name": "Taro Tuber",
     "description": "Plant these in warm weather. Takes 10 days to mature. Grows faster if planted near a body of water.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/57/Taro_Tuber.png"
   },
   "832": {
     "name": "Pineapple",
     "description": "A sweet and tangy tropical treat.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fb/Pineapple.png"
   },
   "833": {
     "name": "Pineapple Seeds",
     "description": "Plant these in warm weather. Takes 14 days to mature, and keeps producing fruit after that.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/17/Pineapple_Seeds.png"
   },
   "834": {
     "name": "Mango",
     "description": "A big, sweet tropical fruit with a unique flavor.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/3/38/Mango.png"
   },
   "835": {
     "name": "Mango Sapling",
     "description": "Takes 28 days to produce a mature Mango tree. Bears fruit in the summer, or all year round when planted on Ginger Island.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b0/Mango_Sapling.png"
   },
   "836": {
@@ -3716,13 +3836,13 @@
   "840": {
     "name": "Rustic Plank Floor",
     "description": "Place on the ground to create paths or to decorate your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Rustic_Plank_Floor.png"
   },
   "841": {
     "name": "Stone Walkway Floor",
     "description": "Place on the ground to create paths or to decorate your floors.",
-    "category": "Furniture",
+    "category": "Decor",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/51/Stone_Walkway_Floor.png"
   },
   "842": {
@@ -3732,51 +3852,51 @@
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c4/Journal_Scrap.png"
   },
   "843": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Cinder Shard Stone",
+    "description": "Break apart to obtain cinder shards.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4f/Cinder_Shard_Node_1.png"
   },
   "844": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Cinder Shard Stone",
+    "description": "Break apart to obtain cinder shards.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/65/Cinder_Shard_Node_2.png"
   },
   "845": {
     "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "description": "Break apart to obtain stone with a chance of coal.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/df/Stone_Index845.png"
   },
   "846": {
     "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "description": "Break apart to obtain stone with a chance of coal.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Stone_Index846.png"
   },
   "847": {
     "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "description": "Break apart to obtain stone with a chance of coal.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/6/6c/Stone_Index847.png"
   },
   "848": {
     "name": "Cinder Shard",
     "description": "You can feel a warm glow from within this stone.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/f/fd/Cinder_Shard.png"
   },
   "849": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Copper Stone",
+    "description": "There's copper ore in this stone.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/0a/Copper_Node_Volcano.png"
   },
   "850": {
-    "name": "Stone",
-    "description": "...",
-    "category": "Basic",
+    "name": "Iron Stone",
+    "description": "Break apart to obtain iron ore.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b8/Iron_Node_Volcano.png"
   },
   "851": {
@@ -3794,7 +3914,7 @@
   "856": {
     "name": "Curiosity Lure",
     "description": "Increases your chance to catch rare fish.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/26/Curiosity_Lure.png"
   },
   "857": {
@@ -3914,7 +4034,7 @@
   "877": {
     "name": "Quality Bobber",
     "description": "Boosts the quality of fish that you catch.",
-    "category": "Fishing Tackles",
+    "category": "Fishing Tackle",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/01/Quality_Bobber.png"
   },
   "879": {
@@ -3932,31 +4052,31 @@
   "881": {
     "name": "Bone Fragment",
     "description": "A small piece of bone.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Bone_Fragment.png"
   },
   "882": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/4/4b/Springobjects882.png"
   },
   "883": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/2/22/Springobjects883.png"
   },
   "884": {
     "name": "Weeds",
-    "description": "...",
-    "category": "Crafting",
+    "description": "Might contain fibers or mixed seeds.",
+    "category": "Litter",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/e/ee/Springobjects884.png"
   },
   "885": {
     "name": "Fiber Seeds",
     "description": "Plant these in any season. Does not require watering. Harvest with the scythe. Takes 7 days to grow.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/0/05/Fiber_Seeds.png"
   },
   "886": {
@@ -3980,19 +4100,19 @@
   "889": {
     "name": "Qi Fruit",
     "description": "Mr. Qi has challenged you to ship 500 of these strange melons.",
-    "category": "Fruits",
+    "category": "Fruit",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Qi_Fruit.png"
   },
   "890": {
     "name": "Qi Bean",
     "description": "Plant these in any season. Water every day to produce a Qi Fruit. Takes 4 days to mature.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/a/a7/Qi_Bean.png"
   },
   "891": {
     "name": "Mushroom Tree Seed",
     "description": "Place this on your farm to plant a mushroom tree.",
-    "category": "Seeds",
+    "category": "Seed",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/d/d4/Mushroom_Tree_Seed.png"
   },
   "892": {
@@ -4100,13 +4220,13 @@
   "909": {
     "name": "Radioactive Ore",
     "description": "It's glowing with dangerous energy... Can be smelted into bars.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Radioactive_Ore.png"
   },
   "910": {
     "name": "Radioactive Bar",
     "description": "Known by the Zuzu City Safety Commission to cause irreversible bodily harm.",
-    "category": "Resources, Metal Resources",
+    "category": "Resource",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Radioactive_Bar.png"
   },
   "911": {
@@ -4136,19 +4256,19 @@
   "918": {
     "name": "Hyper Speed-Gro",
     "description": "Greatly stimulates leaf production. Guaranteed to increase growth rate by at least 33%. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/5/53/Hyper_Speed-Gro.png"
   },
   "919": {
     "name": "Deluxe Fertilizer",
     "description": "Greatly improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/1/1c/Deluxe_Fertilizer.png"
   },
   "920": {
     "name": "Deluxe Retaining Soil",
     "description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
-    "category": "Fertilizers",
+    "category": "Fertilizer",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/c/c3/Deluxe_Retaining_Soil.png"
   },
   "921": {
@@ -4184,7 +4304,7 @@
   "928": {
     "name": "Golden Egg",
     "description": "A very rare and special egg with a solid gold shell.",
-    "category": "Animal Products, Eggs",
+    "category": "Animal Product",
     "iconURL": "https://stardewvalleywiki.com/mediawiki/images/9/97/Golden_Egg.png"
   }
 }
