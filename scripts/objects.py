@@ -27,29 +27,32 @@ dolls = {
 }
 
 # load the content files
-objects: dict[str, ContentObjectModel] = load_content("Objects.json")
-sprites: dict[str, str] = load_content("sprites.json")
-objects_strings: dict[str, str] = load_strings("Objects.json")
-strings: dict[str, str] = load_strings("StringsFromCSFiles.json")
+OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
+SPRITES: dict[str, str] = load_content("sprites.json")
+OBJ_STRINGS: dict[str, str] = load_strings("Objects.json")
+STRINGS: dict[str, str] = load_strings("StringsFromCSFiles.json")
 
 output: dict[str, Object] = {}
-for key, value in objects.items():
+for key, value in OBJECTS.items():
     if key in skip:
         continue
 
-    item: Object = {}
-
     if key in dolls:
-        item["name"] = dolls[key]
+        name = dolls[key]
     else:
-        item["name"] = get_string(value["DisplayName"], objects_strings)
+        name = get_string(value["DisplayName"], OBJ_STRINGS)
 
-    item["description"] = get_string(value["Description"], objects_strings)
-    item["category"] = getCategoryName(
-        Type=value["Type"], Category=value["Category"], StringsFromCSFiles=strings
+    description = get_string(value["Description"], OBJ_STRINGS)
+    category = getCategoryName(
+        Type=value["Type"], Category=value["Category"], StringsFromCSFiles=STRINGS
     )
-    item["iconURL"] = sprites.get(key)
+    iconURL = SPRITES.get(key)
 
-    output[key] = item
+    output[key] = {
+        "category": category,
+        "description": description,
+        "iconURL": iconURL,
+        "name": name,
+    }
 
 save_json(output, "objects.json", sort=False)

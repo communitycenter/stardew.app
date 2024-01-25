@@ -8,9 +8,17 @@ from typing import TypedDict, Optional, Literal
 class Object(TypedDict):
     name: str
     description: str
-    type: str
     category: str
     iconURL: str
+
+
+class Artifact(TypedDict):
+    locations: list[str]
+    itemID: int
+
+
+class Mineral(Artifact):
+    used_in: list[str]
 
 
 # ---------------------------------------------------------------------------- #
