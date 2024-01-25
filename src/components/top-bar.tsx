@@ -57,6 +57,7 @@ export function Topbar() {
   useEffect(() => {
     mixpanel?.identify(api.data?.discord_id);
 
+    if (!api.data?.discord_id) return; // don't try to identify if they're not logged in
     mixpanel?.people?.set({
       discord_id: api.data?.discord_id,
       $name: api.data?.discord_name,

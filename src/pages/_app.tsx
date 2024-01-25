@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const MIXPANEL_TOKEN = "affd98626f41a3c53107a93787689786";
 const MIXPANEL_CONFIG = {
-  debug: true,
+  debug: false,
   ignore_dnt: true,
 };
 
