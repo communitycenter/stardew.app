@@ -79,7 +79,7 @@ export const MobileNav = ({
                     <Button className="space-x-2 px-2.5" variant="secondary">
                       <Avatar className="h-6 w-6">
                         <AvatarImage
-                          src={`https://cdn.discorapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`}
+                          src={`https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`}
                         />
                         <AvatarFallback delayMs={600}>
                           {api.data?.discord_name.slice(0, 1).toUpperCase()}

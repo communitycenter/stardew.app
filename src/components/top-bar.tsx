@@ -173,7 +173,7 @@ export function Topbar() {
                   <Avatar className="h-6 w-6">
                     {api.data.discord_avatar ? (
                       <AvatarImage
-                        src={`https://cdn.discordapfp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
+                        src={`https://cdn.discordapp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
                       />
                     ) : (
                       <AvatarImage
