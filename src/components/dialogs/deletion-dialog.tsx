@@ -52,25 +52,25 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
       if (type === "account") {
         deleteCookie("token", {
           maxAge: 0,
-          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT)
+          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("uid", {
           maxAge: 0,
-          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT)
+          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("oauth_state", {
           maxAge: 0,
-          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT)
+          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
             ? "localhost"
             : "stardew.app",
         });
         deleteCookie("discord_user", {
           maxAge: 0,
-          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT)
+          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
             ? "localhost"
             : "stardew.app",
         });

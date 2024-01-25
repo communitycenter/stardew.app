@@ -99,7 +99,7 @@ export const MobileNav = ({
                           deleteCookie("token", {
                             maxAge: 0,
                             domain: parseInt(
-                              process.env.NEXT_PUBLIC_DEVELOPMENT
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
                             )
                               ? "localhost"
                               : "stardew.app",
@@ -107,7 +107,7 @@ export const MobileNav = ({
                           deleteCookie("uid", {
                             maxAge: 0,
                             domain: parseInt(
-                              process.env.NEXT_PUBLIC_DEVELOPMENT
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
                             )
                               ? "localhost"
                               : "stardew.app",
@@ -115,7 +115,7 @@ export const MobileNav = ({
                           deleteCookie("oauth_state", {
                             maxAge: 0,
                             domain: parseInt(
-                              process.env.NEXT_PUBLIC_DEVELOPMENT
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
                             )
                               ? "localhost"
                               : "stardew.app",
@@ -123,7 +123,7 @@ export const MobileNav = ({
                           deleteCookie("discord_user", {
                             maxAge: 0,
                             domain: parseInt(
-                              process.env.NEXT_PUBLIC_DEVELOPMENT
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
                             )
                               ? "localhost"
                               : "stardew.app",
