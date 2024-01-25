@@ -16,6 +16,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+import { Progress } from "@/components/ui/progress";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   BriefcaseIcon,
   ChartBarIcon,
@@ -169,10 +176,63 @@ export default function Farmer() {
     return { completed, additionalDescription };
   };
 
+  const playerExperiencePoints = useMemo(() => {
+    const experienceRequired: { [key: number]: number } = {
+      1: 100,
+      2: 380,
+      3: 770,
+      4: 1300,
+      5: 2150,
+      6: 3300,
+      7: 4800,
+      8: 6900,
+      9: 10000,
+      10: 15000,
+    };
+
+    type SkillName = "farming" | "fishing" | "foraging" | "mining" | "combat";
+
+    function calculateExperience(skillName: SkillName, activePlayer: any): any {
+      const currentLevel = activePlayer.general.skills[skillName];
+
+      if (currentLevel >= 10)
+        return {
+          percentage: 100,
+          experiencePointsRemaining: 0,
+          experiencePointsRequired: 0,
+        };
+
+      const currentExperience = activePlayer.general.experience[skillName];
+      const nextLevelExperience = experienceRequired[currentLevel + 1];
+
+      return {
+        percentage: (currentExperience / nextLevelExperience) * 100,
+        experiencePointsRemaining: nextLevelExperience - currentExperience,
+        experiencePointsRequired: nextLevelExperience,
+      };
+    }
+
+    if (activePlayer) {
+      if (activePlayer.general?.experience && activePlayer.general?.skills) {
+        return {
+          farming: calculateExperience("farming", activePlayer),
+          fishing: calculateExperience("fishing", activePlayer),
+          foraging: calculateExperience("foraging", activePlayer),
+          mining: calculateExperience("mining", activePlayer),
+          combat: calculateExperience("combat", activePlayer),
+        };
+      }
+    }
+  }, [activePlayer]);
+
   return (
     <>
       <Head>
-        <title>stardew.app | Farmer Tracker</title>
+        <title>stardew.app | Farmer</title>
+        <meta
+          name="title"
+          content="Stardew Valley Player Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track and manage your achievements and Stardrops in Stardew Valley. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
@@ -320,42 +380,155 @@ export default function Farmer() {
                           );
                         })}
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
                       <InfoCard
                         title="Farming"
                         description={`Level ${
                           activePlayer?.general?.skills?.farming ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
-                      />
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={
+                                    playerExperiencePoints.farming.percentage
+                                  }
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {playerExperiencePoints.farming
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.farming.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.farming.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
                       <InfoCard
                         title="Fishing"
                         description={`Level ${
                           activePlayer?.general?.skills?.fishing ?? 0
-                        }`}
+                        } `}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
-                      />
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={
+                                    playerExperiencePoints.fishing.percentage
+                                  }
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {playerExperiencePoints.fishing
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.fishing.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.fishing.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
                       <InfoCard
                         title="Foraging"
                         description={`Level ${
                           activePlayer?.general?.skills?.foraging ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
-                      />
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={
+                                    playerExperiencePoints.foraging.percentage
+                                  }
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {playerExperiencePoints.foraging
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.foraging.percentage ===
+                                  100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.foraging.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
                       <InfoCard
                         title="Mining"
                         description={`Level ${
                           activePlayer?.general?.skills?.mining ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
-                      />
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={
+                                    playerExperiencePoints.mining.percentage
+                                  }
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {playerExperiencePoints.mining
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.mining.percentage === 100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.mining.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
                       <InfoCard
                         title="Combat"
                         description={`Level ${
                           activePlayer?.general?.skills?.combat ?? 0
                         }`}
                         sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
-                      />
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={
+                                    playerExperiencePoints.combat.percentage
+                                  }
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {playerExperiencePoints.combat
+                                  .experiencePointsRemaining === 0 &&
+                                playerExperiencePoints.combat.percentage === 100
+                                  ? "Max level"
+                                  : `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
                     </div>
                   </div>
                 </AccordionContent>

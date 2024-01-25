@@ -125,7 +125,11 @@ export default function Relationships() {
   return (
     <>
       <Head>
-        <title>stardew.app | Social Tracker</title>
+        <title>stardew.app | Social</title>
+        <meta
+          name="title"
+          content="Stardew Valley Villagers Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track and manage your relationships with villagers in Stardew Valley. Keep tabs on the villagers' heart levels, gifts, and interactions to deepen your connections. Monitor your progress towards reaching maximum heart levels and building strong relationships with the community."

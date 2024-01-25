@@ -67,6 +67,21 @@ const seasons = [
   },
 ];
 
+const type = [
+  {
+    value: "all",
+    label: "All Types",
+  },
+  {
+    value: "caught",
+    label: "Caught",
+  },
+  {
+    value: "trap",
+    label: "Crab Pot",
+  },
+];
+
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -74,8 +89,13 @@ export default function Fishing() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+
+  const [_typeFilter, setTypeFilter] = useState("all");
+
   const [_weatherFilter, setWeatherFilter] = useState("both");
   const [_seasonFilter, setSeasonFilter] = useState("all");
+
+  const [_locationFilter, setLocationFilter] = useState("all");
 
   const { activePlayer } = useContext(PlayersContext);
 
@@ -112,7 +132,11 @@ export default function Fishing() {
   return (
     <>
       <Head>
-        <title>stardew.app | Fishing Tracker</title>
+        <title>stardew.app | Fishing</title>
+        <meta
+          name="title"
+          content="Stardew Valley Fishing Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track your Stardew Valley fishing progress and optimize your angling skills. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
@@ -189,29 +213,41 @@ export default function Fishing() {
                   setFilter={setFilter}
                 />
               </div>
-              <div className="flex gap-2">
-                <FilterSearch
+              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
+                <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
+                  {/* <FilterSearch
                   target={"all"}
-                  _filter={_seasonFilter}
-                  title={"Seasons"}
-                  data={seasons}
-                  setFilter={setSeasonFilter}
+                  _filter={_typeFilter}
+                  title={"Type"}
+                  data={type}
+                  setFilter={setTypeFilter}
                   icon={IconClock}
-                />
-                <FilterSearch
-                  target={"all"}
-                  _filter={_weatherFilter}
-                  title={"Weather"}
-                  data={weather}
-                  setFilter={setWeatherFilter}
-                  icon={IconCloud}
-                />
-                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                  <CommandInput
-                    onValueChange={(v) => setSearch(v)}
-                    placeholder="Search Fish"
+                /> */}
+                  <FilterSearch
+                    target={"all"}
+                    _filter={_seasonFilter}
+                    title={"Seasons"}
+                    data={seasons}
+                    setFilter={setSeasonFilter}
+                    icon={IconClock}
                   />
-                </Command>
+                  <FilterSearch
+                    target={"all"}
+                    _filter={_weatherFilter}
+                    title={"Weather"}
+                    data={weather}
+                    setFilter={setWeatherFilter}
+                    icon={IconCloud}
+                  />
+                </div>
+                <div className="flex">
+                  <Command className="border border-b-0 dark:border-neutral-800">
+                    <CommandInput
+                      onValueChange={(v) => setSearch(v)}
+                      placeholder="Search Fish"
+                    />
+                  </Command>
+                </div>
               </div>
             </div>
             {/* Fish Cards */}
@@ -230,8 +266,13 @@ export default function Fishing() {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
                 })
-                .filter((f: any) => {
-                  if ("weather" in f) {
+                .filter((f) => {
+                  if (_typeFilter === "all") return true;
+                  if (_typeFilter === "caught") return !f.trapFish;
+                  if (_typeFilter === "trap") return f.trapFish;
+                })
+                .filter((f) => {
+                  if ("weather" in f && f.trapFish === false) {
                     if (_weatherFilter === "both") {
                       return true;
                     } else {
@@ -246,10 +287,11 @@ export default function Fishing() {
                   } else return true;
                 })
                 .filter((f) => {
-                  if ("seasons" in f) {
+                  if ("seasons" in f && f.trapFish === false) {
                     if (_seasonFilter === "all") return true;
                     return f.seasons.includes(_seasonFilter);
-                  } else return true;
+                  }
+                  return true;
                 })
                 .map((f) => (
                   <BooleanCard

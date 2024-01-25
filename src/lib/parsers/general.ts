@@ -106,6 +106,30 @@ function parseSkills(player: any): SkillsRet {
   }
 }
 
+/* ---------------------------- experience parser ---------------------------- */
+interface ExperienceRet {
+  experience: Record<Skill, number>;
+}
+
+function parseExperience(player: any): ExperienceRet {
+  // experiencePoints are stored as an array of 6 numbers, but not actually marked
+  // in order of farming, fishing, foraging, mining, combat, luck
+  // luck is unused but we'll still parse and return it for completeness
+
+  const experiencePointsArray = player.experiencePoints.int;
+
+  const experience = {
+    farming: experiencePointsArray[0],
+    fishing: experiencePointsArray[1],
+    foraging: experiencePointsArray[2],
+    mining: experiencePointsArray[3],
+    combat: experiencePointsArray[4],
+    luck: experiencePointsArray[5],
+  };
+
+  return { experience };
+}
+
 /* ----------------------------- general parser ----------------------------- */
 const farmTypes = [
   "Standard",
@@ -125,6 +149,7 @@ export interface GeneralRet {
   skills?: Record<Skill, number>;
   questsCompleted?: number;
   stardrops?: string[];
+  experience?: Record<Skill, number>;
 }
 
 export function parseGeneral(player: any, whichFarm: number): GeneralRet {
@@ -139,6 +164,7 @@ export function parseGeneral(player: any, whichFarm: number): GeneralRet {
 
     const { skills } = parseSkills(player);
     const { stardrops } = parseStardrops(player);
+    const { experience } = parseExperience(player);
 
     return {
       name,
@@ -148,6 +174,7 @@ export function parseGeneral(player: any, whichFarm: number): GeneralRet {
       skills,
       questsCompleted,
       stardrops,
+      experience,
     };
   } catch (e) {
     let msg = "";

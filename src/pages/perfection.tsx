@@ -233,7 +233,11 @@ export default function Perfection() {
   return (
     <>
       <Head>
-        <title>stardew.app | Perfection Tracker</title>
+        <title>stardew.app | Perfection</title>
+        <meta
+          name="title"
+          content="Stardew Valley Perfection Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track and optimize your progress towards achieving perfection in Stardew Valley. Monitor your farm, relationships, achievements, and community events. Maximize efficiency, uncover secrets, and strive for the ultimate 100% completion. Take control of your Stardew Valley journey and become a true perfectionist."

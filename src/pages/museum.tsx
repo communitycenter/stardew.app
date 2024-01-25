@@ -77,6 +77,10 @@ export default function Museum() {
       <Head>
         <title>stardew.app | Museum</title>
         <meta
+          name="title"
+          content="Stardew Valley Minerals and Artifacts | stardew.app"
+        />
+        <meta
           name="description"
           content="Track your progress in completing the Stardew Valley museum collection. Keep tabs on the artifacts, minerals, and fossils you've donated, and see what items are still missing for 100% completion. Unearth hidden treasures, unravel the mysteries of the past, and become a renowned curator in Stardew Valley."
         />

@@ -110,15 +110,16 @@ export const FilterSearch = ({
       <PopoverTrigger asChild>
         <div
           aria-expanded={open}
-          className="flex items-center border rounded-md space-x-3 px-3 text-sm outline-none text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-400 dark:border-neutral-800 hover:cursor-pointer"
+          className="flex items-center border justify-between rounded-md space-x-3 px-3 py-2.5 text-sm outline-none text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-400 dark:border-neutral-800 hover:cursor-pointer"
         >
-          <Icon className="h-4 w-4 shrink-0 opacity-50" />
-          <p className="text-sm">
-            {!value || value === "all" || value === "Both"
-              ? title
-              : data.find((item) => item.value === _filter)?.label}
-          </p>
-
+          <div className="flex items-center gap-2">
+            <Icon className="h-4 w-4 shrink-0 opacity-50" />
+            <p className="text-sm whitespace-nowrap	">
+              {!value || value === "all" || value === "Both"
+                ? title
+                : data.find((item) => item.value === _filter)?.label}
+            </p>
+          </div>
           <ChevronUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </div>
       </PopoverTrigger>

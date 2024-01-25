@@ -3,13 +3,14 @@ import Link from "next/link";
 
 import type { PlayerType } from "@/contexts/players-context";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import * as v from "valibot";
 
 import { PlayersContext } from "@/contexts/players-context";
 
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -36,41 +37,63 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(1)
-    .max(32, {
-      message: "Name must 32 characters or less",
-    })
-    .trim()
-    .nonempty(),
-  questsCompleted: z.coerce.number().nonnegative().int().max(100000).optional(),
-  farmName: z.string().min(1).max(32).trim().nonempty(),
-  farmType: z.string().min(1).max(32).trim().nonempty(),
-  totalMoneyEarned: z.coerce
-    .number()
-    .nonnegative()
-    .int()
-    .max(1000000000)
-    .optional(),
-  fishCaught: z.coerce.number().nonnegative().int().max(100000).optional(),
-  numObelisks: z.coerce.number().nonnegative().int().max(4).optional(),
-  goldenClock: z.boolean().optional(),
-  childrenCount: z.coerce.number().nonnegative().int().max(2).optional(),
-  houseUpgradeLevel: z.coerce.number().nonnegative().int().max(3).optional(),
-  farming: z.coerce.number().nonnegative().int().max(10).optional(),
-  fishing: z.coerce.number().nonnegative().int().max(10).optional(),
-  foraging: z.coerce.number().nonnegative().int().max(10).optional(),
-  mining: z.coerce.number().nonnegative().int().max(10).optional(),
-  combat: z.coerce.number().nonnegative().int().max(10).optional(),
+const formSchema = v.object({
+  name: v.string([
+    v.minLength(1),
+    v.maxLength(32, "Name must be 32 characters or less"),
+    v.toTrimmed(),
+  ]),
+  questsCompleted: v.coerce(
+    v.number([v.toMinValue(0), v.toMaxValue(1000)]),
+    Number
+  ),
+  farmName: v.string([
+    v.minLength(1),
+    v.maxLength(32, "Name must be 32 characters or less"),
+    v.toTrimmed(),
+  ]),
+  farmType: v.string([v.minLength(1), v.maxLength(32), v.toTrimmed()]),
+  totalMoneyEarned: v.optional(
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
+      Number
+    )
+  ),
+  fishCaught: v.optional(
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
+      Number
+    )
+  ),
+  numObelisks: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number)
+  ),
+  goldenClock: v.optional(v.boolean()),
+  childrenCount: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number)
+  ),
+  houseUpgradeLevel: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number)
+  ),
+  farming: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  fishing: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  foraging: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  mining: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
+  combat: v.optional(
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+  ),
 });
-
 export default function Editor() {
-  const { toast } = useToast();
-
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
   const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
@@ -89,6 +112,8 @@ export default function Editor() {
   const [_mining, _setMining] = useState<string | undefined>(undefined);
   const [_combat, _setCombat] = useState<string | undefined>(undefined);
 
+  const [deletionOpen, setDeletionOpen] = useState(false);
+
   const farmListInfo = useMemo(() => {
     if (!activePlayer?.general?.farmInfo) return ["", undefined];
 
@@ -98,8 +123,8 @@ export default function Editor() {
     return [farmName, farmType];
   }, [activePlayer]);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema as any),
+  const form = useForm<v.Input<typeof formSchema>>({
+    resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
       questsCompleted: 0,
@@ -162,11 +187,9 @@ export default function Editor() {
     _setCombat(activePlayer?.general?.skills?.combat?.toString() ?? undefined);
   }, [activePlayer, form, farmListInfo]);
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: v.Input<typeof formSchema>) => {
     if (!activePlayer?._id) {
-      toast({
-        variant: "destructive",
-        title: "Error",
+      toast.error("An error occurred creating your farmhand.", {
         description: (
           <>
             No active player found. Try{" "}
@@ -191,6 +214,29 @@ export default function Editor() {
           foraging: values.foraging ?? 0,
           mining: values.mining ?? 0,
           combat: values.combat ?? 0,
+          luck: 0,
+        },
+        experience: {
+          farming:
+            values.farming === activePlayer.general?.skills?.farming
+              ? activePlayer.general?.experience?.farming ?? 0
+              : 0,
+          fishing:
+            values.fishing === activePlayer.general?.skills?.fishing
+              ? activePlayer.general?.experience?.fishing ?? 0
+              : 0,
+          foraging:
+            values.foraging === activePlayer.general?.skills?.foraging
+              ? activePlayer.general?.experience?.foraging ?? 0
+              : 0,
+          mining:
+            values.mining === activePlayer.general?.skills?.mining
+              ? activePlayer.general?.experience?.mining ?? 0
+              : 0,
+          combat:
+            values.combat === activePlayer.general?.skills?.combat
+              ? activePlayer.general?.experience?.combat ?? 0
+              : 0,
           luck: 0,
         },
         timePlayed: activePlayer?.general?.timePlayed ?? undefined,
@@ -221,11 +267,7 @@ export default function Editor() {
     };
 
     await uploadPlayers([player]);
-    toast({
-      variant: "default",
-      title: "Success",
-      description: "Successfully updated farmhand!",
-    });
+    toast.success("Successfully updated farmhand!");
   };
 
   return (
@@ -708,15 +750,32 @@ export default function Editor() {
                       )}
                     />
                   </div>
-                  <Button variant="default" type="submit">
-                    Save
-                  </Button>
+                  <div className="w-full gap-3 flex">
+                    <Button
+                      variant="destructive"
+                      type="button"
+                      className="w-1/4"
+                      disabled={!activePlayer?._id}
+                      onClick={() => setDeletionOpen(true)}
+                    >
+                      Delete
+                    </Button>
+                    <Button variant="default" type="submit" className="w-3/4">
+                      Save
+                    </Button>
+                  </div>
                 </form>
               </Form>
             </CardContent>
           </Card>
         </div>
       </main>
+      <DeletionDialog
+        open={deletionOpen}
+        setOpen={setDeletionOpen}
+        playerID={activePlayer?._id}
+        type="player"
+      />
     </>
   );
 }

@@ -120,7 +120,11 @@ export default function Shipping() {
   return (
     <>
       <Head>
-        <title>stardew.app | Shipping Tracker</title>
+        <title>stardew.app | Shipping</title>
+        <meta
+          name="title"
+          content="Stardew Valley Shipping Tracker | stardew.app"
+        />
         <meta
           name="description"
           content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."

@@ -7,14 +7,15 @@ const { version } = packageJson;
 
 import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
 import { CreditsDialog } from "@/components/dialogs/credits-dialog";
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { PresetSelector } from "@/components/preset-selector";
 import { MobileNav } from "@/components/sheets/mobile-nav";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -25,11 +26,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/components/ui/use-toast";
-import { DeletionDialog } from "./dialogs/deletion-dialog";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-
+import { toast } from "sonner";
 export interface User {
   id: string;
   discord_id: string;
@@ -51,8 +51,18 @@ export function Topbar() {
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
 
-  const { toast } = useToast();
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
+
+  useEffect(() => {
+    mixpanel?.identify(api.data?.discord_id);
+
+    mixpanel?.people?.set({
+      discord_id: api.data?.discord_id,
+      $name: api.data?.discord_name,
+      $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
+    });
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -62,9 +72,7 @@ export function Topbar() {
     if (typeof file === "undefined" || !file) return;
 
     if (file.type !== "") {
-      toast({
-        variant: "destructive",
-        title: "Invalid File Type",
+      toast.error("Invalid file type", {
         description: "Please upload a Stardew Valley save file.",
       });
       return;
@@ -72,35 +80,36 @@ export function Topbar() {
 
     const reader = new FileReader();
 
+    let uploadPromise;
+
     reader.onloadstart = () => {
-      toast({
-        variant: "default",
-        title: "Uploading Save File",
-        description: "Please wait while we upload your save file.",
+      uploadPromise = new Promise((resolve, reject) => {
+        reader.onload = async function (event) {
+          try {
+            const players = parseSaveFile(event.target?.result as string);
+            await uploadPlayers(players);
+            resolve("Your save file was successfully uploaded!");
+            mixpanel?.track("Upload Save File", {
+              Players: players.length,
+            });
+          } catch (err) {
+            reject(err instanceof Error ? err.message : "Unknown error.");
+          }
+        };
       });
+
+      // Start the loading toast
+      toast.promise(uploadPromise, {
+        loading: "Uploading your save file...",
+        success: (data) => `${data}`,
+        error: (err) => `There was an error parsing your save file:\n${err}`,
+      });
+
+      // Reset the input
+      e.target.value = "";
+      uploadPromise = null;
     };
 
-    reader.onload = async function (event) {
-      try {
-        const players = parseSaveFile(event.target?.result as string);
-        await uploadPlayers(players);
-        toast({
-          variant: "default",
-          title: "Save File Uploaded",
-          description: "Your save file has been successfully uploaded.",
-        });
-      } catch (err) {
-        console.error(
-          "[DEBUG] There's been an error parsing your save file. Please screenshot the text below, and send it in #bug-reports"
-        );
-        console.error(err);
-        toast({
-          variant: "destructive",
-          title: "Error Parsing File",
-          description: err instanceof Error ? err.message : "Unknown error.",
-        });
-      }
-    };
     reader.readAsText(file);
   };
 
@@ -164,14 +173,18 @@ export function Topbar() {
                   <Avatar className="h-6 w-6">
                     {api.data.discord_avatar ? (
                       <AvatarImage
-                        src={`https://cdn.discordapp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
+                        src={`https://cdn.discordapfp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
                       />
                     ) : (
                       <AvatarImage
                         src={`https://cdn.discordapp.com/embed/avatars/0.png`}
                       />
                     )}
+                    <AvatarFallback delayMs={600}>
+                      {api.data?.discord_name.slice(0, 1).toUpperCase()}
+                    </AvatarFallback>
                   </Avatar>
+
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
               </DropdownMenuTrigger>
@@ -204,20 +217,30 @@ export function Topbar() {
                   onClick={() => {
                     deleteCookie("token", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("uid", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("oauth_state", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
                     deleteCookie("discord_user", {
                       maxAge: 0,
-                      domain: "stardew.app",
+                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                        ? "localhost"
+                        : "stardew.app",
                     });
+
+                    mixpanel?.reset();
                     return (window.location.href = "/");
                   }}
                 >

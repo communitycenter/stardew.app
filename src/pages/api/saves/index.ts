@@ -73,7 +73,7 @@ export async function getUID(
       req,
       res,
       maxAge: 60 * 60 * 24 * 365,
-      domain: "stardew.app",
+      domain: process.env.NEXT_PUBLIC_DEVELOPMENT ? "localhost" : "stardew.app",
     });
   }
   return uid;
@@ -157,12 +157,40 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 
 async function _delete(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);
-  const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
-    uid,
-  ]);
 
+  if (!req.body) {
+    // delete all players
+    const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+      uid,
+    ]);
+    // console.log("[DEBUG:SAVES] DELETE | deleted all players with uid =", uid);
+  } else {
+    // console.log("[DEBUG:SAVES] DELETE | req.body =", req.body);
+    const { type } = JSON.parse(req.body);
+
+    if (type === "player") {
+      // delete a single player
+      const { _id } = JSON.parse(req.body);
+      const result = await conn.execute(
+        "DELETE FROM Saves WHERE user_id = ? AND _id = ?",
+        [uid, _id]
+      );
+
+      // console.log("[DEBUG:SAVES] DELETE | deleted one player with id =", _id);
+    } else {
+      // delete entire account
+      // delete players
+      const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+        uid,
+      ]);
+      // delete user
+      const result2 = await conn.execute("DELETE FROM Users WHERE id = ?", [
+        uid,
+      ]);
+      // console.log("[DEBUG:SAVES] DELETE | deleted account with uid =", uid);
+    }
+  }
   // console.log(result.rowsAffected)
-
   res.status(204).end();
 }
 

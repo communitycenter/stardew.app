@@ -17,6 +17,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
+import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props<T extends Recipe> {
@@ -33,6 +34,7 @@ export const RecipeCard = <T extends Recipe>({
   setObject,
 }: Props<T>) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const mixpanel = useMixpanel();
 
   let colorClass = "";
   switch (status) {
@@ -128,7 +130,14 @@ export const RecipeCard = <T extends Recipe>({
           className="pl-8 gap-2"
           checked={status === 0}
           disabled={status === 0 || !activePlayer}
-          onClick={() => handleStatusChange(null)}
+          onClick={() => {
+            handleStatusChange(null);
+            mixpanel?.track("Context Button Clicked", {
+              Action: "Set Unknown",
+              Recipe: name,
+              "Card Type": "Recipe card",
+            });
+          }}
         >
           <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
           <p>Set Unknown</p>
@@ -137,7 +146,14 @@ export const RecipeCard = <T extends Recipe>({
           className="pl-8 gap-2"
           checked={status === 1}
           disabled={status === 1 || !activePlayer}
-          onClick={() => handleStatusChange(1)}
+          onClick={() => {
+            handleStatusChange(1);
+            mixpanel?.track("Context Button Clicked", {
+              Action: "Set Known",
+              Recipe: name,
+              "Card Type": "Recipe card",
+            });
+          }}
         >
           <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
           Set Known
@@ -146,7 +162,14 @@ export const RecipeCard = <T extends Recipe>({
           className="pl-8 gap-2"
           checked={status === 2}
           disabled={status === 2 || !activePlayer}
-          onClick={() => handleStatusChange(2)}
+          onClick={() => {
+            handleStatusChange(2);
+            mixpanel?.track("Context Button Clicked", {
+              Action: "Set Completed",
+              Recipe: name,
+              "Card Type": "Recipe card",
+            });
+          }}
         >
           <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
           Set Completed

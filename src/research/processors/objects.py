@@ -49,6 +49,12 @@ cmap = {  # categories map from https://stardewvalleywiki.com/Modding:Items#Cate
 # Room for improvement since we don't use a vast majority of things in the game
 skip = set(["925", "927", "929", "930"])  # have descriptions but no use or image
 
+# hardcoded checks for strange dolls because their name doesn't include the color
+dolls = {
+    "126": "Strange Doll (green)",
+    "127": "Strange Doll (yellow)",
+}
+
 with open("../raw_data/ObjectInformation.json") as f:
     object_info = json.load(f)
 
@@ -61,7 +67,12 @@ for key, value in tqdm(object_info.items()):
         continue
 
     fields = value.split("/")
-    name = fields[0]
+
+    if key in dolls:
+        name = dolls[key]
+    else:
+        name = fields[0]
+
     description = fields[5]
     category = cmap[
         fields[3].split(" ")[-1]

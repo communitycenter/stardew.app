@@ -81,7 +81,8 @@ export default function Cooking() {
   return (
     <>
       <Head>
-        <title>stardew.app | Cooking Tracker</title>
+        <title>stardew.app | Cooking</title>
+        <meta name="title" content="stardew.app | Cooking Tracker" />
         <meta
           name="description"
           content="Track and master cooking recipes in Stardew Valley. Keep tabs on the cooking recipes you've learned and monitor your progress towards becoming a skilled chef. Discover what recipes are left to learn and unlock the full potential of your culinary skills in Stardew Valley."

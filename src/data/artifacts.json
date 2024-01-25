@@ -31,7 +31,10 @@
       "itemID": "99"
     },
     "Chipped Amphora": {
-      "locations": ["Town (3%)", "Artifact Trove (3.7%)"],
+      "locations": [
+        "Town (3%)",
+        "Artifact Trove (3.7%)"
+      ],
       "itemID": "100"
     },
     "Arrowhead": {
@@ -239,14 +242,34 @@
       "itemID": "123"
     },
     "Golden Mask": {
-      "locations": ["Desert (3%)", "Artifact Trove (3.7%)"],
+      "locations": [
+        "Desert (3%)",
+        "Artifact Trove (3.7%)"
+      ],
       "itemID": "124"
     },
     "Golden Relic": {
-      "locations": ["Desert (6%)", "Artifact Trove (3.7%)"],
+      "locations": [
+        "Desert (6%)",
+        "Artifact Trove (3.7%)"
+      ],
       "itemID": "125"
     },
-    "Strange Doll": {
+    "Strange Doll (green)": {
+      "locations": [
+        "Farm (0.08%)",
+        "Bus Stop (0.07%)",
+        "Town (0.07%)",
+        "Forest (0.06%)",
+        "Mountain (0.06%)",
+        "Beach (0.06%)",
+        "Tilling in Mines/Skull Cavern (any floor) (0.03%)",
+        "Fishing Chest (\u22480.14%)",
+        "Secret Note #17"
+      ],
+      "itemID": "126"
+    },
+    "Strange Doll (yellow)": {
       "locations": [
         "Farm (0.08%)",
         "Bus Stop (0.07%)",
@@ -358,8 +381,16 @@
   },
   "minerals": {
     "Quartz": {
-      "locations": ["The Mines", "Garbage Can", "Stone Golem"],
-      "used_in": ["Geologist's Bundle", "Refined Quartz", "Fish Pond"],
+      "locations": [
+        "The Mines",
+        "Garbage Can",
+        "Stone Golem"
+      ],
+      "used_in": [
+        "Geologist's Bundle",
+        "Refined Quartz",
+        "Fish Pond"
+      ],
       "itemID": "80"
     },
     "Earth Crystal": {
@@ -373,7 +404,11 @@
         "Omni Geode",
         "Garbage Can"
       ],
-      "used_in": ["Geologist's Bundle", "Mayonnaise Machine", "Fish Pond"],
+      "used_in": [
+        "Geologist's Bundle",
+        "Mayonnaise Machine",
+        "Fish Pond"
+      ],
       "itemID": "86"
     },
     "Frozen Tear": {
@@ -420,7 +455,14 @@
         "Fishing Treasure Chest",
         "Feast of the Winter Star"
       ],
-      "used_in": ["Clint", "Dwarf", "Emily", "Penny", "Fish Pond", "Forge"],
+      "used_in": [
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Penny",
+        "Fish Pond",
+        "Forge"
+      ],
       "itemID": "60"
     },
     "Aquamarine": {
@@ -451,7 +493,12 @@
         "Fishing Treasure Chest",
         "Feast of the Winter Star"
       ],
-      "used_in": ["Clint", "Dwarf", "Emily", "Forge"],
+      "used_in": [
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Forge"
+      ],
       "itemID": "64"
     },
     "Amethyst": {
@@ -463,7 +510,14 @@
         "Garbage Can",
         "Fishing Treasure Chest"
       ],
-      "used_in": ["Abigail", "Clint", "Dwarf", "Emily", "Fish Pond", "Forge"],
+      "used_in": [
+        "Abigail",
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Fish Pond",
+        "Forge"
+      ],
       "itemID": "66"
     },
     "Topaz": {
@@ -474,7 +528,13 @@
         "Garbage Can",
         "Fishing Treasure Chest"
       ],
-      "used_in": ["Clint", "Dwarf", "Emily", "Fish Pond", "Forge"],
+      "used_in": [
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Fish Pond",
+        "Forge"
+      ],
       "itemID": "68"
     },
     "Jade": {
@@ -486,7 +546,13 @@
         "Fishing Treasure Chest",
         "Feast of the Winter Star"
       ],
-      "used_in": ["Clint", "Dwarf", "Emily", "Fish Pond", "Forge"],
+      "used_in": [
+        "Clint",
+        "Dwarf",
+        "Emily",
+        "Fish Pond",
+        "Forge"
+      ],
       "itemID": "70"
     },
     "Diamond": {
@@ -540,209 +606,384 @@
       "itemID": "74"
     },
     "Tigerseye": {
-      "locations": ["Magma Geode", "Omni Geode"],
-      "used_in": ["Sam"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Sam"
+      ],
       "itemID": "562"
     },
     "Opal": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "564"
     },
     "Fire Opal": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "565"
     },
     "Alamite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "538"
     },
     "Bixite": {
-      "locations": ["Magma Geode", "Omni Geode", "Black Slime"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode",
+        "Black Slime"
+      ],
       "used_in": [],
       "itemID": "539"
     },
     "Baryte": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "540"
     },
     "Aerinite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "541"
     },
     "Calcite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "542"
     },
     "Dolomite": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "543"
     },
     "Esperite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "544"
     },
     "Fluorapatite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "545"
     },
     "Geminite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "546"
     },
     "Helvite": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "547"
     },
     "Jamborite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "548"
     },
     "Jagoite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "549"
     },
     "Kyanite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "550"
     },
     "Lunarite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "551"
     },
     "Malachite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "552"
     },
     "Neptunite": {
-      "locations": ["Magma Geode", "Omni Geode", "Black Slime"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode",
+        "Black Slime"
+      ],
       "used_in": [],
       "itemID": "553"
     },
     "Lemon Stone": {
-      "locations": ["Magma Geode", "Omni Geode"],
-      "used_in": ["Dwarf"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Dwarf"
+      ],
       "itemID": "554"
     },
     "Nekoite": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "555"
     },
     "Orpiment": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "556"
     },
     "Petrified Slime": {
-      "locations": ["Geode", "Omni Geode", "Slime Ball"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Geode",
+        "Omni Geode",
+        "Slime Ball"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "557"
     },
     "Thunder Egg": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "558"
     },
     "Pyrite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "559"
     },
     "Ocean Stone": {
-      "locations": ["Frozen Geode", "Omni Geode"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "560"
     },
     "Ghost Crystal": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "561"
     },
     "Jasper": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "563"
     },
     "Celestine": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "566"
     },
     "Marble": {
-      "locations": ["Frozen Geode", "Omni Geode"],
-      "used_in": ["Marble Brazier"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Marble Brazier"
+      ],
       "itemID": "567"
     },
     "Sandstone": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "568"
     },
     "Granite": {
-      "locations": ["Geode", "Omni Geode"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "569"
     },
     "Basalt": {
-      "locations": ["Magma Geode", "Omni Geode"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "570"
     },
     "Limestone": {
-      "locations": ["Geode", "Omni Geode"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "571"
     },
     "Soapstone": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "572"
     },
     "Hematite": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "573"
     },
     "Mudstone": {
-      "locations": ["Geode", "Omni Geode"],
-      "used_in": ["Fish Pond"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Fish Pond"
+      ],
       "itemID": "574"
     },
     "Obsidian": {
-      "locations": ["Magma Geode", "Omni Geode"],
-      "used_in": ["Sebastian"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
+      "used_in": [
+        "Sebastian"
+      ],
       "itemID": "575"
     },
     "Slate": {
-      "locations": ["Geode", "Omni Geode"],
+      "locations": [
+        "Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "576"
     },
     "Fairy Stone": {
-      "locations": ["Frozen Geode", "Omni Geode"],
+      "locations": [
+        "Frozen Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "577"
     },
     "Star Shards": {
-      "locations": ["Magma Geode", "Omni Geode"],
+      "locations": [
+        "Magma Geode",
+        "Omni Geode"
+      ],
       "used_in": [],
       "itemID": "578"
+    },
+    "Geode": {
+      "locations": [
+        "Fish Pond"
+      ],
+      "used_in": [],
+      "itemID": "535"
+    },
+    "Frozen Geode": {
+      "locations": [
+        "Field Research Bundle",
+        "Fish Pond"
+      ],
+      "used_in": [],
+      "itemID": "536"
+    },
+    "Magma Geode": {
+      "locations": [],
+      "used_in": [],
+      "itemID": "537"
+    },
+    "Omni Geode": {
+      "locations": [
+        "Clint",
+        "Dwarf",
+        "Fish Pond"
+      ],
+      "used_in": [],
+      "itemID": "749"
     }
   }
 }

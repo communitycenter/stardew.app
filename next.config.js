@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -11,6 +15,16 @@ const nextConfig = {
       {
         source: "/github",
         destination: "https://github.com/communitycenter/stardew.app",
+        permanent: true,
+      },
+      {
+        source: "/social",
+        destination: "/relationships",
+        permanent: true,
+      },
+      {
+        source: "/artifacts",
+        destination: "/museum",
         permanent: true,
       },
     ];
@@ -27,4 +41,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

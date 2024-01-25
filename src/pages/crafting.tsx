@@ -92,7 +92,11 @@ export default function Crafting() {
   return (
     <>
       <Head>
-        <title>stardew.app | Crafting Tracker</title>
+        <title>stardew.app | Crafting</title>
+        <meta
+          name="title"
+          content="Stardew Valley Crafting Recipes | stardew.app"
+        />
         <meta
           name="description"
           content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
