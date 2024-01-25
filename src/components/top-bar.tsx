@@ -15,7 +15,7 @@ import { CreditsDialog } from "@/components/dialogs/credits-dialog";
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { PresetSelector } from "@/components/preset-selector";
 import { MobileNav } from "@/components/sheets/mobile-nav";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -173,14 +173,18 @@ export function Topbar() {
                   <Avatar className="h-6 w-6">
                     {api.data.discord_avatar ? (
                       <AvatarImage
-                        src={`https://cdn.discordapp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
+                        src={`https://cdn.discordapfp.com/avatars/${api.data.discord_id}/${api.data.discord_avatar}.png`}
                       />
                     ) : (
                       <AvatarImage
                         src={`https://cdn.discordapp.com/embed/avatars/0.png`}
                       />
                     )}
+                    <AvatarFallback delayMs={600}>
+                      {api.data?.discord_name.slice(0, 1).toUpperCase()}
+                    </AvatarFallback>
                   </Avatar>
+
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
               </DropdownMenuTrigger>
