@@ -12,13 +12,9 @@ class Object(TypedDict):
     iconURL: str
 
 
-class Artifact(TypedDict):
+class MuseumPiece(TypedDict):
     locations: list[str]
     itemID: int
-
-
-class Mineral(Artifact):
-    used_in: list[str]
 
 
 # ---------------------------------------------------------------------------- #
