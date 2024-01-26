@@ -43,8 +43,14 @@ def save_json(data: dict, file_name: str, sort: bool = True) -> None:
     """
     data_dir = os.path.join(os.path.dirname(__file__), "..", "..", "src", "data")
     output_path = os.path.join(data_dir, file_name)
+
+    if not sort:
+        with open(output_path, "w") as f:
+            json.dump(data, f, indent=2, sort_keys=False)
+        return
+
     with open(output_path, "w") as f:
-        json.dump(data, f, indent=2, sort_keys=sort)
+        json.dump({int(x): data[x] for x in data.keys()}, f, indent=2, sort_keys=True)
 
 
 def GetCategoryDisplayName(category: int, StringsFromCSFiles: dict[str, str]) -> str:

@@ -12,6 +12,12 @@ class Object(TypedDict):
     iconURL: str
 
 
+class BigObject(TypedDict):
+    name: str
+    description: str
+    iconURL: str
+
+
 class MuseumPiece(TypedDict):
     locations: list[str]
     itemID: int
@@ -244,5 +250,60 @@ class ContentObjectModel(TypedDict):
     """
     Whether to exclude this item from the fishing/shipping collection and their respective effect on the perfection score. 
     Default false, in which case the normal requirements apply (e.g. artifacts are always excluded from the shipping collection).
+    """
+    CustomFields: None
+
+
+# ---------------------------------------------------------------------------- #
+#                                 BigCraftables                                #
+# ---------------------------------------------------------------------------- #
+class ContentBigObjectModel(TypedDict):
+    Name: str
+    """The internal item name"""
+    DisplayName: str
+    """
+    A [tokenizable string](https://stardewvalleywiki.com/Modding:Tokenizable_strings) for the item's in-game display name.
+    """
+    Description: str
+    """
+    A [tokenizable string](https://stardewvalleywiki.com/Modding:Tokenizable_strings) for the item's in-game display description.
+    """
+    Price: int
+    """
+    The price when sold by the player. This is not the price when bought from a shop. Default 0.
+    """
+    Fragility: int
+    """
+    How the item can be picked up. The possible values are 0 (pick up with any tool), 
+    1 (destroyed if hit with an axe/hoe/pickaxe, or picked up with any other tool), 
+    or 2 (can't be removed once placed). Default 0.
+    """
+    CanBePlacedIndoors: bool
+    """
+    Whether this item can be placed indoors. Default true.
+    """
+    CanBePlacedOutdoors: bool
+    """
+    Whether this item can be placed outdoors. Default true.
+    """
+    IsLamp: bool
+    """
+    Whether this is a lamp and should produce light when dark. Default false.
+    """
+    Texture: None
+    """
+    The asset name for the texture containing the item's sprite. Defaults to `TileSheets/Craftables`.
+    """
+    SpriteIndex: int
+    """
+    The sprite's index within the `Texture`, where 0 is the top-left sprite.
+    """
+    ContextTags: Optional[list[str]]
+    """
+    The custom [context tags](https://stardewvalleywiki.com/Modding:Items#Context_tags) to add for this item (in addition to the tags added automatically based on the other object data).
+    This is formatted as a list; for example: 
+    ```json
+    "ContextTags": [ "color_yellow", "fish_ocean", "fish_upright", "season_summer" ]
+    ```
     """
     CustomFields: None
