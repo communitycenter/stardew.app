@@ -76,11 +76,14 @@ export function parseSocial(
   */
 
   if (farmerFriendships) {
-    for (const idx in farmerFriendships.item) {
-      let friendship = farmerFriendships.item[idx].key.FarmerPair;
-
-      if (farmerFriendships.item[idx].value.Friendship.Status === "Married") {
-        console.log("Found co-op spouse");
+    if (Array.isArray(farmerFriendships.item)) {
+      for (const idx in farmerFriendships.item) {
+        if (farmerFriendships.item[idx].value.Friendship.Status === "Married") {
+          player.spouse = "Other player";
+        }
+      }
+    } else {
+      if (farmerFriendships.item.value.Friendship.Status === "Married") {
         player.spouse = "Other player";
       }
     }
