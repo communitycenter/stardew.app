@@ -32,9 +32,6 @@ def build_item_map() -> dict[str, int]:
     return item_map
 
 
-name_to_itemID = build_item_map()
-
-
 def clean(text: str) -> str:
     """Remove superscripted references from text, and normalize"""
     return unicodedata.normalize("NFKD", re.sub(r"\[\d+\]", "", text))
@@ -53,6 +50,8 @@ def get_artifacts() -> dict[str, MuseumPiece]:
     URL = "https://stardewvalleywiki.com/Artifacts"
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "html.parser")
+
+    name_to_itemID = build_item_map()
 
     # find the tbody element containing the information. We'll use the XPath from
     # chrome's dev tools to find it. Right click the element -> Copy -> Copy XPath
@@ -96,9 +95,6 @@ def get_artifacts() -> dict[str, MuseumPiece]:
     return artifacts
 
 
-artifacts = get_artifacts()
-
-
 # ---------------------------------------------------------------------------- #
 #                                   minerals                                   #
 # ---------------------------------------------------------------------------- #
@@ -106,6 +102,8 @@ def get_minerals() -> dict[str, MuseumPiece]:
     URL = "https://stardewvalleywiki.com/Minerals"
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "html.parser")
+
+    name_to_itemID = build_item_map()
 
     # The tables are split into 3 tables of different sections (The 4th is geodes)
     # they all have the same class names: wikitable sortable roundedborder so,
@@ -166,11 +164,14 @@ def get_minerals() -> dict[str, MuseumPiece]:
     return minerals
 
 
-minerals = get_minerals()
-museum = {"artifacts": artifacts, "minerals": minerals}
+if __name__ == "__main__":
+    artifacts = get_artifacts()
+    minerals = get_minerals()
 
-# make sure we have all the artifacts and minerals, found by looking at the wiki
-# https://stardewvalleywiki.com/Museum
-assert len(artifacts) == 42
-assert len(minerals) == 53
-save_json(museum, "museum.json", sort=False)
+    # make sure we have all the artifacts and minerals, found by looking at the wiki
+    # https://stardewvalleywiki.com/Museum
+    assert len(artifacts) == 42
+    assert len(minerals) == 53
+
+    museum = {"artifacts": artifacts, "minerals": minerals}
+    save_json(museum, "museum.json", sort=False)

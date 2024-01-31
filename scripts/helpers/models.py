@@ -23,6 +23,13 @@ class MuseumPiece(TypedDict):
     itemID: int
 
 
+class Achievement(TypedDict):
+    iconURL: str
+    name: str
+    description: str
+    id: int
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #

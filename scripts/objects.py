@@ -5,8 +5,6 @@
 # Content Files used: Objects.json, Strings/Objects.json, Strings/StringsFromCSFiles.json
 # Wiki Pages used: None
 
-import os
-
 from tqdm import tqdm
 
 from helpers.models import Object, ContentObjectModel
@@ -34,27 +32,34 @@ SPRITES: dict[str, str] = load_content("sprites.json")
 OBJ_STRINGS: dict[str, str] = load_strings("Objects.json")
 STRINGS: dict[str, str] = load_strings("StringsFromCSFiles.json")
 
-output: dict[str, Object] = {}
-for key, value in OBJECTS.items():
-    if key in skip:
-        continue
 
-    if key in dolls:
-        name = dolls[key]
-    else:
-        name = get_string(value["DisplayName"], OBJ_STRINGS)
+def get_objects() -> dict[str, Object]:
+    output: dict[str, Object] = {}
+    for key, value in tqdm(OBJECTS.items()):
+        if key in skip:
+            continue
 
-    description = get_string(value["Description"], OBJ_STRINGS)
-    category = getCategoryName(
-        Type=value["Type"], Category=value["Category"], StringsFromCSFiles=STRINGS
-    )
-    iconURL = SPRITES.get(key)
+        if key in dolls:
+            name = dolls[key]
+        else:
+            name = get_string(value["DisplayName"], OBJ_STRINGS)
 
-    output[key] = {
-        "category": category,
-        "description": description,
-        "iconURL": iconURL,
-        "name": name,
-    }
+        description = get_string(value["Description"], OBJ_STRINGS)
+        category = getCategoryName(
+            Type=value["Type"], Category=value["Category"], StringsFromCSFiles=STRINGS
+        )
+        iconURL = SPRITES.get(key)
 
-save_json(output, "objects.json", sort=False)
+        output[key] = {
+            "category": category,
+            "description": description,
+            "iconURL": iconURL,
+            "name": name,
+        }
+
+    return output
+
+
+if __name__ == "__main__":
+    output = get_objects()
+    save_json(output, "objects.json", sort=False)
