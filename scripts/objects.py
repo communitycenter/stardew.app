@@ -1,7 +1,9 @@
 # Purpose: to parse Objects.json from the content folder and keep relevant information
-# Parsed JSON will be saved to src/data/objects.json
-# Key: itemID ex: '23' (not the uniqueID)
-# Value: name, description, category, iconURL
+# Result is saved to data/objects.json
+# { itemID: { name, description, category, iconURL } }
+#
+# Content Files used: Objects.json, Strings/Objects.json, Strings/StringsFromCSFiles.json
+# Wiki Pages used: None
 
 import os
 

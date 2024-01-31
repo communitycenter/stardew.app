@@ -1,5 +1,9 @@
-# Parsing all achievements from wiki
-# iconURL, name, description
+# Purpose: Parsing all achievement info from wiki (iconURL, name, description)
+# Result is saved to data/achievements.json
+# { name: { iconURL, name, description, id } }
+#
+# Content Files used: None
+# Wiki Pages used: https://stardewvalleywiki.com/Achievements
 
 """
     Instead of processing the game files, we're gonna scrape the wiki for the

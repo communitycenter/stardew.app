@@ -1,5 +1,10 @@
-# Scraping sprites from https://stardewvalleywiki.com/Modding:Items/Object_sprites
-# we won't import this file on the client side, only for processors
+# Purpose: Scraping all sprites for Object items from the wiki.
+#          we won't import this file on the client side, only for processors
+# Result is saved to content/sprites.json
+# { itemID: iconURL }
+#
+# Content Files used: None
+# Wiki Pages used: https://stardewvalleywiki.com/Modding:Items/Object_sprites
 
 import os
 import json

@@ -1,6 +1,9 @@
 # Purpose: Scraping museum artifact information from sdv wiki
-# Result is saved to src/data/artifacts.json
+# Result is saved to data/artifacts.json
 # { artifacts: { name: { itemID, locations } }, minerals: { name: { itemID, locations, used_in } }
+#
+# Content Files used: Objects.json, Strings/Objects.json
+# Wiki Pages used: https://stardewvalleywiki.com/Artifacts, https://stardewvalleywiki.com/Minerals
 
 import re
 import requests

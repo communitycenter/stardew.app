@@ -2,6 +2,9 @@
 #          from Content/BigCraftables and scraping image URLs from the wiki
 # Result is saved to data/big_craftables.json
 # { itemID: { name, description, iconURL } }
+#
+# Content Files used: BigCraftables.json, Strings/BigCraftables.json, CraftingRecipes.json
+# Wiki Pages used: None
 
 import requests
 
