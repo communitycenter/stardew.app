@@ -16,6 +16,22 @@ def load_content(file_name: str) -> dict:
         return json.load(f)
 
 
+def load_data(file_name: str) -> dict:
+    """Loads a json file from the data directory and returns it as a dictionary
+
+    Args:
+        file_name (str): The name of the json file. Ex: "cooking.json"
+
+    Returns:
+        dict: The json file as a dictionary
+    """
+    data_path = os.path.join(
+        os.path.dirname(__file__), "..", "..", "src", "data", file_name
+    )
+    with open(data_path, "r") as f:
+        return json.load(f)
+
+
 def load_strings(file_name: str) -> dict[str, str]:
     """Loads a json file from the Strings directory and returns it as a dictionary
 
@@ -159,3 +175,25 @@ def get_string(tokenized_str: str, Strings: dict[str, str]) -> str:
     # Tokenized strings are in the format: [LocalizedText Strings\<File>:<key>]
     key = tokenized_str.split(":")[1][:-1]
     return Strings.get(key)
+
+
+def get_tv_airing_date(key: int) -> str:
+    """Returns the string for when the recipe with the given key will air on TV.
+
+    Args:
+        key (int): The key of the recipe in the JSON file.
+
+    Returns:
+        str: A string in the format "Spring 7, Year 1".
+    """
+    seasons = ["Spring", "Summer", "Fall", "Winter"]
+    day = (key * 7) % 28
+    if day == 0:
+        day = 28
+
+    season_idx = (key - 1) // 4
+    season = seasons[season_idx % 4]
+
+    year = (key * 7) // 112 + 1
+
+    return f"{season} {day}, Year {year}"

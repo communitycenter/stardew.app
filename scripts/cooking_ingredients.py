@@ -7,15 +7,15 @@
 
 from tqdm import tqdm
 
-from helpers.models import Ingredient
+from helpers.models import TrackedIngredient
 from helpers.utils import load_content, save_json
 
 # load the content files
 COOKING_RECIPES = load_content("CookingRecipes.json")
 
 
-def get_cooking_ingredients() -> dict[str, Ingredient]:
-    output: dict[str, Ingredient] = {}
+def get_cooking_ingredients() -> dict[str, TrackedIngredient]:
+    output: dict[str, TrackedIngredient] = {}
 
     for value in tqdm(COOKING_RECIPES.values()):
         fields = value.split("/")

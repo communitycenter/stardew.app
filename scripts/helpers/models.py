@@ -30,9 +30,24 @@ class Achievement(TypedDict):
     id: int
 
 
-class Ingredient(TypedDict):
+class TrackedIngredient(TypedDict):
     quantity: int
     usedIn: list[int]
+
+
+class Ingredient(TypedDict):
+    itemID: int
+    quantity: int
+
+
+class Recipe(TypedDict):
+    itemID: int
+    ingredients: list[Ingredient]
+    unlockConditions: str
+
+
+class CookingRecipe(Recipe):
+    isBigCraftable: bool
 
 
 # ---------------------------------------------------------------------------- #
