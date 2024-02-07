@@ -46,7 +46,7 @@ class Recipe(TypedDict):
     unlockConditions: str
 
 
-class CookingRecipe(Recipe):
+class CraftingRecipe(Recipe):
     isBigCraftable: bool
 
 
