@@ -30,6 +30,11 @@ class Achievement(TypedDict):
     id: int
 
 
+class Ingredient(TypedDict):
+    quantity: int
+    usedIn: list[int]
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
