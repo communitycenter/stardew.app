@@ -1,6 +1,8 @@
 import os
 import json
 
+from datetime import datetime
+
 
 def load_content(file_name: str) -> dict:
     """Loads a json file from the content directory and returns it as a dictionary
@@ -197,3 +199,15 @@ def get_tv_airing_date(key: int) -> str:
     year = (key * 7) // 112 + 1
 
     return f"{season} {day}, Year {year}"
+
+
+def convert_time(time: str) -> str:
+    """Converts a string from 24-hour time to 12-hour time.
+
+    Args:
+        time (str): The time from fish data. Ex: "1200"
+
+    Returns:
+        str: The time in 12-hour format. Ex: "12PM"
+    """
+    return datetime.strptime(time, "%H%M%S").strftime("%-I%p")

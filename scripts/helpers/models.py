@@ -50,6 +50,23 @@ class CraftingRecipe(Recipe):
     isBigCraftable: bool
 
 
+class TrapFish(TypedDict):
+    itemID: int
+    locations: list[str]
+    trapFish: bool
+
+
+class Fish(TypedDict):
+    itemID: int
+    locations: list[str]
+    trapFish: bool
+    difficulty: str
+    time: str
+    seasons: list[str]
+    weather: str
+    minLevel: int
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
