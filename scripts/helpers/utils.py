@@ -3,6 +3,8 @@ import json
 
 from datetime import datetime
 
+from helpers.models import ContentObjectModel
+
 
 def load_content(file_name: str) -> dict:
     """Loads a json file from the content directory and returns it as a dictionary
@@ -54,7 +56,6 @@ def save_json(data: dict, file_name: str, sort: bool = True) -> None:
     """Saves a dictionary to a json file in the data directory
 
     Args:
-        curr_file (str): The path to the current script. Use __file__.
         data (dict): The dictionary to save.
         file_name (str): The name of the json file.
         sort (bool, optional): Whether or not to sort the keys. Defaults to True.
@@ -211,3 +212,49 @@ def convert_time(time: str) -> str:
         str: The time in 12-hour format. Ex: "12PM"
     """
     return datetime.strptime(time, "%H%M%S").strftime("%-I%p")
+
+
+def isPotentialBasicShipped(
+    itemId: str, category: int, objectType: str, OBJECTS: dict[str, ContentObjectModel]
+) -> bool:
+    """See `StardewValley/Object.cs::isPotentialBasicShipped()`
+
+    Args:
+        itemId (str): the item's unqualified item id
+        category (int): the item's category
+        objectType (str): the item's type
+        OBJECTS (dict): The content file `Objects.json` loaded as a dictionary
+
+    Returns:
+        bool: whether the item is a potential basic shipped item
+    """
+    if itemId == "433":
+        return True
+
+    match objectType:
+        case "Arch" | "Fish" | "Minerals" | "Cooking":
+            return False
+        case _:
+            match category:
+                case (
+                    -999
+                    | -96
+                    | -74
+                    | -29
+                    | -24
+                    | -22
+                    | -21
+                    | -20
+                    | -19
+                    | -14
+                    | -12
+                    | -8
+                    | -7
+                    | -2
+                    | 0
+                ):
+                    return False
+                case _:
+                    if OBJECTS.get(itemId).get("ExcludeFromShippingCollection"):
+                        return False
+                    return True

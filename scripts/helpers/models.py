@@ -67,6 +67,13 @@ class Fish(TypedDict):
     minLevel: int
 
 
+class ShippingItem(TypedDict):
+    itemID: int
+    polyculture: bool
+    monoculture: bool
+    seasons: list[str]
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
@@ -350,4 +357,147 @@ class ContentBigObjectModel(TypedDict):
     "ContextTags": [ "color_yellow", "fish_ocean", "fish_upright", "season_summer" ]
     ```
     """
+    CustomFields: None
+
+
+# ---------------------------------------------------------------------------- #
+#                                Data/Crops.json                               #
+# ---------------------------------------------------------------------------- #
+class PlantableLocationRulesModel(TypedDict):
+    Id: str
+    """The unique string ID for this entry within the list."""
+    Result: Literal["Default", "Allow", "Deny"]
+    """Indicates whether the seed can be planted in a location if this entry is
+    selected. The possible values are:
+    * `Default`: the seed can be planted if the location normally allows it.
+    * `Allow`: the seed can be planted here, regardless of whether the location normally allows it.
+    * `Deny`: the seed can't be planted here, regardless of whether the location normally allows it.
+    """
+    Condition: Optional[str]
+    """A [game state query](https://stardewvalleywiki.com/Modding:Game_state_queries)
+    which indicates whether this entry applies."""
+    PlantedIn: Literal["Ground", "GardenPot", "Any"]
+    """The planting context to apply this rule for. The possible values are
+    `Ground` (planted directly in dirt), `GardenPot` (planted in a [garden pot](https://stardewvalleywiki.com/Garden_Pot)),
+    or `Any`. 
+    
+    Default `Any`."""
+    DeniedMessage: Optional[str]
+    """If this rule prevents planting the seed, the tokenizable string to show
+    to the player (or `null` to default to the normal behavior for the context).
+    This also applies when the Result is `Default`, if that causes the planting to be denied."""
+
+
+class ContentCropItem(TypedDict):
+    """
+    Consists of a string → model lookup, where:
+    * the key is the unqualified item ID for the seed item.
+    * the value is the model for the crop item.
+    """
+
+    Seasons: list[Literal["Spring", "Summer", "Fall", "Winter"]]
+    """The seasons in which this crop can grow."""
+    DaysInPhase: list[int]
+    """
+    The number of days in each visual step of growth before the crop is
+    harvestable. Each step corresponds to a sprite in the crop's row (see `SpriteIndex`).
+
+    For example, a crop with `"DaysInPhase": [1, 1, 1, 1]` will grow from seed
+    to harvestable in 4 days, moving to the next sprite each day.
+    """
+    RegrowDays: int
+    """
+    The number of days before the crop regrows after harvesting, or `-1` if it
+    can't regrow.
+
+    Default `-1`.
+    """
+    IsRaised: bool
+    """Whether this is a raised crop on a trellis that can't be walked through.
+    
+    Default `false`.
+    """
+    IsPaddyCrop: bool
+    """Whether this crop can be planted near water for a unique paddy dirt
+    texture, faster growth time, and auto-watering. For example, rice and taro are paddy crops.
+    
+    Default `false`.
+    """
+    NeedsWatering: bool
+    """Whether this crop needs to be watered to grow (e.g. fiber seeds don't). 
+    
+    Default `true`."""
+    HarvestItemId: str
+    """The unqualified item ID produced when this crop is harvested."""
+    HarvestMethod: Literal["Grab", "Scythe"]
+    """How the crop can be harvested. This can be `Grab` (crop is harvested by hand)
+    or `Scythe` (crop is harvested with a [scythe](https://stardewvalleywiki.com/Scythe)).
+
+    Default `Grab`.
+    """
+    HarvestMinStack: int
+    """
+    The minimum number of HarvestItemId to produce
+    (before HarvestMaxIncreasePerFarmingLevel and ExtraHarvestChance are applied).
+    A value within this range (inclusive) will be randomly chosen each time the crop is harvested.
+    The minimum defaults to 1.
+
+    Default `1`.
+    """
+    HarvestMaxStack: int
+    """
+    The maximum number of HarvestItemId to produce
+    (before HarvestMaxIncreasePerFarmingLevel and ExtraHarvestChance are applied).
+    A value within this range (inclusive) will be randomly chosen each time the crop is harvested.
+    The maximum defaults to the minimum.
+    """
+    HarvestMinQuality: int
+    """
+    The minimum quality of the harvest crop.
+
+    Default `0`.
+    """
+    HarvestMaxQuality: Optional[int]
+    HarvestMaxIncreasePerFarmingLevel: float
+    """The number of extra harvests to produce per farming level. This is
+    rounded down to the nearest integer and added to HarvestMaxStack.
+    
+    Defaults to `0.0`.
+    """
+    ExtraHarvestChance: float
+    """The probability that harvesting the crop will produce extra harvest items,
+    as a value between 0 (never) and 0.9 (nearly always). This is repeatedly
+    rolled until it fails, then the number of successful rolls is added to the produced count.
+
+    Defaults to `0.0`.
+    """
+    Texture: Literal["TileSheets\\crops"]
+    """The asset name for the texture (under the game's `Content` folder)
+    containing the crop sprite. Vanilla crops use `TileSheets\\crops`.
+    """
+    SpriteIndex: int
+    """The index of this crop in the `Texture`, one crop per row, where 0 is the top row.
+    
+    Default `0`."""
+    TintColors: list[str]
+    """The colors with which to tint the sprite when drawn (e.g. for colored flowers).
+    A random color from the list will be chosen for each crop. See [color format](https://stardewvalleywiki.com/Modding:Migrate_to_Stardew_Valley_1.6#Color_fields).
+
+    Default `[]`.
+    """
+    CountForMonoculture: bool
+    """Whether the player can ship 300 of this crop's harvest item to unlock the
+    monoculture achievement.
+    
+    Default `false`."""
+    CountForPolyculture: bool
+    """Whether the player must ship 15 of this crop's harvest item (along with
+    any other required crops) to unlock the polyculture achievement.
+    
+    Default `false`."""
+    PlantableLocationRules: Optional[list[PlantableLocationRulesModel]]
+    """The rules to decide which locations you can plant the seed in, if applicable.
+    The first matching rule is used. This can override location checks
+    (e.g. crops being limited to the farm), but not built-in requirements like
+    crops needing dirt."""
     CustomFields: None
