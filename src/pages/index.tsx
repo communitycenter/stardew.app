@@ -68,15 +68,17 @@ export default function Home() {
       <main
         className={`flex min-h-[calc(100vh-65px)]  flex-col md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8 items-center`}
       >
-        <main className="flex flex-col items-center justify-center flex-grow">
-          <Image
-            src="/favicon.png"
-            alt="Log in with Discord"
-            className="rounded-sm"
-            width={64}
-            height={64}
-          />
-          <h2 className="text-3xl font-semibold text-center">stardew.app</h2>
+        <main className="flex flex-col items-center justify-center flex-grow max-w-2xl">
+          <div className="flex items-center gap-2 mb-4">
+            <Image
+              src="/favicon.png"
+              alt="Log in with Discord"
+              className="rounded-sm"
+              width={64}
+              height={64}
+            />
+            <h2 className="text-3xl font-semibold text-center">stardew.app</h2>
+          </div>
           <h3 className="text-lg font-normal text-center">
             Your ultimate sidekick for conquering Stardew Valley. Seamlessly
             upload your save files and let us do the heavy lifting, or take the

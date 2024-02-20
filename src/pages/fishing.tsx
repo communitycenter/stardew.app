@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { IconClock, IconCloud, IconMapPin } from "@tabler/icons-react";
+import { IconClock, IconCloud } from "@tabler/icons-react";
 
 const reqs = {
   Fisherman: 10,
@@ -79,21 +79,6 @@ const type = [
   {
     value: "trap",
     label: "Crab Pot",
-  },
-];
-
-const location = [
-  {
-    value: "all",
-    label: "All Locations",
-  },
-  {
-    value: "freshwater",
-    label: "Freshwater",
-  },
-  {
-    value: "saltwater",
-    label: "Saltwater",
   },
 ];
 
@@ -228,53 +213,41 @@ export default function Fishing() {
                   setFilter={setFilter}
                 />
               </div>
-              <div className="flex gap-2">
-                <FilterSearch
+              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
+                <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
+                  {/* <FilterSearch
                   target={"all"}
                   _filter={_typeFilter}
                   title={"Type"}
                   data={type}
                   setFilter={setTypeFilter}
                   icon={IconClock}
-                />
-                {_typeFilter === "caught" && (
-                  <>
-                    <FilterSearch
-                      target={"all"}
-                      _filter={_seasonFilter}
-                      title={"Seasons"}
-                      data={seasons}
-                      setFilter={setSeasonFilter}
-                      icon={IconClock}
-                    />
-                    <FilterSearch
-                      target={"all"}
-                      _filter={_weatherFilter}
-                      title={"Weather"}
-                      data={weather}
-                      setFilter={setWeatherFilter}
-                      icon={IconCloud}
-                    />
-                  </>
-                )}
-
-                {_typeFilter === "trap" && (
+                /> */}
                   <FilterSearch
                     target={"all"}
-                    _filter={_locationFilter}
-                    title={"Location"}
-                    data={location}
-                    setFilter={setLocationFilter}
-                    icon={IconMapPin}
+                    _filter={_seasonFilter}
+                    title={"Seasons"}
+                    data={seasons}
+                    setFilter={setSeasonFilter}
+                    icon={IconClock}
                   />
-                )}
-
-                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                  <CommandInput
-                    onValueChange={(v) => setSearch(v)}
-                    placeholder="Search Fish"
+                  <FilterSearch
+                    target={"all"}
+                    _filter={_weatherFilter}
+                    title={"Weather"}
+                    data={weather}
+                    setFilter={setWeatherFilter}
+                    icon={IconCloud}
                   />
-                </Command>
+                </div>
+                <div className="flex">
+                  <Command className="border border-b-0 dark:border-neutral-800">
+                    <CommandInput
+                      onValueChange={(v) => setSearch(v)}
+                      placeholder="Search Fish"
+                    />
+                  </Command>
+                </div>
               </div>
             </div>
             {/* Fish Cards */}
@@ -317,17 +290,6 @@ export default function Fishing() {
                   if ("seasons" in f && f.trapFish === false) {
                     if (_seasonFilter === "all") return true;
                     return f.seasons.includes(_seasonFilter);
-                  }
-                  return true;
-                })
-                .filter((f) => {
-                  if (_typeFilter === "trap") {
-                    if (_locationFilter === "all") return true;
-                    if (_locationFilter === "freshwater") {
-                      return f.locations.includes("Crab Pot: Freshwater");
-                    } else if (_locationFilter === "saltwater") {
-                      return f.locations.includes("Crab Pot: Saltwater");
-                    }
                   }
                   return true;
                 })

@@ -60,7 +60,7 @@ export interface SocialRet {
 export function parseSocial(
   player: any,
   children: Map<string, number>,
-  farmerFriendships: any
+  farmerFriendships?: any
 ): SocialRet {
   /*
     Achievements Relevant:
@@ -75,16 +75,17 @@ export function parseSocial(
       - The Beloved Farmer (10 hearts with 8 NPCs).
   */
 
-  console.log(farmerFriendships);
-
-  for (const idx in farmerFriendships.item) {
-    console.log(farmerFriendships.item[idx]);
-
-    let friendship = farmerFriendships.item[idx].key.FarmerPair;
-
-    if (farmerFriendships.item[idx].value.Friendship.Status === "Married") {
-      console.log("Found co-op spouse");
-      player.spouse = "Other player";
+  if (farmerFriendships) {
+    if (Array.isArray(farmerFriendships.item)) {
+      for (const idx in farmerFriendships.item) {
+        if (farmerFriendships.item[idx].value.Friendship.Status === "Married") {
+          player.spouse = "Other player";
+        }
+      }
+    } else {
+      if (farmerFriendships.item.value.Friendship.Status === "Married") {
+        player.spouse = "Other player";
+      }
     }
   }
 

@@ -81,7 +81,7 @@ export const MobileNav = ({
                         <AvatarImage
                           src={`https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`}
                         />
-                        <AvatarFallback>
+                        <AvatarFallback delayMs={600}>
                           {api.data?.discord_name.slice(0, 1).toUpperCase()}
                         </AvatarFallback>
                       </Avatar>
@@ -98,25 +98,33 @@ export const MobileNav = ({
                         onClick={() => {
                           deleteCookie("token", {
                             maxAge: 0,
-                            domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            domain: parseInt(
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
+                            )
                               ? "localhost"
                               : "stardew.app",
                           });
                           deleteCookie("uid", {
                             maxAge: 0,
-                            domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            domain: parseInt(
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
+                            )
                               ? "localhost"
                               : "stardew.app",
                           });
                           deleteCookie("oauth_state", {
                             maxAge: 0,
-                            domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            domain: parseInt(
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
+                            )
                               ? "localhost"
                               : "stardew.app",
                           });
                           deleteCookie("discord_user", {
                             maxAge: 0,
-                            domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                            domain: parseInt(
+                              process.env.NEXT_PUBLIC_DEVELOPMENT!
+                            )
                               ? "localhost"
                               : "stardew.app",
                           });

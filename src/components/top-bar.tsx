@@ -15,7 +15,7 @@ import { CreditsDialog } from "@/components/dialogs/credits-dialog";
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { PresetSelector } from "@/components/preset-selector";
 import { MobileNav } from "@/components/sheets/mobile-nav";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -55,8 +55,8 @@ export function Topbar() {
   const mixpanel = useMixpanel();
 
   useEffect(() => {
+    if (!api.data?.discord_id) return; // don't try to identify if they're not logged in
     mixpanel?.identify(api.data?.discord_id);
-
     mixpanel?.people?.set({
       discord_id: api.data?.discord_id,
       $name: api.data?.discord_name,
@@ -180,7 +180,11 @@ export function Topbar() {
                         src={`https://cdn.discordapp.com/embed/avatars/0.png`}
                       />
                     )}
+                    <AvatarFallback delayMs={600}>
+                      {api.data?.discord_name.slice(0, 1).toUpperCase()}
+                    </AvatarFallback>
                   </Avatar>
+
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
               </DropdownMenuTrigger>
@@ -213,25 +217,25 @@ export function Topbar() {
                   onClick={() => {
                     deleteCookie("token", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                      domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                         ? "localhost"
                         : "stardew.app",
                     });
                     deleteCookie("uid", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                      domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                         ? "localhost"
                         : "stardew.app",
                     });
                     deleteCookie("oauth_state", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                      domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                         ? "localhost"
                         : "stardew.app",
                     });
                     deleteCookie("discord_user", {
                       maxAge: 0,
-                      domain: process.env.NEXT_PUBLIC_DEVELOPMENT
+                      domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                         ? "localhost"
                         : "stardew.app",
                     });

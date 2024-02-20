@@ -85,6 +85,8 @@ export function parseSaveFile(xml: string) {
           player,
           children,
           saveFile.SaveGame.farmerFriendships
+            ? saveFile.SaveGame.farmerFriendships
+            : null
         ),
         monsters: parseMonsters(player),
         walnuts: parsedWalnuts,
