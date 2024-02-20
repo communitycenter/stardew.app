@@ -45,3 +45,7 @@ venv/
 
 # raw game data
 /src/research/raw_data/*.json
+/scripts/content/**/*.json
+
+# python stuff
+__pycache__/
