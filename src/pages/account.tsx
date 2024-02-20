@@ -1,4 +1,4 @@
-import type { User } from "@/components/top-bar";
+import type { User } from "@/components/top-bar"; //
 
 import Head from "next/head";
 import useSWR from "swr";
