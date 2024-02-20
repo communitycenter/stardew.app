@@ -62,4 +62,4 @@ def get_objects() -> dict[str, Object]:
 
 if __name__ == "__main__":
     output = get_objects()
-    save_json(output, "objects.json", sort=False)
+    save_json(output, "objects.json", sort=True)

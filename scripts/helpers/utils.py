@@ -65,7 +65,7 @@ def save_json(data: dict, file_name: str, sort: bool = True) -> None:
 
     if not sort:
         with open(output_path, "w") as f:
-            json.dump(data, f, indent=2, sort_keys=False)
+            json.dump(data, f, indent=2, sort_keys=True)
         return
 
     with open(output_path, "w") as f:
@@ -166,7 +166,7 @@ def getCategoryName(
 
 
 def get_string(tokenized_str: str, Strings: dict[str, str]) -> str:
-    """Uses a tokenized string to return the actual string from StringsFromCSFiles.json
+    """Uses a tokenized string to return the actual string from a JSON Strings file.
 
     Args:
         tokenized_str (str): A tokenized string. Ex: `[LocalizedText Strings\\Objects:MagicRockCandy_Name]`

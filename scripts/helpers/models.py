@@ -74,6 +74,14 @@ class ShippingItem(TypedDict):
     seasons: list[str]
 
 
+class Villager(TypedDict):
+    birthday: str
+    datable: bool
+    iconURL: str
+    loves: list[int]
+    name: str
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
@@ -501,3 +509,45 @@ class ContentCropItem(TypedDict):
     (e.g. crops being limited to the farm), but not built-in requirements like
     crops needing dirt."""
     CustomFields: None
+
+
+class ContentCharacterModel(TypedDict):
+    """https://stardewvalleywiki.com/Modding:Migrate_to_Stardew_Valley_1.6#Custom_NPCs"""
+
+    DisplayName: str
+    Language: Literal["default", "Dwarvish"]
+    Gender: Literal["Female", "Male", "Undefined"]
+    Age: Literal["Child", "Teen", "Adult"]
+    Manner: Literal["Neutral", "Polite", "Rude"]
+    SocialAnxiety: Literal["Neutral", "Outgoing", "Shy"]
+    Optimism: Literal["Neutral", "Negative", "Positive"]
+    BirthSeason: Literal["Spring", "Summer", "Fall", "Winter"]
+    BirthDay: int
+    HomeRegion: Literal["Desert", "Town", "Other"]
+    IsDarkSkinned: bool
+    CanSocialize: Optional[str]
+    CanBeRomanced: bool
+    CanReceiveGifts: bool
+    CanCommentOnPurchasedShopItems: Optional[bool]
+    CanGreetNearbyCharacters: bool
+    CanVisitIsland: Optional[str]
+    LoveInterest: Optional[str]
+    Calendar: Literal["HiddenAlways", "HiddenUntilMet", "AlwaysShown"]
+    SocialTab: Literal[
+        "HiddenAlways", "HiddenUntilMet", "UnknownUntilMet", "AlwaysShown"
+    ]
+    SocialTabIconSourceRect: None
+    SpouseAdopts: Optional[str]
+    SpouseWantsChildren: Optional[str]
+    SpouseGetsJealousOfGifts: Optional[str]
+    SpouseRoom: Optional[dict]  # TODO: Add this model if we need it
+    SpousePatio: Optional[dict]  # TODO: Add this model if we need it
+    SpouseFloors: list[str]
+    SpouseWallpapers: list[str]
+    IntroductionsQuest: Optional[bool]
+    ItemDeliveryQuests: Optional[bool]
+    PerfectionScore: bool
+    EndSlideShow: Literal["Hidden", "MainGroup", "TrailingGroup"]
+    FriendsAndFamily: dict[str, str]
+
+    # TODO: Add the rest of the fields but the rest of it isn't needed
