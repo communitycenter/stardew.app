@@ -30,6 +30,7 @@ import { Separator } from "@/components/ui/separator";
 import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { toast } from "sonner";
+import { FeedbackDialog } from "./dialogs/feedback-dialog";
 export interface User {
   id: string;
   discord_id: string;
@@ -50,6 +51,7 @@ export function Topbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
   const mixpanel = useMixpanel();
@@ -201,6 +203,15 @@ export function Topbar() {
                 >
                   Credits
                 </DropdownMenuItem>
+                <DropdownMenuItem
+                  data-umami-event="Open credits"
+                  onClick={() => {
+                    setFeedbackOpen(true);
+                  }}
+                >
+                  Send us a message!
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
 
                 <DropdownMenuItem
                   className="focus:text-red-400 dark:focus:text-red-400"
@@ -211,6 +222,7 @@ export function Topbar() {
                 >
                   Delete Save Data
                 </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   data-umami-event="Log out"
@@ -260,6 +272,7 @@ export function Topbar() {
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
       <DeletionDialog open={deletionOpen} setOpen={setDeletionOpen} />
+      <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
     </>
   );
 }
