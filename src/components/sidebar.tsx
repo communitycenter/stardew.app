@@ -18,9 +18,10 @@ import {
   IconHome2,
   IconId,
   IconNote,
+  IconPaw,
   IconProgress,
-  IconShirt,
   IconSettings,
+  IconShirt,
 } from "@tabler/icons-react";
 
 import {
@@ -46,6 +47,7 @@ export const playerNavigation = [
   { name: "Farmer", href: "/farmer", icon: IconId },
   { name: "Perfection", href: "/perfection", icon: IconAward },
   { name: "Relationships", href: "/relationships", icon: IconHeart },
+  { name: "Animals", href: "/animals", icon: IconPaw },
 ];
 
 export const collectionsNavigation = [
@@ -59,7 +61,11 @@ export const collectionsNavigation = [
 export const linksNavigation = [
   { name: "Discord", href: "/discord", icon: DiscordLogoIcon },
   { name: "GitHub", href: "/github", icon: GitHubLogoIcon },
-  { name: "stardew.me", href: "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button", icon: IconShirt },
+  {
+    name: "stardew.me",
+    href: "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button",
+    icon: IconShirt,
+  },
 ];
 
 export const SidebarCategory = ({ children }: { children: string }) => (
