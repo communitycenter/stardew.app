@@ -275,6 +275,13 @@ export default function Account() {
                                     ? "localhost"
                                     : "stardew.app",
                                 });
+                            toast.success(
+                              `1.6 content has been ${
+                                getCookie("enable_1_6") === "true"
+                                  ? "enabled"
+                                  : "disabled"
+                              }.`
+                            );
                           }}
                         />
                       </div>
