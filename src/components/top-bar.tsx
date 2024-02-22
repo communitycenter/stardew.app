@@ -53,6 +53,8 @@ export function Topbar() {
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
+  const [isDevelopment, setIsDevelopment] = useState(false);
+
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
   const mixpanel = useMixpanel();
 
@@ -64,6 +66,10 @@ export function Topbar() {
       $name: api.data?.discord_name,
       $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
     });
+  }, []);
+
+  useEffect(() => {
+    setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -127,6 +133,11 @@ export function Topbar() {
             alt="stardew.app logo"
           />
           <h1 className="pl-3 font-medium">stardew.app</h1>
+          {isDevelopment && (
+            <span className="text-xs text-red-500 dark:text-red-400 ml-2 rounded-full bg-red-100 dark:bg-red-800 px-2 py-1">
+              Internal
+            </span>
+          )}
         </div>
         {/* Mobile Menu */}
         <div className="md:hidden flex justify-end">

@@ -3,7 +3,7 @@ import type { User } from "@/components/top-bar";
 import Head from "next/head";
 import useSWR from "swr";
 
-import { deleteCookie, getCookie } from "cookies-next";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useContext, useMemo, useState } from "react";
 
@@ -11,7 +11,13 @@ import { PlayerType, PlayersContext } from "@/contexts/players-context";
 
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +35,20 @@ import {
   PencilSquareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
+
+import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
+
+const data = [
+  {
+    value: "old",
+    label: "1.5",
+  },
+  {
+    value: "new",
+    label: "1.6",
+  },
+];
 
 function InlineInput({ label, value }: { label: string; value: string }) {
   return (
@@ -169,6 +188,9 @@ export default function Account() {
     { refreshInterval: 0, revalidateOnFocus: false }
   );
 
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+
   const { players } = useContext(PlayersContext);
 
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -200,10 +222,74 @@ export default function Account() {
       <main className="flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8">
         <div className="mx-auto max-w-5xl w-full space-y-8 mt-4">
           <Tabs defaultValue="authentication">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="site">Site Settings</TabsTrigger>
               <TabsTrigger value="authentication">Authentication</TabsTrigger>
               <TabsTrigger value="saves">Saves</TabsTrigger>
             </TabsList>
+            <TabsContent value="site" className="mt-4 space-y-8">
+              <section className="flex flex-col space-y-3">
+                <div>
+                  <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Site Settings
+                  </h1>
+                  <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">
+                    Manage and view your site settings.
+                  </p>
+                </div>
+                <Card>
+                  <CardHeader className=" border-neutral-200 dark:border-neutral-800">
+                    <span className="flex flex-row items-center justify-between">
+                      <div className="space-y-1">
+                        <CardTitle>Enable 1.6 Content</CardTitle>
+                        <CardDescription>
+                          <p>
+                            This will enable 1.6 content on the site -
+                            don&apos;t use if you don&apos;t want to see 1.6
+                            spoilers!
+                          </p>
+                        </CardDescription>
+                      </div>
+                      <div>
+                        <Switch
+                          id="1_6"
+                          defaultChecked={getCookie("enable_1_6") as boolean}
+                          onCheckedChange={() => {
+                            console.log(
+                              parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
+                                ? "localhost"
+                                : "stardew.app"
+                            );
+                            getCookie("enable_1_6") === true
+                              ? deleteCookie("enable_1_6", {
+                                  domain: parseInt(
+                                    process.env.NEXT_PUBLIC_DEVELOPMENT!
+                                  )
+                                    ? "localhost"
+                                    : "stardew.app",
+                                })
+                              : setCookie("enable_1_6", true, {
+                                  domain: parseInt(
+                                    process.env.NEXT_PUBLIC_DEVELOPMENT!
+                                  )
+                                    ? "localhost"
+                                    : "stardew.app",
+                                });
+                            toast.success(
+                              `1.6 content has been ${
+                                getCookie("enable_1_6") === "true"
+                                  ? "enabled"
+                                  : "disabled"
+                              }.`
+                            );
+                          }}
+                        />
+                      </div>
+                    </span>
+                  </CardHeader>
+                </Card>
+              </section>
+            </TabsContent>
             <TabsContent value="authentication" className="mt-4 space-y-8">
               <section className="flex flex-col space-y-4">
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white">

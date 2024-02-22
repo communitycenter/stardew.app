@@ -27,3 +27,19 @@ export function findAllByKey(obj: any, searchKey: string) {
   });
   return results;
 }
+
+export function deweaponize(incoming: string) {
+  let str = incoming.toString();
+  if (str.startsWith("(")) {
+    const split = str.split(")");
+    return {
+      key: split[0].replace("(", ""),
+      value: split[1].trim(),
+    };
+  } else {
+    return {
+      key: "",
+      value: str,
+    };
+  }
+}
