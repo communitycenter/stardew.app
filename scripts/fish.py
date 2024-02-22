@@ -7,14 +7,13 @@
 # Wiki Pages used: https://stardewvalleywiki.com/<fish_name>
 
 import requests
-import unicodedata
 
 from tqdm import tqdm
 from bs4.element import Tag
 from bs4 import BeautifulSoup
 
-from helpers.models import Fish, TrapFish, Object, ContentObjectModel
-from helpers.utils import load_content, load_data, save_json, convert_time
+from helpers.models import Fish, TrapFish, ContentObjectModel
+from helpers.utils import load_content, save_json, convert_time
 
 # Load the content files
 FISH: dict[str, str] = load_content("Fish.json")

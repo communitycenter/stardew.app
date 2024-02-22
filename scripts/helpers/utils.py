@@ -1,12 +1,13 @@
 import os
 import json
 
+from typing import Any, Literal
 from datetime import datetime
 
 from helpers.models import ContentObjectModel
 
 
-def load_content(file_name: str) -> dict:
+def load_content(file_name: str, version: Literal["1.6 alpha"] = None) -> dict:
     """Loads a json file from the content directory and returns it as a dictionary
 
     Args:
@@ -15,9 +16,22 @@ def load_content(file_name: str) -> dict:
     Returns:
         dict: The json file as a dictionary
     """
-    content_path = os.path.join(os.path.dirname(__file__), "..", "content", file_name)
-    with open(content_path, "r") as f:
-        return json.load(f)
+    if not version:
+        # as of now is the new content 1.6 beta
+        content_path = os.path.join(
+            os.path.dirname(__file__), "..", "content", file_name
+        )
+        with open(content_path, "r") as f:
+            return json.load(f)
+
+    if version == "1.6 alpha":
+        # we'll use this to flag new content that's only available in the 1.6 beta
+        # EX: if key not in 1.6alpha, then it's new content
+        content_path = os.path.join(
+            os.path.dirname(__file__), "..", "content", "1-6_alpha", file_name
+        )
+        with open(content_path, "r") as f:
+            return json.load(f)
 
 
 def load_data(file_name: str) -> dict:
@@ -52,7 +66,7 @@ def load_strings(file_name: str) -> dict[str, str]:
         return json.load(f)
 
 
-def save_json(data: dict, file_name: str, sort: bool = True) -> None:
+def save_json(data: dict[str, Any], file_name: str, sort: bool = True) -> None:
     """Saves a dictionary to a json file in the data directory
 
     Args:
@@ -65,20 +79,42 @@ def save_json(data: dict, file_name: str, sort: bool = True) -> None:
 
     if not sort:
         with open(output_path, "w") as f:
-            json.dump(data, f, indent=2, sort_keys=True)
+            json.dump(data, f, indent=2, sort_keys=False)
         return
 
+    # we'll split the keys into numeric and non-numeric keys and sort them separately
+    numeric_keys = [key for key in data.keys() if key.startswith("-") or key.isdigit()]
+    non_numeric_keys = [key for key in data.keys() if not key.isdigit()]
+
+    # sort the numeric keys
+    numeric_keys.sort(key=lambda x: int(x))
+
+    # sort the non-numeric keys
+    non_numeric_keys.sort()
+
+    # combine the sorted keys
+    sorted_keys = numeric_keys + non_numeric_keys
     with open(output_path, "w") as f:
-        json.dump({int(x): data[x] for x in data.keys()}, f, indent=2, sort_keys=True)
+        json.dump(
+            {key: data[key] for key in sorted_keys},
+            f,
+            indent=None,
+            sort_keys=False,
+            separators=(",", ":"),
+        )
 
 
-def GetCategoryDisplayName(category: int, StringsFromCSFiles: dict[str, str]) -> str:
+def GetCategoryDisplayName(
+    category: int, StringsFromCSFiles: dict[str, str], Strings_1_6: dict[str, str]
+) -> str:
     """Returns the human readable category display name for a given category number.
 
     See: `StardewValley\\Object.cs::GetCategoryDisplayName()`
 
     Args:
         category (int): The item category number (ex: -2 for Minerals)
+        StringsFromCSFiles (dict[str, str]): The loaded StringsFromCSFiles.json
+        Strings_1_6 (dict[str, str]): The loaded 1_6_Strings.json
 
     Returns:
         str: The human readable category display name (ex: "Minerals")
@@ -129,12 +165,19 @@ def GetCategoryDisplayName(category: int, StringsFromCSFiles: dict[str, str]) ->
             return StringsFromCSFiles.get("Object.cs.12868")
         case -81:
             return StringsFromCSFiles.get("Object.cs.12869")
+        case -102:
+            return Strings_1_6.get("Book_Category")
+        case -103:
+            return Strings_1_6.get("skillBook_Category")
         case _:
             return ""
 
 
 def getCategoryName(
-    Type: str, Category: int, StringsFromCSFiles: dict[str, str]
+    Type: str,
+    Category: int,
+    StringsFromCSFiles: dict[str, str],
+    Strings_1_6: dict[str, str],
 ) -> str:
     """Returns the human readable category display name for a given category number.
 
@@ -146,6 +189,7 @@ def getCategoryName(
         Type (str): The item's general type like 'Arch' or 'Minerals'
         Category (int): The item category
         StringsFromCSFiles (dict[str, str]): THe loaded StringsFromCSFiles.json
+        Strings_1_6 (dict[str, str]): The loaded 1_6_Strings.json
 
     Returns:
         str: The human readable category display name (ex: "Minerals")
@@ -156,7 +200,7 @@ def getCategoryName(
         # category -999 is litter, but the game doesn't provide a string for it
         return "Litter"
 
-    category_display_name = GetCategoryDisplayName(Category, StringsFromCSFiles)
+    category_display_name = GetCategoryDisplayName(Category, StringsFromCSFiles, Strings_1_6)
 
     # some categories don't have a display name 😵‍💫
     if category_display_name == "":
@@ -165,18 +209,20 @@ def getCategoryName(
     return category_display_name
 
 
-def get_string(tokenized_str: str, Strings: dict[str, str]) -> str:
+def get_string(tokenized_str: str) -> str:
     """Uses a tokenized string to return the actual string from a JSON Strings file.
 
     Args:
         tokenized_str (str): A tokenized string. Ex: `[LocalizedText Strings\\Objects:MagicRockCandy_Name]`
-        Strings (dict[str, str]): The loaded json file. Ex: `Strings/Objects.json`.
 
     Returns:
         str: The actual string. Ex: 'Magic Rock Candy'
     """
     # Tokenized strings are in the format: [LocalizedText Strings\<File>:<key>]
+    file_name = tokenized_str.split(":")[0].split("\\")[1]
     key = tokenized_str.split(":")[1][:-1]
+
+    Strings = load_strings(file_name + ".json")
     return Strings.get(key)
 
 
@@ -238,6 +284,8 @@ def isPotentialBasicShipped(
             match category:
                 case (
                     -999
+                    | -103
+                    | -102
                     | -96
                     | -74
                     | -29

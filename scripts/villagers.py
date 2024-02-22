@@ -29,7 +29,7 @@ def build_names_to_ids() -> dict[str, str]:
     output: dict[str, str] = {}
 
     for k, v in OBJECTS.items():
-        output[v["name"]] = int(k)
+        output[v["name"]] = k
 
     return output
 
@@ -44,7 +44,7 @@ def get_villagers() -> dict[str, Villager]:
         if not can_socialize(v):
             continue
 
-        name = get_string(v["DisplayName"], NPC_NAMES)
+        name = get_string(v["DisplayName"])
         datable = v.get("CanBeRomanced", False)
         birthday = v.get("BirthSeason") + " " + str(v.get("BirthDay"))
 
@@ -71,11 +71,11 @@ def get_villagers() -> dict[str, Villager]:
                 print(f"Could not find {l} in names_to_ids")
 
         output[k] = {
-            "name": name,
             "birthday": birthday,
             "datable": datable,
             "iconURL": f"https://stardewvalleywiki.com{iconURL}",
-            "loves": sorted(loves),
+            "loves": sorted(loves, key=lambda x: int(x)),
+            "name": name,
         }
 
     return output
@@ -86,4 +86,4 @@ if __name__ == "__main__":
 
     assert len(villagers) == 34
 
-    save_json(villagers, "villagers.json", sort=False)
+    save_json(villagers, "villagers.json", sort=True)

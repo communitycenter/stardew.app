@@ -1,7 +1,7 @@
 # Purpose: Get all the recipes needed to craft for achievement, along with their
 #          unlock conditions and ingredients. Scrape the wiki for any unknowns
 # Result is saved to data/crafting.json
-# { itemID: { ingredients: [{ itemID, quantity }], unlockConditions: str, itemID: int, isBigCraftale: bool } }
+# { itemID: { ingredients: [{ itemID, quantity }], unlockConditions: str, itemID: str, isBigCraftale: bool } }
 #
 # Content Files used: CraftingRecipes.json, data/objects.json, data/big_craftables.json
 # Wiki Pages used: stardewvalleywiki.com/<name>, https://stardewvalleywiki.com/Modding:Recipe_data
@@ -57,7 +57,7 @@ def get_crafting_recipes() -> (
         if k != name:
             # we want to use the name from objects.json, but for something like
             # transmute (which has no name in objects.json), we want to use the key
-            # case by case basis so we'll print this at the end
+            # case by case basis so we'll print this at the end and use it in the frontend
             translations[k] = name
 
         # now we'll find the ingredients needed to craft the item
@@ -67,7 +67,7 @@ def get_crafting_recipes() -> (
         pairs = map(" ".join, zip(i, i))
         for p in pairs:
             item_id, quantity = p.split(" ")
-            ingredients.append({"itemID": int(item_id), "quantity": int(quantity)})
+            ingredients.append({"itemID": item_id, "quantity": int(quantity)})
 
         # find the unlock conditions
         # possible options from wiki/Modding:Recipe_data
@@ -115,6 +115,17 @@ def get_crafting_recipes() -> (
 
             if not elem:
                 unknowns.append(name)
+                output[itemID] = {
+                    "ingredients": ingredients,
+                    "isBigCraftable": is_big_craftable,
+                    "itemID": itemID,
+                    "minVersion": (
+                        OBJECTS[itemID]["minVersion"]
+                        if not is_big_craftable
+                        else BIG_CRAFTABLES[itemID]["minVersion"]
+                    ),
+                    "unlockConditions": unlockConditions,
+                }
                 continue
 
             # remove hidden span tags which mess up the wiki scraping
@@ -137,12 +148,17 @@ def get_crafting_recipes() -> (
                 else:
                     unlockConditions = unlockConditions + " Qi Gems"
 
-        if str(itemID) not in output:
-            output[str(itemID)] = {
-                "itemID": int(itemID),
+        if itemID not in output:
+            output[itemID] = {
                 "ingredients": ingredients,
-                "unlockConditions": unlockConditions,
                 "isBigCraftable": is_big_craftable,
+                "itemID": itemID,
+                "minVersion": (
+                    OBJECTS[itemID]["minVersion"]
+                    if not is_big_craftable
+                    else BIG_CRAFTABLES[itemID]["minVersion"]
+                ),
+                "unlockConditions": unlockConditions,
             }
         else:
             duplicates.append((name, itemID))
@@ -153,18 +169,21 @@ def get_crafting_recipes() -> (
 if __name__ == "__main__":
     recipes, translations, unknowns, duplicates = get_crafting_recipes()
 
-    assert len(recipes) == 129
+    print("NUMBER OF RECIPES: ", len(recipes))
+    assert len(recipes) == 149  # 129 as of 1.5, 149 as of 1.6 with new content
     save_json(recipes, "crafting.json", sort=True)
 
     if len(unknowns) > 0:
         print("Unknown unlock conditions: ")
         for u in unknowns:
             print(u)
+        print()
 
     if len(duplicates) > 0:
         print("Duplicates: ")
         for d in duplicates:
             print(d)
+        print()
 
     print("Translations: ")
     print(json.dumps(translations, indent=2))

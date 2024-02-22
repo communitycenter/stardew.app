@@ -21,7 +21,7 @@ TV_RECIPES: dict[str, str] = load_content("CookingChannel.json")
 # hardcoded checks for recipes with unusual unlock conditions
 # l 100, null
 recipeSource = {
-    "Cookie": "Evelyn (4-heart event).",
+    "Cookies": "Evelyn (4-heart event).",
     "Triple Shot Espresso": "Stardrop Saloon for 5,000g.",
     "Ginger Ale": "Dwarf Shop in Volcano Dungeon for 1,000g.",
     "Banana Pudding": "Island Trader for 30 Bone Fragments.",
@@ -54,6 +54,7 @@ def get_cooking_recipes() -> tuple[dict[str, Recipe], dict[str, str], list[str]]
         # find which items have a different name in the objects.json
         name = OBJECTS[fields[2]]["name"]
         if k != name:
+            # this means that the name in Recipes was different than the Object name.
             # we want to use the name from objects.json
             translations[k] = name
 
@@ -65,9 +66,9 @@ def get_cooking_recipes() -> tuple[dict[str, Recipe], dict[str, str], list[str]]
 
         for p in pairs:
             itemID, quantity = p.split(" ")
-            ingredients.append({"itemID": int(itemID), "quantity": int(quantity)})
+            ingredients.append({"itemID": itemID, "quantity": int(quantity)})
 
-        itemID = int(fields[2])  # yield
+        itemID = fields[2]  # yield
 
         unlock_conditions = fields[3].split(" ")
         if unlock_conditions[0] == "default":
@@ -77,14 +78,28 @@ def get_cooking_recipes() -> tuple[dict[str, Recipe], dict[str, str], list[str]]
             hearts = unlock_conditions[2]
             unlock_conditions = f"Reach {hearts} hearts with {npc}."
         elif unlock_conditions[0] == "l":  # player level
-            unlock_conditions = f"Reach farmer level {unlock_conditions[1]}."
+            # max farmer level is 25 so anything over that, check for unknowns
+            # if the recipe is not in the recipeSource or airing_dates, it's unknown
+            if int(unlock_conditions[1]) > 25:
+                if name not in recipeSource and name not in airing_dates:
+                    unknowns.append(
+                        f"{name}: Unknown unlock condition: {unlock_conditions}"
+                    )
+                    unlock_conditions = "Unknown"
+            else:
+                unlock_conditions = f"Reach farmer level {unlock_conditions[1]}."
+
         elif unlock_conditions[0] == "s":  # skill level
             skill = unlock_conditions[1]
             level = unlock_conditions[2]
             unlock_conditions = f"Reach level {level} in {skill} skill."
         else:
-            unknowns.append(f"{name}: Unknown unlock condition: {unlock_conditions}")
-            unlock_conditions = "Unknown"
+
+            if name not in recipeSource and name not in airing_dates:
+                unknowns.append(
+                    f"{name}: Unknown unlock condition: {unlock_conditions}"
+                )
+                unlock_conditions = "Unknown"
 
         if name in recipeSource:
             unlock_conditions = recipeSource[name]
@@ -92,9 +107,10 @@ def get_cooking_recipes() -> tuple[dict[str, Recipe], dict[str, str], list[str]]
         if name in airing_dates:
             unlock_conditions = airing_dates[name]
 
-        output[str(itemID)] = {
-            "itemID": itemID,
+        output[itemID] = {
             "ingredients": ingredients,
+            "itemID": itemID,
+            "minVersion": OBJECTS[itemID]["minVersion"],
             "unlockConditions": unlock_conditions,
         }
 
@@ -110,6 +126,7 @@ if __name__ == "__main__":
         print("Unknown unlock conditions: ")
         for u in unknowns:
             print(u)
+        print()
 
     print("Translations:")
     print(json.dumps(translations, indent=2))

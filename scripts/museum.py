@@ -1,6 +1,6 @@
 # Purpose: Scraping museum artifact information from sdv wiki
-# Result is saved to data/artifacts.json
-# { artifacts: { name: { itemID, locations } }, minerals: { name: { itemID, locations, used_in } }
+# Result is saved to data/museum.json
+# { artifacts: { name: { itemID, locations } }, minerals: { name: { itemID, locations } }
 #
 # Content Files used: Objects.json, Strings/Objects.json
 # Wiki Pages used: https://stardewvalleywiki.com/Artifacts, https://stardewvalleywiki.com/Minerals
@@ -26,8 +26,8 @@ def build_item_map() -> dict[str, int]:
     item_map = {}
 
     for key, value in OBJECTS.items():
-        display_name = get_string(value["DisplayName"], OBJ_STRINGS)
-        item_map[display_name] = int(key)
+        display_name = get_string(value["DisplayName"])
+        item_map[display_name] = key
 
     return item_map
 
@@ -174,4 +174,4 @@ if __name__ == "__main__":
     assert len(minerals) == 53
 
     museum = {"artifacts": artifacts, "minerals": minerals}
-    save_json(museum, "museum.json", sort=False)
+    save_json(museum, "museum.json", sort=True)

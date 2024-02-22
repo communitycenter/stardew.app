@@ -19,7 +19,7 @@ def get_cooking_ingredients() -> dict[str, TrackedIngredient]:
 
     for value in tqdm(COOKING_RECIPES.values()):
         fields = value.split("/")
-        yieldID = int(fields[2])
+        yieldID = fields[2]
 
         # loop through the ingrs and increase the count for each
         # to do this, we'll create pairs of (itemID, quantity)
@@ -32,6 +32,7 @@ def get_cooking_ingredients() -> dict[str, TrackedIngredient]:
             # check if itemID has been initialized, initialize if not
             if not output.get(itemID):
                 output[itemID] = {}
+                output[itemID]["quantity"] = 0
                 output[itemID]["usedIn"] = []
 
             output[itemID]["quantity"] = int(quantity) + output.get(itemID, {}).get(
@@ -48,5 +49,6 @@ if __name__ == "__main__":
     ingredients = get_cooking_ingredients()
 
     # https://stardewvalleywiki.com/Cooking (a minimum of 87 different types of items used)
-    assert len(ingredients) == 87
+    print(len(ingredients))  # 88 as of 1.6 new content, 87 in 1.5
+    assert len(ingredients) == 88
     save_json(ingredients, "cooking_ingredients.json", sort=True)

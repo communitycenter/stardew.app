@@ -18,12 +18,13 @@
 
 from tqdm import tqdm
 
-from helpers.utils import load_content, save_json, isPotentialBasicShipped
-from helpers.models import ShippingItem, ContentCropItem, ContentObjectModel
+from helpers.utils import load_content, save_json, isPotentialBasicShipped, load_data
+from helpers.models import ShippingItem, ContentCropItem, ContentObjectModel, Object
 
 # Load the content files
 CROPS: dict[str, ContentCropItem] = load_content("Crops.json")
 OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
+DATA_OBJECTS: dict[str, Object] = load_data("objects.json")
 
 
 # The key for CROPS is the seed item ID, so we need a map of crop item ID to seed item ID
@@ -49,7 +50,10 @@ def get_shipping_items() -> dict[str, ShippingItem]:
         if (
             category != -7
             and category != -2
-            and isPotentialBasicShipped(k, category, v.get("Type"), OBJECTS)
+            and (
+                isPotentialBasicShipped(k, category, v.get("Type"), OBJECTS)
+                or k == "372"
+            )
         ):
 
             # lookup the seed item ID in CROPS content file, using the harvest item id
@@ -58,7 +62,8 @@ def get_shipping_items() -> dict[str, ShippingItem]:
             item_id = seed_id if seed_id else k
 
             output[k] = {
-                "itemID": int(k),
+                "itemID": k,
+                "minVersion": DATA_OBJECTS[k].get("minVersion"),
                 "monoculture": CROPS.get(item_id, {}).get("CountForMonoculture", False),
                 "polyculture": CROPS.get(item_id, {}).get("CountForPolyculture", False),
                 "seasons": CROPS.get(item_id, {}).get("Seasons", []),
@@ -71,11 +76,13 @@ if __name__ == "__main__":
     shipping = get_shipping_items()
 
     # https://stardewvalleywiki.com/Shipping reference for counts
+    # also you can CTRL+F "CountForPolyculture": true and "CountForMonoculture": true in Crops.json
     # 28 items count for polyculture
     assert len([c for c in shipping.values() if c["polyculture"]]) == 28
     # 33 items count for monoculture
     assert len([c for c in shipping.values() if c["monoculture"]]) == 33
-    # 145 total items count for Full Shipment
-    assert len(shipping) == 145
+    # # 155 total items count for Full Shipment
+    print("Total Items counted for Full Shipment: ", len(shipping))
+    assert len(shipping) == 155  # 145 as of 1.5, 1.6 added 10 new items
 
     save_json(shipping, "shipping.json", sort=True)

@@ -9,18 +9,20 @@ class Object(TypedDict):
     name: str
     description: str
     category: str
-    iconURL: str
+    iconURL: Optional[str]
+    minVersion: str
 
 
 class BigObject(TypedDict):
     name: str
     description: str
-    iconURL: str
+    iconURL: Optional[str]
+    minVersion: str
 
 
 class MuseumPiece(TypedDict):
     locations: list[str]
-    itemID: int
+    itemID: str
 
 
 class Achievement(TypedDict):
@@ -32,16 +34,16 @@ class Achievement(TypedDict):
 
 class TrackedIngredient(TypedDict):
     quantity: int
-    usedIn: list[int]
+    usedIn: list[str]
 
 
 class Ingredient(TypedDict):
-    itemID: int
+    itemID: str
     quantity: int
 
 
 class Recipe(TypedDict):
-    itemID: int
+    itemID: str
     ingredients: list[Ingredient]
     unlockConditions: str
 
@@ -68,7 +70,7 @@ class Fish(TypedDict):
 
 
 class ShippingItem(TypedDict):
-    itemID: int
+    itemID: str
     polyculture: bool
     monoculture: bool
     seasons: list[str]

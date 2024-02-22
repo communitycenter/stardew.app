@@ -31,6 +31,10 @@ OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
 SPRITES: dict[str, str] = load_content("sprites.json")
 OBJ_STRINGS: dict[str, str] = load_strings("Objects.json")
 STRINGS: dict[str, str] = load_strings("StringsFromCSFiles.json")
+STRINGS_1_6: dict[str, str] = load_strings("1_6_Strings.json")
+
+# alpha didn't include new content so we can use it to flag new content
+ALPHA_OBJ: dict[str, ContentObjectModel] = load_content("Objects.json", "1.6 alpha")
 
 
 def get_objects() -> dict[str, Object]:
@@ -42,18 +46,24 @@ def get_objects() -> dict[str, Object]:
         if key in dolls:
             name = dolls[key]
         else:
-            name = get_string(value["DisplayName"], OBJ_STRINGS)
+            name = get_string(value["DisplayName"])
 
-        description = get_string(value["Description"], OBJ_STRINGS)
+        description = get_string(value["Description"])
         category = getCategoryName(
-            Type=value["Type"], Category=value["Category"], StringsFromCSFiles=STRINGS
+            Type=value["Type"],
+            Category=value["Category"],
+            StringsFromCSFiles=STRINGS,
+            Strings_1_6=STRINGS_1_6,
         )
         iconURL = SPRITES.get(key)
+
+        minVersion = "1.5.0" if key in ALPHA_OBJ else "1.6.0"
 
         output[key] = {
             "category": category,
             "description": description,
             "iconURL": iconURL,
+            "minVersion": minVersion,
             "name": name,
         }
 
