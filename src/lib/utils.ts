@@ -28,7 +28,8 @@ export function findAllByKey(obj: any, searchKey: string) {
   return results;
 }
 
-export function deweaponize(str: string) {
+export function deweaponize(incoming: string) {
+  let str = incoming.toString();
   if (str.startsWith("(")) {
     const split = str.split(")");
     return {
