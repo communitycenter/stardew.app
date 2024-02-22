@@ -1,10 +1,10 @@
 import { Turnstile } from "@marsidev/react-turnstile";
 import { IconHeart } from "@tabler/icons-react";
-import { User } from "discord.js";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { User } from "../top-bar";
 import { Button } from "../ui/button";
 import {
   Dialog,
