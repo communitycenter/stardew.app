@@ -375,38 +375,6 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                 })}
               </ul>
             </section>
-            <section className="space-y-2">
-              <h3 className="font-semibold">Likes</h3>
-              <Separator />
-              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
-                {villager.likes.map((itemID) => {
-                  let item;
-                  if (itemID > 0) {
-                    item = objects[itemID.toString() as keyof typeof objects];
-                  } else {
-                    item = { ...categories[itemID] };
-                  }
-                  return (
-                    <li
-                      key={itemID}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
-                    >
-                      <div className="flex items-center space-x-1">
-                        <Image
-                          src={item.iconURL}
-                          alt={item.name}
-                          width={24}
-                          height={24}
-                          quality={25}
-                        />
-                        <p className="font-semibold truncate">• {item.name}</p>
-                      </div>
-                      {}
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
           </div>
         </SheetContent>
       </Sheet>
@@ -518,38 +486,6 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
               <Separator />
               <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
                 {villager.loves.map((itemID) => {
-                  let item;
-                  if (itemID > 0) {
-                    item = objects[itemID.toString() as keyof typeof objects];
-                  } else {
-                    item = { ...categories[itemID] };
-                  }
-                  return (
-                    <li
-                      key={itemID}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
-                    >
-                      <div className="flex items-center space-x-1">
-                        <Image
-                          src={item.iconURL}
-                          alt={item.name}
-                          width={24}
-                          height={24}
-                          quality={25}
-                        />
-                        <p className="font-semibold truncate">• {item.name}</p>
-                      </div>
-                      {}
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-            <section className="space-y-2">
-              <h3 className="font-semibold">Likes</h3>
-              <Separator />
-              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
-                {villager.likes.map((itemID) => {
                   let item;
                   if (itemID > 0) {
                     item = objects[itemID.toString() as keyof typeof objects];
