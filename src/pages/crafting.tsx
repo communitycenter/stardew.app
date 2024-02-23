@@ -79,13 +79,11 @@ export default function Crafting() {
     return { completed, additionalDescription };
   };
 
-  const getName = (id: number, isBigCraftable: boolean) => {
-    let itemID = id.toString();
-
+  const getName = (id: string, isBigCraftable: boolean) => {
     if (isBigCraftable) {
-      return bigobjects[itemID as keyof typeof bigobjects].name;
+      return bigobjects[id as keyof typeof bigobjects].name;
     } else {
-      return objects[itemID as keyof typeof objects].name;
+      return objects[id as keyof typeof objects].name;
     }
   };
 

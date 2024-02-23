@@ -71,7 +71,8 @@ export const ShippingCard = ({ item }: Props) => {
   }, [activePlayer, item]);
 
   const iconURL =
-    objects[item.itemID.toString() as keyof typeof objects].iconURL;
+    objects[item.itemID.toString() as keyof typeof objects].iconURL ??
+    "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
 
   const name = objects[item.itemID.toString() as keyof typeof objects].name;
 

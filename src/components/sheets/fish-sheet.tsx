@@ -53,7 +53,8 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
   }, [activePlayer]);
 
   const iconURL = fish
-    ? objects[fish.itemID.toString() as keyof typeof objects].iconURL
+    ? objects[fish.itemID.toString() as keyof typeof objects].iconURL ??
+      "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
     : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
 
   const name =

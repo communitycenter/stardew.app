@@ -110,7 +110,10 @@ export const RecipeCard = <T extends Recipe>({
           }}
         >
           <Image
-            src={iconURL}
+            src={
+              iconURL ??
+              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+            }
             alt={name}
             className="rounded-sm"
             width={isCraftingRecipe(recipe) && recipe.isBigCraftable ? 16 : 32}

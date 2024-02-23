@@ -247,7 +247,7 @@
       "locations": ["Desert (6%)", "Artifact Trove (3.7%)"]
     },
     "126": {
-      "itemID": 126,
+      "itemID": "126",
       "locations": [
         "Farm (0.08%)",
         "Bus Stop (0.07%)",
@@ -261,7 +261,7 @@
       ]
     },
     "127": {
-      "itemID": 127,
+      "itemID": "127",
       "locations": [
         "Farm (0.08%)",
         "Bus Stop (0.07%)",

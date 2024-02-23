@@ -43,8 +43,9 @@ class Ingredient(TypedDict):
 
 
 class Recipe(TypedDict):
-    itemID: str
     ingredients: list[Ingredient]
+    itemID: str
+    minVersion: str
     unlockConditions: str
 
 

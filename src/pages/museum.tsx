@@ -1,9 +1,9 @@
 import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
-import museum from "@/data/artifacts.json";
+import museum from "@/data/museum.json";
 
-import { TrinketItem } from "@/types/items";
+import { MuseumItem } from "@/types/items";
 import { useContext, useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
@@ -20,19 +20,17 @@ import { PlayersContext } from "@/contexts/players-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
-  const [museumArtifact, setMuseumArtifact] = useState<TrinketItem | null>(
-    null
-  );
+  const [museumArtifact, setMuseumArtifact] = useState<MuseumItem | null>(null);
 
   const [_artifactFilter, setArtifactFilter] = useState("all");
   const [_mineralFilter, setMineralFilter] = useState("all");
 
   const [museumArtifactCollected, setMuseumArtifactCollected] = useState<
-    Set<number>
+    Set<string>
   >(new Set());
 
   const [museumMineralCollected, setMuseumMineralCollected] = useState<
-    Set<number>
+    Set<string>
   >(new Set());
 
   const { activePlayer } = useContext(PlayersContext);
@@ -160,22 +158,16 @@ export default function Museum() {
                       {Object.values(museum.artifacts)
                         .filter((f) => {
                           if (_artifactFilter === "0") {
-                            return !museumArtifactCollected.has(
-                              parseInt(f.itemID)
-                            ); // incompleted
+                            return !museumArtifactCollected.has(f.itemID); // incompleted
                           } else if (_artifactFilter === "2") {
-                            return museumArtifactCollected.has(
-                              parseInt(f.itemID)
-                            ); // completed
+                            return museumArtifactCollected.has(f.itemID); // completed
                           } else return true; // all
                         })
                         .map((f) => (
                           <BooleanCard
                             key={`artifact-${f.itemID}`}
                             item={f}
-                            completed={museumArtifactCollected.has(
-                              parseInt(f.itemID)
-                            )}
+                            completed={museumArtifactCollected.has(f.itemID)}
                             setIsOpen={setIsOpen}
                             setObject={setMuseumArtifact}
                             type="artifact"
@@ -210,16 +202,16 @@ export default function Museum() {
               {Object.values(museum.minerals)
                 .filter((f) => {
                   if (_mineralFilter === "0") {
-                    return !museumMineralCollected.has(parseInt(f.itemID)); // incompleted
+                    return !museumMineralCollected.has(f.itemID); // incompleted
                   } else if (_mineralFilter === "2") {
-                    return museumMineralCollected.has(parseInt(f.itemID)); // completed
+                    return museumMineralCollected.has(f.itemID); // completed
                   } else return true; // all
                 })
                 .map((f) => (
                   <BooleanCard
                     key={`mineral-${f.itemID}`}
-                    item={f as TrinketItem}
-                    completed={museumMineralCollected.has(parseInt(f.itemID))}
+                    item={f as MuseumItem}
+                    completed={museumMineralCollected.has(f.itemID)}
                     setIsOpen={setIsOpen}
                     setObject={setMuseumArtifact}
                     type="mineral"

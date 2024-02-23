@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import objects from "@/data/objects.json";
 
-import type { TrinketItem } from "@/types/items";
+import type { MuseumItem } from "@/types/items";
 
 import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
@@ -33,7 +33,7 @@ import { ScrollArea } from "../ui/scroll-area";
 interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  trinket: TrinketItem | null;
+  trinket: MuseumItem | null;
 }
 
 export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
@@ -52,7 +52,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
   }, [activePlayer]);
 
   const iconURL = trinket
-    ? objects[trinket.itemID.toString() as keyof typeof objects].iconURL
+    ? objects[trinket.itemID.toString() as keyof typeof objects].iconURL ??
+      "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
     : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
 
   const name =
@@ -73,8 +74,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
 
     let patch = {};
     if (category === "Arch") {
-      if (status === 2) artifacts.add(parseInt(trinket.itemID));
-      if (status === 0) artifacts.delete(parseInt(trinket.itemID));
+      if (status === 2) artifacts.add(trinket.itemID);
+      if (status === 0) artifacts.delete(trinket.itemID);
 
       patch = {
         museum: {
@@ -82,8 +83,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
         },
       };
     } else if (category === "Minerals") {
-      if (status === 2) minerals.add(parseInt(trinket.itemID));
-      if (status === 0) minerals.delete(parseInt(trinket.itemID));
+      if (status === 2) minerals.add(trinket.itemID);
+      if (status === 0) minerals.delete(trinket.itemID);
 
       patch = {
         museum: {
@@ -120,13 +121,13 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
             <div className="space-y-6 mt-4">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(parseInt(trinket.itemID)) ? (
+                  {artifacts.has(trinket.itemID) ? (
                     <Button
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        (!artifacts.has(parseInt(trinket.itemID)) &&
-                          !minerals.has(parseInt(trinket.itemID)))
+                        (!artifacts.has(trinket.itemID) &&
+                          !minerals.has(trinket.itemID))
                       }
                       data-umami-event="Set incompleted"
                       onClick={() => {
@@ -146,8 +147,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        artifacts.has(parseInt(trinket.itemID)) ||
-                        minerals.has(parseInt(trinket.itemID))
+                        artifacts.has(trinket.itemID) ||
+                        minerals.has(trinket.itemID)
                       }
                       data-umami-event="Set completed"
                       onClick={() => {
@@ -199,24 +200,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     <Separator />
                     <ul className="list-disc list-inside">
                       {trinket.locations.map((location) => (
-                        <li
-                          key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
-                        >
-                          {location}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </section>
-              <section className="space-y-2">
-                {trinket.used_in && trinket.used_in.length > 0 && (
-                  <>
-                    <h3 className="font-semibold">Used In</h3>
-                    <Separator />
-                    <ul className="list-disc list-inside">
-                      {trinket.used_in.map((location) => (
                         <li
                           key={location}
                           className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
@@ -259,13 +242,13 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
             <div className="space-y-6 p-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(parseInt(trinket.itemID)) ? (
+                  {artifacts.has(trinket.itemID) ? (
                     <Button
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        (!artifacts.has(parseInt(trinket.itemID)) &&
-                          !minerals.has(parseInt(trinket.itemID)))
+                        (!artifacts.has(trinket.itemID) &&
+                          !minerals.has(trinket.itemID))
                       }
                       data-umami-event="Set incompleted"
                       onClick={() => {
@@ -285,8 +268,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        artifacts.has(parseInt(trinket.itemID)) ||
-                        minerals.has(parseInt(trinket.itemID))
+                        artifacts.has(trinket.itemID) ||
+                        minerals.has(trinket.itemID)
                       }
                       data-umami-event="Set completed"
                       onClick={() => {
@@ -338,24 +321,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                     <Separator />
                     <ul className="list-disc list-inside">
                       {trinket.locations.map((location) => (
-                        <li
-                          key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
-                        >
-                          {location}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </section>
-              <section className="space-y-2">
-                {trinket.used_in && trinket.used_in.length > 0 && (
-                  <>
-                    <h3 className="font-semibold">Used In</h3>
-                    <Separator />
-                    <ul className="list-disc list-inside">
-                      {trinket.used_in.map((location) => (
                         <li
                           key={location}
                           className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"

@@ -3,7 +3,7 @@ import objects from "@/data/objects.json";
 import { deweaponize } from "../utils";
 
 export interface CookingRet {
-  recipes: { [key: string]: "0" | "1" | "2" };
+  recipes: { [key: string]: 0 | 1 | 2 };
 }
 
 export function parseCooking(player: any): CookingRet {
@@ -19,7 +19,7 @@ export function parseCooking(player: any): CookingRet {
     let cookedRecipes = new Set<string>();
     // 0 = unknown, 1 = known, 2 = cooked
     // 0 might be unused, we can just check if key exists
-    let recipes: { [key: string]: "0" | "1" | "2" } = {};
+    let recipes: { [key: string]: 0 | 1 | 2 } = {};
 
     if (
       !player.cookingRecipes ||
@@ -67,7 +67,7 @@ export function parseCooking(player: any): CookingRet {
         // and make sure it's a valid recipe
         if (itemID && itemID in cookingRecipes) {
           knownRecipes.add(itemID);
-          recipes[itemID] = "1";
+          recipes[itemID] = 1;
         }
       }
     } else {
@@ -81,7 +81,7 @@ export function parseCooking(player: any): CookingRet {
       let itemID = name_to_id.get(recipeName);
       if (itemID && itemID in cookingRecipes) {
         knownRecipes.add(itemID);
-        recipes[itemID] = "1";
+        recipes[itemID] = 1;
       }
     }
 
@@ -103,7 +103,7 @@ export function parseCooking(player: any): CookingRet {
 
         if (itemID) {
           cookedRecipes.add(itemID);
-          recipes[itemID] = "2";
+          recipes[itemID] = 2;
         }
       }
     } else if (player.recipesCooked.item) {
@@ -112,7 +112,7 @@ export function parseCooking(player: any): CookingRet {
 
       if (recipeID in cookingRecipes) {
         cookedRecipes.add(recipeID);
-        recipes[recipeID] = "2";
+        recipes[recipeID] = 2;
       }
     }
 

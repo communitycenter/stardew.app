@@ -85,7 +85,7 @@ const type = [
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
-  const [fishCaught, setFishCaught] = useState<Set<number>>(new Set());
+  const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");

@@ -1,17 +1,19 @@
 interface Fish {
-  itemID: number;
-  locations: string[];
-  trapFish: false;
   difficulty: string;
-  time: string;
+  itemID: string;
+  locations: string[];
+  minLevel: number;
+  minVersion: string;
   seasons: string[];
+  time: string;
+  trapFish: false;
   weather: string;
-  minLevel: string;
 }
 
 interface TrapFish {
-  itemID: number;
+  itemID: string;
   locations: string[];
+  minVersion: string;
   trapFish: true;
 }
 
@@ -25,15 +27,15 @@ export interface Achievement {
 }
 
 export interface ShippingItem {
-  itemID: number;
+  itemID: string;
   polyculture: boolean;
+  minVersion: string;
   monoculture: boolean;
   seasons: string[];
 }
 
-export interface TrinketItem {
+export interface MuseumItem {
   locations?: string[];
-  used_in?: string[];
   itemID: string;
 }
 
@@ -49,10 +51,9 @@ export interface WalnutMapType {
 }
 
 export interface Villager {
-  name: string;
-  iconURL: string;
   birthday: string;
   datable: boolean;
-  loves: number[];
-  likes: number[];
+  iconURL: string;
+  loves: string[];
+  name: string;
 }

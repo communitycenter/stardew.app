@@ -1,8 +1,8 @@
 import objects from "@/data/objects.json";
 
 export interface MuseumRet {
-  artifacts?: number[];
-  minerals?: number[];
+  artifacts?: string[];
+  minerals?: string[];
 }
 
 export function parseMuseum(museumLocation: any): MuseumRet {
@@ -12,11 +12,11 @@ export function parseMuseum(museumLocation: any): MuseumRet {
       - A Complete Collection (donate every item to the museum).
   */
 
-  let artifactsIds = new Set<number>();
-  let mineralsIds = new Set<number>();
+  let artifactsIds = new Set<string>();
+  let mineralsIds = new Set<string>();
 
-  let artifacts: number[] = [];
-  let minerals: number[] = [];
+  let artifacts: string[] = [];
+  let minerals: string[] = [];
 
   if (
     !museumLocation.museumPieces ||
@@ -30,9 +30,9 @@ export function parseMuseum(museumLocation: any): MuseumRet {
   // get all the artifact and mineral ids to track where it belongs
   for (const key in objects) {
     if (objects[key as keyof typeof objects].category === "Arch")
-      artifactsIds.add(parseInt(key));
+      artifactsIds.add(key);
     if (objects[key as keyof typeof objects].category.startsWith("Minerals"))
-      mineralsIds.add(parseInt(key));
+      mineralsIds.add(key);
   }
 
   if (Array.isArray(museumLocation.museumPieces.item)) {
@@ -41,16 +41,16 @@ export function parseMuseum(museumLocation: any): MuseumRet {
       let piece = museumLocation.museumPieces.item[idx];
       let item_id = piece.value.int;
 
-      if (artifactsIds.has(item_id)) artifacts.push(parseInt(item_id));
-      else if (mineralsIds.has(item_id)) minerals.push(parseInt(item_id));
+      if (artifactsIds.has(item_id)) artifacts.push(item_id);
+      else if (mineralsIds.has(item_id)) minerals.push(item_id);
     }
   } else {
     // only one item donated
     let piece = museumLocation.museumPieces.item;
     let item_id = piece.value.int;
 
-    if (artifactsIds.has(item_id)) artifacts.push(parseInt(item_id));
-    else if (mineralsIds.has(item_id)) minerals.push(parseInt(item_id));
+    if (artifactsIds.has(item_id)) artifacts.push(item_id);
+    else if (mineralsIds.has(item_id)) minerals.push(item_id);
   }
 
   return {

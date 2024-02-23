@@ -349,7 +349,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
               <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
                 {villager.loves.map((itemID) => {
                   let item;
-                  if (itemID > 0) {
+                  if (!itemID.startsWith("-")) {
                     item = objects[itemID.toString() as keyof typeof objects];
                   } else {
                     item = { ...categories[itemID] };
@@ -361,7 +361,10 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                     >
                       <div className="flex items-center space-x-1">
                         <Image
-                          src={item.iconURL}
+                          src={
+                            item.iconURL ??
+                            "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                          }
                           alt={item.name}
                           width={24}
                           height={24}
@@ -487,7 +490,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
               <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
                 {villager.loves.map((itemID) => {
                   let item;
-                  if (itemID > 0) {
+                  if (!itemID.startsWith("-")) {
                     item = objects[itemID.toString() as keyof typeof objects];
                   } else {
                     item = { ...categories[itemID] };
@@ -499,7 +502,10 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                     >
                       <div className="flex items-center space-x-1">
                         <Image
-                          src={item.iconURL}
+                          src={
+                            item.iconURL ??
+                            "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                          }
                           alt={item.name}
                           width={24}
                           height={24}

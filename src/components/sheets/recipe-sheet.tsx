@@ -154,7 +154,10 @@ export const RecipeSheet = <T extends Recipe>({
           <SheetHeader className="mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={
+                  iconURL ??
+                  "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                }
                 alt={name ? name : "No Info"}
                 width={64}
                 height={
@@ -274,7 +277,7 @@ export const RecipeSheet = <T extends Recipe>({
                     let item;
 
                     // if itemID is greater than 0, it's an object
-                    if (ingredient.itemID > 0) {
+                    if (!ingredient.itemID.startsWith("-")) {
                       item =
                         objects[
                           ingredient.itemID.toString() as keyof typeof objects
@@ -294,7 +297,10 @@ export const RecipeSheet = <T extends Recipe>({
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={item.iconURL}
+                            src={
+                              item.iconURL ??
+                              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                            }
                             alt={item.name}
                             width={32}
                             height={32}
@@ -323,7 +329,10 @@ export const RecipeSheet = <T extends Recipe>({
           <DrawerHeader className="mt-4 -mb-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={
+                  iconURL ??
+                  "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                }
                 alt={name ? name : "No Info"}
                 width={64}
                 height={
@@ -443,7 +452,7 @@ export const RecipeSheet = <T extends Recipe>({
                     let item;
 
                     // if itemID is greater than 0, it's an object
-                    if (ingredient.itemID > 0) {
+                    if (!ingredient.itemID.startsWith("-")) {
                       item =
                         objects[
                           ingredient.itemID.toString() as keyof typeof objects
@@ -463,7 +472,10 @@ export const RecipeSheet = <T extends Recipe>({
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={item.iconURL}
+                            src={
+                              item.iconURL ??
+                              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                            }
                             alt={item.name}
                             width={32}
                             height={32}

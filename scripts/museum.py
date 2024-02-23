@@ -41,8 +41,8 @@ def clean(text: str) -> str:
 #                                   artifacts                                  #
 # ---------------------------------------------------------------------------- #
 dolls = {
-    "Strange Doll (green)": 126,
-    "Strange Doll (yellow)": 127,
+    "Strange Doll (green)": "126",
+    "Strange Doll (yellow)": "127",
 }
 
 

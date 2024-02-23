@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import objects from "@/data/objects.json";
 
-import type { FishType, TrinketItem } from "@/types/items";
+import type { FishType, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction, useContext } from "react";
@@ -20,7 +20,7 @@ import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props {
-  item: FishType | TrinketItem | any;
+  item: FishType | MuseumItem | any;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
@@ -38,7 +38,8 @@ export const BooleanCard = ({
   const mixpanel = useMixpanel();
 
   const iconURL =
-    objects[item.itemID.toString() as keyof typeof objects].iconURL;
+    objects[item.itemID as keyof typeof objects].iconURL ??
+    "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
   const name = objects[item.itemID.toString() as keyof typeof objects].name;
   const description =
     objects[item.itemID.toString() as keyof typeof objects].description;
@@ -64,8 +65,8 @@ export const BooleanCard = ({
     } else if (type === "artifact") {
       const artifacts = new Set(activePlayer?.museum?.artifacts ?? []);
 
-      if (status === 2) artifacts.add(parseInt(item.itemID));
-      if (status === 0) artifacts.delete(parseInt(item.itemID));
+      if (status === 2) artifacts.add(item.itemID);
+      if (status === 0) artifacts.delete(item.itemID);
 
       patch = {
         museum: {
@@ -75,8 +76,8 @@ export const BooleanCard = ({
     } else if (type === "mineral") {
       const minerals = new Set(activePlayer?.museum?.minerals ?? []);
 
-      if (status === 2) minerals.add(parseInt(item.itemID));
-      if (status === 0) minerals.delete(parseInt(item.itemID));
+      if (status === 2) minerals.add(item.itemID);
+      if (status === 0) minerals.delete(item.itemID);
 
       patch = {
         museum: {
