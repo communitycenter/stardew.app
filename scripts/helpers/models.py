@@ -53,25 +53,28 @@ class CraftingRecipe(Recipe):
 
 
 class TrapFish(TypedDict):
-    itemID: int
+    itemID: str
     locations: list[str]
+    minVersion: str
     trapFish: bool
 
 
 class Fish(TypedDict):
-    itemID: int
-    locations: list[str]
-    trapFish: bool
     difficulty: str
-    time: str
-    seasons: list[str]
-    weather: str
+    itemID: str
+    locations: list[str]
     minLevel: int
+    minVersion: str
+    seasons: list[str]
+    time: str
+    trapFish: bool
+    weather: str
 
 
 class ShippingItem(TypedDict):
     itemID: str
     polyculture: bool
+    minVersion: str
     monoculture: bool
     seasons: list[str]
 
