@@ -29,19 +29,19 @@ function parseStardrops(player: any): StardropsRet {
 
     // look through the player's mail for the stardrops
     if (!player.mailReceived || typeof player.mailReceived === "undefined") {
+      console.log(`Player ${player.name} has no mailReceived!`);
       return { stardrops };
     }
 
     if (Array.isArray(player.mailReceived.string)) {
       for (const idx in player.mailReceived.string) {
         let mail = player.mailReceived.string[idx];
+        console.log(`Mail: ${mail}`);
 
         if (STARDROPS.has(mail)) stardrops.push(mail);
 
         // early return if all stardrops are found
-        if (stardrops.length === Object.keys(STARDROPS).length) {
-          return { stardrops };
-        }
+        if (stardrops.length === STARDROPS.size) return { stardrops };
       }
     } else {
       // only one mail received
