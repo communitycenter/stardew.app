@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
 
+const semverGte = require("semver/functions/gte");
+
 const reqs: Record<string, number> = {
   "D.I.Y.": 15,
   Artisan: 30,
@@ -31,7 +33,11 @@ const reqs: Record<string, number> = {
 export default function Crafting() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<CraftingRecipe | null>(null);
-  const [playerRecipes, setPlayerRecipes] = useState({});
+  const [playerRecipes, setPlayerRecipes] = useState<{
+    [key: string]: 0 | 1 | 2;
+  }>({});
+
+  const [gameVersion, setGameVersion] = useState("1.6.0");
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
@@ -42,6 +48,16 @@ export default function Crafting() {
     if (activePlayer) {
       if (activePlayer.crafting?.recipes) {
         setPlayerRecipes(activePlayer.crafting.recipes);
+      }
+
+      // update the requirements for achievements and set the minimum game version
+      if (activePlayer.general?.gameVersion) {
+        const version = activePlayer.general.gameVersion;
+        setGameVersion(version);
+
+        reqs["Craft Master"] = Object.values(recipes).filter((r) =>
+          semverGte(version, r.minVersion)
+        ).length;
       }
     }
   }, [activePlayer]);
@@ -160,7 +176,7 @@ export default function Crafting() {
                   target={"0"}
                   _filter={_filter}
                   title={`Unknown (${
-                    Object.keys(recipes).length - (knownCount + craftedCount)
+                    reqs["Craft Master"] - (knownCount + craftedCount)
                   })`}
                   setFilter={setFilter}
                 />
@@ -187,6 +203,7 @@ export default function Crafting() {
             {/* Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)
+                .filter((r) => semverGte(gameVersion, r.minVersion))
                 .filter((r) => {
                   if (!search) return true;
                   const name = getName(r.itemID, r.isBigCraftable);
@@ -196,22 +213,17 @@ export default function Crafting() {
                   if (_filter === "0") {
                     // unknown recipes (not in playerRecipes)
                     return !(
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] > 0
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
                     );
                   } else if (_filter === "1") {
                     // known recipes (in playerRecipes) and not cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        1
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
                     );
                   } else if (_filter === "2") {
                     // cooked recipes (in playerRecipes) and cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        2
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
                     );
                   } else return true; // all recipes
                 })
@@ -220,9 +232,7 @@ export default function Crafting() {
                     key={f.itemID}
                     recipe={f}
                     status={
-                      f.itemID in playerRecipes
-                        ? playerRecipes[f.itemID as keyof typeof playerRecipes]
-                        : 0
+                      f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}

@@ -22,7 +22,9 @@ import {
 import { Command, CommandInput } from "@/components/ui/command";
 import { IconClock, IconCloud } from "@tabler/icons-react";
 
-const reqs = {
+const semverGte = require("semver/functions/gte");
+
+const reqs: Record<string, number> = {
   Fisherman: 10,
   "Ol' Mariner": 24,
   "Master Angler": Object.keys(fishes).length,
@@ -67,21 +69,6 @@ const seasons = [
   },
 ];
 
-const type = [
-  {
-    value: "all",
-    label: "All Types",
-  },
-  {
-    value: "caught",
-    label: "Caught",
-  },
-  {
-    value: "trap",
-    label: "Crab Pot",
-  },
-];
-
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
@@ -90,18 +77,25 @@ export default function Fishing() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const [_typeFilter, setTypeFilter] = useState("all");
-
   const [_weatherFilter, setWeatherFilter] = useState("both");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
-  const [_locationFilter, setLocationFilter] = useState("all");
+  const [gameVersion, setGameVersion] = useState("1.6.0");
 
   const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
     if (activePlayer) {
       setFishCaught(new Set(activePlayer?.fishing?.fishCaught ?? []));
+
+      if (activePlayer.general?.gameVersion) {
+        const version = activePlayer.general.gameVersion;
+        setGameVersion(version);
+
+        reqs["Master Angler"] = Object.values(fishes).filter((f) =>
+          semverGte(version, f.minVersion)
+        ).length;
+      }
     }
   }, [activePlayer]);
 
@@ -119,11 +113,9 @@ export default function Fishing() {
         additionalDescription = ` - ${reqs[name] - totalCaught} more`;
       }
     } else {
-      completed = fishCaught.size >= reqs[name as keyof typeof reqs];
+      completed = fishCaught.size >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          reqs[name as keyof typeof reqs] - fishCaught.size
-        } more`;
+        additionalDescription = ` - ${reqs[name] - fishCaught.size} more`;
       }
     }
     return { completed, additionalDescription };
@@ -202,7 +194,7 @@ export default function Fishing() {
                   target={"0"}
                   _filter={_filter}
                   title={`Incomplete (${
-                    Object.keys(fishes).length - fishCaught.size
+                    reqs["Master Angler"] - fishCaught.size
                   })`}
                   setFilter={setFilter}
                 />
@@ -215,14 +207,6 @@ export default function Fishing() {
               </div>
               <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
                 <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
-                  {/* <FilterSearch
-                  target={"all"}
-                  _filter={_typeFilter}
-                  title={"Type"}
-                  data={type}
-                  setFilter={setTypeFilter}
-                  icon={IconClock}
-                /> */}
                   <FilterSearch
                     target={"all"}
                     _filter={_seasonFilter}
@@ -253,10 +237,10 @@ export default function Fishing() {
             {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(fishes)
+                .filter((f) => semverGte(gameVersion, f.minVersion))
                 .filter((f) => {
                   if (!search) return true;
-                  const name =
-                    objects[f.itemID.toString() as keyof typeof objects].name;
+                  const name = objects[f.itemID as keyof typeof objects].name;
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((f) => {
@@ -265,11 +249,6 @@ export default function Fishing() {
                   } else if (_filter === "2") {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
-                })
-                .filter((f) => {
-                  if (_typeFilter === "all") return true;
-                  if (_typeFilter === "caught") return !f.trapFish;
-                  if (_typeFilter === "trap") return f.trapFish;
                 })
                 .filter((f) => {
                   if ("weather" in f && f.trapFish === false) {

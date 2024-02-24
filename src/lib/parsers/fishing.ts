@@ -33,11 +33,7 @@ export function parseFishing(player: any, gameVersion: string): FishRet {
 
     const fishCaught: string[] = [];
 
-    if (
-      totalCaught === 0 ||
-      !player.fishCaught ||
-      typeof player.fishCaught === "undefined"
-    ) {
+    if (!player.fishCaught || typeof player.fishCaught === "undefined") {
       return { totalCaught, fishCaught };
     }
 
@@ -45,7 +41,6 @@ export function parseFishing(player: any, gameVersion: string): FishRet {
       // multiple types of fish caught
       for (const idx in player.fishCaught.item) {
         let fish = player.fishCaught.item[idx];
-
         let itemID: string;
 
         // we'll need to check the save version of the file as 1.6 applies a change
