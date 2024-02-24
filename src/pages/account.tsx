@@ -223,7 +223,7 @@ export default function Account() {
       </Head>
       <main className="flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8">
         <div className="mx-auto max-w-5xl w-full space-y-8 mt-4">
-          <Tabs defaultValue="authentication">
+          <Tabs defaultValue="site">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="site">Site Settings</TabsTrigger>
               <TabsTrigger value="authentication">Authentication</TabsTrigger>
@@ -245,11 +245,8 @@ export default function Account() {
                       <div className="space-y-1">
                         <CardTitle>Enable 1.6 Content</CardTitle>
                         <CardDescription>
-                          <p>
-                            This will enable 1.6 content on the site -
-                            don&apos;t use if you don&apos;t want to see 1.6
-                            spoilers!
-                          </p>
+                          This will enable 1.6 content on the site - don&apos;t
+                          use if you don&apos;t want to see 1.6 spoilers!
                         </CardDescription>
                       </div>
                       <div>
