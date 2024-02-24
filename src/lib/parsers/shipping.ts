@@ -1,5 +1,9 @@
 import shipping_items from "@/data/shipping.json";
 
+import { deweaponize } from "../utils";
+
+const semverSatisfies = require("semver/functions/satisfies");
+
 export interface ShippingRet {
   // basicShippedCount: number; // how many items have they shipped at least one of?
   // polycultureCount: number; // how many crops have they shipped more than 15 of?
@@ -7,7 +11,7 @@ export interface ShippingRet {
   shipped: { [key: string]: number | null }; // how many of each item have they shipped?
 }
 
-export function parseShipping(player: any): ShippingRet {
+export function parseShipping(player: any, saveVersion: string): ShippingRet {
   /*
     Achievements Relevant:
       - Polyculture (ship 15 of each crop)
@@ -24,12 +28,19 @@ export function parseShipping(player: any): ShippingRet {
     }
 
     // item.key.int is the item ID, item.value.int is the number shipped
+    // in >=1.6, item.key.string is the item ID
     if (Array.isArray(player.basicShipped.item)) {
       // player has shipped multiple items
       for (const idx in player.basicShipped.item) {
         const item = player.basicShipped.item[idx];
-        const itemID = item.key.int;
         const amount = item.value.int;
+        let itemID: string;
+
+        if (semverSatisfies(saveVersion, ">=1.6")) {
+          itemID = deweaponize(item.key.string).value;
+        } else {
+          itemID = item.key.int.toString();
+        }
 
         // first make sure this is a valid shipped item
         if (itemID in shipping_items) {
@@ -38,8 +49,13 @@ export function parseShipping(player: any): ShippingRet {
       }
     } else {
       // only one shipped item
-      const itemID = player.basicShipped.item.key.int;
       const amount = player.basicShipped.item.value.int;
+      let itemID: string;
+      if (semverSatisfies(saveVersion, ">=1.6")) {
+        itemID = deweaponize(player.basicShipped.item.key.string).value;
+      } else {
+        itemID = player.basicShipped.item.key.int.toString();
+      }
 
       if (itemID in shipping_items) {
         shipped[itemID] = amount;

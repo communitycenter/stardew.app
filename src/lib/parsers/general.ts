@@ -170,10 +170,8 @@ export function parseGeneral(player: any, whichFarm: string): GeneralRet {
       experience,
     };
   } catch (e) {
-    let msg = "";
-    if (e instanceof Error) {
-      msg = e.message;
-    }
-    throw new Error(`Error in parseGeneral(): ${msg}`);
+    if (e instanceof Error)
+      throw new Error(`Error in parseGeneral: ${e.message}`);
+    else throw new Error(`Error in parseGeneral: ${e}`);
   }
 }

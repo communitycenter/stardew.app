@@ -80,6 +80,8 @@ export const parseMonsters = (player: any): MonstersRet => {
 
   // mimic game code to determine which category the monster belongs to
   // Reference: StardewValley.AdventureGuild.cs::showMonsterKillList()
+  // new in 1.6, the categories and monsters are listed in Data/MonsterSlayerQuests.json
+  // TODO: automate this process by looping through the Data and their Targets
   monstersKilled["Slimes"] = // slimesKilled
     (stats.get("Green Slime") ?? 0) +
     (stats.get("Frost Jelly") ?? 0) +

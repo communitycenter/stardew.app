@@ -1,11 +1,16 @@
 import objects from "@/data/objects.json";
 
+const semverSatisfies = require("semver/functions/satisfies");
+
 export interface MuseumRet {
   artifacts?: string[];
   minerals?: string[];
 }
 
-export function parseMuseum(museumLocation: any): MuseumRet {
+export function parseMuseum(
+  museumLocation: any,
+  saveVersion: string
+): MuseumRet {
   /*
     Achievements Relevant:
       - Treasure Trove (donate 40 items to museum).
@@ -22,16 +27,13 @@ export function parseMuseum(museumLocation: any): MuseumRet {
     !museumLocation.museumPieces ||
     typeof museumLocation.museumPieces === "undefined"
   )
-    return {
-      artifacts,
-      minerals,
-    };
+    return { artifacts, minerals };
 
   // get all the artifact and mineral ids to track where it belongs
   for (const key in objects) {
-    if (objects[key as keyof typeof objects].category === "Arch")
+    if (objects[key as keyof typeof objects].category === "Artifact")
       artifactsIds.add(key);
-    if (objects[key as keyof typeof objects].category.startsWith("Minerals"))
+    if (objects[key as keyof typeof objects].category === "Mineral")
       mineralsIds.add(key);
   }
 
@@ -39,7 +41,13 @@ export function parseMuseum(museumLocation: any): MuseumRet {
     // multiple items donated
     for (const idx in museumLocation.museumPieces.item) {
       let piece = museumLocation.museumPieces.item[idx];
-      let item_id = piece.value.int;
+      let item_id: string;
+
+      if (semverSatisfies(saveVersion, ">=1.6")) {
+        item_id = piece.value.string;
+      } else {
+        item_id = piece.value.int.toString();
+      }
 
       if (artifactsIds.has(item_id)) artifacts.push(item_id);
       else if (mineralsIds.has(item_id)) minerals.push(item_id);
@@ -47,14 +55,17 @@ export function parseMuseum(museumLocation: any): MuseumRet {
   } else {
     // only one item donated
     let piece = museumLocation.museumPieces.item;
-    let item_id = piece.value.int;
+    let item_id: string;
+
+    if (semverSatisfies(saveVersion, ">=1.6")) {
+      item_id = piece.value.string;
+    } else {
+      item_id = piece.value.int.toString();
+    }
 
     if (artifactsIds.has(item_id)) artifacts.push(item_id);
     else if (mineralsIds.has(item_id)) minerals.push(item_id);
   }
 
-  return {
-    artifacts,
-    minerals,
-  };
+  return { artifacts, minerals };
 }

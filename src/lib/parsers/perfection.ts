@@ -54,8 +54,8 @@ export const parsePerfection = (
     }
   } catch (err) {
     if (err instanceof Error)
-      throw new Error(`Error in parsePerfection(): ${err.message}`);
-    throw new Error(`Error in parsePerfection(): ${err}`);
+      throw new Error(`Error in parsePerfection: ${err.message}`);
+    throw new Error(`Error in parsePerfection: ${err}`);
   }
 
   return { numObelisks, goldenClock };

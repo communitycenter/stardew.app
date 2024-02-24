@@ -58,7 +58,8 @@ export function parseSaveFile(xml: string) {
     const parsedMuseum = parseMuseum(
       saveFile.SaveGame.locations.GameLocation.find(
         (obj: any) => obj[`@_${prefix}:type`] === "LibraryMuseum"
-      )
+      ),
+      version
     );
 
     const parsedWalnuts = parseWalnuts(saveFile.SaveGame);
@@ -79,7 +80,7 @@ export function parseSaveFile(xml: string) {
         fishing: parseFishing(player, version),
         cooking: parseCooking(player, version),
         crafting: parseCrafting(player),
-        shipping: parseShipping(player),
+        shipping: parseShipping(player, version),
         museum: parsedMuseum,
         social: parseSocial(
           player,

@@ -77,10 +77,8 @@ export function parseFishing(player: any, saveVersion: string): FishRet {
 
     return { totalCaught, fishCaught };
   } catch (e) {
-    let msg = "";
-    if (e instanceof Error) {
-      msg = e.message;
-    }
-    throw new Error(`Error in parseFishing(): ${msg}`);
+    if (e instanceof Error)
+      throw new Error(`Error in parseFishing: ${e.message}`);
+    else throw new Error(`Error in parseFishing: ${e}`);
   }
 }

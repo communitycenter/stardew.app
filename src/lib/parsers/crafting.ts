@@ -101,10 +101,8 @@ export function parseCrafting(player: any): CraftingRet {
 
     return { recipes };
   } catch (e) {
-    let msg = "";
-    if (e instanceof Error) {
-      msg = e.message;
-    }
-    throw new Error(`Error in parseCrafting(): ${msg}`);
+    if (e instanceof Error)
+      throw new Error(`Error in parseCrafting(): ${e.message}`);
+    else throw new Error(`Error in parseCrafting: ${e}`);
   }
 }

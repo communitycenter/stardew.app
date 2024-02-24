@@ -139,10 +139,8 @@ export function parseCooking(player: any, saveVersion: string): CookingRet {
       recipes,
     };
   } catch (e) {
-    let msg = "";
-    if (e instanceof Error) {
-      msg = e.message;
-    }
-    throw new Error(`Error in parseCooking(): ${msg}`);
+    if (e instanceof Error)
+      throw new Error(`Error in parseCooking: ${e.message}`);
+    else throw new Error(`Error in parseCooking: ${e}`);
   }
 }
