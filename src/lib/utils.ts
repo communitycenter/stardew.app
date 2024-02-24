@@ -89,7 +89,7 @@ export function isPlayerFormatUpdated(player: any): boolean {
   // just to be safe, we should check in multiple places for occurrences of the new format
   // but the only thing I can think of right now is the stats
   // player.stats.Values should be null for farmhands which haven't applied the 1.6 update
-  if (player.stats && !player.stats.Value) return false;
+  if (player.stats && !player.stats.Values) return false;
 
   return true;
 }
