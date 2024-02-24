@@ -21,21 +21,22 @@ import {
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
 
-const semverSatisfies = require("semver/functions/satisfies");
+const semverGte = require("semver/functions/gte");
 
 const reqs = {
   Cook: 10,
   "Sous Chef": 25,
-  "Gourmet Chef": Object.values(recipes).filter((r) => r.minVersion === "1.5.0")
-    .length,
+  "Gourmet Chef": Object.keys(recipes).length, // 1.6 default
 };
 
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
-  const [playerRecipes, setPlayerRecipes] = useState({});
+  const [playerRecipes, setPlayerRecipes] = useState<{
+    [key: string]: 0 | 1 | 2;
+  }>({});
 
-  const [minVersion, setMinVersion] = useState("1.5.0");
+  const [gameVersion, setGameVersion] = useState("1.6.0");
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
@@ -51,19 +52,18 @@ export default function Cooking() {
       // update the requirements for achievements and set the minimum game version
       if (activePlayer.general?.gameVersion) {
         const version = activePlayer.general.gameVersion;
+        setGameVersion(version);
 
-        if (semverSatisfies(version, ">=1.6")) {
-          reqs["Gourmet Chef"] = Object.keys(recipes).length;
-          setMinVersion("1.6.0");
-        } else {
-          reqs["Gourmet Chef"] = Object.values(recipes).filter(
-            (r) => r.minVersion === "1.5.0"
-          ).length;
-          setMinVersion("1.5.0");
-        }
+        reqs["Gourmet Chef"] = Object.values(recipes).filter((r) =>
+          semverGte(version, r.minVersion)
+        ).length;
       }
     }
   }, [activePlayer]);
+
+  useEffect(() => {
+    console.log("gameVersion:", gameVersion);
+  }, [gameVersion]);
 
   const cookedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
@@ -195,10 +195,7 @@ export default function Cooking() {
             {/* Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)
-                .filter((r) => {
-                  if (minVersion === "1.5.0") return r.minVersion === "1.5.0";
-                  return true;
-                })
+                .filter((r) => semverGte(gameVersion, r.minVersion))
                 .filter((r) => {
                   if (!search) return true;
                   const name = objects[r.itemID as keyof typeof objects].name;
@@ -208,22 +205,17 @@ export default function Cooking() {
                   if (_filter === "0") {
                     // unknown recipes (not in playerRecipes)
                     return !(
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] > 0
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
                     );
                   } else if (_filter === "1") {
                     // known recipes (in playerRecipes) and not cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        1
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
                     );
                   } else if (_filter === "2") {
                     // cooked recipes (in playerRecipes) and cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        2
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
                     );
                   } else return true; // all recipes
                 })
@@ -232,9 +224,7 @@ export default function Cooking() {
                     key={f.itemID}
                     recipe={f}
                     status={
-                      f.itemID in playerRecipes
-                        ? playerRecipes[f.itemID as keyof typeof playerRecipes]
-                        : 0
+                      f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}
