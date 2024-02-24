@@ -1,3 +1,5 @@
+import { GetStatValue, isPlayerFormatUpdated } from "../utils";
+
 function msToTime(time: number): string {
   const hrs = Math.floor(time / 3600000);
   const mins = Math.floor((time % 3600000) / 60000);
@@ -145,9 +147,15 @@ export function parseGeneral(
   gameVersion: string
 ): GeneralRet {
   try {
+    const playerFormatUpdated = isPlayerFormatUpdated(player);
     const { name, totalMoneyEarned, millisecondsPlayed, farmName } = player;
     const timePlayed = msToTime(millisecondsPlayed);
-    const questsCompleted = player.stats.questsCompleted;
+    let questsCompleted = 0;
+    if (playerFormatUpdated) {
+      questsCompleted = GetStatValue(player.stats.Values, "questsCompleted");
+    } else {
+      questsCompleted = player.stats.questsCompleted;
+    }
 
     let farmIdx = 0;
 
