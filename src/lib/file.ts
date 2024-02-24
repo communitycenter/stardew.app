@@ -12,8 +12,8 @@ import {
   parseShipping,
   parseSocial,
 } from "@/lib/parsers";
-import { findAllByKey } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
+import { getAllFarmhands } from "@/lib/utils";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
 
@@ -47,7 +47,7 @@ export function parseSaveFile(xml: string) {
     // searches for all players in the save file and returns an array
     // objects are unprocessed and will be used to parse each player's data
 
-    players = findAllByKey(saveFile.SaveGame, "farmhand");
+    players = getAllFarmhands(saveFile.SaveGame);
 
     // find the prefix to use for attributes (xsi for pc, p3 for mobile)
     const prefix =
