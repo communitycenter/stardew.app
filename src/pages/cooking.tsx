@@ -21,16 +21,21 @@ import {
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
 
+const semverSatisfies = require("semver/functions/satisfies");
+
 const reqs = {
   Cook: 10,
   "Sous Chef": 25,
-  "Gourmet Chef": Object.keys(recipes).length,
+  "Gourmet Chef": Object.values(recipes).filter((r) => r.minVersion === "1.5.0")
+    .length,
 };
 
 export default function Cooking() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [playerRecipes, setPlayerRecipes] = useState({});
+
+  const [minVersion, setMinVersion] = useState("1.5.0");
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
@@ -41,6 +46,21 @@ export default function Cooking() {
     if (activePlayer) {
       if (activePlayer.cooking?.recipes) {
         setPlayerRecipes(activePlayer.cooking.recipes);
+      }
+
+      // update the requirements for achievements and set the minimum game version
+      if (activePlayer.general?.gameVersion) {
+        const version = activePlayer.general.gameVersion;
+
+        if (semverSatisfies(version, ">=1.6")) {
+          reqs["Gourmet Chef"] = Object.keys(recipes).length;
+          setMinVersion("1.6.0");
+        } else {
+          reqs["Gourmet Chef"] = Object.values(recipes).filter(
+            (r) => r.minVersion === "1.5.0"
+          ).length;
+          setMinVersion("1.5.0");
+        }
       }
     }
   }, [activePlayer]);
@@ -148,7 +168,7 @@ export default function Cooking() {
                   target={"0"}
                   _filter={_filter}
                   title={`Unknown (${
-                    Object.keys(recipes).length - (knownCount + cookedCount)
+                    reqs["Gourmet Chef"] - (knownCount + cookedCount)
                   })`}
                   setFilter={setFilter}
                 />
@@ -176,9 +196,12 @@ export default function Cooking() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)
                 .filter((r) => {
+                  if (minVersion === "1.5.0") return r.minVersion === "1.5.0";
+                  return true;
+                })
+                .filter((r) => {
                   if (!search) return true;
-                  const name =
-                    objects[r.itemID.toString() as keyof typeof objects].name;
+                  const name = objects[r.itemID as keyof typeof objects].name;
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((r) => {
