@@ -9,7 +9,7 @@ export interface MuseumRet {
 
 export function parseMuseum(
   museumLocation: any,
-  saveVersion: string
+  gameVersion: string
 ): MuseumRet {
   /*
     Achievements Relevant:
@@ -43,7 +43,7 @@ export function parseMuseum(
       let piece = museumLocation.museumPieces.item[idx];
       let item_id: string;
 
-      if (semverSatisfies(saveVersion, ">=1.6")) {
+      if (semverSatisfies(gameVersion, ">=1.6")) {
         item_id = piece.value.string;
       } else {
         item_id = piece.value.int.toString();
@@ -57,7 +57,7 @@ export function parseMuseum(
     let piece = museumLocation.museumPieces.item;
     let item_id: string;
 
-    if (semverSatisfies(saveVersion, ">=1.6")) {
+    if (semverSatisfies(gameVersion, ">=1.6")) {
       item_id = piece.value.string;
     } else {
       item_id = piece.value.int.toString();

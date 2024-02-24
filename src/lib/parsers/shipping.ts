@@ -11,7 +11,7 @@ export interface ShippingRet {
   shipped: { [key: string]: number | null }; // how many of each item have they shipped?
 }
 
-export function parseShipping(player: any, saveVersion: string): ShippingRet {
+export function parseShipping(player: any, gameVersion: string): ShippingRet {
   /*
     Achievements Relevant:
       - Polyculture (ship 15 of each crop)
@@ -36,7 +36,7 @@ export function parseShipping(player: any, saveVersion: string): ShippingRet {
         const amount = item.value.int;
         let itemID: string;
 
-        if (semverSatisfies(saveVersion, ">=1.6")) {
+        if (semverSatisfies(gameVersion, ">=1.6")) {
           itemID = deweaponize(item.key.string).value;
         } else {
           itemID = item.key.int.toString();
@@ -51,7 +51,7 @@ export function parseShipping(player: any, saveVersion: string): ShippingRet {
       // only one shipped item
       const amount = player.basicShipped.item.value.int;
       let itemID: string;
-      if (semverSatisfies(saveVersion, ">=1.6")) {
+      if (semverSatisfies(gameVersion, ">=1.6")) {
         itemID = deweaponize(player.basicShipped.item.key.string).value;
       } else {
         itemID = player.basicShipped.item.key.int.toString();

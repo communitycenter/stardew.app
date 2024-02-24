@@ -122,7 +122,6 @@ export function parseSocial(
       const status = relationship.value.Friendship.Status;
 
       if (status === "Married" || status === "Dating") {
-        console.log(relationship);
         relationships[name] = { points: friendshipPoints, status };
       } else {
         relationships[name] = { points: friendshipPoints };

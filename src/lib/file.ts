@@ -33,7 +33,7 @@ export function parseSaveFile(xml: string) {
   }
 
   try {
-    const version = saveFile.SaveGame.gameVersion;
+    const version = saveFile.SaveGame.gameVersion.toString();
 
     // make sure game version is at least 1.5.0
     if (!semverSatisfies(version, ">=1.5.0 || <1.7")) {
@@ -76,7 +76,11 @@ export function parseSaveFile(xml: string) {
       // in here is where we'll call all our parsers and create the player object we'll use
       let processedPlayer = {
         _id: player.UniqueMultiplayerID,
-        general: parseGeneral(player, saveFile.SaveGame.whichFarm.toString()),
+        general: parseGeneral(
+          player,
+          saveFile.SaveGame.whichFarm.toString(),
+          version
+        ),
         fishing: parseFishing(player, version),
         cooking: parseCooking(player, version),
         crafting: parseCrafting(player),

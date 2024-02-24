@@ -27,7 +27,7 @@ export function parseWalnuts(save: any): WalnutRet {
     internalWalnutIds.map((id) => (trackedWalnutObject[id] = 0));
 
     if (collectedGoldenWalnuts.length > 0) {
-      console.log(collectedGoldenWalnuts);
+      // console.log(collectedGoldenWalnuts);
       collectedGoldenWalnuts.forEach((nut) => {
         trackedWalnutObject[nut] = walnuts[nut as keyof typeof walnuts].num;
       });

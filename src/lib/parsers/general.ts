@@ -29,14 +29,12 @@ function parseStardrops(player: any): StardropsRet {
 
     // look through the player's mail for the stardrops
     if (!player.mailReceived || typeof player.mailReceived === "undefined") {
-      console.log(`Player ${player.name} has no mailReceived!`);
       return { stardrops };
     }
 
     if (Array.isArray(player.mailReceived.string)) {
       for (const idx in player.mailReceived.string) {
         let mail = player.mailReceived.string[idx];
-        console.log(`Mail: ${mail}`);
 
         if (STARDROPS.has(mail)) stardrops.push(mail);
 
@@ -138,9 +136,14 @@ export interface GeneralRet {
   questsCompleted?: number;
   stardrops?: string[];
   experience?: Record<Skill, number>;
+  gameVersion?: string;
 }
 
-export function parseGeneral(player: any, whichFarm: string): GeneralRet {
+export function parseGeneral(
+  player: any,
+  whichFarm: string,
+  gameVersion: string
+): GeneralRet {
   try {
     const { name, totalMoneyEarned, millisecondsPlayed, farmName } = player;
     const timePlayed = msToTime(millisecondsPlayed);
@@ -168,6 +171,7 @@ export function parseGeneral(player: any, whichFarm: string): GeneralRet {
       questsCompleted,
       stardrops,
       experience,
+      gameVersion,
     };
   } catch (e) {
     if (e instanceof Error)

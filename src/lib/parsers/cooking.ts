@@ -9,7 +9,7 @@ export interface CookingRet {
   recipes: { [key: string]: 0 | 1 | 2 };
 }
 
-export function parseCooking(player: any, saveVersion: string): CookingRet {
+export function parseCooking(player: any, gameVersion: string): CookingRet {
   /*
     Achievements Relevant:
       - Cook (cook 10 different recipes).
@@ -100,7 +100,7 @@ export function parseCooking(player: any, saveVersion: string): CookingRet {
         // we'll need to check the save version of the file as 1.6 applies a change
         // to all item keys from int to strings for recipesCooked. Player format updated
         // is not enough to determine this.
-        if (semverSatisfies(saveVersion, ">=1.6")) {
+        if (semverSatisfies(gameVersion, ">=1.6")) {
           recipeID = deweaponize(recipe.key.string).value;
         } else {
           recipeID = recipe.key.int.toString();
@@ -123,7 +123,7 @@ export function parseCooking(player: any, saveVersion: string): CookingRet {
       // only one recipe that the player has cooked
       let recipeID: string;
 
-      if (semverSatisfies(saveVersion, ">=1.6")) {
+      if (semverSatisfies(gameVersion, ">=1.6")) {
         recipeID = deweaponize(player.recipesCooked.item.key.string).value;
       } else {
         recipeID = player.recipesCooked.item.key.int.toString();

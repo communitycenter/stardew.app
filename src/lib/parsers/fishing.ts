@@ -12,7 +12,7 @@ export interface FishRet {
   fishCaught: string[];
 }
 
-export function parseFishing(player: any, saveVersion: string): FishRet {
+export function parseFishing(player: any, gameVersion: string): FishRet {
   /*
     Achievements Relevant:
       - Mother Catch (catch 100 total fish).
@@ -51,7 +51,7 @@ export function parseFishing(player: any, saveVersion: string): FishRet {
         // we'll need to check the save version of the file as 1.6 applies a change
         // to all item keys from int to strings for fishCaught. Player format updated
         // is not enough to determine this.
-        if (semverSatisfies(saveVersion, ">=1.6")) {
+        if (semverSatisfies(gameVersion, ">=1.6")) {
           itemID = deweaponize(fish.key.string).value;
         } else {
           itemID = fish.key.int.toString();
@@ -65,7 +65,7 @@ export function parseFishing(player: any, saveVersion: string): FishRet {
       let fish = player.fishCaught.item;
       let itemID: string;
 
-      if (semverSatisfies(saveVersion, ">=1.6")) {
+      if (semverSatisfies(gameVersion, ">=1.6")) {
         itemID = deweaponize(fish.key.string).value;
       } else {
         itemID = fish.key.int.toString();
