@@ -1,3 +1,6 @@
+// TODO: use the save game version to display correct counts in PerfectionCards
+// and make sure the counts are correct for calculation purposes
+
 import Head from "next/head";
 
 import cookingRecipes from "@/data/cooking.json";
@@ -288,7 +291,9 @@ export default function Perfection() {
 
                     <PerfectionCard
                       title="Produce & Forage Shipped"
-                      description={`${basicShippedCount ?? 0}/145`}
+                      description={`${basicShippedCount ?? 0}/${
+                        Object.keys(shippingItems).length
+                      }`}
                       percentage={Math.floor(
                         getFarmerItemsShippedPercent * 100
                       )}
@@ -319,6 +324,7 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Monster Slayer Hero"
+                      // TODO: use Data/MonsterSlayerQuests.json to get the number of quests
                       description={`${slayerQuestsCompleted}/12`}
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(slayerQuestsCompleted / 12) * 100}
@@ -326,7 +332,9 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Great Friends"
-                      description={`${getMaxedFrienshipsCount ?? 0}/34`}
+                      description={`${getMaxedFrienshipsCount ?? 0}/${
+                        Object.keys(villagers).length
+                      }`}
                       percentage={Math.floor(getMaxedFriendshipPercent * 100)}
                       footer="11% of total perfection"
                     />
@@ -350,13 +358,17 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Cooking Recipes Made"
-                      description={`${cookedCount}/80`}
+                      description={`${cookedCount}/${
+                        Object.keys(cookingRecipes).length
+                      }`}
                       percentage={Math.floor(getCookedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
                       title="Crafting Recipes Made"
-                      description={`${craftedCount}/129`}
+                      description={`${craftedCount}/${
+                        Object.keys(craftingRecipes).length
+                      }`}
                       percentage={Math.floor(getCraftedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
@@ -364,7 +376,7 @@ export default function Perfection() {
                       title="Fish Caught"
                       description={`${
                         activePlayer?.fishing?.fishCaught?.length ?? 0
-                      }/67`}
+                      }/${Object.keys(fish).length}`}
                       percentage={Math.floor(getFishCaughtPercent * 100)}
                       footer="10% of total perfection"
                     />
