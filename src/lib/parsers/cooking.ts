@@ -1,13 +1,15 @@
 import cooking_data from "@/data/cooking.json";
 import objects from "@/data/objects.json";
 
-import { deweaponize, isPlayerFormatUpdated } from "../utils";
+import { deweaponize } from "../utils";
+
+const semverSatisfies = require("semver/functions/satisfies");
 
 export interface CookingRet {
   recipes: { [key: string]: 0 | 1 | 2 };
 }
 
-export function parseCooking(player: any): CookingRet {
+export function parseCooking(player: any, saveVersion: string): CookingRet {
   /*
     Achievements Relevant:
       - Cook (cook 10 different recipes).
@@ -30,8 +32,6 @@ export function parseCooking(player: any): CookingRet {
         recipes,
       };
     }
-
-    const playerFormatUpdated = isPlayerFormatUpdated(player);
 
     // copy from console output of scripts/cooking.py
     // item keys from cookingRecipes may not be the same as the name from objects
@@ -96,7 +96,11 @@ export function parseCooking(player: any): CookingRet {
         let recipe = player.recipesCooked.item[idx];
 
         let recipeID: string;
-        if (playerFormatUpdated) {
+
+        // we'll need to check the save version of the file as 1.6 applies a change
+        // to all item keys from int to strings for recipesCooked. Player format updated
+        // is not enough to determine this.
+        if (semverSatisfies(saveVersion, ">=1.6")) {
           recipeID = deweaponize(recipe.key.string).value;
         } else {
           recipeID = recipe.key.int.toString();
@@ -119,7 +123,7 @@ export function parseCooking(player: any): CookingRet {
       // only one recipe that the player has cooked
       let recipeID: string;
 
-      if (playerFormatUpdated) {
+      if (semverSatisfies(saveVersion, ">=1.6")) {
         recipeID = deweaponize(player.recipesCooked.item.key.string).value;
       } else {
         recipeID = player.recipesCooked.item.key.int.toString();

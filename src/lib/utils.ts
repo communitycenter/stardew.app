@@ -93,3 +93,34 @@ export function isPlayerFormatUpdated(player: any): boolean {
 
   return true;
 }
+
+/**
+ * Get the value for a stat in the new 1.6 format from player.stats.Values.
+ *
+ * @param {*} Values The player's stats.Values object.
+ * @param {string} key The key of the stat to get.
+ * @return {*}  {number} The value of the stat.
+ */
+export function GetStatValue(Values: any, key: string): number {
+  let value = 0;
+
+  console.log("Values:", Values);
+
+  if (!Values) return value;
+
+  // there should, by default, be an array of items, but we'll check for a single item just in case
+  if (!Array.isArray(Values.item)) {
+    if (Values.item.key.string === key) {
+      value = Values.item.value.unsignedInt;
+    }
+  }
+
+  for (const item of Values.item) {
+    if (item.key.string === key) {
+      value = item.value.unsignedInt;
+      break;
+    }
+  }
+
+  return value;
+}

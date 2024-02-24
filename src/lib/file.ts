@@ -44,9 +44,9 @@ export function parseSaveFile(xml: string) {
 
     // Now we can begin parsing the save file
     let players: any[] = [];
+
     // searches for all players in the save file and returns an array
     // objects are unprocessed and will be used to parse each player's data
-
     players = getAllFarmhands(saveFile.SaveGame);
 
     // find the prefix to use for attributes (xsi for pc, p3 for mobile)
@@ -75,9 +75,9 @@ export function parseSaveFile(xml: string) {
       // in here is where we'll call all our parsers and create the player object we'll use
       let processedPlayer = {
         _id: player.UniqueMultiplayerID,
-        general: parseGeneral(player, saveFile.SaveGame.whichFarm),
-        fishing: parseFishing(player),
-        cooking: parseCooking(player),
+        general: parseGeneral(player, saveFile.SaveGame.whichFarm.toString()),
+        fishing: parseFishing(player, version),
+        cooking: parseCooking(player, version),
         crafting: parseCrafting(player),
         shipping: parseShipping(player),
         museum: parsedMuseum,

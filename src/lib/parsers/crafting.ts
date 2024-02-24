@@ -1,5 +1,5 @@
 import bigCraftables from "@/data/big_craftables.json";
-import craftingRecipes from "@/data/crafting.json";
+import crafting_data from "@/data/crafting.json";
 import objects from "@/data/objects.json";
 
 export interface CraftingRet {
@@ -39,10 +39,10 @@ export function parseCrafting(player: any): CraftingRet {
 
     // we need to look up the itemID for the recipes so we'll create a map
     let name_to_id: Map<string, string> = new Map();
-    for (const key in craftingRecipes) {
+    for (const key in crafting_data) {
       // since we minimized our crafting.json file, we don't have the names
       let name = "";
-      if (craftingRecipes[key as keyof typeof craftingRecipes].isBigCraftable) {
+      if (crafting_data[key as keyof typeof crafting_data].isBigCraftable) {
         name = bigCraftables[key as keyof typeof bigCraftables].name;
       } else {
         name = objects[key as keyof typeof objects].name;
@@ -69,7 +69,7 @@ export function parseCrafting(player: any): CraftingRet {
         let itemID = name_to_id.get(name);
 
         // make sure its a valid recipe
-        if (itemID && itemID in craftingRecipes) {
+        if (itemID && itemID in crafting_data) {
           recipes[itemID] = 1;
 
           // check if the player has crafted this recipe
@@ -89,7 +89,7 @@ export function parseCrafting(player: any): CraftingRet {
       }
 
       let itemID = name_to_id.get(name);
-      if (itemID && itemID in craftingRecipes) {
+      if (itemID && itemID in crafting_data) {
         recipes[itemID] = 1;
 
         // check if the player has crafted this recipe

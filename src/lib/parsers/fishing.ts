@@ -2,14 +2,17 @@
 // We changed everything to strings. Why didn't we do this before?
 
 import fishes from "@/data/fish.json";
-import { deweaponize } from "../utils";
+
+import { deweaponize, isPlayerFormatUpdated, GetStatValue } from "../utils";
+
+const semverSatisfies = require("semver/functions/satisfies");
 
 export interface FishRet {
   totalCaught?: number;
   fishCaught: string[];
 }
 
-export function parseFishing(player: any): FishRet {
+export function parseFishing(player: any, saveVersion: string): FishRet {
   /*
     Achievements Relevant:
       - Mother Catch (catch 100 total fish).
@@ -18,9 +21,15 @@ export function parseFishing(player: any): FishRet {
       - Master Angler (catch every type of fish).
   */
   try {
-    const totalCaught = player.stats.Values.item.find(
-      (obj: any) => obj.key.string === "fishCaught"
-    ).value.unsignedInt;
+    const playerFormatUpdated = isPlayerFormatUpdated(player);
+
+    let totalCaught = 0;
+
+    if (playerFormatUpdated) {
+      totalCaught = GetStatValue(player.stats.Values, "fishCaught");
+    } else {
+      totalCaught = player.stats.fishCaught;
+    }
 
     const fishCaught: string[] = [];
 
@@ -29,38 +38,44 @@ export function parseFishing(player: any): FishRet {
       !player.fishCaught ||
       typeof player.fishCaught === "undefined"
     ) {
-      return {
-        totalCaught,
-        fishCaught,
-      };
+      return { totalCaught, fishCaught };
     }
 
     if (Array.isArray(player.fishCaught.item)) {
       // multiple types of fish caught
       for (const idx in player.fishCaught.item) {
         let fish = player.fishCaught.item[idx];
-        let itemID = deweaponize(fish.key.string);
+
+        let itemID: string;
+
+        // we'll need to check the save version of the file as 1.6 applies a change
+        // to all item keys from int to strings for fishCaught. Player format updated
+        // is not enough to determine this.
+        if (semverSatisfies(saveVersion, ">=1.6")) {
+          itemID = deweaponize(fish.key.string).value;
+        } else {
+          itemID = fish.key.int.toString();
+        }
 
         // some things you can catch aren't fish or don't count
-        if (!fishes.hasOwnProperty(itemID.value)) continue;
-
-        fishCaught.push(itemID.value);
+        if (fishes.hasOwnProperty(itemID)) fishCaught.push(itemID);
       }
     } else {
       // only one type of fish caught
       let fish = player.fishCaught.item;
-      let itemID = deweaponize(fish.key.string);
+      let itemID: string;
+
+      if (semverSatisfies(saveVersion, ">=1.6")) {
+        itemID = deweaponize(fish.key.string).value;
+      } else {
+        itemID = fish.key.int.toString();
+      }
 
       // some things you can catch aren't fish or don't count
-      if (fishes.hasOwnProperty(itemID.value)) {
-        fishCaught.push(itemID.value);
-      }
+      if (fishes.hasOwnProperty(itemID)) fishCaught.push(itemID);
     }
 
-    return {
-      totalCaught,
-      fishCaught,
-    };
+    return { totalCaught, fishCaught };
   } catch (e) {
     let msg = "";
     if (e instanceof Error) {
