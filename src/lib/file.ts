@@ -13,9 +13,9 @@ import {
   parseSocial,
 } from "@/lib/parsers";
 import { parseNotes } from "./parsers/notes";
-import { getAllFarmhands } from "@/lib/utils";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
+import { getAllFarmhands, isPlayerFormatUpdated } from "@/lib/utils";
 
 const semverSatisfies = require("semver/functions/satisfies");
 

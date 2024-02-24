@@ -15,7 +15,7 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function getAllFarmhands(saveGame: any): any[] {
   let farmhands: any[] = [];
-  const version: string = saveGame.gameVersion;
+  const version: string = saveGame.gameVersion.toString();
 
   if (saveGame.player) {
     farmhands.push(saveGame.player);
@@ -73,4 +73,23 @@ export function deweaponize(incoming: string) {
       value: str,
     };
   }
+}
+
+/**
+ * Check if the player object is in the new 1.6 format.
+ *
+ * @export
+ * @param {*} player The player object to check
+ * @return {*}  {boolean} True if the player object is in the new 1.6 format
+ */
+export function isPlayerFormatUpdated(player: any): boolean {
+  const version = player.gameVersion.toString();
+  if (version !== "-1" && semverSatisfies(version, ">=1.6")) return true;
+
+  // just to be safe, we should check in multiple places for occurrences of the new format
+  // but the only thing I can think of right now is the stats
+  // player.stats.Values should be null for farmhands which haven't applied the 1.6 update
+  if (player.stats && !player.stats.Value) return false;
+
+  return true;
 }
