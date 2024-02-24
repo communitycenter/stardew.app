@@ -209,6 +209,8 @@ export default function Account() {
     return groupedPlayers;
   }, [players]);
 
+  console.log(getCookie("disable_1_6") as boolean);
+
   return (
     <>
       <Head>
@@ -253,22 +255,24 @@ export default function Account() {
                       <div>
                         <Switch
                           id="1_6"
-                          defaultChecked={getCookie("enable_1_6") as boolean}
+                          defaultChecked={
+                            !getCookie("disable_1_6") ? true : false
+                          }
                           onCheckedChange={() => {
                             console.log(
                               parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                                 ? "localhost"
                                 : "stardew.app"
                             );
-                            getCookie("enable_1_6") === true
-                              ? deleteCookie("enable_1_6", {
+                            getCookie("disable_1_6")
+                              ? deleteCookie("disable_1_6", {
                                   domain: parseInt(
                                     process.env.NEXT_PUBLIC_DEVELOPMENT!
                                   )
                                     ? "localhost"
                                     : "stardew.app",
                                 })
-                              : setCookie("enable_1_6", true, {
+                              : setCookie("disable_1_6", true, {
                                   domain: parseInt(
                                     process.env.NEXT_PUBLIC_DEVELOPMENT!
                                   )
@@ -277,9 +281,9 @@ export default function Account() {
                                 });
                             toast.success(
                               `1.6 content has been ${
-                                getCookie("enable_1_6") === "true"
-                                  ? "enabled"
-                                  : "disabled"
+                                (getCookie("disable_1_6") as boolean)
+                                  ? "disabled"
+                                  : "enabled"
                               }.`
                             );
                           }}
