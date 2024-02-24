@@ -63,17 +63,17 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
     trinket &&
     objects[trinket.itemID.toString() as keyof typeof objects].description;
 
-  // Either "Minerals" or "Arch"
+  // Either "Mineral" or "Artifact"
   const category =
     trinket && objects[trinket.itemID as keyof typeof objects].category;
 
   async function handleStatusChange(status: number) {
     if (!activePlayer || !trinket) return;
 
-    if (category !== "Minerals" && category !== "Arch") return;
+    if (category !== "Mineral" && category !== "Artifact") return;
 
     let patch = {};
-    if (category === "Arch") {
+    if (category === "Artifact") {
       if (status === 2) artifacts.add(trinket.itemID);
       if (status === 0) artifacts.delete(trinket.itemID);
 
@@ -82,7 +82,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
           artifacts: Array.from(artifacts),
         },
       };
-    } else if (category === "Minerals") {
+    } else if (category === "Mineral") {
       if (status === 2) minerals.add(trinket.itemID);
       if (status === 0) minerals.delete(trinket.itemID);
 
