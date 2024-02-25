@@ -39,17 +39,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
-const data = [
-  {
-    value: "old",
-    label: "1.5",
-  },
-  {
-    value: "new",
-    label: "1.6",
-  },
-];
-
 function InlineInput({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center w-full">
@@ -188,9 +177,6 @@ export default function Account() {
     { refreshInterval: 0, revalidateOnFocus: false }
   );
 
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
-
   const { players } = useContext(PlayersContext);
 
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -208,8 +194,6 @@ export default function Account() {
     });
     return groupedPlayers;
   }, [players]);
-
-  console.log(getCookie("disable_1_6") as boolean);
 
   return (
     <>
@@ -243,7 +227,7 @@ export default function Account() {
                   <CardHeader className=" border-neutral-200 dark:border-neutral-800">
                     <span className="flex flex-row items-center justify-between">
                       <div className="space-y-1">
-                        <CardTitle>Enable 1.6 Content</CardTitle>
+                        <CardTitle>Show New Content</CardTitle>
                         <CardDescription>
                           This will enable 1.6 content on the site - don&apos;t
                           use if you don&apos;t want to see 1.6 spoilers!
@@ -251,25 +235,20 @@ export default function Account() {
                       </div>
                       <div>
                         <Switch
-                          id="1_6"
+                          id="new-content-switch"
                           defaultChecked={
-                            !getCookie("disable_1_6") ? true : false
+                            getCookie("show_new_content") ? true : false
                           }
                           onCheckedChange={() => {
-                            console.log(
-                              parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                                ? "localhost"
-                                : "stardew.app"
-                            );
-                            getCookie("disable_1_6")
-                              ? deleteCookie("disable_1_6", {
+                            getCookie("show_new_content")
+                              ? deleteCookie("show_new_content", {
                                   domain: parseInt(
                                     process.env.NEXT_PUBLIC_DEVELOPMENT!
                                   )
                                     ? "localhost"
                                     : "stardew.app",
                                 })
-                              : setCookie("disable_1_6", true, {
+                              : setCookie("show_new_content", true, {
                                   domain: parseInt(
                                     process.env.NEXT_PUBLIC_DEVELOPMENT!
                                   )
@@ -278,9 +257,9 @@ export default function Account() {
                                 });
                             toast.success(
                               `1.6 content has been ${
-                                (getCookie("disable_1_6") as boolean)
-                                  ? "disabled"
-                                  : "enabled"
+                                (getCookie("show_new_content") as boolean)
+                                  ? "enabled"
+                                  : "disabled"
                               }.`
                             );
                           }}

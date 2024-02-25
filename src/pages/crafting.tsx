@@ -21,7 +21,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { getCookie } from "cookies-next";
 
 const semverGte = require("semver/functions/gte");
 
@@ -46,7 +45,6 @@ export default function Crafting() {
   const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
-    const wantsToSeeUpdate = getCookie("disable_1_6");
     if (activePlayer) {
       if (activePlayer.crafting?.recipes) {
         setPlayerRecipes(activePlayer.crafting.recipes);
@@ -56,25 +54,13 @@ export default function Crafting() {
       if (activePlayer.general?.gameVersion) {
         const version = activePlayer.general.gameVersion;
         setGameVersion(version);
-      } else {
-        if (!wantsToSeeUpdate) {
-          setGameVersion("1.6.0");
-        } else {
-          setGameVersion("1.5.4");
-        }
-      }
 
-      reqs["Craft Master"] = Object.values(recipes).filter((r) =>
-        semverGte(gameVersion, r.minVersion)
-      ).length;
-    } else {
-      if (!wantsToSeeUpdate) {
-        setGameVersion("1.6.0");
-      } else {
-        setGameVersion("1.5.4");
+        reqs["Craft Master"] = Object.values(recipes).filter((r) =>
+          semverGte(version, r.minVersion)
+        ).length;
       }
     }
-  }, [activePlayer, gameVersion]);
+  }, [activePlayer]);
 
   // calculate craftedCount here (all values of 2)
   const craftedCount = useMemo(() => {
