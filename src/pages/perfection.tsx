@@ -1,6 +1,3 @@
-// TODO: use the save game version to display correct counts in PerfectionCards
-// and make sure the counts are correct for calculation purposes
-
 import Head from "next/head";
 
 import cookingRecipes from "@/data/cooking.json";
@@ -22,6 +19,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+
+const semverGte = require("semver/functions/gte");
 
 const monsterGoals: Record<string, any> = {
   Slimes: {
@@ -84,6 +83,12 @@ const monsterGoals: Record<string, any> = {
 export default function Perfection() {
   const { activePlayer } = usePlayers();
 
+  const gameVersion = useMemo(() => {
+    if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
+
+    return activePlayer.general.gameVersion;
+  }, [activePlayer]);
+
   const craftedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
 
@@ -93,15 +98,22 @@ export default function Perfection() {
   }, [activePlayer]);
 
   // StardewValley.Utility.cs::percentGameComplete()
-  const getCraftedRecipesPercent = useMemo(() => {
+  const [getCraftedRecipesPercent, totalCrafting] = useMemo(() => {
     // StardewValley.Utility.cs::getCraftedRecipesPercent()
-    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes)
+      return [0, Object.keys(craftingRecipes).length];
 
     // TODO: we don't include the wedding ring so no need to -1
     //       but, apparently in multiplayer the wedding ring is required
     //       i can't find the code that does this though
-    return craftedCount / Object.keys(craftingRecipes).length;
-  }, [activePlayer, craftedCount]);
+
+    // total count based on the player's game version
+    const totalCrafting = Object.values(craftingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion)
+    ).length;
+
+    return [craftedCount / totalCrafting, totalCrafting];
+  }, [activePlayer, craftedCount, gameVersion]);
 
   const cookedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
@@ -111,21 +123,30 @@ export default function Perfection() {
       .length;
   }, [activePlayer]);
 
-  const getCookedRecipesPercent = useMemo(() => {
+  const [getCookedRecipesPercent, totalCooking] = useMemo(() => {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
-    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes)
+      return [0, Object.keys(cookingRecipes).length];
 
-    return cookedCount / Object.keys(cookingRecipes).length;
-  }, [activePlayer, cookedCount]);
+    const totalCooking = Object.values(cookingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion)
+    ).length;
 
-  const getFishCaughtPercent = useMemo(() => {
+    return [cookedCount / totalCooking, totalCooking];
+  }, [activePlayer, cookedCount, gameVersion]);
+
+  const [getFishCaughtPercent, totalFish] = useMemo(() => {
     // StardewValley.Utility.cs::getFishCaughtPercent()
-    if (!activePlayer || !activePlayer.fishing?.fishCaught) return 0;
+    if (!activePlayer || !activePlayer.fishing?.fishCaught)
+      return [0, Object.keys(fish).length];
 
     const fishCaught = activePlayer?.fishing?.fishCaught?.length ?? 0;
+    const totalFish = Object.values(fish).filter((f) =>
+      semverGte(gameVersion, f.minVersion)
+    ).length;
 
-    return fishCaught / Object.keys(fish).length;
-  }, [activePlayer]);
+    return [fishCaught / totalFish, totalFish];
+  }, [activePlayer, gameVersion]);
 
   const getMaxedFrienshipsCount = useMemo(() => {
     if (!activePlayer || !activePlayer.social?.relationships) return 0;
@@ -157,12 +178,18 @@ export default function Perfection() {
     return Object.keys(activePlayer.shipping.shipped).length;
   }, [activePlayer]);
 
-  const getFarmerItemsShippedPercent = useMemo(() => {
-    if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
+  const [getFarmerItemsShippedPercent, totalShipping] = useMemo(() => {
+    if (!activePlayer || !activePlayer.shipping?.shipped)
+      return [0, Object.keys(shippingItems).length];
 
-    return basicShippedCount / Object.keys(shippingItems).length;
-  }, [activePlayer, basicShippedCount]);
+    const totalShipping = Object.values(shippingItems).filter((i) =>
+      semverGte(gameVersion, i.minVersion)
+    ).length;
 
+    return [basicShippedCount / totalShipping, totalShipping];
+  }, [activePlayer, basicShippedCount, gameVersion]);
+
+  // TODO: use Data/MonsterSlayerQuests.json to get the number of quests
   const slayerQuestsCompleted = useMemo(() => {
     if (!activePlayer || !activePlayer.monsters?.monstersKilled) return 0;
 
@@ -204,6 +231,7 @@ export default function Perfection() {
   }, [activePlayer]);
 
   const getPercentComplete = useMemo(() => {
+    // Reference: StardewValley.Utility.cs::percentGameComplete()
     if (!activePlayer) return 0;
 
     let num = 0;
@@ -291,9 +319,7 @@ export default function Perfection() {
 
                     <PerfectionCard
                       title="Produce & Forage Shipped"
-                      description={`${basicShippedCount ?? 0}/${
-                        Object.keys(shippingItems).length
-                      }`}
+                      description={`${basicShippedCount ?? 0}/${totalShipping}`}
                       percentage={Math.floor(
                         getFarmerItemsShippedPercent * 100
                       )}
@@ -358,17 +384,13 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Cooking Recipes Made"
-                      description={`${cookedCount}/${
-                        Object.keys(cookingRecipes).length
-                      }`}
+                      description={`${cookedCount}/${totalCooking}`}
                       percentage={Math.floor(getCookedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
                       title="Crafting Recipes Made"
-                      description={`${craftedCount}/${
-                        Object.keys(craftingRecipes).length
-                      }`}
+                      description={`${craftedCount}/${totalCrafting}`}
                       percentage={Math.floor(getCraftedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
@@ -376,7 +398,7 @@ export default function Perfection() {
                       title="Fish Caught"
                       description={`${
                         activePlayer?.fishing?.fishCaught?.length ?? 0
-                      }/${Object.keys(fish).length}`}
+                      }/${totalFish}`}
                       percentage={Math.floor(getFishCaughtPercent * 100)}
                       footer="10% of total perfection"
                     />
