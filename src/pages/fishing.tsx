@@ -6,8 +6,8 @@ import achievements from "@/data/achievements.json";
 import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useEffect, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
@@ -82,7 +82,7 @@ export default function Fishing() {
 
   const [gameVersion, setGameVersion] = useState("1.6.0");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   useEffect(() => {
     if (activePlayer) {

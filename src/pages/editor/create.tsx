@@ -3,11 +3,11 @@ import Head from "next/head";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as v from "valibot";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -104,7 +104,7 @@ const formSchema = v.object({
 });
 
 export default function Editor() {
-  const { uploadPlayers } = useContext(PlayersContext);
+  const { uploadPlayers } = usePlayers();
 
   const [isExpanded, setIsExpanded] = useState(false);
 

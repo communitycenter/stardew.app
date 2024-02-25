@@ -5,9 +5,9 @@ import useSWR from "swr";
 
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
-import { PlayerType, PlayersContext } from "@/contexts/players-context";
+import { PlayerType, usePlayers } from "@/contexts/players-context";
 
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Button } from "@/components/ui/button";
@@ -75,7 +75,7 @@ function InlineInput({ label, value }: { label: string; value: string }) {
 
 function PlayerCard({ player }: { player: PlayerType }) {
   const router = useRouter();
-  const { setActivePlayer } = useContext(PlayersContext);
+  const { setActivePlayer } = usePlayers();
 
   const [deletionOpen, setDeletionOpen] = useState(false);
 
@@ -177,7 +177,7 @@ export default function Account() {
     { refreshInterval: 0, revalidateOnFocus: false }
   );
 
-  const { players } = useContext(PlayersContext);
+  const { players } = usePlayers();
 
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [inputType, setInputType] = useState<"password" | "text">("password");

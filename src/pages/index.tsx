@@ -2,16 +2,16 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { parseSaveFile } from "@/lib/file";
-import { ChangeEvent, useContext, useRef } from "react";
+import { ChangeEvent, useRef } from "react";
 
 import { toast } from "sonner";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import Link from "next/link";
 
 export default function Home() {
-  const { uploadPlayers } = useContext(PlayersContext);
+  const { uploadPlayers } = usePlayers();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 

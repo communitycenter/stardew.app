@@ -7,8 +7,8 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe } from "@/types/recipe";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
@@ -42,7 +42,7 @@ export default function Crafting() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   useEffect(() => {
     if (activePlayer) {

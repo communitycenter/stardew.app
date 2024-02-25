@@ -4,7 +4,7 @@ import achievements from "@/data/achievements.json";
 import museum from "@/data/museum.json";
 
 import { MuseumItem } from "@/types/items";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
@@ -16,7 +16,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function Museum() {
     Set<string>
   >(new Set());
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   useEffect(() => {
     if (activePlayer && activePlayer.museum) {

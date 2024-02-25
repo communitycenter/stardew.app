@@ -1,12 +1,13 @@
 import useSWR from "swr";
 
 import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
   useMemo,
   useState,
+  useEffect,
+  ReactNode,
+  useContext,
+  useCallback,
+  createContext,
 } from "react";
 
 import type { CookingRet } from "@/lib/parsers/cooking";
@@ -149,4 +150,8 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </PlayersContext.Provider>
   );
+};
+
+export const usePlayers = () => {
+  return useContext(PlayersContext);
 };

@@ -5,8 +5,8 @@ import villagers from "@/data/villagers.json";
 
 import type { Villager } from "@/types/items";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { InfoCard } from "@/components/cards/info-card";
@@ -36,7 +36,7 @@ const reqs: Record<string, number> = {
 };
 
 export default function Relationships() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   const [open, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");

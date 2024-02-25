@@ -9,8 +9,8 @@ import fish from "@/data/fish.json";
 import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useMemo } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useMemo } from "react";
 
 import { InputCard } from "@/components/cards/input-card";
 import { PerfectionCard } from "@/components/cards/perfection-card";
@@ -82,7 +82,7 @@ const monsterGoals: Record<string, any> = {
 };
 
 export default function Perfection() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   const craftedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.crafting?.recipes) return 0;

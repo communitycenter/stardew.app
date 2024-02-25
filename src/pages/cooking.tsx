@@ -6,8 +6,8 @@ import objects from "@/data/objects.json";
 
 import type { Recipe } from "@/types/recipe";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
@@ -20,7 +20,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { getCookie } from "cookies-next";
 
 const semverGte = require("semver/functions/gte");
 
@@ -42,7 +41,7 @@ export default function Cooking() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   useEffect(() => {
     if (activePlayer) {

@@ -4,11 +4,11 @@ import Link from "next/link";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as v from "valibot";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Button } from "@/components/ui/button";
@@ -94,7 +94,7 @@ const formSchema = v.object({
   ),
 });
 export default function Editor() {
-  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+  const { activePlayer, uploadPlayers } = usePlayers();
 
   const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
   const [_numObelisks, _setNumObelisks] = useState<string | undefined>(

@@ -2,9 +2,9 @@ import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
 
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { DialogCard } from "@/components/cards/dialog-card";
@@ -89,7 +89,7 @@ const reqs: Record<string, number> = {
 };
 
 export default function Farmer() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
 
   const [stardrops, setStardrops] = useState(new Set());
 

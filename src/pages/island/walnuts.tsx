@@ -1,13 +1,13 @@
 import { DialogCard } from "@/components/cards/dialog-card";
 import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { Command, CommandInput } from "@/components/ui/command";
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 import { walnuts } from "@/lib/parsers/walnuts";
 import { IconMapPin } from "@tabler/icons-react";
 
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,7 +46,7 @@ const type = [
   },
 ];
 export default function IslandWalnuts() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
   const [walnutsFound, setWalnutsFound] = useState<Set<string>>(new Set());
 
   const [_filter, setFilter] = useState("all");

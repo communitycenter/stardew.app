@@ -2,17 +2,17 @@ import Head from "next/head";
 
 import notes from "@/data/secret_notes.json";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { DialogCard } from "@/components/cards/dialog-card";
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SecretNotes() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
   const [notesSeen, setNotesSeen] = useState<Set<number>>(new Set());
 
   useEffect(() => {

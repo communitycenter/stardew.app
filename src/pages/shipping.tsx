@@ -5,8 +5,8 @@ import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
 const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { ShippingCard } from "@/components/cards/shipping-card";
@@ -20,6 +20,8 @@ import {
 import { Command, CommandInput } from "@/components/ui/command";
 import { ShippingItem } from "@/types/items";
 import { IconClock } from "@tabler/icons-react";
+
+const semverGte = require("semver/functions/gte");
 
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
@@ -55,7 +57,23 @@ export default function Shipping() {
   const [_filter, setFilter] = useState("all");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
+
+  const gameVersion = useMemo(() => {
+    if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
+
+    const version = activePlayer.general.gameVersion;
+    // update the requirements for achievements and set the minimum game version
+    reqs["Full Shipment"] = Object.values(shipping_items).filter((i) =>
+      semverGte(version, i.minVersion)
+    ).length;
+
+    reqs["Polyculture"] = Object.values(shipping_items).filter(
+      (i) => i.polyculture && semverGte(version, i.minVersion)
+    ).length;
+
+    return version;
+  }, [activePlayer]);
 
   const basicShipped = useMemo(() => {
     if (!activePlayer || !activePlayer.shipping?.shipped) return {};
@@ -190,7 +208,7 @@ export default function Shipping() {
                   target={"0"}
                   _filter={_filter}
                   title={`Unshipped (${
-                    Object.keys(shipping_items).length - basicShippedCount
+                    reqs["Full Shipment"] - basicShippedCount
                   })`}
                   setFilter={setFilter}
                 />
@@ -229,6 +247,7 @@ export default function Shipping() {
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(typedShippingItems)
+                .filter((i) => semverGte(gameVersion, i.minVersion))
                 .filter((i) => {
                   if (!search) return true;
                   const name =
@@ -245,21 +264,17 @@ export default function Shipping() {
                     return (
                       i.itemID in basicShipped &&
                       i.itemID in shipping_items &&
-                      shipping_items[
-                        i.itemID.toString() as keyof typeof shipping_items
-                      ].polyculture &&
-                      basicShipped[i.itemID as keyof typeof basicShipped]! < 15
+                      shipping_items[i.itemID as keyof typeof shipping_items]
+                        .polyculture &&
+                      basicShipped[i.itemID]! < 15
                     );
                   } else if (_filter === "2") {
                     // Shipped/Completed (we won't check for monoculture here)
                     return i.itemID in basicShipped &&
-                      shipping_items[
-                        i.itemID.toString() as keyof typeof shipping_items
-                      ].polyculture
-                      ? basicShipped[i.itemID as keyof typeof basicShipped]! >=
-                          15
-                      : basicShipped[i.itemID as keyof typeof basicShipped]! >=
-                          1;
+                      shipping_items[i.itemID as keyof typeof shipping_items]
+                        .polyculture
+                      ? basicShipped[i.itemID]! >= 15
+                      : basicShipped[i.itemID]! >= 1;
                   } else return true; // all recipes
                 })
                 .filter((i) => {
