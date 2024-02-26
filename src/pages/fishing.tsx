@@ -9,17 +9,19 @@ import objects from "@/data/objects.json";
 import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useState } from "react";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { BooleanCard } from "@/components/cards/boolean-card";
-import { FilterButton, FilterSearch } from "@/components/filter-btn";
-import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FishSheet } from "@/components/sheets/fish-sheet";
+import { BooleanCard } from "@/components/cards/boolean-card";
 import { Command, CommandInput } from "@/components/ui/command";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
+import { AchievementCard } from "@/components/cards/achievement-card";
+
 import { IconClock, IconCloud } from "@tabler/icons-react";
 
 const semverGte = require("semver/functions/gte");
@@ -74,6 +76,8 @@ export default function Fishing() {
   const [fish, setFish] = useState<FishType | null>(null);
   const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
+  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
@@ -93,7 +97,7 @@ export default function Fishing() {
         setGameVersion(version);
 
         reqs["Master Angler"] = Object.values(fishes).filter((f) =>
-          semverGte(version, f.minVersion)
+          semverGte(version, f.minVersion),
         ).length;
       }
     }
@@ -147,9 +151,9 @@ export default function Fishing() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Fishing Tracker
           </h1>
@@ -157,7 +161,7 @@ export default function Fishing() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -188,8 +192,8 @@ export default function Fishing() {
               All Fish
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
@@ -205,8 +209,8 @@ export default function Fishing() {
                   setFilter={setFilter}
                 />
               </div>
-              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
-                <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
+              <div className="grid grid-cols-1 items-stretch gap-2 sm:flex">
+                <div className="grid grid-cols-1 gap-2 sm:flex  sm:gap-3">
                   <FilterSearch
                     _filter={_seasonFilter}
                     title={"Seasons"}
@@ -278,12 +282,17 @@ export default function Fishing() {
                     setIsOpen={setIsOpen}
                     setObject={setFish}
                     type="fish"
+                    setShowNewContentOpen={setShowNewContentOpen}
                   />
                 ))}
             </div>
           </section>
         </div>
         <FishSheet open={open} setIsOpen={setIsOpen} fish={fish} />
+        <UnblurDialog
+          open={showNewContentOpen}
+          setOpen={setShowNewContentOpen}
+        />
       </main>
     </>
   );

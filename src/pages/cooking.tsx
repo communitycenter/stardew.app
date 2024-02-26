@@ -9,17 +9,18 @@ import type { Recipe } from "@/types/recipe";
 import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useMemo, useState } from "react";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { RecipeCard } from "@/components/cards/recipe-card";
-import { FilterButton } from "@/components/filter-btn";
-import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FilterButton } from "@/components/filter-btn";
+import { RecipeCard } from "@/components/cards/recipe-card";
+import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { Command, CommandInput } from "@/components/ui/command";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { AchievementCard } from "@/components/cards/achievement-card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -41,6 +42,8 @@ export default function Cooking() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
+  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+
   const { activePlayer } = usePlayers();
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Cooking() {
         setGameVersion(version);
 
         reqs["Gourmet Chef"] = Object.values(recipes).filter((r) =>
-          semverGte(version, r.minVersion)
+          semverGte(version, r.minVersion),
         ).length;
       }
     }
@@ -121,9 +124,9 @@ export default function Cooking() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Cooking Tracker
           </h1>
@@ -131,7 +134,7 @@ export default function Cooking() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -162,8 +165,8 @@ export default function Cooking() {
               All Recipes
             </h3>
             {/* Filters */}
-            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
@@ -185,7 +188,7 @@ export default function Cooking() {
                   setFilter={setFilter}
                 />
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                 <CommandInput
                   onValueChange={(v) => setSearch(v)}
                   placeholder="Search Recipes"
@@ -228,12 +231,17 @@ export default function Cooking() {
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}
+                    setShowNewContentOpen={setShowNewContentOpen}
                   />
                 ))}
             </div>
           </section>
         </div>
         <RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
+        <UnblurDialog
+          open={showNewContentOpen}
+          setOpen={setShowNewContentOpen}
+        />
       </main>
     </>
   );

@@ -90,7 +90,7 @@ export const RecipeSheet = <T extends Recipe>({
   // returns true if the recipe is of type U and CraftingRecipe which for now
   // is just the type CraftingRecipes
   function isCraftingRecipe<U extends Recipe>(
-    recipe: U
+    recipe: U,
   ): recipe is U & CraftingRecipe {
     return "isBigCraftable" in recipe;
   }
@@ -177,7 +177,7 @@ export const RecipeSheet = <T extends Recipe>({
             </SheetDescription>
           </SheetHeader>
           {recipe && (
-            <div className="space-y-6 mt-4">
+            <div className="mt-4 space-y-6">
               <section className="space-y-2">
                 <h3 className="font-semibold">Actions</h3>
                 <Separator />
@@ -190,8 +190,8 @@ export const RecipeSheet = <T extends Recipe>({
                         parseInt(val) === 0
                           ? "Unknown"
                           : parseInt(val) === 1
-                          ? "Known"
-                          : "Completed"
+                            ? "Known"
+                            : "Completed"
                       }`,
                       Recipe: name,
                       "Card Type": "Recipe card",
@@ -205,8 +205,8 @@ export const RecipeSheet = <T extends Recipe>({
                       {status === 0
                         ? "Unknown"
                         : status === 1
-                        ? "Known"
-                        : "Completed"}
+                          ? "Known"
+                          : "Completed"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -214,19 +214,19 @@ export const RecipeSheet = <T extends Recipe>({
                       <SelectLabel>Change Status</SelectLabel>
                       <SelectItem value="0">
                         <div className="flex items-center gap-2">
-                          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
                           <p>Set Unknown</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="1">
                         <div className="flex items-center gap-2">
-                          <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
                           <p>Set Known</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="2">
                         <div className="flex items-center gap-2">
-                          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
                           <p>Set Completed</p>
                         </div>
                       </SelectItem>
@@ -253,7 +253,7 @@ export const RecipeSheet = <T extends Recipe>({
                       rel="noreferrer"
                       href={`https://stardewvalleywiki.com/${name.replaceAll(
                         " ",
-                        "_"
+                        "_",
                       )}`}
                     >
                       Visit Wiki Page
@@ -272,7 +272,7 @@ export const RecipeSheet = <T extends Recipe>({
               <section className="space-y-2">
                 <h3 className="font-semibold">Ingredients</h3>
                 <Separator />
-                <ul className="list-none list-inside space-y-3">
+                <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
 
@@ -293,7 +293,7 @@ export const RecipeSheet = <T extends Recipe>({
                     return (
                       <li
                         key={ingredient.itemID}
-                        className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-semibold"
+                        className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
                       >
                         <div className="flex items-center space-x-2">
                           <Image
@@ -326,7 +326,7 @@ export const RecipeSheet = <T extends Recipe>({
     <Drawer open={open} onOpenChange={setIsOpen}>
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">
-          <DrawerHeader className="mt-4 -mb-4">
+          <DrawerHeader className="-mb-4 mt-4">
             <div className="flex justify-center">
               <Image
                 src={
@@ -365,8 +365,8 @@ export const RecipeSheet = <T extends Recipe>({
                         parseInt(val) === 0
                           ? "Unknown"
                           : parseInt(val) === 1
-                          ? "Known"
-                          : "Completed"
+                            ? "Known"
+                            : "Completed"
                       }`,
                       Recipe: name,
                       "Card Type": "Recipe card",
@@ -380,8 +380,8 @@ export const RecipeSheet = <T extends Recipe>({
                       {status === 0
                         ? "Unknown"
                         : status === 1
-                        ? "Known"
-                        : "Completed"}
+                          ? "Known"
+                          : "Completed"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -389,19 +389,19 @@ export const RecipeSheet = <T extends Recipe>({
                       <SelectLabel>Change Status</SelectLabel>
                       <SelectItem value="0">
                         <div className="flex items-center gap-2">
-                          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
                           <p>Set Unknown</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="1">
                         <div className="flex items-center gap-2">
-                          <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
                           <p>Set Known</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="2">
                         <div className="flex items-center gap-2">
-                          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
                           <p>Set Completed</p>
                         </div>
                       </SelectItem>
@@ -428,7 +428,7 @@ export const RecipeSheet = <T extends Recipe>({
                       rel="noreferrer"
                       href={`https://stardewvalleywiki.com/${name.replaceAll(
                         " ",
-                        "_"
+                        "_",
                       )}`}
                     >
                       Visit Wiki Page
@@ -447,7 +447,7 @@ export const RecipeSheet = <T extends Recipe>({
               <section className="space-y-2">
                 <h3 className="font-semibold">Ingredients</h3>
                 <Separator />
-                <ul className="list-none list-inside space-y-3">
+                <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
 
@@ -468,7 +468,7 @@ export const RecipeSheet = <T extends Recipe>({
                     return (
                       <li
                         key={ingredient.itemID}
-                        className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-semibold"
+                        className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
                       >
                         <div className="flex items-center space-x-2">
                           <Image

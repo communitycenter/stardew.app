@@ -27,14 +27,16 @@ interface Props {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
   type: "fish" | "artifact" | "mineral";
+  setShowNewContentOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const BooleanCard = ({
   item,
+  type,
   completed,
   setIsOpen,
   setObject,
-  type,
+  setShowNewContentOpen,
 }: Props) => {
   const showNewContent = getCookie("show_new_content");
 
@@ -97,10 +99,14 @@ export const BooleanCard = ({
       <ContextMenuTrigger asChild>
         <button
           className={cn(
-            "relative flex select-none items-center justify-between rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer",
-            checkedClass
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+            checkedClass,
           )}
           onClick={() => {
+            if (minVersion === "1.6.0" && !showNewContent && !completed) {
+              setShowNewContentOpen?.(true);
+              return;
+            }
             setObject(item);
             setIsOpen(true);
           }}
@@ -108,11 +114,11 @@ export const BooleanCard = ({
           {minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
           <div
             className={cn(
-              "flex items-center text-left space-x-3 truncate",
+              "flex items-center space-x-3 truncate text-left",
               minVersion === "1.6.0" &&
                 !showNewContent &&
                 !completed &&
-                "blur-sm"
+                "blur-sm",
             )}
           >
             <Image
@@ -123,20 +129,20 @@ export const BooleanCard = ({
               height={32}
             />
             <div className="min-w-0 flex-1">
-              <p className="font-medium truncate">{name}</p>
+              <p className="truncate font-medium">{name}</p>
               <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                 {description}
               </p>
             </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
+          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
         </button>
       </ContextMenuTrigger>
 
       <ContextMenuContent className="w-48">
         {completed ? (
           <ContextMenuCheckboxItem
-            className="pl-8 gap-2"
+            className="gap-2 pl-8"
             checked={!completed}
             disabled={!completed || !activePlayer}
             data-umami-event="Set incompleted"
@@ -149,12 +155,12 @@ export const BooleanCard = ({
               });
             }}
           >
-            <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+            <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
             <p>Set Incomplete</p>
           </ContextMenuCheckboxItem>
         ) : (
           <ContextMenuCheckboxItem
-            className="pl-8 gap-2"
+            className="gap-2 pl-8"
             checked={completed}
             disabled={completed || !activePlayer}
             onClick={() => {
@@ -167,7 +173,7 @@ export const BooleanCard = ({
             }}
             data-umami-event="Set completed"
           >
-            <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+            <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
             Set Completed
           </ContextMenuCheckboxItem>
         )}

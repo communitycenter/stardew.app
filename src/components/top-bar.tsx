@@ -44,7 +44,7 @@ export function Topbar() {
     "/api",
     // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
-    { refreshInterval: 0, revalidateOnFocus: false }
+    { refreshInterval: 0, revalidateOnFocus: false },
   );
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -66,7 +66,12 @@ export function Topbar() {
       $name: api.data?.discord_name,
       $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
     });
-  }, []);
+  }, [
+    api.data?.discord_avatar,
+    api.data?.discord_id,
+    api.data?.discord_name,
+    mixpanel,
+  ]);
 
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
@@ -123,7 +128,7 @@ export function Topbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7 bg-white dark:bg-neutral-950">
+      <div className="flex items-center justify-between bg-white px-7 py-3.5 dark:bg-neutral-950 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
         <div className="flex flex-shrink-0 items-center">
           <Image
             width={36}
@@ -134,19 +139,19 @@ export function Topbar() {
           />
           <h1 className="pl-3 font-medium">stardew.app</h1>
           {isDevelopment && (
-            <span className="text-xs text-red-500 dark:text-red-400 ml-2 rounded-full bg-red-100 dark:bg-red-800 px-2 py-1">
+            <span className="ml-2 rounded-full bg-red-100 px-2 py-1 text-xs text-red-500 dark:bg-red-800 dark:text-red-400">
               Internal
             </span>
           )}
         </div>
         {/* Mobile Menu */}
-        <div className="md:hidden flex justify-end">
+        <div className="flex justify-end md:hidden">
           <Button variant="outline" onClick={() => setMobileOpen(true)}>
             <HamburgerMenuIcon className="h-4 w-4" />
           </Button>
         </div>
         {/* Desktop Version */}
-        <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
+        <div className="ml-auto hidden w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector />
           {activePlayer && (
             <Button variant="outline" data-umami-event="Edit player">
@@ -172,7 +177,7 @@ export function Topbar() {
           {/* Not Logged In */}
           {!api.data?.discord_id && (
             <Button
-              className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
+              className="hover:bg-[#5865F2] dark:hover:bg-[#5865F2] dark:hover:text-white"
               data-umami-event="Log in"
             >
               <Link href="/api/oauth">Log In With Discord</Link>
@@ -180,9 +185,12 @@ export function Topbar() {
           )}
           {/* Logged In */}
           {api.data?.discord_id && (
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button className="space-x-2 px-2.5 max-w-[200px]">
+                <Button
+                  className="max-w-[200px] space-x-2 px-2.5"
+                  onClick={(e) => e.preventDefault()}
+                >
                   <Avatar className="h-6 w-6">
                     {api.data.discord_avatar ? (
                       <AvatarImage
@@ -201,8 +209,8 @@ export function Topbar() {
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[200px] mr-[26px]">
-                <DropdownMenuLabel className="text-xs text-gray-400 font-normal">
+              <DropdownMenuContent className="mr-[26px] w-[200px]">
+                <DropdownMenuLabel className="text-xs font-normal text-gray-400">
                   stardew.app {version}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />

@@ -10,7 +10,6 @@ import { useMemo, useState } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -22,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { NewItemBadge } from "@/components/new-item-badge";
 
 import { useMixpanel } from "@/contexts/mixpanel-context";
@@ -30,6 +30,7 @@ import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   item: ShippingItem;
+  setShowNewContentOpen?: (value: boolean) => void;
 }
 
 const classes = [
@@ -38,7 +39,7 @@ const classes = [
   "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20",
 ];
 
-export const ShippingCard = ({ item }: Props) => {
+export const ShippingCard = ({ item, setShowNewContentOpen }: Props) => {
   const showNewContent = getCookie("show_new_content");
 
   const { activePlayer, patchPlayer } = usePlayers();
@@ -105,18 +106,25 @@ export const ShippingCard = ({ item }: Props) => {
       <DialogTrigger asChild>
         <div
           className={cn(
-            "relative flex select-none items-center text-left justify-between rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
-            classes[_status]
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+            classes[_status],
           )}
+          onClick={(e) => {
+            if (item.minVersion === "1.6.0" && !showNewContent && _status < 1) {
+              e.preventDefault();
+              setShowNewContentOpen?.(true);
+              return;
+            }
+          }}
         >
           {item.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
           <div
             className={cn(
-              "flex items-center text-left space-x-3 truncate",
+              "flex items-center space-x-3 truncate text-left",
               item.minVersion === "1.6.0" &&
                 !showNewContent &&
                 _status < 1 &&
-                "blur-sm"
+                "blur-sm",
             )}
           >
             <Image
@@ -127,13 +135,13 @@ export const ShippingCard = ({ item }: Props) => {
               height={32}
             />
             <div className="min-w-0 flex-1 pr-3">
-              <p className="font-medium truncate">{`${name} (${_count}x)`}</p>
+              <p className="truncate font-medium">{`${name} (${_count}x)`}</p>
               <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                 {description}
               </p>
             </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
+          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
         </div>
       </DialogTrigger>
       <DialogContent>
@@ -141,7 +149,7 @@ export const ShippingCard = ({ item }: Props) => {
           <Image
             src={iconURL}
             alt={name}
-            className="rounded-sm mx-auto"
+            className="mx-auto rounded-sm"
             width={42}
             height={42}
           />
@@ -159,7 +167,7 @@ export const ShippingCard = ({ item }: Props) => {
           onChange={(e) => setValue(parseInt(e.target.value))}
           disabled={!activePlayer}
         />
-        <DialogFooter className="sm:justify-between gap-3 sm:gap-0">
+        <DialogFooter className="gap-3 sm:justify-between sm:gap-0">
           <Button variant="outline">
             <a
               className="flex items-center"
@@ -167,14 +175,14 @@ export const ShippingCard = ({ item }: Props) => {
               rel="noreferrer"
               href={`https://stardewvalleywiki.com/${name.replaceAll(
                 " ",
-                "_"
+                "_",
               )}`}
             >
               Visit Wiki Page
               <IconExternalLink className="h-4"></IconExternalLink>
             </a>
           </Button>
-          <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-3 sm:gap-0">
+          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-0 sm:space-x-2">
             <Button
               disabled={!activePlayer}
               variant="secondary"

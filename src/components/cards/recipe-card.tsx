@@ -27,6 +27,7 @@ interface Props<T extends Recipe> {
   status: number;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: Dispatch<SetStateAction<T | null>>;
+  setShowNewContentOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const RecipeCard = <T extends Recipe>({
@@ -34,6 +35,7 @@ export const RecipeCard = <T extends Recipe>({
   status,
   setIsOpen,
   setObject,
+  setShowNewContentOpen,
 }: Props<T>) => {
   const showNewContent = getCookie("show_new_content");
 
@@ -60,7 +62,7 @@ export const RecipeCard = <T extends Recipe>({
   // returns true if the recipe is of type U and CraftingRecipe which for now
   // is just the type CraftingRecipes
   function isCraftingRecipe<U extends Recipe>(
-    recipe: U
+    recipe: U,
   ): recipe is U & CraftingRecipe {
     return "isBigCraftable" in recipe;
   }
@@ -105,10 +107,18 @@ export const RecipeCard = <T extends Recipe>({
       <ContextMenuTrigger asChild>
         <button
           className={cn(
-            "relative flex items-center justify-between select-none rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
-            colorClass
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+            colorClass,
           )}
           onClick={() => {
+            if (
+              recipe.minVersion === "1.6.0" &&
+              !showNewContent &&
+              status < 1
+            ) {
+              setShowNewContentOpen?.(true);
+              return;
+            }
             setObject(recipe);
             setIsOpen(true);
           }}
@@ -116,11 +126,11 @@ export const RecipeCard = <T extends Recipe>({
           {recipe.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
           <div
             className={cn(
-              "flex items-center text-left space-x-3 truncate",
+              "flex items-center space-x-3 truncate text-left",
               recipe.minVersion === "1.6.0" &&
                 !showNewContent &&
                 status < 1 &&
-                "blur-sm"
+                "blur-sm",
             )}
           >
             <Image
@@ -136,18 +146,18 @@ export const RecipeCard = <T extends Recipe>({
               height={32}
             />
             <div className="min-w-0 flex-1">
-              <p className="font-medium truncate">{name}</p>
+              <p className="truncate font-medium">{name}</p>
               <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                 {description}
               </p>
             </div>
           </div>
-          <IconChevronRight className="h-5 w-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
+          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
         </button>
       </ContextMenuTrigger>
       <ContextMenuContent className="w-48">
         <ContextMenuCheckboxItem
-          className="pl-8 gap-2"
+          className="gap-2 pl-8"
           checked={status === 0}
           disabled={status === 0 || !activePlayer}
           onClick={() => {
@@ -159,11 +169,11 @@ export const RecipeCard = <T extends Recipe>({
             });
           }}
         >
-          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+          <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
           <p>Set Unknown</p>
         </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem
-          className="pl-8 gap-2"
+          className="gap-2 pl-8"
           checked={status === 1}
           disabled={status === 1 || !activePlayer}
           onClick={() => {
@@ -175,11 +185,11 @@ export const RecipeCard = <T extends Recipe>({
             });
           }}
         >
-          <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+          <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
           Set Known
         </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem
-          className="pl-8 gap-2"
+          className="gap-2 pl-8"
           checked={status === 2}
           disabled={status === 2 || !activePlayer}
           onClick={() => {
@@ -191,7 +201,7 @@ export const RecipeCard = <T extends Recipe>({
             });
           }}
         >
-          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+          <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
           Set Completed
         </ContextMenuCheckboxItem>
       </ContextMenuContent>

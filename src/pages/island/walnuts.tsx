@@ -60,12 +60,12 @@ export default function IslandWalnuts() {
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
           return walnuts[id as keyof typeof walnuts].num !== amount;
-        }
+        },
       );
       const foundIds = new Set(
         foundArray.map((props) => {
           return props[0];
-        })
+        }),
       );
       setWalnutsFound(foundIds);
     }
@@ -104,14 +104,14 @@ export default function IslandWalnuts() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
+        className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Golden Walnut Tracker
           </h1>
-          <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+          <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
@@ -119,7 +119,7 @@ export default function IslandWalnuts() {
                   130 -
                     Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
                       (a, b) => a + b[1],
-                      0
+                      0,
                     ) ?? 0
                 })`}
                 setFilter={setFilter}
@@ -130,7 +130,7 @@ export default function IslandWalnuts() {
                 title={`Found (${
                   Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
                     (a, b) => a + b[1],
-                    0
+                    0,
                   ) ?? 0
                 })`}
                 setFilter={setFilter}
@@ -138,14 +138,13 @@ export default function IslandWalnuts() {
             </div>
             <div className="flex gap-2">
               <FilterSearch
-                target={"all"}
                 _filter={_locationFilter}
                 title={"Location"}
                 data={type}
                 setFilter={setLocationFilter}
                 icon={IconMapPin}
               />
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                 <CommandInput
                   onValueChange={(v) => setSearch(v)}
                   placeholder="Search Walnuts"

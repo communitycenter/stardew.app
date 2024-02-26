@@ -3,22 +3,25 @@ import Head from "next/head";
 import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
+
+import type { ShippingItem } from "@/types/items";
 const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
 import { usePlayers } from "@/contexts/players-context";
 import { useMemo, useState } from "react";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { ShippingCard } from "@/components/cards/shipping-card";
-import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ShippingCard } from "@/components/cards/shipping-card";
 import { Command, CommandInput } from "@/components/ui/command";
-import { ShippingItem } from "@/types/items";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
+import { AchievementCard } from "@/components/cards/achievement-card";
+
 import { IconClock } from "@tabler/icons-react";
 
 const semverGte = require("semver/functions/gte");
@@ -57,6 +60,8 @@ export default function Shipping() {
   const [_filter, setFilter] = useState("all");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
+  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+
   const { activePlayer } = usePlayers();
 
   const gameVersion = useMemo(() => {
@@ -65,11 +70,11 @@ export default function Shipping() {
     const version = activePlayer.general.gameVersion;
     // update the requirements for achievements and set the minimum game version
     reqs["Full Shipment"] = Object.values(shipping_items).filter((i) =>
-      semverGte(version, i.minVersion)
+      semverGte(version, i.minVersion),
     ).length;
 
     reqs["Polyculture"] = Object.values(shipping_items).filter(
-      (i) => i.polyculture && semverGte(version, i.minVersion)
+      (i) => i.polyculture && semverGte(version, i.minVersion),
     ).length;
 
     return version;
@@ -161,9 +166,9 @@ export default function Shipping() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Shipping Tracker
           </h1>
@@ -171,7 +176,7 @@ export default function Shipping() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -202,8 +207,8 @@ export default function Shipping() {
               All Items
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-1 xl:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 xl:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
@@ -229,14 +234,13 @@ export default function Shipping() {
               </div>
               <div className="flex gap-2">
                 <FilterSearch
-                  target={"all"}
                   _filter={_seasonFilter}
                   title={"Seasons"}
                   data={seasons}
                   setFilter={setSeasonFilter}
                   icon={IconClock}
                 />
-                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
                     placeholder="Search Recipes"
@@ -282,12 +286,17 @@ export default function Shipping() {
                   return i.seasons.includes(_seasonFilter);
                 })
                 .map((i) => (
-                  <ShippingCard key={i.itemID} item={i} />
+                  <ShippingCard
+                    key={i.itemID}
+                    item={i}
+                    setShowNewContentOpen={setShowNewContentOpen}
+                  />
                 ))}
             </div>
           </section>
         </div>
       </main>
+      <UnblurDialog open={showNewContentOpen} setOpen={setShowNewContentOpen} />
     </>
   );
 }
