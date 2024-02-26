@@ -1,11 +1,6 @@
-/*
-all of the books are going to be checking on the player object.
-the value should all also be 1 for true, 0 for false
+import { GetStatValue } from "../utils";
 
-TODO: get the names of the books from the xnb file
-*/
-
-const books: {
+export const books: {
   [key: string]: { type: string; host: boolean; flag: string; name: string };
 } = {
   Book_AnimalCatalogue: {
@@ -124,24 +119,7 @@ const books: {
   },
 };
 
-/*
-type:
-- event: check eventsSeen
-- mail: check mailReceived
-- stats: check stats - stat value should be 1 for true, 0 for false
-
-host:
-- true: check stats of saveGame.farmhands.Farmer
-- false: check stats of saveGame.player
-
-flag:
-- string to check in the type object
-x
-name:
-- human readable name
-*/
-
-const objects: {
+export const otherPowers: {
   [key: string]: { type: string; host: boolean; flag: string; name: string };
 } = {
   BearPaw: {
@@ -224,13 +202,13 @@ const objects: {
   },
   RustyKey: {
     type: "mail",
-    host: false,
+    host: true,
     flag: "HasRustyKey",
     name: "Rusty Key",
   },
   SkullKey: {
     type: "mail",
-    host: false,
+    host: true,
     flag: "HasSkullKey",
     name: "Skull Key",
   },
@@ -248,12 +226,63 @@ const objects: {
   },
 };
 
-export function parsePowers(player: any) {
-  /* Ideal flow:
-    - Check player object, establish who is host and who is not
-    - Switch case on the type of the object
-    - Check the flag in the appropriate object
-    - Return object */
+export function parsePowers(players: any) {
+  const host = players[0]["UniqueMultiplayerID"];
+  const result = {} as any;
 
-  return {};
+  for (const playerId in players) {
+    const currentPlayer = players[playerId];
+    const currentPlayerId = currentPlayer["UniqueMultiplayerID"];
+
+    result[currentPlayerId] = {
+      books: [],
+      other: []
+    };
+
+    // Check books
+    for (const bookKey in books) {
+      const book = books[bookKey];
+      if (GetStatValue(currentPlayer.stats.Values, book.flag) === 1) {
+        result[currentPlayerId].books.push(book.flag);
+      }
+    }
+
+    // Check other powers
+    for (const powerKey in otherPowers) {
+      const power = otherPowers[powerKey];
+      let value = false;
+
+      switch (power.type) {
+        case "event":
+          value = currentPlayer.eventsSeen.int.includes(power.flag);
+          break;
+        case "mail":
+          value = currentPlayer.mailReceived.string.includes(power.flag);
+          break;
+        case "stats":
+          value = GetStatValue(currentPlayer.stats.Values, power.flag) === 1;
+          break;
+      }
+
+      if (value) {
+        result[currentPlayerId].other.push(power.flag);
+      }
+    }
+  }
+
+  // Host-specific objects
+  const hostFlags = Object.values(otherPowers)
+    .filter(power => power.host)
+    .map(power => power.flag);
+
+  // For each host flag, check if host has it and add it to all players
+  for (const flag of hostFlags) {
+    if (result[host]?.other.includes(flag)) {
+      for (const playerId in result) {
+        result[playerId].other.push(flag);
+      }
+    }
+  }
+
+  return result;
 }
