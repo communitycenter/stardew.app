@@ -208,7 +208,6 @@ export default function Fishing() {
               <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
                 <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
                   <FilterSearch
-                    target={"all"}
                     _filter={_seasonFilter}
                     title={"Seasons"}
                     data={seasons}
@@ -216,7 +215,6 @@ export default function Fishing() {
                     icon={IconClock}
                   />
                   <FilterSearch
-                    target={"all"}
                     _filter={_weatherFilter}
                     title={"Weather"}
                     data={weather}

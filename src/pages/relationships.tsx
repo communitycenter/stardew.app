@@ -11,7 +11,7 @@ import { useMemo, useState } from "react";
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { InfoCard } from "@/components/cards/info-card";
 import { VillagerCard } from "@/components/cards/villager-card";
-import { FilterButton } from "@/components/filter-btn";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { VillagerSheet } from "@/components/sheets/villager-sheet";
 import {
   Accordion,
@@ -22,7 +22,7 @@ import {
 import { Command, CommandInput } from "@/components/ui/command";
 
 import { HeartIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
-import { IconBabyCarriage } from "@tabler/icons-react";
+import { IconBabyCarriage, IconAdjustments } from "@tabler/icons-react";
 
 const reqs: Record<string, number> = {
   "A New Friend": 1,
@@ -35,6 +35,11 @@ const reqs: Record<string, number> = {
   "Living Large": 2,
 };
 
+const sort_filters = [
+  { value: "name", label: "Name" },
+  { value: "hearts", label: "Hearts" },
+];
+
 export default function Relationships() {
   const { activePlayer } = usePlayers();
 
@@ -42,6 +47,8 @@ export default function Relationships() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
   const [villager, setVillager] = useState<Villager>(villagers["Abigail"]);
+
+  const [sort, setSort] = useState("name");
 
   const fiveHeartCount = useMemo(() => {
     if (!activePlayer || !activePlayer.social) return 0;
@@ -276,12 +283,21 @@ export default function Relationships() {
                   setFilter={setFilter}
                 />
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
-                <CommandInput
-                  onValueChange={(v) => setSearch(v)}
-                  placeholder="Search Villagers"
+              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
+                <FilterSearch
+                  _filter={sort}
+                  title="Sort By"
+                  data={sort_filters}
+                  setFilter={setSort}
+                  icon={IconAdjustments}
                 />
-              </Command>
+                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                  <CommandInput
+                    onValueChange={(v) => setSearch(v)}
+                    placeholder="Search Villagers"
+                  />
+                </Command>
+              </div>
             </div>
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
               {Object.values(villagers)
@@ -299,6 +315,18 @@ export default function Relationships() {
                       return !isVillagerCompleted(v);
                     case "2":
                       return isVillagerCompleted(v);
+                  }
+                })
+                .sort((a, b) => {
+                  if (sort === "hearts") {
+                    return (
+                      (activePlayer?.social?.relationships?.[b.name]?.points ??
+                        0) -
+                      (activePlayer?.social?.relationships?.[a.name]?.points ??
+                        0)
+                    );
+                  } else {
+                    return a.name.localeCompare(b.name);
                   }
                 })
                 .map((v) => (
