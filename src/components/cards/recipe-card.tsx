@@ -6,9 +6,10 @@ import objects from "@/data/objects.json";
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useContext } from "react";
+import { getCookie } from "cookies-next";
+import { Dispatch, SetStateAction } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import {
   ContextMenu,
@@ -16,6 +17,7 @@ import {
   ContextMenuContent,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { NewItemBadge } from "@/components/new-item-badge";
 
 import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
@@ -33,7 +35,9 @@ export const RecipeCard = <T extends Recipe>({
   setIsOpen,
   setObject,
 }: Props<T>) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const showNewContent = getCookie("show_new_content");
+
+  const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
   let colorClass = "";
@@ -101,7 +105,7 @@ export const RecipeCard = <T extends Recipe>({
       <ContextMenuTrigger asChild>
         <button
           className={cn(
-            "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
+            "relative flex items-center justify-between select-none rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
             colorClass
           )}
           onClick={() => {
@@ -109,23 +113,36 @@ export const RecipeCard = <T extends Recipe>({
             setIsOpen(true);
           }}
         >
-          <Image
-            src={
-              iconURL ??
-              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
-            }
-            alt={name}
-            className="rounded-sm"
-            width={isCraftingRecipe(recipe) && recipe.isBigCraftable ? 16 : 32}
-            height={32}
-          />
-          <div className="min-w-0 flex-1">
-            <p className="font-medium truncate">{name}</p>
-            <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-              {description}
-            </p>
+          {recipe.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
+          <div
+            className={cn(
+              "flex items-center text-left space-x-3 truncate",
+              recipe.minVersion === "1.6.0" &&
+                !showNewContent &&
+                status < 1 &&
+                "blur-sm"
+            )}
+          >
+            <Image
+              src={
+                iconURL ??
+                "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+              }
+              alt={name}
+              className="rounded-sm"
+              width={
+                isCraftingRecipe(recipe) && recipe.isBigCraftable ? 16 : 32
+              }
+              height={32}
+            />
+            <div className="min-w-0 flex-1">
+              <p className="font-medium truncate">{name}</p>
+              <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
           </div>
-          <IconChevronRight className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight className="h-5 w-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
         </button>
       </ContextMenuTrigger>
       <ContextMenuContent className="w-48">

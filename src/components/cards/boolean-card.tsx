@@ -5,16 +5,18 @@ import objects from "@/data/objects.json";
 import type { FishType, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useContext } from "react";
+import { getCookie } from "cookies-next";
+import { Dispatch, SetStateAction } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
+  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
+import { NewItemBadge } from "@/components/new-item-badge";
 
 import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
@@ -34,15 +36,17 @@ export const BooleanCard = ({
   setObject,
   type,
 }: Props) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const showNewContent = getCookie("show_new_content");
+
+  const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
   const iconURL =
     objects[item.itemID as keyof typeof objects].iconURL ??
     "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
-  const name = objects[item.itemID.toString() as keyof typeof objects].name;
-  const description =
-    objects[item.itemID.toString() as keyof typeof objects].description;
+  const name = objects[item.itemID as keyof typeof objects].name;
+  const description = objects[item.itemID as keyof typeof objects].description;
+  const minVersion = objects[item.itemID as keyof typeof objects].minVersion;
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -93,7 +97,7 @@ export const BooleanCard = ({
       <ContextMenuTrigger asChild>
         <button
           className={cn(
-            "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer",
+            "relative flex select-none items-center justify-between rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer",
             checkedClass
           )}
           onClick={() => {
@@ -101,20 +105,31 @@ export const BooleanCard = ({
             setIsOpen(true);
           }}
         >
-          <Image
-            src={iconURL}
-            alt={name}
-            className="rounded-sm"
-            width={32}
-            height={32}
-          />
-          <div className="min-w-0 flex-1">
-            <p className="font-medium truncate">{name}</p>
-            <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-              {description}
-            </p>
+          {minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
+          <div
+            className={cn(
+              "flex items-center text-left space-x-3 truncate",
+              minVersion === "1.6.0" &&
+                !showNewContent &&
+                !completed &&
+                "blur-sm"
+            )}
+          >
+            <Image
+              src={iconURL}
+              alt={name}
+              className="rounded-sm"
+              width={32}
+              height={32}
+            />
+            <div className="min-w-0 flex-1">
+              <p className="font-medium truncate">{name}</p>
+              <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
         </button>
       </ContextMenuTrigger>
 

@@ -5,9 +5,10 @@ import objects from "@/data/objects.json";
 import type { ShippingItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { useContext, useMemo, useState } from "react";
+import { getCookie } from "cookies-next";
+import { useMemo, useState } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { NewItemBadge } from "@/components/new-item-badge";
 
 import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
@@ -37,7 +39,9 @@ const classes = [
 ];
 
 export const ShippingCard = ({ item }: Props) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const showNewContent = getCookie("show_new_content");
+
+  const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
   const [open, setOpen] = useState(false);
@@ -71,13 +75,10 @@ export const ShippingCard = ({ item }: Props) => {
   }, [activePlayer, item]);
 
   const iconURL =
-    objects[item.itemID.toString() as keyof typeof objects].iconURL ??
+    objects[item.itemID as keyof typeof objects].iconURL ??
     "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
-
-  const name = objects[item.itemID.toString() as keyof typeof objects].name;
-
-  const description =
-    objects[item.itemID.toString() as keyof typeof objects].description;
+  const name = objects[item.itemID as keyof typeof objects].name;
+  const description = objects[item.itemID as keyof typeof objects].description;
 
   async function handleSave() {
     if (!activePlayer) return;
@@ -104,24 +105,35 @@ export const ShippingCard = ({ item }: Props) => {
       <DialogTrigger asChild>
         <div
           className={cn(
-            "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
+            "relative flex select-none items-center text-left justify-between rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
             classes[_status]
           )}
         >
-          <Image
-            src={iconURL}
-            alt={name}
-            className="rounded-sm"
-            width={32}
-            height={32}
-          />
-          <div className="min-w-0 flex-1 pr-3">
-            <p className="font-medium truncate">{`${name} (${_count}x)`}</p>
-            <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-              {description}
-            </p>
+          {item.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
+          <div
+            className={cn(
+              "flex items-center text-left space-x-3 truncate",
+              item.minVersion === "1.6.0" &&
+                !showNewContent &&
+                _status < 1 &&
+                "blur-sm"
+            )}
+          >
+            <Image
+              src={iconURL}
+              alt={name}
+              className="rounded-sm"
+              width={32}
+              height={32}
+            />
+            <div className="min-w-0 flex-1 pr-3">
+              <p className="font-medium truncate">{`${name} (${_count}x)`}</p>
+              <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400 flex-shrink-0" />
         </div>
       </DialogTrigger>
       <DialogContent>
