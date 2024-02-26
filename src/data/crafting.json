@@ -1268,7 +1268,7 @@
     "isBigCraftable": true,
     "itemID": "Anvil",
     "minVersion": "1.6.0",
-    "unlockConditions": "Reach farmer level 2."
+    "unlockConditions": "Claim Combat Mastery rewards in Mastery Cave"
   },
   "BaitMaker": {
     "ingredients": [
@@ -1289,14 +1289,14 @@
     "isBigCraftable": true,
     "itemID": "BigChest",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Carpenter's Shop for 5000g"
   },
   "BigStoneChest": {
     "ingredients": [{ "itemID": "390", "quantity": 250 }],
     "isBigCraftable": true,
     "itemID": "BigStoneChest",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Dwarf for 5000g"
   },
   "BlueGrassStarter": {
     "ingredients": [
@@ -1307,7 +1307,7 @@
     "isBigCraftable": false,
     "itemID": "BlueGrassStarter",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Qi's Walnut Room for 40 Qi Gems"
   },
   "ChallengeBait": {
     "ingredients": [
@@ -1317,7 +1317,7 @@
     "isBigCraftable": false,
     "itemID": "ChallengeBait",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Claim Fishing Mastery rewards in Mastery Cave"
   },
   "Dehydrator": {
     "ingredients": [
@@ -1328,7 +1328,7 @@
     "isBigCraftable": true,
     "itemID": "Dehydrator",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Pierre's for 5000g"
   },
   "DeluxeBait": {
     "ingredients": [
@@ -1360,7 +1360,7 @@
     "isBigCraftable": true,
     "itemID": "FishSmoker",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Willy's Shop for 10000g"
   },
   "HeavyFurnace": {
     "ingredients": [
@@ -1371,7 +1371,7 @@
     "isBigCraftable": true,
     "itemID": "HeavyFurnace",
     "minVersion": "1.6.0",
-    "unlockConditions": "Reach farmer level 2."
+    "unlockConditions": "Claim Mining Mastery rewards in Mastery Cave"
   },
   "MiniForge": {
     "ingredients": [
@@ -1383,7 +1383,7 @@
     "isBigCraftable": true,
     "itemID": "MiniForge",
     "minVersion": "1.6.0",
-    "unlockConditions": "Reach farmer level 2."
+    "unlockConditions": "Claim Combat Mastery rewards in Mastery Cave"
   },
   "MushroomLog": {
     "ingredients": [
@@ -1405,7 +1405,7 @@
     "isBigCraftable": false,
     "itemID": "MysticTreeSeed",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Claim Foraging Mastery rewards in Mastery Cave"
   },
   "SonarBobber": {
     "ingredients": [
@@ -1427,14 +1427,14 @@
     "isBigCraftable": true,
     "itemID": "StatueOfBlessings",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Claim Farming Mastery rewards in Mastery Cave"
   },
   "StatueOfTheDwarfKing": {
     "ingredients": [{ "itemID": "337", "quantity": 20 }],
     "isBigCraftable": true,
     "itemID": "StatueOfTheDwarfKing",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Claim Mining Mastery rewards in Mastery Cave"
   },
   "TentKit": {
     "ingredients": [
@@ -1463,6 +1463,6 @@
     "isBigCraftable": false,
     "itemID": "TreasureTotem",
     "minVersion": "1.6.0",
-    "unlockConditions": "Unknown"
+    "unlockConditions": "Claim Foraging Mastery rewards in Mastery Cave"
   }
 }

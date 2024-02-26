@@ -27,6 +27,24 @@ SKILLS = set(["Farming", "Fishing", "Foraging", "Mining", "Combat", "Luck"])
 # See StardewValley.Stats.cs::checkForCraftingAchievements()
 SKIP = set(["Wedding Ring"])
 
+# hardcoding recipe sources for new 1.6 content, since some of them have unlock conditions set to l 2 (????)
+# in the future we can scrape the wiki for these
+ITEMS_1_6 = {
+    "StatueOfBlessings": "Claim Farming Mastery rewards in Mastery Cave",
+    "StatueOfTheDwarfKing": "Claim Mining Mastery rewards in Mastery Cave",
+    "HeavyFurnace": "Claim Mining Mastery rewards in Mastery Cave",
+    "ChallengeBait": "Claim Fishing Mastery rewards in Mastery Cave",
+    "MysticTreeSeed": "Claim Foraging Mastery rewards in Mastery Cave",
+    "TreasureTotem": "Claim Foraging Mastery rewards in Mastery Cave",
+    "Anvil": "Claim Combat Mastery rewards in Mastery Cave",
+    "MiniForge": "Claim Combat Mastery rewards in Mastery Cave",
+    "BlueGrassStarter": "Qi's Walnut Room for 40 Qi Gems",
+    "BigChest": "Carpenter's Shop for 5000g",
+    "BigStoneChest": "Dwarf for 5000g",
+    "Dehydrator": "Pierre's for 5000g",
+    "FishSmoker": "Willy's Shop for 10000g",
+}
+
 
 def get_crafting_recipes() -> (
     tuple[dict[str, CraftingRecipe], dict[str, str], list[str], list[str]]
@@ -102,6 +120,10 @@ def get_crafting_recipes() -> (
             unlockConditions = "Unknown"
         elif unlockConditions[0] == "default":
             unlockConditions = "Starter Recipe - no steps required."
+
+        # hardcoded unlock conditions for new 1.6 content
+        if itemID in ITEMS_1_6:
+            unlockConditions = ITEMS_1_6[itemID]
 
         # now we'll find the unlock conditions for unknowns
         if unlockConditions == "Unknown":
