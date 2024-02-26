@@ -956,34 +956,5 @@
       "used_in": [],
       "itemID": "578"
     },
-    "Geode": {
-      "locations": [
-        "Fish Pond"
-      ],
-      "used_in": [],
-      "itemID": "535"
-    },
-    "Frozen Geode": {
-      "locations": [
-        "Field Research Bundle",
-        "Fish Pond"
-      ],
-      "used_in": [],
-      "itemID": "536"
-    },
-    "Magma Geode": {
-      "locations": [],
-      "used_in": [],
-      "itemID": "537"
-    },
-    "Omni Geode": {
-      "locations": [
-        "Clint",
-        "Dwarf",
-        "Fish Pond"
-      ],
-      "used_in": [],
-      "itemID": "749"
-    }
   }
 }
