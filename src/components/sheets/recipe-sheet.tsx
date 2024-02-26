@@ -5,46 +5,41 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, useState, useEffect, SetStateAction } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { deweaponize } from "@/lib/utils";
+import { usePlayers } from "@/contexts/players-context";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
+  SheetTitle,
+  SheetHeader,
   SheetContent,
   SheetDescription,
-  SheetHeader,
-  SheetTitle,
 } from "@/components/ui/sheet";
-import { useMixpanel } from "@/contexts/mixpanel-context";
-import { useMediaQuery } from "@react-hook/media-query";
-import { IconExternalLink } from "@tabler/icons-react";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
-import { Button } from "../ui/button";
+import {
+  Select,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+} from "@/components/ui/select";
 import {
   Drawer,
+  DrawerTitle,
+  DrawerHeader,
   DrawerContent,
   DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from "../ui/drawer";
-import { ScrollArea } from "../ui/scroll-area";
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { IconExternalLink } from "@tabler/icons-react";
+import { useMediaQuery } from "@react-hook/media-query";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useMixpanel } from "@/contexts/mixpanel-context";
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 
 interface Props<T extends Recipe> {
   open: boolean;
@@ -72,7 +67,7 @@ export const RecipeSheet = <T extends Recipe>({
   setIsOpen,
   recipe,
 }: Props<T>) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const { activePlayer, patchPlayer } = usePlayers();
   const [status, setStatus] = useState(0);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const mixpanel = useMixpanel();
@@ -275,13 +270,20 @@ export const RecipeSheet = <T extends Recipe>({
                 <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
+                    let isBC = false;
 
                     // if itemID is greater than 0, it's an object
                     if (!ingredient.itemID.startsWith("-")) {
-                      item =
-                        objects[
-                          ingredient.itemID.toString() as keyof typeof objects
-                        ];
+                      // check if it's a big craftable or not
+                      if (deweaponize(ingredient.itemID).key === "BC") {
+                        let item_id = deweaponize(ingredient.itemID).value;
+                        isBC = true;
+                        item =
+                          bigCraftables[item_id as keyof typeof bigCraftables];
+                      } else {
+                        item =
+                          objects[ingredient.itemID as keyof typeof objects];
+                      }
                     } else {
                       // otherwise, it's a category
                       item = {
@@ -303,7 +305,7 @@ export const RecipeSheet = <T extends Recipe>({
                             }
                             alt={item.name}
                             width={32}
-                            height={32}
+                            height={isBC ? 64 : 32}
                             quality={25}
                           />
                           <p className="font-semibold">
