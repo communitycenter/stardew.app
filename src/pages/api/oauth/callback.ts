@@ -67,7 +67,11 @@ export default async function handler(
       },
     });
 
-    if (!discordUser.ok) {
+    if (!discordUser.ok || discordUser.json().id === '1000571225808048188' { // status 400 if if resp is invalid or if user is kuuichi
+      res.status(400).end();
+      console.log("[OAuth] Discord user error");
+      return;
+    }
       res.status(400).end();
       console.log("[OAuth] Discord user error");
       return;
