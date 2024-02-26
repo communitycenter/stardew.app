@@ -37,7 +37,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
-// import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 
 function generateUniqueIdentifier() {
@@ -54,6 +53,7 @@ const formSchema = v.object({
     v.maxLength(32, "Name must be 32 characters or less"),
     v.toTrimmed(),
   ]),
+  gameVersion: v.string(),
   questsCompleted: v.coerce(
     v.number([v.toMinValue(0), v.toMaxValue(1000)]),
     Number
@@ -112,6 +112,7 @@ export default function Editor() {
     resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
+      gameVersion: undefined,
       questsCompleted: 0,
       farmName: "",
       farmType: undefined,
@@ -134,6 +135,7 @@ export default function Editor() {
       _id: generateUniqueIdentifier(),
       general: {
         name: values.name,
+        gameVersion: values.gameVersion,
         questsCompleted: values.questsCompleted,
         farmInfo: `${values.farmName} (${values.farmType})`,
         totalMoneyEarned: values.totalMoneyEarned,
@@ -231,15 +233,29 @@ export default function Editor() {
                     />
                     <FormField
                       control={form.control}
-                      name="questsCompleted"
+                      name="gameVersion"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel htmlFor="questsCompleted">
-                            Quests Completed
+                          <FormLabel htmlFor="gameVersion">
+                            Game Version{" "}
+                            <span className="text-red-500 dark:text-red-500">
+                              *
+                            </span>
                           </FormLabel>
-                          <FormControl id="questsCompleted">
-                            <Input type="number" placeholder="40" {...field} />
-                          </FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl id="gameVersion">
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="1.5.4">1.5.4</SelectItem>
+                              <SelectItem value="1.6.0">1.6.0</SelectItem>
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -615,6 +631,25 @@ export default function Editor() {
                                   <SelectItem value="10">10</SelectItem>
                                 </SelectContent>
                               </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="questsCompleted"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="questsCompleted">
+                                Quests Completed
+                              </FormLabel>
+                              <FormControl id="questsCompleted">
+                                <Input
+                                  type="number"
+                                  placeholder="40"
+                                  {...field}
+                                />
+                              </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
