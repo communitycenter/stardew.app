@@ -1,7 +1,7 @@
 import os
 import json
 
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 from datetime import datetime
 
 from helpers.models import ContentObjectModel
@@ -50,6 +50,9 @@ def load_data(file_name: str) -> dict:
         return json.load(f)
 
 
+strings_cache = {}
+
+
 def load_strings(file_name: str) -> dict[str, str]:
     """Loads a json file from the Strings directory and returns it as a dictionary
 
@@ -62,8 +65,13 @@ def load_strings(file_name: str) -> dict[str, str]:
     strings_path = os.path.join(
         os.path.dirname(__file__), "..", "content", "Strings", file_name
     )
+
+    if file_name in strings_cache:
+        return strings_cache[file_name]
+
     with open(strings_path, "r") as f:
-        return json.load(f)
+        strings_cache[file_name] = json.load(f)
+        return strings_cache[file_name]
 
 
 def save_json(data: dict[str, Any], file_name: str, sort: bool = True) -> None:
@@ -200,7 +208,9 @@ def getCategoryName(
         # category -999 is litter, but the game doesn't provide a string for it
         return "Litter"
 
-    category_display_name = GetCategoryDisplayName(Category, StringsFromCSFiles, Strings_1_6)
+    category_display_name = GetCategoryDisplayName(
+        Category, StringsFromCSFiles, Strings_1_6
+    )
 
     # some categories don't have a display name 😵‍💫
     if category_display_name == "":
@@ -209,7 +219,7 @@ def getCategoryName(
     return category_display_name
 
 
-def get_string(tokenized_str: str) -> str:
+def get_string(tokenized_str: str) -> Optional[str]:
     """Uses a tokenized string to return the actual string from a JSON Strings file.
 
     Args:
@@ -218,6 +228,9 @@ def get_string(tokenized_str: str) -> str:
     Returns:
         str: The actual string. Ex: 'Magic Rock Candy'
     """
+    if tokenized_str == "":
+        return None
+
     # Tokenized strings are in the format: [LocalizedText Strings\<File>:<key>]
     file_name = tokenized_str.split(":")[0].split("\\")[1]
     key = tokenized_str.split(":")[1][:-1]

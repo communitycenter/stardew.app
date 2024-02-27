@@ -88,6 +88,14 @@ class Villager(TypedDict):
     name: str
 
 
+class Power(TypedDict):
+    description: str
+    flag: str
+    name: str
+    playerKey: Literal["Any", "All", "Current", "Target", "Host"]
+    type: Literal["mail", "event", "stat"]
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
@@ -557,3 +565,14 @@ class ContentCharacterModel(TypedDict):
     FriendsAndFamily: dict[str, str]
 
     # TODO: Add the rest of the fields but the rest of it isn't needed
+
+
+# ---------------------------------------------------------------------------- #
+#                                    powers                                    #
+# ---------------------------------------------------------------------------- #
+class ContentPowerModel(TypedDict):
+    DisplayName: str
+    Description: str
+    TexturePath: str
+    TexturePosition: dict[str, int]
+    UnlockedCondition: str

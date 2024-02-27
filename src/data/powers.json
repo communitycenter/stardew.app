@@ -1,0 +1,254 @@
+{
+  "ForestMagic": {
+    "description": "You are one with forest magic...",
+    "flag": "canReadJunimoText",
+    "name": "Forest Magic",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "DwarvishTranslationGuide": {
+    "description": "Teaches you dwarvish.",
+    "flag": "HasDwarvishTranslationGuide",
+    "name": "Dwarvish Translation Guide",
+    "playerKey": "Host",
+    "type": "mail"
+  },
+  "RustyKey": {
+    "description": null,
+    "flag": "HasRustyKey",
+    "name": "Rusty Key",
+    "playerKey": "Host",
+    "type": "mail"
+  },
+  "ClubCard": {
+    "description": null,
+    "flag": "HasClubCard",
+    "name": "Club Card",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "SpecialCharm": {
+    "description": null,
+    "flag": "HasSpecialCharm",
+    "name": "Special Charm",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "SkullKey": {
+    "description": null,
+    "flag": "HasSkullKey",
+    "name": "Skull Key",
+    "playerKey": "Host",
+    "type": "mail"
+  },
+  "MagnifyingGlass": {
+    "description": null,
+    "flag": "HasMagnifyingGlass",
+    "name": "Magnifying Glass",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "DarkTalisman": {
+    "description": null,
+    "flag": "HasDarkTalisman",
+    "name": "Dark Talisman",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "MagicInk": {
+    "description": null,
+    "flag": "HasMagicInk",
+    "name": "Magic Ink",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "BearPaw": {
+    "description": "Blackberries and Salmonberries are worth 3x the gold.",
+    "flag": "2120303",
+    "name": "Bear's Knowledge",
+    "playerKey": "Current",
+    "type": "event"
+  },
+  "SpringOnionMastery": {
+    "description": "Spring onions are worth 5x the gold.",
+    "flag": "3910979",
+    "name": "Spring Onion Mastery",
+    "playerKey": "Current",
+    "type": "event"
+  },
+  "KeyToTheTown": {
+    "description": "Allows access to all buildings in town, at any time of day.",
+    "flag": "HasTownKey",
+    "name": "Key To The Town",
+    "playerKey": "Current",
+    "type": "mail"
+  },
+  "Book_PriceCatalogue": {
+    "description": "You can now see the value of your items.",
+    "flag": "Book_PriceCatalogue",
+    "name": "Price Catalogue",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Marlon": {
+    "description": "You get a 50% discount on Marlon's item retrieval service.",
+    "flag": "Book_Marlon",
+    "name": "Mapping Cave Systems",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Speed": {
+    "description": "You run a little bit faster.",
+    "flag": "Book_Speed",
+    "name": "Way Of The Wind pt. 1",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Speed2": {
+    "description": "You run a little bit faster.",
+    "flag": "Book_Speed2",
+    "name": "Way Of The Wind pt. 2",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Void": {
+    "description": "Monsters have a small chance to drop double loot.",
+    "flag": "Book_Void",
+    "name": "Monster Compendium",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Friendship": {
+    "description": "You become friends with people a little faster.",
+    "flag": "Book_Friendship",
+    "name": "Friendship 101",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Defense": {
+    "description": "Gain +1 Defense.",
+    "flag": "Book_Defense",
+    "name": "Jack Be Nimble, Jack Be Thick",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Woodcutting": {
+    "description": "Felled trees have a 5% chance to yield double the wood.",
+    "flag": "Book_Woodcutting",
+    "name": "Woody's Secret",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_WildSeeds": {
+    "description": "Weeds have a greater chance to yield mixed seeds.",
+    "flag": "Book_WildSeeds",
+    "name": "Raccoon Journal",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Roe": {
+    "description": "Fishing treasure chests have a chance to yield roe.",
+    "flag": "Book_Roe",
+    "name": "Jewels Of The Sea",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Bombs": {
+    "description": "Bombs deal 25% less damage to you.",
+    "flag": "Book_Bombs",
+    "name": "Dwarvish Safety Manual",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Crabbing": {
+    "description": "Crab pots have a 25% chance to yield double.",
+    "flag": "Book_Crabbing",
+    "name": "The Art O' Crabbing",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Trash": {
+    "description": "You have a greater chance to find items in the trash.",
+    "flag": "Book_Trash",
+    "name": "The Alleyway Buffet",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Diamonds": {
+    "description": "All stones have a chance to drop a diamond when mined by hand.",
+    "flag": "Book_Diamonds",
+    "name": "The Diamond Hunter",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Mystery": {
+    "description": "You have a slightly greater chance to find Mystery Boxes.",
+    "flag": "Book_Mystery",
+    "name": "Book of Mysteries",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Horse": {
+    "description": "You gain a little extra speed when riding a horse.",
+    "flag": "Book_Horse",
+    "name": "Horse: The Book",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Artifact": {
+    "description": "You will fetch a better price when selling artifacts.",
+    "flag": "Book_Artifact",
+    "name": "Treasure Appraisal Guide",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_Grass": {
+    "description": "You will now run a lot faster through grass and crops.",
+    "flag": "Book_Grass",
+    "name": "Ol' Slitherlegs",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Book_AnimalCatalogue": {
+    "description": "You can access Marnie's shop when she's not around.",
+    "flag": "Book_AnimalCatalogue",
+    "name": "Animal Catalogue",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Mastery_Farming": {
+    "description": "You can now find Golden Animal Crackers, which permanently doubles a farm animal's produce. Doesn't work on pigs.",
+    "flag": "mastery_0",
+    "name": "Farming Mastery",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Mastery_Fishing": {
+    "description": "You can now encounter Golden Fishing Chests.",
+    "flag": "mastery_1",
+    "name": "Fishing Mastery",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Mastery_Foraging": {
+    "description": "You now find Golden Mystery Boxes, which contain superior items.",
+    "flag": "mastery_2",
+    "name": "Foraging Mastery",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Mastery_Mining": {
+    "description": "Gem-bearing rocks now grant twice the gems.",
+    "flag": "mastery_3",
+    "name": "Mining Mastery",
+    "playerKey": "Current",
+    "type": "stat"
+  },
+  "Mastery_Combat": {
+    "description": "Unlocks a new equipment slot for trinkets. Trinkets can be found while adventuring and grant special powers.",
+    "flag": "mastery_4",
+    "name": "Combat Mastery",
+    "playerKey": "Current",
+    "type": "stat"
+  }
+}
