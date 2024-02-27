@@ -122,3 +122,47 @@ export function GetStatValue(Values: any, key: string): number {
 
   return value;
 }
+
+/**
+ * Safely get a list from a field in an object, or return an empty array if the object is undefined.
+ * Object may or may not be a list, some saves have only one item in the field.
+ *
+ * @param {*} obj The object to get the list from.
+ * @param {string} key The key to get the list from.
+ * @return {*}  {any[]} The list from the object, or an empty array if the object is undefined.
+ */
+export function GetListOrEmpty(obj: any, key: string): any[] {
+  if (!obj || typeof obj === "undefined") return [];
+
+  if (Array.isArray(obj[key])) {
+    return obj[key];
+  } else {
+    return [obj[key]];
+  }
+}
+
+/**
+ * Check if the player has or will receive a mail.
+ * Reference: `StardewValley.Farmer.cs::hasOrWillReceiveMail()`
+ *
+ * @param {string} mailId The mail ID to check for.
+ * @param {Set<string>} mailReceived
+ * @param {Set<string>} mailForTomorrow
+ * @param {Set<string>} mailbox
+ * @return {*} {boolean} True if the player has or will receive the mail.
+ */
+export function hasOrWillReceiveMail(
+  mailId: string,
+  mailReceived: Set<string>,
+  mailForTomorrow: Set<string>,
+  mailbox: Set<string>,
+): boolean {
+  if (
+    !mailReceived.has(mailId) &&
+    !mailForTomorrow.has(mailId) &&
+    !mailbox.has(mailId)
+  ) {
+    return mailForTomorrow.has(mailId + "%&NL&%");
+  }
+  return true;
+}

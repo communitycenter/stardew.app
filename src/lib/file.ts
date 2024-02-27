@@ -12,11 +12,11 @@ import {
   parseShipping,
   parseSocial,
 } from "@/lib/parsers";
-import { getAllFarmhands } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
 import { parsePowers } from "./parsers/powers";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
+import { getAllFarmhands, GetListOrEmpty } from "@/lib/utils";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -28,7 +28,7 @@ export function parseSaveFile(xml: string) {
   } catch (e) {
     if (e instanceof TypeError) {
       throw new Error(
-        "Invalid file uploaded. Couldn't parse XML. Please upload a valid Stardew Valley save file."
+        "Invalid file uploaded. Couldn't parse XML. Please upload a valid Stardew Valley save file.",
       );
     } else throw e;
   }
@@ -39,7 +39,7 @@ export function parseSaveFile(xml: string) {
     // make sure game version is at least 1.5.0
     if (!semverSatisfies(version, ">=1.5.0 || <1.7")) {
       throw new Error(
-        `Game version ${version} is not supported. stardew.app currently only supports the Stardew Valley 1.5 and 1.6 updates.`
+        `Game version ${version} is not supported. stardew.app currently only supports the Stardew Valley 1.5 and 1.6 updates.`,
       );
     }
 
@@ -58,9 +58,9 @@ export function parseSaveFile(xml: string) {
 
     const parsedMuseum = parseMuseum(
       saveFile.SaveGame.locations.GameLocation.find(
-        (obj: any) => obj[`@_${prefix}:type`] === "LibraryMuseum"
+        (obj: any) => obj[`@_${prefix}:type`] === "LibraryMuseum",
       ),
-      version
+      version,
     );
 
     const parsedWalnuts = parseWalnuts(saveFile.SaveGame);
@@ -71,11 +71,19 @@ export function parseSaveFile(xml: string) {
     // Map of uniqueMultiplayerID to array of children names
     const children = findChildren(prefix, saveFile.SaveGame);
 
-
-    const powers = parsePowers(players);
-    console.log(powers)
-
     let processedPlayers: any[] = [];
+
+    // get the saveGame.player's mailReceived, mailForTomorrow, mailbox so we don't
+    // have to recompute it for each player
+    const hostMailReceived = new Set<string>(
+      GetListOrEmpty(saveFile.SaveGame.player.mailReceived, "string"),
+    );
+    const hostMailForTomorrow = new Set<string>(
+      GetListOrEmpty(saveFile.SaveGame.player.mailForTomorrow, "string"),
+    );
+    const hostMailbox = new Set<string>(
+      GetListOrEmpty(saveFile.SaveGame.player.mailbox, "string"),
+    );
 
     players.forEach((player) => {
       // in here is where we'll call all our parsers and create the player object we'll use
@@ -84,7 +92,7 @@ export function parseSaveFile(xml: string) {
         general: parseGeneral(
           player,
           saveFile.SaveGame.whichFarm.toString(),
-          version
+          version,
         ),
         fishing: parseFishing(player, version),
         cooking: parseCooking(player, version),
@@ -96,21 +104,35 @@ export function parseSaveFile(xml: string) {
           children,
           saveFile.SaveGame.farmerFriendships
             ? saveFile.SaveGame.farmerFriendships
-            : null
+            : null,
         ),
         monsters: parseMonsters(player),
         walnuts: parsedWalnuts,
         notes: parseNotes(player),
         scraps: parseScraps(player),
         perfection: parsedPerfection,
-        powers: powers[player.UniqueMultiplayerID],
+        powers: parsePowers(
+          player,
+          version,
+          saveFile.SaveGame.player.UniqueMultiplayerID.toString(),
+          hostMailReceived,
+          hostMailForTomorrow,
+          hostMailbox,
+        ),
       };
       processedPlayers.push(processedPlayer);
     });
 
+    processedPlayers.forEach((p) =>
+      console.log(`Player: ${p.general.name} | Powers:`, p.powers),
+    );
+
+    // there isn't a powers column in our database yet
+    throw new Error("Not Implemented");
+
     return processedPlayers;
   } catch (e) {
-    console.log(e)
+    console.log(e);
     throw e;
   }
 }
