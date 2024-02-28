@@ -41,9 +41,8 @@ export interface MuseumItem {
 
 export interface WalnutType {
   name: string;
-  num: number;
+  count: number;
   description: string;
-  iconURL: string;
 }
 
 export interface WalnutMapType {
