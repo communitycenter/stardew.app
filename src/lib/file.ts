@@ -111,24 +111,24 @@ export function parseSaveFile(xml: string) {
         notes: parseNotes(player),
         scraps: parseScraps(player),
         perfection: parsedPerfection,
-        powers: parsePowers(
-          player,
-          version,
-          saveFile.SaveGame.player.UniqueMultiplayerID.toString(),
-          hostMailReceived,
-          hostMailForTomorrow,
-          hostMailbox,
-        ),
+        // powers: parsePowers(
+        //   player,
+        //   version,
+        //   saveFile.SaveGame.player.UniqueMultiplayerID.toString(),
+        //   hostMailReceived,
+        //   hostMailForTomorrow,
+        //   hostMailbox,
+        // ),
       };
       processedPlayers.push(processedPlayer);
     });
 
-    processedPlayers.forEach((p) =>
-      console.log(`Player: ${p.general.name} | Powers:`, p.powers),
-    );
+    // processedPlayers.forEach((p) =>
+    //   console.log(`Player: ${p.general.name} | Powers:`, p.powers),
+    // );
 
-    // there isn't a powers column in our database yet
-    throw new Error("Not Implemented");
+    // // there isn't a powers column in our database yet
+    // throw new Error("Not Implemented");
 
     return processedPlayers;
   } catch (e) {

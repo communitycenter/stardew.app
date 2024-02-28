@@ -1,13 +1,19 @@
-import { DialogCard } from "@/components/cards/dialog-card";
-import { FilterButton, FilterSearch } from "@/components/filter-btn";
-import { Command, CommandInput } from "@/components/ui/command";
-import { usePlayers } from "@/contexts/players-context";
-import { walnuts } from "@/lib/parsers/walnuts";
-import { IconMapPin } from "@tabler/icons-react";
+import type { WalnutType } from "@/types/items";
+
+import walnut_data from "@/data/walnuts.json";
+const walnuts = walnut_data as { [key: string]: WalnutType };
+
+import Head from "next/head";
 
 import { Inter } from "next/font/google";
-import Head from "next/head";
+import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useMemo, useState } from "react";
+
+import { DialogCard } from "@/components/cards/dialog-card";
+import { Command, CommandInput } from "@/components/ui/command";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
+
+import { IconMapPin } from "@tabler/icons-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,7 +65,7 @@ export default function IslandWalnuts() {
       // take the walnut IDs in walnutFound and add them to a set
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
-          return walnuts[id as keyof typeof walnuts].num !== amount;
+          return walnuts[id].count !== amount;
         },
       );
       const foundIds = new Set(
@@ -170,14 +176,14 @@ export default function IslandWalnuts() {
                   <DialogCard
                     key={id}
                     title={`${walnut.name} ${
-                      walnut.num > 1 ? `(${walnut.num}x)` : ""
+                      walnut.count > 1 ? `(${walnut.count}x)` : ""
                     }`}
                     description={walnut.description}
                     iconURL="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
                     completed={
                       activePlayer
                         ? activePlayer.walnuts?.found?.[id]
-                          ? activePlayer.walnuts?.found?.[id] == walnut.num
+                          ? activePlayer.walnuts?.found?.[id] == walnut.count
                           : false
                         : false
                     }

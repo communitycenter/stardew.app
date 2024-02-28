@@ -29,7 +29,7 @@ const semverGte = require("semver/functions/gte");
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
     .length,
-  "Full Shipment": Object.keys(shipping_items).length,
+  "Full Shipment": Object.keys(shipping_items).length - 1, // Clam is excluded in 1.6
 };
 
 const seasons = [
@@ -73,6 +73,8 @@ export default function Shipping() {
       semverGte(version, i.minVersion),
     ).length;
 
+    if (semverGte(version, "1.6.0")) reqs["Full Shipment"]--; // Clam is excluded in 1.6
+
     reqs["Polyculture"] = Object.values(shipping_items).filter(
       (i) => i.polyculture && semverGte(version, i.minVersion),
     ).length;
@@ -95,6 +97,8 @@ export default function Shipping() {
       let basicShippedCount = 0;
 
       Object.keys(activePlayer.shipping.shipped).forEach((key) => {
+        if (semverGte(gameVersion, "1.6.0") && key === "372") return; // Clam is excluded in 1.6
+
         // Polyculture calculation
         if (shipping_items[key as keyof typeof shipping_items].polyculture) {
           if ((activePlayer.shipping?.shipped[key] ?? 0) >= 15)
@@ -111,7 +115,7 @@ export default function Shipping() {
         basicShippedCount++;
       });
       return [polycultureCount, monocultureAchieved, basicShippedCount];
-    }, [activePlayer]);
+    }, [activePlayer, gameVersion]);
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
@@ -251,11 +255,16 @@ export default function Shipping() {
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(typedShippingItems)
+                .filter((i) => {
+                  // Clam is excluded in 1.6, so we won't show it
+                  if (i.itemID === "372")
+                    return !semverGte(gameVersion, "1.6.0");
+                  return true;
+                })
                 .filter((i) => semverGte(gameVersion, i.minVersion))
                 .filter((i) => {
                   if (!search) return true;
-                  const name =
-                    objects[i.itemID.toString() as keyof typeof objects].name;
+                  const name = objects[i.itemID as keyof typeof objects].name;
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((i) => {

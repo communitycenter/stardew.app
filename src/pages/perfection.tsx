@@ -6,8 +6,9 @@ import fish from "@/data/fish.json";
 import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
 
-import { usePlayers } from "@/contexts/players-context";
+import { cn } from "@/lib/utils";
 import { useMemo } from "react";
+import { usePlayers } from "@/contexts/players-context";
 
 import { InputCard } from "@/components/cards/input-card";
 import { PerfectionCard } from "@/components/cards/perfection-card";
@@ -109,7 +110,7 @@ export default function Perfection() {
 
     // total count based on the player's game version
     const totalCrafting = Object.values(craftingRecipes).filter((r) =>
-      semverGte(gameVersion, r.minVersion)
+      semverGte(gameVersion, r.minVersion),
     ).length;
 
     return [craftedCount / totalCrafting, totalCrafting];
@@ -129,7 +130,7 @@ export default function Perfection() {
       return [0, Object.keys(cookingRecipes).length];
 
     const totalCooking = Object.values(cookingRecipes).filter((r) =>
-      semverGte(gameVersion, r.minVersion)
+      semverGte(gameVersion, r.minVersion),
     ).length;
 
     return [cookedCount / totalCooking, totalCooking];
@@ -142,7 +143,7 @@ export default function Perfection() {
 
     const fishCaught = activePlayer?.fishing?.fishCaught?.length ?? 0;
     const totalFish = Object.values(fish).filter((f) =>
-      semverGte(gameVersion, f.minVersion)
+      semverGte(gameVersion, f.minVersion),
     ).length;
 
     return [fishCaught / totalFish, totalFish];
@@ -175,16 +176,21 @@ export default function Perfection() {
   const basicShippedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
 
-    return Object.keys(activePlayer.shipping.shipped).length;
-  }, [activePlayer]);
+    return Object.keys(activePlayer.shipping.shipped).filter((i) => {
+      // exclude clam from the count if the game version is 1.6.0 or higher
+      if (i === "372" && semverGte(gameVersion, "1.6.0")) return false;
+      return true;
+    }).length;
+  }, [activePlayer, gameVersion]);
 
   const [getFarmerItemsShippedPercent, totalShipping] = useMemo(() => {
     if (!activePlayer || !activePlayer.shipping?.shipped)
       return [0, Object.keys(shippingItems).length];
 
-    const totalShipping = Object.values(shippingItems).filter((i) =>
-      semverGte(gameVersion, i.minVersion)
-    ).length;
+    const totalShipping =
+      Object.values(shippingItems).filter((i) =>
+        semverGte(gameVersion, i.minVersion),
+      ).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
 
     return [basicShippedCount / totalShipping, totalShipping];
   }, [activePlayer, basicShippedCount, gameVersion]);
@@ -223,7 +229,7 @@ export default function Perfection() {
           activePlayer.general.skills;
 
         playerLevel = Math.floor(
-          (farming + fishing + foraging + mining + combat) / 2
+          (farming + fishing + foraging + mining + combat) / 2,
         );
       }
     }
@@ -287,9 +293,9 @@ export default function Perfection() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection Tracker
           </h1>
@@ -301,10 +307,17 @@ export default function Perfection() {
                   Perfection Goals
                 </AccordionTrigger>
                 <AccordionContent asChild>
-                  <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
-                    <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
+                  <div className="grid grid-cols-1 grid-rows-4 gap-4 xl:grid-cols-3 2xl:grid-cols-4">
+                    <Card
+                      className={cn(
+                        "col-span-1 row-span-full flex w-full items-center justify-center",
+                        getPercentComplete === 1
+                          ? "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10"
+                          : "",
+                      )}
+                    >
                       <div className="flex flex-col items-center p-4">
-                        <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
+                        <CardHeader className="items-cnter mb-2 flex flex-row justify-between space-y-0 p-0">
                           <CardTitle className="text-2xl font-semibold">
                             Total Perfection
                           </CardTitle>
@@ -321,7 +334,7 @@ export default function Perfection() {
                       title="Produce & Forage Shipped"
                       description={`${basicShippedCount ?? 0}/${totalShipping}`}
                       percentage={Math.floor(
-                        getFarmerItemsShippedPercent * 100
+                        getFarmerItemsShippedPercent * 100,
                       )}
                       footer="15% of total perfection"
                     />
@@ -378,7 +391,7 @@ export default function Perfection() {
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(
                         ((activePlayer?.general?.stardrops?.length ?? 0) / 7) *
-                          100
+                          100,
                       )}
                       footer="10% of total perfection"
                     />
@@ -406,7 +419,7 @@ export default function Perfection() {
                       title="Golden Walnuts"
                       description={`${getWalnutsFound ?? 0}/130`}
                       percentage={Math.floor(
-                        ((getWalnutsFound ?? 0) / 130) * 100
+                        ((getWalnutsFound ?? 0) / 130) * 100,
                       )}
                       footer="5% of total perfection"
                     />
