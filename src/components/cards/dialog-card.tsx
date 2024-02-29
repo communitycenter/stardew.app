@@ -1,20 +1,23 @@
+import type { WalnutType } from "@/types/items";
+
+import walnut_data from "@/data/walnuts.json";
+const walnutData = walnut_data as { [key: string]: WalnutType };
+
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { useContext, useState } from "react";
-
 import { PlayersContext } from "@/contexts/players-context";
-import { walnuts as walnutType } from "@/lib/parsers/walnuts";
 
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
+  DialogTitle,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
+  DialogContent,
+  DialogDescription,
 } from "@/components/ui/dialog";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -91,7 +94,7 @@ export const DialogCard = ({
 
       case "walnut":
         const walnuts = activePlayer.walnuts?.found ?? {};
-        if (status) walnuts[_id] = walnutType[_id].num;
+        if (status) walnuts[_id] = walnutData[_id].count;
         else walnuts[_id] = 0;
 
         patch = {
@@ -113,11 +116,11 @@ export const DialogCard = ({
       <DialogTrigger asChild>
         <div
           className={cn(
-            "py-4 px-5 flex justify-between items-center hover:cursor-pointer border rounded-lg shadow-sm",
-            checkedClass
+            "flex items-center justify-between rounded-lg border px-5 py-4 shadow-sm hover:cursor-pointer",
+            checkedClass,
           )}
         >
-          <div className="flex space-x-3 items-center">
+          <div className="flex items-center space-x-3">
             <Image src={iconURL} alt={title} width={32} height={32} />
             <p>{title}</p>
           </div>

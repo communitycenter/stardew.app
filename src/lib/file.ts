@@ -123,9 +123,12 @@ export function parseSaveFile(xml: string) {
       processedPlayers.push(processedPlayer);
     });
 
-    // processedPlayers.forEach((p) =>
-    //   console.log(`Player: ${p.general.name} | Powers:`, p.powers),
-    // );
+    processedPlayers.forEach((p) =>
+      console.log(
+        `Player: ${p.general.name} | Waivers:`,
+        p.perfection.perfectionWaivers,
+      ),
+    );
 
     // // there isn't a powers column in our database yet
     // throw new Error("Not Implemented");

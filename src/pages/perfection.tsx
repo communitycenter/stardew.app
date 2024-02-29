@@ -10,16 +10,21 @@ import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 import { usePlayers } from "@/contexts/players-context";
 
-import { InputCard } from "@/components/cards/input-card";
-import { PerfectionCard } from "@/components/cards/perfection-card";
-import { PercentageIndicator } from "@/components/percentage";
+import {
+  Card,
+  CardTitle,
+  CardHeader,
+  CardDescription,
+} from "@/components/ui/card";
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
+  AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { InputCard } from "@/components/cards/input-card";
+import { PercentageIndicator } from "@/components/percentage";
+import { PerfectionCard } from "@/components/cards/perfection-card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -88,6 +93,12 @@ export default function Perfection() {
     if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
 
     return activePlayer.general.gameVersion;
+  }, [activePlayer]);
+
+  const perfectionWaivers = useMemo(() => {
+    if (!activePlayer || !activePlayer.perfection?.perfectionWaivers) return 0;
+
+    return activePlayer.perfection.perfectionWaivers;
   }, [activePlayer]);
 
   const craftedCount = useMemo(() => {
@@ -311,16 +322,26 @@ export default function Perfection() {
                     <Card
                       className={cn(
                         "col-span-1 row-span-full flex w-full items-center justify-center",
-                        getPercentComplete === 1
-                          ? "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10"
-                          : "",
+                        getPercentComplete === 1 &&
+                          "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10",
                       )}
                     >
                       <div className="flex flex-col items-center p-4">
-                        <CardHeader className="items-cnter mb-2 flex flex-row justify-between space-y-0 p-0">
+                        <CardHeader className="mb-2 flex flex-col items-center justify-between space-y-0 p-0">
                           <CardTitle className="text-2xl font-semibold">
                             Total Perfection
                           </CardTitle>
+                          {perfectionWaivers > 0 && (
+                            <CardDescription>
+                              {Math.min(
+                                Math.floor(getPercentComplete * 100) +
+                                  perfectionWaivers,
+                                100,
+                              )}
+                              % with {perfectionWaivers} waiver
+                              {perfectionWaivers > 1 ? "s" : ""}
+                            </CardDescription>
+                          )}
                         </CardHeader>
 
                         <PercentageIndicator
