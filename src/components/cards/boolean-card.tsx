@@ -6,7 +6,7 @@ import type { FishType, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { getCookie } from "cookies-next";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
 
@@ -28,6 +28,8 @@ interface Props {
   setObject: any; // TODO: update as we add more types
   type: "fish" | "artifact" | "mineral";
   setShowNewContentOpen?: Dispatch<SetStateAction<boolean>>;
+  setBlurred: any;
+  blurred: boolean;
 }
 
 export const BooleanCard = ({
@@ -37,8 +39,16 @@ export const BooleanCard = ({
   setIsOpen,
   setObject,
   setShowNewContentOpen,
+  setBlurred,
+  blurred,
 }: Props) => {
-  const showNewContent = getCookie("show_new_content");
+  //const [showNewContent, setShowNewContent] = useState(false);
+
+  useEffect(() => {
+    const cookie = getCookie("show_new_content");
+    setBlurred(cookie?.toString() === "true");
+    //setShowNewContent()
+  });
 
   const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
@@ -103,7 +113,7 @@ export const BooleanCard = ({
             checkedClass,
           )}
           onClick={() => {
-            if (minVersion === "1.6.0" && !showNewContent && !completed) {
+            if (minVersion === "1.6.0" && !blurred && !completed) {
               setShowNewContentOpen?.(true);
               return;
             }
@@ -115,10 +125,7 @@ export const BooleanCard = ({
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
-              minVersion === "1.6.0" &&
-                !showNewContent &&
-                !completed &&
-                "blur-sm",
+              minVersion === "1.6.0" && !blurred && !completed && "blur-sm",
             )}
           >
             <Image

@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { setCookie } from "cookies-next";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import {
   Dialog,
@@ -7,18 +10,17 @@ import {
   DialogFooter,
   DialogHeader,
   DialogContent,
-  DialogTrigger,
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
+  setBlurred: any;
 }
 
-export const UnblurDialog = ({ open, setOpen }: Props) => {
+export const UnblurDialog = ({ open, setOpen, setBlurred }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -42,6 +44,7 @@ export const UnblurDialog = ({ open, setOpen }: Props) => {
           <DialogClose asChild>
             <Button
               onClick={() => {
+                setBlurred(false);
                 setCookie("show_new_content", true, {
                   domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
                     ? "localhost"

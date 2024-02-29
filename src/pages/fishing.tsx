@@ -77,7 +77,7 @@ export default function Fishing() {
   const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
   const [showNewContentOpen, setShowNewContentOpen] = useState(false);
-
+  const [blurred, setBlurred] = useState(false);
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
@@ -283,6 +283,8 @@ export default function Fishing() {
                     setObject={setFish}
                     type="fish"
                     setShowNewContentOpen={setShowNewContentOpen}
+                    setBlurred={setBlurred}
+                    blurred={blurred}
                   />
                 ))}
             </div>
@@ -292,6 +294,7 @@ export default function Fishing() {
         <UnblurDialog
           open={showNewContentOpen}
           setOpen={setShowNewContentOpen}
+          setBlurred={setBlurred}
         />
       </main>
     </>
