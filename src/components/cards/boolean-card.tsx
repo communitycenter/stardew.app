@@ -5,10 +5,10 @@ import objects from "@/data/objects.json";
 import type { FishType, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { getCookie } from "cookies-next";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { useMixpanel } from "@/contexts/mixpanel-context";
 
 import {
   ContextMenu,
@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/context-menu";
 import { NewItemBadge } from "@/components/new-item-badge";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props {
@@ -27,29 +26,33 @@ interface Props {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
   type: "fish" | "artifact" | "mineral";
-  setShowNewContentOpen?: Dispatch<SetStateAction<boolean>>;
-  setBlurred: any;
-  blurred: boolean;
+
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const BooleanCard = ({
   item,
   type,
+  show,
   completed,
   setIsOpen,
   setObject,
-  setShowNewContentOpen,
-  setBlurred,
-  blurred,
+  setPromptOpen,
 }: Props) => {
-  //const [showNewContent, setShowNewContent] = useState(false);
-
-  useEffect(() => {
-    const cookie = getCookie("show_new_content");
-    setBlurred(cookie?.toString() === "true");
-    //setShowNewContent()
-  });
-
   const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
@@ -113,8 +116,8 @@ export const BooleanCard = ({
             checkedClass,
           )}
           onClick={() => {
-            if (minVersion === "1.6.0" && !blurred && !completed) {
-              setShowNewContentOpen?.(true);
+            if (minVersion === "1.6.0" && !show && !completed) {
+              setPromptOpen?.(true);
               return;
             }
             setObject(item);
@@ -125,7 +128,7 @@ export const BooleanCard = ({
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
-              minVersion === "1.6.0" && !blurred && !completed && "blur-sm",
+              minVersion === "1.6.0" && !show && !completed && "blur-sm",
             )}
           >
             <Image

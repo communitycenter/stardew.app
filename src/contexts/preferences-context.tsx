@@ -1,18 +1,13 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-
-function getInitialState() {
-  const pref = localStorage.getItem("show_new_content");
-  return pref === "true";
-}
+import { useState, useEffect, useContext, createContext } from "react";
 
 interface Preferences {
   show: boolean;
-  setShow: (show: boolean) => void;
+  toggleShow: () => boolean;
 }
 
 const PreferencesContext = createContext<Preferences>({
   show: false,
-  setShow: () => {},
+  toggleShow: () => false,
 });
 
 export const PreferencesProvider = ({
@@ -20,17 +15,32 @@ export const PreferencesProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [show, setShow] = useState(getInitialState);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("show_new_content", show.toString());
-  }, [show]);
+    if (typeof window !== "undefined") {
+      const stored = window.localStorage.getItem("show_new_content");
+
+      if (stored) setShow(JSON.parse(stored));
+    }
+  }, []);
+
+  const toggleShow = (): boolean => {
+    const updated = !show;
+    setShow(updated);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("show_new_content", JSON.stringify(updated));
+    }
+    return updated;
+  };
 
   return (
-    <PreferencesContext.Provider value={{ show, setShow }}>
+    <PreferencesContext.Provider value={{ show, toggleShow }}>
       {children}
     </PreferencesContext.Provider>
   );
 };
 
-export const usePreferences = () => useContext(PreferencesContext);
+export const usePreferences = () => {
+  return useContext(PreferencesContext);
+};

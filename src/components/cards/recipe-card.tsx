@@ -1,25 +1,24 @@
 import Image from "next/image";
 
-import bigCraftables from "@/data/big_craftables.json";
 import objects from "@/data/objects.json";
+import bigCraftables from "@/data/big_craftables.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
-import { getCookie } from "cookies-next";
 import { Dispatch, SetStateAction } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { useMixpanel } from "@/contexts/mixpanel-context";
 
 import {
   ContextMenu,
-  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
+  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
 import { NewItemBadge } from "@/components/new-item-badge";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight } from "@tabler/icons-react";
 
 interface Props<T extends Recipe> {
@@ -27,7 +26,22 @@ interface Props<T extends Recipe> {
   status: number;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: Dispatch<SetStateAction<T | null>>;
-  setShowNewContentOpen?: Dispatch<SetStateAction<boolean>>;
+
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const RecipeCard = <T extends Recipe>({
@@ -35,10 +49,9 @@ export const RecipeCard = <T extends Recipe>({
   status,
   setIsOpen,
   setObject,
-  setShowNewContentOpen,
+  setPromptOpen,
+  show,
 }: Props<T>) => {
-  const showNewContent = getCookie("show_new_content");
-
   const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
@@ -111,12 +124,8 @@ export const RecipeCard = <T extends Recipe>({
             colorClass,
           )}
           onClick={() => {
-            if (
-              recipe.minVersion === "1.6.0" &&
-              !showNewContent &&
-              status < 1
-            ) {
-              setShowNewContentOpen?.(true);
+            if (recipe.minVersion === "1.6.0" && !show && status < 1) {
+              setPromptOpen?.(true);
               return;
             }
             setObject(recipe);
@@ -127,10 +136,7 @@ export const RecipeCard = <T extends Recipe>({
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
-              recipe.minVersion === "1.6.0" &&
-                !showNewContent &&
-                status < 1 &&
-                "blur-sm",
+              recipe.minVersion === "1.6.0" && !show && status < 1 && "blur-sm",
             )}
           >
             <Image

@@ -5,32 +5,46 @@ import objects from "@/data/objects.json";
 import type { ShippingItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { getCookie } from "cookies-next";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Dispatch, SetStateAction } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { useMixpanel } from "@/contexts/mixpanel-context";
 
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
+  DialogTitle,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
+  DialogContent,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { NewItemBadge } from "@/components/new-item-badge";
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   item: ShippingItem;
-  setShowNewContentOpen?: (value: boolean) => void;
+
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const classes = [
@@ -39,9 +53,7 @@ const classes = [
   "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20",
 ];
 
-export const ShippingCard = ({ item, setShowNewContentOpen }: Props) => {
-  const showNewContent = getCookie("show_new_content");
-
+export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
@@ -110,9 +122,9 @@ export const ShippingCard = ({ item, setShowNewContentOpen }: Props) => {
             classes[_status],
           )}
           onClick={(e) => {
-            if (item.minVersion === "1.6.0" && !showNewContent && _status < 1) {
+            if (item.minVersion === "1.6.0" && !show && _status < 1) {
               e.preventDefault();
-              setShowNewContentOpen?.(true);
+              setPromptOpen?.(true);
               return;
             }
           }}
@@ -121,10 +133,7 @@ export const ShippingCard = ({ item, setShowNewContentOpen }: Props) => {
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
-              item.minVersion === "1.6.0" &&
-                !showNewContent &&
-                _status < 1 &&
-                "blur-sm",
+              item.minVersion === "1.6.0" && !show && _status < 1 && "blur-sm",
             )}
           >
             <Image

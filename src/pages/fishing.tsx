@@ -6,8 +6,9 @@ import achievements from "@/data/achievements.json";
 import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import {
   Accordion,
@@ -76,17 +77,18 @@ export default function Fishing() {
   const [fish, setFish] = useState<FishType | null>(null);
   const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
-  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
-  const [blurred, setBlurred] = useState(false);
+  // unblur dialog
+  const [showPrompt, setPromptOpen] = useState(false);
+
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
-
   const [_weatherFilter, setWeatherFilter] = useState("both");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
   const [gameVersion, setGameVersion] = useState("1.6.0");
 
   const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   useEffect(() => {
     if (activePlayer) {
@@ -282,9 +284,8 @@ export default function Fishing() {
                     setIsOpen={setIsOpen}
                     setObject={setFish}
                     type="fish"
-                    setShowNewContentOpen={setShowNewContentOpen}
-                    setBlurred={setBlurred}
-                    blurred={blurred}
+                    setPromptOpen={setPromptOpen}
+                    show={show}
                   />
                 ))}
             </div>
@@ -292,9 +293,9 @@ export default function Fishing() {
         </div>
         <FishSheet open={open} setIsOpen={setIsOpen} fish={fish} />
         <UnblurDialog
-          open={showNewContentOpen}
-          setOpen={setShowNewContentOpen}
-          setBlurred={setBlurred}
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
         />
       </main>
     </>

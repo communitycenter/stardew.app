@@ -1,19 +1,20 @@
+import type { ShippingItem } from "@/types/items";
+
 import Head from "next/head";
 
-import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-
-import type { ShippingItem } from "@/types/items";
+import achievements from "@/data/achievements.json";
 const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
-import { usePlayers } from "@/contexts/players-context";
 import { useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
+  AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ShippingCard } from "@/components/cards/shipping-card";
@@ -60,9 +61,10 @@ export default function Shipping() {
   const [_filter, setFilter] = useState("all");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
-  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+  const [showPrompt, setPromptOpen] = useState(false);
 
   const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   const gameVersion = useMemo(() => {
     if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
@@ -298,14 +300,19 @@ export default function Shipping() {
                   <ShippingCard
                     key={i.itemID}
                     item={i}
-                    setShowNewContentOpen={setShowNewContentOpen}
+                    show={show}
+                    setPromptOpen={setPromptOpen}
                   />
                 ))}
             </div>
           </section>
         </div>
       </main>
-      <UnblurDialog open={showNewContentOpen} setOpen={setShowNewContentOpen} />
+      <UnblurDialog
+        open={showPrompt}
+        setOpen={setPromptOpen}
+        toggleShow={toggleShow}
+      />
     </>
   );
 }

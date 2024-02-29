@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { setCookie } from "cookies-next";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import {
@@ -17,10 +16,10 @@ import { Button } from "@/components/ui/button";
 interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
-  setBlurred: any;
+  toggleShow: () => boolean;
 }
 
-export const UnblurDialog = ({ open, setOpen, setBlurred }: Props) => {
+export const UnblurDialog = ({ open, setOpen, toggleShow }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -42,18 +41,7 @@ export const UnblurDialog = ({ open, setOpen, setBlurred }: Props) => {
             <Button variant="secondary">Cancel</Button>
           </DialogClose>
           <DialogClose asChild>
-            <Button
-              onClick={() => {
-                setBlurred(false);
-                setCookie("show_new_content", true, {
-                  domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                    ? "localhost"
-                    : "stardew.app",
-                });
-              }}
-            >
-              Show New Content
-            </Button>
+            <Button onClick={() => toggleShow()}>Show New Content</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

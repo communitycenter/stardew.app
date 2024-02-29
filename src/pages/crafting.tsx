@@ -1,14 +1,15 @@
 import Head from "next/head";
 
+import objects from "@/data/objects.json";
+import recipes from "@/data/crafting.json";
 import achievements from "@/data/achievements.json";
 import bigobjects from "@/data/big_craftables.json";
-import recipes from "@/data/crafting.json";
-import objects from "@/data/objects.json";
 
 import type { CraftingRecipe } from "@/types/recipe";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import {
   Accordion,
@@ -43,9 +44,10 @@ export default function Crafting() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+  const [showPrompt, setPromptOpen] = useState(false);
 
   const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   useEffect(() => {
     if (activePlayer) {
@@ -239,7 +241,8 @@ export default function Crafting() {
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}
-                    setShowNewContentOpen={setShowNewContentOpen}
+                    setPromptOpen={setPromptOpen}
+                    show={show}
                   />
                 ))}
             </div>
@@ -247,8 +250,9 @@ export default function Crafting() {
         </div>
         <RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
         <UnblurDialog
-          open={showNewContentOpen}
-          setOpen={setShowNewContentOpen}
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
         />
       </main>
     </>

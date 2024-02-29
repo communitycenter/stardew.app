@@ -6,8 +6,9 @@ import objects from "@/data/objects.json";
 
 import type { Recipe } from "@/types/recipe";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import {
   Accordion,
@@ -24,7 +25,7 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 
 const semverGte = require("semver/functions/gte");
 
-const reqs = {
+const reqs: Record<string, number> = {
   Cook: 10,
   "Sous Chef": 25,
   "Gourmet Chef": Object.keys(recipes).length, // 1.6 default
@@ -42,9 +43,10 @@ export default function Cooking() {
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const [showNewContentOpen, setShowNewContentOpen] = useState(false);
+  const [showPrompt, setPromptOpen] = useState(false);
 
   const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   useEffect(() => {
     if (activePlayer) {
@@ -63,10 +65,6 @@ export default function Cooking() {
       }
     }
   }, [activePlayer]);
-
-  // useEffect(() => {
-  //   console.log("gameVersion:", gameVersion);
-  // }, [gameVersion]);
 
   const cookedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
@@ -91,12 +89,10 @@ export default function Cooking() {
       return { completed, additionalDescription };
     }
 
-    completed = cookedCount >= reqs[name as keyof typeof reqs];
+    completed = cookedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${
-        reqs[name as keyof typeof reqs] - cookedCount
-      } more`;
+      additionalDescription = ` - ${reqs[name] - cookedCount} more`;
     }
     return { completed, additionalDescription };
   };
@@ -231,7 +227,8 @@ export default function Cooking() {
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}
-                    setShowNewContentOpen={setShowNewContentOpen}
+                    setPromptOpen={setPromptOpen}
+                    show={show}
                   />
                 ))}
             </div>
@@ -239,8 +236,9 @@ export default function Cooking() {
         </div>
         <RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
         <UnblurDialog
-          open={showNewContentOpen}
-          setOpen={setShowNewContentOpen}
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
         />
       </main>
     </>
