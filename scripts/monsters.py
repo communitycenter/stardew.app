@@ -17,6 +17,12 @@ def get_monster_goals() -> dict[str, MonsterGoal]:
 
     for quest in tqdm(QUESTS.values()):
         name = get_string(quest["DisplayName"])
+        reward = quest["RewardItemId"]
+
+        # hardcode rewards that aren't items
+        if name == "Magma Sprites":
+            reward = "Marlon's Phone Number"
+
         targets = []
 
         for monster in quest["Targets"]:
@@ -29,8 +35,7 @@ def get_monster_goals() -> dict[str, MonsterGoal]:
 
         output[name] = {
             "count": quest["Count"],
-            "name": name,
-            "reward": quest["RewardItemId"],
+            "reward": reward,
             "targets": targets,
         }
 

@@ -1,7 +1,6 @@
 {
   "Slimes": {
     "count": 1000,
-    "name": "Slimes",
     "reward": "(O)520",
     "targets": [
       "Slimes",
@@ -13,7 +12,6 @@
   },
   "Void Spirits": {
     "count": 150,
-    "name": "Void Spirits",
     "reward": "(O)523",
     "targets": [
       "Shadow Guy",
@@ -26,7 +24,6 @@
   },
   "Bats": {
     "count": 200,
-    "name": "Bats",
     "reward": "(O)522",
     "targets": [
       "Bat",
@@ -39,7 +36,6 @@
   },
   "Skeletons": {
     "count": 50,
-    "name": "Skeletons",
     "reward": "(H)8",
     "targets": [
       "Skeleton",
@@ -50,7 +46,6 @@
   },
   "Cave Insects": {
     "count": 100,
-    "name": "Cave Insects",
     "reward": "(W)13",
     "targets": [
       "Grub",
@@ -63,19 +58,16 @@
   },
   "Duggies": {
     "count": 30,
-    "name": "Duggies",
     "reward": "(H)27",
     "targets": ["Duggy", "Duggy (dangerous)", "Magma Duggy"]
   },
   "Dust Sprites": {
     "count": 500,
-    "name": "Dust Sprites",
     "reward": "(O)526",
     "targets": ["Dust Spirit", "Dust Spirit (dangerous)"]
   },
   "Rock Crabs": {
     "count": 60,
-    "name": "Rock Crabs",
     "reward": "(O)810",
     "targets": [
       "Rock Crab",
@@ -87,26 +79,18 @@
   },
   "Mummies": {
     "count": 100,
-    "name": "Mummies",
     "reward": "(H)60",
     "targets": ["Mummy", "Mummy (dangerous)"]
   },
-  "Pepper Rex": {
-    "count": 50,
-    "name": "Pepper Rex",
-    "reward": "(H)50",
-    "targets": ["Pepper Rex"]
-  },
+  "Pepper Rex": { "count": 50, "reward": "(H)50", "targets": ["Pepper Rex"] },
   "Serpents": {
     "count": 250,
-    "name": "Serpents",
     "reward": "(O)811",
     "targets": ["Serpent", "Royal Serpent"]
   },
   "Magma Sprites": {
     "count": 150,
-    "name": "Magma Sprites",
-    "reward": null,
+    "reward": "Marlon's Phone Number",
     "targets": ["Magma Sprite", "Magma Sparker"]
   }
 }

@@ -8,3 +8,9 @@ export interface Power {
   playerKey: PlayerKey;
   type: QueryCondition;
 }
+
+export interface MonsterGoal {
+  count: number;
+  reward: string;
+  targets: string[];
+}

@@ -1,3 +1,9 @@
+import type { MonsterGoal } from "@/types/data";
+
+import monstersData from "@/data/monsters.json";
+
+export const monsters = monstersData as Record<string, MonsterGoal>;
+
 function getMonstersKilled(specificMonstersKilled: any): Map<string, number> {
   /*
   Loop though player.stats.specificMonstersKilled and return a map of the monsters killed
@@ -49,88 +55,53 @@ export const parseMonsters = (player: any): MonstersRet => {
   */
 
   // deepestMineLevel goes past 120 in skull cavern
-  let deepestMineLevel = player.deepestMineLevel;
-  let deepestSkullCavernLevel = Math.max(129, deepestMineLevel) - 120;
-  deepestMineLevel = Math.min(120, deepestMineLevel);
+  try {
+    let deepestMineLevel = player.deepestMineLevel;
+    let deepestSkullCavernLevel = Math.max(129, deepestMineLevel) - 120;
+    deepestMineLevel = Math.min(120, deepestMineLevel);
 
-  let monstersKilled: Record<string, number> = {
-    Slimes: 0,
-    "Void Spirits": 0,
-    Bats: 0,
-    Skeletons: 0,
-    "Cave Insects": 0,
-    Duggies: 0,
-    "Dust Sprites": 0,
-    "Rock Crabs": 0,
-    Mummies: 0,
-    "Pepper Rex": 0,
-    Serpents: 0,
-    "Magma Sprites": 0,
-  };
+    const monstersKilled: Record<string, number> = {};
+    // initialize monstersKilled with 0 for each goal
+    Object.keys(monsters).forEach((key) => {
+      monstersKilled[key] = 0;
+    });
 
-  const stats = getMonstersKilled(player.stats.specificMonstersKilled);
-  // no monsters killed yet
-  if (stats.size === 0) {
+    const stats = getMonstersKilled(player.stats.specificMonstersKilled);
+    // no monsters killed yet
+    if (stats.size === 0) {
+      return {
+        deepestMineLevel,
+        deepestSkullCavernLevel,
+        monstersKilled,
+      };
+    }
+
+    // mimic game code to determine which category the monster belongs to
+    // Reference: StardewValley.AdventureGuild.cs::showMonsterKillList()
+    // loop through each key/value pair in monsters.json and look up the amount killed
+    for (const key in monsters) {
+      const goal = monsters[key];
+      let runningTotal = 0;
+
+      // go through each of the targets and look up the amount killed
+      for (const monster of goal.targets) {
+        // dangerous versions of monsters are added to the non-dangerous version
+        if (monster.endsWith(" (dangerous)")) continue;
+
+        const killed = stats.get(monster) ?? 0;
+        runningTotal += killed;
+      }
+      monstersKilled[key] = runningTotal;
+    }
+
     return {
       deepestMineLevel,
       deepestSkullCavernLevel,
       monstersKilled,
     };
+  } catch (e) {
+    if (e instanceof Error)
+      throw new Error(`Error in parseMonsters: ${e.message}`);
+    throw new Error(`Error in parseMonsters: ${e}`);
   }
-
-  // mimic game code to determine which category the monster belongs to
-  // Reference: StardewValley.AdventureGuild.cs::showMonsterKillList()
-  // new in 1.6, the categories and monsters are listed in Data/MonsterSlayerQuests.json
-  // TODO: automate this process by looping through the Data and their Targets
-  monstersKilled["Slimes"] = // slimesKilled
-    (stats.get("Green Slime") ?? 0) +
-    (stats.get("Frost Jelly") ?? 0) +
-    (stats.get("Sludge") ?? 0) +
-    (stats.get("Tiger Slime") ?? 0);
-
-  monstersKilled["Void Spirits"] = // shadowsKilled
-    (stats.get("Shadow Guy") ?? 0) +
-    (stats.get("Shadow Shaman") ?? 0) +
-    (stats.get("Shadow Brute") ?? 0) +
-    (stats.get("Shadow Sniper") ?? 0);
-
-  monstersKilled["Skeletons"] = // skeletonsKilled
-    (stats.get("Skeleton") ?? 0) + (stats.get("Skeleton Mage") ?? 0);
-
-  monstersKilled["Rock Crabs"] = // crabsKilled
-    (stats.get("Rock Crab") ?? 0) +
-    (stats.get("Lava Crab") ?? 0) +
-    (stats.get("Iridium Crab") ?? 0);
-
-  monstersKilled["Cave Insects"] = // caveInsectsKilled
-    (stats.get("Grub") ?? 0) +
-    (stats.get("Fly") ?? 0) +
-    (stats.get("Bug") ?? 0);
-
-  monstersKilled["Bats"] = // batsKilled
-    (stats.get("Bat") ?? 0) +
-    (stats.get("Frost Bat") ?? 0) +
-    (stats.get("Lava Bat") ?? 0) +
-    (stats.get("Iridium Bat") ?? 0);
-
-  monstersKilled["Duggies"] = // duggyKilled
-    (stats.get("Duggy") ?? 0) + (stats.get("Magma Duggy") ?? 0);
-
-  monstersKilled["Dust Sprites"] = stats.get("Dust Spirit") ?? 0; // dustSpiritKilled
-
-  monstersKilled["Mummies"] = stats.get("Mummy") ?? 0; // mummiesKilled
-
-  monstersKilled["Pepper Rex"] = stats.get("Pepper Rex") ?? 0; // dinosKilled
-
-  monstersKilled["Serpents"] = // serpentsKilled
-    (stats.get("Serpent") ?? 0) + (stats.get("Royal Serpent") ?? 0);
-
-  monstersKilled["Magma Sprites"] = // flameSpiritsKilled
-    (stats.get("Magma Sprite") ?? 0) + (stats.get("Magma Sparker") ?? 0);
-
-  return {
-    deepestMineLevel,
-    deepestSkullCavernLevel,
-    monstersKilled,
-  };
 };
