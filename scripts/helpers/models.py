@@ -96,6 +96,13 @@ class Power(TypedDict):
     type: Literal["mail", "event", "stat"]
 
 
+class MonsterGoal(TypedDict):
+    count: int
+    name: str
+    reward: Optional[str]
+    targets: list[str]
+
+
 # ---------------------------------------------------------------------------- #
 #                                 Data/Objects                                 #
 # ---------------------------------------------------------------------------- #
@@ -576,3 +583,19 @@ class ContentPowerModel(TypedDict):
     TexturePath: str
     TexturePosition: dict[str, int]
     UnlockedCondition: str
+
+
+# ---------------------------------------------------------------------------- #
+#                                   monsters                                   #
+# ---------------------------------------------------------------------------- #
+class ContentMonsterGoalModel(TypedDict):
+    DisplayName: str
+    Targets: list[str]
+    Count: int
+    RewardItemId: Optional[str]  # qualified item ID
+    RewardItemPrice: int  # default -1
+    RewardDialogue: Optional[str]
+    RewardDialogueFlag: Optional[str]
+    RewardFlag: Optional[str]
+    RewardFlagAll: Optional[str]
+    CustomFields: None

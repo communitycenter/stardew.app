@@ -16,6 +16,9 @@ def load_content(file_name: str, version: Literal["1.6 alpha"] = None) -> dict:
     Returns:
         dict: The json file as a dictionary
     """
+    if not file_name.endswith(".json"):
+        file_name += ".json"
+
     if not version:
         # as of now is the new content 1.6 beta
         content_path = os.path.join(
@@ -62,19 +65,25 @@ def load_strings(file_name: str) -> dict[str, str]:
     Returns:
         dict: The json file as a dictionary
     """
-    strings_path = os.path.join(
-        os.path.dirname(__file__), "..", "content", "Strings", file_name
-    )
+
+    if not file_name.endswith(".json"):
+        file_name += ".json"
 
     if file_name in strings_cache:
         return strings_cache[file_name]
+
+    strings_path = os.path.join(
+        os.path.dirname(__file__), "..", "content", "Strings", file_name
+    )
 
     with open(strings_path, "r") as f:
         strings_cache[file_name] = json.load(f)
         return strings_cache[file_name]
 
 
-def save_json(data: dict[str, Any], file_name: str, sort: bool = True) -> None:
+def save_json(
+    data: dict[str, Any], file_name: str, sort: bool = True, minify: bool = False
+) -> None:
     """Saves a dictionary to a json file in the data directory
 
     Args:
@@ -86,9 +95,14 @@ def save_json(data: dict[str, Any], file_name: str, sort: bool = True) -> None:
     output_path = os.path.join(data_dir, file_name)
 
     if not sort:
-        with open(output_path, "w") as f:
-            json.dump(data, f, indent=2, sort_keys=False)
-        return
+        if not minify:
+            with open(output_path, "w") as f:
+                json.dump(data, f, indent=2, sort_keys=False)
+            return
+        else:
+            with open(output_path, "w") as f:
+                json.dump(data, f, separators=(",", ":"), sort_keys=False)
+            return
 
     # we'll split the keys into numeric and non-numeric keys and sort them separately
     numeric_keys = [key for key in data.keys() if key.startswith("-") or key.isdigit()]
@@ -102,14 +116,22 @@ def save_json(data: dict[str, Any], file_name: str, sort: bool = True) -> None:
 
     # combine the sorted keys
     sorted_keys = numeric_keys + non_numeric_keys
-    with open(output_path, "w") as f:
-        json.dump(
-            {key: data[key] for key in sorted_keys},
-            f,
-            indent=None,
-            sort_keys=False,
-            separators=(",", ":"),
-        )
+    if minify:
+        with open(output_path, "w") as f:
+            json.dump(
+                {key: data[key] for key in sorted_keys},
+                f,
+                sort_keys=False,
+                separators=(",", ":"),
+            )
+    else:
+        with open(output_path, "w") as f:
+            json.dump(
+                {key: data[key] for key in sorted_keys},
+                f,
+                indent=2,
+                sort_keys=False,
+            )
 
 
 def GetCategoryDisplayName(
@@ -232,7 +254,11 @@ def get_string(tokenized_str: str) -> Optional[str]:
         return None
 
     # Tokenized strings are in the format: [LocalizedText Strings\<File>:<key>]
-    file_name = tokenized_str.split(":")[0].split("\\")[1]
+    # although apparently sometimes, they look like: [LocalizedText Strings\\<File>:<key>]
+    if tokenized_str.count("\\") == 2:
+        file_name = tokenized_str.split(":")[0].split("\\\\")[1]
+    elif tokenized_str.count("\\") == 1:
+        file_name = tokenized_str.split(":")[0].split("\\")[1]
     key = tokenized_str.split(":")[1][:-1]
 
     Strings = load_strings(file_name + ".json")
@@ -319,3 +345,18 @@ def isPotentialBasicShipped(
                     if OBJECTS.get(itemId).get("ExcludeFromShippingCollection"):
                         return False
                     return True
+
+
+def has_dangerous_variant(name: str) -> bool:
+    """Returns true if the monster has a dangerous variant.
+
+    Args:
+        name (str): The name of the monster.
+
+    Returns:
+        bool: True if the monster has a dangerous variant.
+    """
+    monsters_path = os.path.join(os.path.dirname(__file__), "..", "content", "Monsters")
+
+    if os.path.exists(os.path.join(monsters_path, f"{name}_dangerous.png")):
+        return True
