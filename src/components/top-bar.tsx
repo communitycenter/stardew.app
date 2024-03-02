@@ -113,13 +113,13 @@ export function Topbar() {
   };
 
   useEffect(() => {
-    // const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
+    const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
 
-    // if (hasSeenChangelog) {
-    //   return;
-    // }
+    if (hasSeenChangelog) {
+      return;
+    }
 
-    // if (!seeChangelog) return;
+    if (!seeChangelog) return;
 
     switch (seeChangelog) {
       case "control":
