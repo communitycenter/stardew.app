@@ -9,14 +9,12 @@ class Object(TypedDict):
     name: str
     description: str
     category: str
-    iconURL: Optional[str]
     minVersion: str
 
 
 class BigObject(TypedDict):
     name: str
     description: str
-    iconURL: Optional[str]
     minVersion: str
 
 
