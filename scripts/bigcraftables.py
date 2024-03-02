@@ -1,7 +1,7 @@
 # Purpose: Processing big craftables information since it is separate from objects
 #          from Content/BigCraftables and scraping image URLs from the wiki
 # Result is saved to data/big_craftables.json
-# { itemID: { name, description, iconURL, minVersion } }
+# { itemID: { name, description, minVersion } }
 #
 # Content Files used: BigCraftables.json, Strings/BigCraftables.json, Strings/1_6_Strings.json, CraftingRecipes.json
 # Wiki Pages used: None
@@ -59,15 +59,15 @@ def get_bigcraftables() -> dict[str, BigObject]:
         page = requests.get(wiki_url)
         soup = BeautifulSoup(page.text, "html.parser")
 
-        if minVersion == "1.5.0":
-            iconURL = soup.find("div", {"class": "fullImageLink"}).find("img")["src"]
-            iconURL = f"https://stardewvalleywiki.com{iconURL}"
-        else:
-            iconURL = None
+        # if minVersion == "1.5.0":
+        #     iconURL = soup.find("div", {"class": "fullImageLink"}).find("img")["src"]
+        #     iconURL = f"https://stardewvalleywiki.com{iconURL}"
+        # else:
+        #     iconURL = None
 
         output[itemID] = {
             "description": description,
-            "iconURL": iconURL,
+            # "iconURL": iconURL,
             "minVersion": minVersion,
             "name": name,
         }
