@@ -287,6 +287,8 @@ export function Topbar() {
         open={mobileOpen}
         setIsOpen={setMobileOpen}
         setDeletionOpen={setDeletionOpen}
+        setFeedbackOpen={setFeedbackOpen}
+        setCreditsOpen={setCreditsOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
