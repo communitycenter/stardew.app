@@ -22,6 +22,15 @@ def get_powers() -> dict[str, Power]:
     output: dict[str, Power] = {}
 
     for id, power in tqdm(POWERS.items()):
+
+        # in the future we can just adjust these to add new versions
+        if power["TexturePath"].endswith("Cursors_1_6") or power[
+            "TexturePath"
+        ].endswith("Objects_2"):
+            minVersion = "1.6.0"
+        else:
+            minVersion = "1.5.0"
+
         name = get_string(power["DisplayName"])
         description = get_string(power["Description"])
 
@@ -46,6 +55,7 @@ def get_powers() -> dict[str, Power]:
         output[id] = {
             "description": description,
             "flag": flag,
+            "minVersion": minVersion,
             "name": name,
             "playerKey": playerKey,
             "type": type,

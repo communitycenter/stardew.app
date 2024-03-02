@@ -89,6 +89,7 @@ class Villager(TypedDict):
 class Power(TypedDict):
     description: str
     flag: str
+    minVersion: str
     name: str
     playerKey: Literal["Any", "All", "Current", "Target", "Host"]
     type: Literal["mail", "event", "stat"]
