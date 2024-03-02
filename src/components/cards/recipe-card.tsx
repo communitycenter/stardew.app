@@ -1,23 +1,23 @@
 import Image from "next/image";
 
-import objects from "@/data/objects.json";
 import bigCraftables from "@/data/big_craftables.json";
+import objects from "@/data/objects.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useMixpanel } from "@/contexts/mixpanel-context";
+import { usePlayers } from "@/contexts/players-context";
 
+import { NewItemBadge } from "@/components/new-item-badge";
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
-  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
-import { NewItemBadge } from "@/components/new-item-badge";
 
 import { IconChevronRight } from "@tabler/icons-react";
 
@@ -80,12 +80,10 @@ export const RecipeCard = <T extends Recipe>({
     return "isBigCraftable" in recipe;
   }
 
-  const iconURL = isCraftingRecipe(recipe)
-    ? recipe.isBigCraftable
-      ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
-          .iconURL
-      : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
-    : objects[recipe.itemID.toString() as keyof typeof objects].iconURL;
+  const iconURL =
+    isCraftingRecipe(recipe) && recipe.isBigCraftable
+      ? `https://cdn.stardew.app/images/(BC)${recipe.itemID}.webp`
+      : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`;
 
   const name = isCraftingRecipe(recipe)
     ? recipe.isBigCraftable
@@ -132,7 +130,7 @@ export const RecipeCard = <T extends Recipe>({
             setIsOpen(true);
           }}
         >
-          {recipe.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
+          {recipe.minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
@@ -140,10 +138,7 @@ export const RecipeCard = <T extends Recipe>({
             )}
           >
             <Image
-              src={
-                iconURL ??
-                "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
-              }
+              src={iconURL}
               alt={name}
               className="rounded-sm"
               width={

@@ -299,8 +299,9 @@ export const RecipeSheet = <T extends Recipe>({
                         <div className="flex items-center space-x-2">
                           <Image
                             src={
-                              item.iconURL ??
-                              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                              isBC
+                                ? `https://cdn.stardew.app/images/(BC)${ingredient.itemID}.webp`
+                                : `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
                             }
                             alt={item.name}
                             width={32}
@@ -473,10 +474,7 @@ export const RecipeSheet = <T extends Recipe>({
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={
-                              item.iconURL ??
-                              "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
-                            }
+                            src={`https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`}
                             alt={item.name}
                             width={32}
                             height={32}
