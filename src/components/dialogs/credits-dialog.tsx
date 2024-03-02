@@ -118,13 +118,13 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
               <div className="mr-1">
                 <h1 className="text-md font-bold">Clemente Solorio</h1>
                 <div className="flex">
-                  <Link href="https://jack.bio">
+                  <Link href="https://www.solorio.dev/">
                     <IconLink className="w-5" />
                   </Link>
-                  <Link href="https://jack.link/linkedin">
+                  <Link href="https://linkedin.com/in/clementesolorio">
                     <IconBrandLinkedin className="w-5" />
                   </Link>
-                  <Link href="https://jack.link/github">
+                  <Link href="https://github.com/clxmente">
                     <IconBrandGithub className="w-5" />
                   </Link>
                 </div>
