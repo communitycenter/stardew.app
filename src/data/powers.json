@@ -4,7 +4,6 @@
     "flag": "canReadJunimoText",
     "name": "Forest Magic",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "DwarvishTranslationGuide": {
@@ -12,7 +11,6 @@
     "flag": "HasDwarvishTranslationGuide",
     "name": "Dwarvish Translation Guide",
     "playerKey": "Host",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "RustyKey": {
@@ -20,7 +18,6 @@
     "flag": "HasRustyKey",
     "name": "Rusty Key",
     "playerKey": "Host",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "ClubCard": {
@@ -28,7 +25,6 @@
     "flag": "HasClubCard",
     "name": "Club Card",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "SpecialCharm": {
@@ -36,7 +32,6 @@
     "flag": "HasSpecialCharm",
     "name": "Special Charm",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "SkullKey": {
@@ -44,7 +39,6 @@
     "flag": "HasSkullKey",
     "name": "Skull Key",
     "playerKey": "Host",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "MagnifyingGlass": {
@@ -52,7 +46,6 @@
     "flag": "HasMagnifyingGlass",
     "name": "Magnifying Glass",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "DarkTalisman": {
@@ -60,7 +53,6 @@
     "flag": "HasDarkTalisman",
     "name": "Dark Talisman",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "MagicInk": {
@@ -68,7 +60,6 @@
     "flag": "HasMagicInk",
     "name": "Magic Ink",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "BearPaw": {
@@ -76,7 +67,6 @@
     "flag": "2120303",
     "name": "Bear's Knowledge",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "event"
   },
   "SpringOnionMastery": {
@@ -84,7 +74,6 @@
     "flag": "3910979",
     "name": "Spring Onion Mastery",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "event"
   },
   "KeyToTheTown": {
@@ -92,7 +81,6 @@
     "flag": "HasTownKey",
     "name": "Key To The Town",
     "playerKey": "Current",
-    "minVersion": "1.5.0",
     "type": "mail"
   },
   "Book_PriceCatalogue": {
@@ -100,7 +88,6 @@
     "flag": "Book_PriceCatalogue",
     "name": "Price Catalogue",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Marlon": {
@@ -108,7 +95,6 @@
     "flag": "Book_Marlon",
     "name": "Mapping Cave Systems",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Speed": {
@@ -116,14 +102,12 @@
     "flag": "Book_Speed",
     "name": "Way Of The Wind pt. 1",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Speed2": {
     "description": "You run a little bit faster.",
     "flag": "Book_Speed2",
     "name": "Way Of The Wind pt. 2",
-    "minVersion": "1.6.0",
     "playerKey": "Current",
     "type": "stat"
   },
@@ -131,7 +115,6 @@
     "description": "Monsters have a small chance to drop double loot.",
     "flag": "Book_Void",
     "name": "Monster Compendium",
-    "minVersion": "1.6.0",
     "playerKey": "Current",
     "type": "stat"
   },
@@ -140,7 +123,6 @@
     "flag": "Book_Friendship",
     "name": "Friendship 101",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Defense": {
@@ -148,7 +130,6 @@
     "flag": "Book_Defense",
     "name": "Jack Be Nimble, Jack Be Thick",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Woodcutting": {
@@ -156,7 +137,6 @@
     "flag": "Book_Woodcutting",
     "name": "Woody's Secret",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_WildSeeds": {
@@ -164,7 +144,6 @@
     "flag": "Book_WildSeeds",
     "name": "Raccoon Journal",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Roe": {
@@ -172,7 +151,6 @@
     "flag": "Book_Roe",
     "name": "Jewels Of The Sea",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Bombs": {
@@ -180,7 +158,6 @@
     "flag": "Book_Bombs",
     "name": "Dwarvish Safety Manual",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Crabbing": {
@@ -188,7 +165,6 @@
     "flag": "Book_Crabbing",
     "name": "The Art O' Crabbing",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Trash": {
@@ -196,7 +172,6 @@
     "flag": "Book_Trash",
     "name": "The Alleyway Buffet",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Diamonds": {
@@ -204,7 +179,6 @@
     "flag": "Book_Diamonds",
     "name": "The Diamond Hunter",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Mystery": {
@@ -212,7 +186,6 @@
     "flag": "Book_Mystery",
     "name": "Book of Mysteries",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Horse": {
@@ -220,7 +193,6 @@
     "flag": "Book_Horse",
     "name": "Horse: The Book",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Artifact": {
@@ -228,7 +200,6 @@
     "flag": "Book_Artifact",
     "name": "Treasure Appraisal Guide",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_Grass": {
@@ -236,7 +207,6 @@
     "flag": "Book_Grass",
     "name": "Ol' Slitherlegs",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Book_AnimalCatalogue": {
@@ -244,7 +214,6 @@
     "flag": "Book_AnimalCatalogue",
     "name": "Animal Catalogue",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Mastery_Farming": {
@@ -252,7 +221,6 @@
     "flag": "mastery_0",
     "name": "Farming Mastery",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Mastery_Fishing": {
@@ -260,7 +228,6 @@
     "flag": "mastery_1",
     "name": "Fishing Mastery",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Mastery_Foraging": {
@@ -268,7 +235,6 @@
     "flag": "mastery_2",
     "name": "Foraging Mastery",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Mastery_Mining": {
@@ -276,7 +242,6 @@
     "flag": "mastery_3",
     "name": "Mining Mastery",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   },
   "Mastery_Combat": {
@@ -284,7 +249,6 @@
     "flag": "mastery_4",
     "name": "Combat Mastery",
     "playerKey": "Current",
-    "minVersion": "1.6.0",
     "type": "stat"
   }
 }
