@@ -7,7 +7,7 @@ import Image from "next/image";
 
 import { PlayersContext } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
-import { useContext, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,12 +17,12 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
+import { NewItemBadge } from "../new-item-badge";
 
 interface Props {
   title: string;
@@ -30,7 +30,22 @@ interface Props {
   iconURL: string;
   completed?: boolean;
   _id: string;
-  _type: "stardrop" | "note" | "scrap" | "walnut";
+  _type: "stardrop" | "note" | "scrap" | "walnut" | "power";
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DialogCard = ({
@@ -40,9 +55,17 @@ export const DialogCard = ({
   completed,
   _id,
   _type,
+  show,
+  setPromptOpen,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
   const [open, setOpen] = useState(false);
+  let minVersion = "1.5.4";
+
+  // if (_type === "power") {
+  //   // minVersion = powers[_id as keyof typeof powers].minVersion;
+  //   minVersion = "1.6.0";
+  // }
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -110,20 +133,31 @@ export const DialogCard = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
+      <div
+        className={cn(
+          "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+          checkedClass,
+        )}
+        onClick={() => {
+          if (minVersion === "1.6.0" && !show) {
+            setPromptOpen?.(true);
+            return;
+          }
+          setOpen(true);
+        }}
+      >
+        <NewItemBadge>✨ 1.6</NewItemBadge>
         <div
           className={cn(
-            "flex items-center justify-between rounded-lg border px-5 py-4 shadow-sm hover:cursor-pointer",
-            checkedClass,
+            "flex items-center space-x-3 truncate text-left",
+            minVersion === "1.6.0" && !show && !completed && "blur-sm",
           )}
         >
-          <div className="flex items-center space-x-3">
-            <Image src={iconURL} alt={title} width={32} height={32} />
-            <p>{title}</p>
-          </div>
-          <ChevronRightIcon className="h-5 w-5" />
+          <Image src={iconURL} alt={title} width={32} height={32} />
+          <p>{title}</p>
         </div>
-      </DialogTrigger>
+        <ChevronRightIcon className="h-5 w-5" />
+      </div>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

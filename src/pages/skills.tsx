@@ -3,6 +3,7 @@ import Head from "next/head";
 import { usePlayers } from "@/contexts/players-context";
 
 import achievements from "@/data/achievements.json";
+import powers from "@/data/powers.json";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { InfoCard } from "@/components/cards/info-card";
@@ -14,6 +15,8 @@ import {
 } from "@/components/ui/accordion";
 import { Inter } from "next/font/google";
 
+import { DialogCard } from "@/components/cards/dialog-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { Progress } from "@/components/ui/progress";
 import {
   Tooltip,
@@ -21,7 +24,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useMemo } from "react";
+import { usePreferences } from "@/contexts/preferences-context";
+import { useMemo, useState } from "react";
 
 const reqs: Record<string, number> = {
   "Singular Talent": 1, // platform specific
@@ -32,6 +36,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function SkillsMasteryPowers() {
   const { activePlayer } = usePlayers();
+
+  // unblur dialog
+  const [showPrompt, setPromptOpen] = useState(false);
+  const { show, toggleShow } = usePreferences();
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
@@ -60,24 +68,6 @@ export default function SkillsMasteryPowers() {
 
     return { completed, additionalDescription };
   };
-
-  const playerLevel = useMemo(() => {
-    // formula for player level is
-    // (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
-    let playerLevel = 0;
-    if (activePlayer) {
-      // luck is unused as of 1.5
-      if (activePlayer.general?.skills) {
-        const { farming, fishing, foraging, mining, combat } =
-          activePlayer.general.skills;
-
-        playerLevel = Math.floor(
-          (farming + fishing + foraging + mining + combat) / 2,
-        );
-      }
-    }
-    return playerLevel;
-  }, [activePlayer]);
 
   const maxLevelCount = useMemo(() => {
     // count how many skills the player has at level 10 (max)
@@ -147,7 +137,7 @@ export default function SkillsMasteryPowers() {
         <title>stardew.app | Secret Notes</title>
         <meta
           name="title"
-          content="Stardew Valley Secret Notes Locations | stardew.app"
+          content="Stardew Valley Skills & Mastery | stardew.app"
         />
         <meta
           name="description"
@@ -353,8 +343,109 @@ export default function SkillsMasteryPowers() {
               </AccordionItem>
             </section>
           </Accordion>
+          {/* Skill Achievements */}
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+                  Special Items
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-3 xl:grid-cols-4">
+                      {Object.entries(powers)
+                        .filter(
+                          ([key, power]) =>
+                            !key.includes("Book_") && !key.includes("Mastery_"),
+                        )
+                        .map(([key, power]) => {
+                          return (
+                            <DialogCard
+                              _type="power"
+                              _id={power.flag}
+                              key={key}
+                              title={power.name}
+                              description={power.description ?? "???"}
+                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                              show={show}
+                            />
+                          );
+                        })}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
+          {/* Skill Achievements */}
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1" className="relative z-10">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+                  Powers
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-3 xl:grid-cols-4">
+                      {Object.entries(powers)
+                        .filter(([key, power]) => key.includes("Book_"))
+                        .map(([key, power]) => {
+                          return (
+                            <DialogCard
+                              _type="power"
+                              _id={power.flag}
+                              key={key}
+                              title={power.name}
+                              description={power.description ?? "???"}
+                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                              show={show}
+                            />
+                          );
+                        })}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
+          {/* Skill Achievements */}
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
+            <section className="space-y-3">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+                  Mastery
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
+                      {Object.entries(powers)
+                        .filter(([key, power]) => key.includes("Mastery_"))
+                        .map(([key, power]) => {
+                          return (
+                            <DialogCard
+                              _type="power"
+                              _id={power.flag}
+                              key={key}
+                              title={power.name}
+                              description={power.description ?? "???"}
+                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                              show={show}
+                            />
+                          );
+                        })}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </section>
+          </Accordion>
         </div>
       </main>
+      <UnblurDialog
+        open={showPrompt}
+        setOpen={setPromptOpen}
+        toggleShow={toggleShow}
+      />
     </>
   );
 }
