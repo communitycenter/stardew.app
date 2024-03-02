@@ -125,7 +125,7 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
             }
           }}
         >
-          {item.minVersion === "1.6.0" && <NewItemBadge>✨1.6</NewItemBadge>}
+          {item.minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
