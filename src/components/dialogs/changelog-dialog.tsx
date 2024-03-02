@@ -55,7 +55,10 @@ export const ChangelogDialog = ({ open, setOpen }: Props) => {
               <li>
                 <strong>Improvements</strong>
                 <ul>
-                  <li>- Ability to sort villagers by amount of hearts</li>
+                  <li>
+                    - Ability to sort villagers by amount of hearts (thanks
+                    @babbiey!)
+                  </li>
                   <li>- Feedback button in account dropdown</li>
                   <li>- New mobile navigation layout</li>
                 </ul>
