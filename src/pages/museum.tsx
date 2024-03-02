@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterButton } from "@/components/filter-btn";
 import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import {
@@ -17,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
@@ -34,6 +36,10 @@ export default function Museum() {
   >(new Set());
 
   const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
+
+  // unblur dialog
+  const [showPrompt, setPromptOpen] = useState(false);
 
   useEffect(() => {
     if (activePlayer && activePlayer.museum) {
@@ -96,9 +102,9 @@ export default function Museum() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Museum Tracker
           </h1>
@@ -106,11 +112,11 @@ export default function Museum() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {Object.values(achievements)
                       .filter((a) => a.description.includes("museum"))
                       .map((achievement) => {
@@ -135,7 +141,7 @@ export default function Museum() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   All Artifacts
                 </AccordionTrigger>
                 <AccordionContent>
@@ -171,6 +177,7 @@ export default function Museum() {
                             setIsOpen={setIsOpen}
                             setObject={setMuseumArtifact}
                             type="artifact"
+                            show={show}
                           />
                         ))}
                     </div>
@@ -215,6 +222,7 @@ export default function Museum() {
                     setIsOpen={setIsOpen}
                     setObject={setMuseumArtifact}
                     type="mineral"
+                    show={show}
                   />
                 ))}
             </div>
@@ -224,6 +232,11 @@ export default function Museum() {
           open={open}
           setIsOpen={setIsOpen}
           trinket={museumArtifact}
+        />
+        <UnblurDialog
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
         />
       </main>
     </>
