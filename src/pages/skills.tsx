@@ -378,15 +378,9 @@ export default function SkillsMasteryPowers() {
             </section>
           </Accordion>
           {/* Skill Achievements */}
-          <Accordion
-            type="single"
-            collapsible
-            defaultValue="item-1"
-            asChild
-            className="relative -z-10"
-          >
+          <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
-              <AccordionItem value="item-1">
+              <AccordionItem value="item-1" className="relative z-10">
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Powers
                 </AccordionTrigger>
