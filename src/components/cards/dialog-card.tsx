@@ -1,6 +1,8 @@
 import type { WalnutType } from "@/types/items";
 
+import powers from "@/data/powers.json";
 import walnut_data from "@/data/walnuts.json";
+
 const walnutData = walnut_data as { [key: string]: WalnutType };
 
 import Image from "next/image";
@@ -60,12 +62,10 @@ export const DialogCard = ({
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
   const [open, setOpen] = useState(false);
-  let minVersion = "1.5.4";
 
-  // if (_type === "power") {
-  //   // minVersion = powers[_id as keyof typeof powers].minVersion;
-  //   minVersion = "1.6.0";
-  // }
+  const minVersion =
+    Object.entries(powers).find(([key, value]) => value.flag === _id)?.[1]
+      .minVersion ?? "1.5.4";
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -146,7 +146,7 @@ export const DialogCard = ({
           setOpen(true);
         }}
       >
-        <NewItemBadge>✨ 1.6</NewItemBadge>
+        {minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
         <div
           className={cn(
             "flex items-center space-x-3 truncate text-left",
