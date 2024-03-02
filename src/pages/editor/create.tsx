@@ -56,7 +56,7 @@ const formSchema = v.object({
   gameVersion: v.string(),
   questsCompleted: v.coerce(
     v.number([v.toMinValue(0), v.toMaxValue(1000)]),
-    Number
+    Number,
   ),
   farmName: v.string([
     v.minLength(1),
@@ -67,39 +67,54 @@ const formSchema = v.object({
   totalMoneyEarned: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   fishCaught: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   numObelisks: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number),
   ),
   goldenClock: v.optional(v.boolean()),
   childrenCount: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number),
   ),
   houseUpgradeLevel: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number),
   ),
   farming: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   fishing: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   foraging: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   mining: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   combat: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
 });
 
@@ -182,12 +197,11 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 px-0 md:px-8 md:items-center justify-center`}
+        className={`flex min-h-[calc(100vh-65px)] justify-center border-neutral-200 px-0 dark:border-neutral-800 md:items-center md:border-l md:px-8`}
       >
         <div className="mx-auto max-w-xl space-y-4">
           <Card className="border-0 md:border">
             <CardHeader>
-              {/* TODO: check based on if the players array is populated? But then would we only allow CREATION of 1 farmhand? */}
               <CardTitle>Create Farmhand</CardTitle>
               <CardDescription>
                 Set your farmhand&apos;s important metadata. This will be used
@@ -207,7 +221,7 @@ export default function Editor() {
                 >
                   {/* General Section */}
                   {/* Name & Quests */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                  <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="name"
@@ -262,7 +276,7 @@ export default function Editor() {
                     />
                   </div>
                   {/* Farm Name & Type */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="farmName"
@@ -330,7 +344,7 @@ export default function Editor() {
                   {isExpanded && (
                     <>
                       {/* Money Earned & Fish Caught */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <FormField
                           control={form.control}
                           name="totalMoneyEarned"
@@ -415,7 +429,7 @@ export default function Editor() {
                                 Golden Clock
                               </FormLabel>
                               <FormControl>
-                                <div className="flex space-x-2 items-center">
+                                <div className="flex items-center space-x-2">
                                   <Switch
                                     checked={field.value}
                                     onCheckedChange={field.onChange}
@@ -663,9 +677,9 @@ export default function Editor() {
                     onClick={() => setIsExpanded((p) => !p)}
                   >
                     {isExpanded ? (
-                      <ChevronUpIcon className="w-5 h-5" />
+                      <ChevronUpIcon className="h-5 w-5" />
                     ) : (
-                      <ChevronDownIcon className="w-5 h-5" />
+                      <ChevronDownIcon className="h-5 w-5" />
                     )}
                   </Button>
                   <Button variant="default" type="submit">

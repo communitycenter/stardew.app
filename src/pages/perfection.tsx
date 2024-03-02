@@ -1,10 +1,11 @@
 import Head from "next/head";
 
-import cookingRecipes from "@/data/cooking.json";
-import craftingRecipes from "@/data/crafting.json";
 import fish from "@/data/fish.json";
-import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
+import cookingRecipes from "@/data/cooking.json";
+import shippingItems from "@/data/shipping.json";
+import { monsters } from "@/lib/parsers/monsters";
+import craftingRecipes from "@/data/crafting.json";
 
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
@@ -27,64 +28,6 @@ import { PercentageIndicator } from "@/components/percentage";
 import { PerfectionCard } from "@/components/cards/perfection-card";
 
 const semverGte = require("semver/functions/gte");
-
-const monsterGoals: Record<string, any> = {
-  Slimes: {
-    goal: 1000,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/7/7b/Green_Slime.png",
-  },
-  "Void Spirits": {
-    goal: 150,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/1/11/Shadow_Shaman.png",
-  },
-  Bats: {
-    goal: 200,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/d/d5/Iridium_Bat.png",
-  },
-  Skeletons: {
-    goal: 50,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/2/23/Skeleton.png",
-  },
-  "Cave Insects": {
-    goal: 125,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/7d/Bug.png",
-  },
-  Duggies: {
-    goal: 30,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/3/3a/Duggy.png",
-  },
-  "Dust Sprites": {
-    goal: 500,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/9/9a/Dust_Sprite.png",
-  },
-  "Rock Crabs": {
-    goal: 60,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/d/d4/Rock_Crab.png",
-  },
-  Mummies: {
-    goal: 100,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/70/Mummy.png",
-  },
-  "Pepper Rex": {
-    goal: 50,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/6/67/Pepper_Rex.png",
-  },
-  Serpents: {
-    goal: 250,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/8/89/Serpent.png",
-  },
-  "Magma Sprites": {
-    goal: 150,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/f/f2/Magma_Sprite.png",
-  },
-};
 
 export default function Perfection() {
   const { activePlayer } = usePlayers();
@@ -214,7 +157,7 @@ export default function Perfection() {
     const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
 
     for (const monster of Object.keys(monstersKilled)) {
-      if (monstersKilled[monster] >= monsterGoals[monster].goal) {
+      if (monstersKilled[monster] >= monsters[monster].count) {
         count++;
       }
     }
@@ -252,20 +195,42 @@ export default function Perfection() {
     if (!activePlayer) return 0;
 
     let num = 0;
+    let total = 0;
 
     num += getFarmerItemsShippedPercent * 15; // 15% of the total
-    num += activePlayer.perfection?.numObelisks ?? 0;
-    num += activePlayer.perfection?.goldenClock ? 10 : 0;
-    num += slayerQuestsCompleted >= 12 ? 10 : 0;
-    num += getMaxedFriendshipPercent * 11; // 11% of the total
-    num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
-    num += (activePlayer.general?.stardrops?.length ?? 0) >= 7 ? 10 : 0;
-    num += getCookedRecipesPercent * 10; // 10% of the total
-    num += getCraftedRecipesPercent * 10; // 10% of the total
-    num += getFishCaughtPercent * 10; // 10% of the total
-    num += (getWalnutsFound / 130) * 5;
+    total += 15;
 
-    return num / 100;
+    num += activePlayer.perfection?.numObelisks ?? 0;
+    total += 4;
+
+    num += activePlayer.perfection?.goldenClock ? 10 : 0;
+    total += 10;
+
+    num += slayerQuestsCompleted >= Object.keys(monsters).length ? 10 : 0;
+    total += 10;
+
+    num += getMaxedFriendshipPercent * 11; // 11% of the total
+    total += 11;
+
+    num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
+    total += 5;
+
+    num += (activePlayer.general?.stardrops?.length ?? 0) >= 7 ? 10 : 0;
+    total += 10;
+
+    num += getCookedRecipesPercent * 10; // 10% of the total
+    total += 10;
+
+    num += getCraftedRecipesPercent * 10; // 10% of the total
+    total += 10;
+
+    num += getFishCaughtPercent * 10; // 10% of the total
+    total += 10;
+
+    num += (getWalnutsFound / 130) * 5;
+    total += 5;
+
+    return num / total;
   }, [
     activePlayer,
     getFarmerItemsShippedPercent,
@@ -455,16 +420,17 @@ export default function Perfection() {
               Monster Slayer Goals
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.keys(monsterGoals).map((monster) => (
+              {Object.keys(monsters).map((group) => (
                 <InputCard
-                  key={monster}
-                  title={monster}
-                  iconURL={monsterGoals[monster].iconURL}
-                  currentValue={
-                    activePlayer?.monsters?.monstersKilled?.[monster]
+                  key={group}
+                  title={group}
+                  currentValue={activePlayer?.monsters?.monstersKilled?.[group]}
+                  completed={
+                    (activePlayer?.monsters?.monstersKilled?.[group] ?? 0) >=
+                    monsters[group].count
                   }
-                  maxValue={monsterGoals[monster].goal}
-                  description="You can find this number in the Adventurer's Guild."
+                  targets={monsters[group].targets}
+                  maxValue={monsters[group].count}
                 />
               ))}
             </div>
