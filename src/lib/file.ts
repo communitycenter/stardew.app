@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { XMLParser } from "fast-xml-parser";
 
 import {
@@ -12,11 +13,10 @@ import {
   parseShipping,
   parseSocial,
 } from "@/lib/parsers";
+import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
-import { parsePowers } from "./parsers/powers";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
-import { getAllFarmhands, GetListOrEmpty } from "@/lib/utils";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -135,7 +135,7 @@ export function parseSaveFile(xml: string) {
 
     return processedPlayers;
   } catch (e) {
-    console.log(e);
-    throw e;
+    Sentry.captureException(e);
+    throw new Error(`${e}`);
   }
 }
