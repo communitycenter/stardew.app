@@ -18,7 +18,6 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { IconChevronRight } from "@tabler/icons-react";
 
@@ -43,7 +42,6 @@ export const VillagerCard = ({
   setVillager,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
 
   const maxHeartCount = useMemo(() => {
     if (activePlayer?.social?.spouse === villager.name) {
@@ -94,10 +92,10 @@ export const VillagerCard = ({
             hearts >= i
               ? "fill-red-500 text-red-500 dark:text-red-500"
               : !status && villager.datable && i >= 9
-              ? "fill-neutral-500 text-neutral-500 dark:text-neutral-700 dark:fill-neutral-700"
-              : ""
+                ? "fill-neutral-500 text-neutral-500 dark:fill-neutral-700 dark:text-neutral-700"
+                : "",
           )}
-        />
+        />,
       );
     }
 
@@ -142,7 +140,7 @@ export const VillagerCard = ({
         // so on setSpouse action, recreate social object. If dateable villager, set status to null and set points to 8 * 250 if points are more than that
         let relationships: Record<string, any> = {};
         for (const [key, value] of Object.entries(
-          activePlayer?.social?.relationships ?? {}
+          activePlayer?.social?.relationships ?? {},
         )) {
           if (value.status === "Dating") {
             relationships[key] = {
@@ -196,8 +194,8 @@ export const VillagerCard = ({
       <ContextMenuTrigger asChild>
         <button
           className={cn(
-            "overflow-x-clip flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
-            classes[_status]
+            "flex select-none items-center space-x-3 overflow-x-clip rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+            classes[_status],
           )}
           onClick={() => {
             setVillager(villager);
@@ -211,12 +209,12 @@ export const VillagerCard = ({
             height={32}
           />
           <div className="flex-1">
-            <p className="font-medium truncate">{villager.name}</p>
+            <p className="truncate font-medium">{villager.name}</p>
             <div className="flex">
               {status === "Married" ? getHearts(14) : getHearts(10)}
             </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
         </button>
       </ContextMenuTrigger>
       <ContextMenuContent className="w-48">
@@ -225,10 +223,6 @@ export const VillagerCard = ({
             inset
             onClick={() => {
               handleStatusChange("", "removeSpouse");
-              mixpanel?.track("Context Button Clicked", {
-                Action: "Remove Spouse",
-                "Card Type": "Village card",
-              });
             }}
             disabled={!activePlayer}
           >
@@ -240,10 +234,6 @@ export const VillagerCard = ({
             inset
             onClick={() => {
               handleStatusChange("Married", "setSpouse");
-              mixpanel?.track("Context Button Clicked", {
-                Action: "Set Spouse",
-                "Card Type": "Village card",
-              });
             }}
             disabled={!activePlayer}
           >
@@ -259,10 +249,6 @@ export const VillagerCard = ({
             }
             onClick={() => {
               handleStatusChange("Dating", "setDating");
-              mixpanel?.track("Context Button Clicked", {
-                Action: "Set Dating",
-                "Card Type": "Village card",
-              });
             }}
           >
             Set Dating

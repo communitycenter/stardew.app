@@ -7,7 +7,6 @@ import type { ShippingItem } from "@/types/items";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { usePlayers } from "@/contexts/players-context";
 
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
@@ -55,7 +54,6 @@ const classes = [
 
 export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
-  const mixpanel = useMixpanel();
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
@@ -201,10 +199,6 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
               disabled={!activePlayer}
               onClick={() => {
                 handleSave();
-                mixpanel?.track("Value Input", {
-                  Value: value,
-                  "Card type": "Shipping card",
-                });
               }}
             >
               Save

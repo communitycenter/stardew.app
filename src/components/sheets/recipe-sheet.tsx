@@ -37,7 +37,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconExternalLink } from "@tabler/icons-react";
 
@@ -70,7 +69,6 @@ export const RecipeSheet = <T extends Recipe>({
   const { activePlayer, patchPlayer } = usePlayers();
   const [status, setStatus] = useState(0);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const mixpanel = useMixpanel();
 
   useEffect(() => {
     if (!activePlayer || !recipe) return;
@@ -179,18 +177,6 @@ export const RecipeSheet = <T extends Recipe>({
                   value={status.toString()}
                   onValueChange={(val) => {
                     handleStatusChange(parseInt(val));
-                    mixpanel?.track("Button Clicked", {
-                      Action: `Set ${
-                        parseInt(val) === 0
-                          ? "Unknown"
-                          : parseInt(val) === 1
-                            ? "Known"
-                            : "Completed"
-                      }`,
-                      Recipe: name,
-                      "Card Type": "Recipe card",
-                      Location: "Recipe sheet",
-                    });
                   }}
                   disabled={!activePlayer}
                 >
@@ -234,12 +220,6 @@ export const RecipeSheet = <T extends Recipe>({
                     data-umami-event="Visit wiki"
                     asChild
                     className="w-full"
-                    onClick={() =>
-                      mixpanel?.track("Button Clicked", {
-                        Action: "Visit Wiki",
-                        Location: "Fish sheet",
-                      })
-                    }
                   >
                     <a
                       className="flex items-center"
@@ -362,18 +342,6 @@ export const RecipeSheet = <T extends Recipe>({
                   value={status.toString()}
                   onValueChange={(val) => {
                     handleStatusChange(parseInt(val));
-                    mixpanel?.track("Button Clicked", {
-                      Action: `Set ${
-                        parseInt(val) === 0
-                          ? "Unknown"
-                          : parseInt(val) === 1
-                            ? "Known"
-                            : "Completed"
-                      }`,
-                      Recipe: name,
-                      "Card Type": "Recipe card",
-                      Location: "Recipe sheet",
-                    });
                   }}
                   disabled={!activePlayer}
                 >
@@ -417,12 +385,6 @@ export const RecipeSheet = <T extends Recipe>({
                     data-umami-event="Visit wiki"
                     asChild
                     className="w-full"
-                    onClick={() =>
-                      mixpanel?.track("Button Clicked", {
-                        Action: "Visit Wiki",
-                        Location: "Fish sheet",
-                      })
-                    }
                   >
                     <a
                       className="flex items-center"

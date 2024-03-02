@@ -10,7 +10,6 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
@@ -39,7 +38,6 @@ interface Props {
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const mixpanel = useMixpanel();
 
   const fishCaught = useMemo(() => {
     if (
@@ -108,12 +106,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Uncaught
@@ -125,12 +117,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Caught
@@ -142,12 +128,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -256,12 +236,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Uncaught
@@ -273,12 +247,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Caught
@@ -290,12 +258,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"

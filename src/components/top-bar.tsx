@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { toast } from "sonner";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
@@ -56,22 +55,6 @@ export function Topbar() {
   const [isDevelopment, setIsDevelopment] = useState(false);
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
-
-  useEffect(() => {
-    if (!api.data?.discord_id) return; // don't try to identify if they're not logged in
-    mixpanel?.identify(api.data?.discord_id);
-    mixpanel?.people?.set({
-      discord_id: api.data?.discord_id,
-      $name: api.data?.discord_name,
-      $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
-    });
-  }, [
-    api.data?.discord_avatar,
-    api.data?.discord_id,
-    api.data?.discord_name,
-    mixpanel,
-  ]);
 
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
@@ -102,9 +85,6 @@ export function Topbar() {
             const players = parseSaveFile(event.target?.result as string);
             await uploadPlayers(players);
             resolve("Your save file was successfully uploaded!");
-            mixpanel?.track("Upload Save File", {
-              Players: players.length,
-            });
           } catch (err) {
             reject(err instanceof Error ? err.message : "Unknown error.");
           }
@@ -270,8 +250,6 @@ export function Topbar() {
                         ? "localhost"
                         : "stardew.app",
                     });
-
-                    mixpanel?.reset();
                     return (window.location.href = "/");
                   }}
                 >

@@ -8,7 +8,6 @@ import type { CraftingRecipe, Recipe } from "@/types/recipe";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { usePlayers } from "@/contexts/players-context";
 
 import { NewItemBadge } from "@/components/new-item-badge";
@@ -53,8 +52,6 @@ export const RecipeCard = <T extends Recipe>({
   show,
 }: Props<T>) => {
   const { activePlayer, patchPlayer } = usePlayers();
-  const mixpanel = useMixpanel();
-
   let colorClass = "";
   switch (status) {
     case 1:
@@ -163,11 +160,6 @@ export const RecipeCard = <T extends Recipe>({
           disabled={status === 0 || !activePlayer}
           onClick={() => {
             handleStatusChange(null);
-            mixpanel?.track("Context Button Clicked", {
-              Action: "Set Unknown",
-              Recipe: name,
-              "Card Type": "Recipe card",
-            });
           }}
         >
           <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
@@ -179,11 +171,6 @@ export const RecipeCard = <T extends Recipe>({
           disabled={status === 1 || !activePlayer}
           onClick={() => {
             handleStatusChange(1);
-            mixpanel?.track("Context Button Clicked", {
-              Action: "Set Known",
-              Recipe: name,
-              "Card Type": "Recipe card",
-            });
           }}
         >
           <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
@@ -195,11 +182,6 @@ export const RecipeCard = <T extends Recipe>({
           disabled={status === 2 || !activePlayer}
           onClick={() => {
             handleStatusChange(2);
-            mixpanel?.track("Context Button Clicked", {
-              Action: "Set Completed",
-              Recipe: name,
-              "Card Type": "Recipe card",
-            });
           }}
         >
           <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />

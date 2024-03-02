@@ -1,4 +1,3 @@
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { PlayersContext } from "@/contexts/players-context";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -42,7 +41,6 @@ export const InputCard = ({
   maxValue,
 }: Props) => {
   const [value, setValue] = useState(0);
-  const mixpanel = useMixpanel();
 
   const inputSchema = v.object({
     input: v.number([v.minValue(0)]),
@@ -84,8 +82,8 @@ export const InputCard = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <div className="flex items-center space-x-3 truncate rounded-lg border-none border-neutral-200 bg-white py-4 px-5 dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 shadow-none">
-          <div className="flex space-x-3 items-center">
+        <div className="flex items-center space-x-3 truncate rounded-lg border-none border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-none dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50">
+          <div className="flex items-center space-x-3">
             <Image
               src={iconURL}
               alt={title}
@@ -107,7 +105,7 @@ export const InputCard = ({
           <Image
             src={iconURL}
             alt={title}
-            className="rounded-sm mx-auto"
+            className="mx-auto rounded-sm"
             width={36}
             height={36}
             quality={25}
@@ -147,10 +145,6 @@ export const InputCard = ({
                         type="submit"
                         onClick={() => {
                           handleSave();
-                          mixpanel?.track("Value Input", {
-                            Value: value,
-                            "Card type": "Input card",
-                          });
                         }}
                       >
                         Submit

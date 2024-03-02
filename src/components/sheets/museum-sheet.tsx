@@ -18,7 +18,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
@@ -40,7 +39,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
 
   const [artifacts, minerals] = useMemo(() => {
     if (!activePlayer) return [new Set([]), new Set([])];
@@ -130,12 +128,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Incomplete
@@ -151,12 +143,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Completed
@@ -168,12 +154,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -251,12 +231,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Incomplete
@@ -272,12 +246,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Completed
@@ -289,12 +257,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"

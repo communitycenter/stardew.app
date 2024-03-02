@@ -5,24 +5,23 @@ const walnutData = walnut_data as { [key: string]: WalnutType };
 
 import Image from "next/image";
 
+import { PlayersContext } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
 import { useContext, useState } from "react";
-import { PlayersContext } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogTitle,
-  DialogFooter,
-  DialogHeader,
-  DialogTrigger,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
@@ -43,8 +42,6 @@ export const DialogCard = ({
   _type,
 }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
-
   const [open, setOpen] = useState(false);
 
   let checkedClass = completed
@@ -140,11 +137,6 @@ export const DialogCard = ({
               data-umami-event="Set incompleted"
               onClick={() => {
                 handleStatusChange(false);
-                mixpanel?.track("Button Clicked", {
-                  Action: "Set Incompleted",
-                  Item: _type.toLocaleUpperCase(),
-                  "Card Type": "Dialog card",
-                });
               }}
             >
               Set Incomplete
@@ -156,11 +148,6 @@ export const DialogCard = ({
               data-umami-event="Set completed"
               onClick={() => {
                 handleStatusChange(true);
-                mixpanel?.track("Button Clicked", {
-                  Action: "Set Completed",
-                  Item: _type.toLocaleUpperCase(),
-                  "Card Type": "Dialog card",
-                });
               }}
             >
               Set Completed

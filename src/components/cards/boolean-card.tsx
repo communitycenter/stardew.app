@@ -7,7 +7,6 @@ import type { FishType, MuseumItem } from "@/types/items";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { usePlayers } from "@/contexts/players-context";
 
 import { NewItemBadge } from "@/components/new-item-badge";
@@ -54,7 +53,6 @@ export const BooleanCard = ({
   setPromptOpen,
 }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
-  const mixpanel = useMixpanel();
 
   const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
   const name = objects[item.itemID as keyof typeof objects].name;
@@ -156,11 +154,6 @@ export const BooleanCard = ({
             data-umami-event="Set incompleted"
             onClick={() => {
               handleStatusChange(0);
-              mixpanel?.track("Context Button Clicked", {
-                Action: "Set Incompleted",
-                Type: type,
-                "Card Type": "Recipe card",
-              });
             }}
           >
             <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
@@ -171,14 +164,7 @@ export const BooleanCard = ({
             className="gap-2 pl-8"
             checked={completed}
             disabled={completed || !activePlayer}
-            onClick={() => {
-              handleStatusChange(2);
-              mixpanel?.track("Context Button Clicked", {
-                Action: "Set Completed",
-                Item: name,
-                "Card Type": "Boolean card",
-              });
-            }}
+            onClick={() => {}}
             data-umami-event="Set completed"
           >
             <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />

@@ -118,8 +118,8 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
 
     setHearts(
       Math.floor(
-        activePlayer.social.relationships[villager.name].points / 250
-      ).toString()
+        activePlayer.social.relationships[villager.name].points / 250,
+      ).toString(),
     );
   }, [activePlayer, villager.name]);
 
@@ -198,7 +198,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
         // so on setSpouse action, recreate social object. If dateable villager, set status to null and set points to 8 * 250 if points are more than that
         let relationships: Record<string, any> = {};
         for (const [key, value] of Object.entries(
-          activePlayer?.social?.relationships ?? {}
+          activePlayer?.social?.relationships ?? {},
         )) {
           if (value.status === "Dating") {
             relationships[key] = {
@@ -254,14 +254,14 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
               {villager.birthday}
             </SheetDescription>
           </SheetHeader>
-          <div className="space-y-6 mt-4">
+          <div className="mt-4 space-y-6">
             <section className="space-y-2">
               <h3 className="font-semibold">Actions</h3>
               <Separator />
               <div
                 className={clsx(
                   "grid gap-2",
-                  villager.datable ? "grid-cols-2" : "grid-cols-1"
+                  villager.datable ? "grid-cols-2" : "grid-cols-1",
                 )}
               >
                 <Select
@@ -334,7 +334,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                     rel="noreferrer"
                     href={`https://stardewvalleywiki.com/${villager.name.replaceAll(
                       " ",
-                      "_"
+                      "_",
                     )}`}
                   >
                     Visit Wiki Page
@@ -346,7 +346,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Loved Gifts</h3>
               <Separator />
-              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+              <ul className="grid list-inside list-none grid-cols-2 gap-y-4">
                 {villager.loves.map((itemID) => {
                   let item;
                   if (!itemID.startsWith("-")) {
@@ -357,20 +357,17 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                   return (
                     <li
                       key={itemID}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                      className="mt-1 truncate text-sm text-neutral-500 dark:text-neutral-400"
                     >
                       <div className="flex items-center space-x-1">
                         <Image
-                          src={
-                            item.iconURL ??
-                            "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
-                          }
+                          src={`https://cdn.stardew.app/images/(O)${itemID}.webp`}
                           alt={item.name}
                           width={24}
                           height={24}
                           quality={25}
                         />
-                        <p className="font-semibold truncate">• {item.name}</p>
+                        <p className="truncate font-semibold">• {item.name}</p>
                       </div>
                       {}
                     </li>
@@ -388,7 +385,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
     <Drawer open={open} onOpenChange={setIsOpen}>
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">
-          <DrawerHeader className="mt-4 -mb-4">
+          <DrawerHeader className="-mb-4 mt-4">
             <div className="flex justify-center">
               <Image
                 src={villager.iconURL}
@@ -475,7 +472,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                     rel="noreferrer"
                     href={`https://stardewvalleywiki.com/${villager.name.replaceAll(
                       " ",
-                      "_"
+                      "_",
                     )}`}
                   >
                     Visit Wiki Page
@@ -487,7 +484,7 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
             <section className="space-y-2">
               <h3 className="font-semibold">Loved Gifts</h3>
               <Separator />
-              <ul className="list-none list-inside grid grid-cols-2 gap-y-4">
+              <ul className="grid list-inside list-none grid-cols-2 gap-y-4">
                 {villager.loves.map((itemID) => {
                   let item;
                   if (!itemID.startsWith("-")) {
@@ -498,20 +495,17 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
                   return (
                     <li
                       key={itemID}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm truncate"
+                      className="mt-1 truncate text-sm text-neutral-500 dark:text-neutral-400"
                     >
                       <div className="flex items-center space-x-1">
                         <Image
-                          src={
-                            item.iconURL ??
-                            "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
-                          }
+                          src={`https://cdn.stardew.app/images/(O)${itemID}.webp`}
                           alt={item.name}
                           width={24}
                           height={24}
                           quality={25}
                         />
-                        <p className="font-semibold truncate">• {item.name}</p>
+                        <p className="truncate font-semibold">• {item.name}</p>
                       </div>
                       {}
                     </li>
