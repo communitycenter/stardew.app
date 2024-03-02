@@ -55,14 +55,14 @@ def get_objects() -> dict[str, Object]:
             StringsFromCSFiles=STRINGS,
             Strings_1_6=STRINGS_1_6,
         )
-        iconURL = SPRITES.get(key)
+        # iconURL = SPRITES.get(key)
 
         minVersion = "1.5.0" if key in ALPHA_OBJ else "1.6.0"
 
         output[key] = {
             "category": category,
             "description": description,
-            "iconURL": iconURL,
+            # "iconURL": iconURL, # As of 3.0.0, we now have the CDN link to the images
             "minVersion": minVersion,
             "name": name,
         }
