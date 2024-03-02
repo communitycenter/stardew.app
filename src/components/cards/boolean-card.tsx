@@ -7,16 +7,16 @@ import type { FishType, MuseumItem } from "@/types/items";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useMixpanel } from "@/contexts/mixpanel-context";
+import { usePlayers } from "@/contexts/players-context";
 
+import { NewItemBadge } from "@/components/new-item-badge";
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuTrigger,
-  ContextMenuCheckboxItem,
 } from "@/components/ui/context-menu";
-import { NewItemBadge } from "@/components/new-item-badge";
 
 import { IconChevronRight } from "@tabler/icons-react";
 
@@ -56,9 +56,7 @@ export const BooleanCard = ({
   const { activePlayer, patchPlayer } = usePlayers();
   const mixpanel = useMixpanel();
 
-  const iconURL =
-    objects[item.itemID as keyof typeof objects].iconURL ??
-    "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
+  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
   const name = objects[item.itemID as keyof typeof objects].name;
   const description = objects[item.itemID as keyof typeof objects].description;
   const minVersion = objects[item.itemID as keyof typeof objects].minVersion;

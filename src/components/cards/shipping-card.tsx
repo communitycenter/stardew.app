@@ -5,25 +5,25 @@ import objects from "@/data/objects.json";
 import type { ShippingItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { useMemo, useState, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 
-import { usePlayers } from "@/contexts/players-context";
 import { useMixpanel } from "@/contexts/mixpanel-context";
+import { usePlayers } from "@/contexts/players-context";
 
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { NewItemBadge } from "@/components/new-item-badge";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogTitle,
+  DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogContent,
+  DialogTitle,
   DialogTrigger,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { NewItemBadge } from "@/components/new-item-badge";
-import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 
 import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
 
@@ -87,9 +87,7 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
     return [_status, _count];
   }, [activePlayer, item]);
 
-  const iconURL =
-    objects[item.itemID as keyof typeof objects].iconURL ??
-    "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png";
+  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
   const name = objects[item.itemID as keyof typeof objects].name;
   const description = objects[item.itemID as keyof typeof objects].description;
 

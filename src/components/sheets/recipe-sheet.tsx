@@ -5,41 +5,41 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
-import { Dispatch, useState, useEffect, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { deweaponize } from "@/lib/utils";
 import { usePlayers } from "@/contexts/players-context";
+import { deweaponize } from "@/lib/utils";
 
-import {
-  Sheet,
-  SheetTitle,
-  SheetHeader,
-  SheetContent,
-  SheetDescription,
-} from "@/components/ui/sheet";
-import {
-  Select,
-  SelectItem,
-  SelectGroup,
-  SelectLabel,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-} from "@/components/ui/select";
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
-  DrawerTitle,
-  DrawerHeader,
   DrawerContent,
   DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
 } from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { IconExternalLink } from "@tabler/icons-react";
-import { useMediaQuery } from "@react-hook/media-query";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { useMixpanel } from "@/contexts/mixpanel-context";
-import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { useMediaQuery } from "@react-hook/media-query";
+import { IconExternalLink } from "@tabler/icons-react";
 
 interface Props<T extends Recipe> {
   open: boolean;
@@ -93,11 +93,10 @@ export const RecipeSheet = <T extends Recipe>({
   const iconURL = recipe
     ? isCraftingRecipe(recipe)
       ? recipe.isBigCraftable
-        ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
-            .iconURL
-        : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
-      : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
-    : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
+        ? `https://cdn.stardew.app/images/(BC)${recipe.itemID}.webp`
+        : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+      : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+    : null;
 
   const name = recipe
     ? isCraftingRecipe(recipe)
