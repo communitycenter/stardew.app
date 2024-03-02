@@ -39,6 +39,14 @@ const nextConfig = {
         pathname: "/mediawiki/images/**",
       },
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
