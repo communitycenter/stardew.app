@@ -49,3 +49,5 @@ venv/
 
 # python stuff
 __pycache__/
+# Sentry Config File
+.sentryclirc

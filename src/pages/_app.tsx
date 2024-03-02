@@ -23,7 +23,7 @@ if (typeof window !== "undefined") {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST!,
     ui_host: "https://app.posthog.com",
     loaded: (posthog) => {
-      if (process.env.NODE_ENV === "development") posthog.debug(); // debug mode in development
+      if (process.env.NODE_ENV === "development") posthog.debug(false); // debug mode in development
     },
   });
 }

@@ -9,7 +9,7 @@ export interface MuseumRet {
 
 export function parseMuseum(
   museumLocation: any,
-  gameVersion: string
+  gameVersion: string,
 ): MuseumRet {
   /*
     Achievements Relevant:
@@ -44,7 +44,7 @@ export function parseMuseum(
       let item_id: string;
 
       if (semverSatisfies(gameVersion, ">=1.6")) {
-        item_id = piece.value.string;
+        item_id = piece.value.string.toString();
       } else {
         item_id = piece.value.int.toString();
       }
