@@ -1,26 +1,26 @@
 import Head from "next/head";
 
-import { useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useMemo, useState } from "react";
 
 import achievements from "@/data/achievements.json";
 import powers from "@/data/powers.json";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { InfoCard } from "@/components/cards/info-card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { InfoCard } from "@/components/cards/info-card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import { DialogCard } from "@/components/cards/dialog-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
@@ -97,35 +97,32 @@ export default function SkillsMasteryPowers() {
     type SkillName = "farming" | "fishing" | "foraging" | "mining" | "combat";
 
     function calculateExperience(skillName: SkillName, activePlayer: any): any {
-      const currentLevel = activePlayer.general.skills[skillName];
-
-      if (currentLevel >= 10)
-        return {
-          percentage: 100,
-          experiencePointsRemaining: 0,
-          experiencePointsRequired: 0,
-        };
-
-      const currentExperience = activePlayer.general.experience[skillName];
-      const nextLevelExperience = experienceRequired[currentLevel + 1];
+      const currentLevel = activePlayer?.general?.skills?.[skillName] || 0;
+      const currentExperience =
+        activePlayer?.general?.experience?.[skillName] || 0;
+      const nextLevelExperience = experienceRequired[currentLevel + 1] || 0;
 
       return {
-        percentage: (currentExperience / nextLevelExperience) * 100,
-        experiencePointsRemaining: nextLevelExperience - currentExperience,
+        percentage:
+          currentLevel >= 10
+            ? 100
+            : (currentExperience / nextLevelExperience) * 100,
+        experiencePointsRemaining: Math.max(
+          nextLevelExperience - currentExperience,
+          0,
+        ),
         experiencePointsRequired: nextLevelExperience,
       };
     }
 
-    if (activePlayer) {
-      if (activePlayer.general?.experience && activePlayer.general?.skills) {
-        return {
-          farming: calculateExperience("farming", activePlayer),
-          fishing: calculateExperience("fishing", activePlayer),
-          foraging: calculateExperience("foraging", activePlayer),
-          mining: calculateExperience("mining", activePlayer),
-          combat: calculateExperience("combat", activePlayer),
-        };
-      }
+    if (activePlayer?.general?.experience && activePlayer?.general?.skills) {
+      return {
+        farming: calculateExperience("farming", activePlayer),
+        fishing: calculateExperience("fishing", activePlayer),
+        foraging: calculateExperience("foraging", activePlayer),
+        mining: calculateExperience("mining", activePlayer),
+        combat: calculateExperience("combat", activePlayer),
+      };
     }
   }, [activePlayer]);
 
