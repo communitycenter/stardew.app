@@ -370,6 +370,7 @@ export default function SkillsMasteryPowers() {
                             <DialogCard
                               _type="power"
                               _id={key}
+                              setPromptOpen={setPromptOpen}
                               completed={playerPowers.has(key)}
                               key={key}
                               title={power.name}
@@ -402,6 +403,7 @@ export default function SkillsMasteryPowers() {
                             <DialogCard
                               _type="power"
                               _id={key}
+                              setPromptOpen={setPromptOpen}
                               completed={playerPowers.has(key)}
                               key={key}
                               title={power.name}
@@ -437,6 +439,7 @@ export default function SkillsMasteryPowers() {
                         description={power.description ?? "???"}
                         iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
                         show={show}
+                        setPromptOpen={setPromptOpen}
                       />
                     );
                   })}

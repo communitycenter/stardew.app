@@ -154,8 +154,9 @@ export const DialogCard = ({
           "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
           checkedClass,
         )}
-        onClick={() => {
-          if (minVersion === "1.6.0" && !show) {
+        onClick={(e) => {
+          if (minVersion === "1.6.0" && !show && !completed) {
+            e.preventDefault();
             setPromptOpen?.(true);
             return;
           }
