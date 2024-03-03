@@ -12,6 +12,7 @@ import {
   parsePerfection,
   parseShipping,
   parseSocial,
+  parsePowers,
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
@@ -111,24 +112,21 @@ export function parseSaveFile(xml: string) {
         notes: parseNotes(player),
         scraps: parseScraps(player),
         perfection: parsedPerfection,
-        // powers: parsePowers(
-        //   player,
-        //   version,
-        //   saveFile.SaveGame.player.UniqueMultiplayerID.toString(),
-        //   hostMailReceived,
-        //   hostMailForTomorrow,
-        //   hostMailbox,
-        // ),
+        powers: parsePowers(
+          player,
+          version,
+          saveFile.SaveGame.player.UniqueMultiplayerID.toString(),
+          hostMailReceived,
+          hostMailForTomorrow,
+          hostMailbox,
+        ),
       };
       processedPlayers.push(processedPlayer);
     });
 
-    processedPlayers.forEach((p) =>
-      console.log(
-        `Player: ${p.general.name} | Waivers:`,
-        p.perfection.perfectionWaivers,
-      ),
-    );
+    // processedPlayers.forEach((p) =>
+    //   console.log(`Player: ${p.general.name} | powers:`, p.powers.collection),
+    // );
 
     // // there isn't a powers column in our database yet
     // throw new Error("Not Implemented");

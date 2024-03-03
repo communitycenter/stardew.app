@@ -4,6 +4,7 @@ export type QueryCondition = "mail" | "event" | "stat";
 export interface Power {
   description: string | null;
   flag: string;
+  minVersion: string;
   name: string;
   playerKey: PlayerKey;
   type: QueryCondition;

@@ -11,6 +11,10 @@ import {
 
 const semverLt = require("semver/functions/lt");
 
+export interface PowersRet {
+  collection?: string[];
+}
+
 export function parsePowers(
   player: any,
   gameVersion: string,
@@ -18,13 +22,13 @@ export function parsePowers(
   hostMailbox: Set<string>,
   hostMailReceived: Set<string>,
   hostMailForTomorrow: Set<string>,
-) {
+): PowersRet {
   try {
     // return set of powers where the power id is the string key
-    const powers = new Set<string>();
+    const powers: string[] = [];
 
     // powers are only in 1.6.0 and later
-    if (semverLt(gameVersion, "1.6.0")) return powers;
+    if (semverLt(gameVersion, "1.6.0")) return { collection: powers };
 
     // create sets for each mail entry we need to check for O(1) lookup
     let mailReceived: Set<string>;
@@ -77,7 +81,7 @@ export function parsePowers(
             break;
         }
 
-        if (unlocked) powers.add(key);
+        if (unlocked) powers.push(key);
       } else if (power.playerKey === "Host") {
         // only check the host player (the logic seems to be weird here, source code uses Game1.MasterPlayer)
         // which appears to be different from Game1.player, but we'll just use Game1.player since we don't have
@@ -89,11 +93,11 @@ export function parsePowers(
           hostMailbox,
         );
 
-        if (unlocked) powers.add(key);
+        if (unlocked) powers.push(key);
       }
     }
 
-    return powers;
+    return { collection: powers };
   } catch (e) {
     if (e instanceof Error)
       throw new Error(`Error in parsePowers: ${e.message}`);

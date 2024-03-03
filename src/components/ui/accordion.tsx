@@ -28,7 +28,7 @@ const AccordionTrigger = React.forwardRef<
       className={cn(
         // TODO: remove hover:underline ?
         "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
-        className
+        className,
       )}
       {...props}
     >
@@ -46,8 +46,8 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
-      className
+      "text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      className,
     )}
     {...props}
   >

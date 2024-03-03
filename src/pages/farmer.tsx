@@ -5,16 +5,17 @@ import achievements from "@/data/achievements.json";
 import { useEffect, useMemo, useState } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { DialogCard } from "@/components/cards/dialog-card";
-import { InfoCard } from "@/components/cards/info-card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { DialogCard } from "@/components/cards/dialog-card";
+import { InfoCard } from "@/components/cards/info-card";
 
 import {
   BriefcaseIcon,
@@ -81,6 +82,7 @@ const reqs: Record<string, number> = {
 
 export default function Farmer() {
   const { activePlayer } = usePlayers();
+  const { show } = usePreferences();
 
   const [stardrops, setStardrops] = useState(new Set());
 
@@ -332,6 +334,7 @@ export default function Farmer() {
                     completed={stardrops.has(key)}
                     _id={key}
                     _type="stardrop"
+                    show={show}
                   />
                 ))}
               </div>

@@ -1,38 +1,35 @@
 import Head from "next/head";
 
+import { useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
 
 import achievements from "@/data/achievements.json";
 import powers from "@/data/powers.json";
 
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { InfoCard } from "@/components/cards/info-card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Inter } from "next/font/google";
-
-import { DialogCard } from "@/components/cards/dialog-card";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import { Progress } from "@/components/ui/progress";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { usePreferences } from "@/contexts/preferences-context";
-import { useMemo, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { InfoCard } from "@/components/cards/info-card";
+
+import { DialogCard } from "@/components/cards/dialog-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { Progress } from "@/components/ui/progress";
 
 const reqs: Record<string, number> = {
   "Singular Talent": 1, // platform specific
   "Master Of The Five Ways": 5, // platform specific
 };
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function SkillsMasteryPowers() {
   const { activePlayer } = usePlayers();
@@ -131,6 +128,16 @@ export default function SkillsMasteryPowers() {
       }
     }
   }, [activePlayer]);
+
+  const playerPowers = useMemo(() => {
+    if (!activePlayer || !activePlayer.powers?.collection)
+      return new Set<string>();
+
+    const playerPowers = activePlayer.powers.collection;
+
+    return new Set<string>(playerPowers);
+  }, [activePlayer]);
+
   return (
     <>
       <Head>
@@ -157,10 +164,10 @@ export default function SkillsMasteryPowers() {
         />
       </Head>
       <main
-        className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
         <div className="mx-auto mt-4 w-full space-y-4">
-          {/* Skill Achievements */}
+          {/* Skills */}
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
@@ -343,7 +350,7 @@ export default function SkillsMasteryPowers() {
               </AccordionItem>
             </section>
           </Accordion>
-          {/* Skill Achievements */}
+          {/* Special Items */}
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
@@ -352,7 +359,7 @@ export default function SkillsMasteryPowers() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                       {Object.entries(powers)
                         .filter(
                           ([key, power]) =>
@@ -362,7 +369,8 @@ export default function SkillsMasteryPowers() {
                           return (
                             <DialogCard
                               _type="power"
-                              _id={power.flag}
+                              _id={key}
+                              completed={playerPowers.has(key)}
                               key={key}
                               title={power.name}
                               description={power.description ?? "???"}
@@ -377,23 +385,24 @@ export default function SkillsMasteryPowers() {
               </AccordionItem>
             </section>
           </Accordion>
-          {/* Skill Achievements */}
+          {/* Powers */}
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
-              <AccordionItem value="item-1" className="relative z-10">
+              <AccordionItem value="item-1" className="relative">
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Powers
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                       {Object.entries(powers)
                         .filter(([key, power]) => key.includes("Book_"))
                         .map(([key, power]) => {
                           return (
                             <DialogCard
                               _type="power"
-                              _id={power.flag}
+                              _id={key}
+                              completed={playerPowers.has(key)}
                               key={key}
                               title={power.name}
                               description={power.description ?? "???"}
@@ -408,37 +417,32 @@ export default function SkillsMasteryPowers() {
               </AccordionItem>
             </section>
           </Accordion>
-          {/* Skill Achievements */}
-          <Accordion type="single" collapsible defaultValue="item-1" asChild>
-            <section className="space-y-3">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  Mastery
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="space-y-3">
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
-                      {Object.entries(powers)
-                        .filter(([key, power]) => key.includes("Mastery_"))
-                        .map(([key, power]) => {
-                          return (
-                            <DialogCard
-                              _type="power"
-                              _id={power.flag}
-                              key={key}
-                              title={power.name}
-                              description={power.description ?? "???"}
-                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
-                              show={show}
-                            />
-                          );
-                        })}
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </section>
-          </Accordion>
+          {/* Mastery */}
+          <section className="space-y-3">
+            <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
+              Mastery
+            </h3>
+            <div className="space-y-3">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-5">
+                {Object.entries(powers)
+                  .filter(([key, power]) => key.includes("Mastery_"))
+                  .map(([key, power]) => {
+                    return (
+                      <DialogCard
+                        _type="power"
+                        _id={key}
+                        completed={playerPowers.has(key)}
+                        key={key}
+                        title={power.name}
+                        description={power.description ?? "???"}
+                        iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                        show={show}
+                      />
+                    );
+                  })}
+              </div>
+            </div>
+          </section>
         </div>
       </main>
       <UnblurDialog

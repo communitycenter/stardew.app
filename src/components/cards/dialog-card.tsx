@@ -1,17 +1,19 @@
+import type { Power } from "@/types/data";
 import type { WalnutType } from "@/types/items";
 
 import powers from "@/data/powers.json";
-import walnut_data from "@/data/walnuts.json";
+const powersData = powers as Record<string, Power>;
 
+import walnut_data from "@/data/walnuts.json";
 const walnutData = walnut_data as { [key: string]: WalnutType };
 
 import Image from "next/image";
 
-import { PlayersContext } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useContext, useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { usePlayers } from "@/contexts/players-context";
+import { Dispatch, SetStateAction, useState } from "react";
+
 import {
   Dialog,
   DialogContent,
@@ -20,11 +22,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { NewItemBadge } from "@/components/new-item-badge";
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
-import { NewItemBadge } from "../new-item-badge";
 
 interface Props {
   title: string;
@@ -60,12 +62,10 @@ export const DialogCard = ({
   show,
   setPromptOpen,
 }: Props) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const { activePlayer, patchPlayer } = usePlayers();
   const [open, setOpen] = useState(false);
 
-  const minVersion =
-    Object.entries(powers).find(([key, value]) => value.flag === _id)?.[1]
-      .minVersion ?? "1.5.4";
+  const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -123,6 +123,22 @@ export const DialogCard = ({
           },
         };
         break;
+
+      case "power":
+        let powers = new Set(activePlayer?.powers?.collection ?? []);
+
+        console.log("initial powers:", powers);
+
+        if (status) powers.add(_id);
+        else powers.delete(_id);
+
+        console.log("final powers:", powers);
+
+        patch = {
+          powers: {
+            collection: Array.from(powers),
+          },
+        };
     }
 
     if (Object.keys(patch).length === 0) return;
