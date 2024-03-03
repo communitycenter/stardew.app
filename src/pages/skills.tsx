@@ -123,6 +123,14 @@ export default function SkillsMasteryPowers() {
         mining: calculateExperience("mining", activePlayer),
         combat: calculateExperience("combat", activePlayer),
       };
+    } else {
+      return {
+        farming: 0,
+        fishing: 0,
+        foraging: 0,
+        mining: 0,
+        combat: 0,
+      };
     }
   }, [activePlayer]);
 
