@@ -52,7 +52,7 @@ export default function Cooking() {
     if (activePlayer) {
       if (activePlayer.cooking?.recipes) {
         setPlayerRecipes(activePlayer.cooking.recipes);
-      }
+      } else setPlayerRecipes({});
 
       // update the requirements for achievements and set the minimum game version
       if (activePlayer.general?.gameVersion) {

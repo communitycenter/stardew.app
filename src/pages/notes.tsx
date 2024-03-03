@@ -15,8 +15,8 @@ export default function SecretNotes() {
   const [notesSeen, setNotesSeen] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    if (activePlayer && activePlayer.notes) {
-      setNotesSeen(new Set(activePlayer.notes.found));
+    if (activePlayer) {
+      setNotesSeen(new Set(activePlayer.notes?.found ?? []));
     }
   }, [activePlayer]);
 

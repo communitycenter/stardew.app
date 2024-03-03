@@ -53,7 +53,7 @@ export default function Crafting() {
     if (activePlayer) {
       if (activePlayer.crafting?.recipes) {
         setPlayerRecipes(activePlayer.crafting.recipes);
-      }
+      } else setPlayerRecipes({});
 
       // update the requirements for achievements and set the minimum game version
       if (activePlayer.general?.gameVersion) {

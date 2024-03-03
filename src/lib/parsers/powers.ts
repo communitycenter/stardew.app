@@ -28,7 +28,9 @@ export function parsePowers(
     const powers: string[] = [];
 
     // powers are only in 1.6.0 and later
-    if (semverLt(gameVersion, "1.6.0")) return { collection: powers };
+    // disabled since as far as I can tell, there's nothing that would cause
+    // this to break on older saves as it just checks for mail
+    // if (semverLt(gameVersion, "1.6.0")) return { collection: powers };
 
     // create sets for each mail entry we need to check for O(1) lookup
     let mailReceived: Set<string>;

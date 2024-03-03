@@ -42,9 +42,11 @@ export default function Museum() {
   const [showPrompt, setPromptOpen] = useState(false);
 
   useEffect(() => {
-    if (activePlayer && activePlayer.museum) {
-      setMuseumArtifactCollected(new Set(activePlayer.museum.artifacts ?? []));
-      setMuseumMineralCollected(new Set(activePlayer.museum.minerals ?? []));
+    if (activePlayer) {
+      setMuseumArtifactCollected(
+        new Set(activePlayer?.museum?.artifacts ?? []),
+      );
+      setMuseumMineralCollected(new Set(activePlayer?.museum?.minerals ?? []));
     }
   }, [activePlayer]);
 
