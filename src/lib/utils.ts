@@ -166,3 +166,49 @@ export function hasOrWillReceiveMail(
   }
   return true;
 }
+
+/**
+ * Returns the amount of mastery experience needed to achieve the given level.
+ * Reference: `StardewValley.Menus.MasteryTrackerMenu.cs::getMasterExperienceForLevel()`
+ *
+ * @export
+ * @param {number} level The level to get the experience needed for.
+ * @return {*}  {number} The amount of experience needed to achieve the given level.
+ */
+export function getMasteryExpNeededForLevel(level: number): number {
+  switch (level) {
+    case 0:
+      return 0;
+    case 1:
+      return 10_000;
+    case 2:
+      return 25_000;
+    case 3:
+      return 45_000;
+    case 4:
+      return 70_000;
+    case 5:
+      return 100_000;
+    default:
+      return Number.MAX_SAFE_INTEGER;
+  }
+}
+
+/**
+ * Returns the player's current mastery level based on their experience.
+ * Reference: `StardewValley.Menus.MasteryTrackerMenu.cs::getCurrentMasteryLevel()`
+ *
+ * @export
+ * @param {number} exp The player's current mastery experience.
+ * @return {*}  {number} The player's current mastery level.
+ */
+export function getCurrentMasteryLevel(exp: number): number {
+  let level = 0;
+
+  for (let i = 1; i <= 5; i++) {
+    if (exp >= getMasteryExpNeededForLevel(i)) {
+      level++;
+    }
+  }
+  return level;
+}
