@@ -111,6 +111,7 @@ export function GetStatValue(Values: any, key: string): number {
     if (Values.item.key.string === key) {
       value = Values.item.value.unsignedInt;
     }
+    return value;
   }
 
   for (const item of Values.item) {

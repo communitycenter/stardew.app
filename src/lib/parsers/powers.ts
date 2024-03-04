@@ -13,6 +13,7 @@ const semverLt = require("semver/functions/lt");
 
 export interface PowersRet {
   collection?: string[];
+  MasteryExp?: number;
 }
 
 export function parsePowers(
@@ -28,8 +29,9 @@ export function parsePowers(
     const powers: string[] = [];
 
     // powers are only in 1.6.0 and later
-    // disabled since as far as I can tell, there's nothing that would cause
+    // commented out since as far as I can tell, there's nothing that would cause
     // this to break on older saves as it just checks for mail
+    // the mail flags actually don't exist until 1.6.0, so most will be false
     // if (semverLt(gameVersion, "1.6.0")) return { collection: powers };
 
     // create sets for each mail entry we need to check for O(1) lookup
@@ -99,7 +101,11 @@ export function parsePowers(
       }
     }
 
-    return { collection: powers };
+    // get the mastery experience stat if it exists
+    // will just return 0 for <1.6.0
+    const MasteryExp = GetStatValue(player.stats.Values, "MasteryExp");
+
+    return { collection: powers, MasteryExp };
   } catch (e) {
     if (e instanceof Error)
       throw new Error(`Error in parsePowers: ${e.message}`);
