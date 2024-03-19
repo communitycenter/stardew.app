@@ -1,31 +1,31 @@
 import Head from "next/head";
 
-import fish from "@/data/fish.json";
-import villagers from "@/data/villagers.json";
 import cookingRecipes from "@/data/cooking.json";
-import shippingItems from "@/data/shipping.json";
-import { monsters } from "@/lib/parsers/monsters";
 import craftingRecipes from "@/data/crafting.json";
+import fish from "@/data/fish.json";
+import shippingItems from "@/data/shipping.json";
+import villagers from "@/data/villagers.json";
+import { monsters } from "@/lib/parsers/monsters";
 
+import { usePlayers } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
-import { usePlayers } from "@/contexts/players-context";
 
-import {
-  Card,
-  CardTitle,
-  CardHeader,
-  CardDescription,
-} from "@/components/ui/card";
+import { InputCard } from "@/components/cards/input-card";
+import { PerfectionCard } from "@/components/cards/perfection-card";
+import { PercentageIndicator } from "@/components/percentage";
 import {
   Accordion,
-  AccordionItem,
   AccordionContent,
+  AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { InputCard } from "@/components/cards/input-card";
-import { PercentageIndicator } from "@/components/percentage";
-import { PerfectionCard } from "@/components/cards/perfection-card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -249,7 +249,7 @@ export default function Perfection() {
         <title>stardew.app | Perfection</title>
         <meta
           name="title"
-          content="Stardew Valley Perfection Tracker | stardew.app"
+          content="Stardew Valley 1.6 Perfection Tracker | stardew.app"
         />
         <meta
           name="description"

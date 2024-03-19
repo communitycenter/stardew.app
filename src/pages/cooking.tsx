@@ -103,7 +103,7 @@ export default function Cooking() {
         <title>stardew.app | Cooking</title>
         <meta
           name="title"
-          content="Stardew Valley 1.6 Cooking Tracker | stardew.app"
+          content="Stardew Valley Cooking Recipes | stardew.app"
         />
         <meta
           name="description"

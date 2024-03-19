@@ -84,7 +84,7 @@ export default function Museum() {
         <title>stardew.app | Museum</title>
         <meta
           name="title"
-          content="Stardew Valley Minerals and Artifacts | stardew.app"
+          content="Stardew Valley Museum Artifacts | stardew.app"
         />
         <meta
           name="description"
