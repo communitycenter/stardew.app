@@ -35,7 +35,7 @@ import { DiscordLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
-  // { name: "Bundles", href: "/bundles", icon: IconBox },
+  // { name: "Bundles", href: "/bundles", icon: IconBox }, // If you're snooping... tbd ;)
   { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
   { name: "Secret Notes", href: "/notes", icon: IconNote },
   { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
@@ -48,7 +48,7 @@ export const playerNavigation = [
   { name: "Skills & Mastery", href: "/skills", icon: IconStars },
   { name: "Perfection", href: "/perfection", icon: IconAward },
   { name: "Relationships", href: "/relationships", icon: IconHeart },
-  // { name: "Animals", href: "/animals", icon: IconPaw },
+  // { name: "Animals", href: "/animals", icon: IconPaw }, // Promise!
 ];
 
 export const collectionsNavigation = [
