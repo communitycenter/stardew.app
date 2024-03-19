@@ -3,15 +3,20 @@ import type { User } from "@/components/top-bar";
 import Head from "next/head";
 import useSWR from "swr";
 
-import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { deleteCookie, getCookie } from "cookies-next";
 
-import { PlayerType, PlayersContext } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
+import { PlayerType, usePlayers } from "@/contexts/players-context";
 
-import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +24,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import {
   ClipboardIcon,
   CursorArrowRaysIcon,
@@ -29,36 +38,37 @@ import {
   PencilSquareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
+
 import { toast } from "sonner";
 
 function InlineInput({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center w-full">
+    <div className="flex w-full items-center">
       <label
         htmlFor={label.replace(" ", "-").toLowerCase()}
-        className="min-w-fit text-sm px-3 bg-neutral-100 text-neutral-500 dark:bg-neutral-900 h-9 items-center flex rounded-md rounded-r-none border border-neutral-200 dark:border-neutral-800"
+        className="flex h-9 min-w-fit items-center rounded-md rounded-r-none border border-neutral-200 bg-neutral-100 px-3 text-sm text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900"
       >
         {label}
       </label>
-      <div className="relative w-full flex items-center">
+      <div className="relative flex w-full items-center">
         <Input
           type="text"
           readOnly
           autoComplete="off"
           id={label.replace(" ", "-").toLowerCase()}
           value={value}
-          className="pr-9 border-l-0 rounded-l-none text-ellipsis"
+          className="text-ellipsis rounded-l-none border-l-0 pr-9"
         />
         <Button
           size="icon"
           variant="ghost"
-          className="absolute right-0 group hover:bg-inherit dark:hover:bg-inherit"
+          className="group absolute right-0 hover:bg-inherit dark:hover:bg-inherit"
           onClick={() => {
             navigator.clipboard.writeText(value);
             toast.info(`Your ${label} has been copied to your clipboard.`);
           }}
         >
-          <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
+          <ClipboardIcon className="h-5 w-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
         </Button>
       </div>
     </div>
@@ -67,18 +77,18 @@ function InlineInput({ label, value }: { label: string; value: string }) {
 
 function PlayerCard({ player }: { player: PlayerType }) {
   const router = useRouter();
-  const { setActivePlayer } = useContext(PlayersContext);
+  const { setActivePlayer } = usePlayers();
 
   const [deletionOpen, setDeletionOpen] = useState(false);
 
   return (
     <>
-      <div className="border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 rounded-md flex items-center p-4 justify-between space-x-2">
+      <div className="flex items-center justify-between space-x-2 rounded-md border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-950">
         <div className="flex-col gap-1 overflow-hidden">
-          <p className="text-neutral-950 dark:text-white font-semibold text-sm text-ellipsis overflow-hidden">
+          <p className="overflow-hidden text-ellipsis text-sm font-semibold text-neutral-950 dark:text-white">
             {player.general?.name}
           </p>
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden">
+          <p className="overflow-hidden text-ellipsis text-sm text-neutral-500 dark:text-neutral-400">
             {player._id}
           </p>
         </div>
@@ -86,7 +96,7 @@ function PlayerCard({ player }: { player: PlayerType }) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button size="icon" variant="ghost">
-              <EllipsisHorizontalIcon className="w-5 h-5" />
+              <EllipsisHorizontalIcon className="h-5 w-5" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-48" align="end">
@@ -94,7 +104,7 @@ function PlayerCard({ player }: { player: PlayerType }) {
               onClick={() => {
                 navigator.clipboard.writeText(player._id);
                 toast.info(
-                  "Your farmhand ID has been copied to your clipboard."
+                  "Your farmhand ID has been copied to your clipboard.",
                 );
               }}
             >
@@ -105,7 +115,7 @@ function PlayerCard({ player }: { player: PlayerType }) {
               onClick={() => {
                 setActivePlayer(player);
                 toast.info(
-                  `Your active farmhand has been changed to ${player.general?.name}.`
+                  `Your active farmhand has been changed to ${player.general?.name}.`,
                 );
               }}
             >
@@ -148,11 +158,11 @@ function FarmCard({
   return (
     <Card>
       <CardHeader className="border-b border-neutral-200 dark:border-neutral-800">
-        <CardTitle className="whitespace-nowrap overflow-hidden text-ellipsis">
+        <CardTitle className="overflow-hidden text-ellipsis whitespace-nowrap">
           {farmInfo}
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-5 space-y-3">{children}</CardContent>
+      <CardContent className="space-y-3 p-5">{children}</CardContent>
     </Card>
   );
 }
@@ -166,10 +176,11 @@ export default function Account() {
     "/api",
     // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
-    { refreshInterval: 0, revalidateOnFocus: false }
+    { refreshInterval: 0, revalidateOnFocus: false },
   );
 
-  const { players } = useContext(PlayersContext);
+  const { players } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [inputType, setInputType] = useState<"password" | "text">("password");
@@ -197,19 +208,57 @@ export default function Account() {
         />
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <main className="flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8">
-        <div className="mx-auto max-w-5xl w-full space-y-8 mt-4">
-          <Tabs defaultValue="authentication">
-            <TabsList className="grid w-full grid-cols-2">
+      <main className="flex min-h-[calc(100vh-65px)] border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8">
+        <div className="mx-auto mt-4 w-full max-w-5xl space-y-8">
+          <Tabs defaultValue="site">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="site">Site Settings</TabsTrigger>
               <TabsTrigger value="authentication">Authentication</TabsTrigger>
               <TabsTrigger value="saves">Saves</TabsTrigger>
             </TabsList>
+            <TabsContent value="site" className="mt-4 space-y-8">
+              <section className="flex flex-col space-y-3">
+                <div>
+                  <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Site Settings
+                  </h1>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
+                    Manage and view your site settings.
+                  </p>
+                </div>
+                <Card>
+                  <CardHeader className=" border-neutral-200 dark:border-neutral-800">
+                    <span className="flex flex-row items-center justify-between">
+                      <div className="space-y-1">
+                        <CardTitle>Show New Content</CardTitle>
+                        <CardDescription>
+                          This will enable 1.6 content on the site - don&apos;t
+                          use if you don&apos;t want to see 1.6 spoilers!
+                        </CardDescription>
+                      </div>
+                      <div>
+                        <Switch
+                          id="new-content-switch"
+                          defaultChecked={show}
+                          onCheckedChange={() => {
+                            const res = toggleShow();
+                            toast.success(
+                              `1.6 content has been ${res ? "enabled" : "disabled"}.`,
+                            );
+                          }}
+                        />
+                      </div>
+                    </span>
+                  </CardHeader>
+                </Card>
+              </section>
+            </TabsContent>
             <TabsContent value="authentication" className="mt-4 space-y-8">
               <section className="flex flex-col space-y-4">
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Authentication
                 </h1>
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
                   Manage and view your authentication information. Your user ID
                   is used to identify your account and is used to link your
                   saves to your account.
@@ -222,7 +271,7 @@ export default function Account() {
                       <CardHeader className="border-b border-neutral-200 dark:border-neutral-800">
                         <CardTitle>Account</CardTitle>
                       </CardHeader>
-                      <CardContent className="p-5 space-y-3">
+                      <CardContent className="space-y-3 p-5">
                         <InlineInput
                           label="Discord ID"
                           value={api.data.discord_id}
@@ -247,34 +296,34 @@ export default function Account() {
                         id="uid"
                         readOnly
                         value={getCookie("uid") as string}
-                        className="pr-[72px] text-ellipsis"
+                        className="text-ellipsis pr-[72px]"
                       />
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="absolute right-9 group hover:bg-inherit dark:hover:bg-inherit"
+                        className="group absolute right-9 hover:bg-inherit dark:hover:bg-inherit"
                         onClick={() =>
                           setInputType((prev) =>
-                            prev === "password" ? "text" : "password"
+                            prev === "password" ? "text" : "password",
                           )
                         }
                       >
-                        <EyeIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
+                        <EyeIcon className="h-5 w-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
                       </Button>
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="absolute right-0 group hover:bg-inherit dark:hover:bg-inherit"
+                        className="group absolute right-0 hover:bg-inherit dark:hover:bg-inherit"
                         onClick={() => {
                           navigator.clipboard.writeText(
-                            getCookie("uid") as string
+                            getCookie("uid") as string,
                           );
                           toast.info(
-                            "Your user ID has been copied to your clipboard."
+                            "Your user ID has been copied to your clipboard.",
                           );
                         }}
                       >
-                        <ClipboardIcon className="w-5 h-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
+                        <ClipboardIcon className="h-5 w-5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400" />
                       </Button>
                     </div>
                   </CardContent>
@@ -333,15 +382,15 @@ export default function Account() {
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Saves
                 </h1>
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
                   Manage and view your Stardew Valley Saves.
                 </p>
 
                 {/* Players/Farms */}
                 {players?.length === 0 && (
-                  <div className="flex items-center w-full bg-blue-200 rounded-md p-3 space-x-2">
-                    <InformationCircleIcon className="w-5 h-5 text-blue-700" />
-                    <p className="text-blue-700 font-semibold text-center">
+                  <div className="flex w-full items-center space-x-2 rounded-md bg-blue-200 p-3">
+                    <InformationCircleIcon className="h-5 w-5 text-blue-700" />
+                    <p className="text-center font-semibold text-blue-700">
                       No Players Found
                     </p>
                   </div>

@@ -1,6 +1,6 @@
 {
   "name": "stardew.app",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,12 +12,13 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.2.0",
+    "@marsidev/react-turnstile": "^0.5.3",
     "@next/bundle-analyzer": "^14.0.4",
     "@planetscale/database": "^1.10.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-context-menu": "^2.1.4",
-    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.5",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.0.2",
@@ -32,8 +33,8 @@
     "@radix-ui/react-toast": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@react-hook/media-query": "^1.1.1",
+    "@sentry/nextjs": "^7.104.0",
     "@tabler/icons-react": "^2.30.0",
-    "@types/mixpanel-browser": "^2.48.1",
     "@types/node": "20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -45,10 +46,10 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.12",
     "fast-xml-parser": "^4.2.6",
-    "mixpanel-browser": "^2.48.1",
     "next": "13.4.12",
     "next-themes": "^0.2.1",
     "postcss": "8.4.24",
+    "posthog-js": "^1.110.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
@@ -61,5 +62,9 @@
     "typescript": "5.1.6",
     "valibot": "^0.25.0",
     "vaul": "^0.8.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }

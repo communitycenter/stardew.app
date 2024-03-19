@@ -6,11 +6,13 @@ import achievements from "@/data/achievements.json";
 import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useEffect, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
+import { useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
@@ -20,9 +22,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+
 import { IconClock, IconCloud } from "@tabler/icons-react";
 
-const reqs = {
+const semverGte = require("semver/functions/gte");
+
+const reqs: Record<string, number> = {
   Fisherman: 10,
   "Ol' Mariner": 24,
   "Master Angler": Object.keys(fishes).length,
@@ -67,41 +72,36 @@ const seasons = [
   },
 ];
 
-const type = [
-  {
-    value: "all",
-    label: "All Types",
-  },
-  {
-    value: "caught",
-    label: "Caught",
-  },
-  {
-    value: "trap",
-    label: "Crab Pot",
-  },
-];
-
 export default function Fishing() {
   const [open, setIsOpen] = useState(false);
   const [fish, setFish] = useState<FishType | null>(null);
-  const [fishCaught, setFishCaught] = useState<Set<number>>(new Set());
+  const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
+
+  // unblur dialog
+  const [showPrompt, setPromptOpen] = useState(false);
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
-
-  const [_typeFilter, setTypeFilter] = useState("all");
-
   const [_weatherFilter, setWeatherFilter] = useState("both");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
-  const [_locationFilter, setLocationFilter] = useState("all");
+  const [gameVersion, setGameVersion] = useState("1.6.0");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   useEffect(() => {
     if (activePlayer) {
       setFishCaught(new Set(activePlayer?.fishing?.fishCaught ?? []));
+
+      if (activePlayer.general?.gameVersion) {
+        const version = activePlayer.general.gameVersion;
+        setGameVersion(version);
+
+        reqs["Master Angler"] = Object.values(fishes).filter((f) =>
+          semverGte(version, f.minVersion),
+        ).length;
+      }
     }
   }, [activePlayer]);
 
@@ -119,11 +119,9 @@ export default function Fishing() {
         additionalDescription = ` - ${reqs[name] - totalCaught} more`;
       }
     } else {
-      completed = fishCaught.size >= reqs[name as keyof typeof reqs];
+      completed = fishCaught.size >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          reqs[name as keyof typeof reqs] - fishCaught.size
-        } more`;
+        additionalDescription = ` - ${reqs[name] - fishCaught.size} more`;
       }
     }
     return { completed, additionalDescription };
@@ -139,7 +137,7 @@ export default function Fishing() {
         />
         <meta
           name="description"
-          content="Track your Stardew Valley fishing progress and optimize your angling skills. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
+          content="Track your Stardew Valley fishing progress in the new 1.6 update. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
         />
         <meta
           name="og:description"
@@ -155,9 +153,9 @@ export default function Fishing() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Fishing Tracker
           </h1>
@@ -165,7 +163,7 @@ export default function Fishing() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -196,13 +194,13 @@ export default function Fishing() {
               All Fish
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
                   title={`Incomplete (${
-                    Object.keys(fishes).length - fishCaught.size
+                    reqs["Master Angler"] - fishCaught.size
                   })`}
                   setFilter={setFilter}
                 />
@@ -213,18 +211,9 @@ export default function Fishing() {
                   setFilter={setFilter}
                 />
               </div>
-              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
-                <div className="grid grid-cols-1 gap-2 sm:gap-3  sm:flex">
-                  {/* <FilterSearch
-                  target={"all"}
-                  _filter={_typeFilter}
-                  title={"Type"}
-                  data={type}
-                  setFilter={setTypeFilter}
-                  icon={IconClock}
-                /> */}
+              <div className="grid grid-cols-1 items-stretch gap-2 sm:flex">
+                <div className="grid grid-cols-1 gap-2 sm:flex  sm:gap-3">
                   <FilterSearch
-                    target={"all"}
                     _filter={_seasonFilter}
                     title={"Seasons"}
                     data={seasons}
@@ -232,7 +221,6 @@ export default function Fishing() {
                     icon={IconClock}
                   />
                   <FilterSearch
-                    target={"all"}
                     _filter={_weatherFilter}
                     title={"Weather"}
                     data={weather}
@@ -253,10 +241,10 @@ export default function Fishing() {
             {/* Fish Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(fishes)
+                .filter((f) => semverGte(gameVersion, f.minVersion))
                 .filter((f) => {
                   if (!search) return true;
-                  const name =
-                    objects[f.itemID.toString() as keyof typeof objects].name;
+                  const name = objects[f.itemID as keyof typeof objects].name;
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((f) => {
@@ -265,11 +253,6 @@ export default function Fishing() {
                   } else if (_filter === "2") {
                     return fishCaught.has(f.itemID); // completed
                   } else return true; // all
-                })
-                .filter((f) => {
-                  if (_typeFilter === "all") return true;
-                  if (_typeFilter === "caught") return !f.trapFish;
-                  if (_typeFilter === "trap") return f.trapFish;
                 })
                 .filter((f) => {
                   if ("weather" in f && f.trapFish === false) {
@@ -301,12 +284,19 @@ export default function Fishing() {
                     setIsOpen={setIsOpen}
                     setObject={setFish}
                     type="fish"
+                    setPromptOpen={setPromptOpen}
+                    show={show}
                   />
                 ))}
             </div>
           </section>
         </div>
         <FishSheet open={open} setIsOpen={setIsOpen} fish={fish} />
+        <UnblurDialog
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
+        />
       </main>
     </>
   );

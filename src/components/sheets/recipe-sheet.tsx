@@ -5,16 +5,21 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+
+import { usePlayers } from "@/contexts/players-context";
+import { deweaponize } from "@/lib/utils";
+
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { Button } from "@/components/ui/button";
 import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-
-import { PlayersContext } from "@/contexts/players-context";
-
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -32,19 +37,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconExternalLink } from "@tabler/icons-react";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
-import { Button } from "../ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from "../ui/drawer";
-import { ScrollArea } from "../ui/scroll-area";
 
 interface Props<T extends Recipe> {
   open: boolean;
@@ -72,10 +66,9 @@ export const RecipeSheet = <T extends Recipe>({
   setIsOpen,
   recipe,
 }: Props<T>) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const { activePlayer, patchPlayer } = usePlayers();
   const [status, setStatus] = useState(0);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const mixpanel = useMixpanel();
 
   useEffect(() => {
     if (!activePlayer || !recipe) return;
@@ -90,7 +83,7 @@ export const RecipeSheet = <T extends Recipe>({
   // returns true if the recipe is of type U and CraftingRecipe which for now
   // is just the type CraftingRecipes
   function isCraftingRecipe<U extends Recipe>(
-    recipe: U
+    recipe: U,
   ): recipe is U & CraftingRecipe {
     return "isBigCraftable" in recipe;
   }
@@ -98,11 +91,10 @@ export const RecipeSheet = <T extends Recipe>({
   const iconURL = recipe
     ? isCraftingRecipe(recipe)
       ? recipe.isBigCraftable
-        ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
-            .iconURL
-        : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
-      : objects[recipe.itemID.toString() as keyof typeof objects].iconURL
-    : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
+        ? `https://cdn.stardew.app/images/(BC)${recipe.itemID}.webp`
+        : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+      : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+    : null;
 
   const name = recipe
     ? isCraftingRecipe(recipe)
@@ -154,7 +146,10 @@ export const RecipeSheet = <T extends Recipe>({
           <SheetHeader className="mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={
+                  iconURL ??
+                  "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                }
                 alt={name ? name : "No Info"}
                 width={64}
                 height={
@@ -174,7 +169,7 @@ export const RecipeSheet = <T extends Recipe>({
             </SheetDescription>
           </SheetHeader>
           {recipe && (
-            <div className="space-y-6 mt-4">
+            <div className="mt-4 space-y-6">
               <section className="space-y-2">
                 <h3 className="font-semibold">Actions</h3>
                 <Separator />
@@ -182,18 +177,6 @@ export const RecipeSheet = <T extends Recipe>({
                   value={status.toString()}
                   onValueChange={(val) => {
                     handleStatusChange(parseInt(val));
-                    mixpanel?.track("Button Clicked", {
-                      Action: `Set ${
-                        parseInt(val) === 0
-                          ? "Unknown"
-                          : parseInt(val) === 1
-                          ? "Known"
-                          : "Completed"
-                      }`,
-                      Recipe: name,
-                      "Card Type": "Recipe card",
-                      Location: "Recipe sheet",
-                    });
                   }}
                   disabled={!activePlayer}
                 >
@@ -202,8 +185,8 @@ export const RecipeSheet = <T extends Recipe>({
                       {status === 0
                         ? "Unknown"
                         : status === 1
-                        ? "Known"
-                        : "Completed"}
+                          ? "Known"
+                          : "Completed"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -211,19 +194,19 @@ export const RecipeSheet = <T extends Recipe>({
                       <SelectLabel>Change Status</SelectLabel>
                       <SelectItem value="0">
                         <div className="flex items-center gap-2">
-                          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
                           <p>Set Unknown</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="1">
                         <div className="flex items-center gap-2">
-                          <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
                           <p>Set Known</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="2">
                         <div className="flex items-center gap-2">
-                          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
                           <p>Set Completed</p>
                         </div>
                       </SelectItem>
@@ -237,12 +220,6 @@ export const RecipeSheet = <T extends Recipe>({
                     data-umami-event="Visit wiki"
                     asChild
                     className="w-full"
-                    onClick={() =>
-                      mixpanel?.track("Button Clicked", {
-                        Action: "Visit Wiki",
-                        Location: "Fish sheet",
-                      })
-                    }
                   >
                     <a
                       className="flex items-center"
@@ -250,7 +227,7 @@ export const RecipeSheet = <T extends Recipe>({
                       rel="noreferrer"
                       href={`https://stardewvalleywiki.com/${name.replaceAll(
                         " ",
-                        "_"
+                        "_",
                       )}`}
                     >
                       Visit Wiki Page
@@ -269,16 +246,23 @@ export const RecipeSheet = <T extends Recipe>({
               <section className="space-y-2">
                 <h3 className="font-semibold">Ingredients</h3>
                 <Separator />
-                <ul className="list-none list-inside space-y-3">
+                <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
+                    let isBC = false;
 
                     // if itemID is greater than 0, it's an object
-                    if (ingredient.itemID > 0) {
-                      item =
-                        objects[
-                          ingredient.itemID.toString() as keyof typeof objects
-                        ];
+                    if (!ingredient.itemID.startsWith("-")) {
+                      // check if it's a big craftable or not
+                      if (deweaponize(ingredient.itemID).key === "BC") {
+                        let item_id = deweaponize(ingredient.itemID).value;
+                        isBC = true;
+                        item =
+                          bigCraftables[item_id as keyof typeof bigCraftables];
+                      } else {
+                        item =
+                          objects[ingredient.itemID as keyof typeof objects];
+                      }
                     } else {
                       // otherwise, it's a category
                       item = {
@@ -290,14 +274,18 @@ export const RecipeSheet = <T extends Recipe>({
                     return (
                       <li
                         key={ingredient.itemID}
-                        className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-semibold"
+                        className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={item.iconURL}
+                            src={
+                              isBC
+                                ? `https://cdn.stardew.app/images/(BC)${ingredient.itemID}.webp`
+                                : `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
+                            }
                             alt={item.name}
                             width={32}
-                            height={32}
+                            height={isBC ? 64 : 32}
                             quality={25}
                           />
                           <p className="font-semibold">
@@ -320,10 +308,13 @@ export const RecipeSheet = <T extends Recipe>({
     <Drawer open={open} onOpenChange={setIsOpen}>
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">
-          <DrawerHeader className="mt-4 -mb-4">
+          <DrawerHeader className="-mb-4 mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={
+                  iconURL ??
+                  "https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+                }
                 alt={name ? name : "No Info"}
                 width={64}
                 height={
@@ -351,18 +342,6 @@ export const RecipeSheet = <T extends Recipe>({
                   value={status.toString()}
                   onValueChange={(val) => {
                     handleStatusChange(parseInt(val));
-                    mixpanel?.track("Button Clicked", {
-                      Action: `Set ${
-                        parseInt(val) === 0
-                          ? "Unknown"
-                          : parseInt(val) === 1
-                          ? "Known"
-                          : "Completed"
-                      }`,
-                      Recipe: name,
-                      "Card Type": "Recipe card",
-                      Location: "Recipe sheet",
-                    });
                   }}
                   disabled={!activePlayer}
                 >
@@ -371,8 +350,8 @@ export const RecipeSheet = <T extends Recipe>({
                       {status === 0
                         ? "Unknown"
                         : status === 1
-                        ? "Known"
-                        : "Completed"}
+                          ? "Known"
+                          : "Completed"}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
@@ -380,19 +359,19 @@ export const RecipeSheet = <T extends Recipe>({
                       <SelectLabel>Change Status</SelectLabel>
                       <SelectItem value="0">
                         <div className="flex items-center gap-2">
-                          <div className="border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
                           <p>Set Unknown</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="1">
                         <div className="flex items-center gap-2">
-                          <div className="border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
                           <p>Set Known</p>
                         </div>
                       </SelectItem>
                       <SelectItem value="2">
                         <div className="flex items-center gap-2">
-                          <div className="border border-green-900 bg-green-500/20 dark:bg-green-500/10 rounded-full h-4 w-4" />
+                          <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
                           <p>Set Completed</p>
                         </div>
                       </SelectItem>
@@ -406,12 +385,6 @@ export const RecipeSheet = <T extends Recipe>({
                     data-umami-event="Visit wiki"
                     asChild
                     className="w-full"
-                    onClick={() =>
-                      mixpanel?.track("Button Clicked", {
-                        Action: "Visit Wiki",
-                        Location: "Fish sheet",
-                      })
-                    }
                   >
                     <a
                       className="flex items-center"
@@ -419,7 +392,7 @@ export const RecipeSheet = <T extends Recipe>({
                       rel="noreferrer"
                       href={`https://stardewvalleywiki.com/${name.replaceAll(
                         " ",
-                        "_"
+                        "_",
                       )}`}
                     >
                       Visit Wiki Page
@@ -438,12 +411,12 @@ export const RecipeSheet = <T extends Recipe>({
               <section className="space-y-2">
                 <h3 className="font-semibold">Ingredients</h3>
                 <Separator />
-                <ul className="list-none list-inside space-y-3">
+                <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
 
                     // if itemID is greater than 0, it's an object
-                    if (ingredient.itemID > 0) {
+                    if (!ingredient.itemID.startsWith("-")) {
                       item =
                         objects[
                           ingredient.itemID.toString() as keyof typeof objects
@@ -459,11 +432,11 @@ export const RecipeSheet = <T extends Recipe>({
                     return (
                       <li
                         key={ingredient.itemID}
-                        className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm font-semibold"
+                        className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={item.iconURL}
+                            src={`https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`}
                             alt={item.name}
                             width={32}
                             height={32}

@@ -1,11 +1,21 @@
+import type { Power } from "@/types/data";
+import type { WalnutType } from "@/types/items";
+
+import powers from "@/data/powers.json";
+const powersData = powers as Record<string, Power>;
+
+import walnut_data from "@/data/walnuts.json";
+const walnutData = walnut_data as { [key: string]: WalnutType };
+
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { useContext, useState } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { walnuts as walnutType } from "@/lib/parsers/walnuts";
+import { usePlayers } from "@/contexts/players-context";
+import { Dispatch, SetStateAction, useState } from "react";
 
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,13 +24,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-
-import { useMixpanel } from "@/contexts/mixpanel-context";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   title: string;
@@ -28,7 +34,22 @@ interface Props {
   iconURL: string;
   completed?: boolean;
   _id: string;
-  _type: "stardrop" | "note" | "scrap" | "walnut";
+  _type: "stardrop" | "note" | "scrap" | "walnut" | "power";
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show?: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DialogCard = ({
@@ -38,11 +59,13 @@ export const DialogCard = ({
   completed,
   _id,
   _type,
+  show,
+  setPromptOpen,
 }: Props) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
-
+  const { activePlayer, patchPlayer } = usePlayers();
   const [open, setOpen] = useState(false);
+
+  const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -91,7 +114,7 @@ export const DialogCard = ({
 
       case "walnut":
         const walnuts = activePlayer.walnuts?.found ?? {};
-        if (status) walnuts[_id] = walnutType[_id].num;
+        if (status) walnuts[_id] = walnutData[_id].count;
         else walnuts[_id] = 0;
 
         patch = {
@@ -100,6 +123,22 @@ export const DialogCard = ({
           },
         };
         break;
+
+      case "power":
+        let powers = new Set(activePlayer?.powers?.collection ?? []);
+
+        console.log("initial powers:", powers);
+
+        if (status) powers.add(_id);
+        else powers.delete(_id);
+
+        console.log("final powers:", powers);
+
+        patch = {
+          powers: {
+            collection: Array.from(powers),
+          },
+        };
     }
 
     if (Object.keys(patch).length === 0) return;
@@ -110,20 +149,32 @@ export const DialogCard = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
+      <div
+        className={cn(
+          "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+          checkedClass,
+        )}
+        onClick={(e) => {
+          if (minVersion === "1.6.0" && !show && !completed) {
+            e.preventDefault();
+            setPromptOpen?.(true);
+            return;
+          }
+          setOpen(true);
+        }}
+      >
+        {minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
         <div
           className={cn(
-            "py-4 px-5 flex justify-between items-center hover:cursor-pointer border rounded-lg shadow-sm",
-            checkedClass
+            "flex items-center space-x-3 truncate text-left",
+            minVersion === "1.6.0" && !show && !completed && "blur-sm",
           )}
         >
-          <div className="flex space-x-3 items-center">
-            <Image src={iconURL} alt={title} width={32} height={32} />
-            <p>{title}</p>
-          </div>
-          <ChevronRightIcon className="h-5 w-5" />
+          <Image src={iconURL} alt={title} width={32} height={32} />
+          <p>{title}</p>
         </div>
-      </DialogTrigger>
+        <ChevronRightIcon className="h-5 w-5" />
+      </div>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
@@ -137,11 +188,6 @@ export const DialogCard = ({
               data-umami-event="Set incompleted"
               onClick={() => {
                 handleStatusChange(false);
-                mixpanel?.track("Button Clicked", {
-                  Action: "Set Incompleted",
-                  Item: _type.toLocaleUpperCase(),
-                  "Card Type": "Dialog card",
-                });
               }}
             >
               Set Incomplete
@@ -153,11 +199,6 @@ export const DialogCard = ({
               data-umami-event="Set completed"
               onClick={() => {
                 handleStatusChange(true);
-                mixpanel?.track("Button Clicked", {
-                  Action: "Set Completed",
-                  Item: _type.toLocaleUpperCase(),
-                  "Card Type": "Dialog card",
-                });
               }}
             >
               Set Completed

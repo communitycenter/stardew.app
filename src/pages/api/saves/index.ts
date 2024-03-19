@@ -33,11 +33,12 @@ export interface Player {
   notes?: object;
   scraps?: object;
   perfection?: object;
+  powers?: object;
 }
 
 export async function getUID(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ): Promise<string> {
   let uid = getCookie("uid", { req, res });
   if (uid) {
@@ -57,7 +58,7 @@ export async function getUID(
       // verify that the token is valid
       const { valid, userId } = verifyToken(
         token as string,
-        user.cookie_secret
+        user.cookie_secret,
       );
       if (!valid || userId !== uid) {
         res.status(400);
@@ -86,7 +87,7 @@ export const createToken = (userId: string, key: string, validFor: number) => {
   const expires = Math.floor(new Date().getTime() / 1000 + validFor);
   const salt = crypto.randomBytes(8).toString("hex");
   const payload = Buffer.from(`${expires}.${userId}.${salt}`, "utf8").toString(
-    "base64"
+    "base64",
   );
   const signature = crypto
     .createHmac("sha256", key)
@@ -128,8 +129,8 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
     try {
       const r = await conn.execute(
         `
-        REPLACE INTO Saves (_id, user_id, general, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        REPLACE INTO Saves (_id, user_id, general, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection, powers)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
         [
           player._id,
@@ -146,7 +147,8 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
           player.notes ? JSON.stringify(player.notes) : "{}",
           player.scraps ? JSON.stringify(player.scraps) : "{}",
           player.perfection ? JSON.stringify(player.perfection) : "{}",
-        ]
+          player.powers ? JSON.stringify(player.powers) : "{}",
+        ],
       );
       // console.log(r);
       res.status(200).end();
@@ -175,7 +177,7 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
       const { _id } = JSON.parse(req.body);
       const result = await conn.execute(
         "DELETE FROM Saves WHERE user_id = ? AND _id = ?",
-        [uid, _id]
+        [uid, _id],
       );
 
       // console.log("[DEBUG:SAVES] DELETE | deleted one player with id =", _id);
@@ -198,7 +200,7 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     switch (req.method) {

@@ -38,8 +38,8 @@ export function findChildren(
     }
   } catch (err) {
     if (err instanceof Error)
-      throw new Error(`Error in findChildren(): ${err.message}`);
-    throw new Error(`Error in findChildren(): ${err}`);
+      throw new Error(`Error in findChildren: ${err.message}`);
+    throw new Error(`Error in findChildren: ${err}`);
   }
 
   return children;
@@ -122,7 +122,6 @@ export function parseSocial(
       const status = relationship.value.Friendship.Status;
 
       if (status === "Married" || status === "Dating") {
-        console.log(relationship);
         relationships[name] = { points: friendshipPoints, status };
       } else {
         relationships[name] = { points: friendshipPoints };

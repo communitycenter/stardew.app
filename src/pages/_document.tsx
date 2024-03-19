@@ -13,14 +13,14 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="Stardew.app is a web application that allows you to track your Stardew Valley progress by uploading your save file. Gain valuable insights into your progress, monitor achievements, and optimize your gameplay. Take control of your farm, relationships, and community events, and uncover hidden secrets. Maximize your efficiency and become the ultimate Stardew Valley perfectionist. Start tracking your save files today!"
+          content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://stardew.app" />
         <meta property="og:title" content="Stardew.app" />
         <meta
           property="og:description"
-          content="Keep track of your Stardew Valley progression."
+          content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
         />
 
         <meta property="og:thumbnail" content="/favicon.png" />
@@ -29,10 +29,10 @@ export default function Document() {
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://stardew.app" />
-        <meta name="twitter:title" content="Stardew.app" />
+        <meta name="twitter:title" content="stardew.app" />
         <meta
           name="twitter:description"
-          content="Keep track of your Stardew Valley progression."
+          content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
         />
         <meta name="twitter:image" content="/favicon.png" />
         <meta name="twitter:image:width" content="512" />
@@ -40,7 +40,7 @@ export default function Document() {
 
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <body className="dark:bg-neutral-950 overscroll-y-none">
+      <body className="overscroll-y-none dark:bg-neutral-950">
         <Main />
         <NextScript />
       </body>

@@ -7,11 +7,13 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe } from "@/types/recipe";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
+import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
@@ -22,6 +24,8 @@ import {
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
 
+const semverGte = require("semver/functions/gte");
+
 const reqs: Record<string, number> = {
   "D.I.Y.": 15,
   Artisan: 30,
@@ -31,17 +35,34 @@ const reqs: Record<string, number> = {
 export default function Crafting() {
   const [open, setIsOpen] = useState(false);
   const [recipe, setRecipe] = useState<CraftingRecipe | null>(null);
-  const [playerRecipes, setPlayerRecipes] = useState({});
+  const [playerRecipes, setPlayerRecipes] = useState<{
+    [key: string]: 0 | 1 | 2;
+  }>({});
+
+  const [gameVersion, setGameVersion] = useState("1.6.0");
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const [showPrompt, setPromptOpen] = useState(false);
+
+  const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
 
   useEffect(() => {
     if (activePlayer) {
       if (activePlayer.crafting?.recipes) {
         setPlayerRecipes(activePlayer.crafting.recipes);
+      } else setPlayerRecipes({});
+
+      // update the requirements for achievements and set the minimum game version
+      if (activePlayer.general?.gameVersion) {
+        const version = activePlayer.general.gameVersion;
+        setGameVersion(version);
+
+        reqs["Craft Master"] = Object.values(recipes).filter((r) =>
+          semverGte(version, r.minVersion),
+        ).length;
       }
     }
   }, [activePlayer]);
@@ -79,13 +100,11 @@ export default function Crafting() {
     return { completed, additionalDescription };
   };
 
-  const getName = (id: number, isBigCraftable: boolean) => {
-    let itemID = id.toString();
-
+  const getName = (id: string, isBigCraftable: boolean) => {
     if (isBigCraftable) {
-      return bigobjects[itemID as keyof typeof bigobjects].name;
+      return bigobjects[id as keyof typeof bigobjects].name;
     } else {
-      return objects[itemID as keyof typeof objects].name;
+      return objects[id as keyof typeof objects].name;
     }
   };
 
@@ -99,15 +118,15 @@ export default function Crafting() {
         />
         <meta
           name="description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="og:description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="twitter:description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="keywords"
@@ -115,9 +134,9 @@ export default function Crafting() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Crafting Tracker
           </h1>
@@ -125,7 +144,7 @@ export default function Crafting() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -156,13 +175,13 @@ export default function Crafting() {
               All Recipes
             </h3>
             {/* Filters */}
-            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
                   title={`Unknown (${
-                    Object.keys(recipes).length - (knownCount + craftedCount)
+                    reqs["Craft Master"] - (knownCount + craftedCount)
                   })`}
                   setFilter={setFilter}
                 />
@@ -179,7 +198,7 @@ export default function Crafting() {
                   setFilter={setFilter}
                 />
               </div>
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                 <CommandInput
                   onValueChange={(v) => setSearch(v)}
                   placeholder="Search Recipes"
@@ -189,6 +208,7 @@ export default function Crafting() {
             {/* Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(recipes)
+                .filter((r) => semverGte(gameVersion, r.minVersion))
                 .filter((r) => {
                   if (!search) return true;
                   const name = getName(r.itemID, r.isBigCraftable);
@@ -198,22 +218,17 @@ export default function Crafting() {
                   if (_filter === "0") {
                     // unknown recipes (not in playerRecipes)
                     return !(
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] > 0
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
                     );
                   } else if (_filter === "1") {
                     // known recipes (in playerRecipes) and not cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        1
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
                     );
                   } else if (_filter === "2") {
                     // cooked recipes (in playerRecipes) and cooked
                     return (
-                      r.itemID in playerRecipes &&
-                      playerRecipes[r.itemID as keyof typeof playerRecipes] ===
-                        2
+                      r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
                     );
                   } else return true; // all recipes
                 })
@@ -222,18 +237,23 @@ export default function Crafting() {
                     key={f.itemID}
                     recipe={f}
                     status={
-                      f.itemID in playerRecipes
-                        ? playerRecipes[f.itemID as keyof typeof playerRecipes]
-                        : 0
+                      f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
                     }
                     setIsOpen={setIsOpen}
                     setObject={setRecipe}
+                    setPromptOpen={setPromptOpen}
+                    show={show}
                   />
                 ))}
             </div>
           </section>
         </div>
         <RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
+        <UnblurDialog
+          open={showPrompt}
+          setOpen={setPromptOpen}
+          toggleShow={toggleShow}
+        />
       </main>
     </>
   );

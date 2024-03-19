@@ -1,12 +1,13 @@
 import useSWR from "swr";
 
 import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
   useMemo,
   useState,
+  useEffect,
+  ReactNode,
+  useContext,
+  useCallback,
+  createContext,
 } from "react";
 
 import type { CookingRet } from "@/lib/parsers/cooking";
@@ -21,6 +22,7 @@ import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
+import type { PowersRet } from "@/lib/parsers/powers";
 
 export interface PlayerType {
   _id: string;
@@ -36,6 +38,7 @@ export interface PlayerType {
   notes?: NotesRet;
   scraps?: ScrapsRet;
   perfection?: PerfectionRet;
+  powers?: PowersRet;
 }
 
 interface PlayersContextProps {
@@ -77,13 +80,13 @@ export function mergeDeep(target: any, ...sources: any[]) {
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
   const api = useSWR<PlayerType[]>("/api/saves", (...args) =>
     // @ts-expect-error
-    fetch(...args).then((res) => res.json())
+    fetch(...args).then((res) => res.json()),
   );
   const [activePlayerId, setActivePlayerId] = useState<string>();
   const players = useMemo(() => api.data ?? [], [api.data]);
   const activePlayer = useMemo(
     () => players.find((p) => p._id === activePlayerId),
-    [players, activePlayerId]
+    [players, activePlayerId],
   );
 
   useEffect(() => {
@@ -110,10 +113,10 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
           });
           return patchPlayers(currentPlayers);
         },
-        { optimisticData: patchPlayers }
+        { optimisticData: patchPlayers },
       );
     },
-    [activePlayer, api]
+    [activePlayer, api],
   );
 
   const uploadPlayers = useCallback(
@@ -125,7 +128,7 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       await api.mutate(players);
       setActivePlayerId(players[0]._id);
     },
-    [api, setActivePlayerId]
+    [api, setActivePlayerId],
   );
 
   const setActivePlayer = useCallback((player?: PlayerType) => {
@@ -149,4 +152,8 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </PlayersContext.Provider>
   );
+};
+
+export const usePlayers = () => {
+  return useContext(PlayersContext);
 };

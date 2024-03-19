@@ -24,7 +24,8 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 				walnuts=JSON_MERGE_PATCH(walnuts, ?),
 				notes=JSON_MERGE_PATCH(notes, ?),
 				scraps=JSON_MERGE_PATCH(scraps, ?),
-				perfection=JSON_MERGE_PATCH(perfection, ?)
+				perfection=JSON_MERGE_PATCH(perfection, ?),
+        powers=JSON_MERGE_PATCH(powers, ?)
 			WHERE _id = ? AND user_id = ?
 		`,
       [
@@ -40,9 +41,10 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
         player.notes ? JSON.stringify(player.notes) : "{}",
         player.scraps ? JSON.stringify(player.scraps) : "{}",
         player.perfection ? JSON.stringify(player.perfection) : "{}",
+        player.powers ? JSON.stringify(player.powers) : "{}",
         playerId,
         uid,
-      ]
+      ],
     );
     res.status(200).end();
   } catch (e) {
@@ -53,7 +55,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     switch (req.method) {

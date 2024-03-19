@@ -3,11 +3,11 @@ import Head from "next/head";
 import type { PlayerType } from "@/contexts/players-context";
 
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as v from "valibot";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -37,7 +37,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
-// import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 
 function generateUniqueIdentifier() {
@@ -54,9 +53,10 @@ const formSchema = v.object({
     v.maxLength(32, "Name must be 32 characters or less"),
     v.toTrimmed(),
   ]),
+  gameVersion: v.string(),
   questsCompleted: v.coerce(
     v.number([v.toMinValue(0), v.toMaxValue(1000)]),
-    Number
+    Number,
   ),
   farmName: v.string([
     v.minLength(1),
@@ -67,44 +67,59 @@ const formSchema = v.object({
   totalMoneyEarned: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   fishCaught: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   numObelisks: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number),
   ),
   goldenClock: v.optional(v.boolean()),
   childrenCount: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number),
   ),
   houseUpgradeLevel: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number),
   ),
   farming: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   fishing: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   foraging: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   mining: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   combat: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
 });
 
 export default function Editor() {
-  const { uploadPlayers } = useContext(PlayersContext);
+  const { uploadPlayers } = usePlayers();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -112,6 +127,7 @@ export default function Editor() {
     resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
+      gameVersion: undefined,
       questsCompleted: 0,
       farmName: "",
       farmType: undefined,
@@ -134,6 +150,7 @@ export default function Editor() {
       _id: generateUniqueIdentifier(),
       general: {
         name: values.name,
+        gameVersion: values.gameVersion,
         questsCompleted: values.questsCompleted,
         farmInfo: `${values.farmName} (${values.farmType})`,
         totalMoneyEarned: values.totalMoneyEarned,
@@ -180,12 +197,11 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 px-0 md:px-8 md:items-center justify-center`}
+        className={`flex min-h-[calc(100vh-65px)] justify-center border-neutral-200 px-0 dark:border-neutral-800 md:items-center md:border-l md:px-8`}
       >
         <div className="mx-auto max-w-xl space-y-4">
           <Card className="border-0 md:border">
             <CardHeader>
-              {/* TODO: check based on if the players array is populated? But then would we only allow CREATION of 1 farmhand? */}
               <CardTitle>Create Farmhand</CardTitle>
               <CardDescription>
                 Set your farmhand&apos;s important metadata. This will be used
@@ -205,7 +221,7 @@ export default function Editor() {
                 >
                   {/* General Section */}
                   {/* Name & Quests */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                  <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="name"
@@ -231,22 +247,36 @@ export default function Editor() {
                     />
                     <FormField
                       control={form.control}
-                      name="questsCompleted"
+                      name="gameVersion"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel htmlFor="questsCompleted">
-                            Quests Completed
+                          <FormLabel htmlFor="gameVersion">
+                            Game Version{" "}
+                            <span className="text-red-500 dark:text-red-500">
+                              *
+                            </span>
                           </FormLabel>
-                          <FormControl id="questsCompleted">
-                            <Input type="number" placeholder="40" {...field} />
-                          </FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl id="gameVersion">
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="1.5.4">1.5.4</SelectItem>
+                              <SelectItem value="1.6.0">1.6.0</SelectItem>
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
                   {/* Farm Name & Type */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="farmName"
@@ -314,7 +344,7 @@ export default function Editor() {
                   {isExpanded && (
                     <>
                       {/* Money Earned & Fish Caught */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <FormField
                           control={form.control}
                           name="totalMoneyEarned"
@@ -399,7 +429,7 @@ export default function Editor() {
                                 Golden Clock
                               </FormLabel>
                               <FormControl>
-                                <div className="flex space-x-2 items-center">
+                                <div className="flex items-center space-x-2">
                                   <Switch
                                     checked={field.value}
                                     onCheckedChange={field.onChange}
@@ -619,6 +649,25 @@ export default function Editor() {
                             </FormItem>
                           )}
                         />
+                        <FormField
+                          control={form.control}
+                          name="questsCompleted"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel htmlFor="questsCompleted">
+                                Quests Completed
+                              </FormLabel>
+                              <FormControl id="questsCompleted">
+                                <Input
+                                  type="number"
+                                  placeholder="40"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
                       </div>
                     </>
                   )}
@@ -628,9 +677,9 @@ export default function Editor() {
                     onClick={() => setIsExpanded((p) => !p)}
                   >
                     {isExpanded ? (
-                      <ChevronUpIcon className="w-5 h-5" />
+                      <ChevronUpIcon className="h-5 w-5" />
                     ) : (
-                      <ChevronDownIcon className="w-5 h-5" />
+                      <ChevronDownIcon className="h-5 w-5" />
                     )}
                   </Button>
                   <Button variant="default" type="submit">

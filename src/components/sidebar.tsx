@@ -19,8 +19,9 @@ import {
   IconId,
   IconNote,
   IconProgress,
-  IconShirt,
   IconSettings,
+  IconShirt,
+  IconStars,
 } from "@tabler/icons-react";
 
 import {
@@ -34,7 +35,7 @@ import { DiscordLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
-  // { name: "Bundles", href: "/bundles", icon: IconBox },
+  // { name: "Bundles", href: "/bundles", icon: IconBox }, // If you're snooping... tbd ;)
   { name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
   { name: "Secret Notes", href: "/notes", icon: IconNote },
   { name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
@@ -44,8 +45,10 @@ export const miscNavigation = [
 export const playerNavigation = [
   { name: "Home", href: "/", icon: IconHome2 },
   { name: "Farmer", href: "/farmer", icon: IconId },
+  { name: "Skills & Mastery", href: "/skills", icon: IconStars },
   { name: "Perfection", href: "/perfection", icon: IconAward },
   { name: "Relationships", href: "/relationships", icon: IconHeart },
+  // { name: "Animals", href: "/animals", icon: IconPaw }, // Promise!
 ];
 
 export const collectionsNavigation = [
@@ -59,11 +62,15 @@ export const collectionsNavigation = [
 export const linksNavigation = [
   { name: "Discord", href: "/discord", icon: DiscordLogoIcon },
   { name: "GitHub", href: "/github", icon: GitHubLogoIcon },
-  { name: "stardew.me", href: "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button", icon: IconShirt },
+  {
+    name: "stardew.me",
+    href: "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button",
+    icon: IconShirt,
+  },
 ];
 
 export const SidebarCategory = ({ children }: { children: string }) => (
-  <h2 className="mt-4 mb-2 px-4 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
+  <h2 className="mb-2 mt-4 px-4 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
     {children}
   </h2>
 );
@@ -73,13 +80,13 @@ export function Sidebar({ className }: SidebarProps) {
 
   return (
     <div className={className}>
-      <div className="grid grid-cols-3 pt-4 gap-2 w-72 px-3">
+      <div className="grid w-72 grid-cols-3 gap-2 px-3 pt-4">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full dark:hover:bg-[#5865F2] hover:bg-[#5865F2] hover:text-neutral-50"
+                className="w-full hover:bg-[#5865F2] hover:text-neutral-50 dark:hover:bg-[#5865F2]"
                 asChild
               >
                 <a href={"/discord"} target="_blank" rel="noreferrer">
@@ -117,7 +124,7 @@ export function Sidebar({ className }: SidebarProps) {
             <TooltipTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full hover:bg-[#FFD282] dark:hover:bg-[#FFD282] hover:text-neutral-50"
+                className="w-full hover:bg-[#FFD282] hover:text-neutral-50 dark:hover:bg-[#FFD282]"
                 asChild
               >
                 <a
@@ -148,12 +155,12 @@ export function Sidebar({ className }: SidebarProps) {
                 "w-full justify-start",
                 item.href === pathname
                   ? ""
-                  : "text-neutral-600 dark:text-neutral-400"
+                  : "text-neutral-600 dark:text-neutral-400",
               )}
               asChild
             >
               <Link href={item.href}>
-                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                <item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
                 {item.name}
               </Link>
             </Button>
@@ -169,12 +176,12 @@ export function Sidebar({ className }: SidebarProps) {
                 "w-full justify-start",
                 item.href === pathname
                   ? ""
-                  : "text-neutral-600 dark:text-neutral-400"
+                  : "text-neutral-600 dark:text-neutral-400",
               )}
               asChild
             >
               <Link href={item.href}>
-                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                <item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
                 {item.name}
               </Link>
             </Button>
@@ -191,12 +198,12 @@ export function Sidebar({ className }: SidebarProps) {
                 "w-full justify-start",
                 item.href === pathname
                   ? ""
-                  : "text-neutral-600 dark:text-neutral-400"
+                  : "text-neutral-600 dark:text-neutral-400",
               )}
               asChild
             >
               <Link href={item.href}>
-                <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                <item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
                 {item.name}
               </Link>
             </Button>

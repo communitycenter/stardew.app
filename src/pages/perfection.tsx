@@ -5,9 +5,11 @@ import craftingRecipes from "@/data/crafting.json";
 import fish from "@/data/fish.json";
 import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
+import { monsters } from "@/lib/parsers/monsters";
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useMemo } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { cn } from "@/lib/utils";
+import { useMemo } from "react";
 
 import { InputCard } from "@/components/cards/input-card";
 import { PerfectionCard } from "@/components/cards/perfection-card";
@@ -18,68 +20,29 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-const monsterGoals: Record<string, any> = {
-  Slimes: {
-    goal: 1000,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/7/7b/Green_Slime.png",
-  },
-  "Void Spirits": {
-    goal: 150,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/1/11/Shadow_Shaman.png",
-  },
-  Bats: {
-    goal: 200,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/d/d5/Iridium_Bat.png",
-  },
-  Skeletons: {
-    goal: 50,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/2/23/Skeleton.png",
-  },
-  "Cave Insects": {
-    goal: 125,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/7d/Bug.png",
-  },
-  Duggies: {
-    goal: 30,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/3/3a/Duggy.png",
-  },
-  "Dust Sprites": {
-    goal: 500,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/9/9a/Dust_Sprite.png",
-  },
-  "Rock Crabs": {
-    goal: 60,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/d/d4/Rock_Crab.png",
-  },
-  Mummies: {
-    goal: 100,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/7/70/Mummy.png",
-  },
-  "Pepper Rex": {
-    goal: 50,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/6/67/Pepper_Rex.png",
-  },
-  Serpents: {
-    goal: 250,
-    iconURL: "https://stardewvalleywiki.com/mediawiki/images/8/89/Serpent.png",
-  },
-  "Magma Sprites": {
-    goal: 150,
-    iconURL:
-      "https://stardewvalleywiki.com/mediawiki/images/f/f2/Magma_Sprite.png",
-  },
-};
+const semverGte = require("semver/functions/gte");
 
 export default function Perfection() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
+
+  const gameVersion = useMemo(() => {
+    if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
+
+    return activePlayer.general.gameVersion;
+  }, [activePlayer]);
+
+  const perfectionWaivers = useMemo(() => {
+    if (!activePlayer || !activePlayer.perfection?.perfectionWaivers) return 0;
+
+    return activePlayer.perfection.perfectionWaivers;
+  }, [activePlayer]);
 
   const craftedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
@@ -90,15 +53,22 @@ export default function Perfection() {
   }, [activePlayer]);
 
   // StardewValley.Utility.cs::percentGameComplete()
-  const getCraftedRecipesPercent = useMemo(() => {
+  const [getCraftedRecipesPercent, totalCrafting] = useMemo(() => {
     // StardewValley.Utility.cs::getCraftedRecipesPercent()
-    if (!activePlayer || !activePlayer.crafting?.recipes) return 0;
+    if (!activePlayer || !activePlayer.crafting?.recipes)
+      return [0, Object.keys(craftingRecipes).length];
 
     // TODO: we don't include the wedding ring so no need to -1
     //       but, apparently in multiplayer the wedding ring is required
     //       i can't find the code that does this though
-    return craftedCount / Object.keys(craftingRecipes).length;
-  }, [activePlayer, craftedCount]);
+
+    // total count based on the player's game version
+    const totalCrafting = Object.values(craftingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion),
+    ).length;
+
+    return [craftedCount / totalCrafting, totalCrafting];
+  }, [activePlayer, craftedCount, gameVersion]);
 
   const cookedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
@@ -108,21 +78,30 @@ export default function Perfection() {
       .length;
   }, [activePlayer]);
 
-  const getCookedRecipesPercent = useMemo(() => {
+  const [getCookedRecipesPercent, totalCooking] = useMemo(() => {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
-    if (!activePlayer || !activePlayer.cooking?.recipes) return 0;
+    if (!activePlayer || !activePlayer.cooking?.recipes)
+      return [0, Object.keys(cookingRecipes).length];
 
-    return cookedCount / Object.keys(cookingRecipes).length;
-  }, [activePlayer, cookedCount]);
+    const totalCooking = Object.values(cookingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion),
+    ).length;
 
-  const getFishCaughtPercent = useMemo(() => {
+    return [cookedCount / totalCooking, totalCooking];
+  }, [activePlayer, cookedCount, gameVersion]);
+
+  const [getFishCaughtPercent, totalFish] = useMemo(() => {
     // StardewValley.Utility.cs::getFishCaughtPercent()
-    if (!activePlayer || !activePlayer.fishing?.fishCaught) return 0;
+    if (!activePlayer || !activePlayer.fishing?.fishCaught)
+      return [0, Object.keys(fish).length];
 
     const fishCaught = activePlayer?.fishing?.fishCaught?.length ?? 0;
+    const totalFish = Object.values(fish).filter((f) =>
+      semverGte(gameVersion, f.minVersion),
+    ).length;
 
-    return fishCaught / Object.keys(fish).length;
-  }, [activePlayer]);
+    return [fishCaught / totalFish, totalFish];
+  }, [activePlayer, gameVersion]);
 
   const getMaxedFrienshipsCount = useMemo(() => {
     if (!activePlayer || !activePlayer.social?.relationships) return 0;
@@ -151,15 +130,26 @@ export default function Perfection() {
   const basicShippedCount = useMemo(() => {
     if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
 
-    return Object.keys(activePlayer.shipping.shipped).length;
-  }, [activePlayer]);
+    return Object.keys(activePlayer.shipping.shipped).filter((i) => {
+      // exclude clam from the count if the game version is 1.6.0 or higher
+      if (i === "372" && semverGte(gameVersion, "1.6.0")) return false;
+      return true;
+    }).length;
+  }, [activePlayer, gameVersion]);
 
-  const getFarmerItemsShippedPercent = useMemo(() => {
-    if (!activePlayer || !activePlayer.shipping?.shipped) return 0;
+  const [getFarmerItemsShippedPercent, totalShipping] = useMemo(() => {
+    if (!activePlayer || !activePlayer.shipping?.shipped)
+      return [0, Object.keys(shippingItems).length];
 
-    return basicShippedCount / Object.keys(shippingItems).length;
-  }, [activePlayer, basicShippedCount]);
+    const totalShipping =
+      Object.values(shippingItems).filter((i) =>
+        semverGte(gameVersion, i.minVersion),
+      ).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
 
+    return [basicShippedCount / totalShipping, totalShipping];
+  }, [activePlayer, basicShippedCount, gameVersion]);
+
+  // TODO: use Data/MonsterSlayerQuests.json to get the number of quests
   const slayerQuestsCompleted = useMemo(() => {
     if (!activePlayer || !activePlayer.monsters?.monstersKilled) return 0;
 
@@ -167,7 +157,7 @@ export default function Perfection() {
     const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
 
     for (const monster of Object.keys(monstersKilled)) {
-      if (monstersKilled[monster] >= monsterGoals[monster].goal) {
+      if (monstersKilled[monster] >= monsters[monster].count) {
         count++;
       }
     }
@@ -193,7 +183,7 @@ export default function Perfection() {
           activePlayer.general.skills;
 
         playerLevel = Math.floor(
-          (farming + fishing + foraging + mining + combat) / 2
+          (farming + fishing + foraging + mining + combat) / 2,
         );
       }
     }
@@ -201,23 +191,46 @@ export default function Perfection() {
   }, [activePlayer]);
 
   const getPercentComplete = useMemo(() => {
+    // Reference: StardewValley.Utility.cs::percentGameComplete()
     if (!activePlayer) return 0;
 
     let num = 0;
+    let total = 0;
 
     num += getFarmerItemsShippedPercent * 15; // 15% of the total
-    num += activePlayer.perfection?.numObelisks ?? 0;
-    num += activePlayer.perfection?.goldenClock ? 10 : 0;
-    num += slayerQuestsCompleted >= 12 ? 10 : 0;
-    num += getMaxedFriendshipPercent * 11; // 11% of the total
-    num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
-    num += (activePlayer.general?.stardrops?.length ?? 0) >= 7 ? 10 : 0;
-    num += getCookedRecipesPercent * 10; // 10% of the total
-    num += getCraftedRecipesPercent * 10; // 10% of the total
-    num += getFishCaughtPercent * 10; // 10% of the total
-    num += (getWalnutsFound / 130) * 5;
+    total += 15;
 
-    return num / 100;
+    num += activePlayer.perfection?.numObelisks ?? 0;
+    total += 4;
+
+    num += activePlayer.perfection?.goldenClock ? 10 : 0;
+    total += 10;
+
+    num += slayerQuestsCompleted >= Object.keys(monsters).length ? 10 : 0;
+    total += 10;
+
+    num += getMaxedFriendshipPercent * 11; // 11% of the total
+    total += 11;
+
+    num += (Math.min(playerLevel, 25) / 25) * 5; // 5% of the total
+    total += 5;
+
+    num += (activePlayer.general?.stardrops?.length ?? 0) >= 7 ? 10 : 0;
+    total += 10;
+
+    num += getCookedRecipesPercent * 10; // 10% of the total
+    total += 10;
+
+    num += getCraftedRecipesPercent * 10; // 10% of the total
+    total += 10;
+
+    num += getFishCaughtPercent * 10; // 10% of the total
+    total += 10;
+
+    num += (getWalnutsFound / 130) * 5;
+    total += 5;
+
+    return num / total;
   }, [
     activePlayer,
     getFarmerItemsShippedPercent,
@@ -236,7 +249,7 @@ export default function Perfection() {
         <title>stardew.app | Perfection</title>
         <meta
           name="title"
-          content="Stardew Valley Perfection Tracker | stardew.app"
+          content="Stardew Valley 1.6 Perfection Tracker | stardew.app"
         />
         <meta
           name="description"
@@ -256,9 +269,9 @@ export default function Perfection() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Perfection Tracker
           </h1>
@@ -270,13 +283,30 @@ export default function Perfection() {
                   Perfection Goals
                 </AccordionTrigger>
                 <AccordionContent asChild>
-                  <div className="grid grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-4 grid-rows-4">
-                    <Card className="col-span-1 row-span-full w-full flex justify-center items-center">
+                  <div className="grid grid-cols-1 grid-rows-4 gap-4 xl:grid-cols-3 2xl:grid-cols-4">
+                    <Card
+                      className={cn(
+                        "col-span-1 row-span-full flex w-full items-center justify-center",
+                        getPercentComplete === 1 &&
+                          "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10",
+                      )}
+                    >
                       <div className="flex flex-col items-center p-4">
-                        <CardHeader className="flex flex-row items-cnter justify-between space-y-0 mb-2 p-0">
+                        <CardHeader className="mb-2 flex flex-col items-center justify-between space-y-0 p-0">
                           <CardTitle className="text-2xl font-semibold">
                             Total Perfection
                           </CardTitle>
+                          {perfectionWaivers > 0 && (
+                            <CardDescription>
+                              {Math.min(
+                                Math.floor(getPercentComplete * 100) +
+                                  perfectionWaivers,
+                                100,
+                              )}
+                              % with {perfectionWaivers} waiver
+                              {perfectionWaivers > 1 ? "s" : ""}
+                            </CardDescription>
+                          )}
                         </CardHeader>
 
                         <PercentageIndicator
@@ -288,9 +318,9 @@ export default function Perfection() {
 
                     <PerfectionCard
                       title="Produce & Forage Shipped"
-                      description={`${basicShippedCount ?? 0}/145`}
+                      description={`${basicShippedCount ?? 0}/${totalShipping}`}
                       percentage={Math.floor(
-                        getFarmerItemsShippedPercent * 100
+                        getFarmerItemsShippedPercent * 100,
                       )}
                       footer="15% of total perfection"
                     />
@@ -319,6 +349,7 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Monster Slayer Hero"
+                      // TODO: use Data/MonsterSlayerQuests.json to get the number of quests
                       description={`${slayerQuestsCompleted}/12`}
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(slayerQuestsCompleted / 12) * 100}
@@ -326,7 +357,9 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Great Friends"
-                      description={`${getMaxedFrienshipsCount ?? 0}/34`}
+                      description={`${getMaxedFrienshipsCount ?? 0}/${
+                        Object.keys(villagers).length
+                      }`}
                       percentage={Math.floor(getMaxedFriendshipPercent * 100)}
                       footer="11% of total perfection"
                     />
@@ -344,19 +377,19 @@ export default function Perfection() {
                       // TODO: do we show 0/100% or incremental percent? in game code its either 0 or 100
                       percentage={Math.floor(
                         ((activePlayer?.general?.stardrops?.length ?? 0) / 7) *
-                          100
+                          100,
                       )}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
                       title="Cooking Recipes Made"
-                      description={`${cookedCount}/80`}
+                      description={`${cookedCount}/${totalCooking}`}
                       percentage={Math.floor(getCookedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
                       title="Crafting Recipes Made"
-                      description={`${craftedCount}/129`}
+                      description={`${craftedCount}/${totalCrafting}`}
                       percentage={Math.floor(getCraftedRecipesPercent * 100)}
                       footer="10% of total perfection"
                     />
@@ -364,7 +397,7 @@ export default function Perfection() {
                       title="Fish Caught"
                       description={`${
                         activePlayer?.fishing?.fishCaught?.length ?? 0
-                      }/67`}
+                      }/${totalFish}`}
                       percentage={Math.floor(getFishCaughtPercent * 100)}
                       footer="10% of total perfection"
                     />
@@ -372,7 +405,7 @@ export default function Perfection() {
                       title="Golden Walnuts"
                       description={`${getWalnutsFound ?? 0}/130`}
                       percentage={Math.floor(
-                        ((getWalnutsFound ?? 0) / 130) * 100
+                        ((getWalnutsFound ?? 0) / 130) * 100,
                       )}
                       footer="5% of total perfection"
                     />
@@ -387,16 +420,17 @@ export default function Perfection() {
               Monster Slayer Goals
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {Object.keys(monsterGoals).map((monster) => (
+              {Object.keys(monsters).map((group) => (
                 <InputCard
-                  key={monster}
-                  title={monster}
-                  iconURL={monsterGoals[monster].iconURL}
-                  currentValue={
-                    activePlayer?.monsters?.monstersKilled?.[monster]
+                  key={group}
+                  title={group}
+                  currentValue={activePlayer?.monsters?.monstersKilled?.[group]}
+                  completed={
+                    (activePlayer?.monsters?.monstersKilled?.[group] ?? 0) >=
+                    monsters[group].count
                   }
-                  maxValue={monsterGoals[monster].goal}
-                  description="You can find this number in the Adventurer's Guild."
+                  targets={monsters[group].targets}
+                  maxValue={monsters[group].count}
                 />
               ))}
             </div>

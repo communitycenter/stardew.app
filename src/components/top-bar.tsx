@@ -27,9 +27,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { useFeatureFlagVariantKey } from "posthog-js/react";
 import { toast } from "sonner";
+import { ChangelogDialog } from "./dialogs/changelog-dialog";
+import { FeedbackDialog } from "./dialogs/feedback-dialog";
+
 export interface User {
   id: string;
   discord_id: string;
@@ -43,25 +46,24 @@ export function Topbar() {
     "/api",
     // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
-    { refreshInterval: 0, revalidateOnFocus: false }
+    { refreshInterval: 0, revalidateOnFocus: false },
   );
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [changelogOpen, setChangelogOpen] = useState(false);
+
+  const [isDevelopment, setIsDevelopment] = useState(false);
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
+
+  const seeChangelog = useFeatureFlagVariantKey("changelog_location");
 
   useEffect(() => {
-    if (!api.data?.discord_id) return; // don't try to identify if they're not logged in
-    mixpanel?.identify(api.data?.discord_id);
-    mixpanel?.people?.set({
-      discord_id: api.data?.discord_id,
-      $name: api.data?.discord_name,
-      $avatar: `https://cdn.discordapp.com/avatars/${api.data?.discord_id}/${api.data?.discord_avatar}.png`,
-    });
+    setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -89,9 +91,6 @@ export function Topbar() {
             const players = parseSaveFile(event.target?.result as string);
             await uploadPlayers(players);
             resolve("Your save file was successfully uploaded!");
-            mixpanel?.track("Upload Save File", {
-              Players: players.length,
-            });
           } catch (err) {
             reject(err instanceof Error ? err.message : "Unknown error.");
           }
@@ -113,9 +112,40 @@ export function Topbar() {
     reader.readAsText(file);
   };
 
+  useEffect(() => {
+    const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
+
+    if (hasSeenChangelog) {
+      return;
+    }
+
+    if (!seeChangelog) return;
+
+    switch (seeChangelog) {
+      case "control":
+        break;
+      case "toast":
+        toast.message("stardew.app 2.2.0 is out!", {
+          description: "We now support the 1.6 update!",
+          action: {
+            label: "Check it out!",
+            onClick: () => {
+              setChangelogOpen(true);
+            },
+          },
+        });
+        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
+        break;
+      case "popup":
+        setChangelogOpen(true);
+        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
+        break;
+    }
+  }, [seeChangelog]);
+
   return (
     <>
-      <div className="flex items-center justify-between py-3.5 sm:flex-row sm:items-center sm:space-y-0 md:h-16 px-7 bg-white dark:bg-neutral-950">
+      <div className="flex items-center justify-between bg-white px-7 py-3.5 dark:bg-neutral-950 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
         <div className="flex flex-shrink-0 items-center">
           <Image
             width={36}
@@ -125,15 +155,20 @@ export function Topbar() {
             alt="stardew.app logo"
           />
           <h1 className="pl-3 font-medium">stardew.app</h1>
+          {isDevelopment && (
+            <span className="ml-2 rounded-full bg-red-100 px-2 py-1 text-xs text-red-500 dark:bg-red-800 dark:text-red-400">
+              Internal
+            </span>
+          )}
         </div>
         {/* Mobile Menu */}
-        <div className="md:hidden flex justify-end">
+        <div className="flex justify-end md:hidden">
           <Button variant="outline" onClick={() => setMobileOpen(true)}>
             <HamburgerMenuIcon className="h-4 w-4" />
           </Button>
         </div>
         {/* Desktop Version */}
-        <div className="hidden ml-auto w-full space-x-2 sm:justify-end md:flex">
+        <div className="ml-auto hidden w-full space-x-2 sm:justify-end md:flex">
           <PresetSelector />
           {activePlayer && (
             <Button variant="outline" data-umami-event="Edit player">
@@ -159,7 +194,7 @@ export function Topbar() {
           {/* Not Logged In */}
           {!api.data?.discord_id && (
             <Button
-              className="dark:hover:bg-[#5865F2] hover:bg-[#5865F2] dark:hover:text-white"
+              className="hover:bg-[#5865F2] dark:hover:bg-[#5865F2] dark:hover:text-white"
               data-umami-event="Log in"
             >
               <Link href="/api/oauth">Log In With Discord</Link>
@@ -167,9 +202,12 @@ export function Topbar() {
           )}
           {/* Logged In */}
           {api.data?.discord_id && (
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button className="space-x-2 px-2.5 max-w-[200px]">
+                <Button
+                  className="max-w-[200px] space-x-2 px-2.5"
+                  onClick={(e) => e.preventDefault()}
+                >
                   <Avatar className="h-6 w-6">
                     {api.data.discord_avatar ? (
                       <AvatarImage
@@ -188,8 +226,8 @@ export function Topbar() {
                   <span className="truncate">{api.data.discord_name}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[200px] mr-[26px]">
-                <DropdownMenuLabel className="text-xs text-gray-400 font-normal">
+              <DropdownMenuContent className="mr-[26px] w-[200px]">
+                <DropdownMenuLabel className="text-xs font-normal text-gray-400">
                   stardew.app {version}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
@@ -201,6 +239,15 @@ export function Topbar() {
                 >
                   Credits
                 </DropdownMenuItem>
+                <DropdownMenuItem
+                  data-umami-event="Open credits"
+                  onClick={() => {
+                    setFeedbackOpen(true);
+                  }}
+                >
+                  Send us a message!
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
 
                 <DropdownMenuItem
                   className="focus:text-red-400 dark:focus:text-red-400"
@@ -211,6 +258,7 @@ export function Topbar() {
                 >
                   Delete Save Data
                 </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   data-umami-event="Log out"
@@ -239,8 +287,6 @@ export function Topbar() {
                         ? "localhost"
                         : "stardew.app",
                     });
-
-                    mixpanel?.reset();
                     return (window.location.href = "/");
                   }}
                 >
@@ -256,10 +302,14 @@ export function Topbar() {
         open={mobileOpen}
         setIsOpen={setMobileOpen}
         setDeletionOpen={setDeletionOpen}
+        setFeedbackOpen={setFeedbackOpen}
+        setCreditsOpen={setCreditsOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
       <DeletionDialog open={deletionOpen} setOpen={setDeletionOpen} />
+      <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
+      <ChangelogDialog open={changelogOpen} setOpen={setChangelogOpen} />
     </>
   );
 }

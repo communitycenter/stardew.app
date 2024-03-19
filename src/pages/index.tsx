@@ -2,16 +2,16 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { parseSaveFile } from "@/lib/file";
-import { ChangeEvent, useContext, useRef } from "react";
+import { ChangeEvent, useRef } from "react";
 
 import { toast } from "sonner";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import Link from "next/link";
 
 export default function Home() {
-  const { uploadPlayers } = useContext(PlayersContext);
+  const { uploadPlayers } = usePlayers();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -58,7 +58,7 @@ export default function Home() {
         <title>stardew.app | Stardew Valley 100% completion</title>
         <meta
           name="description"
-          content="The homepage for stardew.app. Upload your Stardew Valley Save File to track your progress towards 100% completion. Login to track your perfection progress across multiple devices."
+          content="Upload your Stardew Valley save file to track your progress towards 100% completion. Supports the new 1.6 update!"
         />
         <meta
           name="keywords"
@@ -66,10 +66,10 @@ export default function Home() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)]  flex-col md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8 items-center`}
+        className={`flex min-h-[calc(100vh-65px)]  flex-col items-center border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <main className="flex flex-col items-center justify-center flex-grow max-w-2xl">
-          <div className="flex items-center gap-2 mb-4">
+        <main className="flex max-w-2xl flex-grow flex-col items-center justify-center">
+          <div className="mb-4 flex items-center gap-2">
             <Image
               src="/favicon.png"
               alt="Log in with Discord"
@@ -77,9 +77,9 @@ export default function Home() {
               width={64}
               height={64}
             />
-            <h2 className="text-3xl font-semibold text-center">stardew.app</h2>
+            <h2 className="text-center text-3xl font-semibold">stardew.app</h2>
           </div>
-          <h3 className="text-lg font-normal text-center">
+          <h3 className="text-center text-lg font-normal">
             Your ultimate sidekick for conquering Stardew Valley. Seamlessly
             upload your save files and let us do the heavy lifting, or take the
             reins and manually update your progress. Join us in embracing the
@@ -88,10 +88,10 @@ export default function Home() {
             world of Stardew Valley.
           </h3>
         </main>
-        <footer className="p-2 w-full">
-          <div className="grid lg:grid-cols-2 gap-4 grid-cols-1">
+        <footer className="w-full p-2">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <Link href="/api/oauth" data-umami-event="Log in (from home page)">
-              <div className="flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-blue-600 hover:border-blue-600 hover:cursor-pointer">
+              <div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
                 <Image
                   src="/discord.png"
                   alt="Log in with Discord"
@@ -100,7 +100,7 @@ export default function Home() {
                   height={48}
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium truncate">Log in with Discord</p>
+                  <p className="truncate font-medium">Log in with Discord</p>
                   <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                     Link your Discord account to save your data across devices.
                   </p>
@@ -109,7 +109,7 @@ export default function Home() {
             </Link>
 
             <div
-              className="flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-blue-600 hover:border-blue-600 hover:cursor-pointer"
+              className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
               onClick={() => {
                 inputRef.current?.click();
               }}
@@ -122,7 +122,7 @@ export default function Home() {
                 height={48}
               />
               <div className="min-w-0 flex-1">
-                <p className="font-medium truncate">Upload a save file</p>
+                <p className="truncate font-medium">Upload a save file</p>
                 <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                   Upload your save file to track your progress towards
                   perfection.
@@ -139,7 +139,7 @@ export default function Home() {
               href="/editor/create"
               data-umami-event="Create farmhand (from home page)"
             >
-              <div className="flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-blue-600 hover:border-blue-600 hover:cursor-pointer">
+              <div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
                 <Image
                   src="/create.png"
                   alt="Create a farmhand"
@@ -148,7 +148,7 @@ export default function Home() {
                   height={48}
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium truncate">Create a farmhand</p>
+                  <p className="truncate font-medium">Create a farmhand</p>
                   <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                     Create a farmhand to track your progress towards perfection.
                   </p>
@@ -157,7 +157,7 @@ export default function Home() {
             </Link>
 
             <Link href="/github" data-umami-event="GitHub (from home page)">
-              <div className="flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-blue-600 hover:border-blue-600 hover:cursor-pointer">
+              <div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
                 <Image
                   src="/github.png"
                   alt="Look at GitHub"
@@ -166,7 +166,7 @@ export default function Home() {
                   height={48}
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium truncate">View on GitHub</p>
+                  <p className="truncate font-medium">View on GitHub</p>
                   <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                     View the source code for this website on GitHub.
                   </p>
@@ -174,9 +174,6 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          {/* <p className="text-gray-400 text-xs text-center mt-4">
-            ChatGPT can make mistakes. Consider checking important information.
-          </p> */}
         </footer>
       </main>
     </>

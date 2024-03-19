@@ -1,15 +1,19 @@
+import type { ShippingItem } from "@/types/items";
+
 import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-const typedShippingItems: Record<string, ShippingItem> = shipping_items;
+export const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
-import { PlayersContext } from "@/contexts/players-context";
-import { useContext, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { usePreferences } from "@/contexts/preferences-context";
+import { useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { ShippingCard } from "@/components/cards/shipping-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import {
   Accordion,
@@ -18,13 +22,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
-import { ShippingItem } from "@/types/items";
+
 import { IconClock } from "@tabler/icons-react";
+
+const semverGte = require("semver/functions/gte");
 
 const reqs: Record<string, number> = {
   Polyculture: Object.values(shipping_items).filter((i) => i.polyculture)
     .length,
-  "Full Shipment": Object.keys(shipping_items).length,
+  "Full Shipment": Object.keys(shipping_items).length - 1, // Clam is excluded in 1.6
 };
 
 const seasons = [
@@ -55,7 +61,28 @@ export default function Shipping() {
   const [_filter, setFilter] = useState("all");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
-  const { activePlayer } = useContext(PlayersContext);
+  const [showPrompt, setPromptOpen] = useState(false);
+
+  const { activePlayer } = usePlayers();
+  const { show, toggleShow } = usePreferences();
+
+  const gameVersion = useMemo(() => {
+    if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
+
+    const version = activePlayer.general.gameVersion;
+    // update the requirements for achievements and set the minimum game version
+    reqs["Full Shipment"] = Object.values(shipping_items).filter((i) =>
+      semverGte(version, i.minVersion),
+    ).length;
+
+    if (semverGte(version, "1.6.0")) reqs["Full Shipment"]--; // Clam is excluded in 1.6
+
+    reqs["Polyculture"] = Object.values(shipping_items).filter(
+      (i) => i.polyculture && semverGte(version, i.minVersion),
+    ).length;
+
+    return version;
+  }, [activePlayer]);
 
   const basicShipped = useMemo(() => {
     if (!activePlayer || !activePlayer.shipping?.shipped) return {};
@@ -72,6 +99,8 @@ export default function Shipping() {
       let basicShippedCount = 0;
 
       Object.keys(activePlayer.shipping.shipped).forEach((key) => {
+        if (semverGte(gameVersion, "1.6.0") && key === "372") return; // Clam is excluded in 1.6
+
         // Polyculture calculation
         if (shipping_items[key as keyof typeof shipping_items].polyculture) {
           if ((activePlayer.shipping?.shipped[key] ?? 0) >= 15)
@@ -88,7 +117,7 @@ export default function Shipping() {
         basicShippedCount++;
       });
       return [polycultureCount, monocultureAchieved, basicShippedCount];
-    }, [activePlayer]);
+    }, [activePlayer, gameVersion]);
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
@@ -127,15 +156,15 @@ export default function Shipping() {
         />
         <meta
           name="description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="og:description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="twitter:description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="keywords"
@@ -143,9 +172,9 @@ export default function Shipping() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Shipping Tracker
           </h1>
@@ -153,7 +182,7 @@ export default function Shipping() {
           <Accordion type="single" collapsible defaultValue="item-1" asChild>
             <section className="space-y-3">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white pt-0">
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   Achievements
                 </AccordionTrigger>
                 <AccordionContent asChild>
@@ -184,13 +213,13 @@ export default function Shipping() {
               All Items
             </h2>
             {/* Filters */}
-            <div className="grid grid-cols-1 xl:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 xl:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
                   title={`Unshipped (${
-                    Object.keys(shipping_items).length - basicShippedCount
+                    reqs["Full Shipment"] - basicShippedCount
                   })`}
                   setFilter={setFilter}
                 />
@@ -211,14 +240,13 @@ export default function Shipping() {
               </div>
               <div className="flex gap-2">
                 <FilterSearch
-                  target={"all"}
                   _filter={_seasonFilter}
                   title={"Seasons"}
                   data={seasons}
                   setFilter={setSeasonFilter}
                   icon={IconClock}
                 />
-                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
                     placeholder="Search Recipes"
@@ -230,9 +258,15 @@ export default function Shipping() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(typedShippingItems)
                 .filter((i) => {
+                  // Clam is excluded in 1.6, so we won't show it
+                  if (i.itemID === "372")
+                    return !semverGte(gameVersion, "1.6.0");
+                  return true;
+                })
+                .filter((i) => semverGte(gameVersion, i.minVersion))
+                .filter((i) => {
                   if (!search) return true;
-                  const name =
-                    objects[i.itemID.toString() as keyof typeof objects].name;
+                  const name = objects[i.itemID as keyof typeof objects].name;
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((i) => {
@@ -245,21 +279,17 @@ export default function Shipping() {
                     return (
                       i.itemID in basicShipped &&
                       i.itemID in shipping_items &&
-                      shipping_items[
-                        i.itemID.toString() as keyof typeof shipping_items
-                      ].polyculture &&
-                      basicShipped[i.itemID as keyof typeof basicShipped]! < 15
+                      shipping_items[i.itemID as keyof typeof shipping_items]
+                        .polyculture &&
+                      basicShipped[i.itemID]! < 15
                     );
                   } else if (_filter === "2") {
                     // Shipped/Completed (we won't check for monoculture here)
                     return i.itemID in basicShipped &&
-                      shipping_items[
-                        i.itemID.toString() as keyof typeof shipping_items
-                      ].polyculture
-                      ? basicShipped[i.itemID as keyof typeof basicShipped]! >=
-                          15
-                      : basicShipped[i.itemID as keyof typeof basicShipped]! >=
-                          1;
+                      shipping_items[i.itemID as keyof typeof shipping_items]
+                        .polyculture
+                      ? basicShipped[i.itemID]! >= 15
+                      : basicShipped[i.itemID]! >= 1;
                   } else return true; // all recipes
                 })
                 .filter((i) => {
@@ -267,12 +297,22 @@ export default function Shipping() {
                   return i.seasons.includes(_seasonFilter);
                 })
                 .map((i) => (
-                  <ShippingCard key={i.itemID} item={i} />
+                  <ShippingCard
+                    key={i.itemID}
+                    item={i}
+                    show={show}
+                    setPromptOpen={setPromptOpen}
+                  />
                 ))}
             </div>
           </section>
         </div>
       </main>
+      <UnblurDialog
+        open={showPrompt}
+        setOpen={setPromptOpen}
+        toggleShow={toggleShow}
+      />
     </>
   );
 }

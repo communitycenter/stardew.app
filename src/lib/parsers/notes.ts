@@ -2,21 +2,34 @@ export interface NotesRet {
   found: number[];
 }
 
-export function parseNotes(player: any) {
-  if (!player.secretNotesSeen) return { found: [] };
+export function parseNotes(player: any): NotesRet {
+  try {
+    let found: number[] = [];
 
-  if (!Array.isArray(player.secretNotesSeen.int)) {
-    return {
-      found: [player.secretNotesSeen.int],
-    };
+    if (
+      !player.secretNotesSeen ||
+      typeof player.secretNotesSeen === "undefined"
+    )
+      return { found };
+
+    if (Array.isArray(player.secretNotesSeen.int)) {
+      // multiple notes found
+      for (const idx in player.secretNotesSeen.int) {
+        let note = player.secretNotesSeen.int[idx];
+
+        // secret notes are less than 1000, journal scraps are >= 1000
+        if (note >= 1 && note < 1000) found.push(note);
+      }
+    } else {
+      // only one note found
+      let note = player.secretNotesSeen.int;
+      if (note >= 1 && note < 1000) found.push(note);
+    }
+
+    return { found };
+  } catch (e) {
+    if (e instanceof Error)
+      throw new Error(`Error in parseNotes: ${e.message}`);
+    else throw new Error(`Error in parseNotes: ${e}`);
   }
-
-  return {
-    found: [
-      ...(player.secretNotesSeen.int?.filter(
-        // change to be in between 1 and 25 inclusively
-        (scrap: number) => scrap >= 1 && scrap <= 25
-      ) ?? []),
-    ],
-  };
 }

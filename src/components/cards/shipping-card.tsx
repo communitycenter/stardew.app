@@ -5,10 +5,12 @@ import objects from "@/data/objects.json";
 import type { ShippingItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { useContext, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -22,12 +24,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
-import { CreatePlayerRedirect } from "../createPlayerRedirect";
 
 interface Props {
   item: ShippingItem;
+
+  /**
+   * Whether the user prefers to see new content
+   *
+   * @type {boolean}
+   * @memberof Props
+   */
+  show: boolean;
+
+  /**
+   * The handler to display the new content confirmation prompt
+   *
+   * @type {Dispatch<SetStateAction<boolean>>}
+   * @memberof Props
+   */
+  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const classes = [
@@ -36,9 +52,8 @@ const classes = [
   "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20",
 ];
 
-export const ShippingCard = ({ item }: Props) => {
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
+export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
+  const { activePlayer, patchPlayer } = usePlayers();
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
@@ -70,13 +85,9 @@ export const ShippingCard = ({ item }: Props) => {
     return [_status, _count];
   }, [activePlayer, item]);
 
-  const iconURL =
-    objects[item.itemID.toString() as keyof typeof objects].iconURL;
-
-  const name = objects[item.itemID.toString() as keyof typeof objects].name;
-
-  const description =
-    objects[item.itemID.toString() as keyof typeof objects].description;
+  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+  const name = objects[item.itemID as keyof typeof objects].name;
+  const description = objects[item.itemID as keyof typeof objects].description;
 
   async function handleSave() {
     if (!activePlayer) return;
@@ -103,24 +114,39 @@ export const ShippingCard = ({ item }: Props) => {
       <DialogTrigger asChild>
         <div
           className={cn(
-            "flex select-none items-center text-left space-x-3 rounded-lg border py-4 px-5 text-neutral-950 dark:text-neutral-50 shadow-sm hover:cursor-pointer transition-colors",
-            classes[_status]
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+            classes[_status],
           )}
+          onClick={(e) => {
+            if (item.minVersion === "1.6.0" && !show && _status < 1) {
+              e.preventDefault();
+              setPromptOpen?.(true);
+              return;
+            }
+          }}
         >
-          <Image
-            src={iconURL}
-            alt={name}
-            className="rounded-sm"
-            width={32}
-            height={32}
-          />
-          <div className="min-w-0 flex-1 pr-3">
-            <p className="font-medium truncate">{`${name} (${_count}x)`}</p>
-            <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-              {description}
-            </p>
+          {item.minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
+          <div
+            className={cn(
+              "flex items-center space-x-3 truncate text-left",
+              item.minVersion === "1.6.0" && !show && _status < 1 && "blur-sm",
+            )}
+          >
+            <Image
+              src={iconURL}
+              alt={name}
+              className="rounded-sm"
+              width={32}
+              height={32}
+            />
+            <div className="min-w-0 flex-1 pr-3">
+              <p className="truncate font-medium">{`${name} (${_count}x)`}</p>
+              <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
           </div>
-          <IconChevronRight className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
         </div>
       </DialogTrigger>
       <DialogContent>
@@ -128,7 +154,7 @@ export const ShippingCard = ({ item }: Props) => {
           <Image
             src={iconURL}
             alt={name}
-            className="rounded-sm mx-auto"
+            className="mx-auto rounded-sm"
             width={42}
             height={42}
           />
@@ -146,7 +172,7 @@ export const ShippingCard = ({ item }: Props) => {
           onChange={(e) => setValue(parseInt(e.target.value))}
           disabled={!activePlayer}
         />
-        <DialogFooter className="sm:justify-between gap-3 sm:gap-0">
+        <DialogFooter className="gap-3 sm:justify-between sm:gap-0">
           <Button variant="outline">
             <a
               className="flex items-center"
@@ -154,14 +180,14 @@ export const ShippingCard = ({ item }: Props) => {
               rel="noreferrer"
               href={`https://stardewvalleywiki.com/${name.replaceAll(
                 " ",
-                "_"
+                "_",
               )}`}
             >
               Visit Wiki Page
               <IconExternalLink className="h-4"></IconExternalLink>
             </a>
           </Button>
-          <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-3 sm:gap-0">
+          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-0 sm:space-x-2">
             <Button
               disabled={!activePlayer}
               variant="secondary"
@@ -173,10 +199,6 @@ export const ShippingCard = ({ item }: Props) => {
               disabled={!activePlayer}
               onClick={() => {
                 handleSave();
-                mixpanel?.track("Value Input", {
-                  Value: value,
-                  "Card type": "Shipping card",
-                });
               }}
             >
               Save

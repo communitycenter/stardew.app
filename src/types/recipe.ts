@@ -1,12 +1,13 @@
 interface Ingredient {
-  itemID: number;
+  itemID: string;
   quantity: number;
 }
 
 export interface Recipe {
-  itemID: number;
-  unlockConditions: string;
   ingredients: Ingredient[];
+  itemID: string;
+  minVersion: string;
+  unlockConditions: string;
 }
 
 export interface CraftingRecipe extends Recipe {

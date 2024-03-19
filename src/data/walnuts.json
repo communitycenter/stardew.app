@@ -1,340 +1,338 @@
 {
   "Bush_IslandEast_17_37": {
-    "num": 1,
+    "count": 1,
     "name": "Island Jungle Bush",
     "description": "In open center area (17,37)"
   },
   "Bush_IslandShrine_23_34": {
-    "num": 1,
+    "count": 1,
     "name": "Island Jungle Shrine Bush",
     "description": "Along Southern edge (23,34)"
   },
   "Bush_IslandSouth_31_5": {
-    "num": 1,
+    "count": 1,
     "name": "Island South Bush",
     "description": "Accessed from hidden path East of stairs on Island North map (31,5)"
   },
   "Bush_IslandNorth_9_84": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Hidden clearing in trees West of stairs from dock area (9,84)"
   },
   "Bush_IslandNorth_20_26": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Hidden clearing in trees on West side in front of Volcano (20,26)"
   },
   "Bush_IslandNorth_56_27": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Behind coconut tree on East side in front of Volcano (56,27)"
   },
   "Bush_IslandNorth_4_42": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Grassy area above Dig Site (4,42)"
   },
   "Bush_IslandNorth_45_38": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Grassy area above Field Office (45,38)"
   },
   "Bush_IslandNorth_47_40": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Grassy area above Field Office (47,40)"
   },
   "Bush_IslandNorth_13_33": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Along river accessed via secret passage from Volcano entrance (13,33)"
   },
   "Bush_IslandNorth_5_30": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Bush",
     "description": "Along river accessed via secret passage from Volcano entrance (5,39)"
   },
-
   "Bush_Caldera_28_36": {
-    "num": 1,
+    "count": 1,
     "name": "Volcano Caldera Bush",
     "description": "Along Southern edge (28,36)"
   },
   "Bush_Caldera_9_34": {
-    "num": 1,
+    "count": 1,
     "name": "Volcano Caldera Bush",
     "description": "Along Southern edge (9,34)"
   },
   "Bush_CaptainRoom_2_4": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Shipwreck Bush",
     "description": "Shipwreck is enterable from left side (2,4)"
   },
-
   "TreeNut": {
-    "num": 1,
+    "count": 1,
     "name": "Tree in Leo's Hut",
     "description": "Hit the tree with an axe"
   },
   "Buried_IslandNorth_19_39": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "At top of stairs from Dig Site, marked by a circle of small rocks (19,39)"
   },
   "Buried_IslandNorth_19_13": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "Cliff edge West of Volcano, marked by a circle of small rocks (19,13)"
   },
   "Buried_IslandNorth_57_79": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "Sand patch within grass patch in SE corner, marked by a circle of small rocks (57,79)"
   },
   "Buried_IslandNorth_54_21": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "Along Eastern edge of Volcano, between rocks and plants (54,21)"
   },
   "Buried_IslandNorth_42_77": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "Dark grassy area just NE of stairs from dock, between tufts of long grass (42,77)"
   },
   "Buried_IslandNorth_62_54": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "NE corner of path between docks and Field Office, marked by slightly raised sand (62,54)"
   },
   "Buried_IslandNorth_26_81": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Buried",
     "description": "Beneath curved tree West of stairs from dock, marked by a circle of small rocks (26,81)"
   },
   "IslandLeftPlantRestored": {
-    "num": 1,
+    "count": 1,
     "name": "Field Office Plant Survey Reward",
     "description": "Correct count is 22 plants"
   },
   "IslandRightPlantRestored": {
-    "num": 1,
+    "count": 1,
     "name": "Field Office Starfish Survey Reward",
     "description": "Correct count is 18 starfish"
   },
   "IslandBatRestored": {
-    "num": 1,
+    "count": 1,
     "name": "Field Office Mummified Bat Reward",
     "description": "Found by breaking non-ore rocks in the Volcano"
   },
   "IslandFrogRestored": {
-    "num": 1,
+    "count": 1,
     "name": "Field Office Mummified Frog Reward",
     "description": "Found by cutting weeds in Jungle"
   },
   "IslandCenterSkeletonRestored": {
-    "num": 6,
+    "count": 6,
     "name": "Field Office Mammal Skeleton Reward",
     "description": "Skull -- Found in Golden Coconuts\nSpine -- Found by fishing in Island North\nLeg (2) -- Found by breaking fossil stones (high chance)\nRibs -- Found by breaking fossil stones (low chance)\nTail -- Found by panning in Island North"
   },
   "IslandSnakeRestored": {
-    "num": 3,
+    "count": 3,
     "name": "Field Office Snake Skeleton Reward",
     "description": "Skull -- Found by digging artifact spots in Island North or West\n    and fishing in Island West\nVertebra (2) -- Found by digging artifact spots in Island West"
   },
   "Bush_IslandWest_104_3": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "End of hidden path through dense trees in NE part of map (104,3)"
   },
   "Bush_IslandWest_31_24": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Behind Mahogany tree in Tiger Slime area (31,24)"
   },
   "Bush_IslandWest_38_56": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Behind palm tree near pond West of Birdie's hut (38,56)"
   },
   "Bush_IslandWest_75_29": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "In front of the trees above farmhouse (75,29)"
   },
   "Bush_IslandWest_64_30": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Elevated area on West side of river; follow path counter-clockwise from Tiger Slimes (64,30)"
   },
   "Bush_IslandWest_54_18": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Obscured by dense trees along path between Tiger Slimes and suspension bridge (54,18)"
   },
   "Bush_IslandWest_25_30": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Along wall SE of walnut door (25,30)"
   },
   "Bush_IslandWest_15_3": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Bush",
     "description": "Follow coastline N past walnut door (15,3)"
   },
   "Buried_IslandWest_21_81": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "In dark sand on SW coast, between circular indentations. (21,81)"
   },
   "Buried_IslandWest_62_76": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "Among debris pile S of farm, between blue starfish (62,76)"
   },
   "Buried_IslandWest_39_24": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "In Tiget Slime area, between tufts of long grass (39,24)"
   },
   "Buried_IslandWest_88_14": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "In grass in NE corner, between animated tiles (88,14)"
   },
   "Buried_IslandWest_43_74": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "Near tidal pools between blue and yellow starfish, initially blocked by boulder (43,74)"
   },
   "Buried_IslandWest_30_75": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Buried",
     "description": "Between tidal pools, marked by X (30,75)"
   },
   "IslandWestCavePuzzle": {
-    "num": 3,
+    "count": 3,
     "name": "Island West Cave Puzzle",
     "description": "\"Simon Says\" musical crystals in hidden cave N of suspension bridge"
   },
   "SandDuggy": {
-    "num": 1,
+    "count": 1,
     "name": "Island West Sand Duggy",
     "description": "Can place items to block other holes"
   },
   "TreeNutShot": {
-    "num": 1,
+    "count": 1,
     "name": "Island North Palm Tree",
     "description": "Can use slingshot to knock walnut from tree"
   },
   "Mermaid": {
-    "num": 5,
+    "count": 5,
     "name": "Island Cove Mermaid Puzzle",
     "description": "Use flute blocks to play Mermaids song; stones provide tuning clues"
   },
   "Buried_IslandSouthEastCave_36_26": {
-    "num": 1,
+    "count": 1,
     "name": "Island Cove Cave Buried",
     "description": "Among the barrels across from the dock (36,26)"
   },
   "Buried_IslandSouthEast_25_17": {
-    "num": 1,
+    "count": 1,
     "name": "Island Cove Buried",
     "description": "NE of star pool, between yellow starfish (25,17)"
   },
   "StardropPool": {
-    "num": 1,
+    "count": 1,
     "name": "Island Cove Star Pool",
     "description": "Fish a walnut out of the pool"
   },
   "BananaShrine": {
-    "num": 3,
+    "count": 3,
     "name": "Island Jungle Banana Shrine Reward",
     "description": "Place a banana on the shrine"
   },
   "IslandGourmand1": {
-    "num": 5,
+    "count": 5,
     "name": "Island Farm Cave Gourmand Reward #1",
     "description": "Grow some melons for the Gourmand"
   },
   "IslandGourmand2": {
-    "num": 5,
+    "count": 5,
     "name": "Island Farm Cave Gourmand Reward #2",
     "description": "Grow some wheat for the Gourmand"
   },
   "IslandGourmand3": {
-    "num": 5,
+    "count": 5,
     "name": "Island Farm Cave Gourmand Reward #3",
     "description": "Grow some garlic for the Gourmand"
   },
   "IslandShrinePuzzle": {
-    "num": 5,
+    "count": 5,
     "name": "Island Jungle Gem Shrine Reward",
     "description": "Place gems dropped by the birds on appropriate pedestals"
   },
   "GoldenCoconut": {
-    "num": 1,
+    "count": 1,
     "name": "Break a Golden Coconut",
     "description": ""
   },
-  "Birdie": { "num": 5, "name": "Birdie's Quest Reward", "description": "" },
-  "Darts": { "num": 3, "name": "Winning Darts Minigame", "description": "" },
+  "Birdie": { "count": 5, "name": "Birdie's Quest Reward", "description": "" },
+  "Darts": { "count": 3, "name": "Winning Darts Minigame", "description": "" },
   "TigerSlimeNut": {
-    "num": 1,
+    "count": 1,
     "name": "Killing Island West Tiger Slimes",
     "description": "Killing tiger slimes has a chance to drop a walnut"
   },
   "VolcanoNormalChest": {
-    "num": 1,
+    "count": 1,
     "name": "Looting Volcano Common Chests",
     "description": "Volcano chests have a chance to drop walnuts upon opening"
   },
   "VolcanoRareChest": {
-    "num": 1,
+    "count": 1,
     "name": "Looting Volcano Rare Chests",
     "description": "Volcano rare chests have a chance to drop walnuts upon opening"
   },
   "VolcanoBarrel": {
-    "num": 5,
+    "count": 5,
     "name": "Breaking Volcano \"Barrels\"",
     "description": "Barrels in the volcano have a chance to drop walnuts upon death"
   },
   "VolcanoMining": {
-    "num": 5,
+    "count": 5,
     "name": "Mining Stones in Volcano",
     "description": "Stones have a chance to drop walnuts upon death"
   },
   "VolcanoMonsterDrop": {
-    "num": 5,
+    "count": 5,
     "name": "Killing Monsters in Volcano",
     "description": "Monsters have a chance to drop walnuts upon death"
   },
   "IslandFarming": {
-    "num": 5,
+    "count": 5,
     "name": "Harvesting Crops on Island Farm",
     "description": "Find 5 walnuts from harvesting crops around the farm."
   },
   "MusselStone": {
-    "num": 5,
+    "count": 5,
     "name": "Breaking Shell Stones on Island Farm Beach",
     "description": "Breaing shell stones on the beach has a chance to drop walnuts"
   },
   "IslandFishing": {
-    "num": 5,
+    "count": 5,
     "name": "Fishing on the Island",
     "description": "Fishing on the Island has a chance to drop walnuts"
   },
   "Island_N_BuriedTreasureNut": {
-    "num": 1,
+    "count": 1,
     "name": "Journal Scrap #10 Buried Treasure",
     "description": "By curved tree just SW of Volcano entrance (27,28); must have read journal scrap"
   },
   "Island_W_BuriedTreasureNut": {
-    "num": 1,
+    "count": 1,
     "name": "Journal Scrap #4 Buried Treasure",
     "description": "Between the bush clumps on beach N of Birdie's hut (18,42); must have read journal scrap"
   },
   "Island_W_BuriedTreasureNut2": {
-    "num": 1,
+    "count": 1,
     "name": "Journal Scrap #6 Buried Treasure",
     "description": "Against wall on beach in SE corner of farm (104,74); must have read journal scrap"
   }

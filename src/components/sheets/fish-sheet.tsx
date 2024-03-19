@@ -10,7 +10,6 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
@@ -39,7 +38,6 @@ interface Props {
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const mixpanel = useMixpanel();
 
   const fishCaught = useMemo(() => {
     if (
@@ -52,9 +50,8 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
     return new Set(activePlayer.fishing.fishCaught);
   }, [activePlayer]);
 
-  const iconURL = fish
-    ? objects[fish.itemID.toString() as keyof typeof objects].iconURL
-    : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
+  const iconURL =
+    fish && `https://cdn.stardew.app/images/(O)${fish.itemID}.webp`;
 
   const name =
     fish && objects[fish.itemID.toString() as keyof typeof objects].name;
@@ -85,7 +82,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
           <SheetHeader className="mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={iconURL ? iconURL : ""}
                 alt={name ? name : "No Info"}
                 height={64}
                 width={64}
@@ -99,7 +96,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
             </SheetDescription>
           </SheetHeader>
           {fish && (
-            <div className="space-y-6 mt-4">
+            <div className="mt-4 space-y-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
                   {fishCaught.has(fish.itemID) ? (
@@ -109,12 +106,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Uncaught
@@ -126,12 +117,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Caught
@@ -143,12 +128,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -156,7 +135,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                         rel="noreferrer"
                         href={`https://stardewvalleywiki.com/${name.replaceAll(
                           " ",
-                          "_"
+                          "_",
                         )}`}
                       >
                         Visit Wiki Page
@@ -169,11 +148,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
               <section className="space-y-2">
                 <h3 className="font-semibold">Location</h3>
                 <Separator />
-                <ul className="list-disc list-inside">
+                <ul className="list-inside list-disc">
                   {fish.locations.map((location) => (
                     <li
                       key={location}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                      className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                     >
                       {location}
                     </li>
@@ -185,11 +164,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <section className="space-y-2">
                     <h3 className="font-semibold">Season</h3>
                     <Separator />
-                    <ul className="list-disc list-inside">
+                    <ul className="list-inside list-disc">
                       {fish.seasons.map((season) => (
                         <li
                           key={season}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                         >
                           {season}
                         </li>
@@ -199,21 +178,21 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <section className="space-y-2">
                     <h3 className="font-semibold">Time</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.time}
                     </p>
                   </section>
                   <section className="space-y-2">
                     <h3 className="font-semibold">Weather</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.weather}
                     </p>
                   </section>
                   <section className="space-y-2">
                     <h3 className="font-semibold">Difficulty</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.difficulty}
                     </p>
                   </section>
@@ -230,10 +209,10 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
     <Drawer open={open} onOpenChange={setIsOpen}>
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">
-          <DrawerHeader className="mt-4 -mb-4">
+          <DrawerHeader className="-mb-4 mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={iconURL ? iconURL : ""}
                 alt={name ? name : "No Info"}
                 height={64}
                 width={64}
@@ -257,12 +236,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Uncaught
@@ -274,12 +247,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Fish: name,
-                          "Button Type": "Fish card",
-                          Location: "Fish sheet",
-                        });
                       }}
                     >
                       Set Caught
@@ -291,12 +258,6 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -304,7 +265,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                         rel="noreferrer"
                         href={`https://stardewvalleywiki.com/${name.replaceAll(
                           " ",
-                          "_"
+                          "_",
                         )}`}
                       >
                         Visit Wiki Page
@@ -317,11 +278,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
               <section className="space-y-2">
                 <h3 className="font-semibold">Location</h3>
                 <Separator />
-                <ul className="list-disc list-inside">
+                <ul className="list-inside list-disc">
                   {fish.locations.map((location) => (
                     <li
                       key={location}
-                      className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                      className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                     >
                       {location}
                     </li>
@@ -333,11 +294,11 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <section className="space-y-2">
                     <h3 className="font-semibold">Season</h3>
                     <Separator />
-                    <ul className="list-disc list-inside">
+                    <ul className="list-inside list-disc">
                       {fish.seasons.map((season) => (
                         <li
                           key={season}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                         >
                           {season}
                         </li>
@@ -347,21 +308,21 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <section className="space-y-2">
                     <h3 className="font-semibold">Time</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.time}
                     </p>
                   </section>
                   <section className="space-y-2">
                     <h3 className="font-semibold">Weather</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.weather}
                     </p>
                   </section>
                   <section className="space-y-2">
                     <h3 className="font-semibold">Difficulty</h3>
                     <Separator />
-                    <p className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm">
+                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                       {fish.difficulty}
                     </p>
                   </section>

@@ -1,14 +1,16 @@
 export interface PerfectionRet {
   numObelisks?: number;
   goldenClock?: boolean;
+  perfectionWaivers?: number;
 }
 
 export const parsePerfection = (
   prefix: string,
-  SaveGame: any
+  SaveGame: any,
 ): PerfectionRet => {
   let numObelisks = 0;
   let goldenClock = false;
+  let perfectionWaivers = 0;
   // StardewValley.Utitility.cs::numObelisksOnFarm()
   const obelisks = new Set([
     "Water Obelisk",
@@ -18,6 +20,8 @@ export const parsePerfection = (
   ]);
 
   try {
+    perfectionWaivers = SaveGame.perfectionWaivers ?? 0;
+
     // loop through every building looking for obelisks and golden clock
     // shared between all players on the farm
 
@@ -25,7 +29,8 @@ export const parsePerfection = (
     for (const location of SaveGame.locations.GameLocation) {
       if (!(location[`@_${prefix}:type`] === "Farm")) continue;
 
-      if (!location.buildings) return { numObelisks, goldenClock };
+      if (!location.buildings)
+        return { numObelisks, goldenClock, perfectionWaivers };
 
       // check to see if there are multiple buildings
       if (Array.isArray(location.buildings.Building)) {
@@ -50,13 +55,13 @@ export const parsePerfection = (
         }
       }
 
-      return { numObelisks, goldenClock };
+      return { numObelisks, goldenClock, perfectionWaivers };
     }
   } catch (err) {
     if (err instanceof Error)
-      throw new Error(`Error in parsePerfection(): ${err.message}`);
-    throw new Error(`Error in parsePerfection(): ${err}`);
+      throw new Error(`Error in parsePerfection: ${err.message}`);
+    throw new Error(`Error in parsePerfection: ${err}`);
   }
 
-  return { numObelisks, goldenClock };
+  return { numObelisks, goldenClock, perfectionWaivers };
 };

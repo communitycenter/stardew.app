@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import objects from "@/data/objects.json";
 
-import type { TrinketItem } from "@/types/items";
+import type { MuseumItem } from "@/types/items";
 
 import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
@@ -18,7 +18,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useMixpanel } from "@/contexts/mixpanel-context";
 import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
@@ -33,14 +32,13 @@ import { ScrollArea } from "../ui/scroll-area";
 interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  trinket: TrinketItem | null;
+  trinket: MuseumItem | null;
 }
 
 export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
-  const mixpanel = useMixpanel();
 
   const [artifacts, minerals] = useMemo(() => {
     if (!activePlayer) return [new Set([]), new Set([])];
@@ -51,9 +49,8 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
     return [new Set(artifacts), new Set(minerals)];
   }, [activePlayer]);
 
-  const iconURL = trinket
-    ? objects[trinket.itemID.toString() as keyof typeof objects].iconURL
-    : "https://stardewvalleywiki.com/mediawiki/images/f/f3/Lost_Book.png";
+  const iconURL =
+    trinket && `https://cdn.stardew.app/images/(O)${trinket.itemID}.webp`;
 
   const name =
     trinket && objects[trinket.itemID.toString() as keyof typeof objects].name;
@@ -62,28 +59,28 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
     trinket &&
     objects[trinket.itemID.toString() as keyof typeof objects].description;
 
-  // Either "Minerals" or "Arch"
+  // Either "Mineral" or "Artifact"
   const category =
     trinket && objects[trinket.itemID as keyof typeof objects].category;
 
   async function handleStatusChange(status: number) {
     if (!activePlayer || !trinket) return;
 
-    if (category !== "Minerals" && category !== "Arch") return;
+    if (category !== "Mineral" && category !== "Artifact") return;
 
     let patch = {};
-    if (category === "Arch") {
-      if (status === 2) artifacts.add(parseInt(trinket.itemID));
-      if (status === 0) artifacts.delete(parseInt(trinket.itemID));
+    if (category === "Artifact") {
+      if (status === 2) artifacts.add(trinket.itemID);
+      if (status === 0) artifacts.delete(trinket.itemID);
 
       patch = {
         museum: {
           artifacts: Array.from(artifacts),
         },
       };
-    } else if (category === "Minerals") {
-      if (status === 2) minerals.add(parseInt(trinket.itemID));
-      if (status === 0) minerals.delete(parseInt(trinket.itemID));
+    } else if (category === "Mineral") {
+      if (status === 2) minerals.add(trinket.itemID);
+      if (status === 0) minerals.delete(trinket.itemID);
 
       patch = {
         museum: {
@@ -103,7 +100,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
           <SheetHeader className="mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={iconURL ? iconURL : ""}
                 alt={name ? name : "No Info"}
                 height={64}
                 width={64}
@@ -117,26 +114,20 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
             </SheetDescription>
           </SheetHeader>
           {trinket && (
-            <div className="space-y-6 mt-4">
+            <div className="mt-4 space-y-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(parseInt(trinket.itemID)) ? (
+                  {artifacts.has(trinket.itemID) ? (
                     <Button
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        (!artifacts.has(parseInt(trinket.itemID)) &&
-                          !minerals.has(parseInt(trinket.itemID)))
+                        (!artifacts.has(trinket.itemID) &&
+                          !minerals.has(trinket.itemID))
                       }
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Incomplete
@@ -146,18 +137,12 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        artifacts.has(parseInt(trinket.itemID)) ||
-                        minerals.has(parseInt(trinket.itemID))
+                        artifacts.has(trinket.itemID) ||
+                        minerals.has(trinket.itemID)
                       }
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Completed
@@ -169,12 +154,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -182,7 +161,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                         rel="noreferrer"
                         href={`https://stardewvalleywiki.com/${name.replaceAll(
                           " ",
-                          "_"
+                          "_",
                         )}`}
                       >
                         Visit Wiki Page
@@ -197,29 +176,11 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                   <>
                     <h3 className="font-semibold">Location</h3>
                     <Separator />
-                    <ul className="list-disc list-inside">
+                    <ul className="list-inside list-disc">
                       {trinket.locations.map((location) => (
                         <li
                           key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
-                        >
-                          {location}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </section>
-              <section className="space-y-2">
-                {trinket.used_in && trinket.used_in.length > 0 && (
-                  <>
-                    <h3 className="font-semibold">Used In</h3>
-                    <Separator />
-                    <ul className="list-disc list-inside">
-                      {trinket.used_in.map((location) => (
-                        <li
-                          key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                         >
                           {location}
                         </li>
@@ -239,10 +200,10 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
     <Drawer open={open} onOpenChange={setIsOpen}>
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">
-          <DrawerHeader className="mt-4 -mb-4">
+          <DrawerHeader className="-mb-4 mt-4">
             <div className="flex justify-center">
               <Image
-                src={iconURL}
+                src={iconURL ? iconURL : ""}
                 alt={name ? name : "No Info"}
                 height={64}
                 width={64}
@@ -259,23 +220,17 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
             <div className="space-y-6 p-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(parseInt(trinket.itemID)) ? (
+                  {artifacts.has(trinket.itemID) ? (
                     <Button
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        (!artifacts.has(parseInt(trinket.itemID)) &&
-                          !minerals.has(parseInt(trinket.itemID)))
+                        (!artifacts.has(trinket.itemID) &&
+                          !minerals.has(trinket.itemID))
                       }
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Incompleted",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Incomplete
@@ -285,18 +240,12 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="secondary"
                       disabled={
                         !activePlayer ||
-                        artifacts.has(parseInt(trinket.itemID)) ||
-                        minerals.has(parseInt(trinket.itemID))
+                        artifacts.has(trinket.itemID) ||
+                        minerals.has(trinket.itemID)
                       }
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Set Completed",
-                          Artifact: name,
-                          "Button Type": "Museum card",
-                          Location: "Museum sheet",
-                        });
                       }}
                     >
                       Set Completed
@@ -308,12 +257,6 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                       variant="outline"
                       data-umami-event="Visit wiki"
                       asChild
-                      onClick={() =>
-                        mixpanel?.track("Button Clicked", {
-                          Action: "Visit Wiki",
-                          Location: "Fish sheet",
-                        })
-                      }
                     >
                       <a
                         className="flex items-center"
@@ -321,7 +264,7 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                         rel="noreferrer"
                         href={`https://stardewvalleywiki.com/${name.replaceAll(
                           " ",
-                          "_"
+                          "_",
                         )}`}
                       >
                         Visit Wiki Page
@@ -336,29 +279,11 @@ export const MuseumSheet = ({ open, setIsOpen, trinket }: Props) => {
                   <>
                     <h3 className="font-semibold">Location</h3>
                     <Separator />
-                    <ul className="list-disc list-inside">
+                    <ul className="list-inside list-disc">
                       {trinket.locations.map((location) => (
                         <li
                           key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
-                        >
-                          {location}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </section>
-              <section className="space-y-2">
-                {trinket.used_in && trinket.used_in.length > 0 && (
-                  <>
-                    <h3 className="font-semibold">Used In</h3>
-                    <Separator />
-                    <ul className="list-disc list-inside">
-                      {trinket.used_in.map((location) => (
-                        <li
-                          key={location}
-                          className="mt-1 text-neutral-500 dark:text-neutral-400 text-sm"
+                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
                         >
                           {location}
                         </li>

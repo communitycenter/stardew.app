@@ -1,3 +1,5 @@
+import { GetStatValue, isPlayerFormatUpdated } from "../utils";
+
 function msToTime(time: number): string {
   const hrs = Math.floor(time / 3600000);
   const mins = Math.floor((time % 3600000) / 60000);
@@ -28,32 +30,26 @@ function parseStardrops(player: any): StardropsRet {
     let stardrops: string[] = [];
 
     // look through the player's mail for the stardrops
-    if (!player.mailReceived || typeof player.mailReceived !== "object") {
-      throw new Error("mailReceived is not an object");
+    if (!player.mailReceived || typeof player.mailReceived === "undefined") {
+      return { stardrops };
     }
 
     if (Array.isArray(player.mailReceived.string)) {
       for (const idx in player.mailReceived.string) {
         let mail = player.mailReceived.string[idx];
-        if (STARDROPS.has(mail)) {
-          stardrops.push(mail);
-        }
-      }
 
-      // early return if all stardrops are found
-      if (stardrops.length === Object.keys(STARDROPS).length) {
-        return { stardrops };
+        if (STARDROPS.has(mail)) stardrops.push(mail);
+
+        // early return if all stardrops are found
+        if (stardrops.length === STARDROPS.size) return { stardrops };
       }
     } else {
       // only one mail received
-      if (STARDROPS.has(player.mailReceived.string)) {
+      if (STARDROPS.has(player.mailReceived.string))
         stardrops.push(player.mailReceived.string);
-      }
     }
 
-    return {
-      stardrops,
-    };
+    return { stardrops };
   } catch (error) {
     throw error;
   }
@@ -72,15 +68,6 @@ function parseSkills(player: any): SkillsRet {
       - Master of the Five Ways (level 10 in every skill).
   */
   try {
-    const skillLevels = [
-      player.farmingLevel,
-      player.fishingLevel,
-      player.foragingLevel,
-      player.miningLevel,
-      player.combatLevel,
-      player.luckLevel, // unused as of 1.5
-    ];
-
     // formula for player level is (farmingLevel + fishingLevel + foragingLevel + miningLevel + combatLevel + luckLevel) / 2
     // as we loop through the levels, we can check if the level is 10 and increment maxLevelCount
     // let maxLevelCount = 0;
@@ -92,12 +79,12 @@ function parseSkills(player: any): SkillsRet {
     // );
 
     const skills = {
-      farming: skillLevels[0],
-      fishing: skillLevels[1],
-      foraging: skillLevels[2],
-      mining: skillLevels[3],
-      combat: skillLevels[4],
-      luck: skillLevels[5], // unused as of 1.5
+      farming: player.farmingLevel,
+      fishing: player.fishingLevel,
+      foraging: player.foragingLevel,
+      mining: player.miningLevel,
+      combat: player.combatLevel,
+      luck: player.luckLevel, // unused as of 1.5
     };
 
     return { skills };
@@ -139,6 +126,7 @@ const farmTypes = [
   "Wilderness",
   "Four Corners",
   "Beach",
+  "Meadowlands",
 ];
 
 export interface GeneralRet {
@@ -150,16 +138,32 @@ export interface GeneralRet {
   questsCompleted?: number;
   stardrops?: string[];
   experience?: Record<Skill, number>;
+  gameVersion?: string;
 }
 
-export function parseGeneral(player: any, whichFarm: number): GeneralRet {
+export function parseGeneral(
+  player: any,
+  whichFarm: string,
+  gameVersion: string
+): GeneralRet {
   try {
+    const playerFormatUpdated = isPlayerFormatUpdated(player);
     const { name, totalMoneyEarned, millisecondsPlayed, farmName } = player;
     const timePlayed = msToTime(millisecondsPlayed);
-    const questsCompleted = player.stats.questsCompleted;
+    let questsCompleted = 0;
+    if (playerFormatUpdated) {
+      questsCompleted = GetStatValue(player.stats.Values, "questsCompleted");
+    } else {
+      questsCompleted = player.stats.questsCompleted;
+    }
+
+    let farmIdx = 0;
+
+    if (whichFarm === "MeadowlandsFarm") farmIdx = 7;
+    else farmIdx = parseInt(whichFarm);
 
     const farmInfo = `${farmName} Farm (${
-      farmTypes[whichFarm % farmTypes.length]
+      farmTypes[farmIdx % farmTypes.length]
     })`;
 
     const { skills } = parseSkills(player);
@@ -175,12 +179,11 @@ export function parseGeneral(player: any, whichFarm: number): GeneralRet {
       questsCompleted,
       stardrops,
       experience,
+      gameVersion,
     };
   } catch (e) {
-    let msg = "";
-    if (e instanceof Error) {
-      msg = e.message;
-    }
-    throw new Error(`Error in parseGeneral(): ${msg}`);
+    if (e instanceof Error)
+      throw new Error(`Error in parseGeneral: ${e.message}`);
+    else throw new Error(`Error in parseGeneral: ${e}`);
   }
 }

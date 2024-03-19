@@ -1,13 +1,19 @@
-import { DialogCard } from "@/components/cards/dialog-card";
-import { FilterButton, FilterSearch } from "@/components/filter-btn";
-import { Command, CommandInput } from "@/components/ui/command";
-import { PlayersContext } from "@/contexts/players-context";
-import { walnuts } from "@/lib/parsers/walnuts";
-import { IconMapPin } from "@tabler/icons-react";
+import type { WalnutType } from "@/types/items";
+
+import walnut_data from "@/data/walnuts.json";
+const walnuts = walnut_data as { [key: string]: WalnutType };
+
+import Head from "next/head";
 
 import { Inter } from "next/font/google";
-import Head from "next/head";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { usePlayers } from "@/contexts/players-context";
+import { useEffect, useMemo, useState } from "react";
+
+import { DialogCard } from "@/components/cards/dialog-card";
+import { Command, CommandInput } from "@/components/ui/command";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
+
+import { IconMapPin } from "@tabler/icons-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,7 +52,7 @@ const type = [
   },
 ];
 export default function IslandWalnuts() {
-  const { activePlayer } = useContext(PlayersContext);
+  const { activePlayer } = usePlayers();
   const [walnutsFound, setWalnutsFound] = useState<Set<string>>(new Set());
 
   const [_filter, setFilter] = useState("all");
@@ -59,13 +65,13 @@ export default function IslandWalnuts() {
       // take the walnut IDs in walnutFound and add them to a set
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
-          return walnuts[id as keyof typeof walnuts].num !== amount;
-        }
+          return walnuts[id].count !== amount;
+        },
       );
       const foundIds = new Set(
         foundArray.map((props) => {
           return props[0];
-        })
+        }),
       );
       setWalnutsFound(foundIds);
     }
@@ -104,14 +110,14 @@ export default function IslandWalnuts() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
+        className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Golden Walnut Tracker
           </h1>
-          <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+          <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
               <FilterButton
                 target={"0"}
                 _filter={_filter}
@@ -119,7 +125,7 @@ export default function IslandWalnuts() {
                   130 -
                     Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
                       (a, b) => a + b[1],
-                      0
+                      0,
                     ) ?? 0
                 })`}
                 setFilter={setFilter}
@@ -130,7 +136,7 @@ export default function IslandWalnuts() {
                 title={`Found (${
                   Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
                     (a, b) => a + b[1],
-                    0
+                    0,
                   ) ?? 0
                 })`}
                 setFilter={setFilter}
@@ -138,14 +144,13 @@ export default function IslandWalnuts() {
             </div>
             <div className="flex gap-2">
               <FilterSearch
-                target={"all"}
                 _filter={_locationFilter}
                 title={"Location"}
                 data={type}
                 setFilter={setLocationFilter}
                 icon={IconMapPin}
               />
-              <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                 <CommandInput
                   onValueChange={(v) => setSearch(v)}
                   placeholder="Search Walnuts"
@@ -171,14 +176,14 @@ export default function IslandWalnuts() {
                   <DialogCard
                     key={id}
                     title={`${walnut.name} ${
-                      walnut.num > 1 ? `(${walnut.num}x)` : ""
+                      walnut.count > 1 ? `(${walnut.count}x)` : ""
                     }`}
                     description={walnut.description}
                     iconURL="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
                     completed={
                       activePlayer
                         ? activePlayer.walnuts?.found?.[id]
-                          ? activePlayer.walnuts?.found?.[id] == walnut.num
+                          ? activePlayer.walnuts?.found?.[id] == walnut.count
                           : false
                         : false
                     }
