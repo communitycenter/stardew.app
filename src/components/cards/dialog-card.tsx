@@ -14,6 +14,9 @@ import { cn } from "@/lib/utils";
 import { usePlayers } from "@/contexts/players-context";
 import { Dispatch, SetStateAction, useState } from "react";
 
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { NewItemBadge } from "@/components/new-item-badge";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -22,9 +25,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { NewItemBadge } from "@/components/new-item-badge";
-import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
@@ -41,7 +41,7 @@ interface Props {
    * @type {boolean}
    * @memberof Props
    */
-  show: boolean;
+  show?: boolean;
 
   /**
    * The handler to display the new content confirmation prompt
