@@ -18,7 +18,6 @@ import {
   IconHome2,
   IconId,
   IconNote,
-  IconPaw,
   IconProgress,
   IconSettings,
   IconShirt,
@@ -49,7 +48,7 @@ export const playerNavigation = [
   { name: "Skills & Mastery", href: "/skills", icon: IconStars },
   { name: "Perfection", href: "/perfection", icon: IconAward },
   { name: "Relationships", href: "/relationships", icon: IconHeart },
-  { name: "Animals", href: "/animals", icon: IconPaw },
+  // { name: "Animals", href: "/animals", icon: IconPaw },
 ];
 
 export const collectionsNavigation = [
