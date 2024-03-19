@@ -6,22 +6,22 @@ import objects from "@/data/objects.json";
 
 import type { Recipe } from "@/types/recipe";
 
-import { useEffect, useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useEffect, useMemo, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { RecipeCard } from "@/components/cards/recipe-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterButton } from "@/components/filter-btn";
+import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { RecipeCard } from "@/components/cards/recipe-card";
-import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { Command, CommandInput } from "@/components/ui/command";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -101,18 +101,21 @@ export default function Cooking() {
     <>
       <Head>
         <title>stardew.app | Cooking</title>
-        <meta name="title" content="stardew.app | Cooking Tracker" />
+        <meta
+          name="title"
+          content="Stardew Valley 1.6 Cooking Tracker | stardew.app"
+        />
         <meta
           name="description"
-          content="Track and master cooking recipes in Stardew Valley. Keep tabs on the cooking recipes you've learned and monitor your progress towards becoming a skilled chef. Discover what recipes are left to learn and unlock the full potential of your culinary skills in Stardew Valley."
+          content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
         />
         <meta
           name="og:description"
-          content="Track and master cooking recipes in Stardew Valley. Keep tabs on the cooking recipes you've learned and monitor your progress towards becoming a skilled chef. Discover what recipes are left to learn and unlock the full potential of your culinary skills in Stardew Valley."
+          content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
         />
         <meta
           name="twitter:description"
-          content="Track and master cooking recipes in Stardew Valley. Keep tabs on the cooking recipes you've learned and monitor your progress towards becoming a skilled chef. Discover what recipes are left to learn and unlock the full potential of your culinary skills in Stardew Valley."
+          content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
         />
         <meta
           name="keywords"

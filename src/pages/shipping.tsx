@@ -2,26 +2,26 @@ import type { ShippingItem } from "@/types/items";
 
 import Head from "next/head";
 
+import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-import achievements from "@/data/achievements.json";
 const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
-import { useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useMemo, useState } from "react";
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { AchievementCard } from "@/components/cards/achievement-card";
 import { ShippingCard } from "@/components/cards/shipping-card";
-import { Command, CommandInput } from "@/components/ui/command";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterButton, FilterSearch } from "@/components/filter-btn";
-import { AchievementCard } from "@/components/cards/achievement-card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Command, CommandInput } from "@/components/ui/command";
 
 import { IconClock } from "@tabler/icons-react";
 
@@ -156,15 +156,15 @@ export default function Shipping() {
         />
         <meta
           name="description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="og:description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="twitter:description"
-          content="Track your shipping progress and achievements in Stardew Valley. Keep tabs on the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
+          content="Track your shipping progress and achievements in Stardew Valley. View the items you've shipped and monitor your progress towards completing the shipping achievements. Discover what items are left to ship and become a master shipper in Stardew Valley."
         />
         <meta
           name="keywords"

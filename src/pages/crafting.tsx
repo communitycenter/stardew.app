@@ -1,28 +1,28 @@
 import Head from "next/head";
 
-import objects from "@/data/objects.json";
-import recipes from "@/data/crafting.json";
 import achievements from "@/data/achievements.json";
 import bigobjects from "@/data/big_craftables.json";
+import recipes from "@/data/crafting.json";
+import objects from "@/data/objects.json";
 
 import type { CraftingRecipe } from "@/types/recipe";
 
-import { useEffect, useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useEffect, useMemo, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { RecipeCard } from "@/components/cards/recipe-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterButton } from "@/components/filter-btn";
+import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FilterButton } from "@/components/filter-btn";
-import { RecipeCard } from "@/components/cards/recipe-card";
-import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import { Command, CommandInput } from "@/components/ui/command";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -118,15 +118,15 @@ export default function Crafting() {
         />
         <meta
           name="description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="og:description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="twitter:description"
-          content="Track and complete crafting recipes in Stardew Valley. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+          content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
         />
         <meta
           name="keywords"

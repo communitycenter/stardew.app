@@ -7,15 +7,15 @@ import { useEffect, useMemo, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { DialogCard } from "@/components/cards/dialog-card";
+import { InfoCard } from "@/components/cards/info-card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { AchievementCard } from "@/components/cards/achievement-card";
-import { DialogCard } from "@/components/cards/dialog-card";
-import { InfoCard } from "@/components/cards/info-card";
 
 import {
   BriefcaseIcon,
@@ -158,7 +158,7 @@ export default function Farmer() {
         />
         <meta
           name="description"
-          content="Track and manage your achievements and Stardrops in Stardew Valley. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
+          content="Track and manage your achievements and Stardrops in Stardew Valley's new 1.6 update. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
         />
         <meta
           name="og:description"

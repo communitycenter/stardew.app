@@ -6,22 +6,22 @@ import achievements from "@/data/achievements.json";
 import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
 
-import { useEffect, useState } from "react";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useEffect, useState } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
+import { BooleanCard } from "@/components/cards/boolean-card";
+import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterButton, FilterSearch } from "@/components/filter-btn";
+import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FishSheet } from "@/components/sheets/fish-sheet";
-import { BooleanCard } from "@/components/cards/boolean-card";
 import { Command, CommandInput } from "@/components/ui/command";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import { FilterButton, FilterSearch } from "@/components/filter-btn";
-import { AchievementCard } from "@/components/cards/achievement-card";
 
 import { IconClock, IconCloud } from "@tabler/icons-react";
 
@@ -137,7 +137,7 @@ export default function Fishing() {
         />
         <meta
           name="description"
-          content="Track your Stardew Valley fishing progress and optimize your angling skills. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
+          content="Track your Stardew Valley fishing progress in the new 1.6 update. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
         />
         <meta
           name="og:description"
