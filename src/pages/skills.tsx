@@ -25,6 +25,10 @@ import {
 import { DialogCard } from "@/components/cards/dialog-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { Progress } from "@/components/ui/progress";
+import {
+  getCurrentMasteryLevel,
+  getMasteryExpNeededForLevel,
+} from "@/lib/utils";
 
 const reqs: Record<string, number> = {
   "Singular Talent": 1, // platform specific
@@ -94,7 +98,13 @@ export default function SkillsMasteryPowers() {
       10: 15000,
     };
 
-    type SkillName = "farming" | "fishing" | "foraging" | "mining" | "combat";
+    type SkillName =
+      | "farming"
+      | "fishing"
+      | "foraging"
+      | "mining"
+      | "combat"
+      | "mastery";
 
     function calculateExperience(skillName: SkillName, activePlayer: any): any {
       const currentLevel = activePlayer?.general?.skills?.[skillName] || 0;
@@ -141,6 +151,45 @@ export default function SkillsMasteryPowers() {
     const playerPowers = activePlayer.powers.collection;
 
     return new Set<string>(playerPowers);
+  }, [activePlayer]);
+
+  const masteryExp = useMemo(() => {
+    if (!activePlayer || !activePlayer.powers?.MasteryExp)
+      return {
+        level: 0,
+        percentage: 0,
+        experiencePointsRemaining: 0,
+        experiencePointsRequired: 0,
+      };
+
+    const playerPowers = activePlayer.powers.MasteryExp;
+
+    const masteryLevel = getCurrentMasteryLevel(playerPowers);
+    const nextLevelExperience = getMasteryExpNeededForLevel(masteryLevel + 1);
+    const currentExperience =
+      playerPowers - getMasteryExpNeededForLevel(masteryLevel);
+
+    if (activePlayer.powers.MasteryExp) {
+      return {
+        level: masteryLevel,
+        percentage:
+          masteryLevel >= 5
+            ? 100
+            : (currentExperience / nextLevelExperience) * 100,
+        experiencePointsRemaining: Math.max(
+          nextLevelExperience - currentExperience,
+          0,
+        ),
+        experiencePointsRequired: nextLevelExperience,
+      };
+    } else {
+      return {
+        level: 0,
+        percentage: 0,
+        experiencePointsRemaining: 0,
+        experiencePointsRequired: 0,
+      };
+    }
   }, [activePlayer]);
 
   return (
@@ -200,7 +249,7 @@ export default function SkillsMasteryPowers() {
                           );
                         })}
                     </div>
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-5">
+                    <div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-6">
                       <InfoCard
                         title="Farming"
                         description={`Level ${
@@ -344,6 +393,29 @@ export default function SkillsMasteryPowers() {
                                 playerExperiencePoints.combat.percentage === 100
                                   ? "Max level"
                                   : `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`}
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                      </InfoCard>
+                      <InfoCard
+                        title="Mastery"
+                        description={`Level ${masteryExp.level ?? 0}`}
+                        sourceURL="https://cdn.stardew.app/images/beta/(POWER)mastery_1.webp"
+                      >
+                        {playerExperiencePoints && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Progress
+                                  value={masteryExp.percentage}
+                                  max={100}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom">
+                                {masteryExp.level === 5
+                                  ? "Max level"
+                                  : `${masteryExp.experiencePointsRemaining} XP remaining`}
                               </TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
