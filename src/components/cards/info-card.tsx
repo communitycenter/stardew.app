@@ -1,4 +1,6 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { NewItemBadge } from "../new-item-badge";
 
 interface Props {
   title: string;
@@ -6,6 +8,8 @@ interface Props {
   Icon?: any;
   sourceURL?: string;
   children?: React.ReactNode;
+  minVersion?: string;
+  show?: boolean;
 }
 
 export const InfoCard = ({
@@ -14,9 +18,16 @@ export const InfoCard = ({
   description,
   sourceURL,
   children,
+  minVersion,
+  show,
 }: Props) => {
   return (
-    <div className="flex items-center space-x-3 truncate rounded-lg border-none border-neutral-200 bg-white py-4 px-5 dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 shadow-none">
+    <div
+      className={cn(
+        "flex items-center space-x-3 truncate rounded-lg border-none border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-none dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+        minVersion === "1.6.0" && !show && "blur-sm",
+      )}
+    >
       {Icon && <Icon className="h-6 w-6 dark:text-white" />}
       {sourceURL && (
         <Image
@@ -28,6 +39,7 @@ export const InfoCard = ({
           quality={25}
         />
       )}
+      {minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
       <div className="min-w-0 flex-1">
         <p
           className={

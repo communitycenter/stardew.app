@@ -401,7 +401,9 @@ export default function SkillsMasteryPowers() {
                       <InfoCard
                         title="Mastery"
                         description={`Level ${masteryExp.level ?? 0}`}
-                        sourceURL="https://cdn.stardew.app/images/beta/(POWER)mastery_1.webp"
+                        sourceURL="https://cdn.stardew.app/images/(POWER)Mastery_Farming.webp"
+                        minVersion="1.6.0"
+                        show={show}
                       >
                         {playerExperiencePoints && (
                           <TooltipProvider>
@@ -452,7 +454,7 @@ export default function SkillsMasteryPowers() {
                               key={key}
                               title={power.name}
                               description={power.description ?? "???"}
-                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                              iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
                               show={show}
                             />
                           );
@@ -485,7 +487,7 @@ export default function SkillsMasteryPowers() {
                               key={key}
                               title={power.name}
                               description={power.description ?? "???"}
-                              iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                              iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
                               show={show}
                             />
                           );
@@ -514,7 +516,7 @@ export default function SkillsMasteryPowers() {
                         key={key}
                         title={power.name}
                         description={power.description ?? "???"}
-                        iconURL={`https://cdn.stardew.app/images/beta/(POWER)${key}.webp`}
+                        iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
                         show={show}
                         setPromptOpen={setPromptOpen}
                       />
