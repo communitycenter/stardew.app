@@ -45,42 +45,7 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
         <DialogHeader>
           <DialogTitle className="text-center">Credits</DialogTitle>
         </DialogHeader>
-        {/* <DialogDescription>
-          stardew.app was developed, designed, and created by{" "}
-          <a href="https://jack.bio" className="underline">
-            Jack LaFond
-          </a>{" "}
-          and{" "}
-          <a href="https://solorio.dev" className="underline">
-            Clemente Solorio
-          </a>
-          .
-        </DialogDescription>
-        <DialogDescription>
-          However, it wouldn&apos;t be possible without the help of the{" "}
-          <a href="https://solorio.dev" className="underline">
-            Leah Lundqvist
-          </a>{" "}
-          (backend),{" "}
-          <a href="https://solorio.dev" className="underline">
-            Brandon Saldan
-          </a>{" "}
-          (frontend), and our countless contributors on{" "}
-          <a href="https://stardew.app/github" className="underline">
-            GitHub
-          </a>
-          .
-        </DialogDescription>
-        <DialogHeader>
-          <DialogTitle className="text-sm">Notable Mentions</DialogTitle>
-        </DialogHeader>
-        <DialogDescription>
-          <li>Stardew Valley Wiki</li>
-          <li>Stardew Valley&apos;s Discord #seasoned-farmers</li>
-          <li>ConcernedApe</li>
-          <li>You, the user - thank you!</li>
-        </DialogDescription> */}
-        <DialogDescription className="grid grid-cols-1 gap-2 md:grid-cols-2">
+        <DialogDescription className="grid grid-cols-1 gap-2 md:grid-cols-2 ">
           <Card className="p-4">
             <div className="flex gap-2">
               <Image
@@ -135,7 +100,9 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
         <DialogDescription className="grid grid-cols-2 gap-2 md:grid-cols-3">
           {listOfPeopleWeNeedToThank.map((person) => (
             <Card className="p-2" key={person}>
-              <h1 className="text-md text-center text-gray-400">{person}</h1>
+              <h1 className="text-md text-center text-gray-600 dark:text-gray-400">
+                {person}
+              </h1>
             </Card>
           ))}
         </DialogDescription>
@@ -143,7 +110,7 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
           className="p-2"
           onClick={() => toast.info("Seriously, we love you!")}
         >
-          <h1 className="text-center text-sm text-gray-400 hover:cursor-pointer">
+          <h1 className="text-center text-sm text-gray-600 hover:cursor-pointer dark:text-gray-400">
             You, the user - thank you!
           </h1>
         </Card>
