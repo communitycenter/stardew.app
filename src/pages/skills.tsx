@@ -195,26 +195,26 @@ export default function SkillsMasteryPowers() {
   return (
     <>
       <Head>
-        <title>stardew.app | Secret Notes</title>
+        <title>stardew.app | Skills & Mastery</title>
         <meta
           name="title"
-          content="Stardew Valley Skills & Mastery | stardew.app"
+          content="Stardew Valley 1.6 Skills & Mastery | stardew.app"
         />
         <meta
           name="description"
-          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
+          content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
         />
         <meta
           name="og:description"
-          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
+          content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
         />
         <meta
           name="twitter:description"
-          content="Track and discover secret notes in Stardew Valley. Keep tabs on the secret notes you've found and uncover hidden secrets in Pelican Town. Monitor your progress towards collecting all the secret notes and unlock valuable rewards in the game."
+          content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
         />
         <meta
           name="keywords"
-          content="stardew valley secret notes tracker, stardew valley secret notes, stardew valley secret notes locations, stardew valley secret notes rewards, stardew valley secret notes collection, stardew valley gameplay tracker, stardew valley, stardew, secret notes tracker"
+          content="stardew valley, stardew valley special items, stardew valley powers, stardew valley 1.6 special items, stardew valley 1.6 powers, stardew valley 1.6 mastery, stardew valley 1.6 farming mastery, stardew valley 1.6 fishing mastery, stardew valley 1.6 foraging mastery, stardew valley 1.6 mining mastery, stardew valley 1.6 combat mastery, stardew valley 1.6 mastery exp, stardew valley 1.6 skill achievements, stardew valley 1.6 skill achievements progress, stardew valley 1.6 skill achievements tracker, stardew valley 1.6 skill achievements guide"
         />
       </Head>
       <main
