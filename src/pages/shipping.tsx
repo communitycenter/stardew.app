@@ -5,7 +5,7 @@ import Head from "next/head";
 import achievements from "@/data/achievements.json";
 import objects from "@/data/objects.json";
 import shipping_items from "@/data/shipping.json";
-const typedShippingItems: Record<string, ShippingItem> = shipping_items;
+export const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";

@@ -174,9 +174,6 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          {/* <p className="text-gray-400 text-xs text-center mt-4">
-            ChatGPT can make mistakes. Consider checking important information.
-          </p> */}
         </footer>
       </main>
     </>
