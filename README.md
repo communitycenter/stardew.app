@@ -15,6 +15,7 @@ Stardew.app is a next-generation, user-oriented Stardew Valley perfection tracke
 
 Currently, the website is able to track the following:
 
+- 1.6 update
 - Farmer information + achievements
 - Fishing tracking with fish information
 - Cooking tracking with recipe ingredients
