@@ -675,7 +675,7 @@
   },
   "369": {
     "ingredients": [
-      { "itemID": "92", "quantity": 2 },
+      { "itemID": "92", "quantity": 4 },
       { "itemID": "-4", "quantity": 1 }
     ],
     "isBigCraftable": false,
@@ -791,7 +791,7 @@
   "465": {
     "ingredients": [
       { "itemID": "726", "quantity": 1 },
-      { "itemID": "372", "quantity": 1 }
+      { "itemID": "Moss", "quantity": 5 }
     ],
     "isBigCraftable": false,
     "itemID": "465",
@@ -801,7 +801,7 @@
   "466": {
     "ingredients": [
       { "itemID": "725", "quantity": 1 },
-      { "itemID": "393", "quantity": 1 }
+      { "itemID": "881", "quantity": 5 }
     ],
     "isBigCraftable": false,
     "itemID": "466",

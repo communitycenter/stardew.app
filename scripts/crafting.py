@@ -193,7 +193,7 @@ if __name__ == "__main__":
 
     print("NUMBER OF RECIPES: ", len(recipes))
     assert len(recipes) == 149  # 129 as of 1.5, 149 as of 1.6 with new content
-    save_json(recipes, "crafting.json", sort=True)
+    save_json(recipes, "crafting.json", sort=True, minify=True)
 
     if len(unknowns) > 0:
         print("Unknown unlock conditions: ")

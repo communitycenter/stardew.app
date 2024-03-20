@@ -249,6 +249,7 @@ export const RecipeSheet = <T extends Recipe>({
                 <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
+                    let isCategory = false;
                     let isBC = false;
 
                     // if itemID is greater than 0, it's an object
@@ -265,9 +266,9 @@ export const RecipeSheet = <T extends Recipe>({
                       }
                     } else {
                       // otherwise, it's a category
+                      isCategory = true;
                       item = {
                         name: categoryItems[ingredient.itemID],
-                        iconURL: categoryIcons[ingredient.itemID],
                       };
                     }
 
@@ -279,9 +280,11 @@ export const RecipeSheet = <T extends Recipe>({
                         <div className="flex items-center space-x-2">
                           <Image
                             src={
-                              isBC
-                                ? `https://cdn.stardew.app/images/(BC)${ingredient.itemID}.webp`
-                                : `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
+                              isCategory
+                                ? `https://cdn.stardew.app/images/(C)${ingredient.itemID}.webp`
+                                : isBC
+                                  ? `https://cdn.stardew.app/images/(BC)${deweaponize(ingredient.itemID).value}.webp`
+                                  : `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
                             }
                             alt={item.name}
                             width={32}

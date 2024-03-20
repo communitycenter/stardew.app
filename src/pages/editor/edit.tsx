@@ -48,7 +48,7 @@ const formSchema = v.object({
   gameVersion: v.string(),
   questsCompleted: v.coerce(
     v.number([v.toMinValue(0), v.toMaxValue(1000)]),
-    Number
+    Number,
   ),
   farmName: v.string([
     v.minLength(1),
@@ -59,39 +59,54 @@ const formSchema = v.object({
   totalMoneyEarned: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   fishCaught: v.optional(
     v.coerce(
       v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
-      Number
-    )
+      Number,
+    ),
   ),
   numObelisks: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number),
   ),
   goldenClock: v.optional(v.boolean()),
   childrenCount: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number),
   ),
   houseUpgradeLevel: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number)
+    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number),
   ),
   farming: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   fishing: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   foraging: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   mining: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
   combat: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]), Number)
+    v.coerce(
+      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
+      Number,
+    ),
   ),
 });
 export default function Editor() {
@@ -99,10 +114,10 @@ export default function Editor() {
 
   const [_farmType, _setFarmType] = useState<string | undefined>(undefined);
   const [_numObelisks, _setNumObelisks] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [_childrenCount, _setChildrenCount] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [_houseUpgradeLevel, _setHouseUpgradeLevel] = useState<
     string | undefined
@@ -113,7 +128,7 @@ export default function Editor() {
   const [_mining, _setMining] = useState<string | undefined>(undefined);
   const [_combat, _setCombat] = useState<string | undefined>(undefined);
   const [_gameVersion, _setGameVersion] = useState<string | undefined>(
-    undefined
+    undefined,
   );
 
   const [deletionOpen, setDeletionOpen] = useState(false);
@@ -172,22 +187,22 @@ export default function Editor() {
     // TODO: bro there has to be a better way to do this
     _setFarmType(farmListInfo[1]);
     _setNumObelisks(
-      activePlayer?.perfection?.numObelisks?.toString() ?? undefined
+      activePlayer?.perfection?.numObelisks?.toString() ?? undefined,
     );
     _setChildrenCount(
-      activePlayer?.social?.childrenCount?.toString() ?? undefined
+      activePlayer?.social?.childrenCount?.toString() ?? undefined,
     );
     _setHouseUpgradeLevel(
-      activePlayer?.social?.houseUpgradeLevel?.toString() ?? undefined
+      activePlayer?.social?.houseUpgradeLevel?.toString() ?? undefined,
     );
     _setFarming(
-      activePlayer?.general?.skills?.farming?.toString() ?? undefined
+      activePlayer?.general?.skills?.farming?.toString() ?? undefined,
     );
     _setFishing(
-      activePlayer?.general?.skills?.fishing?.toString() ?? undefined
+      activePlayer?.general?.skills?.fishing?.toString() ?? undefined,
     );
     _setForaging(
-      activePlayer?.general?.skills?.foraging?.toString() ?? undefined
+      activePlayer?.general?.skills?.foraging?.toString() ?? undefined,
     );
     _setMining(activePlayer?.general?.skills?.mining?.toString() ?? undefined);
     _setCombat(activePlayer?.general?.skills?.combat?.toString() ?? undefined);
@@ -292,7 +307,7 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] md:border-l border-neutral-200 dark:border-neutral-800 px-0 md:px-8 md:items-center justify-center`}
+        className={`flex min-h-[calc(100vh-65px)] justify-center border-neutral-200 px-0 dark:border-neutral-800 md:items-center md:border-l md:px-8`}
       >
         <div className="mx-auto max-w-xl space-y-4">
           <Card className="border-0 md:border">
@@ -312,7 +327,7 @@ export default function Editor() {
                 >
                   {/* General Section */}
                   {/* Name & Quests */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                  <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="name"
@@ -365,7 +380,7 @@ export default function Editor() {
                     />
                   </div>
                   {/* Farm Name & Type */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="farmName"
@@ -415,6 +430,9 @@ export default function Editor() {
                                 Four Corners
                               </SelectItem>
                               <SelectItem value="Beach">Beach</SelectItem>
+                              <SelectItem value="Meadowlands">
+                                Meadowlands
+                              </SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -423,7 +441,7 @@ export default function Editor() {
                     />
                   </div>
                   {/* Money Earned & Fish Caught */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="totalMoneyEarned"
@@ -512,7 +530,7 @@ export default function Editor() {
                             Golden Clock
                           </FormLabel>
                           <FormControl>
-                            <div className="flex space-x-2 items-center">
+                            <div className="flex items-center space-x-2">
                               <Switch
                                 checked={field.value}
                                 onCheckedChange={field.onChange}
@@ -790,7 +808,7 @@ export default function Editor() {
                       )}
                     />
                   </div>
-                  <div className="w-full gap-3 flex">
+                  <div className="flex w-full gap-3">
                     <Button
                       variant="destructive"
                       type="button"

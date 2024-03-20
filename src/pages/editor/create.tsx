@@ -333,6 +333,9 @@ export default function Editor() {
                                 Four Corners
                               </SelectItem>
                               <SelectItem value="Beach">Beach</SelectItem>
+                              <SelectItem value="Meadowlands">
+                                Meadowlands
+                              </SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
