@@ -25,7 +25,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
     "/api",
     // @ts-expect-error
     (...args) => fetch(...args).then((res) => res.json()),
-    { refreshInterval: 0, revalidateOnFocus: false }
+    { refreshInterval: 0, revalidateOnFocus: false },
   );
 
   const [submitted, setSubmitted] = useState(false);
@@ -54,7 +54,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
             setLoading(true);
             event.preventDefault();
             const values = Object.fromEntries(
-              new FormData(event.target as HTMLFormElement).entries()
+              new FormData(event.target as HTMLFormElement).entries(),
             );
 
             setLoading(true);
@@ -84,7 +84,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
             id="body"
             name="body"
             className="w-full"
-            placeholder="shadcn"
+            placeholder="What would you like to see in the site? New feature? New page? Let us know!"
           />
           <Turnstile
             siteKey="0x4AAAAAAASW5x6dVsMylLaO"
@@ -97,7 +97,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
             </Button>
           )}
           {submitted && (
-            <div className="bg-red-200 p-2 rounded-md flex justify-between items-center text-sm font-medium hover:bg-red-300 transition-all hover:text-red-800">
+            <div className="flex items-center justify-between rounded-md bg-red-200 p-2 text-sm font-medium transition-all hover:bg-red-300 hover:text-red-800">
               <div className="flex items-center space-x-1">
                 <IconHeart className="text-red-700" />
                 <p className="text-red-700">
