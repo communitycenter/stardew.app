@@ -39,19 +39,19 @@ const seasons = [
     label: "All Seasons",
   },
   {
-    value: "spring",
+    value: "Spring",
     label: "Spring",
   },
   {
-    value: "summer",
+    value: "Summer",
     label: "Summer",
   },
   {
-    value: "fall",
+    value: "Fall",
     label: "Fall",
   },
   {
-    value: "winter",
+    value: "Winter",
     label: "Winter",
   },
 ];
