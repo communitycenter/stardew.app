@@ -30,6 +30,7 @@ import { Separator } from "@/components/ui/separator";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useFeatureFlagVariantKey } from "posthog-js/react";
 import { toast } from "sonner";
+import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
 
@@ -55,6 +56,7 @@ export function Topbar() {
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [changelogOpen, setChangelogOpen] = useState(false);
+  const [bugreportOpen, setBugreportOpen] = useState(false);
 
   const [isDevelopment, setIsDevelopment] = useState(false);
 
@@ -239,13 +241,23 @@ export function Topbar() {
                 >
                   Credits
                 </DropdownMenuItem>
+                <DropdownMenuSeparator />
+
                 <DropdownMenuItem
-                  data-umami-event="Open credits"
+                  data-umami-event="Open feedback"
                   onClick={() => {
                     setFeedbackOpen(true);
                   }}
                 >
                   Send us a message!
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  data-umami-event="Open bug report"
+                  onClick={() => {
+                    setBugreportOpen(true);
+                  }}
+                >
+                  Report a bug!
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
 
@@ -310,6 +322,7 @@ export function Topbar() {
       <DeletionDialog open={deletionOpen} setOpen={setDeletionOpen} />
       <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
       <ChangelogDialog open={changelogOpen} setOpen={setChangelogOpen} />
+      <BugReportDialog open={bugreportOpen} setOpen={setBugreportOpen} />
     </>
   );
 }
