@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 
 interface Props {
@@ -20,7 +21,7 @@ interface Props {
   setOpen: (open: boolean) => void;
 }
 
-export const FeedbackDialog = ({ open, setOpen }: Props) => {
+export const BugReportDialog = ({ open, setOpen }: Props) => {
   const api = useSWR<User>(
     "/api",
     // @ts-expect-error
@@ -30,24 +31,25 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [id, setId] = useState("");
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <div className="flex justify-center">
           <Image
-            src="https://stardewvalleywiki.com/mediawiki/images/4/49/Emote_Hi%21.gif"
-            alt={"Waving icon"}
+            src="https://stardewvalleywiki.com/mediawiki/images/0/05/Emote_Uh.gif"
+            alt={"Uh icon"}
             width={48}
             height={48}
           />
         </div>
         <DialogHeader>
-          <DialogTitle className="text-center">Feedback</DialogTitle>
+          <DialogTitle className="text-center">File a bug report</DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          stardew.app is created for the community, by the community - we&apos;d
-          love to hear your feedback!
+          Something not working as expected? Let us know! We&apos;ll do our best
+          to fix it.
         </DialogDescription>
         <form
           onSubmit={async (event) => {
@@ -59,7 +61,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
 
             setLoading(true);
 
-            const promise = fetch("/api/feedback", {
+            const promise = fetch("/api/bug", {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ ...values, user: api.data }),
               method: "POST",
@@ -69,6 +71,9 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
               success: () => {
                 setLoading(false);
                 setSubmitted(true);
+                promise
+                  .then((res) => res.json())
+                  .then((data) => setId(data.identifier));
                 return "Feedback sent!";
               },
               loading: "Sending feedback...",
@@ -76,16 +81,29 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
                 error?.message ?? "Something went wrong...",
             });
           }}
-          className="space-y-6"
+          className="space-y-3"
           method="POST"
-          action="/api/contact"
+          action="/api/bug"
         >
-          <Textarea
-            id="body"
-            name="body"
-            className="w-full"
-            placeholder="What would you like to see in the site? New feature? New page? Let us know!"
-          />
+          <div className="space-y-3">
+            <Label>What happened?</Label>
+            <Textarea
+              id="short"
+              name="short"
+              className="w-full"
+              placeholder="Give us a short description of the problem."
+            />
+          </div>
+          <div className="space-y-3">
+            <Label>What were you doing when this happened?</Label>
+            <Textarea
+              id="long"
+              name="long"
+              className="w-full"
+              placeholder="Try to be as descriptive as possible - this helps us find the error!"
+            />
+          </div>
+
           <Turnstile
             siteKey="0x4AAAAAAASW5x6dVsMylLaO"
             style={{ display: "none" }}
@@ -101,8 +119,7 @@ export const FeedbackDialog = ({ open, setOpen }: Props) => {
               <div className="flex items-center space-x-1">
                 <IconHeart className="text-red-700" />
                 <p className="text-red-700">
-                  Thank you so much for the feedback! We&apos;ll reach out if we
-                  have any questions.
+                  Thank you! Your bug report ID is {id}.
                 </p>
               </div>
             </div>
