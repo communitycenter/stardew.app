@@ -127,7 +127,7 @@ export const RecipeCard = <T extends Recipe>({
             setIsOpen(true);
           }}
         >
-          {recipe.minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
+          {recipe.minVersion === "1.6.0" && <NewItemBadge version={recipe.minVersion}/>}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",

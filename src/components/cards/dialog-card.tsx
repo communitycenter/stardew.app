@@ -163,7 +163,7 @@ export const DialogCard = ({
           setOpen(true);
         }}
       >
-        {minVersion === "1.6.0" && <NewItemBadge>✨ 1.6</NewItemBadge>}
+        {minVersion === "1.6.0" && <NewItemBadge version={minVersion}/>}
         <div
           className={cn(
             "flex items-center space-x-3 truncate text-left",
