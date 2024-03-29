@@ -88,7 +88,13 @@ export const parseMonsters = (player: any): MonstersRet => {
         // dangerous versions of monsters are added to the non-dangerous version
         if (monster.endsWith(" (dangerous)")) continue;
 
-        const killed = stats.get(monster) ?? 0;
+        let target = monster;
+        if (monster === "Slimes") {
+          // Since we renamed the "Green Slime" target to "Slimes" to avoid confusion, we can rename it here and get the correct counts
+          target = "Green Slime";
+        }
+
+        const killed = stats.get(target) ?? 0;
         runningTotal += killed;
       }
       monstersKilled[key] = runningTotal;
