@@ -5,13 +5,13 @@ const walnuts = walnut_data as { [key: string]: WalnutType };
 
 import Head from "next/head";
 
-import { Inter } from "next/font/google";
 import { usePlayers } from "@/contexts/players-context";
+import { Inter } from "next/font/google";
 import { useEffect, useMemo, useState } from "react";
 
 import { DialogCard } from "@/components/cards/dialog-card";
-import { Command, CommandInput } from "@/components/ui/command";
 import { FilterButton, FilterSearch } from "@/components/filter-btn";
+import { Command, CommandInput } from "@/components/ui/command";
 
 import { IconMapPin } from "@tabler/icons-react";
 
@@ -65,7 +65,7 @@ export default function IslandWalnuts() {
       // take the walnut IDs in walnutFound and add them to a set
       const foundArray = Object.entries(activePlayer.walnuts.found).filter(
         ([id, amount]) => {
-          return walnuts[id].count !== amount;
+          return walnuts[id].count === amount;
         },
       );
       const foundIds = new Set(
@@ -80,9 +80,9 @@ export default function IslandWalnuts() {
   const displayedWalnuts = useMemo(() => {
     return Object.entries(walnuts).filter(([id]) => {
       if (_filter === "0") {
-        return walnutsFound.has(id);
-      } else if (_filter === "2") {
         return !walnutsFound.has(id);
+      } else if (_filter === "2") {
+        return walnutsFound.has(id);
       } else return true; // all
     });
   }, [walnutsFound, _filter]);
