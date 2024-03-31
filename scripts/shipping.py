@@ -54,6 +54,7 @@ def get_shipping_items() -> dict[str, ShippingItem]:
                 isPotentialBasicShipped(k, category, v.get("Type"), OBJECTS)
                 or k == "372"
             )
+            and k != "SmokedFish"
         ):
 
             # lookup the seed item ID in CROPS content file, using the harvest item id
@@ -83,6 +84,6 @@ if __name__ == "__main__":
     assert len([c for c in shipping.values() if c["monoculture"]]) == 33
     # # 155 total items count for Full Shipment
     print("Total Items counted for Full Shipment: ", len(shipping))
-    assert len(shipping) == 155  # 145 as of 1.5, 1.6 added 10 new items
+    assert len(shipping) == 154  # 145 as of 1.5, 1.6 added 9 new items
 
     save_json(shipping, "shipping.json", sort=True)
