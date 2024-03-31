@@ -4,7 +4,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "18": {
     "itemID": "18",
@@ -32,7 +34,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "78": {
     "itemID": "78",
@@ -53,7 +57,12 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Spring", "Summer", "Fall", "Winter"]
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ]
   },
   "91": {
     "itemID": "91",
@@ -116,56 +125,72 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "190": {
     "itemID": "190",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "192": {
     "itemID": "192",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "248": {
     "itemID": "248",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "250": {
     "itemID": "250",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "252": {
     "itemID": "252",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "254": {
     "itemID": "254",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "256": {
     "itemID": "256",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "257": {
     "itemID": "257",
@@ -179,7 +204,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "259": {
     "itemID": "259",
@@ -193,84 +220,110 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "262": {
     "itemID": "262",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer", "Fall"]
+    "seasons": [
+      "Summer",
+      "Fall"
+    ]
   },
   "264": {
     "itemID": "264",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "266": {
     "itemID": "266",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "268": {
     "itemID": "268",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "270": {
     "itemID": "270",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer", "Fall"]
+    "seasons": [
+      "Summer",
+      "Fall"
+    ]
   },
   "271": {
     "itemID": "271",
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "272": {
     "itemID": "272",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "274": {
     "itemID": "274",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "276": {
     "itemID": "276",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "278": {
     "itemID": "278",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "280": {
     "itemID": "280",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "281": {
     "itemID": "281",
@@ -284,7 +337,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "283": {
     "itemID": "283",
@@ -298,7 +353,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "289": {
     "itemID": "289",
@@ -319,7 +376,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "303": {
     "itemID": "303",
@@ -333,7 +392,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "305": {
     "itemID": "305",
@@ -459,7 +520,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "378": {
     "itemID": "378",
@@ -536,7 +599,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "397": {
     "itemID": "397",
@@ -550,7 +615,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "399": {
     "itemID": "399",
@@ -564,7 +631,9 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "402": {
     "itemID": "402",
@@ -578,7 +647,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "406": {
     "itemID": "406",
@@ -606,7 +677,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Winter"]
+    "seasons": [
+      "Winter"
+    ]
   },
   "414": {
     "itemID": "414",
@@ -627,7 +700,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "418": {
     "itemID": "418",
@@ -648,7 +723,10 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer", "Fall"]
+    "seasons": [
+      "Summer",
+      "Fall"
+    ]
   },
   "422": {
     "itemID": "422",
@@ -697,7 +775,10 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": true,
-    "seasons": ["Spring", "Summer"]
+    "seasons": [
+      "Spring",
+      "Summer"
+    ]
   },
   "436": {
     "itemID": "436",
@@ -760,7 +841,11 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": false,
-    "seasons": ["Spring", "Summer", "Fall"]
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall"
+    ]
   },
   "459": {
     "itemID": "459",
@@ -774,28 +859,36 @@
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": false,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "593": {
     "itemID": "593",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "595": {
     "itemID": "595",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": false,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "597": {
     "itemID": "597",
     "minVersion": "1.5.0",
     "monoculture": true,
     "polyculture": false,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "613": {
     "itemID": "613",
@@ -914,7 +1007,12 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Spring", "Summer", "Fall", "Winter"]
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ]
   },
   "787": {
     "itemID": "787",
@@ -963,14 +1061,18 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "832": {
     "itemID": "832",
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   },
   "834": {
     "itemID": "834",
@@ -1019,14 +1121,18 @@
     "minVersion": "1.6.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Fall"]
+    "seasons": [
+      "Fall"
+    ]
   },
   "Carrot": {
     "itemID": "Carrot",
     "minVersion": "1.6.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Spring"]
+    "seasons": [
+      "Spring"
+    ]
   },
   "DriedFruit": {
     "itemID": "DriedFruit",
@@ -1061,17 +1167,12 @@
     "minVersion": "1.6.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Winter"]
+    "seasons": [
+      "Winter"
+    ]
   },
   "Raisins": {
     "itemID": "Raisins",
-    "minVersion": "1.6.0",
-    "monoculture": false,
-    "polyculture": false,
-    "seasons": []
-  },
-  "SmokedFish": {
-    "itemID": "SmokedFish",
     "minVersion": "1.6.0",
     "monoculture": false,
     "polyculture": false,
@@ -1082,6 +1183,8 @@
     "minVersion": "1.6.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": ["Summer"]
+    "seasons": [
+      "Summer"
+    ]
   }
 }
