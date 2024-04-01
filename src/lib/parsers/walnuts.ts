@@ -55,7 +55,7 @@ export function parseWalnuts(save: any): WalnutRet {
     });
 
     // finally, check for golden coconut
-    if ((save.goldenCoconutCracked ?? false) === "true") {
+    if ((save.goldenCoconutCracked ?? false) === true) {
       found["GoldenCoconut"] = walnuts.GoldenCoconut.count;
     }
 
