@@ -5,9 +5,8 @@ import useSWR from "swr";
 import packageJson from "../../package.json";
 const { version } = packageJson;
 
-import { parseSaveFile } from "@/lib/file";
 import { deleteCookie } from "cookies-next";
-import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 
@@ -33,6 +32,7 @@ import { toast } from "sonner";
 import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
+import { UploadDialog } from "./dialogs/upload-dialog";
 
 export interface User {
   id: string;
@@ -57,6 +57,7 @@ export function Topbar() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [changelogOpen, setChangelogOpen] = useState(false);
   const [bugreportOpen, setBugreportOpen] = useState(false);
+  const [uploadOpen, setUploadOpen] = useState(false);
 
   const [isDevelopment, setIsDevelopment] = useState(false);
 
@@ -67,52 +68,6 @@ export function Topbar() {
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
   }, []);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-
-    const file = e.target!.files![0];
-
-    if (typeof file === "undefined" || !file) return;
-
-    if (file.type !== "") {
-      toast.error("Invalid file type", {
-        description: "Please upload a Stardew Valley save file.",
-      });
-      return;
-    }
-
-    const reader = new FileReader();
-
-    let uploadPromise;
-
-    reader.onloadstart = () => {
-      uploadPromise = new Promise((resolve, reject) => {
-        reader.onload = async function (event) {
-          try {
-            const players = parseSaveFile(event.target?.result as string);
-            await uploadPlayers(players);
-            resolve("Your save file was successfully uploaded!");
-          } catch (err) {
-            reject(err instanceof Error ? err.message : "Unknown error.");
-          }
-        };
-      });
-
-      // Start the loading toast
-      toast.promise(uploadPromise, {
-        loading: "Uploading your save file...",
-        success: (data) => `${data}`,
-        error: (err) => `There was an error parsing your save file:\n${err}`,
-      });
-
-      // Reset the input
-      e.target.value = "";
-      uploadPromise = null;
-    };
-
-    reader.readAsText(file);
-  };
 
   useEffect(() => {
     const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
@@ -179,19 +134,11 @@ export function Topbar() {
           )}
           <Button
             variant="secondary"
-            onClick={() => {
-              inputRef.current?.click();
-            }}
+            onClick={() => setUploadOpen(true)}
             data-umami-event="Upload save"
             className="hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500 dark:hover:text-neutral-50"
           >
             Upload Save
-            <input
-              type="file"
-              ref={inputRef}
-              className="hidden"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
-            />
           </Button>
           {/* Not Logged In */}
           {!api.data?.discord_id && (
@@ -323,6 +270,7 @@ export function Topbar() {
       <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
       <ChangelogDialog open={changelogOpen} setOpen={setChangelogOpen} />
       <BugReportDialog open={bugreportOpen} setOpen={setBugreportOpen} />
+      <UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
     </>
   );
 }

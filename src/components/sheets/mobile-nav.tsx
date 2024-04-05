@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { deleteCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
 import {
+  ChangeEvent,
   Dispatch,
   MutableRefObject,
   SetStateAction,
@@ -28,6 +29,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { parseSaveFile } from "@/lib/file";
+import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
 
 interface Props {
@@ -56,7 +59,56 @@ export const MobileNav = ({
 
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
-  const { players, activePlayer, setActivePlayer } = useContext(PlayersContext);
+  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const file = e.target!.files![0];
+
+    setIsOpen(false);
+
+    if (typeof file === "undefined" || !file) return;
+
+    console.log(file);
+
+    if (file.type !== "") {
+      toast.error("Invalid file type", {
+        description: "Please upload a Stardew Valley save file.",
+      });
+      return;
+    }
+
+    const reader = new FileReader();
+
+    let uploadPromise;
+
+    reader.onloadstart = () => {
+      uploadPromise = new Promise((resolve, reject) => {
+        reader.onload = async function (event) {
+          try {
+            const players = parseSaveFile(event.target?.result as string);
+            await uploadPlayers(players);
+            resolve("Your save file was successfully uploaded!");
+          } catch (err) {
+            reject(err instanceof Error ? err.message : "Unknown error.");
+          }
+        };
+      });
+
+      // Start the loading toast
+      toast.promise(uploadPromise, {
+        loading: "Uploading your save file...",
+        success: (data) => `${data}`,
+        error: (err) => `There was an error parsing your save file:\n${err}`,
+      });
+
+      // Reset the input
+      uploadPromise = null;
+    };
+
+    reader.readAsText(file);
+  };
 
   return (
     <Drawer open={open} onOpenChange={setIsOpen}>
@@ -80,6 +132,14 @@ export const MobileNav = ({
                       onClick={() => inputRef.current?.click()}
                     >
                       Upload
+                      <input
+                        type="file"
+                        ref={inputRef}
+                        className="hidden"
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                          handleChange(e)
+                        }
+                      />
                     </Button>
                   </>
                 )}
