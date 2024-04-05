@@ -263,6 +263,7 @@ export function Topbar() {
         setDeletionOpen={setDeletionOpen}
         setFeedbackOpen={setFeedbackOpen}
         setCreditsOpen={setCreditsOpen}
+        setBugreportOpen={setBugreportOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
