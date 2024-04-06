@@ -75,6 +75,7 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
             onDrop={(acceptedFiles) => {
               handleChange(acceptedFiles[0]);
             }}
+            useFsAccessApi={false}
           >
             {({ getRootProps, getInputProps }) => (
               <>
