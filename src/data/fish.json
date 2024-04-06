@@ -734,10 +734,10 @@
   "Goby": {
     "difficulty": "55 dart",
     "itemID": "Goby",
-    "locations": [],
+    "locations": ["Waterfalls east of the Abandoned House"],
     "minLevel": 0,
     "minVersion": "1.6.0",
-    "seasons": ["Spring", "Summer", "Fall"],
+    "seasons": ["Spring", "Summer", "Fall", "Winter"],
     "time": "8AM - 6PM",
     "trapFish": false,
     "weather": "Both"
