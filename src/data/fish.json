@@ -2,10 +2,15 @@
   "128": {
     "difficulty": "80 floater",
     "itemID": "128",
-    "locations": ["Ocean", "Ginger Island"],
+    "locations": [
+      "Ocean",
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer"],
+    "seasons": [
+      "Summer"
+    ],
     "time": "12PM - 4PM",
     "trapFish": false,
     "weather": "Sunny"
@@ -13,10 +18,15 @@
   "129": {
     "difficulty": "30 dart",
     "itemID": "129",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Fall"],
+    "seasons": [
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -24,10 +34,16 @@
   "130": {
     "difficulty": "70 smooth",
     "itemID": "130",
-    "locations": ["Ocean", "Ginger Island"],
+    "locations": [
+      "Ocean",
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -35,10 +51,16 @@
   "131": {
     "difficulty": "30 dart",
     "itemID": "131",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -46,10 +68,17 @@
   "132": {
     "difficulty": "35 smooth",
     "itemID": "132",
-    "locations": ["River"],
+    "locations": [
+      "River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6PM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -57,10 +86,18 @@
   "136": {
     "difficulty": "50 mixed",
     "itemID": "136",
-    "locations": ["Mountain Lake", "Wilderness Farm"],
+    "locations": [
+      "Mountain Lake",
+      "Wilderness Farm"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -68,10 +105,16 @@
   "137": {
     "difficulty": "28 mixed",
     "itemID": "137",
-    "locations": ["Town River", "Forest Pond"],
+    "locations": [
+      "Town River",
+      "Forest Pond"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Fall"],
+    "seasons": [
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -79,10 +122,15 @@
   "138": {
     "difficulty": "45 mixed",
     "itemID": "138",
-    "locations": ["River", "Mountain Lake"],
+    "locations": [
+      "River",
+      "Mountain Lake"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer"],
+    "seasons": [
+      "Summer"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Sunny"
@@ -90,10 +138,15 @@
   "139": {
     "difficulty": "50 mixed",
     "itemID": "139",
-    "locations": ["River"],
+    "locations": [
+      "River",
+      "Waterfalls"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Fall"],
+    "seasons": [
+      "Fall"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -101,10 +154,18 @@
   "140": {
     "difficulty": "45 smooth",
     "itemID": "140",
-    "locations": ["River", "Mountain Lake", "Forest Pond", "Forest Farm Pond"],
+    "locations": [
+      "River",
+      "Mountain Lake",
+      "Forest Pond",
+      "Forest Farm Pond"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall"
+    ],
     "time": "12PM - 2AM",
     "trapFish": false,
     "weather": "Rainy"
@@ -112,10 +173,16 @@
   "141": {
     "difficulty": "35 dart",
     "itemID": "141",
-    "locations": ["River", "Mountain Lake", "Forest Pond"],
+    "locations": [
+      "River",
+      "Mountain Lake",
+      "Forest Pond"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -131,7 +198,11 @@
     ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall"],
+    "seasons": [
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -139,21 +210,35 @@
   "143": {
     "difficulty": "75 mixed",
     "itemID": "143",
-    "locations": ["River", "Secret Woods", "Witch's Swamp"],
+    "locations": [
+      "River",
+      "Secret Woods",
+      "Witch's Swamp"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Fall", "Winter"],
-    "time": "6AM - 2AM",
+    "seasons": [
+      "Winter",
+      "Fall",
+      "Spring"
+    ],
+    "time": "6AM - 12AM",
     "trapFish": false,
     "weather": "Rainy"
   },
   "144": {
     "difficulty": "60 dart",
     "itemID": "144",
-    "locations": ["River", "Forest Pond"],
+    "locations": [
+      "River",
+      "Forest Pond"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -161,10 +246,15 @@
   "145": {
     "difficulty": "30 mixed",
     "itemID": "145",
-    "locations": ["River"],
+    "locations": [
+      "River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer"],
+    "seasons": [
+      "Summer",
+      "Spring"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Sunny"
@@ -172,10 +262,15 @@
   "146": {
     "difficulty": "55 smooth",
     "itemID": "146",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -183,10 +278,15 @@
   "147": {
     "difficulty": "25 dart",
     "itemID": "147",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Winter"],
+    "seasons": [
+      "Winter",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -194,10 +294,15 @@
   "148": {
     "difficulty": "70 smooth",
     "itemID": "148",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Fall"],
+    "seasons": [
+      "Fall",
+      "Spring"
+    ],
     "time": "4PM - 2AM",
     "trapFish": false,
     "weather": "Rainy"
@@ -205,10 +310,17 @@
   "149": {
     "difficulty": "95 sinker",
     "itemID": "149",
-    "locations": ["Ocean", "Ginger Island", "Submarine at Night Market"],
+    "locations": [
+      "Ocean",
+      "Ginger Island",
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer"],
+    "seasons": [
+      "Summer",
+      "Winter (submarine)"
+    ],
     "time": "6AM - 1PM",
     "trapFish": false,
     "weather": "Both"
@@ -216,10 +328,17 @@
   "150": {
     "difficulty": "40 mixed",
     "itemID": "150",
-    "locations": ["Ocean", "Beach Farm"],
+    "locations": [
+      "Ocean",
+      "Beach Farm"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Fall", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter",
+      "Fall"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Rainy"
@@ -227,10 +346,14 @@
   "151": {
     "difficulty": "75 sinker",
     "itemID": "151",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6PM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -247,7 +370,12 @@
     ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Fall",
+      "Winter",
+      "Summer",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -263,7 +391,12 @@
     ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -271,10 +404,16 @@
   "154": {
     "difficulty": "40 sinker",
     "itemID": "154",
-    "locations": ["Ocean", "Submarine at Night Market"],
+    "locations": [
+      "Ocean",
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -282,10 +421,18 @@
   "155": {
     "difficulty": "80 sinker",
     "itemID": "155",
-    "locations": ["Ocean", "Ginger Island", "Submarine at Night Market"],
+    "locations": [
+      "Ocean",
+      "Ginger Island",
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Fall",
+      "Winter (submarine)"
+    ],
     "time": "6PM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -293,10 +440,17 @@
   "156": {
     "difficulty": "50 mixed",
     "itemID": "156",
-    "locations": ["The Mines"],
+    "locations": [
+      "The Mines"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -304,10 +458,19 @@
   "157": {
     "difficulty": "5 floater",
     "itemID": "157",
-    "locations": ["Fishing Pole", "Monster drops", "Fish Pond (Ghostfish)"],
+    "locations": [
+      "Fishing Pole",
+      "Monster drops",
+      "Fish Pond (Ghostfish)"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -315,10 +478,17 @@
   "158": {
     "difficulty": "65 sinker",
     "itemID": "158",
-    "locations": ["Floor 20 of The Mines"],
-    "minLevel": 3,
+    "locations": [
+      "Floor 20 of The Mines"
+    ],
+    "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -326,10 +496,14 @@
   "159": {
     "difficulty": "95 mixed",
     "itemID": "159",
-    "locations": ["East Pier on The Beach"],
+    "locations": [
+      "East Pier on The Beach"
+    ],
     "minLevel": 5,
     "minVersion": "1.5.0",
-    "seasons": ["Summer"],
+    "seasons": [
+      "Summer"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -337,10 +511,14 @@
   "160": {
     "difficulty": "85 smooth",
     "itemID": "160",
-    "locations": ["North of JojaMart on the wooden plank bridge"],
+    "locations": [
+      "North of JojaMart on the wooden plank bridge"
+    ],
     "minLevel": 3,
     "minVersion": "1.5.0",
-    "seasons": ["Fall"],
+    "seasons": [
+      "Fall"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -348,10 +526,17 @@
   "161": {
     "difficulty": "85 dart",
     "itemID": "161",
-    "locations": ["The Mines, Floor 60"],
-    "minLevel": 5,
+    "locations": [
+      "The Mines, Floor 60"
+    ],
+    "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -359,10 +544,18 @@
   "162": {
     "difficulty": "90 mixed",
     "itemID": "162",
-    "locations": ["Floor 100 of The Mines", "Volcano Caldera"],
-    "minLevel": 7,
+    "locations": [
+      "Floor 100 of The Mines",
+      "Volcano Caldera"
+    ],
+    "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -370,10 +563,14 @@
   "163": {
     "difficulty": "110 mixed",
     "itemID": "163",
-    "locations": ["The Mountain Lake, near the log"],
+    "locations": [
+      "The Mountain Lake, near the log"
+    ],
     "minLevel": 10,
     "minVersion": "1.5.0",
-    "seasons": ["Spring"],
+    "seasons": [
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Rainy"
@@ -381,10 +578,17 @@
   "164": {
     "difficulty": "65 mixed",
     "itemID": "164",
-    "locations": ["The Desert"],
+    "locations": [
+      "The Desert"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 8PM",
     "trapFish": false,
     "weather": "Both"
@@ -392,10 +596,17 @@
   "165": {
     "difficulty": "90 dart",
     "itemID": "165",
-    "locations": ["The Desert"],
-    "minLevel": 4,
+    "locations": [
+      "The Desert"
+    ],
+    "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 8PM",
     "trapFish": false,
     "weather": "Both"
@@ -403,10 +614,16 @@
   "267": {
     "difficulty": "50 sinker",
     "itemID": "267",
-    "locations": ["Ocean", "Ginger Island"],
+    "locations": [
+      "Ocean",
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer"],
+    "seasons": [
+      "Summer",
+      "Spring"
+    ],
     "time": "6AM - 8PM",
     "trapFish": false,
     "weather": "Both"
@@ -421,24 +638,37 @@
     ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall"
+    ],
     "time": "10PM - 2AM",
     "trapFish": false,
     "weather": "Both"
   },
   "372": {
     "itemID": "372",
-    "locations": ["Crab Pot: Saltwater", "Foraging: The Beach"],
+    "locations": [
+      "Crab Pot: Saltwater",
+      "Foraging: The Beach"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "682": {
     "difficulty": "80 dart",
     "itemID": "682",
-    "locations": ["The Sewers"],
+    "locations": [
+      "The Sewers"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -446,10 +676,15 @@
   "698": {
     "difficulty": "78 mixed",
     "itemID": "698",
-    "locations": ["Mountain Lake"],
+    "locations": [
+      "Mountain Lake"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -457,10 +692,15 @@
   "699": {
     "difficulty": "60 dart",
     "itemID": "699",
-    "locations": ["River"],
+    "locations": [
+      "River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -468,10 +708,17 @@
   "700": {
     "difficulty": "46 smooth",
     "itemID": "700",
-    "locations": ["Mountain Lake"],
+    "locations": [
+      "Mountain Lake"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -479,10 +726,16 @@
   "701": {
     "difficulty": "50 mixed",
     "itemID": "701",
-    "locations": ["Ocean", "Ginger Island"],
+    "locations": [
+      "Ocean",
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer", "Fall"],
+    "seasons": [
+      "Summer",
+      "Fall"
+    ],
     "time": "6AM - 2PM",
     "trapFish": false,
     "weather": "Both"
@@ -490,10 +743,18 @@
   "702": {
     "difficulty": "35 dart",
     "itemID": "702",
-    "locations": ["Mountain Lake", "Forest River"],
+    "locations": [
+      "Mountain Lake",
+      "Forest River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -501,10 +762,14 @@
   "704": {
     "difficulty": "78 mixed",
     "itemID": "704",
-    "locations": ["Forest River"],
+    "locations": [
+      "Forest River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Summer"],
+    "seasons": [
+      "Summer"
+    ],
     "time": "6AM - 7PM",
     "trapFish": false,
     "weather": "Both"
@@ -512,10 +777,15 @@
   "705": {
     "difficulty": "60 mixed",
     "itemID": "705",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Fall"
+    ],
     "time": "6AM - 11AM",
     "trapFish": false,
     "weather": "Both"
@@ -523,10 +793,16 @@
   "706": {
     "difficulty": "45 smooth",
     "itemID": "706",
-    "locations": ["River"],
+    "locations": [
+      "River"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall"],
+    "seasons": [
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "9AM - 2AM",
     "trapFish": false,
     "weather": "Rainy"
@@ -534,10 +810,15 @@
   "707": {
     "difficulty": "85 mixed",
     "itemID": "707",
-    "locations": ["River", "Mountain Lake"],
+    "locations": [
+      "River",
+      "Mountain Lake"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -545,23 +826,33 @@
   "708": {
     "difficulty": "50 sinker",
     "itemID": "708",
-    "locations": ["Ocean"],
+    "locations": [
+      "Ocean"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Winter"],
+    "seasons": [
+      "Summer",
+      "Winter",
+      "Spring"
+    ],
     "time": "6AM - 11AM",
     "trapFish": false,
     "weather": "Both"
   },
   "715": {
     "itemID": "715",
-    "locations": ["Crab Pot: Saltwater"],
+    "locations": [
+      "Crab Pot: Saltwater"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "716": {
     "itemID": "716",
-    "locations": ["Crab Pot: Freshwater"],
+    "locations": [
+      "Crab Pot: Freshwater"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
@@ -576,47 +867,71 @@
   },
   "718": {
     "itemID": "718",
-    "locations": ["Crab Pot: Saltwater", "Foraging: The Beach"],
+    "locations": [
+      "Crab Pot: Saltwater",
+      "Foraging: The Beach"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "719": {
     "itemID": "719",
-    "locations": ["Crab Pot: Saltwater", "Foraging: The Beach", "Mussel Node"],
+    "locations": [
+      "Crab Pot: Saltwater",
+      "Foraging: The Beach",
+      "Mussel Node"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "720": {
     "itemID": "720",
-    "locations": ["Crab Pot: Saltwater"],
+    "locations": [
+      "Crab Pot: Saltwater"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "721": {
     "itemID": "721",
-    "locations": ["Crab Pot: Freshwater"],
+    "locations": [
+      "Crab Pot: Freshwater"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "722": {
     "itemID": "722",
-    "locations": ["Crab Pot: Freshwater"],
+    "locations": [
+      "Crab Pot: Freshwater"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "723": {
     "itemID": "723",
-    "locations": ["Crab Pot: Saltwater", "Foraging: The Beach"],
+    "locations": [
+      "Crab Pot: Saltwater",
+      "Foraging: The Beach"
+    ],
     "minVersion": "1.5.0",
     "trapFish": true
   },
   "734": {
     "difficulty": "50 mixed",
     "itemID": "734",
-    "locations": ["Secret Woods", "Forest Farm"],
+    "locations": [
+      "Secret Woods",
+      "Forest Farm"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -624,10 +939,14 @@
   "775": {
     "difficulty": "100 mixed",
     "itemID": "775",
-    "locations": ["South end of Arrowhead Island in Cindersap Forest"],
+    "locations": [
+      "South end of Arrowhead Island in Cindersap Forest"
+    ],
     "minLevel": 6,
     "minVersion": "1.5.0",
-    "seasons": ["Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Sunny"
@@ -635,10 +954,17 @@
   "795": {
     "difficulty": "80 mixed",
     "itemID": "795",
-    "locations": ["Witch's Swamp"],
+    "locations": [
+      "Witch's Swamp"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -646,10 +972,17 @@
   "796": {
     "difficulty": "55 dart",
     "itemID": "796",
-    "locations": ["Mutant Bug Lair"],
+    "locations": [
+      "Mutant Bug Lair"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -657,10 +990,14 @@
   "798": {
     "difficulty": "55 sinker",
     "itemID": "798",
-    "locations": ["Submarine at Night Market"],
+    "locations": [
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -668,10 +1005,14 @@
   "799": {
     "difficulty": "60 dart",
     "itemID": "799",
-    "locations": ["Submarine at Night Market"],
+    "locations": [
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -679,10 +1020,14 @@
   "800": {
     "difficulty": "75 floater",
     "itemID": "800",
-    "locations": ["Submarine at Night Market"],
+    "locations": [
+      "Submarine at Night Market"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -690,10 +1035,17 @@
   "836": {
     "difficulty": "80 sinker",
     "itemID": "836",
-    "locations": ["Pirate Cove"],
+    "locations": [
+      "Pirate Cove"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -701,10 +1053,17 @@
   "837": {
     "difficulty": "50 smooth",
     "itemID": "837",
-    "locations": ["Ginger Island"],
+    "locations": [
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -712,10 +1071,17 @@
   "838": {
     "difficulty": "60 dart",
     "itemID": "838",
-    "locations": ["Ginger Island"],
+    "locations": [
+      "Ginger Island"
+    ],
     "minLevel": 0,
     "minVersion": "1.5.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -723,10 +1089,17 @@
   "CaveJelly": {
     "difficulty": "None",
     "itemID": "CaveJelly",
-    "locations": ["The Mines"],
+    "locations": [
+      "The Mines"
+    ],
     "minLevel": 0,
     "minVersion": "1.6.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -734,10 +1107,17 @@
   "Goby": {
     "difficulty": "55 dart",
     "itemID": "Goby",
-    "locations": ["Waterfalls east of the Abandoned House"],
+    "locations": [
+      "Waterfalls"
+    ],
     "minLevel": 0,
     "minVersion": "1.6.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Winter",
+      "Summer",
+      "Fall",
+      "Spring"
+    ],
     "time": "8AM - 6PM",
     "trapFish": false,
     "weather": "Both"
@@ -755,7 +1135,12 @@
     ],
     "minLevel": 0,
     "minVersion": "1.6.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"
@@ -771,7 +1156,12 @@
     ],
     "minLevel": 0,
     "minVersion": "1.6.0",
-    "seasons": ["Spring", "Summer", "Fall", "Winter"],
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ],
     "time": "6AM - 2AM",
     "trapFish": false,
     "weather": "Both"

@@ -4,7 +4,7 @@
 #          StardewValley/Utility.cs::getFishCaughtPercent()
 # Result is saved to data/fish.json
 #
-# Content Files used: Fish.json, Objects.json,
+# Content Files used: Fish.json, Objects.json, Locations.json
 # Wiki Pages used: https://stardewvalleywiki.com/<fish_name>
 
 import requests
@@ -14,37 +14,33 @@ from bs4.element import Tag
 from bs4 import BeautifulSoup
 
 from helpers.models import Fish, TrapFish, ContentObjectModel, Object
-from helpers.utils import load_content, save_json, convert_time, load_data, get_string
+from helpers.utils import load_content, save_json, convert_time, load_data, get_string, get_fish_info
 
 # Load the content files
 FISH: dict[str, str] = load_content("Fish.json")
 OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
 DATA_OBJECTS: dict[str, Object] = load_data("objects.json")
+LOCATIONS: dict[str, str] = load_content("Locations.json")
 
 LEGENDARY_FISH = {
     "159": {  # Crimsonfish
         "seasons": ["Summer"],
-        "min_level": "5",
         "locations": ["East Pier on The Beach"],
     },
     "160": {  # Angler
         "seasons": ["Fall"],
-        "min_level": "3",
         "locations": ["North of JojaMart on the wooden plank bridge"],
     },
     "163": {  # Legend
         "seasons": ["Spring"],
-        "min_level": "10",
         "locations": ["The Mountain Lake, near the log"],
     },
     "682": {  # Mutant Carp
         "seasons": ["Spring", "Summer", "Fall", "Winter"],
-        "min_level": "0",
         "locations": ["The Sewers"],
     },
     "775": {  # Glacierfish
         "seasons": ["Winter"],
-        "min_level": "6",
         "locations": ["South end of Arrowhead Island in Cindersap Forest"],
     },
 }
@@ -78,11 +74,11 @@ FISH_NONFISH = {
     },
 }
 
-
 def get_fish() -> dict[str, Fish | TrapFish]:
     output: dict[str, Fish | TrapFish] = {}
 
     for k, v in tqdm(OBJECTS.items()):
+
         if v.get("Type") == "Fish" and not v.get("ExcludeFromFishingCollection"):
 
             minVersion = DATA_OBJECTS[k]["minVersion"]
@@ -108,21 +104,17 @@ def get_fish() -> dict[str, Fish | TrapFish]:
             if name != v["Name"]:
                 print(f"Name mismatch: {name} vs {v['Name']}")
 
-            if minVersion == "1.6.0":
-                # can't make a request to the wiki for 1.6 fish yet
-                locations = []
+            # make a request to the wiki for locations
+            wiki_url = f"https://stardewvalleywiki.com/{name.replace(' ', '_')}"
+            page = requests.get(wiki_url)
+            soup = BeautifulSoup(page.text, "html.parser")
+            # find the locations from the wiki
+            tag: Tag = soup.find_all("td", {"id": "infoboxdetail"})[1]
+            # trap fish and other non-fish items like seaweed have different formatting
+            if fish_fields[1] == "trap" or v.get("Category") == 0:
+                locations = tag.get_text().strip().split("\n")
             else:
-                # make a request to the wiki for locations
-                wiki_url = f"https://stardewvalleywiki.com/{name.replace(' ', '_')}"
-                page = requests.get(wiki_url)
-                soup = BeautifulSoup(page.text, "html.parser")
-                # find the locations from the wiki
-                tag: Tag = soup.find_all("td", {"id": "infoboxdetail"})[1]
-                # trap fish and other non-fish items like seaweed have different formatting
-                if fish_fields[1] == "trap" or v.get("Category") == 0:
-                    locations = tag.get_text().strip().split("\n")
-                else:
-                    locations = tag.get_text().strip().split(" • ")
+                locations = tag.get_text().strip().split(" • ")
 
             # return for trap fish since there's no other data to gather
             if fish_fields[1] == "trap":
@@ -133,21 +125,37 @@ def get_fish() -> dict[str, Fish | TrapFish]:
                     "trapFish": True,
                 }
                 continue
-
+            
+            #get the locations from Locations.json to get the Seasons
+            fish_locations = {}
+            for location, location_details in LOCATIONS.items():
+                if location == "Temp":
+                    continue
+        
+                for fish in location_details["Fish"]:
+                    if fish["Id"] == "(O)" + k or fish["ItemId"] == "(O)" + k:
+                        fish_details = {
+                            "Condition": fish.get("Condition", None),
+                            "Season": fish.get("Season", None),
+                            "MinLevel": fish.get("MinFishingLevel", None),
+                        }
+                        fish_locations[location] = fish_details
+                        break # only one fish per location
+            
+            fish_info = get_fish_info(fish_locations)
+            
             # hardcoded checks for legendary fish
             # there's some differences between Fish.json and the real behavior of the fish
             if k in LEGENDARY_FISH:
                 start_time = "6AM"
                 end_time = "2AM"
-                seasons = LEGENDARY_FISH[k]["seasons"]
-                min_level = int(LEGENDARY_FISH[k]["min_level"])
                 locations = LEGENDARY_FISH[k]["locations"]
             else:
                 start_time = convert_time(fish_fields[5].split(" ")[0])
                 end_time = convert_time(fish_fields[5].split(" ")[1])
-                seasons = fish_fields[6].split(" ")
-                min_level = int(fish_fields[12])
-
+                
+            min_level = fish_info["min_level"]
+            seasons = fish_info["seasons"]
             difficulty = f"{fish_fields[1]} {fish_fields[2]}"
             time = f"{start_time} - {end_time}"
             weather = fish_fields[7]

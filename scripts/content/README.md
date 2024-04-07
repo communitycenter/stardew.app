@@ -16,6 +16,7 @@
 - [Data/MonsterSlayerQuests](https://stardewvalleywiki.com/Modding:Migrate_to_Stardew_Valley_1.6#Custom_monster_eradication_goals)
 - [Data/NPCGiftTasts](https://stardewvalleywiki.com/Modding:Gift_taste_data)
 - [Data/Objects](https://stardewcommunitywiki.com/Modding:Object_data)
+- [Data/Locations](https://stardewvalleywiki.com/Modding:Location_data)
 - Data/Powers (no wiki page yet)
 - sprites.json (Output from `sprites.py` script)
   - Output in `scripts/content` directory.
