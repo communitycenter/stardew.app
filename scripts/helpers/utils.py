@@ -1,7 +1,7 @@
 import os
 import json
 
-from typing import Any, Literal, Optional
+from typing import Any, Dict, Literal, Optional
 from datetime import datetime
 
 from helpers.models import ContentObjectModel
@@ -73,7 +73,7 @@ def load_strings(file_name: str) -> dict[str, str]:
         return strings_cache[file_name]
 
     strings_path = os.path.join(
-        os.path.dirname(__file__), "..", "content", "Strings", file_name
+            os.path.dirname(__file__), "..", "content", "Strings", file_name
     )
 
     with open(strings_path, "r") as f:
@@ -296,7 +296,20 @@ def convert_time(time: str) -> str:
     Returns:
         str: The time in 12-hour format. Ex: "12PM"
     """
-    return datetime.strptime(time, "%H%M%S").strftime("%-I%p")
+    if time == "2400":
+        return "12AM"
+    elif int(time) > 2400:
+        time = time[:-2]
+
+    if len(time) == 3: 
+        time = "0" + time  
+    
+    formatted_time = datetime.strptime(time, "%H%M").strftime("%I%p")
+    
+    if formatted_time.startswith('0'):
+        formatted_time = formatted_time[1:]
+    
+    return formatted_time
 
 
 def isPotentialBasicShipped(
@@ -360,3 +373,41 @@ def has_dangerous_variant(name: str) -> bool:
 
     if os.path.exists(os.path.join(monsters_path, f"{name}_dangerous.png")):
         return True
+
+def get_fish_info(fish_locations: Dict[str, Any]) -> Dict[str, Any]:
+    """Returns information about the fish including seasons, minimum fishing level, etc.
+    Args:
+        fish_locations (dict): The locations where the fish can be caught.
+
+    Returns:
+        dict: A dictionary containing information about the fish, including seasons, minimum fishing level, etc.
+    """
+    info = {"seasons": set(), "min_level": 0}
+    for location, location_details in fish_locations.items():
+        if location in ['IslandSouth', 'IslandSouthEast', 'IslandSouthEastCave', 'IslandWest']:
+            continue
+
+        if location == "Submarine" and len(fish_locations) == 1:
+            info["seasons"].add("Winter")
+        elif location == "Submarine":
+            info["seasons"].add("Winter (Submarine)")
+
+        if location_details["MinLevel"] and location_details["MinLevel"] > info["min_level"]:
+            info["min_level"] = location_details["MinLevel"]
+
+        if location_details["Season"]:
+            info["seasons"].add(location_details["Season"])
+        elif location_details["Condition"] and "LOCATION_SEASON Here" in location_details["Condition"]:
+            condition_string = location_details["Condition"].replace("LOCATION_SEASON Here", "").strip()
+            info["seasons"].update(condition_string.split())
+            
+    if "winter" in info["seasons"] and "Winter (Submarine)" in info["seasons"]:
+        info["seasons"].remove("Winter (Submarine)")
+
+    if not info["seasons"] or (info["seasons"] == {"Winter (Submarine)"} and len(fish_locations) > 1):
+        if "Winter (Submarine)" in info["seasons"]:
+            info["seasons"].remove("Winter (Submarine)")
+        info["seasons"].update({"Spring", "Summer", "Fall", "Winter"})
+
+
+    return info
