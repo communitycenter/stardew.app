@@ -28,7 +28,7 @@ The website uses [Next.js](https://nextjs.org) for it's frontend, [PlanetScale](
 | Recipe tracker | ✅ |
 | Crafting recipe tracker | ✅ |
 | Museum & artifacts tracker | ✅ |
-| Bundles tracker | ❌ | Please see this issue about bundles |
+| Bundles tracker | ❌ | [Please see this issue about bundles](https://github.com/communitycenter/stardew.app/issues/85) |
 | Golden Walnut tracker | ✅ |
 | Secret Note tracker | ✅ |
 | Journal Scraps tracker | ✅ |
