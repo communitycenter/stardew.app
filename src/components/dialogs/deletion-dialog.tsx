@@ -25,7 +25,7 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
   const { players } = useContext(PlayersContext);
 
   const selectedPlayer = players?.filter(
-    (player) => player._id === playerID
+    (player) => player._id === playerID,
   )[0];
 
   const [verify, setVerify] = useState("");
@@ -74,7 +74,18 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
             ? "localhost"
             : "stardew.app",
         });
+        window.localStorage.removeItem("player_id");
       }
+
+      // delete the saved player id if player requested to delete character and it was their saved player
+      // if player requested to delete all saved data, also remove saved player_id
+      if (
+        type &&
+        type === "player" &&
+        window.localStorage.getItem("player_id") === _body._id
+      ) {
+        window.localStorage.removeItem("player_id");
+      } else if (!type) window.localStorage.removeItem("player_id");
       window.location.reload();
     }
   };
@@ -144,7 +155,7 @@ export const DeletionDialog = ({ open, setOpen, playerID, type }: Props) => {
         <DialogDescription asChild>
           <span>
             The following farmhands will be deleted:
-            <ul className="list-disc list-inside">
+            <ul className="list-inside list-disc">
               {playerID ? (
                 <li>
                   {`${selectedPlayer?.general?.name} - ${selectedPlayer?.general?.farmInfo}`}
