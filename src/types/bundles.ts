@@ -1,6 +1,8 @@
 import bundlesJson from "../data/bundles.json";
 
 export type Bundle = {
+  localizedName: string;
+  color: number;
   items: BundleItem[];
   itemsRequired: number;
   bundleReward: BundleReward;
@@ -16,7 +18,7 @@ export type BundleItem = {
 export type BundleReward = {
   itemType: string;
   itemName: string;
-  itemID: number;
+  itemID: string;
   itemQuantity: number;
 };
 
