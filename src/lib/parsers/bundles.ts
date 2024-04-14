@@ -1,5 +1,13 @@
 import objects from "@/data/objects.json";
+const typedObjects: Record<
+  string,
+  Record<string, string | null>
+> = objects as Record<string, Record<string, string | null>>;
 import big_craftables from "@/data/big_craftables.json";
+const typedBigCraftables: Record<
+  string,
+  Record<string, string | null>
+> = big_craftables as Record<string, Record<string, string | null>>;
 import { Bundle, BundleItem } from "@/types/bundles";
 
 export interface BundleRet {
@@ -65,7 +73,7 @@ export function parseBundles(
         // An item ID of -1 is used for gold for the vault room
         if (itemID == "-1") {
           let currentBundleItem: BundleItem = {
-            itemID: -1,
+            itemID: "-1",
             itemQuantity: itemQuantity,
             itemQuality: itemQuality,
             itemName: "Gold",
@@ -74,7 +82,7 @@ export function parseBundles(
           continue;
         }
 
-        let itemName: string = objects[itemID].name;
+        let itemName: string = typedObjects[itemID].name || "";
 
         let currentBundleItem: BundleItem = {
           itemID: itemID,
@@ -88,10 +96,10 @@ export function parseBundles(
 
       let itemData = null;
       if (rewardDataSplit[0] == "O") {
-        itemData = objects[rewardDataSplit[1]];
+        itemData = typedObjects[rewardDataSplit[1]];
       }
       if (rewardDataSplit[0] == "BO") {
-        itemData = big_craftables[rewardDataSplit[1]];
+        itemData = typedBigCraftables[rewardDataSplit[1]];
       }
 
       // Ideally we'd pull reward data for other types from their respective data files,
@@ -131,7 +139,7 @@ export function parseBundles(
         itemsRequired: requiredItemCount,
         bundleReward: {
           itemType: rewardDataSplit[0] || "",
-          itemName: itemData.name,
+          itemName: itemData ? itemData.name || "" : "",
           itemID: rewardDataSplit[1] || "-1",
           itemQuantity: parseInt(rewardDataSplit[2] || "1"),
         },

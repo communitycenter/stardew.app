@@ -1,5 +1,3 @@
-import bundlesJson from "../data/bundles.json";
-
 export type Bundle = {
   localizedName: string;
   color: number;
@@ -9,7 +7,7 @@ export type Bundle = {
 };
 
 export type BundleItem = {
-  itemID: number;
+  itemID: string;
   itemQuantity: number;
   itemQuality: string;
   itemName: string;
@@ -24,5 +22,3 @@ export type BundleReward = {
 
 export type CommunityCenter = Record<string, CommunityCenterRoom>;
 export type CommunityCenterRoom = Record<string, Bundle>;
-
-export const communityCenter: CommunityCenter = bundlesJson;
