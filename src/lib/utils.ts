@@ -59,16 +59,7 @@ function findAllByKey(obj: any, searchKey: string) {
   return results;
 }
 
-/**
- * Takes in a string that may or may not be a tuple, and if it is returns
- * a pojo with keys "key" and "value" representing the tuple.
- * Otherwise, returns an object with key being an empy string and value being the incoming string.
- *
- * @param incoming a string that may or may not be a tuple
- * @returns an object with keys "key" and "value" representing the tuple, or an
- * object with key being an empty string and value being the incoming string
- */
-export function deweaponize(incoming: string): { key: string; value: string } {
+export function deweaponize(incoming: string) {
   let str = incoming.toString();
   if (str.startsWith("(")) {
     const split = str.split(")");
