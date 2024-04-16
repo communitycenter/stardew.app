@@ -51,17 +51,24 @@ export function parseBundles(
       let bundleDataString: string = bundle.value.string;
 
       let bundleDataSplit: string[] = bundleDataString.split("/");
+
       let bundleName: string = bundleDataSplit[0];
+
       let rewardDataString: string = bundleDataSplit[1];
       let rewardDataSplit: string[] = rewardDataString.split(" ");
+
       let bundleRequirementsDataString: string = bundleDataSplit[2];
       let bundleRequirementsDataSplit: string[] =
         bundleRequirementsDataString.split(" ");
+
       let colorId: string = bundleDataSplit[3];
+
       let requiredItemCount: number = bundleDataSplit[4]
         ? parseInt(bundleDataSplit[4])
         : -1;
-      // bundleDataSplit[5] is always empty
+
+      // bundleDataSplit[5] is usually empty, but seems to be used in the new remix bundles
+
       let localizedBundleName: string = bundleDataSplit[6];
 
       let requiredItems: BundleItem[] = [];
@@ -133,9 +140,10 @@ export function parseBundles(
       }
 
       let currentBundle: Bundle = {
+        areaName: areaName,
         localizedName: localizedBundleName ? localizedBundleName : bundleName,
         color: parseInt(colorId),
-        items: [],
+        items: requiredItems,
         itemsRequired: requiredItemCount,
         bundleReward: {
           itemType: rewardDataSplit[0] || "",
