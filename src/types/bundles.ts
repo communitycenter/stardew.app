@@ -1,4 +1,5 @@
 export type Bundle = {
+  areaName: string;
   localizedName: string;
   color: number;
   items: BundleItem[];
