@@ -11,15 +11,19 @@ export type BundleItem = {
   itemID: string;
   itemQuantity: number;
   itemQuality: string;
-  itemName: string;
 };
 
 export type BundleReward = {
   itemType: string;
-  itemName: string;
-  itemID: string;
+  itemID: number;
   itemQuantity: number;
 };
 
+export type Randomizer = {
+  randomizer: true;
+  options: (Bundle | BundleItem | Randomizer)[];
+  selectionCoutn: number;
+};
+
 export type CommunityCenter = Record<string, CommunityCenterRoom>;
-export type CommunityCenterRoom = Record<string, Bundle>;
+export type CommunityCenterRoom = (Randomizer | Bundle)[];

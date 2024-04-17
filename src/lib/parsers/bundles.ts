@@ -83,19 +83,15 @@ export function parseBundles(
             itemID: "-1",
             itemQuantity: itemQuantity,
             itemQuality: itemQuality,
-            itemName: "Gold",
           };
           requiredItems.push(currentBundleItem);
           continue;
         }
 
-        let itemName: string = typedObjects[itemID].name || "";
-
         let currentBundleItem: BundleItem = {
           itemID: itemID,
           itemQuantity: itemQuantity,
           itemQuality: itemQuality,
-          itemName: itemName,
         };
 
         requiredItems.push(currentBundleItem);
