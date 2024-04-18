@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
+import big_craftables from "@/data/big_craftables.json";
 
-import type { FishType, MuseumItem } from "@/types/items";
+import type { FishType, ItemData, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
@@ -18,13 +19,14 @@ import {
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";
+import { BundleReward } from "@/types/bundles";
 
 interface Props {
-  item: FishType | MuseumItem | any;
+  item: ItemData;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
-  type: "fish" | "artifact" | "mineral";
+  type: "fish" | "artifact" | "mineral" | "bundleItem";
 
   /**
    * Whether the user prefers to see new content
@@ -53,11 +55,24 @@ export const BooleanCard = ({
   setPromptOpen,
 }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
-
-  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-  const name = objects[item.itemID as keyof typeof objects].name;
-  const description = objects[item.itemID as keyof typeof objects].description;
-  const minVersion = objects[item.itemID as keyof typeof objects].minVersion;
+  // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
+  // let dataSource = objects;
+  let iconURL: string;
+  let name: string;
+  let description: string | null;
+  let minVersion: string;
+  if (item.itemID == "-1") {
+    //Special case for handling gold in Vault bundles
+    iconURL = `https://cdn.stardew.app/images/(O)69.webp`;
+    name = "Gold";
+    description = "I like..... Gooooooooooold.";
+    minVersion = "1.5.0";
+  } else {
+    iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    name = objects[item.itemID as keyof typeof objects].name;
+    description = objects[item.itemID as keyof typeof objects].description;
+    minVersion = objects[item.itemID as keyof typeof objects].minVersion;
+  }
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -99,6 +114,31 @@ export const BooleanCard = ({
           minerals: Array.from(minerals),
         },
       };
+    } else if (type === "bundleItem") {
+      const bundles = activePlayer?.bundles ?? [];
+      const bundleIndex = bundles.findIndex(
+        (bundle) => bundle.bundleID === item.bundleID,
+      );
+
+      if (bundleIndex === -1) return;
+
+      const bundle = bundles[bundleIndex];
+      const bundleStatus = [...bundle.bundleStatus];
+
+      if (status === 2) {
+        bundleStatus[item.index] = true;
+      } else if (status === 0) {
+        bundleStatus[item.index] = false;
+      }
+
+      bundles[bundleIndex] = {
+        ...bundle,
+        bundleStatus,
+      };
+
+      patch = {
+        bundles,
+      };
     }
     await patchPlayer(patch);
   }
@@ -120,7 +160,7 @@ export const BooleanCard = ({
             setIsOpen(true);
           }}
         >
-          {minVersion === "1.6.0" && <NewItemBadge version={minVersion}/>}
+          {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",

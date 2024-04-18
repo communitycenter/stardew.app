@@ -1207,7 +1207,7 @@
       "name": "2,500g",
       "items": [
         {
-          "itemId": "1337",
+          "itemId": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1223,7 +1223,7 @@
       "name": "5,000g",
       "items": [
         {
-          "itemId": "1337",
+          "itemId": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1239,7 +1239,7 @@
       "name": "10,000g",
       "items": [
         {
-          "itemId": "1337",
+          "itemId": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1255,7 +1255,7 @@
       "name": "25,000g",
       "items": [
         {
-          "itemId": "1337",
+          "itemId": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }

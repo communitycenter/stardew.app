@@ -1,19 +1,23 @@
-interface Fish {
-  difficulty: string;
+export interface ItemData {
   itemID: string;
-  locations: string[];
-  minLevel: number;
   minVersion: string;
+}
+
+interface Fishable extends ItemData {
+  locations: string[];
+  trapFish: boolean;
+}
+
+interface Fish extends Fishable {
+  difficulty: string;
+  minLevel: number;
   seasons: string[];
   time: string;
   trapFish: false;
   weather: string;
 }
 
-interface TrapFish {
-  itemID: string;
-  locations: string[];
-  minVersion: string;
+interface TrapFish extends Fishable {
   trapFish: true;
 }
 
@@ -26,17 +30,14 @@ export interface Achievement {
   iconURL: string;
 }
 
-export interface ShippingItem {
-  itemID: string;
+export interface ShippingItem extends ItemData {
   polyculture: boolean;
-  minVersion: string;
   monoculture: boolean;
   seasons: string[];
 }
 
-export interface MuseumItem {
+export interface MuseumItem extends ItemData {
   locations?: string[];
-  itemID: string;
 }
 
 export interface WalnutType {
