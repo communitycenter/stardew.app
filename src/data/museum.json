@@ -2,6 +2,7 @@
   "artifacts": {
     "96": {
       "itemID": "96",
+      "minVersion": "1.5.0",
       "locations": [
         "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
         "Several monsters (0.5% each)"
@@ -9,6 +10,7 @@
     },
     "97": {
       "itemID": "97",
+      "minVersion": "1.5.0",
       "locations": [
         "Tilling in Mines (floor 1-39) (0.1%)",
         "Ghost drop (0.5%)",
@@ -19,12 +21,14 @@
     },
     "98": {
       "itemID": "98",
+      "minVersion": "1.5.0",
       "locations": [
         "Several monsters drop (1.5% for Blue Slime, 0.5% for others)"
       ]
     },
     "99": {
       "itemID": "99",
+      "minVersion": "1.5.0",
       "locations": [
         "Any Monster (other than Serpent, Skeleton, Wilderness Golem, Carbon Ghost, Iridium Bat, Iridium Crab, and Haunted Skull) (0.1%)",
         "Tilling in Mines (floor 80+) (0.2%)"
@@ -32,10 +36,12 @@
     },
     "100": {
       "itemID": "100",
+      "minVersion": "1.5.0",
       "locations": ["Town (3%)", "Artifact Trove (3.7%)"]
     },
     "101": {
       "itemID": "101",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (1.6%)",
         "Forest (1.6%)",
@@ -45,6 +51,7 @@
     },
     "103": {
       "itemID": "103",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (3%)",
         "Forest (2.4%)",
@@ -57,6 +64,7 @@
     },
     "104": {
       "itemID": "104",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (0.8%)",
         "Fishing Chest (0.8-0.9%)",
@@ -65,6 +73,7 @@
     },
     "105": {
       "itemID": "105",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (1.5%)",
         "Forest (1.5%)",
@@ -76,6 +85,7 @@
     },
     "106": {
       "itemID": "106",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (1.6%)",
         "Forest (0.7%)",
@@ -86,6 +96,7 @@
     },
     "107": {
       "itemID": "107",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (0.6%)",
         "Fishing Chest (0.8-0.9%)",
@@ -95,6 +106,7 @@
     },
     "108": {
       "itemID": "108",
+      "minVersion": "1.5.0",
       "locations": [
         "Fishing Chest (0.8-0.9%)",
         "Bats drop (except Iridium Bat) (0.1%)",
@@ -104,6 +116,7 @@
     },
     "109": {
       "itemID": "109",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (0.7%)",
         "Mountain (0.6%)",
@@ -113,6 +126,7 @@
     },
     "110": {
       "itemID": "110",
+      "minVersion": "1.5.0",
       "locations": [
         "Town (4% + 6-11%)",
         "Fishing Chest (0.8-0.9%)",
@@ -122,6 +136,7 @@
     },
     "111": {
       "itemID": "111",
+      "minVersion": "1.5.0",
       "locations": [
         "Farm (10%)",
         "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
@@ -131,6 +146,7 @@
     },
     "112": {
       "itemID": "112",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (4%)",
         "Tilling in Mines/Skull Cavern (any floor) (0.16%)",
@@ -140,6 +156,7 @@
     },
     "113": {
       "itemID": "113",
+      "minVersion": "1.5.0",
       "locations": [
         "Farm (9%)",
         "Fishing Chest (0.8-0.9%)",
@@ -148,6 +165,7 @@
     },
     "114": {
       "itemID": "114",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (0.7%)",
         "Mountain (0.7%)",
@@ -158,6 +176,7 @@
     },
     "115": {
       "itemID": "115",
+      "minVersion": "1.5.0",
       "locations": [
         "Bus Stop (3%)",
         "Forest (2.1%)",
@@ -168,6 +187,7 @@
     },
     "116": {
       "itemID": "116",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (8%)",
         "Fishing Chest (0.8-0.9%)",
@@ -176,6 +196,7 @@
     },
     "117": {
       "itemID": "117",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (4%)",
         "Fishing Chest (0.8-0.9%)",
@@ -184,6 +205,7 @@
     },
     "118": {
       "itemID": "118",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (7%)",
         "Fishing Chest (0.8-0.9%)",
@@ -192,6 +214,7 @@
     },
     "119": {
       "itemID": "119",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (0.7%)",
         "Mountain (0.7%)",
@@ -202,6 +225,7 @@
     },
     "120": {
       "itemID": "120",
+      "minVersion": "1.5.0",
       "locations": [
         "Bus Stop (4%)",
         "Mountain (3%)",
@@ -211,6 +235,7 @@
     },
     "121": {
       "itemID": "121",
+      "minVersion": "1.5.0",
       "locations": [
         "Tilling in Mines (floor 1-39) (0.1%)",
         "Geode (3%)",
@@ -220,6 +245,7 @@
     },
     "122": {
       "itemID": "122",
+      "minVersion": "1.5.0",
       "locations": [
         "Tilling in Mines (floor 40-79) (0.1%)",
         "Magma Geode (4%)",
@@ -229,6 +255,7 @@
     },
     "123": {
       "itemID": "123",
+      "minVersion": "1.5.0",
       "locations": [
         "Bus Stop (0.7%)",
         "Forest (0.7%)",
@@ -240,14 +267,17 @@
     },
     "124": {
       "itemID": "124",
+      "minVersion": "1.5.0",
       "locations": ["Desert (3%)", "Artifact Trove (3.7%)"]
     },
     "125": {
       "itemID": "125",
+      "minVersion": "1.5.0",
       "locations": ["Desert (6%)", "Artifact Trove (3.7%)"]
     },
     "126": {
       "itemID": "126",
+      "minVersion": "1.5.0",
       "locations": [
         "Farm (0.08%)",
         "Bus Stop (0.07%)",
@@ -262,6 +292,7 @@
     },
     "127": {
       "itemID": "127",
+      "minVersion": "1.5.0",
       "locations": [
         "Farm (0.08%)",
         "Bus Stop (0.07%)",
@@ -276,6 +307,7 @@
     },
     "579": {
       "itemID": "579",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (3-6%)",
         "Town (0.7%)",
@@ -285,6 +317,7 @@
     },
     "580": {
       "itemID": "580",
+      "minVersion": "1.5.0",
       "locations": [
         "Railroad (4-8%)",
         "Forest (0.6%)",
@@ -294,6 +327,7 @@
     },
     "581": {
       "itemID": "581",
+      "minVersion": "1.5.0",
       "locations": [
         "Mountain (0.6% + 3-6%)",
         "Haunted Skull drop (1.3%)",
@@ -302,6 +336,7 @@
     },
     "582": {
       "itemID": "582",
+      "minVersion": "1.5.0",
       "locations": [
         "Backwoods (4-8%)",
         "Beach (0.6%)",
@@ -311,6 +346,7 @@
     },
     "583": {
       "itemID": "583",
+      "minVersion": "1.5.0",
       "locations": [
         "Town (2.2-4%)",
         "Farm (0.8%)",
@@ -320,6 +356,7 @@
     },
     "584": {
       "itemID": "584",
+      "minVersion": "1.5.0",
       "locations": [
         "Bus Stop (0.7% + 3-5%)",
         "Pepper Rex drop (30%)",
@@ -328,6 +365,7 @@
     },
     "585": {
       "itemID": "585",
+      "minVersion": "1.5.0",
       "locations": [
         "Tilling in Mines/Skull Cavern (any floor)",
         "Fishing Chest (3.1-3.4%)",
@@ -336,6 +374,7 @@
     },
     "586": {
       "itemID": "586",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (1.8%)",
         "Fishing Chest (3.1-3.4%)",
@@ -344,6 +383,7 @@
     },
     "587": {
       "itemID": "587",
+      "minVersion": "1.5.0",
       "locations": [
         "Forest (0.6%)",
         "Mountain (0.6%)",
@@ -353,6 +393,7 @@
     },
     "588": {
       "itemID": "588",
+      "minVersion": "1.5.0",
       "locations": [
         "Desert (7%)",
         "Forest (0.6% + 3-5%)",
@@ -362,6 +403,7 @@
     },
     "589": {
       "itemID": "589",
+      "minVersion": "1.5.0",
       "locations": [
         "Beach (1.7% + 2.3-5%)",
         "Forest (1.9%)",
@@ -373,6 +415,7 @@
   "minerals": {
     "80": {
       "itemID": "80",
+      "minVersion": "1.5.0",
       "locations": [
         "The Mines (Floors 1-120)",
         "Garbage Can",
@@ -382,6 +425,7 @@
     },
     "86": {
       "itemID": "86",
+      "minVersion": "1.5.0",
       "locations": [
         "The Mines (Floors 1-39)",
         "Duggy (10%)",
@@ -396,6 +440,7 @@
     },
     "84": {
       "itemID": "84",
+      "minVersion": "1.5.0",
       "locations": [
         "The Mines (Floors 40-79)",
         "Fishing Treasure Chest",
@@ -409,6 +454,7 @@
     },
     "82": {
       "itemID": "82",
+      "minVersion": "1.5.0",
       "locations": [
         "The Mines (Floors 80-120)",
         "Fishing Treasure Chest",
@@ -421,6 +467,7 @@
     },
     "60": {
       "itemID": "60",
+      "minVersion": "1.5.0",
       "locations": [
         "Emerald Node",
         "Gem Node",
@@ -432,6 +479,7 @@
     },
     "62": {
       "itemID": "62",
+      "minVersion": "1.5.0",
       "locations": [
         "Aquamarine Node",
         "Gem Node",
@@ -442,6 +490,7 @@
     },
     "64": {
       "itemID": "64",
+      "minVersion": "1.5.0",
       "locations": [
         "Ruby Node",
         "Gem Node",
@@ -453,6 +502,7 @@
     },
     "66": {
       "itemID": "66",
+      "minVersion": "1.5.0",
       "locations": [
         "Amethyst Node",
         "Gem Node",
@@ -464,6 +514,7 @@
     },
     "68": {
       "itemID": "68",
+      "minVersion": "1.5.0",
       "locations": [
         "Topaz Node",
         "Gem Node",
@@ -474,6 +525,7 @@
     },
     "70": {
       "itemID": "70",
+      "minVersion": "1.5.0",
       "locations": [
         "Jade Node",
         "Gem Node",
@@ -485,6 +537,7 @@
     },
     "72": {
       "itemID": "72",
+      "minVersion": "1.5.0",
       "locations": [
         "Diamond Node",
         "Gem Node",
@@ -496,6 +549,7 @@
     },
     "74": {
       "itemID": "74",
+      "minVersion": "1.5.0",
       "locations": [
         "Iridium Node (4%)",
         "Mystic Stone (25%)",
@@ -514,6 +568,7 @@
     "538": { "itemID": "538", "locations": ["Geode", "Omni Geode"] },
     "539": {
       "itemID": "539",
+      "minVersion": "1.5.0",
       "locations": ["Magma Geode", "Omni Geode", "Black Slime"]
     },
     "540": { "itemID": "540", "locations": ["Magma Geode", "Omni Geode"] },
@@ -531,6 +586,7 @@
     "552": { "itemID": "552", "locations": ["Geode", "Omni Geode"] },
     "553": {
       "itemID": "553",
+      "minVersion": "1.5.0",
       "locations": ["Magma Geode", "Omni Geode", "Black Slime"]
     },
     "554": { "itemID": "554", "locations": ["Magma Geode", "Omni Geode"] },
@@ -538,6 +594,7 @@
     "556": { "itemID": "556", "locations": ["Geode", "Omni Geode"] },
     "557": {
       "itemID": "557",
+      "minVersion": "1.5.0",
       "locations": ["Geode", "Omni Geode", "Slime Ball"]
     },
     "558": { "itemID": "558", "locations": ["Geode", "Omni Geode"] },
