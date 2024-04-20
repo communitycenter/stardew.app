@@ -23,12 +23,12 @@ import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { PowersRet } from "@/lib/parsers/powers";
-import type { BundleRet } from "@/lib/parsers/bundles";
+import { BundleWithStatus } from "@/types/bundles";
 
 export interface PlayerType {
   _id: string;
   general?: GeneralRet;
-  bundles?: BundleRet[];
+  bundles?: BundleWithStatus[];
   fishing?: FishRet;
   cooking?: CookingRet;
   crafting?: CraftingRet;

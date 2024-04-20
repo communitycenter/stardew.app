@@ -8,12 +8,7 @@ const typedBigCraftables: Record<
   string,
   Record<string, string | null>
 > = big_craftables as Record<string, Record<string, string | null>>;
-import { Bundle, BundleItem } from "@/types/bundles";
-
-export interface BundleRet {
-  bundle: Bundle;
-  bundleStatus: boolean[];
-}
+import { Bundle, BundleItem, BundleWithStatus } from "@/types/bundles";
 
 interface BundleCompletionData {
   [bundleId: string]: boolean[];
@@ -23,9 +18,9 @@ export function parseBundles(
   bundleData: any,
   communityCenterLocation: any,
   gameVersion: string,
-): BundleRet[] {
+): BundleWithStatus[] {
   try {
-    let bundles: BundleRet[] = [];
+    let bundles: BundleWithStatus[] = [];
 
     if (!bundleData || !communityCenterLocation) return bundles;
 
@@ -136,6 +131,7 @@ export function parseBundles(
       }
 
       let currentBundle: Bundle = {
+        name: bundleName,
         areaName: areaName,
         localizedName: localizedBundleName ? localizedBundleName : bundleName,
         color: parseInt(colorId),
@@ -143,13 +139,12 @@ export function parseBundles(
         itemsRequired: requiredItemCount,
         bundleReward: {
           itemType: rewardDataSplit[0] || "",
-          itemName: itemData ? itemData.name || "" : "",
           itemID: rewardDataSplit[1] || "-1",
           itemQuantity: parseInt(rewardDataSplit[2] || "1"),
         },
       };
 
-      let returnableBundle: BundleRet = {
+      let returnableBundle: BundleWithStatus = {
         bundle: currentBundle,
         bundleStatus: bundleCompletionData[bundleId] || [],
       };

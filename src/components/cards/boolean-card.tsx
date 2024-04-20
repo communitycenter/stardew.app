@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
-import big_craftables from "@/data/big_craftables.json";
 
 import type { FishType, ItemData, MuseumItem } from "@/types/items";
 
@@ -19,10 +18,14 @@ import {
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";
-import { BundleReward } from "@/types/bundles";
+import {
+  BundleItem,
+  BundleItemWithLocation,
+  BundleReward,
+} from "@/types/bundles";
 
 interface Props {
-  item: ItemData;
+  item: FishType | MuseumItem | BundleItemWithLocation;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
@@ -115,9 +118,10 @@ export const BooleanCard = ({
         },
       };
     } else if (type === "bundleItem") {
+      const bundleItem = item as BundleItemWithLocation;
       const bundles = activePlayer?.bundles ?? [];
       const bundleIndex = bundles.findIndex(
-        (bundle) => bundle.bundleID === item.bundleID,
+        (bundle) => bundle.bundleID === bundleItem.bundleID,
       );
 
       if (bundleIndex === -1) return;
@@ -126,9 +130,9 @@ export const BooleanCard = ({
       const bundleStatus = [...bundle.bundleStatus];
 
       if (status === 2) {
-        bundleStatus[item.index] = true;
+        bundleStatus[bundleItem.index] = true;
       } else if (status === 0) {
-        bundleStatus[item.index] = false;
+        bundleStatus[bundleItem.index] = false;
       }
 
       bundles[bundleIndex] = {
