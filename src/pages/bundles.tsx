@@ -1,17 +1,21 @@
 import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
-import bundles from "@/data/bundles.json";
+import bundlesData from "@/data/bundles.json";
 
 import {
   Bundle,
+  BundleWithStatus,
   BundleItem,
+  BundleItemWithLocation,
   CommunityCenterRoomName,
   CommunityCenterRoom,
   isRandomizer,
+  Randomizer,
+  CommunityCenter,
 } from "@/types/bundles";
 
-import { usePlayers } from "@/contexts/players-context";
+import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
@@ -21,11 +25,11 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { BundleRet } from "@/lib/parsers/bundles";
 import { BooleanCard } from "@/components/cards/boolean-card";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { BundleSheet } from "@/components/sheets/bundle_sheet";
+import { get } from "http";
 
 type AccordionSectionProps = {
   title: string;
@@ -61,14 +65,97 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
   );
 }
 
-function BundleCompleted(bundleRet: BundleRet): boolean {
-  if (bundleRet.bundle.itemsRequired === -1) {
+function BundleCompleted(bundleWithStatus: BundleWithStatus): boolean {
+  if (bundleWithStatus.bundle.itemsRequired === -1) {
     // Gold bundles are encoded in the save file as requiring -1 items
-    return bundleRet.bundleStatus[0];
+    return bundleWithStatus.bundleStatus[0];
   }
-  return bundleRet.bundleStatus
-    .slice(0, bundleRet.bundle.itemsRequired)
+  return bundleWithStatus.bundleStatus
+    .slice(0, bundleWithStatus.bundle.itemsRequired)
     .every((status) => status);
+}
+
+function ResolveBundleRandomizer(bundleRandomizer: Randomizer): Bundle[] {
+  let selectionCount = bundleRandomizer.selectionCount;
+  let relevantBundles = bundleRandomizer.options.slice(
+    0,
+    selectionCount,
+  ) as Bundle[];
+  let resolvedBundles: Bundle[] = [];
+  relevantBundles.forEach((bundle) => {
+    resolvedBundles.push(ResolveItemRandomizers(bundle));
+  });
+  return resolvedBundles;
+}
+
+function ResolveItemRandomizers(bundle: Bundle): Bundle {
+  let finishedBundle = {
+    ...bundle,
+  };
+  if (isRandomizer(bundle.items)) {
+    let selectionCount = bundle.items.selectionCount;
+    let relevantItems = bundle.items.options.slice(
+      0,
+      selectionCount,
+    ) as BundleItem[];
+    finishedBundle.items = relevantItems;
+  } else {
+    let items: BundleItem[] = [];
+    bundle.items.forEach((item) => {
+      if (isRandomizer(item)) {
+        let selectionCount = item.selectionCount;
+        let relevantItems = item.options.slice(
+          0,
+          selectionCount,
+        ) as BundleItem[];
+        items = items.concat(relevantItems);
+      } else {
+        items.push(item);
+      }
+    });
+    finishedBundle.items = items;
+  }
+  return finishedBundle;
+}
+
+function GetActiveBundles(
+  activePlayer: PlayerType | undefined,
+): BundleWithStatus[] {
+  let activeBundles: BundleWithStatus[] = [];
+  if (activePlayer && activePlayer.bundles) {
+    activeBundles = activePlayer.bundles;
+  } else {
+    let allBundlesWithStatuses: BundleWithStatus[] = [];
+    CommunityCenterAreas.forEach((areaName) => {
+      let areaBundleSpecification = bundlesData[areaName];
+      let resolvedBundles: Bundle[] = [];
+      areaBundleSpecification.forEach((bundleSpecification) => {
+        if (isRandomizer(bundleSpecification)) {
+          resolvedBundles.push(...ResolveBundleRandomizer(bundleSpecification));
+        } else {
+          resolvedBundles.push(
+            ResolveItemRandomizers(bundleSpecification as Bundle),
+          );
+        }
+      });
+      let areaBundles = resolvedBundles.map((bundle) => {
+        let bundleStatus: boolean[] = [];
+        bundle.items.forEach(() => {
+          bundleStatus.push(false);
+        });
+        bundle.areaName = areaName;
+        bundle.localizedName = bundle.name;
+        return {
+          bundle,
+          bundleStatus,
+        };
+      });
+      allBundlesWithStatuses = allBundlesWithStatuses.concat(areaBundles);
+      // console.log(allBundlesWithStatuses);
+    });
+    activeBundles = allBundlesWithStatuses;
+  }
+  return activeBundles;
 }
 
 export default function Bundles() {
@@ -78,17 +165,24 @@ export default function Bundles() {
 
   let [open, setIsOpen] = useState(false);
   let [object, setObject] = useState<BundleItem | null>(null);
+  let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
   const { activePlayer } = usePlayers();
 
+  useEffect(() => {
+    setBundles(GetActiveBundles(activePlayer));
+  }, [activePlayer]);
+
   const getAchievementProgress = (name: string) => {
+    if (bundles.length < 1) {
+      // Guard for this function being called prior to bundles being loaded
+      return { completed: false, additionalDescription: "" };
+    }
+
     let completed = false;
     let additionalDescription = "";
 
-    if (!activePlayer || !activePlayer.bundles)
-      return { completed, additionalDescription };
-
     if (name === "Local Legend") {
-      let completedCount = activePlayer.bundles.reduce((acc, curBundelRet) => {
+      let completedCount = bundles.reduce((acc, curBundelRet) => {
         if (BundleCompleted(curBundelRet)) return acc + 1;
         return acc;
       }, 0);
@@ -132,7 +226,7 @@ export default function Bundles() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Bundle Tracker
           </h1>
-          <AccordionSection title="Achievements">
+          <AccordionSection title="Achievements" key="Achievements">
             {Object.values(achievements)
               .filter((a) => a.description.includes("Community Center"))
               .map((achievement) => {
@@ -150,62 +244,51 @@ export default function Bundles() {
               })}
           </AccordionSection>
           {CommunityCenterAreas.map((areaName: CommunityCenterRoomName) => {
-            let areaBundles: BundleRet[] = [];
+            let areaBundles: BundleWithStatus[] = [];
             if (activePlayer && activePlayer.bundles) {
               areaBundles = activePlayer.bundles.filter(
-                (bundleRet) => bundleRet.bundle.areaName === areaName,
+                (bundleWithStatus) =>
+                  bundleWithStatus.bundle.areaName === areaName,
               );
             } else {
-              return <></>;
-              let areaBundleSpecification = bundles[areaName];
-              let relevantBundles: Bundle[] = [];
-              areaBundleSpecification.forEach((bundleSpecification) => {
-                if (isRandomizer(bundleSpecification)) {
-                  let selectionCount = bundleSpecification.selectionCount;
-                  relevantBundles.push(
-                    ...(bundleSpecification.options.slice(
-                      0,
-                      selectionCount,
-                    ) as Bundle[]),
-                  );
-                } else {
-                  relevantBundles.push(bundleSpecification as Bundle);
-                }
-              });
-              if (isRandomizer(areaBundleSpecification)) {
-                let selectionCount = areaBundleSpecification.selectionCount;
-                let relevantBundles = areaBundleSpecification.options.slice(
-                  0,
-                  selectionCount,
-                ) as Bundle[];
-              } else {
-              }
+              areaBundles = bundles.filter(
+                (bundleWithStatus) =>
+                  bundleWithStatus.bundle.areaName === areaName,
+              );
             }
             return (
               <AccordionSection key={areaName} title={areaName}>
-                {areaBundles.map((bundleRet: BundleRet) => {
+                {areaBundles.map((bundleWithStatus: BundleWithStatus) => {
                   return (
                     <AccordionSection
-                      key={bundleRet.bundle.localizedName}
-                      title={bundleRet.bundle.localizedName + " Bundle"}
+                      key={bundleWithStatus.bundle.localizedName}
+                      title={bundleWithStatus.bundle.localizedName + " Bundle"}
                     >
-                      {bundleRet.bundle.items.map((item, index: number) => {
-                        if (isRandomizer(item)) {
-                          // Guard clause for type coercion
-                          return <></>;
-                        }
-                        return (
-                          <BooleanCard
-                            key={item.itemID}
-                            item={item}
-                            setIsOpen={setIsOpen}
-                            completed={bundleRet.bundleStatus[index]}
-                            setObject={setObject}
-                            type="bundleItem"
-                            show={show}
-                          />
-                        );
-                      })}
+                      {bundleWithStatus.bundle.items.map(
+                        (item, index: number) => {
+                          if (isRandomizer(item)) {
+                            // Guard clause for type coercion
+                            return <></>;
+                          }
+                          const BundleItemWithLocation: BundleItemWithLocation =
+                            {
+                              ...item,
+                              index: index,
+                              bundleID: bundleWithStatus.bundle.name,
+                            };
+                          return (
+                            <BooleanCard
+                              key={item.itemID + "-" + index}
+                              item={BundleItemWithLocation}
+                              setIsOpen={setIsOpen}
+                              completed={bundleWithStatus.bundleStatus[index]}
+                              setObject={setObject}
+                              type="bundleItem"
+                              show={show}
+                            />
+                          );
+                        },
+                      )}
                     </AccordionSection>
                   );
                 })}

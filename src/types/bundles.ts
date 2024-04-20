@@ -1,15 +1,20 @@
-import { ItemData } from "./items";
-
 export type Bundle = {
-  areaName: string;
-  localizedName: string;
-  color: number;
+  name: string;
+  areaName?: string;
+  localizedName?: string;
+  color?: number;
   items: (BundleItem | Randomizer)[];
   itemsRequired: number;
   bundleReward: BundleReward;
 };
 
-export type BundleItem = ItemData & {
+export interface BundleWithStatus {
+  bundle: Bundle;
+  bundleStatus: boolean[];
+}
+
+export type BundleItem = {
+  itemID: string;
   itemQuantity: number;
   itemQuality: string;
 };

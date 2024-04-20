@@ -4,22 +4,22 @@
       "name": "Spring Crops",
       "items": [
         {
-          "itemId": "24",
+          "itemID": "24",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "188",
+          "itemID": "188",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "190",
+          "itemID": "190",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "192",
+          "itemID": "192",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -27,7 +27,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "465",
+        "itemID": "465",
         "itemQuantity": 20
       }
     },
@@ -35,22 +35,22 @@
       "name": "Summer Crops",
       "items": [
         {
-          "itemId": "256",
+          "itemID": "256",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "260",
+          "itemID": "260",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "258",
+          "itemID": "258",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "254",
+          "itemID": "254",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -58,7 +58,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "621",
+        "itemID": "621",
         "itemQuantity": 1
       }
     },
@@ -66,22 +66,22 @@
       "name": "Fall Crops",
       "items": [
         {
-          "itemId": "270",
+          "itemID": "270",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "272",
+          "itemID": "272",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "276",
+          "itemID": "276",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "280",
+          "itemID": "280",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -89,7 +89,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "BO",
-        "itemId": "10",
+        "itemID": "10",
         "itemQuantity": 1
       }
     },
@@ -103,22 +103,22 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "24",
+                  "itemID": "24",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "188",
+                  "itemID": "188",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "192",
+                  "itemID": "192",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "190",
+                  "itemID": "190",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 }
@@ -129,17 +129,17 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "254",
+                  "itemID": "254",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "258",
+                  "itemID": "258",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "260",
+                  "itemID": "260",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 }
@@ -150,17 +150,17 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "276",
+                  "itemID": "276",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "280",
+                  "itemID": "280",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 },
                 {
-                  "itemId": "272",
+                  "itemID": "272",
                   "itemQuantity": 5,
                   "itemQuality": "Gold"
                 }
@@ -168,7 +168,7 @@
               "selectionCount": 1
             },
             {
-              "itemId": "270",
+              "itemID": "270",
               "itemQuantity": 5,
               "itemQuality": "Gold"
             }
@@ -176,7 +176,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "15",
+            "itemID": "15",
             "itemQuantity": 1
           }
         },
@@ -184,12 +184,12 @@
           "name": "Rare Crops",
           "items": [
             {
-              "itemId": "454",
+              "itemID": "454",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "417",
+              "itemID": "417",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -197,7 +197,7 @@
           "itemsRequired": 1,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "15",
+            "itemID": "15",
             "itemQuantity": 1
           }
         }
@@ -211,32 +211,32 @@
           "name": "Animal",
           "items": [
             {
-              "itemId": "186",
+              "itemID": "186",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "182",
+              "itemID": "182",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "174",
+              "itemID": "174",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "438",
+              "itemID": "438",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "440",
+              "itemID": "440",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "442",
+              "itemID": "442",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -244,7 +244,7 @@
           "itemsRequired": 5,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "16",
+            "itemID": "16",
             "itemQuantity": 1
           }
         },
@@ -252,17 +252,17 @@
           "name": "Fish Farmer's",
           "items": [
             {
-              "itemId": "812",
+              "itemID": "812",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "447",
+              "itemID": "447",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "814",
+              "itemID": "814",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -270,7 +270,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "154",
+            "itemID": "154",
             "itemQuantity": 1
           }
         },
@@ -278,27 +278,27 @@
           "name": "Garden",
           "items": [
             {
-              "itemId": "300",
+              "itemID": "300",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "302",
+              "itemID": "302",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "304",
+              "itemID": "304",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "306",
+              "itemID": "306",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "308",
+              "itemID": "308",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -306,7 +306,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "621",
+            "itemID": "621",
             "itemQuantity": 1
           }
         }
@@ -320,62 +320,62 @@
           "name": "Artisan",
           "items": [
             {
-              "itemId": "432",
+              "itemID": "432",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "428",
+              "itemID": "428",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "426",
+              "itemID": "426",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "424",
+              "itemID": "424",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "340",
+              "itemID": "340",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "344",
+              "itemID": "344",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "613",
+              "itemID": "613",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "634",
+              "itemID": "634",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "635",
+              "itemID": "635",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "636",
+              "itemID": "636",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "637",
+              "itemID": "637",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "638",
+              "itemID": "638",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -383,7 +383,7 @@
           "itemsRequired": 6,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "12",
+            "itemID": "12",
             "itemQuantity": 1
           }
         },
@@ -391,27 +391,27 @@
           "name": "Brewer's",
           "items": [
             {
-              "itemId": "459",
+              "itemID": "459",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "303",
+              "itemID": "303",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "348",
+              "itemID": "348",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "350",
+              "itemID": "350",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "614",
+              "itemID": "614",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -419,7 +419,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "12",
+            "itemID": "12",
             "itemQuantity": 1
           }
         }
@@ -434,27 +434,27 @@
         "randomizer": true,
         "options": [
           {
-            "itemId": "16",
+            "itemID": "16",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "18",
+            "itemID": "18",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "20",
+            "itemID": "20",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "22",
+            "itemID": "22",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "399",
+            "itemID": "399",
             "itemQuantity": 1,
             "itemQuality": "Common"
           }
@@ -464,7 +464,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "495",
+        "itemID": "495",
         "itemQuantity": 30
       }
     },
@@ -472,17 +472,17 @@
       "name": "Summer Foraging",
       "items": [
         {
-          "itemId": "396",
+          "itemID": "396",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "398",
+          "itemID": "398",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "402",
+          "itemID": "402",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -490,7 +490,7 @@
       "itemsRequired": 3,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "496",
+        "itemID": "496",
         "itemQuantity": 30
       }
     },
@@ -498,22 +498,22 @@
       "name": "Fall Foraging",
       "items": [
         {
-          "itemId": "404",
+          "itemID": "404",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "406",
+          "itemID": "406",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "408",
+          "itemID": "408",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "410",
+          "itemID": "410",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -521,7 +521,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "497",
+        "itemID": "497",
         "itemQuantity": 30
       }
     },
@@ -531,27 +531,27 @@
         "randomizer": true,
         "options": [
           {
-            "itemId": "412",
+            "itemID": "412",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "414",
+            "itemID": "414",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "416",
+            "itemID": "416",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "418",
+            "itemID": "418",
             "itemQuantity": 1,
             "itemQuality": "Common"
           },
           {
-            "itemId": "283",
+            "itemID": "283",
             "itemQuantity": 1,
             "itemQuality": "Common"
           }
@@ -561,7 +561,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "498",
+        "itemID": "498",
         "itemQuantity": 30
       }
     },
@@ -572,22 +572,22 @@
           "name": "Construction",
           "items": [
             {
-              "itemId": "388",
+              "itemID": "388",
               "itemQuantity": 99,
               "itemQuality": "Common"
             },
             {
-              "itemId": "388",
+              "itemID": "388",
               "itemQuantity": 99,
               "itemQuality": "Common"
             },
             {
-              "itemId": "390",
+              "itemID": "390",
               "itemQuantity": 99,
               "itemQuality": "Common"
             },
             {
-              "itemId": "709",
+              "itemID": "709",
               "itemQuantity": 10,
               "itemQuality": "Common"
             }
@@ -595,7 +595,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "114",
+            "itemID": "114",
             "itemQuantity": 1
           }
         },
@@ -603,7 +603,7 @@
           "name": "Sticky",
           "items": [
             {
-              "itemId": "92",
+              "itemID": "92",
               "itemQuantity": 500,
               "itemQuality": "Common"
             }
@@ -611,7 +611,7 @@
           "itemsRequired": 1,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "114",
+            "itemID": "114",
             "itemQuantity": 1
           }
         },
@@ -626,17 +626,17 @@
                 "itemQuality": "Common"
               },
               {
-                "itemId": "771",
+                "itemID": "771",
                 "itemQuantity": 200,
                 "itemQuality": "Common"
               },
               {
-                "itemId": "309",
+                "itemID": "309",
                 "itemQuantity": 10,
                 "itemQuality": "Common"
               },
               {
-                "itemId": "310",
+                "itemID": "310",
                 "itemQuantity": 10,
                 "itemQuality": "Common"
               }
@@ -646,7 +646,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "114",
+            "itemID": "114",
             "itemQuantity": 1
           }
         }
@@ -660,47 +660,47 @@
           "name": "Exotic Foraging",
           "items": [
             {
-              "itemId": "88",
+              "itemID": "88",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "90",
+              "itemID": "90",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "78",
+              "itemID": "78",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "420",
+              "itemID": "420",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "422",
+              "itemID": "422",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "724",
+              "itemID": "724",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "725",
+              "itemID": "725",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "726",
+              "itemID": "726",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "257",
+              "itemID": "257",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -708,7 +708,7 @@
           "itemsRequired": 5,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "235",
+            "itemID": "235",
             "itemQuantity": 5
           }
         },
@@ -721,17 +721,17 @@
               "itemQuality": "Common"
             },
             {
-              "itemId": "259",
+              "itemID": "259",
               "itemQuantity": 5,
               "itemQuality": "Common"
             },
             {
-              "itemId": "157",
+              "itemID": "157",
               "itemQuantity": 5,
               "itemQuality": "Common"
             },
             {
-              "itemId": "304",
+              "itemID": "304",
               "itemQuantity": 5,
               "itemQuality": "Common"
             }
@@ -739,7 +739,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "926",
+            "itemID": "926",
             "itemQuantity": 2
           }
         }
@@ -752,22 +752,22 @@
       "name": "River Fish",
       "items": [
         {
-          "itemId": "145",
+          "itemID": "145",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "143",
+          "itemID": "143",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "706",
+          "itemID": "706",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "699",
+          "itemID": "699",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -775,7 +775,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "685",
+        "itemID": "685",
         "itemQuantity": 30
       }
     },
@@ -783,22 +783,22 @@
       "name": "Lake Fish",
       "items": [
         {
-          "itemId": "136",
+          "itemID": "136",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "142",
+          "itemID": "142",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "700",
+          "itemID": "700",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "698",
+          "itemID": "698",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -806,7 +806,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "687",
+        "itemID": "687",
         "itemQuantity": 1
       }
     },
@@ -814,22 +814,22 @@
       "name": "Ocean Fish",
       "items": [
         {
-          "itemId": "131",
+          "itemID": "131",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "130",
+          "itemID": "130",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "150",
+          "itemID": "150",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "701",
+          "itemID": "701",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -837,7 +837,7 @@
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "690",
+        "itemID": "690",
         "itemQuantity": 5
       }
     },
@@ -845,17 +845,17 @@
       "name": "Night Fishing",
       "items": [
         {
-          "itemId": "140",
+          "itemID": "140",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "132",
+          "itemID": "132",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "148",
+          "itemID": "148",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -863,7 +863,7 @@
       "itemsRequired": 3,
       "bundleReward": {
         "itemType": "R",
-        "itemId": "516",
+        "itemID": "516",
         "itemQuantity": 1
       }
     },
@@ -871,52 +871,52 @@
       "name": "Crab Pot",
       "items": [
         {
-          "itemId": "715",
+          "itemID": "715",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "716",
+          "itemID": "716",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "717",
+          "itemID": "717",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "718",
+          "itemID": "718",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "719",
+          "itemID": "719",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "720",
+          "itemID": "720",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "721",
+          "itemID": "721",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "722",
+          "itemID": "722",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "723",
+          "itemID": "723",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "372",
+          "itemID": "372",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -924,7 +924,7 @@
       "itemsRequired": 5,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "710",
+        "itemID": "710",
         "itemQuantity": 3
       }
     },
@@ -935,22 +935,22 @@
           "name": "Specialty Fish",
           "items": [
             {
-              "itemId": "128",
+              "itemID": "128",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "156",
+              "itemID": "156",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "164",
+              "itemID": "164",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "734",
+              "itemID": "734",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -958,7 +958,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "242",
+            "itemID": "242",
             "itemQuantity": 5
           }
         },
@@ -966,22 +966,22 @@
           "name": "Quality Fish",
           "items": [
             {
-              "itemId": "136",
+              "itemID": "136",
               "itemQuantity": 1,
               "itemQuality": "Gold"
             },
             {
-              "itemId": "706",
+              "itemID": "706",
               "itemQuantity": 1,
               "itemQuality": "Gold"
             },
             {
-              "itemId": "130",
+              "itemID": "130",
               "itemQuantity": 1,
               "itemQuality": "Gold"
             },
             {
-              "itemId": "140",
+              "itemID": "140",
               "itemQuantity": 1,
               "itemQuality": "Gold"
             }
@@ -989,7 +989,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "242",
+            "itemID": "242",
             "itemQuantity": 5
           }
         },
@@ -997,22 +997,22 @@
           "name": "Master Fisher's",
           "items": [
             {
-              "itemId": "162",
+              "itemID": "162",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "165",
+              "itemID": "165",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "149",
+              "itemID": "149",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "800",
+              "itemID": "800",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1020,7 +1020,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "242",
+            "itemID": "242",
             "itemQuantity": 5
           }
         }
@@ -1036,17 +1036,17 @@
           "name": "Blacksmith's",
           "items": [
             {
-              "itemId": "334",
+              "itemID": "334",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "335",
+              "itemID": "335",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "336",
+              "itemID": "336",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1054,7 +1054,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "13",
+            "itemID": "13",
             "itemQuantity": 1
           }
         },
@@ -1062,22 +1062,22 @@
           "name": "Geologist's",
           "items": [
             {
-              "itemId": "80",
+              "itemID": "80",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "86",
+              "itemID": "86",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "84",
+              "itemID": "84",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "82",
+              "itemID": "82",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1085,7 +1085,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "749",
+            "itemID": "749",
             "itemQuantity": 5
           }
         },
@@ -1096,27 +1096,27 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "766",
+                  "itemID": "766",
                   "itemQuantity": 99,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "767",
+                  "itemID": "767",
                   "itemQuantity": 10,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "768",
+                  "itemID": "768",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "769",
+                  "itemID": "769",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "881",
+                  "itemID": "881",
                   "itemQuantity": 10,
                   "itemQuality": "Common"
                 }
@@ -1127,7 +1127,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "R",
-            "itemId": "518",
+            "itemID": "518",
             "itemQuantity": 1
           }
         },
@@ -1135,32 +1135,32 @@
           "name": "Treasure Hunter's",
           "items": [
             {
-              "itemId": "66",
+              "itemID": "66",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "62",
+              "itemID": "62",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "72",
+              "itemID": "72",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "60",
+              "itemID": "60",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "64",
+              "itemID": "64",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "68",
+              "itemID": "68",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1168,7 +1168,7 @@
           "itemsRequired": 5,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "204",
+            "itemID": "204",
             "itemQuantity": 1
           }
         },
@@ -1176,17 +1176,17 @@
           "name": "Engineer's",
           "items": [
             {
-              "itemId": "386",
+              "itemID": "386",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "787",
+              "itemID": "787",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "338",
+              "itemID": "338",
               "itemQuantity": 5,
               "itemQuality": "Common"
             }
@@ -1194,7 +1194,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "13",
+            "itemID": "13",
             "itemQuantity": 1
           }
         }
@@ -1207,7 +1207,7 @@
       "name": "2,500g",
       "items": [
         {
-          "itemId": "-1",
+          "itemID": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1215,7 +1215,7 @@
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "220",
+        "itemID": "220",
         "itemQuantity": 3
       }
     },
@@ -1223,7 +1223,7 @@
       "name": "5,000g",
       "items": [
         {
-          "itemId": "-1",
+          "itemID": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1231,7 +1231,7 @@
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "O",
-        "itemId": "369",
+        "itemID": "369",
         "itemQuantity": 30
       }
     },
@@ -1239,7 +1239,7 @@
       "name": "10,000g",
       "items": [
         {
-          "itemId": "-1",
+          "itemID": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1247,7 +1247,7 @@
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "BO",
-        "itemId": "9",
+        "itemID": "9",
         "itemQuantity": 1
       }
     },
@@ -1255,7 +1255,7 @@
       "name": "25,000g",
       "items": [
         {
-          "itemId": "-1",
+          "itemID": "-1",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1263,7 +1263,7 @@
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "BO",
-        "itemId": "21",
+        "itemID": "21",
         "itemQuantity": 1
       }
     }
@@ -1276,32 +1276,32 @@
           "name": "Chef's",
           "items": [
             {
-              "itemId": "724",
+              "itemID": "724",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "259",
+              "itemID": "259",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "430",
+              "itemID": "430",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "376",
+              "itemID": "376",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "228",
+              "itemID": "228",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "194",
+              "itemID": "194",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1309,7 +1309,7 @@
           "itemsRequired": 6,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "221",
+            "itemID": "221",
             "itemQuantity": 3
           }
         },
@@ -1317,22 +1317,22 @@
           "name": "Field Research",
           "items": [
             {
-              "itemId": "422",
+              "itemID": "422",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "392",
+              "itemID": "392",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "702",
+              "itemID": "702",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "536",
+              "itemID": "536",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1340,7 +1340,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "20",
+            "itemID": "20",
             "itemQuantity": 1
           }
         },
@@ -1348,22 +1348,22 @@
           "name": "Enchanter's",
           "items": [
             {
-              "itemId": "725",
+              "itemID": "725",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "348",
+              "itemID": "348",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "446",
+              "itemID": "446",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "637",
+              "itemID": "637",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1371,7 +1371,7 @@
           "itemsRequired": 4,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "336",
+            "itemID": "336",
             "itemQuantity": 5
           }
         },
@@ -1382,12 +1382,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "420",
+                  "itemID": "420",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "284",
+                  "itemID": "284",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1398,12 +1398,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "397",
+                  "itemID": "397",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "300",
+                  "itemID": "300",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1414,12 +1414,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "421",
+                  "itemID": "421",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "268",
+                  "itemID": "268",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1430,12 +1430,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "444",
+                  "itemID": "444",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "90",
+                  "itemID": "90",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1446,12 +1446,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "62",
+                  "itemID": "62",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "258",
+                  "itemID": "258",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1462,12 +1462,12 @@
               "randomizer": true,
               "options": [
                 {
-                  "itemId": "266",
+                  "itemID": "266",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 },
                 {
-                  "itemId": "337",
+                  "itemID": "337",
                   "itemQuantity": 1,
                   "itemQuality": "Common"
                 }
@@ -1478,7 +1478,7 @@
           "itemsRequired": 6,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "25",
+            "itemID": "25",
             "itemQuantity": 1
           }
         },
@@ -1486,17 +1486,17 @@
           "name": "Fodder",
           "items": [
             {
-              "itemId": "262",
+              "itemID": "262",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "178",
+              "itemID": "178",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "613",
+              "itemID": "613",
               "itemQuantity": 3,
               "itemQuality": "Common"
             }
@@ -1504,7 +1504,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "104",
+            "itemID": "104",
             "itemQuantity": 1
           }
         },
@@ -1512,22 +1512,22 @@
           "name": "Children's",
           "items": [
             {
-              "itemId": "296",
+              "itemID": "296",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "223",
+              "itemID": "223",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "103",
+              "itemID": "103",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "233",
+              "itemID": "233",
               "itemQuantity": 1,
               "itemQuality": "Common"
             }
@@ -1535,7 +1535,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "787",
+            "itemID": "787",
             "itemQuantity": 3
           }
         },
@@ -1543,17 +1543,17 @@
           "name": "Forager's",
           "items": [
             {
-              "itemId": "296",
+              "itemID": "296",
               "itemQuantity": 50,
               "itemQuality": "Common"
             },
             {
-              "itemId": "410",
+              "itemID": "410",
               "itemQuantity": 50,
               "itemQuality": "Common"
             },
             {
-              "itemId": "406",
+              "itemID": "406",
               "itemQuantity": 20,
               "itemQuality": "Common"
             }
@@ -1561,7 +1561,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "105",
+            "itemID": "105",
             "itemQuantity": 3
           }
         },
@@ -1569,17 +1569,17 @@
           "name": "Home Cook's",
           "items": [
             {
-              "itemId": "176",
+              "itemID": "176",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "184",
+              "itemID": "184",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "246",
+              "itemID": "246",
               "itemQuantity": 100,
               "itemQuality": "Common"
             }
@@ -1587,7 +1587,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "201",
+            "itemID": "201",
             "itemQuantity": 5
           }
         },
@@ -1595,12 +1595,12 @@
           "name": "Helper's",
           "items": [
             {
-              "itemId": "PrizeTicket",
+              "itemID": "PrizeTicket",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "MysteryBox",
+              "itemID": "MysteryBox",
               "itemQuantity": 5,
               "itemQuality": "Common"
             }
@@ -1608,7 +1608,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "BO",
-            "itemId": "StardropTea",
+            "itemID": "StardropTea",
             "itemQuantity": 1
           }
         },
@@ -1616,17 +1616,17 @@
           "name": "Spirit's Eve",
           "items": [
             {
-              "itemId": "746",
+              "itemID": "746",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "270",
+              "itemID": "270",
               "itemQuantity": 10,
               "itemQuality": "Common"
             },
             {
-              "itemId": "767",
+              "itemID": "767",
               "itemQuantity": 10,
               "itemQuality": "Common"
             }
@@ -1634,7 +1634,7 @@
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "201",
+            "itemID": "201",
             "itemQuantity": 5
           }
         },
@@ -1642,22 +1642,22 @@
           "name": "Winter Star",
           "items": [
             {
-              "itemId": "283",
+              "itemID": "283",
               "itemQuantity": 5,
               "itemQuality": "Common"
             },
             {
-              "itemId": "604",
+              "itemID": "604",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "239",
+              "itemID": "239",
               "itemQuantity": 1,
               "itemQuality": "Common"
             },
             {
-              "itemId": "Powdermelon",
+              "itemID": "Powdermelon",
               "itemQuantity": 5,
               "itemQuality": "Common"
             }
@@ -1665,7 +1665,7 @@
           "itemsRequired": 2,
           "bundleReward": {
             "itemType": "O",
-            "itemId": "MysteryBox",
+            "itemID": "MysteryBox",
             "itemQuantity": 3
           }
         }
@@ -1678,32 +1678,32 @@
       "name": "The Missing",
       "items": [
         {
-          "itemId": "348",
+          "itemID": "348",
           "itemQuantity": 1,
           "itemQuality": "Silver"
         },
         {
-          "itemId": "807",
+          "itemID": "807",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "74",
+          "itemID": "74",
           "itemQuantity": 1,
           "itemQuality": "Common"
         },
         {
-          "itemId": "454",
+          "itemID": "454",
           "itemQuantity": 5,
           "itemQuality": "Gold"
         },
         {
-          "itemId": "795",
+          "itemID": "795",
           "itemQuantity": 1,
           "itemQuality": "Gold"
         },
         {
-          "itemId": "445",
+          "itemID": "445",
           "itemQuantity": 1,
           "itemQuality": "Common"
         }
@@ -1711,7 +1711,7 @@
       "itemsRequired": 5,
       "bundleReward": {
         "itemType": "BO",
-        "itemId": "0",
+        "itemID": "0",
         "itemQuantity": 0
       }
     }
