@@ -121,27 +121,20 @@ export const BooleanCard = ({
       const bundleItem = item as BundleItemWithLocation;
       const bundles = activePlayer?.bundles ?? [];
       const bundleIndex = bundles.findIndex(
-        (bundle) => bundle.bundleID === bundleItem.bundleID,
+        (bundleWithStatus) =>
+          bundleWithStatus.bundle.name === bundleItem.bundleID,
       );
 
       if (bundleIndex === -1) return;
 
-      const bundle = bundles[bundleIndex];
-      const bundleStatus = [...bundle.bundleStatus];
-
-      if (status === 2) {
-        bundleStatus[bundleItem.index] = true;
-      } else if (status === 0) {
-        bundleStatus[bundleItem.index] = false;
-      }
-
-      bundles[bundleIndex] = {
-        ...bundle,
-        bundleStatus,
-      };
-
       patch = {
-        bundles,
+        bundles: {
+          [bundleIndex]: {
+            bundleStatus: {
+              [bundleItem.index]: status === 2,
+            },
+          },
+        },
       };
     }
     await patchPlayer(patch);
@@ -208,7 +201,9 @@ export const BooleanCard = ({
             className="gap-2 pl-8"
             checked={completed}
             disabled={completed || !activePlayer}
-            onClick={() => {}}
+            onClick={() => {
+              handleStatusChange(2);
+            }}
             data-umami-event="Set completed"
           >
             <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />

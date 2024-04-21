@@ -164,7 +164,7 @@ export default function Bundles() {
   const { show, toggleShow } = usePreferences();
 
   let [open, setIsOpen] = useState(false);
-  let [object, setObject] = useState<BundleItem | null>(null);
+  let [object, setObject] = useState<BundleItemWithLocation | null>(null);
   let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
   const { activePlayer } = usePlayers();
 
@@ -295,7 +295,11 @@ export default function Bundles() {
               </AccordionSection>
             );
           })}
-          <BundleSheet open={open} setIsOpen={setIsOpen} bundleItem={object} />
+          <BundleSheet
+            open={open}
+            setIsOpen={setIsOpen}
+            bundleItemWithLocation={object}
+          />
           <UnblurDialog
             open={showPrompt}
             setOpen={setPromptOpen}

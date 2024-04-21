@@ -3,11 +3,11 @@ import Image from "next/image";
 
 import objects from "@/data/objects.json";
 
-import type { BundleItem } from "@/types/bundles";
+import type { BundleItem, BundleItemWithLocation } from "@/types/bundles";
 
 import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
-import { PlayersContext } from "@/contexts/players-context";
+import { PlayerType, PlayersContext } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -28,67 +28,71 @@ import {
   DrawerTitle,
 } from "../ui/drawer";
 import { ScrollArea } from "../ui/scroll-area";
+import { DeepPartial } from "react-hook-form";
 
 interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  bundleItem: BundleItem | null;
+  bundleItemWithLocation: BundleItemWithLocation | null;
 }
 
-export const BundleSheet = ({ open, setIsOpen, bundleItem }: Props) => {
+export const BundleSheet = ({
+  open,
+  setIsOpen,
+  bundleItemWithLocation,
+}: Props) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
 
-  const [artifacts, minerals] = useMemo(() => {
-    if (!activePlayer) return [new Set([]), new Set([])];
-
-    const artifacts = activePlayer?.museum?.artifacts ?? [];
-    const minerals = activePlayer?.museum?.minerals ?? [];
-
-    return [new Set(artifacts), new Set(minerals)];
+  const [bundles, completed] = useMemo(() => {
+    console.log("running...");
+    if (!activePlayer) return [[], false];
+    const bundles = activePlayer?.bundles ?? [];
+    if (!bundleItemWithLocation) return [bundles, false];
+    const bundleIndex = bundles.findIndex(
+      (bundleWithStatus) =>
+        bundleWithStatus.bundle.name === bundleItemWithLocation.bundleID,
+    );
+    const completed =
+      activePlayer?.bundles?.[bundleIndex]?.bundleStatus[
+        bundleItemWithLocation.index
+      ] ?? false;
+    return [bundles, completed];
   }, [activePlayer]);
 
   const iconURL =
-    bundleItem && `https://cdn.stardew.app/images/(O)${bundleItem.itemID}.webp`;
+    bundleItemWithLocation &&
+    `https://cdn.stardew.app/images/(O)${bundleItemWithLocation.itemID}.webp`;
 
   const name =
-    bundleItem &&
-    objects[bundleItem.itemID.toString() as keyof typeof objects].name;
+    bundleItemWithLocation &&
+    objects[bundleItemWithLocation.itemID as keyof typeof objects].name;
 
   const description =
-    bundleItem &&
-    objects[bundleItem.itemID.toString() as keyof typeof objects].description;
-
-  // Either "Mineral" or "Artifact"
-  const category =
-    bundleItem && objects[bundleItem.itemID as keyof typeof objects].category;
+    bundleItemWithLocation &&
+    objects[bundleItemWithLocation.itemID as keyof typeof objects].description;
 
   async function handleStatusChange(status: number) {
-    if (!activePlayer || !bundleItem) return;
+    if (!activePlayer || !bundleItemWithLocation) return;
 
-    if (category !== "Mineral" && category !== "Artifact") return;
+    const bundleItem = bundleItemWithLocation as BundleItemWithLocation;
+    const bundleIndex = bundles.findIndex(
+      (bundleWithStatus) =>
+        bundleWithStatus.bundle.name === bundleItem.bundleID,
+    );
 
-    let patch = {};
-    if (category === "Artifact") {
-      if (status === 2) artifacts.add(bundleItem.itemID);
-      if (status === 0) artifacts.delete(bundleItem.itemID);
+    if (bundleIndex === -1) return;
 
-      patch = {
-        museum: {
-          artifacts: Array.from(artifacts),
+    const patch: DeepPartial<PlayerType> = {
+      bundles: {
+        [bundleIndex]: {
+          bundleStatus: {
+            [bundleItem.index]: status === 2,
+          },
         },
-      };
-    } else if (category === "Mineral") {
-      if (status === 2) minerals.add(bundleItem.itemID);
-      if (status === 0) minerals.delete(bundleItem.itemID);
-
-      patch = {
-        museum: {
-          minerals: Array.from(minerals),
-        },
-      };
-    }
+      },
+    };
 
     await patchPlayer(patch);
     setIsOpen(false);
@@ -114,18 +118,14 @@ export const BundleSheet = ({ open, setIsOpen, bundleItem }: Props) => {
               {description ? description : "No Description Found"}
             </SheetDescription>
           </SheetHeader>
-          {bundleItem && (
+          {bundleItemWithLocation && (
             <div className="mt-4 space-y-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(bundleItem.itemID) ? (
+                  {completed ? (
                     <Button
                       variant="secondary"
-                      disabled={
-                        !activePlayer ||
-                        (!artifacts.has(bundleItem.itemID) &&
-                          !minerals.has(bundleItem.itemID))
-                      }
+                      disabled={!activePlayer || !completed}
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
@@ -136,11 +136,7 @@ export const BundleSheet = ({ open, setIsOpen, bundleItem }: Props) => {
                   ) : (
                     <Button
                       variant="secondary"
-                      disabled={
-                        !activePlayer ||
-                        artifacts.has(bundleItem.itemID) ||
-                        minerals.has(bundleItem.itemID)
-                      }
+                      disabled={!activePlayer || completed}
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);
@@ -199,18 +195,14 @@ export const BundleSheet = ({ open, setIsOpen, bundleItem }: Props) => {
               {description ? description : "No Description Found"}
             </DrawerDescription>
           </DrawerHeader>
-          {bundleItem && (
+          {bundleItemWithLocation && (
             <div className="space-y-6 p-6">
               <section className="space-y-2">
                 <div className="grid grid-cols-1 gap-2">
-                  {artifacts.has(bundleItem.itemID) ? (
+                  {completed ? (
                     <Button
                       variant="secondary"
-                      disabled={
-                        !activePlayer ||
-                        (!artifacts.has(bundleItem.itemID) &&
-                          !minerals.has(bundleItem.itemID))
-                      }
+                      disabled={!activePlayer || !completed}
                       data-umami-event="Set incompleted"
                       onClick={() => {
                         handleStatusChange(0);
@@ -221,11 +213,7 @@ export const BundleSheet = ({ open, setIsOpen, bundleItem }: Props) => {
                   ) : (
                     <Button
                       variant="secondary"
-                      disabled={
-                        !activePlayer ||
-                        artifacts.has(bundleItem.itemID) ||
-                        minerals.has(bundleItem.itemID)
-                      }
+                      disabled={!activePlayer || completed}
                       data-umami-event="Set completed"
                       onClick={() => {
                         handleStatusChange(2);

@@ -24,6 +24,7 @@ import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { PowersRet } from "@/lib/parsers/powers";
 import { BundleWithStatus } from "@/types/bundles";
+import { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
   _id: string;
@@ -58,25 +59,27 @@ export const PlayersContext = createContext<PlayersContextProps>({
 });
 
 export function isObject(item: any) {
-  return item && typeof item === "object" && !Array.isArray(item);
+  return item && typeof item === "object"; // && !Array.isArray(item);
 }
 
 export function mergeDeep(target: any, ...sources: any[]) {
   if (!sources.length) return target;
   const source = sources.shift();
+  const new_target = Array.isArray(target) ? [...target] : { ...target };
 
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
+        if (!target[key]) Object.assign(new_target, { [key]: {} });
+        Object.assign(new_target, {
+          [key]: mergeDeep(new_target[key], source[key]),
+        });
       } else {
-        Object.assign(target, { [key]: source[key] });
+        Object.assign(new_target, { [key]: source[key] });
       }
     }
   }
-
-  return mergeDeep(target, ...sources);
+  return mergeDeep(new_target, ...sources);
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
@@ -97,8 +100,9 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [activePlayerId, players]);
 
+  // TODO: switch patchplayer use immutability-helper instead of custom merge logic
   const patchPlayer = useCallback(
-    async (patch: Partial<PlayerType>) => {
+    async (patch: DeepPartial<PlayerType>) => {
       if (!activePlayer) return;
       const patchPlayers = (players: PlayerType[] | undefined) =>
         (players ?? []).map((p) => {
