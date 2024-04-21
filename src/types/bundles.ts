@@ -19,6 +19,11 @@ export type BundleItem = {
   itemQuality: string;
 };
 
+export type BundleItemWithLocation = BundleItem & {
+  bundleID: string;
+  index: number;
+};
+
 export type BundleReward = {
   itemType: string;
   itemID: string;
