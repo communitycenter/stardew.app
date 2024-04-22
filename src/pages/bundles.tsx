@@ -13,6 +13,7 @@ import {
   isRandomizer,
   Randomizer,
   CommunityCenter,
+  BundleWithStatusAndOptions,
 } from "@/types/bundles";
 
 import { PlayerType, usePlayers } from "@/contexts/players-context";
@@ -34,9 +35,10 @@ import { get } from "http";
 type AccordionSectionProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
+  alternateDropdown?: JSX.Element;
 };
 
-const CommunityCenterAreas: CommunityCenterRoomName[] = [
+const CommunityCenterRooms: CommunityCenterRoomName[] = [
   "Pantry",
   "Crafts Room",
   "Fish Tank",
@@ -53,6 +55,7 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
         <AccordionItem value="item-1">
           <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
             {props.title}
+            {props.alternateDropdown}
           </AccordionTrigger>
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -118,6 +121,36 @@ function ResolveItemRandomizers(bundle: Bundle): Bundle {
   return finishedBundle;
 }
 
+function AttachRandomizerData(
+  allBundlesWithStatuses: BundleWithStatus[],
+): void {
+  CommunityCenterRooms.forEach((roomName) => {
+    let roomBundleSpecification = bundlesData[roomName];
+    roomBundleSpecification.forEach((bundleSpecification) => {
+      if (isRandomizer(bundleSpecification)) {
+        let optionNames = bundleSpecification.options.map(
+          (bundle) => (bundle as Bundle).name,
+        );
+        let currentlySelectedBundles = allBundlesWithStatuses.filter(
+          (bundleWithStatus) =>
+            optionNames.includes(bundleWithStatus.bundle.name),
+        );
+        currentlySelectedBundles.forEach((bundleWithStatus) => {
+          let options = bundleSpecification.options.map((bundle) => {
+            let resolvedBundle = ResolveItemRandomizers(bundle as Bundle);
+            return {
+              ...resolvedBundle,
+              localizedName: resolvedBundle.name,
+            };
+          });
+          (bundleWithStatus as BundleWithStatusAndOptions)["options"] = options;
+        });
+      }
+    });
+  });
+  allBundlesWithStatuses.forEach((bundleWithStatus) => {});
+}
+
 function GetActiveBundles(
   activePlayer: PlayerType | undefined,
 ): BundleWithStatus[] {
@@ -126,10 +159,10 @@ function GetActiveBundles(
     activeBundles = activePlayer.bundles;
   } else {
     let allBundlesWithStatuses: BundleWithStatus[] = [];
-    CommunityCenterAreas.forEach((areaName) => {
-      let areaBundleSpecification = bundlesData[areaName];
+    CommunityCenterRooms.forEach((roomName) => {
+      let roomBundleSpecification = bundlesData[roomName];
       let resolvedBundles: Bundle[] = [];
-      areaBundleSpecification.forEach((bundleSpecification) => {
+      roomBundleSpecification.forEach((bundleSpecification) => {
         if (isRandomizer(bundleSpecification)) {
           resolvedBundles.push(...ResolveBundleRandomizer(bundleSpecification));
         } else {
@@ -138,23 +171,24 @@ function GetActiveBundles(
           );
         }
       });
-      let areaBundles = resolvedBundles.map((bundle) => {
+      let roomBundles = resolvedBundles.map((bundle) => {
         let bundleStatus: boolean[] = [];
         bundle.items.forEach(() => {
           bundleStatus.push(false);
         });
-        bundle.areaName = areaName;
+        bundle.areaName = roomName;
         bundle.localizedName = bundle.name;
         return {
           bundle,
           bundleStatus,
         };
       });
-      allBundlesWithStatuses = allBundlesWithStatuses.concat(areaBundles);
+      allBundlesWithStatuses = allBundlesWithStatuses.concat(roomBundles);
       // console.log(allBundlesWithStatuses);
     });
     activeBundles = allBundlesWithStatuses;
   }
+  AttachRandomizerData(activeBundles);
   return activeBundles;
 }
 
@@ -195,6 +229,33 @@ export default function Bundles() {
     }
 
     return { completed, additionalDescription };
+  };
+
+  const getAlternateBundleDropdown = () => {
+    return (
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log("clicked");
+        }}
+        className="ml-2 text-gray-500 dark:text-gray-400"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+    );
   };
 
   return (
@@ -243,26 +304,31 @@ export default function Bundles() {
                 );
               })}
           </AccordionSection>
-          {CommunityCenterAreas.map((areaName: CommunityCenterRoomName) => {
-            let areaBundles: BundleWithStatus[] = [];
+          {CommunityCenterRooms.map((roomName: CommunityCenterRoomName) => {
+            let roomBundles: BundleWithStatus[] = [];
             if (activePlayer && activePlayer.bundles) {
-              areaBundles = activePlayer.bundles.filter(
+              roomBundles = activePlayer.bundles.filter(
                 (bundleWithStatus) =>
-                  bundleWithStatus.bundle.areaName === areaName,
+                  bundleWithStatus.bundle.areaName === roomName,
               );
             } else {
-              areaBundles = bundles.filter(
+              roomBundles = bundles.filter(
                 (bundleWithStatus) =>
-                  bundleWithStatus.bundle.areaName === areaName,
+                  bundleWithStatus.bundle.areaName === roomName,
               );
             }
             return (
-              <AccordionSection key={areaName} title={areaName}>
-                {areaBundles.map((bundleWithStatus: BundleWithStatus) => {
+              <AccordionSection key={roomName} title={roomName}>
+                {roomBundles.map((bundleWithStatus: BundleWithStatus) => {
                   return (
                     <AccordionSection
                       key={bundleWithStatus.bundle.localizedName}
                       title={bundleWithStatus.bundle.localizedName + " Bundle"}
+                      alternateDropdown={
+                        (bundleWithStatus as BundleWithStatusAndOptions).options
+                          ? getAlternateBundleDropdown()
+                          : undefined
+                      }
                     >
                       {bundleWithStatus.bundle.items.map(
                         (item, index: number) => {

@@ -47,7 +47,7 @@ export interface PlayerType {
 interface PlayersContextProps {
   players?: PlayerType[];
   uploadPlayers: (players: PlayerType[]) => void;
-  patchPlayer: (patch: Partial<PlayerType>) => Promise<void>;
+  patchPlayer: (patch: DeepPartial<PlayerType>) => Promise<void>;
   activePlayer?: PlayerType;
   setActivePlayer: (player?: PlayerType) => void;
 }
