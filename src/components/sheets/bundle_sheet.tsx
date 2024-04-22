@@ -2,8 +2,13 @@ import { useMediaQuery } from "@react-hook/media-query";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
+import bundleData from "@/data/bundles.json";
 
-import type { BundleItem, BundleItemWithLocation } from "@/types/bundles";
+import {
+  isRandomizer,
+  type BundleItem,
+  type BundleItemWithLocation,
+} from "@/types/bundles";
 
 import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
@@ -84,6 +89,11 @@ export const BundleSheet = ({
 
     if (bundleIndex === -1) return;
 
+    // Cheating the type system a bit by using object syntax to sparsely
+    // access the nested arrays. Ideally we'd have a playerpatch type that
+    // coerces all the nested array types into objects, so we can update
+    // values without having to instantiate the whole array up to the index
+    // we care about.
     const patch: DeepPartial<PlayerType> = {
       bundles: {
         [bundleIndex]: {
@@ -145,6 +155,9 @@ export const BundleSheet = ({
                       Set Completed
                     </Button>
                   )}
+                  {
+                    // TODO: go from option info to dropdown
+                  }
                   {!activePlayer && <CreatePlayerRedirect />}
                   {name && (
                     <Button
