@@ -1,16 +1,20 @@
-export type Bundle = {
+export interface Bundle {
   name: string;
-  areaName?: string;
+  areaName?: CommunityCenterRoomName;
   localizedName?: string;
   color?: number;
   items: (BundleItem | Randomizer)[];
   itemsRequired: number;
   bundleReward: BundleReward;
-};
+}
 
 export interface BundleWithStatus {
   bundle: Bundle;
   bundleStatus: boolean[];
+}
+
+export interface BundleWithStatusAndOptions extends BundleWithStatus {
+  options: Bundle[];
 }
 
 export type BundleItem = {
@@ -19,11 +23,19 @@ export type BundleItem = {
   itemQuality: string;
 };
 
-export type BundleItemWithLocation = BundleItem & {
+export interface BundleItemWithOptions extends BundleItem {
+  options: BundleItem[];
+}
+
+export interface BundleItemWithLocation extends BundleItem {
   bundleID: string;
   index: number;
-};
+}
 
+export interface BundleItemWithLocationAndOptions
+  extends BundleItemWithLocation {
+  options: BundleItem[];
+}
 export type BundleReward = {
   itemType: string;
   itemID: string;

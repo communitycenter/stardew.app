@@ -430,37 +430,39 @@
   "Crafts Room": [
     {
       "name": "Spring Foraging",
-      "items": {
-        "randomizer": true,
-        "options": [
-          {
-            "itemID": "16",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "18",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "20",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "22",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "399",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          }
-        ],
-        "selectionCount": 4
-      },
+      "items": [
+        {
+          "randomizer": true,
+          "options": [
+            {
+              "itemID": "16",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "18",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "20",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "22",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "399",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            }
+          ],
+          "selectionCount": 4
+        }
+      ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
@@ -527,37 +529,39 @@
     },
     {
       "name": "Winter Foraging",
-      "items": {
-        "randomizer": true,
-        "options": [
-          {
-            "itemID": "412",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "414",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "416",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "418",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          },
-          {
-            "itemID": "283",
-            "itemQuantity": 1,
-            "itemQuality": "Common"
-          }
-        ],
-        "selectionCount": 4
-      },
+      "items": [
+        {
+          "randomizer": true,
+          "options": [
+            {
+              "itemID": "412",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "414",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "416",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "418",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            },
+            {
+              "itemID": "283",
+              "itemQuantity": 1,
+              "itemQuality": "Common"
+            }
+          ],
+          "selectionCount": 4
+        }
+      ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
@@ -617,32 +621,34 @@
         },
         {
           "name": "Forest",
-          "items": {
-            "randomizer": true,
-            "options": [
-              {
-                "itemID": "Moss",
-                "itemQuantity": 10,
-                "itemQuality": "Common"
-              },
-              {
-                "itemID": "771",
-                "itemQuantity": 200,
-                "itemQuality": "Common"
-              },
-              {
-                "itemID": "309",
-                "itemQuantity": 10,
-                "itemQuality": "Common"
-              },
-              {
-                "itemID": "310",
-                "itemQuantity": 10,
-                "itemQuality": "Common"
-              }
-            ],
-            "selectionCount": 3
-          },
+          "items": [
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "Moss",
+                  "itemQuantity": 10,
+                  "itemQuality": "Common"
+                },
+                {
+                  "itemID": "771",
+                  "itemQuantity": 200,
+                  "itemQuality": "Common"
+                },
+                {
+                  "itemID": "309",
+                  "itemQuantity": 10,
+                  "itemQuality": "Common"
+                },
+                {
+                  "itemID": "310",
+                  "itemQuantity": 10,
+                  "itemQuality": "Common"
+                }
+              ],
+              "selectionCount": 3
+            }
+          ],
           "itemsRequired": 3,
           "bundleReward": {
             "itemType": "BO",
