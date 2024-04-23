@@ -14,6 +14,8 @@ import {
   Randomizer,
   CommunityCenter,
   BundleWithStatusAndOptions,
+  BundleWithItemOptions,
+  BundleItemWithOptions,
 } from "@/types/bundles";
 
 import { PlayerType, usePlayers } from "@/contexts/players-context";
@@ -31,11 +33,26 @@ import { use, useEffect, useState } from "react";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { BundleSheet } from "@/components/sheets/bundle_sheet";
 import { get } from "http";
+import {
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+  ContextMenu,
+  ContextMenuRadioItem,
+  ContextMenuRadioGroup,
+} from "@/components/ui/context-menu";
+import next from "next";
+
+type BundleAccordionProps = {
+  bundleWithStatus: BundleWithStatus;
+  children: JSX.Element | JSX.Element[];
+  alternateOptions?: Bundle[];
+  onChangeBundle?: (bundle: Bundle, bundleWithStatus: BundleWithStatus) => void;
+};
 
 type AccordionSectionProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
-  alternateDropdown?: JSX.Element;
 };
 
 const CommunityCenterRooms: CommunityCenterRoomName[] = [
@@ -55,8 +72,59 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
         <AccordionItem value="item-1">
           <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
             {props.title}
-            {props.alternateDropdown}
           </AccordionTrigger>
+          <AccordionContent asChild>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {props.children}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </section>
+    </Accordion>
+  );
+}
+
+function BundleAccordion(props: BundleAccordionProps): JSX.Element {
+  return (
+    <Accordion type="single" collapsible defaultValue="item-1" asChild>
+      <section className="space-y-3">
+        <AccordionItem value="item-1">
+          <ContextMenu>
+            <ContextMenuTrigger>
+              <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+                <div className="justify-left flex">
+                  {props.bundleWithStatus.bundle.localizedName + " Bundle"}
+                </div>
+              </AccordionTrigger>
+            </ContextMenuTrigger>
+
+            <ContextMenuContent className="w-48">
+              {props.alternateOptions && (
+                <ContextMenuRadioGroup
+                  value={props.bundleWithStatus.bundle.name}
+                  onValueChange={(v) => {
+                    let selectedBundle = props.alternateOptions?.find(
+                      (bundle) => bundle.name === v,
+                    );
+                    if (props.onChangeBundle && selectedBundle) {
+                      props.onChangeBundle(
+                        selectedBundle,
+                        props.bundleWithStatus,
+                      );
+                    }
+                  }}
+                >
+                  {props.alternateOptions.map((option) => {
+                    return (
+                      <ContextMenuRadioItem value={option.name}>
+                        {option.localizedName} Bundle
+                      </ContextMenuRadioItem>
+                    );
+                  })}
+                </ContextMenuRadioGroup>
+              )}
+            </ContextMenuContent>
+          </ContextMenu>
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {props.children}
@@ -123,9 +191,10 @@ function ResolveItemRandomizers(bundle: Bundle): Bundle {
 
 function AttachRandomizerData(
   allBundlesWithStatuses: BundleWithStatus[],
-): void {
+): BundleWithStatus[] {
+  // Find and attach alternate bundle options
   CommunityCenterRooms.forEach((roomName) => {
-    let roomBundleSpecification = bundlesData[roomName];
+    let roomBundleSpecification = (bundlesData as CommunityCenter)[roomName];
     roomBundleSpecification.forEach((bundleSpecification) => {
       if (isRandomizer(bundleSpecification)) {
         let optionNames = bundleSpecification.options.map(
@@ -148,7 +217,58 @@ function AttachRandomizerData(
       }
     });
   });
-  allBundlesWithStatuses.forEach((bundleWithStatus) => {});
+
+  // Find and attach alternate item options to Bundles
+  allBundlesWithStatuses.forEach((bundleWithStatus) => {
+    let bundle = bundleWithStatus.bundle;
+    if (!bundle.areaName) {
+      return;
+    }
+    let items = bundle.items as BundleItem[];
+    // Find bundle spec
+    const bundleRoomSpec = bundlesData[bundle.areaName];
+    const possibleBundles: Bundle[] = [];
+    bundleRoomSpec.forEach((bundleSpec) => {
+      if (isRandomizer(bundleSpec)) {
+        possibleBundles.push(...(bundleSpec.options as Bundle[]));
+      } else {
+        possibleBundles.push(bundleSpec as Bundle);
+      }
+    });
+
+    const bundleSpec = possibleBundles.find((b) => b.name === bundle.name);
+    if (!bundleSpec) {
+      return;
+    }
+    let index = -1;
+    // Iterate over items in spec to find randomizers
+    bundleSpec.items.forEach((itemSpec) => {
+      index = index + 1;
+      if (isRandomizer(itemSpec)) {
+        let itemRandomizer = itemSpec;
+        let itemOptions = itemRandomizer.options as BundleItem[];
+        let selectionCount = itemRandomizer.selectionCount;
+
+        let currentIndex = index;
+        while (currentIndex < index + selectionCount) {
+          // Attach (randomizer options - used options) to relevant items
+          let alternateOptions = itemOptions.filter((newItem) => {
+            return !items
+              .map((item) => {
+                return item.itemID;
+              })
+              .includes(newItem.itemID);
+          });
+          (bundle.items[currentIndex] as BundleItemWithOptions).options =
+            alternateOptions;
+          currentIndex = currentIndex + 1;
+        }
+        index = currentIndex - 1;
+      }
+    });
+  });
+
+  return allBundlesWithStatuses;
 }
 
 function GetActiveBundles(
@@ -202,6 +322,23 @@ export default function Bundles() {
   let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
   const { activePlayer } = usePlayers();
 
+  function SwapBundle(
+    newBundle: Bundle,
+    oldBundleWithStatus: BundleWithStatus,
+  ) {
+    let newBundles = [...bundles];
+    let index = newBundles.findIndex(
+      (b) => b.bundle.name === oldBundleWithStatus.bundle.name,
+    );
+    newBundle.areaName = oldBundleWithStatus.bundle.areaName;
+    let newBundleWithStatus = {
+      bundle: newBundle,
+      bundleStatus: new Array(newBundle.items.length).fill(false),
+    };
+    newBundles[index] = newBundleWithStatus;
+    setBundles(AttachRandomizerData(newBundles));
+  }
+
   useEffect(() => {
     setBundles(GetActiveBundles(activePlayer));
   }, [activePlayer]);
@@ -229,33 +366,6 @@ export default function Bundles() {
     }
 
     return { completed, additionalDescription };
-  };
-
-  const getAlternateBundleDropdown = () => {
-    return (
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          console.log("clicked");
-        }}
-        className="ml-2 text-gray-500 dark:text-gray-400"
-      >
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M19 9l-7 7-7-7"
-          ></path>
-        </svg>
-      </button>
-    );
   };
 
   return (
@@ -321,14 +431,19 @@ export default function Bundles() {
               <AccordionSection key={roomName} title={roomName}>
                 {roomBundles.map((bundleWithStatus: BundleWithStatus) => {
                   return (
-                    <AccordionSection
+                    <BundleAccordion
                       key={bundleWithStatus.bundle.localizedName}
-                      title={bundleWithStatus.bundle.localizedName + " Bundle"}
-                      alternateDropdown={
-                        (bundleWithStatus as BundleWithStatusAndOptions).options
-                          ? getAlternateBundleDropdown()
-                          : undefined
-                      }
+                      bundleWithStatus={bundleWithStatus}
+                      alternateOptions={(
+                        bundleWithStatus as BundleWithStatusAndOptions
+                      ).options?.filter((newBundle) => {
+                        return !bundles
+                          .map((bundleWithStatus) => {
+                            return bundleWithStatus.bundle.name;
+                          })
+                          .includes(newBundle.name);
+                      })}
+                      onChangeBundle={SwapBundle}
                     >
                       {bundleWithStatus.bundle.items.map(
                         (item, index: number) => {
@@ -355,7 +470,7 @@ export default function Bundles() {
                           );
                         },
                       )}
-                    </AccordionSection>
+                    </BundleAccordion>
                   );
                 })}
               </AccordionSection>
