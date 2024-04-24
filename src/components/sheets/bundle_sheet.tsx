@@ -2,26 +2,18 @@ import { useMediaQuery } from "@react-hook/media-query";
 import Image from "next/image";
 
 import objects from "@/data/objects.json";
-import bundleData from "@/data/bundles.json";
 
 import {
-  isRandomizer,
   type BundleItem,
   type BundleItemWithLocation,
   BundleItemWithOptions,
-  BundleWithStatus,
 } from "@/types/bundles";
 
-import { Dispatch, SetStateAction, useContext, useMemo } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 
-import {
-  PlayerType,
-  PlayersContext,
-  usePlayers,
-} from "@/contexts/players-context";
+import { usePlayers } from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -39,14 +31,49 @@ import {
   DrawerTitle,
 } from "../ui/drawer";
 import { ScrollArea } from "../ui/scroll-area";
-import { DeepPartial } from "react-hook-form";
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { object } from "valibot";
+
+interface BundleItemDropdownProps {
+  options: BundleItem[];
+  disabled: boolean;
+  handleItemChange: (newItem: BundleItem) => void;
+}
+
+function BundleItemOptionDropdown({
+  options,
+  handleItemChange,
+  disabled,
+}: BundleItemDropdownProps) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button disabled={disabled} variant="outline">
+          Options
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        {options.map((option) => {
+          let name = objects[option.itemID as keyof typeof objects].name;
+          return (
+            <DropdownMenuItem
+              key={option.itemID}
+              onClick={() => {
+                handleItemChange(option);
+              }}
+            >
+              {name}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 interface Props {
   open: boolean;
@@ -54,7 +81,7 @@ interface Props {
   bundleItemWithLocation: BundleItemWithLocation | null;
 }
 
-export function BundleSheet({
+export default function BundleSheet({
   open,
   setIsOpen,
   bundleItemWithLocation,
@@ -319,42 +346,5 @@ export function BundleSheet({
         </ScrollArea>
       </DrawerContent>
     </Drawer>
-  );
-}
-
-interface BundleItemDropdownProps {
-  options: BundleItem[];
-  disabled: boolean;
-  handleItemChange: (newItem: BundleItem) => void;
-}
-
-function BundleItemOptionDropdown({
-  options,
-  handleItemChange,
-  disabled,
-}: BundleItemDropdownProps) {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button disabled={disabled} variant="outline">
-          Options
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48">
-        {options.map((option) => {
-          let name = objects[option.itemID as keyof typeof objects].name;
-          return (
-            <DropdownMenuItem
-              key={option.itemID}
-              onClick={() => {
-                handleItemChange(option);
-              }}
-            >
-              {name}
-            </DropdownMenuItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
