@@ -9,12 +9,10 @@ import {
   BundleItem,
   BundleItemWithLocation,
   CommunityCenterRoomName,
-  CommunityCenterRoom,
   isRandomizer,
   Randomizer,
   CommunityCenter,
   BundleWithStatusAndOptions,
-  BundleWithItemOptions,
   BundleItemWithOptions,
 } from "@/types/bundles";
 
@@ -29,19 +27,16 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { BooleanCard } from "@/components/cards/boolean-card";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import { BundleSheet } from "@/components/sheets/bundle_sheet";
-import { get } from "http";
+import BundleSheet from "@/components/sheets/bundle_sheet";
 import {
   ContextMenuContent,
-  ContextMenuItem,
   ContextMenuTrigger,
   ContextMenu,
   ContextMenuRadioItem,
   ContextMenuRadioGroup,
 } from "@/components/ui/context-menu";
-import next from "next";
 
 type BundleAccordionProps = {
   bundleWithStatus: BundleWithStatus;
@@ -306,7 +301,6 @@ function GetActiveBundles(
         };
       });
       allBundlesWithStatuses = allBundlesWithStatuses.concat(roomBundles);
-      // console.log(allBundlesWithStatuses);
     });
     activeBundles = allBundlesWithStatuses;
   }
