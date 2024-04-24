@@ -89,42 +89,44 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section className="space-y-3">
         <AccordionItem value="item-1">
-          <ContextMenu>
-            <ContextMenuTrigger>
-              <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                <div className="justify-left flex">
-                  {props.bundleWithStatus.bundle.localizedName + " Bundle"}
-                </div>
-              </AccordionTrigger>
-            </ContextMenuTrigger>
+          {props.alternateOptions && props.alternateOptions.length > 0 && (
+            <ContextMenu>
+              <ContextMenuTrigger>
+                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+                  <div className="justify-left flex">
+                    {props.bundleWithStatus.bundle.localizedName + " Bundle"}
+                  </div>
+                </AccordionTrigger>
+              </ContextMenuTrigger>
 
-            <ContextMenuContent className="w-48">
-              {props.alternateOptions && (
-                <ContextMenuRadioGroup
-                  value={props.bundleWithStatus.bundle.name}
-                  onValueChange={(v) => {
-                    let selectedBundle = props.alternateOptions?.find(
-                      (bundle) => bundle.name === v,
-                    );
-                    if (props.onChangeBundle && selectedBundle) {
-                      props.onChangeBundle(
-                        selectedBundle,
-                        props.bundleWithStatus,
+              <ContextMenuContent className="w-48">
+                {props.alternateOptions && (
+                  <ContextMenuRadioGroup
+                    value={props.bundleWithStatus.bundle.name}
+                    onValueChange={(v) => {
+                      let selectedBundle = props.alternateOptions?.find(
+                        (bundle) => bundle.name === v,
                       );
-                    }
-                  }}
-                >
-                  {props.alternateOptions.map((option) => {
-                    return (
-                      <ContextMenuRadioItem value={option.name}>
-                        {option.localizedName} Bundle
-                      </ContextMenuRadioItem>
-                    );
-                  })}
-                </ContextMenuRadioGroup>
-              )}
-            </ContextMenuContent>
-          </ContextMenu>
+                      if (props.onChangeBundle && selectedBundle) {
+                        props.onChangeBundle(
+                          selectedBundle,
+                          props.bundleWithStatus,
+                        );
+                      }
+                    }}
+                  >
+                    {props.alternateOptions.map((option) => {
+                      return (
+                        <ContextMenuRadioItem value={option.name}>
+                          {option.localizedName} Bundle
+                        </ContextMenuRadioItem>
+                      );
+                    })}
+                  </ContextMenuRadioGroup>
+                )}
+              </ContextMenuContent>
+            </ContextMenu>
+          )}
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {props.children}
@@ -320,23 +322,39 @@ export default function Bundles() {
   let [open, setIsOpen] = useState(false);
   let [object, setObject] = useState<BundleItemWithLocation | null>(null);
   let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
-  const { activePlayer } = usePlayers();
+  const { activePlayer, patchPlayer } = usePlayers();
 
   function SwapBundle(
     newBundle: Bundle,
     oldBundleWithStatus: BundleWithStatus,
   ) {
-    let newBundles = [...bundles];
-    let index = newBundles.findIndex(
+    let index = bundles.findIndex(
       (b) => b.bundle.name === oldBundleWithStatus.bundle.name,
     );
-    newBundle.areaName = oldBundleWithStatus.bundle.areaName;
-    let newBundleWithStatus = {
-      bundle: newBundle,
-      bundleStatus: new Array(newBundle.items.length).fill(false),
-    };
-    newBundles[index] = newBundleWithStatus;
-    setBundles(AttachRandomizerData(newBundles));
+    // Allow swapping bundles out even if not logged in
+    // It won't persist, but it's easy to redo
+    if (!activePlayer) {
+      let newBundles = [...bundles];
+      newBundle.areaName = oldBundleWithStatus.bundle.areaName;
+      let newBundleWithStatus = {
+        bundle: newBundle,
+        bundleStatus: new Array(newBundle.items.length).fill(false),
+      };
+      newBundles[index] = newBundleWithStatus;
+      setBundles(AttachRandomizerData(newBundles));
+    } else {
+      let patch = {
+        bundles: {
+          [index]: {
+            bundle: newBundle,
+          },
+        },
+      };
+
+      // See note in bundle_sheet.tsx
+      // @ts-ignore
+      patchPlayer(patch);
+    }
   }
 
   useEffect(() => {

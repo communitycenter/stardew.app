@@ -8,11 +8,17 @@ import {
   isRandomizer,
   type BundleItem,
   type BundleItemWithLocation,
+  BundleItemWithOptions,
+  BundleWithStatus,
 } from "@/types/bundles";
 
 import { Dispatch, SetStateAction, useContext, useMemo } from "react";
 
-import { PlayerType, PlayersContext } from "@/contexts/players-context";
+import {
+  PlayerType,
+  PlayersContext,
+  usePlayers,
+} from "@/contexts/players-context";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -34,6 +40,13 @@ import {
 } from "../ui/drawer";
 import { ScrollArea } from "../ui/scroll-area";
 import { DeepPartial } from "react-hook-form";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { object } from "valibot";
 
 interface Props {
   open: boolean;
@@ -41,14 +54,14 @@ interface Props {
   bundleItemWithLocation: BundleItemWithLocation | null;
 }
 
-export const BundleSheet = ({
+export function BundleSheet({
   open,
   setIsOpen,
   bundleItemWithLocation,
-}: Props) => {
+}: Props) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const { activePlayer, patchPlayer } = usePlayers();
 
   const [bundles, completed] = useMemo(() => {
     console.log("running...");
@@ -89,12 +102,7 @@ export const BundleSheet = ({
 
     if (bundleIndex === -1) return;
 
-    // Cheating the type system a bit by using object syntax to sparsely
-    // access the nested arrays. Ideally we'd have a playerpatch type that
-    // coerces all the nested array types into objects, so we can update
-    // values without having to instantiate the whole array up to the index
-    // we care about.
-    const patch: DeepPartial<PlayerType> = {
+    const patch = {
       bundles: {
         [bundleIndex]: {
           bundleStatus: {
@@ -104,6 +112,44 @@ export const BundleSheet = ({
       },
     };
 
+    // Cheating the type system a bit by using object syntax to sparsely
+    // access the nested arrays. Ideally we'd have a playerpatch type that
+    // coerces all the nested array types into objects, so we can update
+    // values without having to instantiate the whole array up to the index
+    // we care about.
+    // @ts-ignore
+    await patchPlayer(patch);
+    setIsOpen(false);
+  }
+
+  async function handleItemChange(newItem: BundleItem) {
+    if (!activePlayer || !bundleItemWithLocation) return;
+
+    const bundleItem = bundleItemWithLocation;
+    const bundleIndex = bundles.findIndex(
+      (bundleWithStatus) =>
+        bundleWithStatus.bundle.name === bundleItem.bundleID,
+    );
+
+    if (bundleIndex === -1) return;
+
+    const patch = {
+      bundles: {
+        [bundleIndex]: {
+          bundle: {
+            items: {
+              [bundleItem.index]: newItem,
+            },
+          },
+          bundleStatus: {
+            [bundleItem.index]: false,
+          },
+        },
+      },
+    };
+
+    // See note in handleStatusChange
+    // @ts-ignore
     await patchPlayer(patch);
     setIsOpen(false);
   }
@@ -155,9 +201,19 @@ export const BundleSheet = ({
                       Set Completed
                     </Button>
                   )}
-                  {
-                    // TODO: go from option info to dropdown
-                  }
+                  {(
+                    bundleItemWithLocation as BundleItem as BundleItemWithOptions
+                  ).options && (
+                    <BundleItemOptionDropdown
+                      options={
+                        (
+                          bundleItemWithLocation as BundleItem as BundleItemWithOptions
+                        ).options
+                      }
+                      disabled={!activePlayer}
+                      handleItemChange={handleItemChange}
+                    />
+                  )}
                   {!activePlayer && <CreatePlayerRedirect />}
                   {name && (
                     <Button
@@ -264,4 +320,41 @@ export const BundleSheet = ({
       </DrawerContent>
     </Drawer>
   );
-};
+}
+
+interface BundleItemDropdownProps {
+  options: BundleItem[];
+  disabled: boolean;
+  handleItemChange: (newItem: BundleItem) => void;
+}
+
+function BundleItemOptionDropdown({
+  options,
+  handleItemChange,
+  disabled,
+}: BundleItemDropdownProps) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button disabled={disabled} variant="outline">
+          Options
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        {options.map((option) => {
+          let name = objects[option.itemID as keyof typeof objects].name;
+          return (
+            <DropdownMenuItem
+              key={option.itemID}
+              onClick={() => {
+                handleItemChange(option);
+              }}
+            >
+              {name}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
