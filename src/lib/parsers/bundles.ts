@@ -8,7 +8,12 @@ const typedBigCraftables: Record<
   string,
   Record<string, string | null>
 > = big_craftables as Record<string, Record<string, string | null>>;
-import { Bundle, BundleItem, BundleWithStatus } from "@/types/bundles";
+import {
+  Bundle,
+  BundleItem,
+  BundleWithStatus,
+  CommunityCenterRoomName,
+} from "@/types/bundles";
 
 interface BundleCompletionData {
   [bundleId: string]: boolean[];
@@ -40,7 +45,7 @@ export function parseBundles(
 
     for (const bundle of bundleData.item) {
       let bundleNameString: string = bundle.key.string;
-      let areaName: string = bundleNameString.split("/")[0];
+      let areaName = bundleNameString.split("/")[0] as CommunityCenterRoomName;
       let bundleId: string = bundleNameString.split("/")[1];
 
       let bundleDataString: string = bundle.value.string;

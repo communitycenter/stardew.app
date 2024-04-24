@@ -36,7 +36,8 @@ export interface ShippingItem extends ItemData {
   seasons: string[];
 }
 
-export interface MuseumItem extends ItemData {
+export interface MuseumItem {
+  itemID: string;
   locations?: string[];
 }
 
