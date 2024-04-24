@@ -91,7 +91,15 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!activePlayerId && players.length > 0) {
-      setActivePlayerId(players[0]._id);
+      // first lets check if local storage contains the last set player
+      if (typeof window !== "undefined") {
+        const stored = window.localStorage.getItem("player_id");
+
+        // also check if the player_id is still in the players array
+        if (stored && players.some((player) => player._id === stored)) {
+          setActivePlayerId(stored);
+        } else setActivePlayerId(players[0]._id);
+      }
     }
   }, [activePlayerId, players]);
 
@@ -136,7 +144,13 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       setActivePlayerId(undefined);
       return;
     }
+
     setActivePlayerId(player._id);
+
+    if (typeof window !== "undefined") {
+      console.log(`Setting player_id to '${player._id}'`);
+      window.localStorage.setItem("player_id", player._id);
+    }
   }, []);
 
   return (
