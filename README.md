@@ -63,6 +63,13 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Esummins">
+            <img src="https://avatars.githubusercontent.com/u/8581801?v=4" width="100;" alt="Esummins"/>
+            <br />
+            <sub><b>Eric Summins</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/hex2f">
             <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="hex2f"/>
             <br />
@@ -82,15 +89,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Brandon Saldan</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Sarag1">
             <img src="https://avatars.githubusercontent.com/u/77425990?v=4" width="100;" alt="Sarag1"/>
             <br />
             <sub><b>Saragii</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/ms7m">
             <img src="https://avatars.githubusercontent.com/u/37344632?v=4" width="100;" alt="ms7m"/>
@@ -125,15 +132,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Ian Mitchell</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/OfficialCRUGG">
             <img src="https://avatars.githubusercontent.com/u/25248999?v=4" width="100;" alt="OfficialCRUGG"/>
             <br />
             <sub><b>Dennis Paulus</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/dannyhand">
             <img src="https://avatars.githubusercontent.com/u/45862923?v=4" width="100;" alt="dannyhand"/>
