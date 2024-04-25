@@ -29,14 +29,6 @@ const nextConfig = {
       },
     ];
   },
-  rewrites: async () => {
-    return [
-      {
-        source: "/ingest/:path*",
-        destination: "https://app.posthog.com/:path*",
-      },
-    ];
-  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -59,7 +51,6 @@ const nextConfig = {
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
-
 
 // Injected content via Sentry wizard below
 
@@ -100,5 +91,5 @@ module.exports = withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
-  }
+  },
 );
