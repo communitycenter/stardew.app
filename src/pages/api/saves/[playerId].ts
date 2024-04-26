@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Player, conn, getUID } from ".";
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
+  // console.log("Patching...");
+  // console.log(req.body);
   const playerId = req.query.playerId as string | undefined;
   if (!playerId) return res.status(400).end();
 
@@ -14,6 +16,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
       `
 			UPDATE Saves SET
 				general=JSON_MERGE_PATCH(general, ?),
+        bundles=JSON_MERGE_PATCH(bundles, ?),
 				fishing=JSON_MERGE_PATCH(fishing, ?),
 				cooking=JSON_MERGE_PATCH(cooking, ?),
 				crafting=JSON_MERGE_PATCH(crafting, ?),
@@ -30,6 +33,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 		`,
       [
         player.general ? JSON.stringify(player.general) : "{}",
+        player.bundles ? JSON.stringify(player.bundles) : "[]",
         player.fishing ? JSON.stringify(player.fishing) : "{}",
         player.cooking ? JSON.stringify(player.cooking) : "{}",
         player.crafting ? JSON.stringify(player.crafting) : "{}",
@@ -48,7 +52,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
     );
     res.status(200).end();
   } catch (e) {
-    // console.log(e)
+    // console.log(e);
     res.status(500).end();
   }
 }

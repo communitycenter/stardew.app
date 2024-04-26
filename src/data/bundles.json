@@ -6,22 +6,22 @@
         {
           "itemID": "24",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "188",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "190",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "192",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -37,22 +37,22 @@
         {
           "itemID": "256",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "260",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "258",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "254",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -68,22 +68,22 @@
         {
           "itemID": "270",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "272",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "276",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "280",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -105,22 +105,22 @@
                 {
                   "itemID": "24",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "188",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "192",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "190",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 }
               ],
               "selectionCount": 1
@@ -131,17 +131,17 @@
                 {
                   "itemID": "254",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "258",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "260",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 }
               ],
               "selectionCount": 1
@@ -152,17 +152,17 @@
                 {
                   "itemID": "276",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "280",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 },
                 {
                   "itemID": "272",
                   "itemQuantity": 5,
-                  "itemQuality": "Gold"
+                  "itemQuality": "2"
                 }
               ],
               "selectionCount": 1
@@ -170,7 +170,7 @@
             {
               "itemID": "270",
               "itemQuantity": 5,
-              "itemQuality": "Gold"
+              "itemQuality": "2"
             }
           ],
           "itemsRequired": 3,
@@ -186,12 +186,12 @@
             {
               "itemID": "454",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "417",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 1,
@@ -213,32 +213,32 @@
             {
               "itemID": "186",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "182",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "174",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "438",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "440",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "442",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 5,
@@ -254,17 +254,17 @@
             {
               "itemID": "812",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "447",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "814",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 2,
@@ -280,27 +280,27 @@
             {
               "itemID": "300",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "302",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "304",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "306",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "308",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -322,62 +322,62 @@
             {
               "itemID": "432",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "428",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "426",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "424",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "340",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "344",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "613",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "634",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "635",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "636",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "637",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "638",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 6,
@@ -393,27 +393,27 @@
             {
               "itemID": "459",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "303",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "348",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "350",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "614",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -437,27 +437,27 @@
             {
               "itemID": "16",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "18",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "20",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "22",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "399",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "selectionCount": 4
@@ -476,17 +476,17 @@
         {
           "itemID": "396",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "398",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "402",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 3,
@@ -502,22 +502,22 @@
         {
           "itemID": "404",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "406",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "408",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "410",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -536,27 +536,27 @@
             {
               "itemID": "412",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "414",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "416",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "418",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "283",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "selectionCount": 4
@@ -578,22 +578,22 @@
             {
               "itemID": "388",
               "itemQuantity": 99,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "388",
               "itemQuantity": 99,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "390",
               "itemQuantity": 99,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "709",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -609,7 +609,7 @@
             {
               "itemID": "92",
               "itemQuantity": 500,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 1,
@@ -628,22 +628,22 @@
                 {
                   "itemID": "Moss",
                   "itemQuantity": 10,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "771",
                   "itemQuantity": 200,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "309",
                   "itemQuantity": 10,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "310",
                   "itemQuantity": 10,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 3
@@ -668,47 +668,47 @@
             {
               "itemID": "88",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "90",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "78",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "420",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "422",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "724",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "725",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "726",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "257",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 5,
@@ -724,22 +724,22 @@
             {
               "itemID": "422",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "259",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "157",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "304",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -760,22 +760,22 @@
         {
           "itemID": "145",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "143",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "706",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "699",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -791,22 +791,22 @@
         {
           "itemID": "136",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "142",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "700",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "698",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -822,22 +822,22 @@
         {
           "itemID": "131",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "130",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "150",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "701",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
@@ -853,17 +853,17 @@
         {
           "itemID": "140",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "132",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "148",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 3,
@@ -879,52 +879,52 @@
         {
           "itemID": "715",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "716",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "717",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "718",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "719",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "720",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "721",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "722",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "723",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "372",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 5,
@@ -943,22 +943,22 @@
             {
               "itemID": "128",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "156",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "164",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "734",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -974,22 +974,22 @@
             {
               "itemID": "136",
               "itemQuantity": 1,
-              "itemQuality": "Gold"
+              "itemQuality": "2"
             },
             {
               "itemID": "706",
               "itemQuantity": 1,
-              "itemQuality": "Gold"
+              "itemQuality": "2"
             },
             {
               "itemID": "130",
               "itemQuantity": 1,
-              "itemQuality": "Gold"
+              "itemQuality": "2"
             },
             {
               "itemID": "140",
               "itemQuantity": 1,
-              "itemQuality": "Gold"
+              "itemQuality": "2"
             }
           ],
           "itemsRequired": 4,
@@ -1005,22 +1005,22 @@
             {
               "itemID": "162",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "165",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "149",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "800",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 2,
@@ -1044,17 +1044,17 @@
             {
               "itemID": "334",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "335",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "336",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1070,22 +1070,22 @@
             {
               "itemID": "80",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "86",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "84",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "82",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -1104,27 +1104,27 @@
                 {
                   "itemID": "766",
                   "itemQuantity": 99,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "767",
                   "itemQuantity": 10,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "768",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "769",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "881",
                   "itemQuantity": 10,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 4
@@ -1143,32 +1143,32 @@
             {
               "itemID": "66",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "62",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "72",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "60",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "64",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "68",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 5,
@@ -1184,17 +1184,17 @@
             {
               "itemID": "386",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "787",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "338",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1215,7 +1215,7 @@
         {
           "itemID": "-1",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
@@ -1231,7 +1231,7 @@
         {
           "itemID": "-1",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
@@ -1247,7 +1247,7 @@
         {
           "itemID": "-1",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
@@ -1263,7 +1263,7 @@
         {
           "itemID": "-1",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
@@ -1284,32 +1284,32 @@
             {
               "itemID": "724",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "259",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "430",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "376",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "228",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "194",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 6,
@@ -1325,22 +1325,22 @@
             {
               "itemID": "422",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "392",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "702",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "536",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -1356,22 +1356,22 @@
             {
               "itemID": "725",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "348",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "446",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "637",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 4,
@@ -1390,12 +1390,12 @@
                 {
                   "itemID": "420",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "284",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1406,12 +1406,12 @@
                 {
                   "itemID": "397",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "300",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1422,12 +1422,12 @@
                 {
                   "itemID": "421",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "268",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1438,12 +1438,12 @@
                 {
                   "itemID": "444",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "90",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1454,12 +1454,12 @@
                 {
                   "itemID": "62",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "258",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1470,12 +1470,12 @@
                 {
                   "itemID": "266",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 },
                 {
                   "itemID": "337",
                   "itemQuantity": 1,
-                  "itemQuality": "Common"
+                  "itemQuality": "0"
                 }
               ],
               "selectionCount": 1
@@ -1494,17 +1494,17 @@
             {
               "itemID": "262",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "178",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "613",
               "itemQuantity": 3,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1520,22 +1520,22 @@
             {
               "itemID": "296",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "223",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "103",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "233",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1551,17 +1551,17 @@
             {
               "itemID": "296",
               "itemQuantity": 50,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "410",
               "itemQuantity": 50,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "406",
               "itemQuantity": 20,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 2,
@@ -1577,17 +1577,17 @@
             {
               "itemID": "176",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "184",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "246",
               "itemQuantity": 100,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1603,12 +1603,12 @@
             {
               "itemID": "PrizeTicket",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "MysteryBox",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 2,
@@ -1624,17 +1624,17 @@
             {
               "itemID": "746",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "270",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "767",
               "itemQuantity": 10,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 3,
@@ -1650,22 +1650,22 @@
             {
               "itemID": "283",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "604",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "239",
               "itemQuantity": 1,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             },
             {
               "itemID": "Powdermelon",
               "itemQuantity": 5,
-              "itemQuality": "Common"
+              "itemQuality": "0"
             }
           ],
           "itemsRequired": 2,
@@ -1686,32 +1686,32 @@
         {
           "itemID": "348",
           "itemQuantity": 1,
-          "itemQuality": "Silver"
+          "itemQuality": "1"
         },
         {
           "itemID": "807",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "74",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
           "itemID": "454",
           "itemQuantity": 5,
-          "itemQuality": "Gold"
+          "itemQuality": "2"
         },
         {
           "itemID": "795",
           "itemQuantity": 1,
-          "itemQuality": "Gold"
+          "itemQuality": "2"
         },
         {
           "itemID": "445",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 5,

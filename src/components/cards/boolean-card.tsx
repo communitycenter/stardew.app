@@ -71,6 +71,8 @@ export const BooleanCard = ({
     description = "I like..... Gooooooooooold.";
     minVersion = "1.5.0";
   } else {
+    // TODO: update this to be able to receive an object type so this component
+    // can also dispaly objects with other object type keys, like big objects (BO)
     iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
     name = objects[item.itemID as keyof typeof objects].name;
     description = objects[item.itemID as keyof typeof objects].description;

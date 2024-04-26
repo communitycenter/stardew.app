@@ -46,13 +46,14 @@ export interface PlayerType {
 
 interface PlayersContextProps {
   players?: PlayerType[];
-  uploadPlayers: (players: PlayerType[]) => void;
+  uploadPlayers: (players: PlayerType[]) => Promise<Response>;
   patchPlayer: (patch: DeepPartial<PlayerType>) => Promise<void>;
   activePlayer?: PlayerType;
   setActivePlayer: (player?: PlayerType) => void;
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
+  // @ts-expect-error
   uploadPlayers: () => {},
   patchPlayer: () => Promise.resolve(),
   setActivePlayer: () => {},
@@ -60,6 +61,35 @@ export const PlayersContext = createContext<PlayersContextProps>({
 
 export function isObject(item: any) {
   return item && typeof item === "object"; // && !Array.isArray(item);
+}
+
+// Takes an inbound patch and converts any array keys into dereferenced
+// arrays, since apparently json_merge_patch doesn't recurse into arrays
+function normalizePatch(patch: any, target: any, inArray = false) {
+  if (!isObject(patch)) return patch;
+  const new_patch = Array.isArray(patch) ? [...patch] : { ...patch };
+  for (const key in patch) {
+    if (Array.isArray(target[key]) && !Array.isArray(patch[key])) {
+      new_patch[key] = [...target[key]];
+      for (const arrIndex in patch[key]) {
+        new_patch[key][arrIndex] = normalizePatch(
+          patch[key][arrIndex],
+          target[key][arrIndex],
+          true,
+        );
+      }
+    } else {
+      new_patch[key] = normalizePatch(patch[key], target[key], inArray);
+    }
+  }
+  if (inArray) {
+    for (const field in target) {
+      if (!(field in new_patch)) {
+        new_patch[field] = target[field];
+      }
+    }
+  }
+  return new_patch;
 }
 
 export function mergeDeep(target: any, ...sources: any[]) {
@@ -113,26 +143,30 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
         });
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
+          const normalizedPatch = normalizePatch(patch, activePlayer);
+          console.log("Normalizing patch:");
+          console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
-            body: JSON.stringify(patch),
+            body: JSON.stringify(normalizedPatch),
           });
           return patchPlayers(currentPlayers);
         },
         { optimisticData: patchPlayers },
       );
     },
-    [activePlayer, api],
+    [api],
   );
 
   const uploadPlayers = useCallback(
     async (players: PlayerType[]) => {
-      await fetch("/api/saves", {
+      let res = await fetch("/api/saves", {
         method: "POST",
         body: JSON.stringify(players),
       });
       await api.mutate(players);
       setActivePlayerId(players[0]._id);
+      return res;
     },
     [api, setActivePlayerId],
   );
