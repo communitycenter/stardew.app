@@ -91,7 +91,6 @@ export default function BundleSheet({
   const { activePlayer, patchPlayer } = usePlayers();
 
   const [bundles, completed] = useMemo(() => {
-    console.log("running...");
     if (!activePlayer) return [[], false];
     const bundles = activePlayer?.bundles ?? [];
     if (!bundleItemWithLocation) return [bundles, false];
@@ -104,7 +103,7 @@ export default function BundleSheet({
         bundleItemWithLocation.index
       ] ?? false;
     return [bundles, completed];
-  }, [activePlayer]);
+  }, [activePlayer, bundleItemWithLocation]);
 
   const iconURL =
     bundleItemWithLocation &&

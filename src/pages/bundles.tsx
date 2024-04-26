@@ -84,7 +84,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section className="space-y-3">
         <AccordionItem value="item-1">
-          {props.alternateOptions && props.alternateOptions.length > 0 && (
+          {props.alternateOptions && props.alternateOptions.length > 0 ? (
             <ContextMenu>
               <ContextMenuTrigger>
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
@@ -121,6 +121,12 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                 )}
               </ContextMenuContent>
             </ContextMenu>
+          ) : (
+            <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+              <div className="justify-left flex">
+                {props.bundleWithStatus.bundle.localizedName + " Bundle"}
+              </div>
+            </AccordionTrigger>
           )}
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -217,6 +223,14 @@ function AttachRandomizerData(
 
   // Find and attach alternate item options to Bundles
   allBundlesWithStatuses.forEach((bundleWithStatus) => {
+    if (
+      !bundleWithStatus ||
+      !bundleWithStatus.bundle ||
+      !bundleWithStatus.bundle.items ||
+      !Array.isArray(bundleWithStatus.bundle.items)
+    ) {
+      return;
+    }
     let bundle = bundleWithStatus.bundle;
     if (!bundle.areaName) {
       return;
@@ -268,44 +282,35 @@ function AttachRandomizerData(
   return allBundlesWithStatuses;
 }
 
-function GetActiveBundles(
-  activePlayer: PlayerType | undefined,
-): BundleWithStatus[] {
-  let activeBundles: BundleWithStatus[] = [];
-  if (activePlayer && activePlayer.bundles) {
-    activeBundles = activePlayer.bundles;
-  } else {
-    let allBundlesWithStatuses: BundleWithStatus[] = [];
-    CommunityCenterRooms.forEach((roomName) => {
-      let roomBundleSpecification = bundlesData[roomName];
-      let resolvedBundles: Bundle[] = [];
-      roomBundleSpecification.forEach((bundleSpecification) => {
-        if (isRandomizer(bundleSpecification)) {
-          resolvedBundles.push(...ResolveBundleRandomizer(bundleSpecification));
-        } else {
-          resolvedBundles.push(
-            ResolveItemRandomizers(bundleSpecification as Bundle),
-          );
-        }
-      });
-      let roomBundles = resolvedBundles.map((bundle) => {
-        let bundleStatus: boolean[] = [];
-        bundle.items.forEach(() => {
-          bundleStatus.push(false);
-        });
-        bundle.areaName = roomName;
-        bundle.localizedName = bundle.name;
-        return {
-          bundle,
-          bundleStatus,
-        };
-      });
-      allBundlesWithStatuses = allBundlesWithStatuses.concat(roomBundles);
+function GenerateFreshBundles(): BundleWithStatus[] {
+  let allBundlesWithStatuses: BundleWithStatus[] = [];
+  CommunityCenterRooms.forEach((roomName) => {
+    let roomBundleSpecification = bundlesData[roomName];
+    let resolvedBundles: Bundle[] = [];
+    roomBundleSpecification.forEach((bundleSpecification) => {
+      if (isRandomizer(bundleSpecification)) {
+        resolvedBundles.push(...ResolveBundleRandomizer(bundleSpecification));
+      } else {
+        resolvedBundles.push(
+          ResolveItemRandomizers(bundleSpecification as Bundle),
+        );
+      }
     });
-    activeBundles = allBundlesWithStatuses;
-  }
-  AttachRandomizerData(activeBundles);
-  return activeBundles;
+    let roomBundles = resolvedBundles.map((bundle) => {
+      let bundleStatus: boolean[] = [];
+      bundle.items.forEach(() => {
+        bundleStatus.push(false);
+      });
+      bundle.areaName = roomName;
+      bundle.localizedName = bundle.name;
+      return {
+        bundle,
+        bundleStatus,
+      };
+    });
+    allBundlesWithStatuses = allBundlesWithStatuses.concat(roomBundles);
+  });
+  return allBundlesWithStatuses;
 }
 
 export default function Bundles() {
@@ -317,6 +322,27 @@ export default function Bundles() {
   let [object, setObject] = useState<BundleItemWithLocation | null>(null);
   let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
   const { activePlayer, patchPlayer } = usePlayers();
+
+  function GetActiveBundles(
+    activePlayer: PlayerType | undefined,
+  ): BundleWithStatus[] {
+    let activeBundles: BundleWithStatus[] = [];
+    if (activePlayer) {
+      if (
+        Array.isArray(activePlayer.bundles) &&
+        activePlayer.bundles.length > 0
+      ) {
+        activeBundles = activePlayer.bundles;
+      } else {
+        activeBundles = GenerateFreshBundles();
+        patchPlayer({ bundles: activeBundles });
+      }
+    } else {
+      activeBundles = GenerateFreshBundles();
+    }
+    AttachRandomizerData(activeBundles);
+    return activeBundles;
+  }
 
   function SwapBundle(
     newBundle: Bundle,
@@ -337,10 +363,13 @@ export default function Bundles() {
       newBundles[index] = newBundleWithStatus;
       setBundles(AttachRandomizerData(newBundles));
     } else {
+      newBundle.areaName = oldBundleWithStatus.bundle.areaName;
       let patch = {
         bundles: {
           [index]: {
             bundle: newBundle,
+            bundleStatus: new Array(newBundle.items.length).fill(false),
+            options: null,
           },
         },
       };
@@ -428,11 +457,15 @@ export default function Bundles() {
           </AccordionSection>
           {CommunityCenterRooms.map((roomName: CommunityCenterRoomName) => {
             let roomBundles: BundleWithStatus[] = [];
-            if (activePlayer && activePlayer.bundles) {
-              roomBundles = activePlayer.bundles.filter(
-                (bundleWithStatus) =>
-                  bundleWithStatus.bundle.areaName === roomName,
-              );
+            if (activePlayer && Array.isArray(activePlayer.bundles)) {
+              roomBundles = activePlayer.bundles.filter((bundleWithStatus) => {
+                if (bundleWithStatus?.bundle) {
+                  return bundleWithStatus.bundle.areaName === roomName;
+                } else {
+                  // debugger;
+                  return false;
+                }
+              });
             } else {
               roomBundles = bundles.filter(
                 (bundleWithStatus) =>
@@ -457,30 +490,34 @@ export default function Bundles() {
                       })}
                       onChangeBundle={SwapBundle}
                     >
-                      {bundleWithStatus.bundle.items.map(
-                        (item, index: number) => {
-                          if (isRandomizer(item)) {
-                            // Guard clause for type coercion
-                            return <></>;
-                          }
-                          const BundleItemWithLocation: BundleItemWithLocation =
-                            {
-                              ...item,
-                              index: index,
-                              bundleID: bundleWithStatus.bundle.name,
-                            };
-                          return (
-                            <BooleanCard
-                              key={item.itemID + "-" + index}
-                              item={BundleItemWithLocation}
-                              setIsOpen={setIsOpen}
-                              completed={bundleWithStatus.bundleStatus[index]}
-                              setObject={setObject}
-                              type="bundleItem"
-                              show={show}
-                            />
-                          );
-                        },
+                      {bundleWithStatus.bundle.items.map ? (
+                        bundleWithStatus.bundle.items.map(
+                          (item, index: number) => {
+                            if (isRandomizer(item)) {
+                              // Guard clause for type coercion
+                              return <></>;
+                            }
+                            const BundleItemWithLocation: BundleItemWithLocation =
+                              {
+                                ...item,
+                                index: index,
+                                bundleID: bundleWithStatus.bundle.name,
+                              };
+                            return (
+                              <BooleanCard
+                                key={item.itemID + "-" + index}
+                                item={BundleItemWithLocation}
+                                setIsOpen={setIsOpen}
+                                completed={bundleWithStatus.bundleStatus[index]}
+                                setObject={setObject}
+                                type="bundleItem"
+                                show={show}
+                              />
+                            );
+                          },
+                        )
+                      ) : (
+                        <>error</>
                       )}
                     </BundleAccordion>
                   );
@@ -503,3 +540,23 @@ export default function Bundles() {
     </>
   );
 }
+
+// export function ResovleBundlePatch(patch: any, currentBundles: BundleWithStatus[]) {
+//   if (!patch.bundles) {
+//     return currentBundles;
+//   }
+//   let newBundles = [...currentBundles];
+//   let bundlePatch = patch.bundles;
+//   for (let index in bundlePatch) {
+//     let bundleIndex = parseInt(index);
+//     let newBundle = bundlePatch[index];
+//     let oldBundle = currentBundles[bundleIndex];
+//     if (bundle.bundle) {
+//       newBundles[bundleIndex].bundle = bundle.bundle;
+//     }
+//     if (bundle.bundleStatus) {
+//       newBundles[bundleIndex].bundleStatus = bundle.bundleStatus;
+//     }
+//   }
+//   return newBundles;
+// }
