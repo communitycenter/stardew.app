@@ -17,10 +17,12 @@ export interface BundleWithStatusAndOptions extends BundleWithStatus {
   options: Bundle[];
 }
 
+export type ItemQuality = "0" | "1" | "2" | "3";
+
 export type BundleItem = {
   itemID: string;
   itemQuantity: number;
-  itemQuality: string;
+  itemQuality: ItemQuality;
 };
 
 export interface BundleItemWithOptions extends BundleItem {
