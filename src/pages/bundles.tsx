@@ -38,6 +38,13 @@ import {
   ContextMenuRadioGroup,
 } from "@/components/ui/context-menu";
 
+export const ItemQualityToString = {
+  "0": "Normal",
+  "1": "Silver",
+  "2": "Gold",
+  "3": "Iridium",
+};
+
 type BundleAccordionProps = {
   bundleWithStatus: BundleWithStatus;
   children: JSX.Element | JSX.Element[];
@@ -382,7 +389,7 @@ export default function Bundles() {
 
   useEffect(() => {
     setBundles(GetActiveBundles(activePlayer));
-  }, [activePlayer]);
+  }, [activePlayer?._id]);
 
   const getAchievementProgress = (name: string) => {
     if (bundles.length < 1) {
@@ -462,7 +469,6 @@ export default function Bundles() {
                 if (bundleWithStatus?.bundle) {
                   return bundleWithStatus.bundle.areaName === roomName;
                 } else {
-                  // debugger;
                   return false;
                 }
               });
@@ -481,7 +487,7 @@ export default function Bundles() {
                       bundleWithStatus={bundleWithStatus}
                       alternateOptions={(
                         bundleWithStatus as BundleWithStatusAndOptions
-                      ).options?.filter((newBundle) => {
+                      )?.options?.filter((newBundle) => {
                         return !bundles
                           .map((bundleWithStatus) => {
                             return bundleWithStatus.bundle.name;
@@ -540,23 +546,3 @@ export default function Bundles() {
     </>
   );
 }
-
-// export function ResovleBundlePatch(patch: any, currentBundles: BundleWithStatus[]) {
-//   if (!patch.bundles) {
-//     return currentBundles;
-//   }
-//   let newBundles = [...currentBundles];
-//   let bundlePatch = patch.bundles;
-//   for (let index in bundlePatch) {
-//     let bundleIndex = parseInt(index);
-//     let newBundle = bundlePatch[index];
-//     let oldBundle = currentBundles[bundleIndex];
-//     if (bundle.bundle) {
-//       newBundles[bundleIndex].bundle = bundle.bundle;
-//     }
-//     if (bundle.bundleStatus) {
-//       newBundles[bundleIndex].bundleStatus = bundle.bundleStatus;
-//     }
-//   }
-//   return newBundles;
-// }

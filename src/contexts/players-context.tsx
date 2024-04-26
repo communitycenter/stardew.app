@@ -66,10 +66,14 @@ export function isObject(item: any) {
 // Takes an inbound patch and converts any array keys into dereferenced
 // arrays, since apparently json_merge_patch doesn't recurse into arrays
 function normalizePatch(patch: any, target: any, inArray = false) {
+  // debugger;
+  if (!target) {
+    return patch;
+  }
   if (!isObject(patch)) return patch;
   const new_patch = Array.isArray(patch) ? [...patch] : { ...patch };
   for (const key in patch) {
-    if (Array.isArray(target[key]) && !Array.isArray(patch[key])) {
+    if (Array.isArray(target[key])) {
       new_patch[key] = [...target[key]];
       for (const arrIndex in patch[key]) {
         new_patch[key][arrIndex] = normalizePatch(
@@ -144,8 +148,8 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
           const normalizedPatch = normalizePatch(patch, activePlayer);
-          console.log("Normalizing patch:");
-          console.dir(normalizedPatch);
+          // console.log("Normalizing patch:");
+          // console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
             body: JSON.stringify(normalizedPatch),

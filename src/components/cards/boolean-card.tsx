@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ItemWithOverlay from "../ui/item-with-overlay";
 
 import objects from "@/data/objects.json";
 
@@ -64,6 +65,10 @@ export const BooleanCard = ({
   let name: string;
   let description: string | null;
   let minVersion: string;
+  let itemQuantity: number | null = null;
+  if ((item as BundleItemWithLocation).itemQuantity) {
+    itemQuantity = (item as BundleItemWithLocation).itemQuantity;
+  }
   if (item.itemID == "-1") {
     //Special case for handling gold in Vault bundles
     iconURL = `https://cdn.stardew.app/images/(O)69.webp`;
@@ -129,15 +134,15 @@ export const BooleanCard = ({
 
       if (bundleIndex === -1) return;
 
-      patch = {
-        bundles: {
-          [bundleIndex]: {
-            bundleStatus: {
-              [bundleItem.index]: status === 2,
-            },
-          },
+      const newBundles = [...bundles];
+      const updatedBundle = newBundles[bundleIndex];
+      newBundles[bundleIndex] = {
+        bundleStatus: {
+          [bundleItem.index]: status === 2,
         },
       };
+
+      patch = { bundles: newBundles };
     }
     await patchPlayer(patch);
   }
@@ -166,15 +171,20 @@ export const BooleanCard = ({
               minVersion === "1.6.0" && !show && !completed && "blur-sm",
             )}
           >
-            <Image
+            <ItemWithOverlay
               src={iconURL}
               alt={name}
               className="rounded-sm"
               width={32}
               height={32}
+              quality={(item as BundleItemWithLocation)?.itemQuality}
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate font-medium">{name}</p>
+              <p className="truncate font-medium">
+                {itemQuantity && itemQuantity > 1
+                  ? `${itemQuantity.toString()}x ${name}`
+                  : name}
+              </p>
               <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                 {description}
               </p>
