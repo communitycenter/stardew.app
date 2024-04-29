@@ -59,61 +59,88 @@ export const PlayersContext = createContext<PlayersContextProps>({
   setActivePlayer: () => {},
 });
 
-export function isObject(item: any) {
-  return item && typeof item === "object"; // && !Array.isArray(item);
-}
-
-// Takes an inbound patch and converts any array keys into dereferenced
-// arrays, since apparently json_merge_patch doesn't recurse into arrays
-function normalizePatch(patch: any, target: any, inArray = false) {
-  // debugger;
+/**
+ * Normalizes a patch object against a target object to ensure all nested objects and arrays are merged correctly.
+ * This function converts any array keys into dereferenced arrays because json_merge_patch does not recurse into arrays.
+ * @param patch The changes to apply to the target.
+ * @param target The original object that the patch will modify.
+ * @param inArray A flag indicating if the current process is within an array.
+ * @returns A new object representing the merged state of patch and target.
+ */
+function normalizePatch(
+  patch: any,
+  target: any,
+  inArray: boolean = false,
+): any {
+  // Return the patch immediately if there's no target to merge with.
   if (!target) {
     return patch;
   }
-  if (!isObject(patch)) return patch;
-  const new_patch = Array.isArray(patch) ? [...patch] : { ...patch };
+
+  // Return the patch directly if it's not an object or array.
+  if (typeof patch !== "object" || patch === null) {
+    return patch;
+  }
+
+  // Initialize a new patch that copies the original to avoid mutations.
+  const newPatch = Array.isArray(patch) ? [...patch] : { ...patch };
+
+  // Iterate over all properties in the patch object.
   for (const key in patch) {
     if (Array.isArray(target[key])) {
-      new_patch[key] = [...target[key]];
-      for (const arrIndex in patch[key]) {
-        new_patch[key][arrIndex] = normalizePatch(
-          patch[key][arrIndex],
-          target[key][arrIndex],
-          true,
-        );
-      }
+      // Handle array merging by first copying the existing target array.
+      newPatch[key] = [...target[key]];
+
+      // Recursively normalize each element of the array.
+      patch[key].forEach((item: any, index: number) => {
+        newPatch[key][index] = normalizePatch(item, target[key][index], true);
+      });
     } else {
-      new_patch[key] = normalizePatch(patch[key], target[key], inArray);
+      // Recursively normalize nested objects.
+      newPatch[key] = normalizePatch(patch[key], target[key], inArray);
     }
   }
+
+  // If we are in an array, ensure that missing fields in the patch are filled from the target.
   if (inArray) {
-    for (const field in target) {
-      if (!(field in new_patch)) {
-        new_patch[field] = target[field];
+    Object.keys(target).forEach((field) => {
+      if (!(field in newPatch)) {
+        newPatch[field] = target[field];
       }
-    }
+    });
   }
-  return new_patch;
+
+  return newPatch;
 }
 
-export function mergeDeep(target: any, ...sources: any[]) {
+/**
+ * Recursively merges properties from source objects into a target object, creating a new object.
+ * This function does not mutate the original target but returns a new object.
+ * It only updates references within the new object when there are actual changes to content or children,
+ * regardless of the depth of those changes. Arrays are copied rather than merged, and nested objects
+ * are recursively populated. This function can handle an arbitrary number of source objects.
+ * @param target The initial object to merge properties into.
+ * @param sources One or more objects from which properties will be sourced.
+ * @returns The target object merged with properties from all source objects.
+ */
+export function mergeDeep(target: any, ...sources: any[]): any {
+  const isObject = (item: any) => item && typeof item === "object";
+
   if (!sources.length) return target;
   const source = sources.shift();
-  const new_target = Array.isArray(target) ? [...target] : { ...target };
+  const newTarget = Array.isArray(target) ? [...target] : { ...target };
 
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(new_target, { [key]: {} });
-        Object.assign(new_target, {
-          [key]: mergeDeep(new_target[key], source[key]),
-        });
+        if (!target[key]) newTarget[key] = {};
+        newTarget[key] = mergeDeep(newTarget[key], source[key]);
       } else {
-        Object.assign(new_target, { [key]: source[key] });
+        newTarget[key] = source[key];
       }
     }
   }
-  return mergeDeep(new_target, ...sources);
+  return mergeDeep(newTarget, ...sources);
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
