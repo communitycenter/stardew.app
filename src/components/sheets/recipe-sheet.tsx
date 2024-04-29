@@ -96,14 +96,14 @@ export const RecipeSheet = <T extends Recipe>({
       : `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
     : null;
 
-  const name = recipe
-    ? isCraftingRecipe(recipe)
+  const name =
+    recipe && isCraftingRecipe(recipe)
       ? recipe.isBigCraftable
         ? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
             .name
         : objects[recipe.itemID.toString() as keyof typeof objects].name
-      : objects[recipe.itemID.toString() as keyof typeof objects].name
-    : null;
+      : recipe &&
+        objects[recipe.itemID.toString() as keyof typeof objects].name;
 
   const description = recipe
     ? isCraftingRecipe(recipe)
@@ -417,18 +417,26 @@ export const RecipeSheet = <T extends Recipe>({
                 <ul className="list-inside list-none space-y-3">
                   {recipe.ingredients.map((ingredient) => {
                     let item;
+                    let isCategory = false;
+                    let isBC = false;
 
                     // if itemID is greater than 0, it's an object
                     if (!ingredient.itemID.startsWith("-")) {
-                      item =
-                        objects[
-                          ingredient.itemID.toString() as keyof typeof objects
-                        ];
+                      // check if it's a big craftable or not
+                      if (deweaponize(ingredient.itemID).key === "BC") {
+                        let item_id = deweaponize(ingredient.itemID).value;
+                        isBC = true;
+                        item =
+                          bigCraftables[item_id as keyof typeof bigCraftables];
+                      } else {
+                        item =
+                          objects[ingredient.itemID as keyof typeof objects];
+                      }
                     } else {
                       // otherwise, it's a category
+                      isCategory = true;
                       item = {
                         name: categoryItems[ingredient.itemID],
-                        iconURL: categoryIcons[ingredient.itemID],
                       };
                     }
 
@@ -439,10 +447,16 @@ export const RecipeSheet = <T extends Recipe>({
                       >
                         <div className="flex items-center space-x-2">
                           <Image
-                            src={`https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`}
+                            src={
+                              isCategory
+                                ? `https://cdn.stardew.app/images/(C)${ingredient.itemID}.webp`
+                                : isBC
+                                  ? `https://cdn.stardew.app/images/(BC)${deweaponize(ingredient.itemID).value}.webp`
+                                  : `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
+                            }
                             alt={item.name}
                             width={32}
-                            height={32}
+                            height={isBC ? 64 : 32}
                             quality={25}
                           />
                           <p className="font-semibold">
