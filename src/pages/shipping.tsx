@@ -279,13 +279,10 @@ export default function Shipping() {
                     return !(i.itemID in basicShipped);
                   } else if (_filter === "1") {
                     // Polyculture crops that need completing
-                    // TODO: should we show all polyculture crops here?
                     return (
-                      i.itemID in basicShipped &&
                       i.itemID in shipping_items &&
                       shipping_items[i.itemID as keyof typeof shipping_items]
-                        .polyculture &&
-                      basicShipped[i.itemID]! < 15
+                        .polyculture
                     );
                   } else if (_filter === "2") {
                     // Shipped/Completed (we won't check for monoculture here)
