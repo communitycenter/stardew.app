@@ -87,16 +87,43 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 }
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
+  let bundleCompleted = BundleCompleted(props.bundleWithStatus);
+  let additionalClasses = "";
+  let remainingCount = "";
+  if (bundleCompleted) {
+    additionalClasses =
+      " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20";
+  } else {
+    let completedItems = props.bundleWithStatus.bundleStatus.reduce(
+      (acc, cur) => {
+        if (cur) {
+          return acc + 1;
+        }
+        return acc;
+      },
+      0,
+    );
+    let remaining =
+      props.bundleWithStatus.bundle.itemsRequired - completedItems;
+    remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
+  }
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
-      <section className="space-y-3">
-        <AccordionItem value="item-1">
+      <section
+        className={
+          "relative flex select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
+          additionalClasses
+        }
+      >
+        <AccordionItem value="item-1" className="border-none">
           {props.alternateOptions && props.alternateOptions.length > 0 ? (
             <ContextMenu>
               <ContextMenuTrigger>
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
                   <div className="justify-left flex">
-                    {props.bundleWithStatus.bundle.localizedName + " Bundle"}
+                    {props.bundleWithStatus.bundle.localizedName +
+                      " Bundle" +
+                      remainingCount}
                   </div>
                 </AccordionTrigger>
               </ContextMenuTrigger>
@@ -123,7 +150,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                           value={option.name}
                           key={option.name}
                         >
-                          {option.localizedName} Bundle
+                          {option.localizedName} Bundle{remainingCount}
                         </ContextMenuRadioItem>
                       );
                     })}
@@ -219,12 +246,6 @@ function AttachRandomizerData(
           (bundleWithStatus) =>
             optionNames.includes(bundleWithStatus.bundle.name),
         );
-        // if (
-        //   currentlySelectedBundles[0].bundle.name == "Quality Crops" ||
-        //   currentlySelectedBundles[0].bundle.name == "Rare Crops"
-        // ) {
-        //   debugger;
-        // }
         currentlySelectedBundles.forEach((bundleWithStatus) => {
           let options = bundleSpecification.options.map((bundle) => {
             let resolvedBundle = ResolveItemRandomizers(bundle as Bundle);
