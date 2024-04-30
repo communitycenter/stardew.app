@@ -92,9 +92,34 @@ function normalizePatch(
       newPatch[key] = [...target[key]];
 
       // Recursively normalize each element of the array.
-      patch[key].forEach((item: any, index: number) => {
-        newPatch[key][index] = normalizePatch(item, target[key][index], true);
-      });
+      // if (typeof patch[key] === "object") {
+      //   debugger;
+      // }
+      if (
+        patch[key] &&
+        typeof patch[key] === "object" &&
+        !Array.isArray(patch[key]) &&
+        Object.keys(patch[key]).every((input: any) => {
+          if (typeof input === "number") {
+            return Number.isInteger(input);
+          } else if (typeof input === "string") {
+            const num = Number(input);
+            return Number.isInteger(num) && input.trim() === num.toString();
+          }
+          return false;
+        })
+      ) {
+        for (const arrIndex in patch[key]) {
+          newPatch[key][arrIndex] = normalizePatch(
+            patch[key][arrIndex],
+            target[key][arrIndex],
+            true,
+          );
+        }
+      } else {
+        // If the patch is a non-object, replace the target array with the patch.
+        newPatch[key] = patch[key];
+      }
     } else {
       // Recursively normalize nested objects.
       newPatch[key] = normalizePatch(patch[key], target[key], inArray);
@@ -175,8 +200,8 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
           const normalizedPatch = normalizePatch(patch, activePlayer);
-          // console.log("Normalizing patch:");
-          // console.dir(normalizedPatch);
+          console.log("Normalizing patch:");
+          console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
             body: JSON.stringify(normalizedPatch),

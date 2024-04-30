@@ -119,7 +119,10 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                   >
                     {props.alternateOptions.map((option) => {
                       return (
-                        <ContextMenuRadioItem value={option.name}>
+                        <ContextMenuRadioItem
+                          value={option.name}
+                          key={option.name}
+                        >
                           {option.localizedName} Bundle
                         </ContextMenuRadioItem>
                       );
@@ -151,9 +154,11 @@ function BundleCompleted(bundleWithStatus: BundleWithStatus): boolean {
     // Gold bundles are encoded in the save file as requiring -1 items
     return bundleWithStatus.bundleStatus[0];
   }
-  return bundleWithStatus.bundleStatus
-    .slice(0, bundleWithStatus.bundle.itemsRequired)
-    .every((status) => status);
+  return (
+    bundleWithStatus.bundleStatus.reduce((acc, cur) => {
+      return cur ? acc + 1 : acc;
+    }, 0) >= bundleWithStatus.bundle.itemsRequired
+  );
 }
 
 function ResolveBundleRandomizer(bundleRandomizer: Randomizer): Bundle[] {
@@ -214,6 +219,12 @@ function AttachRandomizerData(
           (bundleWithStatus) =>
             optionNames.includes(bundleWithStatus.bundle.name),
         );
+        // if (
+        //   currentlySelectedBundles[0].bundle.name == "Quality Crops" ||
+        //   currentlySelectedBundles[0].bundle.name == "Rare Crops"
+        // ) {
+        //   debugger;
+        // }
         currentlySelectedBundles.forEach((bundleWithStatus) => {
           let options = bundleSpecification.options.map((bundle) => {
             let resolvedBundle = ResolveItemRandomizers(bundle as Bundle);
@@ -351,7 +362,7 @@ export default function Bundles() {
     return activeBundles;
   }
 
-  function SwapBundle(
+  async function SwapBundle(
     newBundle: Bundle,
     oldBundleWithStatus: BundleWithStatus,
   ) {
@@ -383,13 +394,14 @@ export default function Bundles() {
 
       // See note in bundle_sheet.tsx
       // @ts-ignore
-      patchPlayer(patch);
+      await patchPlayer(patch);
+      setBundles(GetActiveBundles(activePlayer));
     }
   }
 
   useEffect(() => {
     setBundles(GetActiveBundles(activePlayer));
-  }, [activePlayer?._id]);
+  }, [activePlayer]);
 
   const getAchievementProgress = (name: string) => {
     if (bundles.length < 1) {

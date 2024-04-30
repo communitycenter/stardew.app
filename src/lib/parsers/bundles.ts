@@ -13,6 +13,7 @@ import {
   BundleItem,
   BundleWithStatus,
   CommunityCenterRoomName,
+  ItemQuality,
 } from "@/types/bundles";
 
 interface BundleCompletionData {
@@ -75,7 +76,7 @@ export function parseBundles(
       for (let i = 0; i < bundleRequirementsDataSplit.length; i += 3) {
         let itemID: string = bundleRequirementsDataSplit[i];
         let itemQuantity: number = parseInt(bundleRequirementsDataSplit[i + 1]);
-        let itemQuality: string = bundleRequirementsDataSplit[i + 2];
+        let itemQuality = bundleRequirementsDataSplit[i + 2] as ItemQuality;
 
         // An item ID of -1 is used for gold for the vault room
         if (itemID == "-1") {

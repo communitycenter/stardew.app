@@ -137,6 +137,7 @@ export const BooleanCard = ({
       const newBundles = [...bundles];
       const updatedBundle = newBundles[bundleIndex];
       newBundles[bundleIndex] = {
+        // @ts-ignore - indexing into an array
         bundleStatus: {
           [bundleItem.index]: status === 2,
         },
