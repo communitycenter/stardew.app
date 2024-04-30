@@ -3,6 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 
 import {
   findChildren,
+  parseBundles,
   parseCooking,
   parseCrafting,
   parseFishing,
@@ -57,6 +58,14 @@ export function parseSaveFile(xml: string) {
 
     // console.log(prefix === "xsi" ? "PC" : "Mobile");
 
+    const parsedBundles = parseBundles(
+      saveFile.SaveGame.bundleData,
+      saveFile.SaveGame.locations.GameLocation.find(
+        (obj: any) => obj[`@_${prefix}:type`] === "CommunityCenter",
+      ),
+      version,
+    );
+
     const parsedMuseum = parseMuseum(
       saveFile.SaveGame.locations.GameLocation.find(
         (obj: any) => obj[`@_${prefix}:type`] === "LibraryMuseum",
@@ -95,6 +104,7 @@ export function parseSaveFile(xml: string) {
           saveFile.SaveGame.whichFarm.toString(),
           version,
         ),
+        bundles: parsedBundles,
         fishing: parseFishing(player, version),
         cooking: parseCooking(player, version),
         crafting: parseCrafting(player),

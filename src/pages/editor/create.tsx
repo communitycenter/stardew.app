@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import type { PlayerType } from "@/contexts/players-context";
 
@@ -38,6 +39,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { redirect } from "next/dist/server/api-utils";
 
 function generateUniqueIdentifier() {
   const timestamp = Date.now().toString(16);
@@ -119,6 +121,7 @@ const formSchema = v.object({
 });
 
 export default function Editor() {
+  const router = useRouter();
   const { uploadPlayers } = usePlayers();
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -179,8 +182,13 @@ export default function Editor() {
       },
     };
 
-    await uploadPlayers([player]);
-    toast.success("Successfully created your farmer!");
+    let res = await uploadPlayers([player]);
+    if (res.status == 200) {
+      router.push("/farmer");
+      return toast.success("Successfully created your farmer!");
+    } else {
+      return toast.error("Failed to create your farmer!");
+    }
   };
 
   return (

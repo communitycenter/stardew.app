@@ -23,10 +23,13 @@ import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { PowersRet } from "@/lib/parsers/powers";
+import { BundleWithStatus } from "@/types/bundles";
+import { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
   _id: string;
   general?: GeneralRet;
+  bundles?: BundleWithStatus[];
   fishing?: FishRet;
   cooking?: CookingRet;
   crafting?: CraftingRet;
@@ -43,38 +46,126 @@ export interface PlayerType {
 
 interface PlayersContextProps {
   players?: PlayerType[];
-  uploadPlayers: (players: PlayerType[]) => void;
-  patchPlayer: (patch: Partial<PlayerType>) => Promise<void>;
+  uploadPlayers: (players: PlayerType[]) => Promise<Response>;
+  patchPlayer: (patch: DeepPartial<PlayerType>) => Promise<void>;
   activePlayer?: PlayerType;
   setActivePlayer: (player?: PlayerType) => void;
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
+  // @ts-expect-error
   uploadPlayers: () => {},
   patchPlayer: () => Promise.resolve(),
   setActivePlayer: () => {},
 });
 
-export function isObject(item: any) {
-  return item && typeof item === "object" && !Array.isArray(item);
+/**
+ * Normalizes a patch object against a target object to ensure all nested objects and arrays are merged correctly.
+ * This function converts any array keys into dereferenced arrays because json_merge_patch does not recurse into arrays.
+ * @param patch The changes to apply to the target.
+ * @param target The original object that the patch will modify.
+ * @param inArray A flag indicating if the current process is within an array.
+ * @returns A new object representing the merged state of patch and target.
+ */
+function normalizePatch(
+  patch: any,
+  target: any,
+  inArray: boolean = false,
+): any {
+  // Return the patch immediately if there's no target to merge with.
+  if (!target) {
+    return patch;
+  }
+
+  // Return the patch directly if it's not an object or array.
+  if (typeof patch !== "object" || patch === null) {
+    return patch;
+  }
+
+  // Initialize a new patch that copies the original to avoid mutations.
+  const newPatch = Array.isArray(patch) ? [...patch] : { ...patch };
+
+  // Iterate over all properties in the patch object.
+  for (const key in patch) {
+    if (Array.isArray(target[key])) {
+      // Handle array merging by first copying the existing target array.
+      newPatch[key] = [...target[key]];
+
+      // Recursively normalize each element of the array.
+      // if (typeof patch[key] === "object") {
+      //   debugger;
+      // }
+      if (
+        patch[key] &&
+        typeof patch[key] === "object" &&
+        !Array.isArray(patch[key]) &&
+        Object.keys(patch[key]).every((input: any) => {
+          if (typeof input === "number") {
+            return Number.isInteger(input);
+          } else if (typeof input === "string") {
+            const num = Number(input);
+            return Number.isInteger(num) && input.trim() === num.toString();
+          }
+          return false;
+        })
+      ) {
+        for (const arrIndex in patch[key]) {
+          newPatch[key][arrIndex] = normalizePatch(
+            patch[key][arrIndex],
+            target[key][arrIndex],
+            true,
+          );
+        }
+      } else {
+        // If the patch is a non-object, replace the target array with the patch.
+        newPatch[key] = patch[key];
+      }
+    } else {
+      // Recursively normalize nested objects.
+      newPatch[key] = normalizePatch(patch[key], target[key], inArray);
+    }
+  }
+
+  // If we are in an array, ensure that missing fields in the patch are filled from the target.
+  if (inArray) {
+    Object.keys(target).forEach((field) => {
+      if (!(field in newPatch)) {
+        newPatch[field] = target[field];
+      }
+    });
+  }
+
+  return newPatch;
 }
 
-export function mergeDeep(target: any, ...sources: any[]) {
+/**
+ * Recursively merges properties from source objects into a target object, creating a new object.
+ * This function does not mutate the original target but returns a new object.
+ * It only updates references within the new object when there are actual changes to content or children,
+ * regardless of the depth of those changes. Arrays are copied rather than merged, and nested objects
+ * are recursively populated. This function can handle an arbitrary number of source objects.
+ * @param target The initial object to merge properties into.
+ * @param sources One or more objects from which properties will be sourced.
+ * @returns The target object merged with properties from all source objects.
+ */
+export function mergeDeep(target: any, ...sources: any[]): any {
+  const isObject = (item: any) => item && typeof item === "object";
+
   if (!sources.length) return target;
   const source = sources.shift();
+  const newTarget = Array.isArray(target) ? [...target] : { ...target };
 
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
+        if (!target[key]) newTarget[key] = {};
+        newTarget[key] = mergeDeep(newTarget[key], source[key]);
       } else {
-        Object.assign(target, { [key]: source[key] });
+        newTarget[key] = source[key];
       }
     }
   }
-
-  return mergeDeep(target, ...sources);
+  return mergeDeep(newTarget, ...sources);
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
@@ -103,8 +194,9 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [activePlayerId, players]);
 
+  // TODO: switch patchplayer use immutability-helper instead of custom merge logic
   const patchPlayer = useCallback(
-    async (patch: Partial<PlayerType>) => {
+    async (patch: DeepPartial<PlayerType>) => {
       if (!activePlayer) return;
       const patchPlayers = (players: PlayerType[] | undefined) =>
         (players ?? []).map((p) => {
@@ -115,26 +207,30 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
         });
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
+          const normalizedPatch = normalizePatch(patch, activePlayer);
+          console.log("Normalizing patch:");
+          console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
-            body: JSON.stringify(patch),
+            body: JSON.stringify(normalizedPatch),
           });
           return patchPlayers(currentPlayers);
         },
         { optimisticData: patchPlayers },
       );
     },
-    [activePlayer, api],
+    [api],
   );
 
   const uploadPlayers = useCallback(
     async (players: PlayerType[]) => {
-      await fetch("/api/saves", {
+      let res = await fetch("/api/saves", {
         method: "POST",
         body: JSON.stringify(players),
       });
       await api.mutate(players);
       setActivePlayerId(players[0]._id);
+      return res;
     },
     [api, setActivePlayerId],
   );

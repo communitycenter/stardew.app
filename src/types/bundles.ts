@@ -1,26 +1,70 @@
-import bundlesJson from "../data/bundles.json";
-
-export type Bundle = {
-  items: BundleItem[];
+export interface Bundle {
+  name: string;
+  areaName?: CommunityCenterRoomName;
+  localizedName?: string;
+  color?: number;
+  items: (BundleItem | Randomizer)[];
   itemsRequired: number;
   bundleReward: BundleReward;
-};
+}
+
+export interface BundleWithStatus {
+  bundle: Bundle;
+  bundleStatus: boolean[];
+}
+
+export interface BundleWithStatusAndOptions extends BundleWithStatus {
+  options: Bundle[];
+}
+
+export type ItemQuality = "0" | "1" | "2" | "3";
 
 export type BundleItem = {
-  itemID: number;
+  itemID: string;
   itemQuantity: number;
-  itemQuality: string;
-  itemName: string;
+  itemQuality: ItemQuality;
 };
 
+export interface BundleItemWithOptions extends BundleItem {
+  options: BundleItem[];
+}
+
+export interface BundleItemWithLocation extends BundleItem {
+  bundleID: string;
+  index: number;
+}
+
+export interface BundleItemWithLocationAndOptions
+  extends BundleItemWithLocation {
+  options: BundleItem[];
+}
 export type BundleReward = {
   itemType: string;
-  itemName: string;
-  itemID: number;
+  itemID: string;
   itemQuantity: number;
 };
 
-export type CommunityCenter = Record<string, CommunityCenterRoom>;
-export type CommunityCenterRoom = Record<string, Bundle>;
+export type Randomizer = {
+  randomizer: true;
+  options: (Bundle | BundleItem | Randomizer)[];
+  selectionCount: number;
+};
 
-export const communityCenter: CommunityCenter = bundlesJson;
+export function isRandomizer(obj: any): obj is Randomizer {
+  return obj.randomizer;
+}
+
+export type CommunityCenterRoomName =
+  | "Pantry"
+  | "Crafts Room"
+  | "Fish Tank"
+  | "Boiler Room"
+  | "Vault"
+  | "Bulletin Board"
+  | "Abandoned Joja Mart";
+
+export type CommunityCenter = Record<
+  CommunityCenterRoomName,
+  CommunityCenterRoom
+>;
+export type CommunityCenterRoom = (Randomizer | Bundle)[];

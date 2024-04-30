@@ -1,8 +1,9 @@
 import Image from "next/image";
+import ItemWithOverlay from "../ui/item-with-overlay";
 
 import objects from "@/data/objects.json";
 
-import type { FishType, MuseumItem } from "@/types/items";
+import type { FishType, ItemData, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
@@ -18,13 +19,18 @@ import {
 } from "@/components/ui/context-menu";
 
 import { IconChevronRight } from "@tabler/icons-react";
+import {
+  BundleItem,
+  BundleItemWithLocation,
+  BundleReward,
+} from "@/types/bundles";
 
 interface Props {
-  item: FishType | MuseumItem | any;
+  item: FishType | MuseumItem | BundleItemWithLocation;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
-  type: "fish" | "artifact" | "mineral";
+  type: "fish" | "artifact" | "mineral" | "bundleItem";
 
   /**
    * Whether the user prefers to see new content
@@ -53,11 +59,30 @@ export const BooleanCard = ({
   setPromptOpen,
 }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
-
-  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-  const name = objects[item.itemID as keyof typeof objects].name;
-  const description = objects[item.itemID as keyof typeof objects].description;
-  const minVersion = objects[item.itemID as keyof typeof objects].minVersion;
+  // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
+  // let dataSource = objects;
+  let iconURL: string;
+  let name: string;
+  let description: string | null;
+  let minVersion: string;
+  let itemQuantity: number | null = null;
+  if ((item as BundleItemWithLocation).itemQuantity) {
+    itemQuantity = (item as BundleItemWithLocation).itemQuantity;
+  }
+  if (item.itemID == "-1") {
+    //Special case for handling gold in Vault bundles
+    iconURL = `https://cdn.stardew.app/images/(O)69.webp`;
+    name = "Gold";
+    description = "I like..... Gooooooooooold.";
+    minVersion = "1.5.0";
+  } else {
+    // TODO: update this to be able to receive an object type so this component
+    // can also dispaly objects with other object type keys, like big objects (BO)
+    iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    name = objects[item.itemID as keyof typeof objects].name;
+    description = objects[item.itemID as keyof typeof objects].description;
+    minVersion = objects[item.itemID as keyof typeof objects].minVersion;
+  }
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -99,6 +124,26 @@ export const BooleanCard = ({
           minerals: Array.from(minerals),
         },
       };
+    } else if (type === "bundleItem") {
+      const bundleItem = item as BundleItemWithLocation;
+      const bundles = activePlayer?.bundles ?? [];
+      const bundleIndex = bundles.findIndex(
+        (bundleWithStatus) =>
+          bundleWithStatus.bundle.name === bundleItem.bundleID,
+      );
+
+      if (bundleIndex === -1) return;
+
+      const newBundles = [...bundles];
+      const updatedBundle = newBundles[bundleIndex];
+      newBundles[bundleIndex] = {
+        // @ts-ignore - indexing into an array
+        bundleStatus: {
+          [bundleItem.index]: status === 2,
+        },
+      };
+
+      patch = { bundles: newBundles };
     }
     await patchPlayer(patch);
   }
@@ -120,22 +165,27 @@ export const BooleanCard = ({
             setIsOpen(true);
           }}
         >
-          {minVersion === "1.6.0" && <NewItemBadge version={minVersion}/>}
+          {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
               minVersion === "1.6.0" && !show && !completed && "blur-sm",
             )}
           >
-            <Image
+            <ItemWithOverlay
               src={iconURL}
               alt={name}
               className="rounded-sm"
               width={32}
               height={32}
+              quality={(item as BundleItemWithLocation)?.itemQuality}
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate font-medium">{name}</p>
+              <p className="truncate font-medium">
+                {itemQuantity && itemQuantity > 1
+                  ? `${itemQuantity.toString()}x ${name}`
+                  : name}
+              </p>
               <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                 {description}
               </p>
@@ -164,7 +214,9 @@ export const BooleanCard = ({
             className="gap-2 pl-8"
             checked={completed}
             disabled={completed || !activePlayer}
-            onClick={() => {}}
+            onClick={() => {
+              handleStatusChange(2);
+            }}
             data-umami-event="Set completed"
           >
             <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
