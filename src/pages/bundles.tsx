@@ -103,8 +103,11 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
       },
       0,
     );
-    let remaining =
-      props.bundleWithStatus.bundle.itemsRequired - completedItems;
+    let requiredCount = props.bundleWithStatus.bundle.itemsRequired;
+    if (props.bundleWithStatus.bundle.itemsRequired === -1) {
+      requiredCount = props.bundleWithStatus.bundle.items.length;
+    }
+    let remaining = requiredCount - completedItems;
     remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
   }
   return (
@@ -177,9 +180,16 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
 }
 
 function BundleCompleted(bundleWithStatus: BundleWithStatus): boolean {
+  if (!bundleWithStatus.bundleStatus) {
+    return false;
+  }
   if (bundleWithStatus.bundle.itemsRequired === -1) {
     // Gold bundles are encoded in the save file as requiring -1 items
-    return bundleWithStatus.bundleStatus[0];
+    return (
+      bundleWithStatus.bundleStatus.reduce((acc, cur) => {
+        return cur ? acc + 1 : acc;
+      }, 0) >= bundleWithStatus.bundle.items.length
+    );
   }
   return (
     bundleWithStatus.bundleStatus.reduce((acc, cur) => {
