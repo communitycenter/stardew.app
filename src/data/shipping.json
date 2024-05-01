@@ -725,7 +725,9 @@
     "minVersion": "1.5.0",
     "monoculture": false,
     "polyculture": false,
-    "seasons": []
+    "seasons": [
+      "Winter"
+    ]
   },
   "417": {
     "itemID": "417",

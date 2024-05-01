@@ -30,6 +30,10 @@ DATA_OBJECTS: dict[str, Object] = load_data("objects.json")
 
 SEASONS = ["Spring", "Summer", "Fall", "Winter"]
 
+OVERRIDES = {
+    "416": {"Seasons": ["Winter"]},
+}
+
 
 # The key for CROPS is the seed item ID, so we need a map of crop item ID to seed item ID
 # to lookup the crop information.
@@ -73,6 +77,9 @@ def get_shipping_items() -> dict[str, ShippingItem]:
                     for s in SEASONS:
                         for t in tags:
                             seasons.append(s) if s.lower() in t and s not in seasons else None
+            if OVERRIDES.get(item_id):
+                if OVERRIDES.get(item_id).get("Seasons"):
+                    seasons = OVERRIDES.get(item_id).get("Seasons")
 
             output[item_id] = {
                 "itemID": item_id,
