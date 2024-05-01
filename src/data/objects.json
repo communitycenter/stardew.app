@@ -4519,15 +4519,15 @@
   },
   "DriedFruit": {
     "category": "Artisan Goods",
-    "description": "Chewy pieces of dried {0}.",
+    "description": "Chewy pieces of dried fruit.",
     "minVersion": "1.6.0",
-    "name": "Dried"
+    "name": "Dried Fruit"
   },
   "DriedMushrooms": {
     "category": "Artisan Goods",
     "description": "A package of gourmet mushrooms.",
     "minVersion": "1.6.0",
-    "name": "Dried"
+    "name": "Dried Mushrooms"
   },
   "FarAwayStone": {
     "category": "Basic",
