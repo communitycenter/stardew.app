@@ -5,38 +5,38 @@ import bundlesData from "@/data/bundles.json";
 
 import {
   Bundle,
-  BundleWithStatus,
   BundleItem,
   BundleItemWithLocation,
-  CommunityCenterRoomName,
-  isRandomizer,
-  Randomizer,
-  CommunityCenter,
-  BundleWithStatusAndOptions,
   BundleItemWithOptions,
+  BundleWithStatus,
+  BundleWithStatusAndOptions,
+  CommunityCenter,
+  CommunityCenterRoomName,
+  Randomizer,
+  isRandomizer,
 } from "@/types/bundles";
 
 import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
 import { BooleanCard } from "@/components/cards/boolean-card";
-import { useEffect, useState } from "react";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle_sheet";
 import {
-  ContextMenuContent,
-  ContextMenuTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   ContextMenu,
-  ContextMenuRadioItem,
+  ContextMenuContent,
   ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { useEffect, useState } from "react";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -114,7 +114,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
         className={
-          "relative flex select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
+          "relative select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
           additionalClasses
         }
       >
