@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Purpose: Find all items that count for Full Shipment achievement.
 #          Logic is ported from the game's source code.
 # Source Code References:
@@ -25,6 +27,8 @@ from helpers.models import ShippingItem, ContentCropItem, ContentObjectModel, Ob
 CROPS: dict[str, ContentCropItem] = load_content("Crops.json")
 OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
 DATA_OBJECTS: dict[str, Object] = load_data("objects.json")
+
+SEASONS = ["Spring", "Summer", "Fall", "Winter"]
 
 
 # The key for CROPS is the seed item ID, so we need a map of crop item ID to seed item ID
@@ -61,13 +65,23 @@ def get_shipping_items() -> dict[str, ShippingItem]:
             seed_id = crop_to_seed_id.get(k)
             # if the seed id exists, use it, otherwise use the item id
             item_id = seed_id if seed_id else k
+            
+            seasons = []
+            if CROPS.get(item_id):
+                seasons = CROPS.get(item_id, {}).get("Seasons", [])
+            else:
+                tags = OBJECTS.get(item_id, {}).get("ContextTags", [])
+                if tags:
+                    for s in SEASONS:
+                        for t in tags:
+                            seasons.append(s) if s.lower() in t else None
 
             output[k] = {
                 "itemID": k,
                 "minVersion": DATA_OBJECTS[k].get("minVersion"),
                 "monoculture": CROPS.get(item_id, {}).get("CountForMonoculture", False),
                 "polyculture": CROPS.get(item_id, {}).get("CountForPolyculture", False),
-                "seasons": CROPS.get(item_id, {}).get("Seasons", []),
+                "seasons": seasons,
             }
 
     return output
