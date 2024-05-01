@@ -4,9 +4,9 @@ import Image from "next/image";
 import objects from "@/data/objects.json";
 
 import {
+  BundleItemWithOptions,
   type BundleItem,
   type BundleItemWithLocation,
-  BundleItemWithOptions,
 } from "@/types/bundles";
 
 import { Dispatch, SetStateAction, useMemo } from "react";
@@ -30,13 +30,28 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "../ui/drawer";
-import { ScrollArea } from "../ui/scroll-area";
 import {
   DropdownMenu,
-  DropdownMenuItem,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { ScrollArea } from "../ui/scroll-area";
+
+const categoryItems: Record<string, string> = {
+  "-4": "Any Fish",
+  "-5": "Any Egg",
+  "-6": "Any Milk",
+  "-777": "Wild Seeds (Any)",
+};
+
+const categoryIcons: Record<string, string> = {
+  "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
+  "-5": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
+  "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
+  "-777":
+    "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
+};
 
 interface BundleItemDropdownProps {
   options: BundleItem[];
@@ -105,17 +120,33 @@ export default function BundleSheet({
     return [bundles, completed];
   }, [activePlayer, bundleItemWithLocation]);
 
-  const iconURL =
-    bundleItemWithLocation &&
-    `https://cdn.stardew.app/images/(O)${bundleItemWithLocation.itemID}.webp`;
+  let iconURL: string;
+  let name: string;
+  let description: string | null;
 
-  const name =
+  if (
     bundleItemWithLocation &&
-    objects[bundleItemWithLocation.itemID as keyof typeof objects].name;
+    bundleItemWithLocation?.itemID in categoryItems
+  ) {
+    iconURL = categoryIcons[bundleItemWithLocation.itemID];
+    name = categoryItems[bundleItemWithLocation.itemID];
+    description = "Any item in this category will work.";
+  } else {
+    iconURL =
+      (bundleItemWithLocation &&
+        `https://cdn.stardew.app/images/(O)${bundleItemWithLocation.itemID}.webp`) ||
+      "";
 
-  const description =
-    bundleItemWithLocation &&
-    objects[bundleItemWithLocation.itemID as keyof typeof objects].description;
+    name =
+      (bundleItemWithLocation &&
+        objects[bundleItemWithLocation.itemID as keyof typeof objects].name) ||
+      "";
+
+    description =
+      bundleItemWithLocation &&
+      objects[bundleItemWithLocation.itemID as keyof typeof objects]
+        .description;
+  }
 
   async function handleStatusChange(status: number) {
     if (!activePlayer || !bundleItemWithLocation) return;

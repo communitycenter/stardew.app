@@ -1,9 +1,8 @@
-import Image from "next/image";
 import ItemWithOverlay from "../ui/item-with-overlay";
 
 import objects from "@/data/objects.json";
 
-import type { FishType, ItemData, MuseumItem } from "@/types/items";
+import type { FishType, MuseumItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
@@ -18,12 +17,8 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
+import { BundleItemWithLocation } from "@/types/bundles";
 import { IconChevronRight } from "@tabler/icons-react";
-import {
-  BundleItem,
-  BundleItemWithLocation,
-  BundleReward,
-} from "@/types/bundles";
 
 interface Props {
   item: FishType | MuseumItem | BundleItemWithLocation;
@@ -69,11 +64,32 @@ export const BooleanCard = ({
   if ((item as BundleItemWithLocation).itemQuantity) {
     itemQuantity = (item as BundleItemWithLocation).itemQuantity;
   }
+
+  const categoryItems: Record<string, string> = {
+    "-4": "Any Fish",
+    "-5": "Any Egg",
+    "-6": "Any Milk",
+    "-777": "Wild Seeds (Any)",
+  };
+
+  const categoryIcons: Record<string, string> = {
+    "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
+    "-5": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
+    "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
+    "-777":
+      "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
+  };
+
   if (item.itemID == "-1") {
     //Special case for handling gold in Vault bundles
     iconURL = `https://cdn.stardew.app/images/(O)69.webp`;
     name = "Gold";
     description = "I like..... Gooooooooooold.";
+    minVersion = "1.5.0";
+  } else if (item.itemID in categoryItems) {
+    iconURL = categoryIcons[item.itemID];
+    name = categoryItems[item.itemID];
+    description = "Any item in this category will work.";
     minVersion = "1.5.0";
   } else {
     // TODO: update this to be able to receive an object type so this component

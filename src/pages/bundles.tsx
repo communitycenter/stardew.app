@@ -22,7 +22,7 @@ import { usePreferences } from "@/contexts/preferences-context";
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
-import BundleSheet from "@/components/sheets/bundle_sheet";
+import BundleSheet from "@/components/sheets/bundle-sheet";
 import {
   Accordion,
   AccordionContent,
@@ -423,7 +423,7 @@ export default function Bundles() {
         },
       };
 
-      // See note in bundle_sheet.tsx
+      // See note in bundlesheet.tsx
       // @ts-ignore
       await patchPlayer(patch);
       setBundles(GetActiveBundles(activePlayer));
