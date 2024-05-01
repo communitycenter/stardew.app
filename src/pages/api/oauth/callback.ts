@@ -7,7 +7,7 @@ type Data = Record<string, any>;
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
   try {
     // get state from cookie to verify that this is the correct authentication request
@@ -21,6 +21,7 @@ export default async function handler(
     const uid = getCookie("uid", { req });
     if (!uid) {
       res.status(400).end();
+      res.redirect("/");
       console.log("[OAuth] No UID cookie");
       return;
     }
@@ -28,13 +29,14 @@ export default async function handler(
     const code = req.query.code as string;
     if (!code) {
       res.status(400).end();
+      res.redirect("/");
       console.log("[OAuth] No code");
       return;
     }
 
     const discord = await fetch(
       `https://discord.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${encodeURIComponent(
-        process.env.DISCORD_REDIRECT ?? ""
+        process.env.DISCORD_REDIRECT ?? "",
       )}`,
       {
         method: "POST",
@@ -48,7 +50,7 @@ export default async function handler(
           code: code ?? "",
           redirect_uri: process.env.DISCORD_REDIRECT ?? "",
         }),
-      }
+      },
     );
 
     if (!discord.ok) {
@@ -95,7 +97,7 @@ export default async function handler(
         if (discordUser.discord_name !== discordUserData.username) {
           const r = await conn.execute(
             "UPDATE Users SET discord_name = ? WHERE discord_id = ?",
-            [discordUserData.username, discordUserData.id]
+            [discordUserData.username, discordUserData.id],
           );
         }
 
@@ -103,7 +105,7 @@ export default async function handler(
         if (discordUser.discord_avatar !== discordUserData.avatar) {
           const r = await conn.execute(
             "UPDATE Users SET discord_avatar = ? WHERE discord_id = ?",
-            [discordUserData.avatar, discordUserData.id]
+            [discordUserData.avatar, discordUserData.id],
           );
         }
       } else {
@@ -115,7 +117,7 @@ export default async function handler(
             discordUserData.username,
             discordUserData.avatar,
             cookieSecret,
-          ]
+          ],
         );
         user = {
           id: uid as string,
@@ -160,25 +162,27 @@ export default async function handler(
           ? "localhost"
           : "stardew.app",
         expires: new Date(token.expires * 1000),
-      }
+      },
     );
 
     res.redirect("/");
 
-    const addToGuild = await fetch(
-      `https://discord.com/api/guilds/${process.env.DISCORD_GUILD}/members/${discordUserData.id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          access_token: `${discordData.access_token}`,
-          roles: ["1150490180860530819"],
-        }),
-        headers: {
-          Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
-          "Content-Type": "application/json",
+    if (discordData.scope.includes("guilds.join")) {
+      await fetch(
+        `https://discord.com/api/guilds/${process.env.DISCORD_GUILD}/members/${discordUserData.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            access_token: `${discordData.access_token}`,
+            roles: ["1150490180860530819"],
+          }),
+          headers: {
+            Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+            "Content-Type": "application/json",
+          },
         },
-      }
-    );
+      );
+    }
   } catch (e: any) {
     res.status(500).send(e.message);
     console.log("[OAuth] Error", e);

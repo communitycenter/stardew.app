@@ -32,6 +32,7 @@ import { toast } from "sonner";
 import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
+import { LoginDialog } from "./dialogs/login-dialog";
 import { UploadDialog } from "./dialogs/upload-dialog";
 
 export interface User {
@@ -57,6 +58,7 @@ export function Topbar() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [changelogOpen, setChangelogOpen] = useState(false);
   const [bugreportOpen, setBugreportOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
 
   const [isDevelopment, setIsDevelopment] = useState(false);
@@ -145,8 +147,11 @@ export function Topbar() {
             <Button
               className="hover:bg-[#5865F2] dark:hover:bg-[#5865F2] dark:hover:text-white"
               data-umami-event="Log in"
+              onClick={() => {
+                setLoginOpen(true);
+              }}
             >
-              <Link href="/api/oauth">Log In With Discord</Link>
+              Log In with Discord
             </Button>
           )}
           {/* Logged In */}
@@ -264,6 +269,7 @@ export function Topbar() {
         setFeedbackOpen={setFeedbackOpen}
         setCreditsOpen={setCreditsOpen}
         setBugreportOpen={setBugreportOpen}
+        setLoginOpen={setLoginOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
@@ -271,6 +277,7 @@ export function Topbar() {
       <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
       <ChangelogDialog open={changelogOpen} setOpen={setChangelogOpen} />
       <BugReportDialog open={bugreportOpen} setOpen={setBugreportOpen} />
+      <LoginDialog open={loginOpen} setOpen={setLoginOpen} />
       <UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
     </>
   );

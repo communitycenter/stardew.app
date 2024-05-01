@@ -40,6 +40,7 @@ interface Props {
   setCreditsOpen: Dispatch<SetStateAction<boolean>>;
   setFeedbackOpen: Dispatch<SetStateAction<boolean>>;
   setBugreportOpen: Dispatch<SetStateAction<boolean>>;
+  setLoginOpen: Dispatch<SetStateAction<boolean>>;
 
   inputRef: MutableRefObject<HTMLInputElement | null>;
 }
@@ -52,6 +53,7 @@ export const MobileNav = ({
   setCreditsOpen,
   setFeedbackOpen,
   setBugreportOpen,
+  setLoginOpen,
 }: Props) => {
   const api = useSWR<User>(
     "/api",
@@ -125,8 +127,14 @@ export const MobileNav = ({
               <div className="grid grid-cols-1 gap-2">
                 {!api.data?.discord_id && (
                   <>
-                    <Button className="hover:bg-[#5865F2] dark:hover:bg-[#5865F2] dark:hover:text-white">
-                      <Link href="/api/oauth">Log In With Discord</Link>
+                    <Button
+                      className="hover:bg-[#5865F2] dark:hover:bg-[#5865F2] dark:hover:text-white"
+                      data-umami-event="Log in"
+                      onClick={() => {
+                        setLoginOpen(true);
+                      }}
+                    >
+                      Log In with Discord
                     </Button>
 
                     <Button
