@@ -92,9 +92,6 @@ function normalizePatch(
       newPatch[key] = [...target[key]];
 
       // Recursively normalize each element of the array.
-      // if (typeof patch[key] === "object") {
-      //   debugger;
-      // }
       if (
         patch[key] &&
         typeof patch[key] === "object" &&
@@ -158,7 +155,9 @@ export function mergeDeep(target: any, ...sources: any[]): any {
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) newTarget[key] = {};
+        if (!target[key]) {
+          newTarget[key] = Array.isArray(source[key]) ? [] : {};
+        }
         newTarget[key] = mergeDeep(newTarget[key], source[key]);
       } else {
         newTarget[key] = source[key];
