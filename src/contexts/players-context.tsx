@@ -83,7 +83,12 @@ function normalizePatch(
   }
 
   // Initialize a new patch that copies the original to avoid mutations.
-  const newPatch = Array.isArray(patch) ? [...patch] : { ...patch };
+  let newPatch: any;
+  if (inArray) {
+    newPatch = Array.isArray(target) ? [...target] : { ...target };
+  } else {
+    newPatch = Array.isArray(patch) ? [...patch] : { ...patch };
+  }
 
   // Iterate over all properties in the patch object.
   for (const key in patch) {

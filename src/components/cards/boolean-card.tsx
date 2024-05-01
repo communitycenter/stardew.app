@@ -134,16 +134,17 @@ export const BooleanCard = ({
 
       if (bundleIndex === -1) return;
 
-      const newBundles = [...bundles];
-      const updatedBundle = newBundles[bundleIndex];
-      newBundles[bundleIndex] = {
-        // @ts-ignore - indexing into an array
-        bundleStatus: {
-          [bundleItem.index]: status === 2,
+      patch = {
+        bundles: {
+          // @ts-ignore - indexing into an array
+          [bundleIndex]: {
+            bundleStatus: {
+              // @ts-ignore - indexing into an array
+              [bundleItem.index]: status === 2,
+            },
+          },
         },
       };
-
-      patch = { bundles: newBundles };
     }
     await patchPlayer(patch);
   }
