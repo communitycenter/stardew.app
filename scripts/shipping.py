@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Purpose: Find all items that count for Full Shipment achievement.
 #          Logic is ported from the game's source code.
 # Source Code References:
@@ -26,6 +28,12 @@ CROPS: dict[str, ContentCropItem] = load_content("Crops.json")
 OBJECTS: dict[str, ContentObjectModel] = load_content("Objects.json")
 DATA_OBJECTS: dict[str, Object] = load_data("objects.json")
 
+SEASONS = ["Spring", "Summer", "Fall", "Winter"]
+
+OVERRIDES = {
+    "416": {"Seasons": ["Winter"]},
+}
+
 
 # The key for CROPS is the seed item ID, so we need a map of crop item ID to seed item ID
 # to lookup the crop information.
@@ -44,30 +52,41 @@ def get_shipping_items() -> dict[str, ShippingItem]:
     crop_to_seed_id = build_crop_id_map()
 
     # StardewValley/Utility.cs::getFarmerItemsShippedPercent()
-    for k, v in tqdm(OBJECTS.items()):
+    for item_id, v in tqdm(OBJECTS.items()):
         category = v.get("Category")
 
         if (
             category != -7
             and category != -2
             and (
-                isPotentialBasicShipped(k, category, v.get("Type"), OBJECTS)
-                or k == "372"
+                isPotentialBasicShipped(item_id, category, v.get("Type"), OBJECTS)
+                or item_id == "372"
             )
-            and k != "SmokedFish"
+            and item_id != "SmokedFish"
         ):
 
             # lookup the seed item ID in CROPS content file, using the harvest item id
-            seed_id = crop_to_seed_id.get(k)
-            # if the seed id exists, use it, otherwise use the item id
-            item_id = seed_id if seed_id else k
+            seed_id = crop_to_seed_id.get(item_id)
+            
+            seasons = []
+            if CROPS.get(seed_id):
+                seasons = CROPS.get(seed_id, {}).get("Seasons", [])
+            if OBJECTS.get(item_id):
+                tags = OBJECTS.get(item_id, {}).get("ContextTags", [])
+                if tags:
+                    for s in SEASONS:
+                        for t in tags:
+                            seasons.append(s) if s.lower() in t and s not in seasons else None
+            if OVERRIDES.get(item_id):
+                if OVERRIDES.get(item_id).get("Seasons"):
+                    seasons = OVERRIDES.get(item_id).get("Seasons")
 
-            output[k] = {
-                "itemID": k,
-                "minVersion": DATA_OBJECTS[k].get("minVersion"),
-                "monoculture": CROPS.get(item_id, {}).get("CountForMonoculture", False),
-                "polyculture": CROPS.get(item_id, {}).get("CountForPolyculture", False),
-                "seasons": CROPS.get(item_id, {}).get("Seasons", []),
+            output[item_id] = {
+                "itemID": item_id,
+                "minVersion": DATA_OBJECTS[item_id].get("minVersion"),
+                "monoculture": CROPS.get(seed_id, {}).get("CountForMonoculture", False),
+                "polyculture": CROPS.get(seed_id, {}).get("CountForPolyculture", False),
+                "seasons": seasons,
             }
 
     return output
