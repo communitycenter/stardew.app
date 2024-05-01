@@ -403,7 +403,7 @@ export default function SkillsMasteryPowers() {
                         description={`Level ${masteryExp.level ?? 0}`}
                         sourceURL="https://cdn.stardew.app/images/(POWER)Mastery_Farming.webp"
                         minVersion="1.6.0"
-                        show={show}
+                        show={show || masteryExp.level > 0}
                       >
                         {playerExperiencePoints && (
                           <TooltipProvider>
