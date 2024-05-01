@@ -634,7 +634,8 @@
     "monoculture": true,
     "polyculture": true,
     "seasons": [
-      "Fall"
+      "Fall",
+      "Summer"
     ]
   },
   "399": {
@@ -670,7 +671,8 @@
     "monoculture": false,
     "polyculture": false,
     "seasons": [
-      "Fall"
+      "Fall",
+      "Spring"
     ]
   },
   "406": {
