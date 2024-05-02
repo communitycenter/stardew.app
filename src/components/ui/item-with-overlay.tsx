@@ -1,6 +1,11 @@
 import { ItemQuality } from "@/types/bundles";
 import Image from "next/image";
-import { parse } from "path";
+
+const qualityStars: Record<string, string> = {
+  "1": "https://stardewvalleywiki.com/mediawiki/images/e/eb/Silver_Quality.png",
+  "2": "https://stardewvalleywiki.com/mediawiki/images/9/9f/Gold_Quality.png",
+  "3": "https://stardewvalleywiki.com/mediawiki/images/b/bc/Iridium_Quality.png",
+};
 
 export type ItemWithOverlayProps = {
   src: string;
@@ -25,11 +30,13 @@ export default function ItemWithOverlay({
   if (quality && parseInt(quality) > 0) {
     star = (
       <Image
-        src={`https://cdn.stardew.app/images/quality_${quality}.webp`}
+        src={qualityStars[quality]}
         alt={"Quality Star"}
-        className={className ? "absolute left-0 top-0 rounded-sm" : className}
-        width={width ? width : 32}
-        height={height ? height : 32}
+        className={
+          className ? "absolute bottom-0 left-0 rounded-sm" : className
+        }
+        width={16}
+        height={16}
       />
     );
   }
