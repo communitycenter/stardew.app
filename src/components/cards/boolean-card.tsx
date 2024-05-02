@@ -80,11 +80,24 @@ export const BooleanCard = ({
       "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
   };
 
+  const goldIcons: Record<string, string> = {
+    "2500":
+      "https://stardewvalleywiki.com/mediawiki/images/e/e2/2500_Bundle.png",
+    "5000":
+      "https://stardewvalleywiki.com/mediawiki/images/1/17/5000_Bundle.png",
+    "10000":
+      "https://stardewvalleywiki.com/mediawiki/images/1/11/10000_Bundle.png",
+    "25000":
+      "https://stardewvalleywiki.com/mediawiki/images/a/a7/25000_Bundle.png",
+  };
+
   if (item.itemID == "-1") {
     //Special case for handling gold in Vault bundles
-    iconURL = `https://cdn.stardew.app/images/(O)69.webp`;
+    iconURL =
+      goldIcons[(item as BundleItemWithLocation).itemQuantity.toString()];
+    (item as BundleItemWithLocation).itemQuality = "0"; // For some reason they have "gold" quality in the data
     name = "Gold";
-    description = "I like..... Gooooooooooold.";
+    description = "What do the Junimos need all this gold for?";
     minVersion = "1.5.0";
   } else if (item.itemID in categoryItems) {
     iconURL = categoryIcons[item.itemID];
