@@ -152,15 +152,26 @@ export const BooleanCard = ({
 
       patch = {
         bundles: {
-          // @ts-ignore - indexing into an array
           [bundleIndex]: {
             bundleStatus: {
-              // @ts-ignore - indexing into an array
               [bundleItem.index]: status === 2,
             },
           },
         },
       };
+
+      // When SV finishes a bundle, it marks a bunch of out of bounds indexes as true
+      // Here we set them to false, since they're not actually items.
+      if (status === 0) {
+        for (
+          let i = bundles[bundleIndex].bundle.items.length;
+          i < bundles[bundleIndex].bundleStatus.length;
+          i++
+        ) {
+          // @ts-ignore - patch structure is fixed above
+          patch.bundles[bundleIndex].bundleStatus[i.toString()] = 0;
+        }
+      }
     }
     await patchPlayer(patch);
   }

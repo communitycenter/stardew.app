@@ -110,6 +110,9 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     let remaining = requiredCount - completedItems;
     remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
   }
+
+  const completeName =
+    props.bundleWithStatus.bundle.localizedName + " Bundle" + remainingCount;
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
@@ -123,11 +126,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
             <ContextMenu>
               <ContextMenuTrigger>
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  <div className="justify-left flex">
-                    {props.bundleWithStatus.bundle.localizedName +
-                      " Bundle" +
-                      remainingCount}
-                  </div>
+                  <div className="justify-left flex">{completeName}</div>
                 </AccordionTrigger>
               </ContextMenuTrigger>
 
@@ -153,7 +152,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                           value={option.name}
                           key={option.name}
                         >
-                          {option.localizedName} Bundle{remainingCount}
+                          {option.localizedName} Bundle
                         </ContextMenuRadioItem>
                       );
                     })}
@@ -163,9 +162,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
             </ContextMenu>
           ) : (
             <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-              <div className="justify-left flex">
-                {props.bundleWithStatus.bundle.localizedName + " Bundle"}
-              </div>
+              <div className="justify-left flex">{completeName}</div>
             </AccordionTrigger>
           )}
           <AccordionContent asChild>
