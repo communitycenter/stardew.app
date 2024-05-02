@@ -94,21 +94,30 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     additionalClasses =
       " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20";
   } else {
-    let completedItems = props.bundleWithStatus.bundleStatus.reduce(
-      (acc, cur) => {
-        if (cur) {
-          return acc + 1;
-        }
-        return acc;
-      },
-      0,
-    );
-    let requiredCount = props.bundleWithStatus.bundle.itemsRequired;
-    if (props.bundleWithStatus.bundle.itemsRequired === -1) {
-      requiredCount = props.bundleWithStatus.bundle.items.length;
+    if (
+      // If we don't need all the items, show how many are remaining
+      !(
+        props.bundleWithStatus.bundle.itemsRequired === -1 ||
+        props.bundleWithStatus.bundle.itemsRequired >=
+          props.bundleWithStatus.bundle.items.length
+      )
+    ) {
+      let completedItems = props.bundleWithStatus.bundleStatus.reduce(
+        (acc, cur) => {
+          if (cur) {
+            return acc + 1;
+          }
+          return acc;
+        },
+        0,
+      );
+      let requiredCount = props.bundleWithStatus.bundle.itemsRequired;
+      if (props.bundleWithStatus.bundle.itemsRequired === -1) {
+        requiredCount = props.bundleWithStatus.bundle.items.length;
+      }
+      let remaining = requiredCount - completedItems;
+      remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
     }
-    let remaining = requiredCount - completedItems;
-    remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
   }
 
   const completeName =
