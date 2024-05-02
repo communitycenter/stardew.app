@@ -41,9 +41,9 @@ export const LoginDialog = ({ open, setOpen }: Props) => {
               <div className="grid gap-1.5 leading-none">
                 <label
                   htmlFor="ccdiscord"
-                  className="text-sm font-medium leading-none text-black peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm font-medium leading-none text-black peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-white"
                 >
-                  Auto-join the Community Center Discord
+                  Join the Community Center Discord
                 </label>
                 <p className="text-muted-foreground text-sm">
                   We occasionally post updates, information and more in our
