@@ -2,16 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { parseSaveFile } from "@/lib/file";
-import { ChangeEvent, useRef } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 import { toast } from "sonner";
 
 import { usePlayers } from "@/contexts/players-context";
 
+import { LoginDialog } from "@/components/dialogs/login-dialog";
 import Link from "next/link";
 
 export default function Home() {
   const { uploadPlayers } = usePlayers();
+  const [loginOpen, setLoginOpen] = useState(false);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -52,6 +54,7 @@ export default function Home() {
     };
     reader.readAsText(file);
   };
+
   return (
     <>
       <Head>
@@ -72,7 +75,7 @@ export default function Home() {
           <div className="mb-4 flex items-center gap-2">
             <Image
               src="/favicon.png"
-              alt="Log in with Discord"
+              alt="stardew.app logo"
               className="rounded-sm"
               width={64}
               height={64}
@@ -90,23 +93,26 @@ export default function Home() {
         </main>
         <footer className="w-full p-2">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <Link href="/api/oauth" data-umami-event="Log in (from home page)">
-              <div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
-                <Image
-                  src="/discord.png"
-                  alt="Log in with Discord"
-                  className="rounded-sm"
-                  width={48}
-                  height={48}
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-medium">Log in with Discord</p>
-                  <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-                    Link your Discord account to save your data across devices.
-                  </p>
-                </div>
+            <div
+              onClick={() => {
+                setLoginOpen(true);
+              }}
+              className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
+            >
+              <Image
+                src="/discord.png"
+                alt="Log in with Discord"
+                className="rounded-sm"
+                width={48}
+                height={48}
+              />
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-medium">Log in with Discord</p>
+                <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+                  Link your Discord account to save your data across devices.
+                </p>
               </div>
-            </Link>
+            </div>
 
             <div
               className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
@@ -176,6 +182,7 @@ export default function Home() {
           </div>
         </footer>
       </main>
+      <LoginDialog open={loginOpen} setOpen={setLoginOpen} />
     </>
   );
 }
