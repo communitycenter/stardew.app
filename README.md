@@ -77,17 +77,17 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/brandonsaldan">
-            <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
-            <br />
-            <sub><b>Brandon Saldan</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/Esummins">
             <img src="https://avatars.githubusercontent.com/u/8581801?v=4" width="100;" alt="Esummins"/>
             <br />
             <sub><b>Eric Summins</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/brandonsaldan">
+            <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
+            <br />
+            <sub><b>Brandon Saldan</b></sub>
         </a>
     </td></tr>
 <tr>
