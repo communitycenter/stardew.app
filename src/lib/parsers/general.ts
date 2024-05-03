@@ -165,6 +165,23 @@ function parseJoja(player: any): JojaMembership {
   }
 }
 
+/* ------------------------------ achievement parser -------------------------------- */
+type Achievements = String[];
+
+function parseAchievements(player: any): Achievements {
+  try {
+    let achievementsCompleted: string[] = [];
+    if (player.achievements == "") return [];
+    for (const a of player.achievements.int) {
+      achievementsCompleted.push(a);
+    }
+
+    return achievementsCompleted;
+  } catch (error) {
+    throw error;
+  }
+}
+
 /* ----------------------------- general parser ----------------------------- */
 const farmTypes = [
   "Standard",
@@ -188,6 +205,7 @@ export interface GeneralRet {
   experience?: Experience;
   gameVersion?: string;
   jojaMembership?: JojaMembership;
+  achievements?: Achievements;
 }
 
 export function parseGeneral(
@@ -219,6 +237,7 @@ export function parseGeneral(
     const stardrops = parseStardrops(player);
     const experience = parseExperience(player);
     const jojaMembership = parseJoja(player);
+    const achievements = parseAchievements(player);
 
     return {
       name,
@@ -231,6 +250,7 @@ export function parseGeneral(
       experience,
       gameVersion,
       jojaMembership,
+      achievements,
     };
   } catch (e) {
     if (e instanceof Error)
