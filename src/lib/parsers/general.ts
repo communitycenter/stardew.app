@@ -166,11 +166,11 @@ function parseJoja(player: any): JojaMembership {
 }
 
 /* ------------------------------ achievement parser -------------------------------- */
-type Achievements = String[];
+type Achievements = Number[];
 
 function parseAchievements(player: any): Achievements {
   try {
-    let achievementsCompleted: string[] = [];
+    let achievementsCompleted: Number[] = [];
     if (player.achievements == "") return [];
     for (const a of player.achievements.int) {
       achievementsCompleted.push(a);

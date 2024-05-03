@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Achievement } from "@/types/items";
 
 import { cn } from "@/lib/utils";
+import { usePlayers } from "@/contexts/players-context";
 
 interface Props {
   achievement: Achievement;
@@ -24,6 +25,14 @@ export const AchievementCard = ({
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 dark:bg-green-500/10"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950";
+
+  const { activePlayer } = usePlayers();
+  if (
+    activePlayer?.general?.achievements &&
+    activePlayer.general.achievements.includes(achievement.id)
+  ) {
+    completed = true;
+  }
 
   return (
     <div
