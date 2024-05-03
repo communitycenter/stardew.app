@@ -7,11 +7,17 @@ function msToTime(time: number): string {
   return `${hrs}h ${mins}m`;
 }
 /* ---------------------------- stardrops parser ---------------------------- */
-interface StardropsRet {
-  stardrops: string[];
-}
+type Stardrops = Stardrop[];
 
-const STARDROPS = new Set<string>([
+type Stardrop =
+  | "CF_Fair"
+  | "CF_Fish"
+  | "CF_Mines"
+  | "CF_Sewer"
+  | "CF_Spouse"
+  | "CF_Statue"
+  | "museumComplete";
+const STARDROPS = new Set<Stardrop>([
   "CF_Fair",
   "CF_Fish",
   "CF_Mines",
@@ -21,17 +27,17 @@ const STARDROPS = new Set<string>([
   "museumComplete",
 ]);
 
-function parseStardrops(player: any): StardropsRet {
+function parseStardrops(player: any): Stardrops {
   /*
     Achievements Relevant:
       - Mystery Of The Stardrops (find every stardrop).
   */
   try {
-    let stardrops: string[] = [];
+    let stardrops: Stardrop[] = [];
 
     // look through the player's mail for the stardrops
     if (!player.mailReceived || typeof player.mailReceived === "undefined") {
-      return { stardrops };
+      return stardrops;
     }
 
     if (Array.isArray(player.mailReceived.string)) {
@@ -41,7 +47,7 @@ function parseStardrops(player: any): StardropsRet {
         if (STARDROPS.has(mail)) stardrops.push(mail);
 
         // early return if all stardrops are found
-        if (stardrops.length === STARDROPS.size) return { stardrops };
+        if (stardrops.length === STARDROPS.size) return stardrops;
       }
     } else {
       // only one mail received
@@ -49,7 +55,7 @@ function parseStardrops(player: any): StardropsRet {
         stardrops.push(player.mailReceived.string);
     }
 
-    return { stardrops };
+    return stardrops;
   } catch (error) {
     throw error;
   }
@@ -57,11 +63,9 @@ function parseStardrops(player: any): StardropsRet {
 
 /* ------------------------------ skills parser ----------------------------- */
 type Skill = "farming" | "fishing" | "foraging" | "mining" | "combat" | "luck";
-interface SkillsRet {
-  skills: Record<Skill, number>;
-}
+type Skills = Record<Skill, number>;
 
-function parseSkills(player: any): SkillsRet {
+function parseSkills(player: any): Skills {
   /*
     Achievements Relevant:
       - Singular Talent (level 10 in at least one skill).
@@ -87,18 +91,16 @@ function parseSkills(player: any): SkillsRet {
       luck: player.luckLevel, // unused as of 1.5
     };
 
-    return { skills };
+    return skills;
   } catch (error) {
     throw error;
   }
 }
 
 /* ---------------------------- experience parser ---------------------------- */
-interface ExperienceRet {
-  experience: Record<Skill, number>;
-}
+type Experience = Record<Skill, number>;
 
-function parseExperience(player: any): ExperienceRet {
+function parseExperience(player: any): Experience {
   // experiencePoints are stored as an array of 6 numbers, but not actually marked
   // in order of farming, fishing, foraging, mining, combat, luck
   // luck is unused but we'll still parse and return it for completeness
@@ -114,7 +116,53 @@ function parseExperience(player: any): ExperienceRet {
     luck: experiencePointsArray[5],
   };
 
-  return { experience };
+  return experience;
+}
+
+/* ------------------------------ joja parser -------------------------------- */
+type JojaMail =
+  | "jojaCraftsRoom"
+  | "jojaBoilerRoom"
+  | "jojaVault"
+  | "jojaPantry"
+  | "jojaFishTank"
+  | "ccMovieTheaterJoja";
+const JOJAMAIL = new Set<JojaMail>([
+  "jojaCraftsRoom",
+  "jojaBoilerRoom",
+  "jojaVault",
+  "jojaPantry",
+  "jojaFishTank",
+  "ccMovieTheaterJoja",
+]);
+
+interface JojaMembership {
+  isMember: boolean;
+  developmentProjects: JojaMail[];
+}
+
+function parseJoja(player: any): JojaMembership {
+  /*
+    Achievements Relevant:
+      - Joja Co. Member Of The Year (Purchase all Joja Community Development projects).
+  */
+  let isMember = false;
+  try {
+    let developmentProjectsCompleted: JojaMail[] = [];
+    for (const mail of player.mailReceived.string) {
+      if (JOJAMAIL.has(mail)) {
+        developmentProjectsCompleted.push(mail as JojaMail);
+      }
+      if (mail === "JojaMember") isMember = true;
+    }
+
+    return {
+      isMember: isMember,
+      developmentProjects: developmentProjectsCompleted,
+    };
+  } catch (error) {
+    throw error;
+  }
 }
 
 /* ----------------------------- general parser ----------------------------- */
@@ -134,17 +182,18 @@ export interface GeneralRet {
   timePlayed?: string;
   farmInfo?: string;
   totalMoneyEarned?: number;
-  skills?: Record<Skill, number>;
+  skills?: Skills;
   questsCompleted?: number;
-  stardrops?: string[];
-  experience?: Record<Skill, number>;
+  stardrops?: Stardrops;
+  experience?: Experience;
   gameVersion?: string;
+  jojaMembership?: JojaMembership;
 }
 
 export function parseGeneral(
   player: any,
   whichFarm: string,
-  gameVersion: string
+  gameVersion: string,
 ): GeneralRet {
   try {
     const playerFormatUpdated = isPlayerFormatUpdated(player);
@@ -166,9 +215,10 @@ export function parseGeneral(
       farmTypes[farmIdx % farmTypes.length]
     })`;
 
-    const { skills } = parseSkills(player);
-    const { stardrops } = parseStardrops(player);
-    const { experience } = parseExperience(player);
+    const skills = parseSkills(player);
+    const stardrops = parseStardrops(player);
+    const experience = parseExperience(player);
+    const jojaMembership = parseJoja(player);
 
     return {
       name,
@@ -180,6 +230,7 @@ export function parseGeneral(
       stardrops,
       experience,
       gameVersion,
+      jojaMembership,
     };
   } catch (e) {
     if (e instanceof Error)
