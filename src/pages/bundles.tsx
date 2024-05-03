@@ -462,6 +462,19 @@ export default function Bundles() {
       }
     }
 
+    if (activePlayer?.general?.jojaMembership?.isMember) {
+      if (name === "Joja Co. Member Of The Year") {
+        let completedCount =
+          activePlayer?.general?.jojaMembership?.developmentProjects?.length;
+        completed = completedCount >= 5;
+        if (!completed) {
+          additionalDescription = ` - ${
+            5 - completedCount
+          } more Joja Community Development projects needed`;
+        }
+      }
+    }
+
     return { completed, additionalDescription };
   };
 
@@ -496,7 +509,7 @@ export default function Bundles() {
           </h1>
           <AccordionSection title="Achievements" key="Achievements">
             {Object.values(achievements)
-              .filter((a) => a.description.includes("Community Center"))
+              .filter((a) => a.description.includes("Community"))
               .map((achievement) => {
                 const { completed, additionalDescription } =
                   getAchievementProgress(achievement.name);
