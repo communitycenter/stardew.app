@@ -220,6 +220,11 @@ export const BooleanCard = ({
               width={32}
               height={32}
               quality={(item as BundleItemWithLocation)?.itemQuality}
+              quantity={
+                (item as BundleItemWithLocation)?.itemID == "-1"
+                  ? undefined // Don't show number for gold
+                  : (item as BundleItemWithLocation)?.itemQuantity?.toString()
+              }
             />
             <div className="min-w-0 flex-1">
               <p className="truncate font-medium">

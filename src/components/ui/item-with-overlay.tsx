@@ -43,7 +43,13 @@ export default function ItemWithOverlay({
   let number = null;
   if (quantity && parseInt(quantity) > 1) {
     number = (
-      <div className="absolute bottom-0 right-0 rounded-tl-md bg-transparent px-1 text-xs font-bold">
+      <div
+        className="absolute bottom-[-.5rem] right-[-.3rem] overflow-visible bg-transparent font-['3x5'] text-[0.45rem]"
+        style={{
+          "text-shadow":
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
         {quantity}
       </div>
     );
