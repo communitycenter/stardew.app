@@ -7,7 +7,7 @@ import { usePlayers } from "@/contexts/players-context";
 import { BundleItemWithLocation } from "@/types/bundles";
 import { BooleanCard } from "./boolean-card";
 
-interface Props {
+interface BundleItemCardProps {
   item: BundleItemWithLocation;
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -16,14 +16,14 @@ interface Props {
    * Whether the user prefers to see new content
    *
    * @type {boolean}
-   * @memberof Props
+   * @memberof BundleItemCardProps
    */
   show: boolean;
   /**
    * The handler to display the new content confirmation prompt
    *
    * @type {Dispatch<SetStateAction<boolean>>}
-   * @memberof Props
+   * @memberof BundleItemCardProps
    */
   setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
@@ -35,7 +35,7 @@ export const BundleItemCard = ({
   setIsOpen,
   setObject,
   setPromptOpen,
-}: Props) => {
+}: BundleItemCardProps) => {
   const { activePlayer, patchPlayer } = usePlayers();
   // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
   // let dataSource = objects;

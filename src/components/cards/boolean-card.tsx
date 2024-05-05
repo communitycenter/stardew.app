@@ -1,8 +1,6 @@
-import Image from "next/image";
-
 import objects from "@/data/objects.json";
 
-import type { FishType, MuseumItem } from "@/types/items";
+import type { ItemData, MuseumItem } from "@/types/items";
 
 import { Dispatch, SetStateAction } from "react";
 
@@ -16,12 +14,12 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
-import { BundleItemWithLocation, ItemQuality } from "@/types/bundles";
+import { ItemQuality } from "@/types/bundles";
 import { IconChevronRight } from "@tabler/icons-react";
 import ItemWithOverlay from "../ui/item-with-overlay";
 
 interface BooleanCardProps {
-  item: FishType | MuseumItem | BundleItemWithLocation;
+  item: ItemData | MuseumItem;
   overrides: {
     name?: string;
     description?: string;

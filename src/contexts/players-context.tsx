@@ -23,8 +23,8 @@ import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { PowersRet } from "@/lib/parsers/powers";
-import { BundleWithStatus } from "@/types/bundles";
-import { DeepPartial } from "react-hook-form";
+import type { BundleWithStatus } from "@/types/bundles";
+import type { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
   _id: string;
@@ -53,7 +53,7 @@ interface PlayersContextProps {
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
-  // @ts-expect-error
+  // @ts-expect-error - default values replaced in PlayersProvider
   uploadPlayers: () => {},
   patchPlayer: () => Promise.resolve(),
   setActivePlayer: () => {},
@@ -173,7 +173,7 @@ export function mergeDeep(target: any, ...sources: any[]): any {
 }
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-  const api = useSWR<PlayerType[]>("/api/saves", (...args) =>
+  const api = useSWR<PlayerType[]>("/api/saves", (...args: any[]) =>
     // @ts-expect-error
     fetch(...args).then((res) => res.json()),
   );
@@ -212,8 +212,8 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
           const normalizedPatch = normalizePatch(patch, activePlayer);
-          console.log("Normalizing patch:");
-          console.dir(normalizedPatch);
+          // console.log("Normalizing patch:");
+          // console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
             method: "PATCH",
             body: JSON.stringify(normalizedPatch),
@@ -248,7 +248,7 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
     setActivePlayerId(player._id);
 
     if (typeof window !== "undefined") {
-      console.log(`Setting player_id to '${player._id}'`);
+      // console.log(`Setting player_id to '${player._id}'`);
       window.localStorage.setItem("player_id", player._id);
     }
   }, []);

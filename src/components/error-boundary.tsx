@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    logErrorToMyService(error, info.componentStack);
+    logError(error, info.componentStack);
   }
 
   render() {
@@ -63,9 +63,9 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-function logErrorToMyService(error: Error, componentStack: string) {
-  // Implement error logging logic
-  console.error("Error logged:", error, componentStack);
+function logError(error: Error, componentStack: string) {
+  // TODO: Implement error logging
+  console.error("Error encountered:", error, componentStack);
 }
 
 export default ErrorBoundary;
