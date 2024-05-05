@@ -2,8 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Player, conn, getUID } from ".";
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
-  // console.log("Patching...");
-  // console.log(req.body);
   const playerId = req.query.playerId as string | undefined;
   if (!playerId) return res.status(400).end();
 
@@ -52,7 +50,6 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
     );
     res.status(200).end();
   } catch (e) {
-    // console.log(e);
     res.status(500).end();
   }
 }
