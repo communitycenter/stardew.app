@@ -26,6 +26,11 @@ export default function ItemWithOverlay({
   quality,
   quantity,
 }: ItemWithOverlayProps) {
+  const targetWidth = width ? width : 32;
+  const targetHeight = height ? height : 32;
+  const starSize = Math.min(targetWidth, targetHeight) / 2;
+  const bottomPull = starSize / 2;
+  const rightPull = bottomPull / 2;
   let star = null;
   if (quality && parseInt(quality) > 0) {
     star = (
@@ -35,8 +40,8 @@ export default function ItemWithOverlay({
         className={
           className ? "absolute bottom-0 left-0 rounded-sm" : className
         }
-        width={16}
-        height={16}
+        width={starSize}
+        height={starSize}
       />
     );
   }
@@ -44,9 +49,12 @@ export default function ItemWithOverlay({
   if (quantity && parseInt(quantity) > 1) {
     number = (
       <div
-        className="absolute bottom-[-.5rem] right-[-.3rem] overflow-visible bg-transparent font-['3x5'] text-[0.45rem]"
+        className={`absolute overflow-visible bg-transparent font-['3x5']`}
         style={{
-          "text-shadow":
+          bottom: `-${bottomPull}px`,
+          right: `-${rightPull}px`,
+          fontSize: `${bottomPull}px`,
+          textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
         }}
       >
@@ -60,8 +68,8 @@ export default function ItemWithOverlay({
         src={src}
         alt={alt}
         className={className ? "rounded-sm" : className}
-        width={width ? width : 32}
-        height={height ? height : 32}
+        width={targetWidth}
+        height={targetHeight}
       />
       {star}
       {number}
