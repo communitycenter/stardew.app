@@ -37,6 +37,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { useEffect, useState } from "react";
+import { BundleItemCard } from "@/components/cards/bundle-item-card";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -572,13 +573,12 @@ export default function Bundles() {
                                 bundleID: bundleWithStatus.bundle.name,
                               };
                             return (
-                              <BooleanCard
+                              <BundleItemCard
                                 key={item.itemID + "-" + index}
                                 item={BundleItemWithLocation}
                                 setIsOpen={setIsOpen}
                                 completed={bundleWithStatus.bundleStatus[index]}
                                 setObject={setObject}
-                                type="bundleItem"
                                 show={show}
                               />
                             );

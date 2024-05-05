@@ -60,8 +60,8 @@ export const PlayersContext = createContext<PlayersContextProps>({
 });
 
 /**
- * Normalizes a patch object against a target object to ensure all nested objects and arrays are merged correctly.
- * This function converts any array keys into dereferenced arrays because json_merge_patch does not recurse into arrays.
+ * Normalizes a patch object against a target object to ensure all nested objects and arrays will persist to the DB correctly.
+ * This function ensures anything in or under an array is included in the patch because json_merge_patch does not recurse into arrays.
  * @param patch The changes to apply to the target.
  * @param target The original object that the patch will modify.
  * @param inArray A flag indicating if the current process is within an array.

@@ -14,7 +14,7 @@ export type ItemWithOverlayProps = {
   width?: number;
   height?: number;
   quality?: ItemQuality;
-  quantity?: string;
+  quantity?: number;
 };
 
 export default function ItemWithOverlay({
@@ -46,7 +46,7 @@ export default function ItemWithOverlay({
     );
   }
   let number = null;
-  if (quantity && parseInt(quantity) > 1) {
+  if (quantity && quantity > 1) {
     number = (
       <div
         className={`absolute overflow-visible bg-transparent font-['3x5']`}
