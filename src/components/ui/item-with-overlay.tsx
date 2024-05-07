@@ -49,7 +49,7 @@ export default function ItemWithOverlay({
   if (quantity && quantity > 1) {
     number = (
       <div
-        className={`absolute overflow-visible bg-transparent font-['3x5']`}
+        className={`absolute overflow-visible bg-transparent font-['3x5'] text-white`}
         style={{
           bottom: `-${bottomPull}px`,
           right: `-${rightPull}px`,
