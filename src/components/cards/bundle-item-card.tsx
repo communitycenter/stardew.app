@@ -64,10 +64,10 @@ export const BundleItemCard = ({
   };
 
   const goldIcons: Record<string, string> = {
-    "2500": "https://cdn.stardew.app/images/(BU)2500_Bundle.png",
-    "5000": "https://cdn.stardew.app/images/(BU)5000_Bundle.png",
-    "10000": "https://cdn.stardew.app/images/(BU)10000_Bundle.png",
-    "25000": "https://cdn.stardew.app/images/(BU)25000_Bundle.png",
+    "2500": "https://cdn.stardew.app/images/(MISC)2500_Bundle.webp",
+    "5000": "https://cdn.stardew.app/images/(MISC)5000_Bundle.webp",
+    "10000": "https://cdn.stardew.app/images/(MISC)10000_Bundle.webp",
+    "25000": "https://cdn.stardew.app/images/(MISC)25000_Bundle.webp",
   };
 
   if (item.itemID == "-1") {
