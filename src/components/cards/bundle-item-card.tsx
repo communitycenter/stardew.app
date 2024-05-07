@@ -29,10 +29,10 @@ interface BundleItemCardProps {
 }
 
 export const categoryIcons: Record<string, string> = {
-  "-4": "https://cdn.stardew.app/images/(O)131.webp",
-  "-5": "https://cdn.stardew.app/images/(O)174.webp",
-  "-6": "https://cdn.stardew.app/images/(O)184.webp",
-  "-777": "https://cdn.stardew.app/images/(O)495.webp",
+  "-4": "https://cdn.stardew.app/images/(C)131.webp",
+  "-5": "https://cdn.stardew.app/images/(C)174.webp",
+  "-6": "https://cdn.stardew.app/images/(C)184.webp",
+  "-777": "https://cdn.stardew.app/images/(C)495.webp",
 };
 
 export const BundleItemCard = ({
@@ -64,14 +64,10 @@ export const BundleItemCard = ({
   };
 
   const goldIcons: Record<string, string> = {
-    "2500":
-      "https://stardewvalleywiki.com/mediawiki/images/e/e2/2500_Bundle.png",
-    "5000":
-      "https://stardewvalleywiki.com/mediawiki/images/1/17/5000_Bundle.png",
-    "10000":
-      "https://stardewvalleywiki.com/mediawiki/images/1/11/10000_Bundle.png",
-    "25000":
-      "https://stardewvalleywiki.com/mediawiki/images/a/a7/25000_Bundle.png",
+    "2500": "https://cdn.stardew.app/images/(BU)2500_Bundle.png",
+    "5000": "https://cdn.stardew.app/images/(BU)5000_Bundle.png",
+    "10000": "https://cdn.stardew.app/images/(BU)10000_Bundle.png",
+    "25000": "https://cdn.stardew.app/images/(BU)25000_Bundle.png",
   };
 
   if (item.itemID == "-1") {
