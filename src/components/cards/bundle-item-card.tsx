@@ -29,10 +29,10 @@ interface BundleItemCardProps {
 }
 
 export const categoryIcons: Record<string, string> = {
-  "-4": "https://cdn.stardew.app/images/(O)131.webp",
-  "-5": "https://cdn.stardew.app/images/(O)174.webp",
-  "-6": "https://cdn.stardew.app/images/(O)184.webp",
-  "-777": "https://cdn.stardew.app/images/(O)495.webp",
+  "-4": "https://cdn.stardew.app/images/(C)131.webp",
+  "-5": "https://cdn.stardew.app/images/(C)174.webp",
+  "-6": "https://cdn.stardew.app/images/(C)184.webp",
+  "-777": "https://cdn.stardew.app/images/(C)495.webp",
 };
 
 export const BundleItemCard = ({

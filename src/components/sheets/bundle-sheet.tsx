@@ -22,6 +22,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { IconExternalLink } from "@tabler/icons-react";
+import { categoryIcons } from "../cards/bundle-item-card";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -37,7 +38,6 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
-import { categoryIcons } from "../cards/bundle-item-card";
 
 const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
@@ -216,6 +216,7 @@ export default function BundleSheet({
     DescriptionComponent = SheetDescription;
   } else {
     MainComponent = Drawer;
+    // eslint-disable-next-line react/display-name
     ContentComponent = (props: any) => (
       <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
         <ScrollArea className="overflow-auto">{props.children}</ScrollArea>
