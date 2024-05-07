@@ -1214,7 +1214,7 @@
       "items": [
         {
           "itemID": "-1",
-          "itemQuantity": 1,
+          "itemQuantity": 2500,
           "itemQuality": "0"
         }
       ],
@@ -1230,7 +1230,7 @@
       "items": [
         {
           "itemID": "-1",
-          "itemQuantity": 1,
+          "itemQuantity": 5000,
           "itemQuality": "0"
         }
       ],
@@ -1246,7 +1246,7 @@
       "items": [
         {
           "itemID": "-1",
-          "itemQuantity": 1,
+          "itemQuantity": 10000,
           "itemQuality": "0"
         }
       ],
@@ -1262,7 +1262,7 @@
       "items": [
         {
           "itemID": "-1",
-          "itemQuantity": 1,
+          "itemQuantity": 25000,
           "itemQuality": "0"
         }
       ],
