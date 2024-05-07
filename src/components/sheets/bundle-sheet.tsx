@@ -21,6 +21,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { categoryIcons, goldIcons } from "@/lib/constants";
 import { IconExternalLink } from "@tabler/icons-react";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
@@ -37,7 +38,6 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
-import { categoryIcons, goldIcons } from "@/lib/constants";
 
 const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
@@ -114,6 +114,7 @@ export default function BundleSheet({
   let iconURL: string;
   let name: string;
   let description: string | null;
+  let unknownItem: boolean = false;
 
   if (
     bundleItemWithLocation &&
@@ -130,21 +131,33 @@ export default function BundleSheet({
     iconURL = goldIcons[bundleItemWithLocation.itemQuantity.toString()];
     name = "Gold";
     description = "What do the Junimos need all this gold for?";
+  } else if (
+    bundleItemWithLocation &&
+    !objects[bundleItemWithLocation.itemID as keyof typeof objects]
+  ) {
+    iconURL = `https://cdn.stardew.app/images/(O)MysteryBox.webp`;
+    name = "Unknown Object";
+    description = "We don't know what this is...";
+    unknownItem = true;
   } else {
     iconURL =
       (bundleItemWithLocation &&
+        bundleItemWithLocation !== undefined &&
         `https://cdn.stardew.app/images/(O)${bundleItemWithLocation.itemID}.webp`) ||
       "";
 
     name =
       (bundleItemWithLocation &&
+        bundleItemWithLocation !== undefined &&
         objects[bundleItemWithLocation.itemID as keyof typeof objects].name) ||
       "";
 
     description =
-      bundleItemWithLocation &&
-      objects[bundleItemWithLocation.itemID as keyof typeof objects]
-        .description;
+      (bundleItemWithLocation &&
+        bundleItemWithLocation !== undefined &&
+        objects[bundleItemWithLocation.itemID as keyof typeof objects]
+          .description) ||
+      "";
   }
 
   async function handleStatusChange(status: number) {
@@ -294,7 +307,7 @@ export default function BundleSheet({
                   />
                 )}
                 {!activePlayer && <CreatePlayerRedirect />}
-                {name && (
+                {name && !unknownItem && (
                   <Button
                     variant="outline"
                     data-umami-event="Visit wiki"
