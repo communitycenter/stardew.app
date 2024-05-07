@@ -215,7 +215,7 @@ export function Sidebar({ className }: SidebarProps) {
           ))}
         </div>
 
-        <SidebarCategory>Site</SidebarCategory>
+        <SidebarCategory>Misc</SidebarCategory>
         <div className="space-y-1">
           {siteNavigation.map((item) => (
             <Button
