@@ -37,7 +37,6 @@ import {
 } from "@/components/ui/context-menu";
 import { useEffect, useState } from "react";
 import { BundleItemCard } from "@/components/cards/bundle-item-card";
-import { twMerge } from "tailwind-merge";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -128,7 +127,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
         className={
-          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
+          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
           additionalClasses
         }
       >
