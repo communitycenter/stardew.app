@@ -125,15 +125,15 @@ export const BooleanCard = ({
   }
 
   let checkedClass = completed
-    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-    : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
+    ? " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+    : " border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
 
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
         <button
           className={
-            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50 " +
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
             checkedClass
           }
           onClick={() => {
@@ -148,8 +148,8 @@ export const BooleanCard = ({
           {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
           <div
             className={
-              "flex items-center space-x-3 truncate text-left " +
-              (minVersion === "1.6.0" && !show && !completed && "blur-sm")
+              "flex items-center space-x-3 truncate text-left" +
+              (minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
             }
           >
             <ItemWithOverlay

@@ -1575,12 +1575,12 @@
           "name": "Home Cook's",
           "items": [
             {
-              "itemID": "176",
+              "itemID": "-5",
               "itemQuantity": 10,
               "itemQuality": "0"
             },
             {
-              "itemID": "184",
+              "itemID": "-6",
               "itemQuantity": 10,
               "itemQuality": "0"
             },

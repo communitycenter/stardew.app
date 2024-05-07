@@ -101,8 +101,6 @@ export default function BundleSheet({
   setIsOpen,
   bundleItemWithLocation,
 }: Props) {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
-
   const { activePlayer, patchPlayer } = usePlayers();
 
   const [bundles, completed] = useMemo(() => {
@@ -211,170 +209,114 @@ export default function BundleSheet({
     setIsOpen(false);
   }
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  let MainComponent;
+  let ContentComponent;
+  let HeaderComponent;
+  let TitleComponent;
+  let DescriptionComponent;
   if (isDesktop) {
-    return (
-      <Sheet open={open} onOpenChange={setIsOpen}>
-        <SheetContent>
-          <SheetHeader className="mt-4">
-            <div className="flex justify-center">
-              <Image
-                src={iconURL ? iconURL : ""}
-                alt={name ? name : "No Info"}
-                height={64}
-                width={64}
-              />
-            </div>
-            <SheetTitle className="text-center">
-              {name ? name : "No Info"}
-            </SheetTitle>
-            <SheetDescription className="text-center italic">
-              {description ? description : "No Description Found"}
-            </SheetDescription>
-          </SheetHeader>
-          {bundleItemWithLocation && (
-            <div className="mt-4 space-y-6">
-              <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-2">
-                  {completed ? (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || !completed}
-                      data-umami-event="Set incompleted"
-                      onClick={() => {
-                        handleStatusChange(0);
-                      }}
-                    >
-                      Set Incomplete
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || completed}
-                      data-umami-event="Set completed"
-                      onClick={() => {
-                        handleStatusChange(2);
-                      }}
-                    >
-                      Set Completed
-                    </Button>
-                  )}
-                  {(
-                    bundleItemWithLocation as BundleItem as BundleItemWithOptions
-                  ).options && (
-                    <BundleItemOptionDropdown
-                      options={
-                        (
-                          bundleItemWithLocation as BundleItem as BundleItemWithOptions
-                        ).options
-                      }
-                      disabled={!activePlayer}
-                      handleItemChange={handleItemChange}
-                    />
-                  )}
-                  {!activePlayer && <CreatePlayerRedirect />}
-                  {name && (
-                    <Button
-                      variant="outline"
-                      data-umami-event="Visit wiki"
-                      asChild
-                    >
-                      <a
-                        className="flex items-center"
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://stardewvalleywiki.com/${name.replaceAll(
-                          " ",
-                          "_",
-                        )}`}
-                      >
-                        Visit Wiki Page
-                        <IconExternalLink className="h-4"></IconExternalLink>
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </section>
-            </div>
-          )}
-        </SheetContent>
-      </Sheet>
+    MainComponent = Sheet;
+    ContentComponent = SheetContent;
+    HeaderComponent = SheetHeader;
+    TitleComponent = SheetTitle;
+    DescriptionComponent = SheetDescription;
+  } else {
+    MainComponent = Drawer;
+    ContentComponent = (props: any) => (
+      <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
+        <ScrollArea className="overflow-auto">{props.children}</ScrollArea>
+      </DrawerContent>
     );
+    HeaderComponent = DrawerHeader;
+    TitleComponent = DrawerTitle;
+    DescriptionComponent = DrawerDescription;
   }
 
   return (
-    <Drawer open={open} onOpenChange={setIsOpen}>
-      <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
-        <ScrollArea className="overflow-auto">
-          <DrawerHeader className="-mb-4 mt-4">
-            <div className="flex justify-center">
-              <Image
-                src={iconURL ? iconURL : ""}
-                alt={name ? name : "No Info"}
-                height={64}
-                width={64}
-              />
-            </div>
-            <DrawerTitle className="text-center">
-              {name ? name : "No Info"}
-            </DrawerTitle>
-            <DrawerDescription className="text-center italic">
-              {description ? description : "No Description Found"}
-            </DrawerDescription>
-          </DrawerHeader>
-          {bundleItemWithLocation && (
-            <div className="space-y-6 p-6">
-              <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-2">
-                  {completed ? (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || !completed}
-                      data-umami-event="Set incompleted"
-                      onClick={() => {
-                        handleStatusChange(0);
-                      }}
+    <MainComponent open={open} onOpenChange={setIsOpen}>
+      <ContentComponent>
+        <HeaderComponent className={isDesktop ? "mt-4" : "-mb-4 mt-4"}>
+          <div className="flex justify-center">
+            <Image
+              src={iconURL ? iconURL : ""}
+              alt={name ? name : "No Info"}
+              height={64}
+              width={64}
+            />
+          </div>
+          <TitleComponent className="text-center">
+            {name ? name : "No Info"}
+          </TitleComponent>
+          <DescriptionComponent className="text-center italic">
+            {description ? description : "No Description Found"}
+          </DescriptionComponent>
+        </HeaderComponent>
+        {bundleItemWithLocation && (
+          <div className={"space-y-6 " + isDesktop ? "mt-4" : "p-6"}>
+            <section className="space-y-2">
+              <div className="grid grid-cols-1 gap-2">
+                {completed ? (
+                  <Button
+                    variant="secondary"
+                    disabled={!activePlayer || !completed}
+                    data-umami-event="Set incompleted"
+                    onClick={() => {
+                      handleStatusChange(0);
+                    }}
+                  >
+                    Set Incomplete
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    disabled={!activePlayer || completed}
+                    data-umami-event="Set completed"
+                    onClick={() => {
+                      handleStatusChange(2);
+                    }}
+                  >
+                    Set Completed
+                  </Button>
+                )}
+                {(bundleItemWithLocation as BundleItem as BundleItemWithOptions)
+                  .options && (
+                  <BundleItemOptionDropdown
+                    options={
+                      (
+                        bundleItemWithLocation as BundleItem as BundleItemWithOptions
+                      ).options
+                    }
+                    disabled={!activePlayer}
+                    handleItemChange={handleItemChange}
+                  />
+                )}
+                {!activePlayer && <CreatePlayerRedirect />}
+                {name && (
+                  <Button
+                    variant="outline"
+                    data-umami-event="Visit wiki"
+                    asChild
+                  >
+                    <a
+                      className="flex items-center"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={`https://stardewvalleywiki.com/${name.replaceAll(
+                        " ",
+                        "_",
+                      )}`}
                     >
-                      Set Incomplete
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || completed}
-                      data-umami-event="Set completed"
-                      onClick={() => {
-                        handleStatusChange(2);
-                      }}
-                    >
-                      Set Completed
-                    </Button>
-                  )}
-                  {!activePlayer && <CreatePlayerRedirect />}
-                  {name && (
-                    <Button
-                      variant="outline"
-                      data-umami-event="Visit wiki"
-                      asChild
-                    >
-                      <a
-                        className="flex items-center"
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://stardewvalleywiki.com/${name.replaceAll(
-                          " ",
-                          "_",
-                        )}`}
-                      >
-                        Visit Wiki Page
-                        <IconExternalLink className="h-4"></IconExternalLink>
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </section>
-            </div>
-          )}
-        </ScrollArea>
-      </DrawerContent>
-    </Drawer>
+                      Visit Wiki Page
+                      <IconExternalLink className="h-4"></IconExternalLink>
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </section>
+          </div>
+        )}
+      </ContentComponent>
+    </MainComponent>
   );
 }
