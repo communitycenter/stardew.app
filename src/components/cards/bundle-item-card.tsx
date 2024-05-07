@@ -49,6 +49,7 @@ export const BundleItemCard = ({
   if (item.itemQuantity) {
     itemQuantity = item.itemQuantity;
   }
+  let overrides: Record<string, string | number | boolean | undefined> = {};
 
   const categoryItems: Record<string, string> = {
     "-4": "Any Fish",
@@ -70,14 +71,27 @@ export const BundleItemCard = ({
     description = "Any item in this category will work.";
     minVersion = "1.5.0";
   } else {
-    // TODO: update this to be able to receive an object type so this component
-    // can also dispaly objects with other object type keys, like big objects (BO)
-    iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-    name = objects[item.itemID as keyof typeof objects]?.name;
-    const descriptionHold =
-      objects[item.itemID as keyof typeof objects]?.description;
-    description = descriptionHold ? descriptionHold : undefined;
-    minVersion = objects[item.itemID as keyof typeof objects]?.minVersion;
+    if (!objects[item.itemID as keyof typeof objects]) {
+      console.error(`No object data for itemID ${item.itemID}`);
+    } else {
+      // TODO: update this to be able to receive an object type so this component
+      // can also dispaly objects with other object type keys, like big objects (BO)
+      iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+      name = objects[item.itemID as keyof typeof objects]?.name;
+      const descriptionHold =
+        objects[item.itemID as keyof typeof objects]?.description;
+      description = descriptionHold ? descriptionHold : undefined;
+      minVersion = objects[item.itemID as keyof typeof objects]?.minVersion;
+      overrides = {
+        name:
+          itemQuantity && itemQuantity > 1
+            ? `${itemQuantity.toString()}x ${name}`
+            : name,
+        description: description,
+        iconURL: iconURL,
+        minVersion: minVersion,
+      };
+    }
   }
 
   async function handleStatusChange(status: number) {
@@ -121,15 +135,7 @@ export const BundleItemCard = ({
   return (
     <BooleanCard
       item={itemCopy}
-      overrides={{
-        name:
-          itemQuantity && itemQuantity > 1
-            ? `${itemQuantity.toString()}x ${name}`
-            : name,
-        description: description,
-        iconURL: iconURL,
-        minVersion: minVersion,
-      }}
+      overrides={overrides}
       quantity={
         itemCopy.itemID == "-1"
           ? undefined // Don't show number for gold

@@ -74,16 +74,25 @@ export const BooleanCard = ({
   let minVersion: string;
 
   // TODO: getObjectData(itemID, type? = "O", overrides?)
-  iconURL =
-    overrides?.iconURL ||
-    `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-  name = overrides?.name || objects[item.itemID as keyof typeof objects].name;
-  description =
-    overrides?.description ||
-    objects[item.itemID as keyof typeof objects].description;
-  minVersion =
-    overrides?.minVersion ||
-    objects[item.itemID as keyof typeof objects].minVersion;
+  if (!objects[item.itemID as keyof typeof objects]) {
+    console.error(`No object data for itemID ${item.itemID}`);
+    iconURL =
+      overrides?.iconURL || `https://cdn.stardew.app/images/(O)MysteryBox.webp`;
+    name = overrides?.name || "Unknown Object";
+    description = overrides?.description || "We don't know what this is...";
+    minVersion = overrides?.minVersion || "1.5.0";
+  } else {
+    iconURL =
+      overrides?.iconURL ||
+      `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    name = overrides?.name || objects[item.itemID as keyof typeof objects].name;
+    description =
+      overrides?.description ||
+      objects[item.itemID as keyof typeof objects].description;
+    minVersion =
+      overrides?.minVersion ||
+      objects[item.itemID as keyof typeof objects].minVersion;
+  }
 
   // TODO: Lift this out as a prop, so each page passes in their own handler.
   async function defaultHandleStatusChange(status: number) {
