@@ -17,6 +17,7 @@ import {
 import { ItemQuality } from "@/types/bundles";
 import { IconChevronRight } from "@tabler/icons-react";
 import ItemWithOverlay from "../ui/item-with-overlay";
+import clsx from "clsx";
 
 interface BooleanCardProps {
   item: ItemData | MuseumItem;
@@ -124,18 +125,16 @@ export const BooleanCard = ({
     await patchPlayer(patch);
   }
 
-  let checkedClass = completed
-    ? " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-    : " border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
-
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
         <button
-          className={
-            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
-            checkedClass
-          }
+          className={clsx(
+            "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+            completed
+              ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+              : "border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800",
+          )}
           onClick={() => {
             if (minVersion === "1.6.0" && !show && !completed) {
               setPromptOpen?.(true);
@@ -168,7 +167,12 @@ export const BooleanCard = ({
               </p>
             </div>
           </div>
-          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight
+            className={
+              "h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" +
+              (minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
+            }
+          />
         </button>
       </ContextMenuTrigger>
 
