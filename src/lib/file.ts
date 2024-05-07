@@ -44,7 +44,7 @@ export function parseSaveFile(xml: string) {
     }
 
     // make sure game version is at least 1.5.0
-    if (!semverSatisfies(version, ">=1.5.0 && <1.7")) {
+    if (!semverSatisfies(version, ">=1.5.0 <1.7")) {
       throw new Error(
         `Game version ${version} is not supported. stardew.app currently only supports the Stardew Valley 1.5 and 1.6 updates.`,
       );
