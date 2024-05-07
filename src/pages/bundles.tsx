@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/context-menu";
 import { useEffect, useState } from "react";
 import { BundleItemCard } from "@/components/cards/bundle-item-card";
+import { twMerge } from "tailwind-merge";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -118,6 +119,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
       let remaining = requiredCount - completedItems;
       remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
     }
+    additionalClasses = " border-neutral-200 dark:border-neutral-800";
   }
 
   const completeName =
