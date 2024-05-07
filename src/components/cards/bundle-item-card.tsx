@@ -7,6 +7,7 @@ import { usePlayers } from "@/contexts/players-context";
 import { BundleItemWithLocation } from "@/types/bundles";
 import { BooleanCard } from "./boolean-card";
 import { categoryIcons, goldIcons } from "@/lib/constants";
+import { unknown } from "valibot";
 
 interface BundleItemCardProps {
   item: BundleItemWithLocation;
@@ -50,6 +51,7 @@ export const BundleItemCard = ({
     itemQuantity = item.itemQuantity;
   }
   let overrides: Record<string, string | number | boolean | undefined> = {};
+  let unknownItem: Boolean = false;
 
   const categoryItems: Record<string, string> = {
     "-4": "Any Fish",
@@ -73,25 +75,28 @@ export const BundleItemCard = ({
   } else {
     if (!objects[item.itemID as keyof typeof objects]) {
       console.error(`No object data for itemID ${item.itemID}`);
-    } else {
-      // TODO: update this to be able to receive an object type so this component
-      // can also dispaly objects with other object type keys, like big objects (BO)
-      iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-      name = objects[item.itemID as keyof typeof objects]?.name;
-      const descriptionHold =
-        objects[item.itemID as keyof typeof objects]?.description;
-      description = descriptionHold ? descriptionHold : undefined;
-      minVersion = objects[item.itemID as keyof typeof objects]?.minVersion;
-      overrides = {
-        name:
-          itemQuantity && itemQuantity > 1
-            ? `${itemQuantity.toString()}x ${name}`
-            : name,
-        description: description,
-        iconURL: iconURL,
-        minVersion: minVersion,
-      };
+      unknownItem = true;
     }
+    // TODO: update this to be able to receive an object type so this component
+    // can also dispaly objects with other object type keys, like big objects (BO)
+    iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    name = objects[item.itemID as keyof typeof objects]?.name;
+    const descriptionHold =
+      objects[item.itemID as keyof typeof objects]?.description;
+    description = descriptionHold ? descriptionHold : undefined;
+    minVersion = objects[item.itemID as keyof typeof objects]?.minVersion;
+  }
+
+  if (!unknownItem) {
+    overrides = {
+      name:
+        itemQuantity && itemQuantity > 1
+          ? `${itemQuantity.toString()}x ${name}`
+          : name,
+      description: description,
+      iconURL: iconURL,
+      minVersion: minVersion,
+    };
   }
 
   async function handleStatusChange(status: number) {
