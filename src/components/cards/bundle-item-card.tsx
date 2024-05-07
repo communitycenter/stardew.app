@@ -6,6 +6,7 @@ import { usePlayers } from "@/contexts/players-context";
 
 import { BundleItemWithLocation } from "@/types/bundles";
 import { BooleanCard } from "./boolean-card";
+import { categoryIcons, goldIcons } from "@/lib/constants";
 
 interface BundleItemCardProps {
   item: BundleItemWithLocation;
@@ -28,13 +29,6 @@ interface BundleItemCardProps {
   setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const categoryIcons: Record<string, string> = {
-  "-4": "https://cdn.stardew.app/images/(C)131.webp",
-  "-5": "https://cdn.stardew.app/images/(C)174.webp",
-  "-6": "https://cdn.stardew.app/images/(C)184.webp",
-  "-777": "https://cdn.stardew.app/images/(C)495.webp",
-};
-
 export const BundleItemCard = ({
   item,
   show,
@@ -46,7 +40,7 @@ export const BundleItemCard = ({
   const { activePlayer, patchPlayer } = usePlayers();
   // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
   // let dataSource = objects;
-  let iconUrl: string;
+  let iconURL: string;
   let name: string;
   let description: string | undefined;
   let minVersion: string;
@@ -63,29 +57,22 @@ export const BundleItemCard = ({
     "-777": "Wild Seeds (Any)",
   };
 
-  const goldIcons: Record<string, string> = {
-    "2500": "https://cdn.stardew.app/images/(BU)2500_Bundle.webp",
-    "5000": "https://cdn.stardew.app/images/(BU)5000_Bundle.webp",
-    "10000": "https://cdn.stardew.app/images/(BU)10000_Bundle.webp",
-    "25000": "https://cdn.stardew.app/images/(BU)25000_Bundle.webp",
-  };
-
   if (item.itemID == "-1") {
     //Special case for handling gold in Vault bundles
-    iconUrl = goldIcons[item.itemQuantity.toString()];
+    iconURL = goldIcons[item.itemQuantity.toString()];
     itemCopy.itemQuality = "0"; // For some reason they have "gold" quality in the data
     name = "Gold";
     description = "What do the Junimos need all this gold for?";
     minVersion = "1.5.0";
   } else if (item.itemID in categoryItems) {
-    iconUrl = categoryIcons[item.itemID];
+    iconURL = categoryIcons[item.itemID];
     name = categoryItems[item.itemID];
     description = "Any item in this category will work.";
     minVersion = "1.5.0";
   } else {
     // TODO: update this to be able to receive an object type so this component
     // can also dispaly objects with other object type keys, like big objects (BO)
-    iconUrl = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
     name = objects[item.itemID as keyof typeof objects]?.name;
     const descriptionHold =
       objects[item.itemID as keyof typeof objects]?.description;
@@ -140,7 +127,7 @@ export const BundleItemCard = ({
             ? `${itemQuantity.toString()}x ${name}`
             : name,
         description: description,
-        iconUrl: iconUrl,
+        iconURL: iconURL,
         minVersion: minVersion,
       }}
       quantity={

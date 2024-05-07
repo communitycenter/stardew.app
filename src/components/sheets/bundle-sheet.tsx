@@ -38,6 +38,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
+import { goldIcons } from "@/lib/constants";
 
 const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
@@ -122,6 +123,14 @@ export default function BundleSheet({
     iconURL = categoryIcons[bundleItemWithLocation.itemID];
     name = categoryItems[bundleItemWithLocation.itemID];
     description = "Any item in this category will work.";
+  } else if (bundleItemWithLocation && bundleItemWithLocation.itemID == "-1") {
+    //Special case for handling gold in Vault bundles
+    let itemCopy = { ...bundleItemWithLocation };
+    itemCopy.itemQuality = "0"; // For some reason they have "gold" quality in the data
+    bundleItemWithLocation = itemCopy as BundleItemWithLocation;
+    iconURL = goldIcons[bundleItemWithLocation.itemQuantity.toString()];
+    name = "Gold";
+    description = "What do the Junimos need all this gold for?";
   } else {
     iconURL =
       (bundleItemWithLocation &&

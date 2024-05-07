@@ -24,7 +24,7 @@ interface BooleanCardProps {
   overrides?: {
     name?: string;
     description?: string;
-    iconUrl?: string;
+    iconURL?: string;
     minVersion?: string;
   };
   quantity?: number;
@@ -75,7 +75,7 @@ export const BooleanCard = ({
 
   // TODO: getObjectData(itemID, type? = "O", overrides?)
   iconURL =
-    overrides?.iconUrl ||
+    overrides?.iconURL ||
     `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
   name = overrides?.name || objects[item.itemID as keyof typeof objects].name;
   description =
