@@ -75,7 +75,9 @@ export const BooleanCard = ({
 
   // TODO: getObjectData(itemID, type? = "O", overrides?)
   if (!objects[item.itemID as keyof typeof objects]) {
-    console.error(`No object data for itemID ${item.itemID}`);
+    if (!overrides || Object.keys(overrides).length == 0) {
+      console.warn(`No object data for itemID ${item.itemID}`);
+    }
     iconURL =
       overrides?.iconURL || `https://cdn.stardew.app/images/(O)MysteryBox.webp`;
     name = overrides?.name || "Unknown Object";

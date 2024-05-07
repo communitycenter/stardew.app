@@ -74,7 +74,7 @@ export const BundleItemCard = ({
     minVersion = "1.5.0";
   } else {
     if (!objects[item.itemID as keyof typeof objects]) {
-      console.error(`No object data for itemID ${item.itemID}`);
+      console.warn(`No object data for itemID ${item.itemID}`);
       unknownItem = true;
     }
     // TODO: update this to be able to receive an object type so this component
