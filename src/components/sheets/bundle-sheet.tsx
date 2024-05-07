@@ -37,20 +37,13 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
+import { categoryIcons } from "../cards/bundle-item-card";
 
 const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
   "-5": "Any Egg",
   "-6": "Any Milk",
   "-777": "Wild Seeds (Any)",
-};
-
-const categoryIcons: Record<string, string> = {
-  "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
-  "-5": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
-  "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
-  "-777":
-    "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
 };
 
 interface BundleItemDropdownProps {

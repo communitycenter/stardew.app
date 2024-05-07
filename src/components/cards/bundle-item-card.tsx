@@ -28,6 +28,13 @@ interface BundleItemCardProps {
   setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
+export const categoryIcons: Record<string, string> = {
+  "-4": "https://cdn.stardew.app/images/(O)131.webp",
+  "-5": "https://cdn.stardew.app/images/(O)174.webp",
+  "-6": "https://cdn.stardew.app/images/(O)184.webp",
+  "-777": "https://cdn.stardew.app/images/(O)495.webp",
+};
+
 export const BundleItemCard = ({
   item,
   show,
@@ -54,14 +61,6 @@ export const BundleItemCard = ({
     "-5": "Any Egg",
     "-6": "Any Milk",
     "-777": "Wild Seeds (Any)",
-  };
-
-  const categoryIcons: Record<string, string> = {
-    "-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
-    "-5": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
-    "-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
-    "-777":
-      "https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
   };
 
   const goldIcons: Record<string, string> = {
