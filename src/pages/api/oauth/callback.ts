@@ -69,7 +69,8 @@ export default async function handler(
       },
     });
 
-    if (!discordUser.ok) {
+    // ban Blink18260000
+    if (!discordUser.ok || discordUser.json().id === '102307928249225216') {
       res.status(400).end();
       console.log("[OAuth] Discord user error");
       return;
