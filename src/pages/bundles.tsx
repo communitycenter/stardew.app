@@ -128,7 +128,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
         className={
-          "relative select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
+          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
           additionalClasses
         }
       >
