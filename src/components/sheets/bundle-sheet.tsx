@@ -22,7 +22,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { IconExternalLink } from "@tabler/icons-react";
-import { categoryIcons } from "../cards/bundle-item-card";
 import { CreatePlayerRedirect } from "../createPlayerRedirect";
 import {
   Drawer,
@@ -38,7 +37,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { ScrollArea } from "../ui/scroll-area";
-import { goldIcons } from "@/lib/constants";
+import { categoryIcons, goldIcons } from "@/lib/constants";
 
 const categoryItems: Record<string, string> = {
   "-4": "Any Fish",
@@ -103,7 +102,7 @@ export default function BundleSheet({
     if (!bundleItemWithLocation) return [bundles, false];
     const bundleIndex = bundles.findIndex(
       (bundleWithStatus) =>
-        bundleWithStatus.bundle.name === bundleItemWithLocation.bundleID,
+        bundleWithStatus.bundle.name === bundleItemWithLocation?.bundleID,
     );
     const completed =
       activePlayer?.bundles?.[bundleIndex]?.bundleStatus[
