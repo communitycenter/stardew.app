@@ -73,6 +73,7 @@ export const BooleanCard = ({
   let description: string | null;
   let minVersion: string;
 
+  // TODO: getObjectData(itemID, type? = "O", overrides?)
   iconURL =
     overrides?.iconUrl ||
     `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;

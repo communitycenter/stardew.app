@@ -581,6 +581,7 @@ export default function Bundles() {
                                 completed={bundleWithStatus.bundleStatus[index]}
                                 setObject={setObject}
                                 show={show}
+                                setPromptOpen={setPromptOpen}
                               />
                             );
                           },

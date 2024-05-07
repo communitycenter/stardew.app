@@ -7,7 +7,7 @@ function msToTime(time: number): string {
   return `${hrs}h ${mins}m`;
 }
 /* ---------------------------- stardrops parser ---------------------------- */
-type Stardrops = Stardrop[];
+type StardropsRet = Stardrop[];
 
 export type Stardrop =
   | "CF_Fair"
@@ -28,7 +28,7 @@ const STARDROPS = new Set<Stardrop>([
   "museumComplete",
 ]);
 
-function parseStardrops(player: any): Stardrops {
+function parseStardrops(player: any): StardropsRet {
   /*
     Achievements Relevant:
       - Mystery Of The Stardrops (find every stardrop).
@@ -64,9 +64,9 @@ function parseStardrops(player: any): Stardrops {
 
 /* ------------------------------ skills parser ----------------------------- */
 type Skill = "farming" | "fishing" | "foraging" | "mining" | "combat" | "luck";
-type Skills = Record<Skill, number>;
+type SkillsRet = Record<Skill, number>;
 
-function parseSkills(player: any): Skills {
+function parseSkills(player: any): SkillsRet {
   /*
     Achievements Relevant:
       - Singular Talent (level 10 in at least one skill).
@@ -99,9 +99,9 @@ function parseSkills(player: any): Skills {
 }
 
 /* ---------------------------- experience parser ---------------------------- */
-type Experience = Record<Skill, number>;
+type ExperienceRet = Record<Skill, number>;
 
-function parseExperience(player: any): Experience {
+function parseExperience(player: any): ExperienceRet {
   // experiencePoints are stored as an array of 6 numbers, but not actually marked
   // in order of farming, fishing, foraging, mining, combat, luck
   // luck is unused but we'll still parse and return it for completeness
@@ -137,12 +137,12 @@ const JOJAMAIL = new Set<JojaMail>([
   "ccMovieTheaterJoja",
 ]);
 
-interface JojaMembership {
+interface JojaRet {
   isMember: boolean;
   developmentProjects: JojaMail[];
 }
 
-function parseJoja(player: any): JojaMembership {
+function parseJoja(player: any): JojaRet {
   /*
     Achievements Relevant:
       - Joja Co. Member Of The Year (Purchase all Joja Community Development projects).
@@ -167,9 +167,9 @@ function parseJoja(player: any): JojaMembership {
 }
 
 /* ------------------------------ achievement parser -------------------------------- */
-type Achievements = Number[];
+type AchievementsRet = Number[];
 
-function parseAchievements(player: any): Achievements {
+function parseAchievements(player: any): AchievementsRet {
   try {
     let achievementsCompleted: Number[] = [];
     if (player.achievements == "") return [];
@@ -200,13 +200,13 @@ export interface GeneralRet {
   timePlayed?: string;
   farmInfo?: string;
   totalMoneyEarned?: number;
-  skills?: Skills;
+  skills?: SkillsRet;
   questsCompleted?: number;
-  stardrops?: Stardrops;
-  experience?: Experience;
+  stardrops?: StardropsRet;
+  experience?: ExperienceRet;
   gameVersion?: string;
-  jojaMembership?: JojaMembership;
-  achievements?: Achievements;
+  jojaMembership?: JojaRet;
+  achievements?: AchievementsRet;
 }
 
 export function parseGeneral(
