@@ -9,7 +9,7 @@ function msToTime(time: number): string {
 /* ---------------------------- stardrops parser ---------------------------- */
 type Stardrops = Stardrop[];
 
-type Stardrop =
+export type Stardrop =
   | "CF_Fair"
   | "CF_Fish"
   | "CF_Mines"
@@ -17,6 +17,7 @@ type Stardrop =
   | "CF_Spouse"
   | "CF_Statue"
   | "museumComplete";
+
 const STARDROPS = new Set<Stardrop>([
   "CF_Fair",
   "CF_Fish",

@@ -20,7 +20,7 @@ import ItemWithOverlay from "../ui/item-with-overlay";
 
 interface BooleanCardProps {
   item: ItemData | MuseumItem;
-  overrides: {
+  overrides?: {
     name?: string;
     description?: string;
     iconUrl?: string;
