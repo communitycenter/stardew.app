@@ -268,7 +268,7 @@ export default function BundleSheet({
           </DescriptionComponent>
         </HeaderComponent>
         {bundleItemWithLocation && (
-          <div className={"space-y-6 " + isDesktop ? "mt-4" : "p-6"}>
+          <div className={"space-y-6 " + (isDesktop ? "mt-4" : "p-6")}>
             <section className="space-y-2">
               <div className="grid grid-cols-1 gap-2">
                 {completed ? (
