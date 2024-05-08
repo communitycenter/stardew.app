@@ -41,8 +41,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
-      "Winter"
+      "Winter",
+      "Summer"
     ],
     "time": "6AM - 7PM",
     "trapFish": false,
@@ -74,10 +74,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6PM - 2AM",
     "trapFish": false,
@@ -93,10 +93,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 7PM",
     "trapFish": false,
@@ -236,8 +236,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
-      "Winter"
+      "Winter",
+      "Summer"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -268,8 +268,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
-      "Winter"
+      "Winter",
+      "Summer"
     ],
     "time": "6AM - 7PM",
     "trapFish": false,
@@ -335,9 +335,9 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
       "Winter",
-      "Fall"
+      "Fall",
+      "Summer"
     ],
     "time": "6AM - 7PM",
     "trapFish": false,
@@ -372,9 +372,9 @@
     "minVersion": "1.5.0",
     "seasons": [
       "Fall",
-      "Winter",
+      "Spring",
       "Summer",
-      "Spring"
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -387,15 +387,16 @@
       "Fishing Pole: freshwater",
       "Green Slimes",
       "Garbage Cans",
-      "Fish Pond"
+      "Fish Pond",
+      "Cat"
     ],
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -429,8 +430,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
       "Fall",
+      "Summer",
       "Winter (submarine)"
     ],
     "time": "6PM - 2AM",
@@ -446,10 +447,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -466,10 +467,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -484,10 +485,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -532,10 +533,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -551,10 +552,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -584,10 +585,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 8PM",
     "trapFish": false,
@@ -602,10 +603,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 8PM",
     "trapFish": false,
@@ -650,7 +651,8 @@
     "itemID": "372",
     "locations": [
       "Crab Pot: Saltwater",
-      "Foraging: The Beach"
+      "Foraging: The Beach",
+      "Turtle"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -664,10 +666,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -682,8 +684,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
-      "Winter"
+      "Winter",
+      "Summer"
     ],
     "time": "6AM - 7PM",
     "trapFish": false,
@@ -714,10 +716,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -733,8 +735,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
-      "Fall"
+      "Fall",
+      "Summer"
     ],
     "time": "6AM - 2PM",
     "trapFish": false,
@@ -750,10 +752,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -832,8 +834,8 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Summer",
       "Winter",
+      "Summer",
       "Spring"
     ],
     "time": "6AM - 11AM",
@@ -843,7 +845,9 @@
   "715": {
     "itemID": "715",
     "locations": [
-      "Crab Pot: Saltwater"
+      "Crab Pot: Saltwater",
+      "Turtle",
+      "Statue of Endless Fortune"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -851,7 +855,8 @@
   "716": {
     "itemID": "716",
     "locations": [
-      "Crab Pot: Freshwater"
+      "Crab Pot: Freshwater",
+      "Turtle"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -860,7 +865,8 @@
     "itemID": "717",
     "locations": [
       "Crab Pot: Saltwater",
-      "Monster Drops: Rock Crab \u2022 Lava Crab"
+      "Monster Drops: Rock Crab \u2022 Lava Crab",
+      "Turtle"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -869,7 +875,8 @@
     "itemID": "718",
     "locations": [
       "Crab Pot: Saltwater",
-      "Foraging: The Beach"
+      "Foraging: The Beach",
+      "Turtle"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -879,7 +886,8 @@
     "locations": [
       "Crab Pot: Saltwater",
       "Foraging: The Beach",
-      "Mussel Node"
+      "Mussel Node",
+      "Turtle"
     ],
     "minVersion": "1.5.0",
     "trapFish": true
@@ -927,10 +935,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -960,10 +968,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -978,10 +986,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -1041,10 +1049,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -1059,10 +1067,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -1077,10 +1085,10 @@
     "minLevel": 0,
     "minVersion": "1.5.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "6AM - 2AM",
     "trapFish": false,
@@ -1108,15 +1116,15 @@
     "difficulty": "55 dart",
     "itemID": "Goby",
     "locations": [
-      "Waterfalls"
+      "Cindersap Forest Waterfalls"
     ],
     "minLevel": 0,
     "minVersion": "1.6.0",
     "seasons": [
-      "Winter",
-      "Summer",
       "Fall",
-      "Spring"
+      "Summer",
+      "Spring",
+      "Winter"
     ],
     "time": "8AM - 6PM",
     "trapFish": false,
