@@ -69,17 +69,17 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Esummins">
-            <img src="https://avatars.githubusercontent.com/u/8581801?v=4" width="100;" alt="Esummins"/>
-            <br />
-            <sub><b>Eric Summins</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/TheLDB">
             <img src="https://avatars.githubusercontent.com/u/29960599?v=4" width="100;" alt="TheLDB"/>
             <br />
             <sub><b>Landon</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Esummins">
+            <img src="https://avatars.githubusercontent.com/u/8581801?v=4" width="100;" alt="Esummins"/>
+            <br />
+            <sub><b>Eric Summins</b></sub>
         </a>
     </td>
     <td align="center">
