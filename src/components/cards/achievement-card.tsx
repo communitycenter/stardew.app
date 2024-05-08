@@ -29,7 +29,8 @@ export const AchievementCard = ({
   const { activePlayer } = usePlayers();
   if (
     activePlayer?.general?.achievements &&
-    activePlayer.general.achievements.includes(achievement.id)
+    achievement.gameID &&
+    activePlayer.general.achievements.includes(achievement.gameID)
   ) {
     completed = true;
   }
@@ -37,7 +38,7 @@ export const AchievementCard = ({
   return (
     <div
       className={cn(
-        "flex select-none items-center space-x-3 rounded-lg border px-5 py-4  text-neutral-950 shadow-sm transition-colors dark:text-neutral-50",
+        "flex select-none items-center space-x-3 rounded-lg border px-5 py-4 text-neutral-950 shadow-sm transition-colors dark:text-neutral-50",
         checkedClass,
       )}
     >
