@@ -455,10 +455,10 @@ export default function Bundles() {
         if (BundleCompleted(curBundelRet)) return acc + 1;
         return acc;
       }, 0);
-      completed = completedCount >= 31;
+      completed = completedCount >= 30;
       if (!completed) {
         additionalDescription = ` - ${
-          31 - completedCount
+          30 - completedCount
         } more bundles to complete the community center`;
       }
     }
