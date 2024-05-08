@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 
 import notes from "@/data/secret_notes.json";
 
@@ -51,15 +52,31 @@ export default function SecretNotes() {
         <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Secret Notes Tracker{" "}
-            {activePlayer ? `(${notesSeen.size}/25)` : "(0/25)"}
+            {activePlayer
+              ? `(${notesSeen.size}/${Object.values(notes).length})`
+              : `(0/${Object.values(notes).length})`}
           </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {Object.entries(notes).map(([id, note]) => {
+              let content;
+              let results = note.content.match(/\[(.+)\]\((.+)\)/);
+              if (results) {
+                content = (
+                  <Image
+                    src={results[2]}
+                    alt={results[1]}
+                    width={64}
+                    height={64}
+                  />
+                );
+              } else {
+                content = note.content;
+              }
               return (
                 <DialogCard
                   key={id}
                   title={note.name}
-                  description={note.location}
+                  description={content}
                   iconURL="https://stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
                   completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
                   _id={id}

@@ -180,7 +180,9 @@ export const DialogCard = ({
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        <DialogDescription>{description}</DialogDescription>
+        <DialogDescription className="whitespace-pre-wrap">
+          {description}
+        </DialogDescription>
         <DialogFooter className="gap-4 sm:gap-0">
           {completed ? (
             <Button
