@@ -1,1167 +1,1725 @@
 {
-  "Pantry": {
-    "Spring Crops": {
+  "Pantry": [
+    {
+      "name": "Spring Crops",
       "items": [
         {
-          "itemID": 24,
-          "itemName": "Parsnip",
+          "itemID": "24",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 188,
-          "itemName": "Green Bean",
+          "itemID": "188",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 190,
-          "itemName": "Cauliflower",
+          "itemID": "190",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 192,
-          "itemName": "Potato",
+          "itemID": "192",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Speed-Gro",
-        "itemID": 465,
+        "itemID": "465",
         "itemQuantity": 20
       }
     },
-    "Summer Crops": {
+    {
+      "name": "Summer Crops",
       "items": [
         {
-          "itemID": 256,
-          "itemName": "Tomato",
+          "itemID": "256",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 260,
-          "itemName": "Hot Pepper",
+          "itemID": "260",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 258,
-          "itemName": "Blueberry",
+          "itemID": "258",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 254,
-          "itemName": "Melon",
+          "itemID": "254",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Quality Sprinkler",
-        "itemID": 621,
+        "itemID": "621",
         "itemQuantity": 1
       }
     },
-    "Fall Crops": {
+    {
+      "name": "Fall Crops",
       "items": [
         {
-          "itemID": 270,
-          "itemName": "Corn",
+          "itemID": "270",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 272,
-          "itemName": "Eggplant",
+          "itemID": "272",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 276,
-          "itemName": "Pumpkin",
+          "itemID": "276",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 280,
-          "itemName": "Yam",
+          "itemID": "280",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "BO",
-        "itemName": "Bee House",
-        "itemID": 10,
+        "itemID": "10",
         "itemQuantity": 1
       }
     },
-    "Quality Crops": {
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Quality Crops",
+          "items": [
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "24",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "188",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "192",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "190",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "254",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "258",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "260",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "276",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "280",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                },
+                {
+                  "itemID": "272",
+                  "itemQuantity": 5,
+                  "itemQuality": "2"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "itemID": "270",
+              "itemQuantity": 5,
+              "itemQuality": "2"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "15",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Rare Crops",
+          "items": [
+            {
+              "itemID": "454",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "417",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 1,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "15",
+            "itemQuantity": 1
+          }
+        }
+      ],
+      "selectionCount": 1
+    },
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Animal",
+          "items": [
+            {
+              "itemID": "186",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "182",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "174",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "438",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "440",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "442",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 5,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "16",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Fish Farmer's",
+          "items": [
+            {
+              "itemID": "812",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "447",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "814",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "154",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Garden",
+          "items": [
+            {
+              "itemID": "300",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "302",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "304",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "306",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "308",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "621",
+            "itemQuantity": 1
+          }
+        }
+      ],
+      "selectionCount": 1
+    },
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Artisan",
+          "items": [
+            {
+              "itemID": "432",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "428",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "426",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "424",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "340",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "344",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "613",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "634",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "635",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "636",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "637",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "638",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 6,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "12",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Brewer's",
+          "items": [
+            {
+              "itemID": "459",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "303",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "348",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "350",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "614",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "12",
+            "itemQuantity": 1
+          }
+        }
+      ],
+      "selectionCount": 1
+    }
+  ],
+  "Crafts Room": [
+    {
+      "name": "Spring Foraging",
       "items": [
         {
-          "itemID": 24,
-          "itemName": "Parsnip",
-          "itemQuantity": 5,
-          "itemQuality": "Gold"
+          "randomizer": true,
+          "options": [
+            {
+              "itemID": "16",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "18",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "20",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "22",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "399",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "selectionCount": 4
+        }
+      ],
+      "itemsRequired": 4,
+      "bundleReward": {
+        "itemType": "O",
+        "itemID": "495",
+        "itemQuantity": 30
+      }
+    },
+    {
+      "name": "Summer Foraging",
+      "items": [
+        {
+          "itemID": "396",
+          "itemQuantity": 1,
+          "itemQuality": "0"
         },
         {
-          "itemID": 254,
-          "itemName": "Melon",
-          "itemQuantity": 5,
-          "itemQuality": "Gold"
+          "itemID": "398",
+          "itemQuantity": 1,
+          "itemQuality": "0"
         },
         {
-          "itemID": 276,
-          "itemName": "Pumpkin",
-          "itemQuantity": 5,
-          "itemQuality": "Gold"
-        },
-        {
-          "itemID": 270,
-          "itemName": "Corn",
-          "itemQuantity": 5,
-          "itemQuality": "Gold"
+          "itemID": "402",
+          "itemQuantity": 1,
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 3,
       "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Preserves Jar",
-        "itemID": 15,
-        "itemQuantity": 1
+        "itemType": "O",
+        "itemID": "496",
+        "itemQuantity": 30
       }
     },
-    "Animal": {
+    {
+      "name": "Fall Foraging",
       "items": [
         {
-          "itemID": 186,
-          "itemName": "Large Milk",
+          "itemID": "404",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 182,
-          "itemName": "Large Egg",
+          "itemID": "406",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 174,
-          "itemName": "Large Egg",
+          "itemID": "408",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 438,
-          "itemName": "L. Goat Milk",
+          "itemID": "410",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 440,
-          "itemName": "Wool",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 442,
-          "itemName": "Duck Egg",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
-      "itemsRequired": 5,
+      "itemsRequired": 4,
       "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Cheese Press",
-        "itemID": 16,
-        "itemQuantity": 1
+        "itemType": "O",
+        "itemID": "497",
+        "itemQuantity": 30
       }
     },
-    "Artisan": {
+    {
+      "name": "Winter Foraging",
       "items": [
         {
-          "itemID": 432,
-          "itemName": "Truffle Oil",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 428,
-          "itemName": "Cloth",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 426,
-          "itemName": "Goat Cheese",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 424,
-          "itemName": "Cheese",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 340,
-          "itemName": "Honey",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 344,
-          "itemName": "Jelly",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 613,
-          "itemName": "Apple",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 634,
-          "itemName": "Apricot",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 635,
-          "itemName": "Orange",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 636,
-          "itemName": "Peach",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 637,
-          "itemName": "Pomegranate",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 638,
-          "itemName": "Cherry",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "randomizer": true,
+          "options": [
+            {
+              "itemID": "412",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "414",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "416",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "418",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "283",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "selectionCount": 4
         }
       ],
-      "itemsRequired": 6,
+      "itemsRequired": 4,
       "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Keg",
-        "itemID": 12,
-        "itemQuantity": 1
+        "itemType": "O",
+        "itemID": "498",
+        "itemQuantity": 30
       }
+    },
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Construction",
+          "items": [
+            {
+              "itemID": "388",
+              "itemQuantity": 99,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "388",
+              "itemQuantity": 99,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "390",
+              "itemQuantity": 99,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "709",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "114",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Sticky",
+          "items": [
+            {
+              "itemID": "92",
+              "itemQuantity": 500,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 1,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "114",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Forest",
+          "items": [
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "Moss",
+                  "itemQuantity": 10,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "771",
+                  "itemQuantity": 200,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "309",
+                  "itemQuantity": 10,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "310",
+                  "itemQuantity": 10,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 3
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "114",
+            "itemQuantity": 1
+          }
+        }
+      ],
+      "selectionCount": 1
+    },
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Exotic Foraging",
+          "items": [
+            {
+              "itemID": "88",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "90",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "78",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "420",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "422",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "724",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "725",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "726",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "257",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 5,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "235",
+            "itemQuantity": 5
+          }
+        },
+        {
+          "name": "Wild Medicine",
+          "items": [
+            {
+              "itemID": "422",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "259",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "157",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "304",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "926",
+            "itemQuantity": 2
+          }
+        }
+      ],
+      "selectionCount": 1
     }
-  },
-  "Crafts Room": {
-    "Spring Foraging": {
+  ],
+  "Fish Tank": [
+    {
+      "name": "River Fish",
       "items": [
         {
-          "itemID": 16,
-          "itemName": "Wild Horseradish",
+          "itemID": "145",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 18,
-          "itemName": "Daffodil",
+          "itemID": "143",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 20,
-          "itemName": "Leek",
+          "itemID": "706",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 22,
-          "itemName": "Dandelion",
+          "itemID": "699",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Spring Seeds",
-        "itemID": 495,
+        "itemID": "685",
         "itemQuantity": 30
       }
     },
-    "Summer Foraging": {
+    {
+      "name": "Lake Fish",
       "items": [
         {
-          "itemID": 396,
-          "itemName": "Spice Berry",
+          "itemID": "136",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 398,
-          "itemName": "Grape",
+          "itemID": "142",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 402,
-          "itemName": "Sweet Pea",
+          "itemID": "700",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 3,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Summer Seeds",
-        "itemID": 496,
-        "itemQuantity": 30
-      }
-    },
-    "Fall Foraging": {
-      "items": [
-        {
-          "itemID": 404,
-          "itemName": "Common Mushroom",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 406,
-          "itemName": "Wild Plum",
+          "itemID": "698",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 408,
-          "itemName": "Hazelnut",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 410,
-          "itemName": "Blackberry",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Fall Seeds",
-        "itemID": 497,
-        "itemQuantity": 30
-      }
-    },
-    "Winter Foraging": {
-      "items": [
-        {
-          "itemID": 412,
-          "itemName": "Winter Root",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 414,
-          "itemName": "Crystal Fruit",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 416,
-          "itemName": "Snow Yam",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 418,
-          "itemName": "Crocus",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Winter Seeds",
-        "itemID": 498,
-        "itemQuantity": 30
-      }
-    },
-    "Construction": {
-      "items": [
-        {
-          "itemID": 388,
-          "itemName": "Wood",
-          "itemQuantity": 99,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 388,
-          "itemName": "Wood",
-          "itemQuantity": 99,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 390,
-          "itemName": "Stone",
-          "itemQuantity": 99,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 709,
-          "itemName": "Hardwood",
-          "itemQuantity": 10,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Charcoal Kiln",
-        "itemID": 114,
+        "itemID": "687",
         "itemQuantity": 1
       }
     },
-    "Exotic Foraging": {
+    {
+      "name": "Ocean Fish",
       "items": [
         {
-          "itemID": 88,
-          "itemName": "Coconut",
+          "itemID": "131",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 90,
-          "itemName": "Cactus Fruit",
+          "itemID": "130",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 78,
-          "itemName": "Cave Carrot",
+          "itemID": "150",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 420,
-          "itemName": "Red Mushroom",
+          "itemID": "701",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 422,
-          "itemName": "Purple Mushroom",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 724,
-          "itemName": "Maple Syrup",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 725,
-          "itemName": "Oak Resin",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 726,
-          "itemName": "Pine Tar",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 257,
-          "itemName": "Morel",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 5,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Autumn's Bounty",
-        "itemID": 235,
-        "itemQuantity": 5
-      }
-    }
-  },
-  "Fish Tank": {
-    "River Fish": {
-      "items": [
-        {
-          "itemID": 145,
-          "itemName": "Sunfish",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 143,
-          "itemName": "Catfish",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 706,
-          "itemName": "Shad",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 699,
-          "itemName": "Tiger Trout",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 4,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Bait",
-        "itemID": 685,
-        "itemQuantity": 30
-      }
-    },
-    "Lake Fish": {
-      "items": [
-        {
-          "itemID": 136,
-          "itemName": "Largemouth Bass",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 142,
-          "itemName": "Carp",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 700,
-          "itemName": "Bullhead",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 698,
-          "itemName": "Sturgeon",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Dressed Spinner",
-        "itemID": 687,
-        "itemQuantity": 1
-      }
-    },
-    "Ocean Fish": {
-      "items": [
-        {
-          "itemID": 131,
-          "itemName": "Sardine",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 130,
-          "itemName": "Tuna",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 150,
-          "itemName": "Red Snapper",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 701,
-          "itemName": "Tilapia",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Warp Totem: Beach",
-        "itemID": 690,
+        "itemID": "690",
         "itemQuantity": 5
       }
     },
-    "Night Fishing": {
+    {
+      "name": "Night Fishing",
       "items": [
         {
-          "itemID": 140,
-          "itemName": "Walleye",
+          "itemID": "140",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 132,
-          "itemName": "Bream",
+          "itemID": "132",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 148,
-          "itemName": "Eel",
+          "itemID": "148",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 3,
       "bundleReward": {
         "itemType": "R",
-        "itemName": "Small Glow Ring",
-        "itemID": 516,
+        "itemID": "516",
         "itemQuantity": 1
       }
     },
-    "Specialty Fish": {
+    {
+      "name": "Crab Pot",
       "items": [
         {
-          "itemID": 128,
-          "itemName": "Pufferfish",
+          "itemID": "715",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 156,
-          "itemName": "Ghostfish",
+          "itemID": "716",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 164,
-          "itemName": "Sandfish",
+          "itemID": "717",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 734,
-          "itemName": "Woodskip",
+          "itemID": "718",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Dish O' The Sea",
-        "itemID": 242,
-        "itemQuantity": 5
-      }
-    },
-    "Crab Pot": {
-      "items": [
-        {
-          "itemID": 715,
-          "itemName": "Lobster",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 716,
-          "itemName": "Crayfish",
+          "itemID": "719",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 717,
-          "itemName": "Crab",
+          "itemID": "720",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 718,
-          "itemName": "Cockle",
+          "itemID": "721",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 719,
-          "itemName": "Mussel",
+          "itemID": "722",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 720,
-          "itemName": "Shrimp",
+          "itemID": "723",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 721,
-          "itemName": "Snail",
+          "itemID": "372",
           "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 722,
-          "itemName": "Periwinkle",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 723,
-          "itemName": "Oyster",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 372,
-          "itemName": "Clam",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 5,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Crab Pot",
-        "itemID": 710,
+        "itemID": "710",
         "itemQuantity": 3
       }
-    }
-  },
-  "Boiler Room": {
-    "Blacksmith's": {
-      "items": [
-        {
-          "itemID": 334,
-          "itemName": "Copper Bar",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 335,
-          "itemName": "Iron Bar",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 336,
-          "itemName": "Gold Bar",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 3,
-      "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Furnace",
-        "itemID": 13,
-        "itemQuantity": 1
-      }
     },
-    "Geologist's": {
-      "items": [
+    {
+      "randomizer": true,
+      "options": [
         {
-          "itemID": 80,
-          "itemName": "Quartz",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Specialty Fish",
+          "items": [
+            {
+              "itemID": "128",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "156",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "164",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "734",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "242",
+            "itemQuantity": 5
+          }
         },
         {
-          "itemID": 86,
-          "itemName": "Earth Crystal",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Quality Fish",
+          "items": [
+            {
+              "itemID": "136",
+              "itemQuantity": 1,
+              "itemQuality": "2"
+            },
+            {
+              "itemID": "706",
+              "itemQuantity": 1,
+              "itemQuality": "2"
+            },
+            {
+              "itemID": "130",
+              "itemQuantity": 1,
+              "itemQuality": "2"
+            },
+            {
+              "itemID": "140",
+              "itemQuantity": 1,
+              "itemQuality": "2"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "242",
+            "itemQuantity": 5
+          }
         },
         {
-          "itemID": 84,
-          "itemName": "Frozen Tear",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 82,
-          "itemName": "Fire Quartz",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Master Fisher's",
+          "items": [
+            {
+              "itemID": "162",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "165",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "149",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "800",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "242",
+            "itemQuantity": 5
+          }
         }
       ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Omni Geode",
-        "itemID": 749,
-        "itemQuantity": 5
-      }
-    },
-    "Adventurer's": {
-      "items": [
-        {
-          "itemID": 766,
-          "itemName": "Slime",
-          "itemQuantity": 99,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 767,
-          "itemName": "Bat Wing",
-          "itemQuantity": 10,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 768,
-          "itemName": "Solar Essence",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 769,
-          "itemName": "Void Essence",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 2,
-      "bundleReward": {
-        "itemType": "R",
-        "itemName": "Small Magnet Ring",
-        "itemID": 518,
-        "itemQuantity": 1
-      }
+      "selectionCount": 1
     }
-  },
-  "Vault": {
-    "2,500g": {
+  ],
+  "Boiler Room": [
+    {
+      "randomizer": true,
+      "options": [
+        {
+          "name": "Blacksmith's",
+          "items": [
+            {
+              "itemID": "334",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "335",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "336",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "13",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Geologist's",
+          "items": [
+            {
+              "itemID": "80",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "86",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "84",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "82",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "749",
+            "itemQuantity": 5
+          }
+        },
+        {
+          "name": "Adventurer's",
+          "items": [
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "766",
+                  "itemQuantity": 99,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "767",
+                  "itemQuantity": 10,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "768",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "769",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "881",
+                  "itemQuantity": 10,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 4
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "R",
+            "itemID": "518",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Treasure Hunter's",
+          "items": [
+            {
+              "itemID": "66",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "62",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "72",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "60",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "64",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "68",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 5,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "204",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Engineer's",
+          "items": [
+            {
+              "itemID": "386",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "787",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "338",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "13",
+            "itemQuantity": 1
+          }
+        }
+      ],
+      "selectionCount": 3
+    }
+  ],
+  "Vault": [
+    {
+      "name": "2,500g",
       "items": [
         {
-          "itemID": 1337,
-          "itemName": "Gold",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemID": "-1",
+          "itemQuantity": 2500,
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Chocolate Cake",
-        "itemID": 220,
+        "itemID": "220",
         "itemQuantity": 3
       }
     },
-    "5,000g": {
+    {
+      "name": "5,000g",
       "items": [
         {
-          "itemID": 1337,
-          "itemName": "Gold",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemID": "-1",
+          "itemQuantity": 5000,
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "O",
-        "itemName": "Quality Fertilizer",
-        "itemID": 369,
+        "itemID": "369",
         "itemQuantity": 30
       }
     },
-    "10,000g": {
+    {
+      "name": "10,000g",
       "items": [
         {
-          "itemID": 1337,
-          "itemName": "Gold",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemID": "-1",
+          "itemQuantity": 10000,
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "BO",
-        "itemName": "Lightning Rod",
-        "itemID": 9,
+        "itemID": "9",
         "itemQuantity": 1
       }
     },
-    "25,000g": {
+    {
+      "name": "25,000g",
       "items": [
         {
-          "itemID": 1337,
-          "itemName": "Gold",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemID": "-1",
+          "itemQuantity": 25000,
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 1,
       "bundleReward": {
         "itemType": "BO",
-        "itemName": "Crystalarium",
-        "itemID": 21,
+        "itemID": "21",
         "itemQuantity": 1
       }
     }
-  },
-  "Bulletin Board": {
-    "Chef's": {
-      "items": [
+  ],
+  "Bulletin Board": [
+    {
+      "randomizer": true,
+      "options": [
         {
-          "itemID": 724,
-          "itemName": "Maple Syrup",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Chef's",
+          "items": [
+            {
+              "itemID": "724",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "259",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "430",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "376",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "228",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "194",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 6,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "221",
+            "itemQuantity": 3
+          }
         },
         {
-          "itemID": 259,
-          "itemName": "Fiddlehead Fern",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Field Research",
+          "items": [
+            {
+              "itemID": "422",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "392",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "702",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "536",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "20",
+            "itemQuantity": 1
+          }
         },
         {
-          "itemID": 430,
-          "itemName": "Truffle",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Enchanter's",
+          "items": [
+            {
+              "itemID": "725",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "348",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "446",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "637",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 4,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "336",
+            "itemQuantity": 5
+          }
         },
         {
-          "itemID": 376,
-          "itemName": "Poppy",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Dye",
+          "items": [
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "420",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "284",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "397",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "300",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "421",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "268",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "444",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "90",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "62",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "258",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            },
+            {
+              "randomizer": true,
+              "options": [
+                {
+                  "itemID": "266",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                },
+                {
+                  "itemID": "337",
+                  "itemQuantity": 1,
+                  "itemQuality": "0"
+                }
+              ],
+              "selectionCount": 1
+            }
+          ],
+          "itemsRequired": 6,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "25",
+            "itemQuantity": 1
+          }
         },
         {
-          "itemID": 228,
-          "itemName": "Maki Roll",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Fodder",
+          "items": [
+            {
+              "itemID": "262",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "178",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "613",
+              "itemQuantity": 3,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "104",
+            "itemQuantity": 1
+          }
         },
         {
-          "itemID": 194,
-          "itemName": "Fried Egg",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
+          "name": "Children's",
+          "items": [
+            {
+              "itemID": "296",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "223",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "103",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "233",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "787",
+            "itemQuantity": 3
+          }
+        },
+        {
+          "name": "Forager's",
+          "items": [
+            {
+              "itemID": "296",
+              "itemQuantity": 50,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "410",
+              "itemQuantity": 50,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "406",
+              "itemQuantity": 20,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "105",
+            "itemQuantity": 3
+          }
+        },
+        {
+          "name": "Home Cook's",
+          "items": [
+            {
+              "itemID": "-5",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "-6",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "246",
+              "itemQuantity": 100,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "201",
+            "itemQuantity": 5
+          }
+        },
+        {
+          "name": "Helper's",
+          "items": [
+            {
+              "itemID": "PrizeTicket",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "MysteryBox",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "BO",
+            "itemID": "StardropTea",
+            "itemQuantity": 1
+          }
+        },
+        {
+          "name": "Spirit's Eve",
+          "items": [
+            {
+              "itemID": "746",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "270",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "767",
+              "itemQuantity": 10,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 3,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "201",
+            "itemQuantity": 5
+          }
+        },
+        {
+          "name": "Winter Star",
+          "items": [
+            {
+              "itemID": "283",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "604",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "239",
+              "itemQuantity": 1,
+              "itemQuality": "0"
+            },
+            {
+              "itemID": "Powdermelon",
+              "itemQuantity": 5,
+              "itemQuality": "0"
+            }
+          ],
+          "itemsRequired": 2,
+          "bundleReward": {
+            "itemType": "O",
+            "itemID": "MysteryBox",
+            "itemQuantity": 3
+          }
         }
       ],
-      "itemsRequired": 6,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Pink Cake",
-        "itemID": 221,
-        "itemQuantity": 3
-      }
-    },
-    "Field Research": {
-      "items": [
-        {
-          "itemID": 422,
-          "itemName": "Purple Mushroom",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 392,
-          "itemName": "Nautilus Shell",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 702,
-          "itemName": "Chub",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 536,
-          "itemName": "Frozen Geode",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Recycling Machine",
-        "itemID": 20,
-        "itemQuantity": 1
-      }
-    },
-    "Enchanter's": {
-      "items": [
-        {
-          "itemID": 725,
-          "itemName": "Oak Resin",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 348,
-          "itemName": "Wine",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 446,
-          "itemName": "Rabbit's Foot",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 637,
-          "itemName": "Pomegranate",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 4,
-      "bundleReward": {
-        "itemType": "O",
-        "itemName": "Gold Bar",
-        "itemID": 336,
-        "itemQuantity": 5
-      }
-    },
-    "Dye": {
-      "items": [
-        {
-          "itemID": 420,
-          "itemName": "Red Mushroom",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 397,
-          "itemName": "Sea Urchin",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 421,
-          "itemName": "Sunflower",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 444,
-          "itemName": "Duck Feather",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 62,
-          "itemName": "Aquamarine",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 266,
-          "itemName": "Red Cabbage",
-          "itemQuantity": 1,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 6,
-      "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Seed Maker",
-        "itemID": 25,
-        "itemQuantity": 1
-      }
-    },
-    "Fodder": {
-      "items": [
-        {
-          "itemID": 262,
-          "itemName": "Wheat",
-          "itemQuantity": 10,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 178,
-          "itemName": "Hay",
-          "itemQuantity": 10,
-          "itemQuality": "Common"
-        },
-        {
-          "itemID": 613,
-          "itemName": "Apple",
-          "itemQuantity": 3,
-          "itemQuality": "Common"
-        }
-      ],
-      "itemsRequired": 3,
-      "bundleReward": {
-        "itemType": "BO",
-        "itemName": "Heater",
-        "itemID": 104,
-        "itemQuantity": 1
-      }
+      "selectionCount": 5
     }
-  },
-  "Abandoned Joja Mart": {
-    "The Missing": {
+  ],
+  "Abandoned Joja Mart": [
+    {
+      "name": "The Missing",
       "items": [
         {
-          "itemID": 348,
-          "itemName": "Wine",
+          "itemID": "348",
           "itemQuantity": 1,
-          "itemQuality": "Silver"
+          "itemQuality": "1"
         },
         {
-          "itemID": 807,
-          "itemName": "Dinosaur Mayonnaise",
+          "itemID": "807",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 74,
-          "itemName": "Prismatic Shard",
+          "itemID": "74",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         },
         {
-          "itemID": 454,
-          "itemName": "Ancient Fruit",
+          "itemID": "454",
           "itemQuantity": 5,
-          "itemQuality": "Gold"
+          "itemQuality": "2"
         },
         {
-          "itemID": 795,
-          "itemName": "Void Salmon",
+          "itemID": "795",
           "itemQuantity": 1,
-          "itemQuality": "Gold"
+          "itemQuality": "2"
         },
         {
-          "itemID": 445,
-          "itemName": "Caviar",
+          "itemID": "445",
           "itemQuantity": 1,
-          "itemQuality": "Common"
+          "itemQuality": "0"
         }
       ],
       "itemsRequired": 5,
       "bundleReward": {
         "itemType": "BO",
-        "itemName": "House Plant",
-        "itemID": 0,
+        "itemID": "0",
         "itemQuantity": 0
       }
     }
-  }
+  ]
 }

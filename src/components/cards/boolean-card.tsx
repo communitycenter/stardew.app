@@ -1,10 +1,7 @@
-import Image from "next/image";
-
 import objects from "@/data/objects.json";
 
-import type { FishType, MuseumItem } from "@/types/items";
+import type { ItemData, MuseumItem } from "@/types/items";
 
-import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
@@ -17,20 +14,32 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 
+import { ItemQuality } from "@/types/bundles";
 import { IconChevronRight } from "@tabler/icons-react";
+import ItemWithOverlay from "../ui/item-with-overlay";
+import clsx from "clsx";
 
-interface Props {
-  item: FishType | MuseumItem | any;
+interface BooleanCardProps {
+  item: ItemData | MuseumItem;
+  overrides?: {
+    name?: string;
+    description?: string;
+    iconURL?: string;
+    minVersion?: string;
+  };
+  quantity?: number;
+  quality?: ItemQuality;
+  type?: "fish" | "artifact" | "mineral";
   completed?: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setObject: any; // TODO: update as we add more types
-  type: "fish" | "artifact" | "mineral";
+  handleStatusChange?: (status: number) => void;
 
   /**
    * Whether the user prefers to see new content
    *
    * @type {boolean}
-   * @memberof Props
+   * @memberof BooleanCardProps
    */
   show: boolean;
 
@@ -38,32 +47,57 @@ interface Props {
    * The handler to display the new content confirmation prompt
    *
    * @type {Dispatch<SetStateAction<boolean>>}
-   * @memberof Props
+   * @memberof BooleanCardProps
    */
   setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const BooleanCard = ({
   item,
+  overrides,
+  quantity,
+  quality,
   type,
   show,
   completed,
   setIsOpen,
   setObject,
   setPromptOpen,
-}: Props) => {
+  handleStatusChange,
+}: BooleanCardProps) => {
   const { activePlayer, patchPlayer } = usePlayers();
+  // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
+  // let dataSource = objects;
+  let iconURL: string;
+  let name: string;
+  let description: string | null;
+  let minVersion: string;
 
-  const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
-  const name = objects[item.itemID as keyof typeof objects].name;
-  const description = objects[item.itemID as keyof typeof objects].description;
-  const minVersion = objects[item.itemID as keyof typeof objects].minVersion;
+  // TODO: getObjectData(itemID, type? = "O", overrides?)
+  if (!objects[item.itemID as keyof typeof objects]) {
+    if (!overrides || Object.keys(overrides).length == 0) {
+      console.warn(`No object data for itemID ${item.itemID}`);
+    }
+    iconURL =
+      overrides?.iconURL || `https://cdn.stardew.app/images/(O)MysteryBox.webp`;
+    name = overrides?.name || "Unknown Object";
+    description = overrides?.description || "We don't know what this is...";
+    minVersion = overrides?.minVersion || "1.5.0";
+  } else {
+    iconURL =
+      overrides?.iconURL ||
+      `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
+    name = overrides?.name || objects[item.itemID as keyof typeof objects].name;
+    description =
+      overrides?.description ||
+      objects[item.itemID as keyof typeof objects].description;
+    minVersion =
+      overrides?.minVersion ||
+      objects[item.itemID as keyof typeof objects].minVersion;
+  }
 
-  let checkedClass = completed
-    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-    : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
-
-  async function handleStatusChange(status: number) {
+  // TODO: Lift this out as a prop, so each page passes in their own handler.
+  async function defaultHandleStatusChange(status: number) {
     if (!activePlayer) return;
 
     let patch = {};
@@ -107,9 +141,11 @@ export const BooleanCard = ({
     <ContextMenu>
       <ContextMenuTrigger asChild>
         <button
-          className={cn(
+          className={clsx(
             "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
-            checkedClass,
+            completed
+              ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+              : "border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800",
           )}
           onClick={() => {
             if (minVersion === "1.6.0" && !show && !completed) {
@@ -120,19 +156,21 @@ export const BooleanCard = ({
             setIsOpen(true);
           }}
         >
-          {minVersion === "1.6.0" && <NewItemBadge version={minVersion}/>}
+          {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
           <div
-            className={cn(
-              "flex items-center space-x-3 truncate text-left",
-              minVersion === "1.6.0" && !show && !completed && "blur-sm",
-            )}
+            className={
+              "flex items-center space-x-3 truncate text-left" +
+              (minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
+            }
           >
-            <Image
+            <ItemWithOverlay
               src={iconURL}
               alt={name}
               className="rounded-sm"
               width={32}
               height={32}
+              quality={quality}
+              quantity={quantity}
             />
             <div className="min-w-0 flex-1">
               <p className="truncate font-medium">{name}</p>
@@ -141,36 +179,32 @@ export const BooleanCard = ({
               </p>
             </div>
           </div>
-          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+          <IconChevronRight
+            className={
+              "h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" +
+              (minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
+            }
+          />
         </button>
       </ContextMenuTrigger>
 
       <ContextMenuContent className="w-48">
-        {completed ? (
-          <ContextMenuCheckboxItem
-            className="gap-2 pl-8"
-            checked={!completed}
-            disabled={!completed || !activePlayer}
-            data-umami-event="Set incompleted"
-            onClick={() => {
-              handleStatusChange(0);
-            }}
-          >
-            <div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
-            <p>Set Incomplete</p>
-          </ContextMenuCheckboxItem>
-        ) : (
-          <ContextMenuCheckboxItem
-            className="gap-2 pl-8"
-            checked={completed}
-            disabled={completed || !activePlayer}
-            onClick={() => {}}
-            data-umami-event="Set completed"
-          >
-            <div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
-            Set Completed
-          </ContextMenuCheckboxItem>
-        )}
+        <ContextMenuCheckboxItem
+          className="gap-2 pl-8"
+          checked={false}
+          disabled={!activePlayer}
+          data-umami-event={`Set ${completed ? "in" : ""}completed`}
+          onClick={() => {
+            handleStatusChange
+              ? handleStatusChange(completed ? 0 : 2)
+              : defaultHandleStatusChange(completed ? 0 : 2);
+          }}
+        >
+          <div
+            className={`h-4 w-4 rounded-full border ${completed ? "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" : "border-green-900 bg-green-500/20 dark:bg-green-500/10"}`}
+          />
+          <p>{`Set ${completed ? "Inc" : "C"}omplete`}</p>
+        </ContextMenuCheckboxItem>
       </ContextMenuContent>
     </ContextMenu>
   );

@@ -47,6 +47,9 @@ venv/
 /src/research/raw_data/*.json
 /scripts/content/**/*.json
 
+# local saves for testing and inspection
+/save_files
+
 # python stuff
 __pycache__/
 # Sentry Config File

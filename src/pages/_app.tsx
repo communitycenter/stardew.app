@@ -14,6 +14,7 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+import ErrorBoundary from "@/components/error-boundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -62,7 +63,9 @@ export default function App({ Component, pageProps }: AppProps) {
               <div>
                 <Sidebar className="hidden max-h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip md:fixed md:flex md:w-72 md:flex-col" />
                 <div className="md:pl-72">
-                  <Component {...pageProps} />
+                  <ErrorBoundary>
+                    <Component {...pageProps} />
+                  </ErrorBoundary>
                   <Toaster richColors />
                 </div>
               </div>

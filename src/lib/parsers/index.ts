@@ -1,3 +1,4 @@
+import { parseBundles } from "@/lib/parsers/bundles";
 import { parseCooking } from "@/lib/parsers/cooking";
 import { parseCrafting } from "@/lib/parsers/crafting";
 import { parseFishing } from "@/lib/parsers/fishing";
@@ -11,6 +12,7 @@ import { parsePowers } from "@/lib/parsers/powers";
 
 export {
   findChildren,
+  parseBundles,
   parseCooking,
   parseCrafting,
   parseFishing,

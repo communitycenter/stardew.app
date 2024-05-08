@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Achievement } from "@/types/items";
 
 import { cn } from "@/lib/utils";
+import { usePlayers } from "@/contexts/players-context";
 
 interface Props {
   achievement: Achievement;
@@ -25,22 +26,30 @@ export const AchievementCard = ({
     ? "border-green-900 bg-green-500/20 dark:bg-green-500/10"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950";
 
+  const { activePlayer } = usePlayers();
+  if (
+    activePlayer?.general?.achievements &&
+    activePlayer.general.achievements.includes(achievement.id)
+  ) {
+    completed = true;
+  }
+
   return (
     <div
       className={cn(
-        "flex select-none items-center space-x-3 rounded-lg border py-4 px-5  text-neutral-950 dark:text-neutral-50 shadow-sm transition-colors",
-        checkedClass
+        "flex select-none items-center space-x-3 rounded-lg border px-5 py-4  text-neutral-950 shadow-sm transition-colors dark:text-neutral-50",
+        checkedClass,
       )}
     >
       <Image
         src={achievement.iconURL}
         alt={achievement.name}
-        className="rounded-sm"
+        className={completed ? "rounded-sm" : "rounded-sm grayscale"}
         width={48}
         height={48}
       />
       <div className="min-w-0 flex-1">
-        <p className="font-medium truncate">{achievement.name}</p>
+        <p className="truncate font-medium">{achievement.name}</p>
         <p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
           {achievement.description + (additionalDescription ?? "")}
         </p>

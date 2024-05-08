@@ -26,6 +26,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import { Stardrop } from "@/lib/parsers/general";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 interface Props {
@@ -78,8 +79,8 @@ export const DialogCard = ({
     switch (_type) {
       case "stardrop":
         const stardrops = new Set(activePlayer.general?.stardrops ?? []);
-        if (status) stardrops.add(_id);
-        else stardrops.delete(_id);
+        if (status) stardrops.add(_id as Stardrop);
+        else stardrops.delete(_id as Stardrop);
 
         patch = {
           general: {
@@ -163,7 +164,7 @@ export const DialogCard = ({
           setOpen(true);
         }}
       >
-        {minVersion === "1.6.0" && <NewItemBadge version={minVersion}/>}
+        {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
         <div
           className={cn(
             "flex items-center space-x-3 truncate text-left",

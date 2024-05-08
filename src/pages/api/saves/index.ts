@@ -22,6 +22,7 @@ export interface SqlUser {
 export interface Player {
   _id?: string;
   general?: object;
+  bundles?: Array<object>;
   fishing?: object;
   cooking?: object;
   crafting?: object;
@@ -40,8 +41,11 @@ export async function getUID(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ): Promise<string> {
+  // console.log("Getting UID from cookie...");
   let uid = getCookie("uid", { req, res });
+  // console.log("UID: ", uid);
   if (uid) {
+    // console.log("Found UID...");
     // uids can be anonymous, so we need to check if the user exists
     const user = (
       await conn.execute("SELECT * FROM Users WHERE id = ? LIMIT 1", [uid])
@@ -68,6 +72,7 @@ export async function getUID(
     // everything is ok, so we return the uid
     return uid as string;
   } else {
+    // console.log("Generating new UID...");
     // no uid, so we create an anonymous one
     uid = crypto.randomBytes(16).toString("hex");
     setCookie("uid", uid, {
@@ -113,8 +118,9 @@ export const verifyToken = (token: string, key: string) => {
 };
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
+  // console.log("Getting...");
   const uid = await getUID(req, res);
-
+  // console.log("uid: ", uid);
   const players = (
     await conn.execute("SELECT * FROM Saves WHERE user_id = ?", [uid])
   )?.rows as any[] | undefined;
@@ -123,19 +129,22 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
+  // console.log("Saving...");
+  // console.log(process.env.DATABASE_URL);
   const uid = await getUID(req, res);
   const players = JSON.parse(req.body) as Player[];
   for (const player of players) {
     try {
       const r = await conn.execute(
         `
-        REPLACE INTO Saves (_id, user_id, general, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection, powers)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        REPLACE INTO Saves (_id, user_id, general, bundles, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection, powers)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
         [
           player._id,
           uid,
           player.general ? JSON.stringify(player.general) : "{}",
+          player.bundles ? JSON.stringify(player.bundles) : "[]",
           player.fishing ? JSON.stringify(player.fishing) : "{}",
           player.cooking ? JSON.stringify(player.cooking) : "{}",
           player.crafting ? JSON.stringify(player.crafting) : "{}",
@@ -160,6 +169,7 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function _delete(req: NextApiRequest, res: NextApiResponse) {
+  // console.log("Deleting...");
   const uid = await getUID(req, res);
 
   if (!req.body) {

@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { Card } from "../ui/card";
 
 const listOfPeopleWeNeedToThank = [
+  "Blink18260000",
   "Brandon Saldan",
   "Leah Lundqvist",
   "Ian Mitchell",
