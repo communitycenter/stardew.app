@@ -12,7 +12,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import { usePlayers } from "@/contexts/players-context";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 import { NewItemBadge } from "@/components/new-item-badge";
@@ -31,7 +31,7 @@ import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 interface Props {
   title: string;
-  description: string;
+  description: string | ReactNode;
   iconURL: string;
   completed?: boolean;
   _id: string;
