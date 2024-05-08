@@ -16,24 +16,23 @@ The website uses [Next.js](https://nextjs.org) for it's frontend, [PlanetScale](
     <img align=center src="https://github.com/communitycenter/stardew.app/blob/main/.github/info.png?raw=true" alt="Stardew.app Logo" width="500" /></br>
 </p>
 
-
-| Feature | | Notes |
-| --- | --- | --- |
-| 100% perfection tracking | ✅ |
-| All 1.6 content | ⚠️ | Missing animals page |
-| Achievement tracking | ✅ |
-| Fish tracker with location info | ✅ |
-| Shipping tracker with crop info | ✅ |
-| Villager tracker with gift info | ✅ |
-| Recipe tracker | ✅ |
-| Crafting recipe tracker | ✅ |
-| Museum & artifacts tracker | ✅ |
-| Bundles tracker | ❌ | [Please see this issue about bundles](https://github.com/communitycenter/stardew.app/issues/85) |
-| Golden Walnut tracker | ✅ |
-| Secret Note tracker | ✅ |
-| Journal Scraps tracker | ✅ |
-| Cross-platform support | ✅ |
-| Discord login | ✅ |
+| Feature                         |     | Notes                |
+| ------------------------------- | --- | -------------------- |
+| 100% perfection tracking        | ✅  |
+| All 1.6 content                 | ⚠️  | Missing animals page |
+| Achievement tracking            | ✅  |
+| Fish tracker with location info | ✅  |
+| Shipping tracker with crop info | ✅  |
+| Villager tracker with gift info | ✅  |
+| Recipe tracker                  | ✅  |
+| Crafting recipe tracker         | ✅  |
+| Museum & artifacts tracker      | ✅  |
+| Bundles tracker                 | ✅  |
+| Golden Walnut tracker           | ✅  |
+| Secret Note tracker             | ✅  |
+| Journal Scraps tracker          | ✅  |
+| Cross-platform support          | ✅  |
+| Discord login                   | ✅  |
 
 ---
 
