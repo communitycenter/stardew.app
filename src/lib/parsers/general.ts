@@ -172,7 +172,9 @@ type AchievementsRet = Number[];
 function parseAchievements(player: any): AchievementsRet {
   try {
     let achievementsCompleted: Number[] = [];
-    if (player.achievements == "") return [];
+    if (!player.achievements || player.achievements == "") return [];
+    if (typeof player.achievements.int[Symbol.iterator] !== "function")
+      return [];
     for (const a of player.achievements.int) {
       achievementsCompleted.push(a);
     }
