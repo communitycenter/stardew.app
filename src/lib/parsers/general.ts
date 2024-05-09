@@ -174,7 +174,8 @@ function parseAchievements(player: any): AchievementsRet {
     let achievementsCompleted: Number[] = [];
     if (!player.achievements || player.achievements == "") return [];
     if (typeof player.achievements.int[Symbol.iterator] !== "function")
-      return [];
+      // Single achievements end up being a singular, unwrapped int
+      return [player.achievements.int];
     for (const a of player.achievements.int) {
       achievementsCompleted.push(a);
     }
