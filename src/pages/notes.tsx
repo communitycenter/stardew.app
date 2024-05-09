@@ -21,6 +21,34 @@ export default function SecretNotes() {
     }
   }, [activePlayer]);
 
+  let secretNotes: JSX.Element[] = [];
+  Object.entries(notes).forEach(([id, note]) => {
+    if (parseInt(id) > 1000) {
+      return;
+    }
+    let content;
+    let results = note.content.match(/\[(.+)\]\((.+)\)/);
+    if (results) {
+      content = (
+        <Image src={results[2]} alt={results[1]} width={216} height={216} />
+      );
+    } else {
+      content = note.content;
+    }
+    secretNotes.push(
+      <DialogCard
+        key={id}
+        title={note.name}
+        description={content}
+        iconURL="https://stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
+        completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
+        _id={id}
+        _type="note"
+        show={show}
+      />,
+    );
+  });
+
   return (
     <>
       <Head>
@@ -53,38 +81,11 @@ export default function SecretNotes() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Secret Notes Tracker{" "}
             {activePlayer
-              ? `(${notesSeen.size}/${Object.values(notes).length})`
-              : `(0/${Object.values(notes).length})`}
+              ? `(${notesSeen.size}/${Object.values(secretNotes).length})`
+              : `(0/${Object.values(secretNotes).length})`}
           </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(notes).map(([id, note]) => {
-              let content;
-              let results = note.content.match(/\[(.+)\]\((.+)\)/);
-              if (results) {
-                content = (
-                  <Image
-                    src={results[2]}
-                    alt={results[1]}
-                    width={216}
-                    height={216}
-                  />
-                );
-              } else {
-                content = note.content;
-              }
-              return (
-                <DialogCard
-                  key={id}
-                  title={note.name}
-                  description={content}
-                  iconURL="https://stardewvalleywiki.com/mediawiki/images/e/ec/Secret_Note.png"
-                  completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
-                  _id={id}
-                  _type="note"
-                  show={show}
-                />
-              );
-            })}
+            {secretNotes}
           </div>
         </div>
       </main>
