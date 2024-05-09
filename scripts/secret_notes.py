@@ -33,8 +33,7 @@ def get_secret_notes() -> dict[str, SecretNote]:
       content = v.replace("^", "\n").replace("@", "Player Name")
       content = content.split("%")[0]
       if content.startswith("!image"):
-        image_id = content.split(" ")[1]
-        content = f"[Secret Note {k}](https://cdn.stardew.app/images/(note){image_id}.webp)"
+        content = f"[Secret Note {k}](/images/notes/{k}.webp)"
         
       minVersion = "1.6.0" if int(k) > 25 else "1.5.4"
       

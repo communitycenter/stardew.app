@@ -65,8 +65,8 @@ export default function SecretNotes() {
                   <Image
                     src={results[2]}
                     alt={results[1]}
-                    width={64}
-                    height={64}
+                    width={216}
+                    height={216}
                   />
                 );
               } else {
