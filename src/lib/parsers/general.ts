@@ -1,4 +1,4 @@
-import { GetStatValue, isPlayerFormatUpdated } from "../utils";
+import { GetListOrEmpty, GetStatValue, isPlayerFormatUpdated } from "../utils";
 
 function msToTime(time: number): string {
   const hrs = Math.floor(time / 3600000);
@@ -150,11 +150,18 @@ function parseJoja(player: any): JojaRet {
   let isMember = false;
   try {
     let developmentProjectsCompleted: JojaMail[] = [];
-    for (const mail of player.mailReceived.string) {
-      if (JOJAMAIL.has(mail)) {
+
+    const mailReceived = new Set<string>(
+      GetListOrEmpty(player.mailReceived, "string"),
+    );
+
+    // check if the player is a Joja member
+    if (mailReceived.has("jojaMember")) isMember = true;
+
+    // check if the player has completed any development projects
+    for (const mail of Array.from(mailReceived)) {
+      if (JOJAMAIL.has(mail as JojaMail))
         developmentProjectsCompleted.push(mail as JojaMail);
-      }
-      if (mail === "JojaMember") isMember = true;
     }
 
     return {
@@ -257,6 +264,10 @@ export function parseGeneral(
       achievements,
     };
   } catch (e) {
+    if (process.env.NODE_ENV === "development") {
+      console.log(e);
+    }
+
     if (e instanceof Error)
       throw new Error(`Error in parseGeneral: ${e.message}`);
     else throw new Error(`Error in parseGeneral: ${e}`);
