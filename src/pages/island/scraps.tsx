@@ -1,8 +1,9 @@
 import { DialogCard } from "@/components/cards/dialog-card";
 import { usePlayers } from "@/contexts/players-context";
-import scraps from "@/data/journal_scraps.json";
+import notes from "@/data/secret_notes.json";
 import { Inter } from "next/font/google";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,6 +17,33 @@ export default function IslandScraps() {
       setScrapsFound(new Set(activePlayer.scraps.found));
     }
   }, [activePlayer]);
+
+  let journalScraps: JSX.Element[] = [];
+  Object.entries(notes).forEach(([id, note]) => {
+    if (parseInt(id) < 1000) {
+      return;
+    }
+    let content;
+    let results = note.content.match(/\[(.+)\]\((.+)\)/);
+    if (results) {
+      content = (
+        <Image src={results[2]} alt={results[1]} width={216} height={216} />
+      );
+    } else {
+      content = note.content;
+    }
+    journalScraps.push(
+      <DialogCard
+        key={id}
+        title={note.name}
+        description={content}
+        iconURL="https://stardewvalleywiki.com/mediawiki/images/c/c4/Journal_Scrap.png"
+        completed={activePlayer ? scrapsFound.has(parseInt(id)) : false}
+        _id={id}
+        _type="scrap"
+      />,
+    );
+  });
 
   return (
     <>
@@ -40,29 +68,17 @@ export default function IslandScraps() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 ${inter.className} py-2 px-8`}
+        className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Journal Scraps Tracker{" "}
-            {activePlayer ? `(${scrapsFound.size}/11)` : "(0/11)"}
+            {activePlayer
+              ? `(${scrapsFound.size}/${journalScraps.length})`
+              : `(0/${journalScraps.length})`}
           </h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(scraps).map(([id, note]) => {
-              return (
-                <DialogCard
-                  key={id}
-                  title={note.name}
-                  description={note.info}
-                  iconURL="https://stardewvalleywiki.com/mediawiki/images/c/c4/Journal_Scrap.png"
-                  completed={
-                    activePlayer ? scrapsFound.has(parseInt(id)) : false
-                  }
-                  _id={id}
-                  _type="scrap"
-                />
-              );
-            })}
+            {journalScraps}
           </div>
         </div>
       </main>
