@@ -16,6 +16,8 @@ import {
   isRandomizer,
 } from "@/types/bundles";
 
+import { IconSettings } from "@tabler/icons-react";
+
 import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
@@ -37,6 +39,7 @@ import {
 } from "@/components/ui/context-menu";
 import { useEffect, useState } from "react";
 import { BundleItemCard } from "@/components/cards/bundle-item-card";
+import { useMediaQuery } from "@react-hook/media-query";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -87,6 +90,7 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 }
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   let bundleCompleted = BundleCompleted(props.bundleWithStatus);
   let additionalClasses = "";
   let remainingCount = "";
@@ -136,7 +140,13 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
             <ContextMenu>
               <ContextMenuTrigger>
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  <div className="justify-left flex">{completeName}</div>
+                  <div className="flex flex-grow justify-between">
+                    <div className="justify-left flex">{completeName}</div>
+                    <div className="justify-right flex items-center pr-2 text-sm font-thin hover:no-underline">
+                      <IconSettings size={16} stroke={1} />{" "}
+                      {isDesktop ? "Right click" : "Long Press"} to swap bundle
+                    </div>
+                  </div>
                 </AccordionTrigger>
               </ContextMenuTrigger>
 
