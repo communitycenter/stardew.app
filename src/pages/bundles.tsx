@@ -16,12 +16,28 @@ import {
   isRandomizer,
 } from "@/types/bundles";
 
-import { IconSettings } from "@tabler/icons-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
+import { BundleItemCard } from "@/components/cards/bundle-item-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle-sheet";
 import {
@@ -29,17 +45,13 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  AccordionTriggerNoToggle,
 } from "@/components/ui/accordion";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-import { useEffect, useState } from "react";
-import { BundleItemCard } from "@/components/cards/bundle-item-card";
+import { Progress } from "@/components/ui/progress";
 import { useMediaQuery } from "@react-hook/media-query";
+import { IconSettings } from "@tabler/icons-react";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -91,100 +103,91 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  let bundleCompleted = BundleCompleted(props.bundleWithStatus);
-  let additionalClasses = "";
-  let remainingCount = "";
-  if (bundleCompleted) {
-    additionalClasses =
-      " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20";
-  } else {
-    if (
-      // If we don't need all the items, show how many are remaining
-      !(
-        props.bundleWithStatus.bundle.itemsRequired === -1 ||
-        props.bundleWithStatus.bundle.itemsRequired >=
-          props.bundleWithStatus.bundle.items.length
-      )
-    ) {
-      let completedItems = props.bundleWithStatus.bundleStatus.reduce(
-        (acc, cur) => {
-          if (cur) {
-            return acc + 1;
-          }
-          return acc;
-        },
-        0,
-      );
-      let requiredCount = props.bundleWithStatus.bundle.itemsRequired;
-      if (props.bundleWithStatus.bundle.itemsRequired === -1) {
-        requiredCount = props.bundleWithStatus.bundle.items.length;
-      }
-      let remaining = requiredCount - completedItems;
-      remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
-    }
-    additionalClasses = " border-neutral-200 dark:border-neutral-800";
-  }
+  const { bundle, bundleStatus } = props.bundleWithStatus;
+  const bundleCompleted = BundleCompleted(props.bundleWithStatus);
 
-  const completeName =
-    props.bundleWithStatus.bundle.localizedName + " Bundle" + remainingCount;
+  const totalItems = bundle.items.length;
+  const requiredItems =
+    bundle.itemsRequired === -1 ? totalItems : bundle.itemsRequired;
+  const completedItems = bundleStatus.filter(Boolean).length;
+  const remainingCount = requiredItems - completedItems;
+
+  const bundleName = props.bundleWithStatus.bundle.localizedName;
+
+  const [selectedBundleName, setSelectedBundleName] = useState(
+    props.bundleWithStatus.bundle.name,
+  );
+
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
-        className={
-          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
-          additionalClasses
-        }
+        className={clsx(
+          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+          bundleCompleted
+            ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+            : "border-neutral-200 dark:border-neutral-800",
+        )}
       >
         <AccordionItem value="item-1" className="border-none">
-          {props.alternateOptions && props.alternateOptions.length > 0 ? (
-            <ContextMenu>
-              <ContextMenuTrigger>
-                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  <div className="flex flex-grow justify-between">
-                    <div className="justify-left flex">{completeName}</div>
-                    <div className="justify-right flex items-center pr-2 text-sm font-thin hover:no-underline">
-                      <IconSettings size={16} stroke={1} />{" "}
-                      {isDesktop ? "Right click" : "Long Press"} to swap bundle
-                    </div>
-                  </div>
-                </AccordionTrigger>
-              </ContextMenuTrigger>
+          <AccordionTriggerNoToggle className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+            <div className="flex items-center gap-2">
+              <span>{bundleName} Bundle</span>
+              {props.alternateOptions && props.alternateOptions.length > 0 && (
+                <DropdownMenu>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <DropdownMenuTrigger asChild>
+                          <IconSettings
+                            size={16}
+                            className="text-neutral-500 dark:text-neutral-400"
+                          />
+                        </DropdownMenuTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Change Bundle</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
 
-              <ContextMenuContent className="w-48">
-                {props.alternateOptions && (
-                  <ContextMenuRadioGroup
-                    value={props.bundleWithStatus.bundle.name}
-                    onValueChange={(v) => {
-                      let selectedBundle = props.alternateOptions?.find(
-                        (bundle) => bundle.name === v,
-                      );
-                      if (props.onChangeBundle && selectedBundle) {
-                        props.onChangeBundle(
-                          selectedBundle,
-                          props.bundleWithStatus,
+                  <DropdownMenuContent className="w-56">
+                    <DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuRadioGroup
+                      value={selectedBundleName}
+                      onValueChange={(newBundleName) => {
+                        setSelectedBundleName(newBundleName);
+                        const selectedBundle = props.alternateOptions?.find(
+                          (bundle) => bundle.name === newBundleName,
                         );
-                      }
-                    }}
-                  >
-                    {props.alternateOptions.map((option) => {
-                      return (
-                        <ContextMenuRadioItem
-                          value={option.name}
-                          key={option.name}
+                        if (props.onChangeBundle && selectedBundle) {
+                          props.onChangeBundle(
+                            selectedBundle,
+                            props.bundleWithStatus,
+                          );
+                        }
+                      }}
+                    >
+                      {props.alternateOptions.map((newBundle) => (
+                        <DropdownMenuRadioItem
+                          key={newBundle.name}
+                          value={newBundle.name}
                         >
-                          {option.localizedName} Bundle
-                        </ContextMenuRadioItem>
-                      );
-                    })}
-                  </ContextMenuRadioGroup>
-                )}
-              </ContextMenuContent>
-            </ContextMenu>
-          ) : (
-            <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-              <div className="justify-left flex">{completeName}</div>
-            </AccordionTrigger>
-          )}
+                          {newBundle.localizedName}
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
+            </div>
+            <Progress
+              value={completedItems}
+              max={remainingCount}
+              className="w-32"
+            />
+          </AccordionTriggerNoToggle>
+
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {props.children}
