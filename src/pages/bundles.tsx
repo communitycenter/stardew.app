@@ -102,15 +102,14 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 }
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
   const { bundle, bundleStatus } = props.bundleWithStatus;
-  const bundleCompleted = BundleCompleted(props.bundleWithStatus);
 
   const totalItems = bundle.items.length;
   const requiredItems =
     bundle.itemsRequired === -1 ? totalItems : bundle.itemsRequired;
   const completedItems = bundleStatus.filter(Boolean).length;
   const remainingCount = requiredItems - completedItems;
+  const bundleCompleted = completedItems >= requiredItems;
 
   const bundleName = props.bundleWithStatus.bundle.localizedName;
 
@@ -140,7 +139,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                         <DropdownMenuTrigger asChild>
                           <IconSettings
                             size={16}
-                            className="text-neutral-500 dark:text-neutral-400"
+                            className="relative top-0.5 text-neutral-500 dark:text-neutral-400"
                           />
                         </DropdownMenuTrigger>
                       </TooltipTrigger>
@@ -181,11 +180,18 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                 </DropdownMenu>
               )}
             </div>
-            <Progress
-              value={completedItems}
-              max={remainingCount}
-              className="w-32"
-            />
+            {!bundleCompleted && (
+              <div className="flex items-center">
+                <Progress
+                  value={completedItems}
+                  max={requiredItems}
+                  className="w-32"
+                />
+                <span className="flex pl-3 text-sm">
+                  {remainingCount} / {requiredItems}
+                </span>
+              </div>
+            )}
           </AccordionTriggerNoToggle>
 
           <AccordionContent asChild>
@@ -446,7 +452,6 @@ export default function Bundles() {
       // See note in bundlesheet.tsx
       // @ts-ignore
       await patchPlayer(patch);
-      setBundles(GetActiveBundles(activePlayer));
     }
   }
 
