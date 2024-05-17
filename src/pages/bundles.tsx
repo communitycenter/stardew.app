@@ -102,6 +102,7 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 }
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
+  const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
   const { bundle, bundleStatus } = props.bundleWithStatus;
 
   const totalItems = bundle.items.length;
@@ -128,67 +129,72 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
         )}
       >
         <AccordionItem value="item-1" className="border-none">
-          <AccordionTriggerNoToggle className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-            <div className="flex items-center gap-2">
-              <span>{bundleName} Bundle</span>
-              {props.alternateOptions && props.alternateOptions.length > 0 && (
-                <DropdownMenu>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <DropdownMenuTrigger asChild>
-                          <IconSettings
-                            size={16}
-                            className="relative top-0.5 text-neutral-500 dark:text-neutral-400"
-                          />
-                        </DropdownMenuTrigger>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Change Bundle</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+          <AccordionTriggerNoToggle
+            className={`ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white ${isDesktop ? "flex-row" : "flex-col items-start"}`}
+          >
+            <div>
+              <div className="flex items-center gap-2">
+                <span>{bundleName} Bundle</span>
+                {props.alternateOptions &&
+                  props.alternateOptions.length > 0 && (
+                    <DropdownMenu>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <DropdownMenuTrigger asChild>
+                              <IconSettings
+                                size={16}
+                                className="relative top-0.5 text-neutral-500 dark:text-neutral-400"
+                              />
+                            </DropdownMenuTrigger>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Change Bundle</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
 
-                  <DropdownMenuContent className="w-56">
-                    <DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuRadioGroup
-                      value={selectedBundleName}
-                      onValueChange={(newBundleName) => {
-                        setSelectedBundleName(newBundleName);
-                        const selectedBundle = props.alternateOptions?.find(
-                          (bundle) => bundle.name === newBundleName,
-                        );
-                        if (props.onChangeBundle && selectedBundle) {
-                          props.onChangeBundle(
-                            selectedBundle,
-                            props.bundleWithStatus,
-                          );
-                        }
-                      }}
-                    >
-                      {props.alternateOptions.map((newBundle) => (
-                        <DropdownMenuRadioItem
-                          key={newBundle.name}
-                          value={newBundle.name}
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuRadioGroup
+                          value={selectedBundleName}
+                          onValueChange={(newBundleName) => {
+                            setSelectedBundleName(newBundleName);
+                            const selectedBundle = props.alternateOptions?.find(
+                              (bundle) => bundle.name === newBundleName,
+                            );
+                            if (props.onChangeBundle && selectedBundle) {
+                              props.onChangeBundle(
+                                selectedBundle,
+                                props.bundleWithStatus,
+                              );
+                            }
+                          }}
                         >
-                          {newBundle.localizedName}
-                        </DropdownMenuRadioItem>
-                      ))}
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              )}
+                          {props.alternateOptions.map((newBundle) => (
+                            <DropdownMenuRadioItem
+                              key={newBundle.name}
+                              value={newBundle.name}
+                            >
+                              {newBundle.localizedName}
+                            </DropdownMenuRadioItem>
+                          ))}
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
+              </div>
             </div>
             {!bundleCompleted && (
-              <div className="flex items-center">
+              <div className={`flex items-center ${isDesktop ? "" : "pt-2"}`}>
                 <Progress
                   value={completedItems}
                   max={requiredItems}
                   className="w-32"
                 />
                 <span className="flex pl-3 text-sm">
-                  {remainingCount} / {requiredItems}
+                  {requiredItems - remainingCount} / {requiredItems}
                 </span>
               </div>
             )}
