@@ -48,6 +48,15 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    // Resolve the conflict between next/font and Babel
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      type: 'asset/resource',
+    });
+
+    return config;
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
