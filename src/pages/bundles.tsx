@@ -130,7 +130,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
       >
         <AccordionItem value="item-1" className="border-none">
           <AccordionTriggerNoToggle className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span>{bundleName} Bundle</span>
               {props.alternateOptions && props.alternateOptions.length > 0 && (
                 <DropdownMenu>
