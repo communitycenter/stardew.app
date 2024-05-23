@@ -20,20 +20,29 @@ AccordionItem.displayName = "AccordionItem";
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
+    pullRight?: React.ReactNode;
+  }
+>(({ className, children, pullRight, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
         // TODO: remove hover:underline ?
-        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all [&[data-state=open]>*>svg]:rotate-180 [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />
+      {pullRight ? (
+        <div className="flex">
+          {pullRight}
+          <ChevronDownIcon className=" ml-2 h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />
+        </div>
+      ) : (
+        <ChevronDownIcon className="h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />
+      )}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

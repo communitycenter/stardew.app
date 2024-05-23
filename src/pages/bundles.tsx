@@ -70,6 +70,7 @@ type BundleAccordionProps = {
 type AccordionSectionProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
+  completedCount?: number;
 };
 
 const CommunityCenterRooms: CommunityCenterRoomName[] = [
@@ -83,11 +84,26 @@ const CommunityCenterRooms: CommunityCenterRoomName[] = [
 ];
 
 function AccordionSection(props: AccordionSectionProps): JSX.Element {
+  let progressIndicator =
+    props.completedCount &&
+    Array.isArray(props.children) &&
+    props.completedCount < props.children.length ? (
+      <Progress
+        value={props.completedCount}
+        max={props.children.length}
+        className="w-32"
+      />
+    ) : (
+      ``
+    );
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section className="space-y-3">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+          <AccordionTrigger
+            className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white"
+            pullRight={progressIndicator}
+          >
             {props.title}
           </AccordionTrigger>
           <AccordionContent asChild>
@@ -193,9 +209,6 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
                   max={requiredItems}
                   className="w-32"
                 />
-                <span className="flex pl-3 text-sm">
-                  {requiredItems - remainingCount} / {requiredItems}
-                </span>
               </div>
             )}
           </AccordionTriggerNoToggle>
@@ -551,6 +564,7 @@ export default function Bundles() {
           </AccordionSection>
           {CommunityCenterRooms.map((roomName: CommunityCenterRoomName) => {
             let roomBundles: BundleWithStatus[] = [];
+            let completedCount = 0;
             if (activePlayer && Array.isArray(activePlayer.bundles)) {
               roomBundles = activePlayer.bundles.filter((bundleWithStatus) => {
                 if (bundleWithStatus?.bundle) {
@@ -559,6 +573,10 @@ export default function Bundles() {
                   return false;
                 }
               });
+              completedCount = roomBundles.reduce((acc, curBundelRet) => {
+                if (BundleCompleted(curBundelRet)) return acc + 1;
+                return acc;
+              }, 0);
             } else {
               roomBundles = bundles.filter(
                 (bundleWithStatus) =>
@@ -566,7 +584,11 @@ export default function Bundles() {
               );
             }
             return (
-              <AccordionSection key={roomName} title={roomName}>
+              <AccordionSection
+                key={roomName}
+                title={roomName}
+                completedCount={completedCount}
+              >
                 {roomBundles.map((bundleWithStatus: BundleWithStatus) => {
                   return (
                     <BundleAccordion
