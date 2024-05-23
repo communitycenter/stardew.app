@@ -24,7 +24,9 @@ const Progress = React.forwardRef<
       />
     </ProgressPrimitive.Root>
     <span className="flex text-sm">
-      {value && max ? `${value} / ${max}` : ``}
+      {typeof value === "number" && typeof max === "number"
+        ? `${value} / ${max}`
+        : ``}
     </span>
   </div>
 ));

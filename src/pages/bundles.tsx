@@ -52,6 +52,7 @@ import { useMediaQuery } from "@react-hook/media-query";
 import { IconSettings } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { isNumber } from "util";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -84,8 +85,10 @@ const CommunityCenterRooms: CommunityCenterRoomName[] = [
 ];
 
 function AccordionSection(props: AccordionSectionProps): JSX.Element {
+  const { activePlayer } = usePlayers();
   let progressIndicator =
-    props.completedCount &&
+    activePlayer &&
+    typeof props.completedCount === "number" &&
     Array.isArray(props.children) &&
     props.completedCount < props.children.length ? (
       <Progress
