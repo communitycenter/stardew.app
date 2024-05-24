@@ -282,7 +282,8 @@ export default function Shipping() {
                     return (
                       i.itemID in shipping_items &&
                       shipping_items[i.itemID as keyof typeof shipping_items]
-                        .polyculture
+                        .polyculture &&
+                      basicShipped[i.itemID]! < 15
                     );
                   } else if (_filter === "2") {
                     // Shipped/Completed (we won't check for monoculture here)
