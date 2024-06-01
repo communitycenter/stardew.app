@@ -274,16 +274,16 @@ def get_tv_airing_date(key: int) -> str:
     Returns:
         str: A string in the format "Spring 7, Year 1".
     """
-    seasons = ["Spring", "Summer", "Fall", "Winter"]
-    day = (key * 7) % 28
-    if day == 0:
-        day = 28
+    # Dropping key from 1 indexed to 0 indexed
+    key_idx = key - 1
+    day_key = key_idx % 4
+    day = (day_key + 1) * 7
 
-    season_idx = (key - 1) // 4
+    seasons = ["Spring", "Summer", "Fall", "Winter"]
+    season_idx = key_idx // 4
     season = seasons[season_idx % 4]
 
-    # Dropping key from 1 indexed to 0 indexed
-    year = (key - 1) // 16 + 1
+    year = key_idx // 16 + 1
 
     return f"{season} {day}, Year {year}"
 
