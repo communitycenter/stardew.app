@@ -1054,7 +1054,7 @@
     ],
     "itemID": "612",
     "minVersion": "1.5.0",
-    "unlockConditions": "Winter 28, Year 2"
+    "unlockConditions": "Winter 28, Year 1"
   },
   "618": {
     "ingredients": [
@@ -1259,7 +1259,7 @@
     ],
     "itemID": "733",
     "minVersion": "1.5.0",
-    "unlockConditions": "Winter 28, Year 3"
+    "unlockConditions": "Winter 28, Year 2"
   },
   "903": {
     "ingredients": [
