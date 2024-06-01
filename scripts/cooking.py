@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Purpose: Get all the recipes needed to cook for achievement, along with their
 #          unlock conditions and ingredients
 # Result is saved to data/cooking.json
@@ -16,7 +18,7 @@ from helpers.utils import load_content, load_data, save_json, get_tv_airing_date
 # load the content files
 OBJECTS: dict[str, Object] = load_data("objects.json")
 COOKING_RECIPES: dict[str, str] = load_content("CookingRecipes.json")
-TV_RECIPES: dict[str, str] = load_content("CookingChannel.json")
+TV_RECIPES: dict[str, str] = load_content("TV/CookingChannel.json")
 
 # hardcoded checks for recipes with unusual unlock conditions
 # l 100, null
