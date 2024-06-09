@@ -212,6 +212,11 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
       await api.mutate(
         async (currentPlayers: PlayerType[] | undefined) => {
           const normalizedPatch = normalizePatch(patch, activePlayer);
+          if (!normalizedPatch.bundles) {
+            // By default if bundles are not in the patch, the server will use an empty array,
+            // which will clobber the existing bundle data since mysql doesn't support arrays properly.
+            normalizedPatch.bundles = activePlayer.bundles;
+          }
           // console.log("Normalizing patch:");
           // console.dir(normalizedPatch);
           await fetch(`/api/saves/${activePlayer._id}`, {
