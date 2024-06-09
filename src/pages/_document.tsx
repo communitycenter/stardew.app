@@ -9,6 +9,7 @@ export default function Document() {
           src="https://analytics.eu.umami.is/script.js"
           data-website-id="148c90ab-aacc-40b4-b1c7-b4eee4862a7c"
         ></script>
+        <script defer data-domain="stardew.app" src="https://plausible.verbose.faith/js/script.js"></script>
 
         <meta charSet="utf-8" />
         <meta
