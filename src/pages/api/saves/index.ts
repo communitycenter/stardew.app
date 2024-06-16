@@ -1,10 +1,9 @@
-import { db } from '$db';
-import * as schema from '$drizzle/schema';
+import { db } from "$db";
+import * as schema from "$drizzle/schema";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
 import { and, eq } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
-
 
 type Data = Record<string, any>;
 
@@ -38,17 +37,15 @@ export async function getUID(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ): Promise<string> {
-  // console.log("Getting UID from cookie...");
   let uid = getCookie("uid", { req, res });
-  // console.log("UID: ", uid);
   if (uid && typeof uid === "string") {
-    // console.log("Found UID...");
     // uids can be anonymous, so we need to check if the user exists
 
-
-    // yeah this is correct now but eq needs to come from drizzle-orm/mysql-core or sm no its fine its cuz cookies are weird
-    // one secn
-    const [user] = await db.select().from(schema.users).where(eq(schema.users.id, uid)).limit(1);
+    const [user] = await db
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.id, uid))
+      .limit(1);
 
     if (user) {
       // user exists, so we check if the user is authenticated
@@ -71,7 +68,7 @@ export async function getUID(
     // everything is ok, so we return the uid
     return uid as string;
   } else {
-    // console.log("Generating new UID...");
+    console.log("Generating new UID...");
     // no uid, so we create an anonymous one
     uid = crypto.randomBytes(16).toString("hex");
     setCookie("uid", uid, {
@@ -117,10 +114,11 @@ export const verifyToken = (token: string, key: string) => {
 };
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
-  // console.log("Getting...");
   const uid = await getUID(req, res);
-  // console.log("uid: ", uid);
-  const players = await db.select().from(schema.saves).where(eq(schema.saves.user_id, uid));
+  const players = await db
+    .select()
+    .from(schema.saves)
+    .where(eq(schema.saves.user_id, uid));
   res.json(players);
 }
 
@@ -132,11 +130,14 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
   for (const player of players) {
     try {
       if (player._id) {
-        await db.insert(schema.saves).values({
-          _id: player._id,
-          user_id: uid,
-          ...player
-        }).onDuplicateKeyUpdate({ set: player });
+        await db
+          .insert(schema.saves)
+          .values({
+            _id: player._id,
+            user_id: uid,
+            ...player,
+          })
+          .onDuplicateKeyUpdate({ set: player });
       }
       res.status(200).end();
     } catch (e) {
@@ -164,13 +165,9 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
     if (type === "player") {
       // delete a single player
       const { _id } = JSON.parse(req.body);
-      await db.delete(schema.saves)
-        .where(
-          and(
-            eq(schema.saves.user_id, uid),
-            eq(schema.saves._id, _id)
-          )
-        );
+      await db
+        .delete(schema.saves)
+        .where(and(eq(schema.saves.user_id, uid), eq(schema.saves._id, _id)));
 
       // const result = await conn.execute(
       //   "DELETE FROM Saves WHERE user_id = ? AND _id = ?",

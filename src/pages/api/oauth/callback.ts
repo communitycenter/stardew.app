@@ -1,10 +1,10 @@
-import * as schema from '$drizzle/schema';
-import { db } from '@/db';
+import * as schema from "$drizzle/schema";
+import { db } from "@/db";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
 import { eq } from "drizzle-orm";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createToken } from '../saves';
+import { createToken } from "../saves";
 
 type Data = Record<string, any>;
 
@@ -22,6 +22,7 @@ export default async function handler(
     }
 
     const uid = getCookie("uid", { req });
+
     if (!uid || typeof uid !== "string") {
       res.status(400).end();
       res.redirect("/");
@@ -80,12 +81,21 @@ export default async function handler(
 
     const discordUserData = await discordUser.json();
 
-    let [user] = await db.select().from(schema.users).where(eq(schema.users.id, uid)).limit(1);
+    let [user] = await db
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.id, uid))
+      .limit(1);
 
     let cookieSecret =
       user?.cookie_secret ?? crypto.randomBytes(16).toString("hex");
+
     if (!user) {
-      let [discordUser] = await db.select().from(schema.users).where(eq(schema.users.id, discordData.uid)).limit(1);
+      let [discordUser] = await db
+        .select()
+        .from(schema.users)
+        .where(eq(schema.users.discord_id, discordUserData.id))
+        .limit(1);
 
       if (discordUser) {
         user = discordUser;
@@ -97,10 +107,6 @@ export default async function handler(
             .update(schema.users)
             .set({ discord_name: discordUserData.username })
             .where(eq(schema.saves.user_id, discordUserData.id));
-          // const r = await conn.execute(
-          //   "UPDATE Users SET discord_name = ? WHERE discord_id = ?",
-          //   [discordUserData.username, discordUserData.id],
-          // );
         }
 
         // update discord avatar if the avatar hash changed
@@ -109,26 +115,25 @@ export default async function handler(
             .update(schema.users)
             .set({ discord_avatar: discordUserData.avatar })
             .where(eq(schema.saves.user_id, discordUserData.id));
-          // const r = await conn.execute(
-          //   "UPDATE Users SET discord_avatar = ? WHERE discord_id = ?",
-          //   [discordUserData.avatar, discordUserData.id],
-          // );
         }
       } else {
-        await db.insert(schema.users).values({
-          id: uid,
-          discord_id: discordUserData.id,
-          discord_name: discordUserData.username,
-          discord_avatar: discordUserData.avatar,
-          cookie_secret: cookieSecret
-        }).onDuplicateKeyUpdate({
-          set: {
+        await db
+          .insert(schema.users)
+          .values({
+            id: uid,
             discord_id: discordUserData.id,
             discord_name: discordUserData.username,
             discord_avatar: discordUserData.avatar,
-            cookie_secret: cookieSecret
-          }
-        });
+            cookie_secret: cookieSecret,
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              discord_id: discordUserData.id,
+              discord_name: discordUserData.username,
+              discord_avatar: discordUserData.avatar,
+              cookie_secret: cookieSecret,
+            },
+          });
         // await conn.execute(
         //   "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
         //   [
