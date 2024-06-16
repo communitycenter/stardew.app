@@ -1,13 +1,10 @@
-import { Client } from "@planetscale/database";
+import { db } from '$db';
+import * as schema from '$drizzle/schema';
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
+import { and, eq } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const client = new Client({
-  url: process.env.DATABASE_URL,
-});
-
-export const conn = client.connection();
 
 type Data = Record<string, any>;
 
@@ -44,12 +41,14 @@ export async function getUID(
   // console.log("Getting UID from cookie...");
   let uid = getCookie("uid", { req, res });
   // console.log("UID: ", uid);
-  if (uid) {
+  if (uid && typeof uid === "string") {
     // console.log("Found UID...");
     // uids can be anonymous, so we need to check if the user exists
-    const user = (
-      await conn.execute("SELECT * FROM Users WHERE id = ? LIMIT 1", [uid])
-    )?.rows[0] as SqlUser | undefined;
+
+
+    // yeah this is correct now but eq needs to come from drizzle-orm/mysql-core or sm no its fine its cuz cookies are weird
+    // one secn
+    const [user] = await db.select().from(schema.users).where(eq(schema.users.id, uid)).limit(1);
 
     if (user) {
       // user exists, so we check if the user is authenticated
@@ -121,10 +120,7 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
   // console.log("Getting...");
   const uid = await getUID(req, res);
   // console.log("uid: ", uid);
-  const players = (
-    await conn.execute("SELECT * FROM Saves WHERE user_id = ?", [uid])
-  )?.rows as any[] | undefined;
-
+  const players = await db.select().from(schema.saves).where(eq(schema.saves.user_id, uid));
   res.json(players);
 }
 
@@ -135,31 +131,13 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
   const players = JSON.parse(req.body) as Player[];
   for (const player of players) {
     try {
-      const r = await conn.execute(
-        `
-        REPLACE INTO Saves (_id, user_id, general, bundles, fishing, cooking, crafting, shipping, museum, social, monsters, walnuts, notes, scraps, perfection, powers)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `,
-        [
-          player._id,
-          uid,
-          player.general ? JSON.stringify(player.general) : "{}",
-          player.bundles ? JSON.stringify(player.bundles) : "[]",
-          player.fishing ? JSON.stringify(player.fishing) : "{}",
-          player.cooking ? JSON.stringify(player.cooking) : "{}",
-          player.crafting ? JSON.stringify(player.crafting) : "{}",
-          player.shipping ? JSON.stringify(player.shipping) : "{}",
-          player.museum ? JSON.stringify(player.museum) : "{}",
-          player.social ? JSON.stringify(player.social) : "{}",
-          player.monsters ? JSON.stringify(player.monsters) : "{}",
-          player.walnuts ? JSON.stringify(player.walnuts) : "{}",
-          player.notes ? JSON.stringify(player.notes) : "{}",
-          player.scraps ? JSON.stringify(player.scraps) : "{}",
-          player.perfection ? JSON.stringify(player.perfection) : "{}",
-          player.powers ? JSON.stringify(player.powers) : "{}",
-        ],
-      );
-      // console.log(r);
+      if (player._id) {
+        await db.insert(schema.saves).values({
+          _id: player._id,
+          user_id: uid,
+          ...player
+        }).onDuplicateKeyUpdate({ set: player });
+      }
       res.status(200).end();
     } catch (e) {
       // console.log(e);
@@ -174,9 +152,10 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 
   if (!req.body) {
     // delete all players
-    const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
-      uid,
-    ]);
+    await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));
+    // const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+    //   uid,
+    // ]);
     // console.log("[DEBUG:SAVES] DELETE | deleted all players with uid =", uid);
   } else {
     // console.log("[DEBUG:SAVES] DELETE | req.body =", req.body);
@@ -185,22 +164,33 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
     if (type === "player") {
       // delete a single player
       const { _id } = JSON.parse(req.body);
-      const result = await conn.execute(
-        "DELETE FROM Saves WHERE user_id = ? AND _id = ?",
-        [uid, _id],
-      );
+      await db.delete(schema.saves)
+        .where(
+          and(
+            eq(schema.saves.user_id, uid),
+            eq(schema.saves._id, _id)
+          )
+        );
+
+      // const result = await conn.execute(
+      //   "DELETE FROM Saves WHERE user_id = ? AND _id = ?",
+      //   [uid, _id],
+      // );
 
       // console.log("[DEBUG:SAVES] DELETE | deleted one player with id =", _id);
     } else {
       // delete entire account
       // delete players
-      const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
-        uid,
-      ]);
+      await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));
+      // const result = await conn.execute("DELETE FROM Saves WHERE user_id = ?", [
+      //   uid,
+      // ]);
       // delete user
-      const result2 = await conn.execute("DELETE FROM Users WHERE id = ?", [
-        uid,
-      ]);
+      await db.delete(schema.users).where(eq(schema.users.id, uid));
+
+      // const result2 = await conn.execute("DELETE FROM Users WHERE id = ?", [
+      //   uid,
+      // ]);
       // console.log("[DEBUG:SAVES] DELETE | deleted account with uid =", uid);
     }
   }

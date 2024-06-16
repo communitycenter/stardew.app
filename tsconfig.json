@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -15,7 +15,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+			"$drizzle/*": ["./src/db/*"],
+			"$db": ["./src/db"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
