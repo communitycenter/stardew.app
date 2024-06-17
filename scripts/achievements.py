@@ -1,8 +1,10 @@
+#! /usr/bin/env python3
+
 # Purpose: Parsing all achievement info from wiki (iconURL, name, description)
 # Result is saved to data/achievements.json
 # { name: { iconURL, name, description, id } }
 #
-# Content Files used: None
+# Content Files used: Achievements.json
 # Wiki Pages used: https://stardewvalleywiki.com/Achievements
 
 """
@@ -16,16 +18,19 @@ import requests
 from tqdm import tqdm
 from bs4 import BeautifulSoup
 
-from helpers.utils import save_json
+from helpers.utils import save_json, load_content
 from helpers.models import Achievement
 
 
 def get_achievements() -> dict[str, Achievement]:
+    # Load the achievements.json file
+    achievementsData = load_content("Achievements.json")
+    
     # Get the page and relevant table body
     URL = "https://stardewvalleywiki.com/Achievements"
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "html.parser")
-    tbody = soup.find("table").find("tbody")  # Get the table body
+    tbody = soup.find("table", class_="wikitable").find("tbody")  # Get the table body
 
     id = 0  # This is not the accurate in game ID
     achievements = {}
@@ -42,6 +47,13 @@ def get_achievements() -> dict[str, Achievement]:
         # Get the text value of the 3rd and 4th <td> tags
         name = tr.find_all("td")[2].text.strip()
         description = tr.find_all("td")[3].text.strip()
+        
+        # Attach the game ID to the achievement, if one exists
+        game_id = None  # This is the accurate in game ID
+        for k, v in achievementsData.items():
+            game_name = v.split("^")[0]
+            if name.lower() in game_name.lower():
+                game_id = k
 
         # Add the achievement to the dictionary
         achievements[name] = {
@@ -49,6 +61,7 @@ def get_achievements() -> dict[str, Achievement]:
             "name": name,
             "description": description.replace(" See (note below)", ""),
             "id": id,
+            "gameID": int(game_id) if game_id else None,
         }
         id += 1
 
