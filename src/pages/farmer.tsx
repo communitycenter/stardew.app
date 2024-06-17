@@ -64,6 +64,7 @@ const STARDROPS = {
 
 const stardrop_ach = {
   id: 34,
+  gameID: null,
   name: "Mystery Of The Stardrops",
   description: "Find every stardrop.",
   iconURL:
