@@ -8,7 +8,7 @@
     <img align=center src="https://github.com/communitycenter/stardew.app/blob/main/.github/background.png?raw=true" alt="Stardew.app Logo" width="500" /></br>
 </p>
 
-The website uses [Next.js](https://nextjs.org) for it's frontend, [PlanetScale](https://planetscale.com) for it's database, and a mixture of TypeScript and Python scripts to supplement data into the website. Internally, we use [Linear](https://linear.app) and [Pierre](https://pierre.co) for issue tracking and branch management.
+The website uses [Next.js](https://nextjs.org) for its frontend, [PlanetScale](https://planetscale.com) for its database, and a mixture of TypeScript and Python scripts to supplement data into the website. Internally, we use [Linear](https://linear.app) and [Pierre](https://pierre.co) for issue tracking and branch management.
 
 ---
 
