@@ -141,6 +141,13 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Terrance">
+            <img src="https://avatars.githubusercontent.com/u/4025899?v=4" width="100;" alt="Terrance"/>
+            <br />
+            <sub><b>Terrance</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/IanMitchell">
             <img src="https://avatars.githubusercontent.com/u/603872?v=4" width="100;" alt="IanMitchell"/>
             <br />
@@ -167,15 +174,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Danny Doan</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/caoimhebyrne">
             <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
             <br />
             <sub><b>Caoimhe</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/colemilne54">
             <img src="https://avatars.githubusercontent.com/u/20178496?v=4" width="100;" alt="colemilne54"/>
