@@ -106,7 +106,7 @@ export default async function handler(
           await db
             .update(schema.users)
             .set({ discord_name: discordUserData.username })
-            .where(eq(schema.saves.user_id, discordUserData.id));
+            .where(eq(schema.users.discord_id, discordUserData.id));
         }
 
         // update discord avatar if the avatar hash changed
@@ -114,7 +114,7 @@ export default async function handler(
           await db
             .update(schema.users)
             .set({ discord_avatar: discordUserData.avatar })
-            .where(eq(schema.saves.user_id, discordUserData.id));
+            .where(eq(schema.users.discord_id, discordUserData.id));
         }
       } else {
         await db
