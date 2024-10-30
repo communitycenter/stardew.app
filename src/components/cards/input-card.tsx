@@ -47,10 +47,10 @@ export const InputCard = ({
   const [value, setValue] = useState(0);
 
   const inputSchema = v.object({
-    input: v.number([v.minValue(0)]),
+    input: v.pipe(v.number(), v.minValue(0)),
   });
 
-  const form = useForm<v.Input<typeof inputSchema>>({
+  const form = useForm({
     resolver: valibotResolver(inputSchema),
   });
 
@@ -139,8 +139,8 @@ export const InputCard = ({
                 onSubmit={(e) => e.preventDefault()}
               >
                 <FormField
-                  control={form.control}
                   name="input"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <div className="flex justify-between">

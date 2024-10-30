@@ -1,5 +1,7 @@
+import { db } from "$db";
+import { sql } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Player, conn, getUID } from ".";
+import { Player, getUID } from ".";
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
   const playerId = req.query.playerId as string | undefined;
@@ -10,46 +12,29 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
   if (!player) return res.status(400).end();
 
   try {
-    await conn.execute(
-      `
+    await db.execute(
+      sql`
 			UPDATE Saves SET
-				general=JSON_MERGE_PATCH(general, ?),
-        bundles=JSON_MERGE_PATCH(bundles, ?),
-				fishing=JSON_MERGE_PATCH(fishing, ?),
-				cooking=JSON_MERGE_PATCH(cooking, ?),
-				crafting=JSON_MERGE_PATCH(crafting, ?),
-				shipping=JSON_MERGE_PATCH(shipping, ?),
-				museum=JSON_MERGE_PATCH(museum, ?),
-				social=JSON_MERGE_PATCH(social, ?),
-				monsters=JSON_MERGE_PATCH(monsters, ?),
-				walnuts=JSON_MERGE_PATCH(walnuts, ?),
-				notes=JSON_MERGE_PATCH(notes, ?),
-				scraps=JSON_MERGE_PATCH(scraps, ?),
-				perfection=JSON_MERGE_PATCH(perfection, ?),
-        powers=JSON_MERGE_PATCH(powers, ?)
-			WHERE _id = ? AND user_id = ?
+				general=JSON_MERGE_PATCH(general, ${player.general ? JSON.stringify(player.general) : "{}"}),
+        bundles=JSON_MERGE_PATCH(bundles, ${player.bundles ? JSON.stringify(player.bundles) : "[]"}),
+				fishing=JSON_MERGE_PATCH(fishing, ${player.fishing ? JSON.stringify(player.fishing) : "{}"}),
+				cooking=JSON_MERGE_PATCH(cooking, ${player.cooking ? JSON.stringify(player.cooking) : "{}"}),
+				crafting=JSON_MERGE_PATCH(crafting, ${player.crafting ? JSON.stringify(player.crafting) : "{}"}),
+				shipping=JSON_MERGE_PATCH(shipping, ${player.shipping ? JSON.stringify(player.shipping) : "{}"}),
+				museum=JSON_MERGE_PATCH(museum, ${player.museum ? JSON.stringify(player.museum) : "{}"}),
+				social=JSON_MERGE_PATCH(social, ${player.social ? JSON.stringify(player.social) : "{}"}),
+				monsters=JSON_MERGE_PATCH(monsters, ${player.monsters ? JSON.stringify(player.monsters) : "{}"}),
+				walnuts=JSON_MERGE_PATCH(walnuts, ${player.walnuts ? JSON.stringify(player.walnuts) : "{}"}),
+				notes=JSON_MERGE_PATCH(notes, ${player.notes ? JSON.stringify(player.notes) : "{}"}),
+				scraps=JSON_MERGE_PATCH(scraps, ${player.scraps ? JSON.stringify(player.scraps) : "{}"}),
+				perfection=JSON_MERGE_PATCH(perfection, ${player.perfection ? JSON.stringify(player.perfection) : "{}"}),
+        powers=JSON_MERGE_PATCH(powers, ${player.powers ? JSON.stringify(player.powers) : "{}"})
+			WHERE _id = ${playerId} AND user_id = ${uid}
 		`,
-      [
-        player.general ? JSON.stringify(player.general) : "{}",
-        player.bundles ? JSON.stringify(player.bundles) : "[]",
-        player.fishing ? JSON.stringify(player.fishing) : "{}",
-        player.cooking ? JSON.stringify(player.cooking) : "{}",
-        player.crafting ? JSON.stringify(player.crafting) : "{}",
-        player.shipping ? JSON.stringify(player.shipping) : "{}",
-        player.museum ? JSON.stringify(player.museum) : "{}",
-        player.social ? JSON.stringify(player.social) : "{}",
-        player.monsters ? JSON.stringify(player.monsters) : "{}",
-        player.walnuts ? JSON.stringify(player.walnuts) : "{}",
-        player.notes ? JSON.stringify(player.notes) : "{}",
-        player.scraps ? JSON.stringify(player.scraps) : "{}",
-        player.perfection ? JSON.stringify(player.perfection) : "{}",
-        player.powers ? JSON.stringify(player.powers) : "{}",
-        playerId,
-        uid,
-      ],
     );
     res.status(200).end();
   } catch (e) {
+    console.log(e);
     res.status(500).end();
   }
 }

@@ -113,8 +113,10 @@ export const VillagerSheet = ({ open, setIsOpen, villager }: Props) => {
       !activePlayer.social ||
       !activePlayer.social.relationships ||
       !activePlayer.social.relationships[villager.name]
-    )
+    ) {
+      setHearts("0");
       return;
+    }
 
     setHearts(
       Math.floor(

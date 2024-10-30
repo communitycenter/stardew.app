@@ -27,7 +27,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -39,6 +38,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { Input } from "@/components/ui/input";
 
 function generateUniqueIdentifier() {
   const timestamp = Date.now().toString(16);
@@ -49,72 +49,113 @@ function generateUniqueIdentifier() {
 }
 
 const formSchema = v.object({
-  name: v.string([
+  name: v.pipe(
+    v.string(),
     v.minLength(1),
     v.maxLength(32, "Name must be 32 characters or less"),
-    v.toTrimmed(),
-  ]),
-  gameVersion: v.string(),
-  questsCompleted: v.coerce(
-    v.number([v.toMinValue(0), v.toMaxValue(1000)]),
-    Number,
+    v.trim(),
   ),
-  farmName: v.string([
+  gameVersion: v.string(),
+  questsCompleted: v.optional(
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(100_000),
+      v.transform((v) => Number(v)),
+    ),
+  ),
+  farmName: v.pipe(
+    v.string(),
     v.minLength(1),
     v.maxLength(32, "Name must be 32 characters or less"),
-    v.toTrimmed(),
-  ]),
-  farmType: v.string([v.minLength(1), v.maxLength(32), v.toTrimmed()]),
+    v.trim(),
+  ),
+  farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
   totalMoneyEarned: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
-      Number,
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(1_000_000_000),
+      v.transform((v) => Number(v)),
     ),
   ),
   fishCaught: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
-      Number,
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(100000),
+      v.transform((v) => Number(v)),
     ),
   ),
   numObelisks: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number),
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(4),
+      v.transform((v) => Number(v)),
+    ),
   ),
   goldenClock: v.optional(v.boolean()),
   childrenCount: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number),
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(2),
+    ),
   ),
   houseUpgradeLevel: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number),
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(3),
+      v.transform((v) => Number(v)),
+    ),
   ),
   farming: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
     ),
   ),
   fishing: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
     ),
   ),
   foraging: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
     ),
   ),
   mining: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
     ),
   ),
   combat: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
     ),
   ),
 });
@@ -126,29 +167,29 @@ export default function Editor() {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const form = useForm<v.Input<typeof formSchema>>({
+  const form = useForm({
     resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
-      gameVersion: undefined,
+      gameVersion: "",
       questsCompleted: 0,
       farmName: "",
-      farmType: undefined,
+      farmType: "",
       totalMoneyEarned: 0,
       fishCaught: 0,
-      numObelisks: undefined,
+      numObelisks: 0,
       goldenClock: false,
-      childrenCount: undefined,
-      houseUpgradeLevel: undefined,
-      farming: undefined,
-      fishing: undefined,
-      foraging: undefined,
-      mining: undefined,
-      combat: undefined,
+      childrenCount: 0,
+      houseUpgradeLevel: 0,
+      farming: 0,
+      fishing: 0,
+      foraging: 0,
+      mining: 0,
+      combat: 0,
     },
   });
 
-  const onSubmit = async (values: v.Input<typeof formSchema>) => {
+  const onSubmit = async (values: v.InferOutput<typeof formSchema>) => {
     setDisabled(true);
     const player: PlayerType = {
       _id: generateUniqueIdentifier(),
