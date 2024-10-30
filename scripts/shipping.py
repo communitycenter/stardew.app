@@ -62,12 +62,11 @@ def get_shipping_items() -> dict[str, ShippingItem]:
                 isPotentialBasicShipped(item_id, category, v.get("Type"), OBJECTS)
                 or item_id == "372"
             )
-            and item_id != "SmokedFish"
         ):
 
             # lookup the seed item ID in CROPS content file, using the harvest item id
             seed_id = crop_to_seed_id.get(item_id)
-            
+
             seasons = []
             if CROPS.get(seed_id):
                 seasons = CROPS.get(seed_id, {}).get("Seasons", [])
@@ -89,6 +88,10 @@ def get_shipping_items() -> dict[str, ShippingItem]:
                 "seasons": seasons,
             }
 
+            # 1.6.0 moved the clam to the fishing collection, but we need to maintain backwards compatibility
+            if item_id == "372":
+                output[item_id]["maxVersion"] = "1.5.0"
+
     return output
 
 
@@ -103,6 +106,6 @@ if __name__ == "__main__":
     assert len([c for c in shipping.values() if c["monoculture"]]) == 33
     # # 155 total items count for Full Shipment
     print("Total Items counted for Full Shipment: ", len(shipping))
-    assert len(shipping) == 154  # 145 as of 1.5, 1.6 added 10 new items
+    assert len(shipping) == 155  # 145 as of 1.5, 1.6 added 10 new items, + the clam = 155
 
     save_json(shipping, "shipping.json", sort=True)

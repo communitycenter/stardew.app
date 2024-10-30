@@ -118,7 +118,7 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
           <Button
             variant={"secondary"}
             onClick={() => {
-              navigator.clipboard.writeText("%appdata%/StardewValley/Saves");
+              navigator.clipboard.writeText("%appdata%\\StardewValley\\Saves");
               toast.info("Copied the folder location to your clipboard!", {
                 description:
                   "To go to this folder, press Windows key + R and paste the path. Your save will be located there.",

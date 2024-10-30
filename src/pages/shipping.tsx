@@ -99,11 +99,7 @@ export default function Shipping() {
       let basicShippedCount = 0;
 
       Object.keys(activePlayer.shipping.shipped).forEach((key) => {
-        if (
-          semverGte(gameVersion, "1.6.0") &&
-          (key === "372" || key === "SmokedFish")
-        )
-          return; // Clam and Smoked Fish is excluded in 1.6
+        if (semverGte(gameVersion, "1.6.0") && key === "372") return; // Clam and Smoked Fish is excluded in 1.6
 
         // Polyculture calculation
         if (shipping_items[key as keyof typeof shipping_items].polyculture) {
