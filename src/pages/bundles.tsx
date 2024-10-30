@@ -16,10 +16,28 @@ import {
   isRandomizer,
 } from "@/types/bundles";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
+import { BundleItemCard } from "@/components/cards/bundle-item-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle-sheet";
 import {
@@ -27,16 +45,14 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  AccordionTriggerNoToggle,
 } from "@/components/ui/accordion";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
+import { Progress } from "@/components/ui/progress";
+import { useMediaQuery } from "@react-hook/media-query";
+import { IconSettings } from "@tabler/icons-react";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { BundleItemCard } from "@/components/cards/bundle-item-card";
+import { isNumber } from "util";
 
 export const ItemQualityToString = {
   "0": "Normal",
@@ -55,6 +71,7 @@ type BundleAccordionProps = {
 type AccordionSectionProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
+  completedCount?: number;
 };
 
 const CommunityCenterRooms: CommunityCenterRoomName[] = [
@@ -68,11 +85,28 @@ const CommunityCenterRooms: CommunityCenterRoomName[] = [
 ];
 
 function AccordionSection(props: AccordionSectionProps): JSX.Element {
+  const { activePlayer } = usePlayers();
+  let progressIndicator =
+    activePlayer &&
+    typeof props.completedCount === "number" &&
+    Array.isArray(props.children) &&
+    props.completedCount < props.children.length ? (
+      <Progress
+        value={props.completedCount}
+        max={props.children.length}
+        className="w-32"
+      />
+    ) : (
+      ``
+    );
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section className="space-y-3">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+          <AccordionTrigger
+            className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white"
+            pullRight={progressIndicator}
+          >
             {props.title}
           </AccordionTrigger>
           <AccordionContent asChild>
@@ -87,94 +121,101 @@ function AccordionSection(props: AccordionSectionProps): JSX.Element {
 }
 
 function BundleAccordion(props: BundleAccordionProps): JSX.Element {
-  let bundleCompleted = BundleCompleted(props.bundleWithStatus);
-  let additionalClasses = "";
-  let remainingCount = "";
-  if (bundleCompleted) {
-    additionalClasses =
-      " border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20";
-  } else {
-    if (
-      // If we don't need all the items, show how many are remaining
-      !(
-        props.bundleWithStatus.bundle.itemsRequired === -1 ||
-        props.bundleWithStatus.bundle.itemsRequired >=
-          props.bundleWithStatus.bundle.items.length
-      )
-    ) {
-      let completedItems = props.bundleWithStatus.bundleStatus.reduce(
-        (acc, cur) => {
-          if (cur) {
-            return acc + 1;
-          }
-          return acc;
-        },
-        0,
-      );
-      let requiredCount = props.bundleWithStatus.bundle.itemsRequired;
-      if (props.bundleWithStatus.bundle.itemsRequired === -1) {
-        requiredCount = props.bundleWithStatus.bundle.items.length;
-      }
-      let remaining = requiredCount - completedItems;
-      remainingCount = ` - ${remaining} item${remaining > 1 ? "s" : ""} remaining`;
-    }
-    additionalClasses = " border-neutral-200 dark:border-neutral-800";
-  }
+  const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
+  const { bundle, bundleStatus } = props.bundleWithStatus;
 
-  const completeName =
-    props.bundleWithStatus.bundle.localizedName + " Bundle" + remainingCount;
+  const totalItems = bundle.items.length;
+  const requiredItems =
+    bundle.itemsRequired === -1 ? totalItems : bundle.itemsRequired;
+  const completedItems = bundleStatus.filter(Boolean).length;
+  const remainingCount = requiredItems - completedItems;
+  const bundleCompleted = completedItems >= requiredItems;
+
+  const bundleName = props.bundleWithStatus.bundle.localizedName;
+
+  const [selectedBundleName, setSelectedBundleName] = useState(
+    props.bundleWithStatus.bundle.name,
+  );
+
   return (
     <Accordion type="single" collapsible defaultValue="item-1" asChild>
       <section
-        className={
-          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50" +
-          additionalClasses
-        }
+        className={clsx(
+          "relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+          bundleCompleted
+            ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+            : "border-neutral-200 dark:border-neutral-800",
+        )}
       >
         <AccordionItem value="item-1" className="border-none">
-          {props.alternateOptions && props.alternateOptions.length > 0 ? (
-            <ContextMenu>
-              <ContextMenuTrigger>
-                <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  <div className="justify-left flex">{completeName}</div>
-                </AccordionTrigger>
-              </ContextMenuTrigger>
+          <AccordionTriggerNoToggle
+            className={`ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white ${isDesktop ? "flex-row" : "flex-col items-start"}`}
+          >
+            <div>
+              <div className="flex items-center gap-3">
+                <span>{bundleName} Bundle</span>
+                {props.alternateOptions &&
+                  props.alternateOptions.length > 0 && (
+                    <DropdownMenu>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <DropdownMenuTrigger asChild>
+                              <IconSettings
+                                size={16}
+                                className="relative top-0.5 text-neutral-500 dark:text-neutral-400"
+                              />
+                            </DropdownMenuTrigger>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Change Bundle</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
 
-              <ContextMenuContent className="w-48">
-                {props.alternateOptions && (
-                  <ContextMenuRadioGroup
-                    value={props.bundleWithStatus.bundle.name}
-                    onValueChange={(v) => {
-                      let selectedBundle = props.alternateOptions?.find(
-                        (bundle) => bundle.name === v,
-                      );
-                      if (props.onChangeBundle && selectedBundle) {
-                        props.onChangeBundle(
-                          selectedBundle,
-                          props.bundleWithStatus,
-                        );
-                      }
-                    }}
-                  >
-                    {props.alternateOptions.map((option) => {
-                      return (
-                        <ContextMenuRadioItem
-                          value={option.name}
-                          key={option.name}
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuRadioGroup
+                          value={selectedBundleName}
+                          onValueChange={(newBundleName) => {
+                            setSelectedBundleName(newBundleName);
+                            const selectedBundle = props.alternateOptions?.find(
+                              (bundle) => bundle.name === newBundleName,
+                            );
+                            if (props.onChangeBundle && selectedBundle) {
+                              props.onChangeBundle(
+                                selectedBundle,
+                                props.bundleWithStatus,
+                              );
+                            }
+                          }}
                         >
-                          {option.localizedName} Bundle
-                        </ContextMenuRadioItem>
-                      );
-                    })}
-                  </ContextMenuRadioGroup>
-                )}
-              </ContextMenuContent>
-            </ContextMenu>
-          ) : (
-            <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-              <div className="justify-left flex">{completeName}</div>
-            </AccordionTrigger>
-          )}
+                          {props.alternateOptions.map((newBundle) => (
+                            <DropdownMenuRadioItem
+                              key={newBundle.name}
+                              value={newBundle.name}
+                            >
+                              {newBundle.localizedName}
+                            </DropdownMenuRadioItem>
+                          ))}
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
+              </div>
+            </div>
+            {!bundleCompleted && (
+              <div className={`flex items-center ${isDesktop ? "" : "pt-2"}`}>
+                <Progress
+                  value={completedItems}
+                  max={requiredItems}
+                  className="w-32"
+                />
+              </div>
+            )}
+          </AccordionTriggerNoToggle>
+
           <AccordionContent asChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {props.children}
@@ -433,7 +474,6 @@ export default function Bundles() {
       // See note in bundlesheet.tsx
       // @ts-ignore
       await patchPlayer(patch);
-      setBundles(GetActiveBundles(activePlayer));
     }
   }
 
@@ -527,6 +567,7 @@ export default function Bundles() {
           </AccordionSection>
           {CommunityCenterRooms.map((roomName: CommunityCenterRoomName) => {
             let roomBundles: BundleWithStatus[] = [];
+            let completedCount = 0;
             if (activePlayer && Array.isArray(activePlayer.bundles)) {
               roomBundles = activePlayer.bundles.filter((bundleWithStatus) => {
                 if (bundleWithStatus?.bundle) {
@@ -535,6 +576,10 @@ export default function Bundles() {
                   return false;
                 }
               });
+              completedCount = roomBundles.reduce((acc, curBundelRet) => {
+                if (BundleCompleted(curBundelRet)) return acc + 1;
+                return acc;
+              }, 0);
             } else {
               roomBundles = bundles.filter(
                 (bundleWithStatus) =>
@@ -542,7 +587,11 @@ export default function Bundles() {
               );
             }
             return (
-              <AccordionSection key={roomName} title={roomName}>
+              <AccordionSection
+                key={roomName}
+                title={roomName}
+                completedCount={completedCount}
+              >
                 {roomBundles.map((bundleWithStatus: BundleWithStatus) => {
                   return (
                     <BundleAccordion
