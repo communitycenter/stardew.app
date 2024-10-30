@@ -57,7 +57,12 @@ const formSchema = v.object({
   ),
   gameVersion: v.string(),
   questsCompleted: v.optional(
-    v.pipe(v.number(), v.minValue(0), v.maxValue(100000)),
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(100000),
+      v.transform((v) => Number(v)),
+    ),
   ),
   farmName: v.pipe(
     v.string(),
@@ -67,20 +72,92 @@ const formSchema = v.object({
   ),
   farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
   totalMoneyEarned: v.optional(
-    v.pipe(v.number(), v.minValue(0), v.maxValue(1000000000)),
+    v.pipe(
+      v.number(),
+      v.minValue(0),
+      v.maxValue(1000000000),
+      v.transform((v) => Number(v)),
+    ),
   ),
-  fishCaught: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(100000))),
-  numObelisks: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(4))),
+  fishCaught: v.optional(
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(100000),
+      v.transform((v) => Number(v)),
+    ),
+  ),
+  numObelisks: v.optional(
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(4),
+      v.transform((v) => Number(v)),
+    ),
+  ),
   goldenClock: v.optional(v.boolean()),
-  childrenCount: v.optional(v.pipe(v.number(), v.minValue(2), v.maxValue(10))),
-  houseUpgradeLevel: v.optional(
-    v.pipe(v.number(), v.minValue(0), v.maxValue(3)),
+  childrenCount: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(2),
+    ),
   ),
-  farming: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  fishing: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  foraging: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  mining: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  combat: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+  houseUpgradeLevel: v.optional(
+    v.pipe(
+      v.union([v.string(), v.number()]),
+      v.minValue(0),
+      v.maxValue(3),
+      v.transform((v) => Number(v)),
+    ),
+  ),
+  farming: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
+    ),
+  ),
+  fishing: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
+    ),
+  ),
+  foraging: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
+    ),
+  ),
+  mining: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
+    ),
+  ),
+  combat: v.optional(
+    v.pipe(
+      v.string(), // Accepts both string and number inputs
+      v.transform(Number), // Converts to a number
+      v.number(),
+      v.minValue(0),
+      v.maxValue(10),
+    ),
+  ),
 });
 
 export default function Editor() {
@@ -112,7 +189,7 @@ export default function Editor() {
     },
   });
 
-  const onSubmit = async (values: v.InferInput<typeof formSchema>) => {
+  const onSubmit = async (values: v.InferOutput<typeof formSchema>) => {
     setDisabled(true);
     const player: PlayerType = {
       _id: generateUniqueIdentifier(),
