@@ -40,75 +40,40 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
 const formSchema = v.object({
-  name: v.string([
+  name: v.pipe(
+    v.string(),
     v.minLength(1),
     v.maxLength(32, "Name must be 32 characters or less"),
-    v.toTrimmed(),
-  ]),
+    v.trim(),
+  ),
   gameVersion: v.string(),
-  questsCompleted: v.coerce(
-    v.number([v.toMinValue(0), v.toMaxValue(1000)]),
-    Number,
+  questsCompleted: v.optional(
+    v.pipe(v.number(), v.minValue(0), v.maxValue(100000)),
   ),
-  farmName: v.string([
+  farmName: v.pipe(
+    v.string(),
     v.minLength(1),
     v.maxLength(32, "Name must be 32 characters or less"),
-    v.toTrimmed(),
-  ]),
-  farmType: v.string([v.minLength(1), v.maxLength(32), v.toTrimmed()]),
+    v.trim(),
+  ),
+  farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
   totalMoneyEarned: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(1000000000), v.integer()]),
-      Number,
-    ),
+    v.pipe(v.number(), v.minValue(0), v.maxValue(1000000000)),
   ),
-  fishCaught: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(100000), v.integer()]),
-      Number,
-    ),
-  ),
-  numObelisks: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(4), v.integer()]), Number),
-  ),
+  fishCaught: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(100000))),
+  numObelisks: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(4))),
   goldenClock: v.optional(v.boolean()),
-  childrenCount: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(2), v.integer()]), Number),
-  ),
+  childrenCount: v.optional(v.pipe(v.number(), v.minValue(2), v.maxValue(10))),
   houseUpgradeLevel: v.optional(
-    v.coerce(v.number([v.toMinValue(0), v.toMaxValue(3), v.integer()]), Number),
+    v.pipe(v.number(), v.minValue(0), v.maxValue(3)),
   ),
-  farming: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
-    ),
-  ),
-  fishing: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
-    ),
-  ),
-  foraging: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
-    ),
-  ),
-  mining: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
-    ),
-  ),
-  combat: v.optional(
-    v.coerce(
-      v.number([v.toMinValue(0), v.toMaxValue(10), v.integer()]),
-      Number,
-    ),
-  ),
+  farming: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+  fishing: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+  foraging: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+  mining: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+  combat: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
 });
+
 export default function Editor() {
   const { activePlayer, uploadPlayers } = usePlayers();
 
@@ -142,7 +107,7 @@ export default function Editor() {
     return [farmName, farmType];
   }, [activePlayer]);
 
-  const form = useForm<v.Input<typeof formSchema>>({
+  const form = useForm<v.InferInput<typeof formSchema>>({
     resolver: valibotResolver(formSchema as any),
     defaultValues: {
       name: "",
@@ -209,7 +174,7 @@ export default function Editor() {
     _setGameVersion(activePlayer?.general?.gameVersion ?? undefined);
   }, [activePlayer, form, farmListInfo]);
 
-  const onSubmit = async (values: v.Input<typeof formSchema>) => {
+  const onSubmit = async (values: v.InferInput<typeof formSchema>) => {
     if (!activePlayer?._id) {
       toast.error("An error occurred creating your farmhand.", {
         description: (
