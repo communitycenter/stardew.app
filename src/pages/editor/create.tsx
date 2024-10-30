@@ -60,7 +60,7 @@ const formSchema = v.object({
     v.pipe(
       v.union([v.string(), v.number()]),
       v.minValue(0),
-      v.maxValue(100000),
+      v.maxValue(100_000),
       v.transform((v) => Number(v)),
     ),
   ),
@@ -73,9 +73,9 @@ const formSchema = v.object({
   farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
   totalMoneyEarned: v.optional(
     v.pipe(
-      v.number(),
+      v.union([v.string(), v.number()]),
       v.minValue(0),
-      v.maxValue(1000000000),
+      v.maxValue(1_000_000_000),
       v.transform((v) => Number(v)),
     ),
   ),
