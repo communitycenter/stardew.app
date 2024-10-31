@@ -11,12 +11,12 @@ import { PlayersProvider } from "@/contexts/players-context";
 import { PreferencesProvider } from "@/contexts/preferences-context";
 
 import posthog from "posthog-js";
-import { PostHogProvider } from "posthog-js/react";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import ErrorBoundary from "@/components/error-boundary";
-
-const inter = Inter({ subsets: ["latin"] });
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { GeistSans } from "geist/font/sans";
+import { AppSidebar } from "@/components/sidebar/main";
 
 if (typeof window !== "undefined") {
   // checks that we are client-side
@@ -55,22 +55,19 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PlayersProvider>
         <PreferencesProvider>
-          <PostHogProvider client={posthog}>
-            <div className={`${inter.className}`}>
-              <div className="sticky top-0 z-10 dark:bg-neutral-950">
-                <Topbar />
-              </div>
-              <div>
-                <Sidebar className="hidden max-h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip md:fixed md:flex md:w-72 md:flex-col" />
-                <div className="md:pl-72">
-                  <ErrorBoundary>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <main>
+                <ErrorBoundary>
+                  <main className={GeistSans.className}>
                     <Component {...pageProps} />
-                  </ErrorBoundary>
-                  <Toaster richColors />
-                </div>
-              </div>
-            </div>
-          </PostHogProvider>
+                  </main>
+                </ErrorBoundary>
+                <Toaster richColors />
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
         </PreferencesProvider>
       </PlayersProvider>
     </ThemeProvider>

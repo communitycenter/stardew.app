@@ -69,7 +69,7 @@ export default function Home() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)]  flex-col items-center border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
+        className={`flex min-h-screen flex-col items-center border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
         <main className="flex max-w-2xl flex-grow flex-col items-center justify-center">
           <div className="mb-4 flex items-center gap-2">
