@@ -75,7 +75,7 @@ export default function SecretNotes() {
         />
       </Head>
       <main
-        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
+        className={`flex min-h-screen flex-col items-center px-5 pb-8 pt-2 md:px-8`}
       >
         <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">

@@ -154,7 +154,11 @@ export function AppSidebar({ ...props }) {
 
   return (
     <>
-      <Sidebar collapsible="icon" {...props}>
+      <Sidebar
+        collapsible="icon"
+        className="border-r border-neutral-200 dark:border-neutral-800"
+        {...props}
+      >
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
@@ -294,7 +298,7 @@ export function AppSidebar({ ...props }) {
             feedback={setFeedbackOpen}
           />
         </SidebarFooter>
-        <SidebarRail className="border-b-0 border-l-0 border-t-0" />
+        <SidebarRail />
       </Sidebar>
       <UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
       <LoginDialog open={loginOpen} setOpen={setLoginOpen} />
