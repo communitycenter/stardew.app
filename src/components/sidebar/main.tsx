@@ -72,6 +72,7 @@ import { ChangelogDialog } from "../dialogs/changelog-dialog";
 import { FeedbackDialog } from "../dialogs/feedback-dialog";
 import { SidebarUser } from "./user";
 import CustomSidebarGroup from "./group";
+import SidebarLinks from "./group";
 
 export const miscNavigation = [
   { name: "Bundles", href: "/bundles", icon: IconBox },
@@ -263,22 +264,22 @@ export function AppSidebar({ ...props }) {
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
-          <CustomSidebarGroup
+          <SidebarLinks
             label="Navigation"
             items={playerNavigation}
             pathname={pathname}
           />
-          <CustomSidebarGroup
+          <SidebarLinks
             label="Collections"
             items={collectionsNavigation}
             pathname={pathname}
           />
-          <CustomSidebarGroup
+          <SidebarLinks
             label="Tools"
             items={miscNavigation}
             pathname={pathname}
           />
-          <CustomSidebarGroup
+          <SidebarLinks
             className="mt-auto"
             items={linksNavigation}
             pathname={pathname}
@@ -293,7 +294,7 @@ export function AppSidebar({ ...props }) {
             feedback={setFeedbackOpen}
           />
         </SidebarFooter>
-        <SidebarRail />
+        <SidebarRail className="border-b-0 border-l-0 border-t-0" />
       </Sidebar>
       <UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
       <LoginDialog open={loginOpen} setOpen={setLoginOpen} />

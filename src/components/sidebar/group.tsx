@@ -16,7 +16,7 @@ interface CustomSidebarGroupProps {
   className?: string;
 }
 
-const CustomSidebarGroup = ({
+const SidebarLinks = ({
   label,
   items,
   pathname,
@@ -49,4 +49,4 @@ const CustomSidebarGroup = ({
   </SidebarGroup>
 );
 
-export default CustomSidebarGroup;
+export default SidebarLinks;
