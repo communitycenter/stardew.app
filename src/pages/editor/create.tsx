@@ -248,7 +248,7 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] justify-center border-neutral-200 px-0 dark:border-neutral-800 md:items-center md:border-l md:px-8`}
+        className={`flex min-h-screen flex-col items-center justify-center px-5 pb-8 pt-2 md:px-8`}
       >
         <div className="mx-auto max-w-xl space-y-4">
           <Card className="border-0 md:border">

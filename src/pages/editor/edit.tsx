@@ -284,23 +284,23 @@ export default function Editor() {
         experience: {
           farming:
             values.farming === activePlayer.general?.skills?.farming
-              ? activePlayer.general?.experience?.farming ?? 0
+              ? (activePlayer.general?.experience?.farming ?? 0)
               : 0,
           fishing:
             values.fishing === activePlayer.general?.skills?.fishing
-              ? activePlayer.general?.experience?.fishing ?? 0
+              ? (activePlayer.general?.experience?.fishing ?? 0)
               : 0,
           foraging:
             values.foraging === activePlayer.general?.skills?.foraging
-              ? activePlayer.general?.experience?.foraging ?? 0
+              ? (activePlayer.general?.experience?.foraging ?? 0)
               : 0,
           mining:
             values.mining === activePlayer.general?.skills?.mining
-              ? activePlayer.general?.experience?.mining ?? 0
+              ? (activePlayer.general?.experience?.mining ?? 0)
               : 0,
           combat:
             values.combat === activePlayer.general?.skills?.combat
-              ? activePlayer.general?.experience?.combat ?? 0
+              ? (activePlayer.general?.experience?.combat ?? 0)
               : 0,
           luck: 0,
         },
@@ -349,7 +349,7 @@ export default function Editor() {
         />
       </Head>
       <main
-        className={`flex min-h-[calc(100vh-65px)] justify-center border-neutral-200 px-0 dark:border-neutral-800 md:items-center md:border-l md:px-8`}
+        className={`flex min-h-screen flex-col items-center justify-center px-5 pb-8 pt-2 md:px-8`}
       >
         <div className="mx-auto max-w-xl space-y-4">
           <Card className="border-0 md:border">

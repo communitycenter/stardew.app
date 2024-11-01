@@ -208,7 +208,9 @@ export default function Account() {
         />
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <main className="flex min-h-[calc(100vh-65px)] border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8">
+      <main
+        className={`flex min-h-screen flex-col items-center justify-center px-5 pb-8 pt-2 md:px-8`}
+      >
         <div className="mx-auto mt-4 w-full max-w-5xl space-y-8">
           <Tabs defaultValue="site">
             <TabsList className="grid w-full grid-cols-3">
