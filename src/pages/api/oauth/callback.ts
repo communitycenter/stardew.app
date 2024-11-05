@@ -1,7 +1,10 @@
+import * as schema from "$drizzle/schema";
+import { db } from "@/db";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
+import { eq } from "drizzle-orm";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { SqlUser, conn, createToken } from "../saves";
+import { createToken } from "../saves";
 
 type Data = Record<string, any>;
 
@@ -19,7 +22,8 @@ export default async function handler(
     }
 
     const uid = getCookie("uid", { req });
-    if (!uid) {
+
+    if (!uid || typeof uid !== "string") {
       res.status(400).end();
       res.redirect("/");
       console.log("[OAuth] No UID cookie");
@@ -77,17 +81,21 @@ export default async function handler(
 
     const discordUserData = await discordUser.json();
 
-    let user = (
-      await conn.execute("SELECT * FROM Users WHERE id = ? LIMIT 1", [uid])
-    )?.rows[0] as SqlUser | undefined;
+    let [user] = await db
+      .select()
+      .from(schema.users)
+      .where(eq(schema.users.id, uid))
+      .limit(1);
+
     let cookieSecret =
       user?.cookie_secret ?? crypto.randomBytes(16).toString("hex");
+
     if (!user) {
-      let discordUser = (
-        await conn.execute("SELECT * FROM Users WHERE discord_id = ? LIMIT 1", [
-          discordUserData.id,
-        ])
-      )?.rows[0] as SqlUser | undefined;
+      let [discordUser] = await db
+        .select()
+        .from(schema.users)
+        .where(eq(schema.users.discord_id, discordUserData.id))
+        .limit(1);
 
       if (discordUser) {
         user = discordUser;
@@ -95,32 +103,49 @@ export default async function handler(
 
         // update discord name if it has changed
         if (discordUser.discord_name !== discordUserData.username) {
-          const r = await conn.execute(
-            "UPDATE Users SET discord_name = ? WHERE discord_id = ?",
-            [discordUserData.username, discordUserData.id],
-          );
+          await db
+            .update(schema.users)
+            .set({ discord_name: discordUserData.username })
+            .where(eq(schema.users.discord_id, discordUserData.id));
         }
 
         // update discord avatar if the avatar hash changed
         if (discordUser.discord_avatar !== discordUserData.avatar) {
-          const r = await conn.execute(
-            "UPDATE Users SET discord_avatar = ? WHERE discord_id = ?",
-            [discordUserData.avatar, discordUserData.id],
-          );
+          await db
+            .update(schema.users)
+            .set({ discord_avatar: discordUserData.avatar })
+            .where(eq(schema.users.discord_id, discordUserData.id));
         }
       } else {
-        await conn.execute(
-          "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
-          [
-            uid as string,
-            discordUserData.id,
-            discordUserData.username,
-            discordUserData.avatar,
-            cookieSecret,
-          ],
-        );
+        await db
+          .insert(schema.users)
+          .values({
+            id: uid,
+            discord_id: discordUserData.id,
+            discord_name: discordUserData.username,
+            discord_avatar: discordUserData.avatar,
+            cookie_secret: cookieSecret,
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              discord_id: discordUserData.id,
+              discord_name: discordUserData.username,
+              discord_avatar: discordUserData.avatar,
+              cookie_secret: cookieSecret,
+            },
+          });
+        // await conn.execute(
+        //   "INSERT INTO Users (id, discord_id, discord_name, discord_avatar, cookie_secret) VALUES (?, ?, ?, ?, ?)",
+        //   [
+        //     uid as string,
+        //     discordUserData.id,
+        //     discordUserData.username,
+        //     discordUserData.avatar,
+        //     cookieSecret,
+        //   ],
+        // );
         user = {
-          id: uid as string,
+          id: uid,
           discord_id: discordUserData.id,
           discord_name: discordUserData.username,
           discord_avatar: discordUserData.avatar,

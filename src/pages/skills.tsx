@@ -116,7 +116,7 @@ export default function SkillsMasteryPowers() {
         percentage:
           currentLevel >= 10
             ? 100
-            : (currentExperience / nextLevelExperience) * 100,
+            : Math.floor((currentExperience / nextLevelExperience) * 100),
         experiencePointsRemaining: Math.max(
           nextLevelExperience - currentExperience,
           0,

@@ -47,7 +47,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-  },
+  }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
