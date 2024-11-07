@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 
 import type { PlayerType } from "@/contexts/players-context";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod";
 
 import { usePlayers } from "@/contexts/players-context";
 
@@ -48,82 +48,35 @@ function generateUniqueIdentifier() {
   return uniqueIdentifier.substring(0, 32);
 }
 
-const formSchema = v.object({
-  name: v.pipe(
-    v.string(),
-    v.minLength(1, "Please enter your farm name!"),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  gameVersion: v.string(),
-  questsCompleted: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(100_000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farmName: v.pipe(
-    v.string(),
-    v.minLength(1, "Please enter your farm name!"),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  farmType: v.pipe(
-    v.string(),
-    v.minLength(1, "Please select a farm type!"),
-    v.maxLength(32),
-    v.trim(),
-  ),
-  totalMoneyEarned: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(1_000_000_000),
-      v.transform((v) => Number(v)),
-    ),
-    0,
-  ),
-  fishCaught: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(100000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  numObelisks: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(4),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  goldenClock: v.optional(v.boolean()),
-  childrenCount: v.optional(
-    v.pipe(
-      v.number(),
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(2),
-    ),
-  ),
-  houseUpgradeLevel: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(3),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farming: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  fishing: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  foraging: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  mining: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
-  combat: v.optional(v.pipe(v.number(), v.minValue(0), v.maxValue(10))),
+export const formSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "Please enter your farm name!" })
+    .max(32, { message: "Name must be 32 characters or less" })
+    .trim(),
+  gameVersion: z.string(),
+  questsCompleted: z.coerce.number().min(0).max(100_000).optional(),
+  farmName: z
+    .string()
+    .min(1, { message: "Please enter your farm name!" })
+    .max(32, { message: "Name must be 32 characters or less" })
+    .trim(),
+  farmType: z
+    .string()
+    .min(1, { message: "Please select a farm type!" })
+    .max(32)
+    .trim(),
+  totalMoneyEarned: z.coerce.number().min(0).max(1_000_000_000).default(0),
+  fishCaught: z.coerce.number().min(0).max(100_000).optional(),
+  numObelisks: z.coerce.number().min(0).max(4).optional(),
+  goldenClock: z.boolean().optional(),
+  childrenCount: z.coerce.number().min(0).max(2).optional(),
+  houseUpgradeLevel: z.coerce.number().min(0).max(3).optional(),
+  farming: z.coerce.number().min(0).max(10).optional(),
+  fishing: z.coerce.number().min(0).max(10).optional(),
+  foraging: z.coerce.number().min(0).max(10).optional(),
+  mining: z.coerce.number().min(0).max(10).optional(),
+  combat: z.coerce.number().min(0).max(10).optional(),
 });
 
 export const skillsArray = [
@@ -142,7 +95,7 @@ export default function Editor() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const form = useForm({
-    resolver: valibotResolver(formSchema),
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       gameVersion: "",
@@ -163,7 +116,7 @@ export default function Editor() {
     },
   });
 
-  const onSubmit = async (values: v.InferInput<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setDisabled(true);
     const player: PlayerType = {
       _id: generateUniqueIdentifier(),
