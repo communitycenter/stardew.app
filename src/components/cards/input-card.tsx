@@ -1,13 +1,13 @@
 // This is only used for monster slayer goals so it's not very reusable
 
-import * as v from "valibot";
+import * as z from "zod";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { usePlayers } from "@/contexts/players-context";
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   Form,
@@ -46,12 +46,12 @@ export const InputCard = ({
 }: Props) => {
   const [value, setValue] = useState(0);
 
-  const inputSchema = v.object({
-    input: v.pipe(v.number(), v.minValue(0)),
+  const inputSchema = z.object({
+    input: z.coerce.number().min(10),
   });
 
   const form = useForm({
-    resolver: valibotResolver(inputSchema),
+    resolver: zodResolver(inputSchema),
   });
 
   async function handleSave() {
