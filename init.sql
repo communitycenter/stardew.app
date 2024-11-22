@@ -27,6 +27,7 @@ create table Saves (
 	scraps json not null default (JSON_OBJECT()),
 	perfection json not null default (JSON_OBJECT()),
 	powers json not null default (JSON_OBJECT()),
+	bundles json not null default (JSON_OBJECT()),
 	constraint Saves_pk primary key (_id),
 	constraint Unique_user_id_player unique (user_id, _id)
 );

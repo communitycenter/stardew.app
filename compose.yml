@@ -1,0 +1,51 @@
+services:
+  web:
+    container_name: stardewapp-web
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mysql://stardewapp:HyP2YAPZbw2GBBxq@db:3306/stardewapp
+      - NEXT_PUBLIC_DEVELOPMENT=1
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - stardewapp
+
+  db:
+    container_name: stardewapp-mysql
+    image: mysql:8.3
+    environment:
+      # Change this to your password !
+      MYSQL_ROOT_PASSWORD: VqcQHRW9sHZHQvqqpYYsQDCv
+      MYSQL_DATABASE: stardewapp
+      MYSQL_USER: stardewapp
+      # Change this to your password !
+      MYSQL_PASSWORD: HyP2YAPZbw2GBBxq
+    command: --init-file /etc/mysql/init.sql
+    volumes:
+      - stardewapp-vol:/var/lib/mysql
+      - ./init.sql:/etc/mysql/init.sql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysql",
+          "-uroot",
+          "-pVqcQHRW9sHZHQvqqpYYsQDCv",
+          "-e",
+          "SELECT 1",
+        ]
+      interval: 2s
+      timeout: 10s
+      retries: 20
+
+networks:
+  stardewapp:
+
+volumes:
+  stardewapp-vol:
