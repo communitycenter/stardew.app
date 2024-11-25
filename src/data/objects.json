@@ -4747,9 +4747,9 @@
   },
   "SmokedFish": {
     "category": "Artisan Goods",
-    "description": "A whole {0}, smoked to perfection.",
+    "description": "A whole fish, smoked to perfection.",
     "minVersion": "1.6.0",
-    "name": "Smoked"
+    "name": "Smoked Fish"
   },
   "SonarBobber": {
     "category": "Fishing Tackle",
