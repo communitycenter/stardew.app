@@ -21,6 +21,7 @@ import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
 
 const semverSatisfies = require("semver/functions/satisfies");
+const semverCoerce = require("semver/functions/coerce");
 
 export function parseSaveFile(xml: string) {
   const parser = new XMLParser({ ignoreAttributes: false });
@@ -36,12 +37,14 @@ export function parseSaveFile(xml: string) {
   }
 
   try {
-    let version: string = "";
+    let versionString: string = "";
     if (!saveFile.SaveGame.gameVersion) {
-      version = "1.4.5"; // assume 1.4.5 if gameVersion is not present
+      versionString = "1.4.5"; // assume 1.4.5 if gameVersion is not present
     } else {
-      version = saveFile.SaveGame.gameVersion.toString();
+      versionString = saveFile.SaveGame.gameVersion.toString();
     }
+
+    const version = semverCoerce(versionString).version;
 
     // make sure game version is at least 1.5.0
     if (!semverSatisfies(version, ">=1.5.0 <1.7")) {

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@hookform/resolvers": "^3.2.0",
+    "@hookform/resolvers": "^3.9.1",
     "@marsidev/react-turnstile": "^0.5.3",
     "@next/bundle-analyzer": "^14.0.4",
     "@planetscale/database": "^1.10.0",
@@ -66,8 +66,8 @@
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
-    "valibot": "^0.42.1",
-    "vaul": "^0.8.0"
+    "vaul": "^0.8.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "drizzle-kit": "^0.22.7",

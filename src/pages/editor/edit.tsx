@@ -3,10 +3,10 @@ import Link from "next/link";
 
 import type { PlayerType } from "@/contexts/players-context";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod";
 
 import { usePlayers } from "@/contexts/players-context";
 
@@ -38,118 +38,7 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
-
-const formSchema = v.object({
-  name: v.pipe(
-    v.string(),
-    v.minLength(1),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  gameVersion: v.string(),
-  questsCompleted: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(100000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farmName: v.pipe(
-    v.string(),
-    v.minLength(1),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
-  totalMoneyEarned: v.optional(
-    v.pipe(
-      v.number(),
-      v.minValue(0),
-      v.maxValue(1000000000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  fishCaught: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(100000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  numObelisks: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(4),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  goldenClock: v.optional(v.boolean()),
-  childrenCount: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(2),
-    ),
-  ),
-  houseUpgradeLevel: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(3),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farming: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  fishing: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  foraging: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  mining: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  combat: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-});
+import { formSchema } from "./create";
 
 export default function Editor() {
   const { activePlayer, uploadPlayers } = usePlayers();
@@ -184,8 +73,8 @@ export default function Editor() {
     return [farmName, farmType];
   }, [activePlayer]);
 
-  const form = useForm<v.InferOutput<typeof formSchema>>({
-    resolver: valibotResolver(formSchema as any),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema as any),
     defaultValues: {
       name: "",
       gameVersion: undefined,
@@ -251,7 +140,7 @@ export default function Editor() {
     _setGameVersion(activePlayer?.general?.gameVersion ?? undefined);
   }, [activePlayer, form, farmListInfo]);
 
-  const onSubmit = async (values: v.InferOutput<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!activePlayer?._id) {
       toast.error("An error occurred creating your farmhand.", {
         description: (

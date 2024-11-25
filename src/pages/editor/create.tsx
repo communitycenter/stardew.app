@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 
 import type { PlayerType } from "@/contexts/players-context";
 
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as v from "valibot";
+import * as z from "zod";
 
 import { usePlayers } from "@/contexts/players-context";
 
@@ -48,117 +48,44 @@ function generateUniqueIdentifier() {
   return uniqueIdentifier.substring(0, 32);
 }
 
-const formSchema = v.object({
-  name: v.pipe(
-    v.string(),
-    v.minLength(1),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  gameVersion: v.string(),
-  questsCompleted: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(100_000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farmName: v.pipe(
-    v.string(),
-    v.minLength(1),
-    v.maxLength(32, "Name must be 32 characters or less"),
-    v.trim(),
-  ),
-  farmType: v.pipe(v.string(), v.minLength(1), v.maxLength(32), v.trim()),
-  totalMoneyEarned: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(1_000_000_000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  fishCaught: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(100000),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  numObelisks: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(4),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  goldenClock: v.optional(v.boolean()),
-  childrenCount: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(2),
-    ),
-  ),
-  houseUpgradeLevel: v.optional(
-    v.pipe(
-      v.union([v.string(), v.number()]),
-      v.minValue(0),
-      v.maxValue(3),
-      v.transform((v) => Number(v)),
-    ),
-  ),
-  farming: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  fishing: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  foraging: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  mining: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
-  combat: v.optional(
-    v.pipe(
-      v.string(), // Accepts both string and number inputs
-      v.transform(Number), // Converts to a number
-      v.number(),
-      v.minValue(0),
-      v.maxValue(10),
-    ),
-  ),
+export const formSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "Please enter your farm name!" })
+    .max(32, { message: "Name must be 32 characters or less" })
+    .trim(),
+  gameVersion: z.string(),
+  questsCompleted: z.coerce.number().min(0).max(100_000).optional(),
+  farmName: z
+    .string()
+    .min(1, { message: "Please enter your farm name!" })
+    .max(32, { message: "Name must be 32 characters or less" })
+    .trim(),
+  farmType: z
+    .string()
+    .min(1, { message: "Please select a farm type!" })
+    .max(32)
+    .trim(),
+  totalMoneyEarned: z.coerce.number().min(0).max(1_000_000_000).default(0),
+  fishCaught: z.coerce.number().min(0).max(100_000).optional(),
+  numObelisks: z.coerce.number().min(0).max(4).optional(),
+  goldenClock: z.boolean().optional(),
+  childrenCount: z.coerce.number().min(0).max(2).optional(),
+  houseUpgradeLevel: z.coerce.number().min(0).max(3).optional(),
+  farming: z.coerce.number().min(0).max(10).optional(),
+  fishing: z.coerce.number().min(0).max(10).optional(),
+  foraging: z.coerce.number().min(0).max(10).optional(),
+  mining: z.coerce.number().min(0).max(10).optional(),
+  combat: z.coerce.number().min(0).max(10).optional(),
 });
+
+export const skillsArray = [
+  "farming",
+  "fishing",
+  "foraging",
+  "mining",
+  "combat",
+] as const;
 
 export default function Editor() {
   let [disabled, setDisabled] = useState(false);
@@ -168,7 +95,7 @@ export default function Editor() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const form = useForm({
-    resolver: valibotResolver(formSchema as any),
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       gameVersion: "",
@@ -189,7 +116,7 @@ export default function Editor() {
     },
   });
 
-  const onSubmit = async (values: v.InferOutput<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setDisabled(true);
     const player: PlayerType = {
       _id: generateUniqueIdentifier(),
@@ -518,7 +445,7 @@ export default function Editor() {
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
+                                    <SelectItem value="1">0</SelectItem>
                                     <SelectItem value="1">1</SelectItem>
                                     <SelectItem value="2">2</SelectItem>
                                   </SelectContent>
@@ -555,158 +482,39 @@ export default function Editor() {
                         </div>
                         {/* Skills */}
                         <div className="grid grid-cols-3 gap-4">
-                          <FormField
-                            control={form.control}
-                            name="farming"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel htmlFor="farming">Farming</FormLabel>
-                                <Select onValueChange={field.onChange}>
-                                  <FormControl id="farming">
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
-                                    <SelectItem value="1">1</SelectItem>
-                                    <SelectItem value="2">2</SelectItem>
-                                    <SelectItem value="3">3</SelectItem>
-                                    <SelectItem value="4">4</SelectItem>
-                                    <SelectItem value="5">5</SelectItem>
-                                    <SelectItem value="6">6</SelectItem>
-                                    <SelectItem value="7">7</SelectItem>
-                                    <SelectItem value="8">8</SelectItem>
-                                    <SelectItem value="9">9</SelectItem>
-                                    <SelectItem value="10">10</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="fishing"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel htmlFor="fishing">Fishing</FormLabel>
-                                <Select onValueChange={field.onChange}>
-                                  <FormControl id="fishing">
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
-                                    <SelectItem value="1">1</SelectItem>
-                                    <SelectItem value="2">2</SelectItem>
-                                    <SelectItem value="3">3</SelectItem>
-                                    <SelectItem value="4">4</SelectItem>
-                                    <SelectItem value="5">5</SelectItem>
-                                    <SelectItem value="6">6</SelectItem>
-                                    <SelectItem value="7">7</SelectItem>
-                                    <SelectItem value="8">8</SelectItem>
-                                    <SelectItem value="9">9</SelectItem>
-                                    <SelectItem value="10">10</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="foraging"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel htmlFor="foraging">
-                                  Foraging
-                                </FormLabel>
-                                <Select onValueChange={field.onChange}>
-                                  <FormControl id="foraging">
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
-                                    <SelectItem value="1">1</SelectItem>
-                                    <SelectItem value="2">2</SelectItem>
-                                    <SelectItem value="3">3</SelectItem>
-                                    <SelectItem value="4">4</SelectItem>
-                                    <SelectItem value="5">5</SelectItem>
-                                    <SelectItem value="6">6</SelectItem>
-                                    <SelectItem value="7">7</SelectItem>
-                                    <SelectItem value="8">8</SelectItem>
-                                    <SelectItem value="9">9</SelectItem>
-                                    <SelectItem value="10">10</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="mining"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel htmlFor="mining">Mining</FormLabel>
-                                <Select onValueChange={field.onChange}>
-                                  <FormControl id="mining">
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
-                                    <SelectItem value="1">1</SelectItem>
-                                    <SelectItem value="2">2</SelectItem>
-                                    <SelectItem value="3">3</SelectItem>
-                                    <SelectItem value="4">4</SelectItem>
-                                    <SelectItem value="5">5</SelectItem>
-                                    <SelectItem value="6">6</SelectItem>
-                                    <SelectItem value="7">7</SelectItem>
-                                    <SelectItem value="8">8</SelectItem>
-                                    <SelectItem value="9">9</SelectItem>
-                                    <SelectItem value="10">10</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="combat"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel htmlFor="combat">Combat</FormLabel>
-                                <Select onValueChange={field.onChange}>
-                                  <FormControl id="combat">
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="0">0</SelectItem>
-                                    <SelectItem value="1">1</SelectItem>
-                                    <SelectItem value="2">2</SelectItem>
-                                    <SelectItem value="3">3</SelectItem>
-                                    <SelectItem value="4">4</SelectItem>
-                                    <SelectItem value="5">5</SelectItem>
-                                    <SelectItem value="6">6</SelectItem>
-                                    <SelectItem value="7">7</SelectItem>
-                                    <SelectItem value="8">8</SelectItem>
-                                    <SelectItem value="9">9</SelectItem>
-                                    <SelectItem value="10">10</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
+                          {skillsArray.map((fieldName) => (
+                            <FormField
+                              key={fieldName}
+                              control={form.control}
+                              name={fieldName}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel htmlFor={fieldName}>
+                                    {fieldName.charAt(0).toUpperCase() +
+                                      fieldName.slice(1)}
+                                  </FormLabel>
+                                  <Select onValueChange={field.onChange}>
+                                    <FormControl id={fieldName}>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="Select" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      {[...Array(11).keys()].map((value) => (
+                                        <SelectItem
+                                          key={value}
+                                          value={value.toString()}
+                                        >
+                                          {value}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          ))}
                           <FormField
                             control={form.control}
                             name="questsCompleted"

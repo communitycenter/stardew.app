@@ -7,7 +7,6 @@ import { usePlayers } from "@/contexts/players-context";
 import { BundleItemWithLocation } from "@/types/bundles";
 import { BooleanCard } from "./boolean-card";
 import { categoryIcons, goldIcons } from "@/lib/constants";
-import { unknown } from "valibot";
 
 interface BundleItemCardProps {
   item: BundleItemWithLocation;
