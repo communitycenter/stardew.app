@@ -33,6 +33,7 @@ import {
 const reqs: Record<string, number> = {
   "Singular Talent": 1, // platform specific
   "Master Of The Five Ways": 5, // platform specific
+  "Well-Read": 19,
 };
 
 export default function SkillsMasteryPowers() {
@@ -49,6 +50,7 @@ export default function SkillsMasteryPowers() {
     if (activePlayer) {
       const skills = new Set(["Singular Talent", "Master Of The Five Ways"]);
       const quests = new Set(["Gofer", "A Big Help"]);
+      const powers = new Set(["Well-Read"]);
 
       if (skills.has(name)) {
         // use maxLevelCount and compare to reqs
@@ -63,6 +65,11 @@ export default function SkillsMasteryPowers() {
         if (questsCompleted >= reqs[name]) completed = true;
         else {
           additionalDescription = ` - ${reqs[name] - questsCompleted} left`;
+        }
+      } else if (powers.has(name)) {
+        if (playerPowers.size >= reqs[name]) completed = true;
+        else {
+          additionalDescription = ` - ${reqs[name] - playerPowers.size} left`;
         }
       }
     }
@@ -474,6 +481,25 @@ export default function SkillsMasteryPowers() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
+                      {Object.values(achievements)
+                        .filter((achievement) =>
+                          achievement.description.includes("power book"),
+                        )
+                        .map((achievement) => {
+                          const { completed, additionalDescription } =
+                            getAchievementProgress(achievement.name);
+
+                          return (
+                            <AchievementCard
+                              key={achievement.id}
+                              achievement={achievement}
+                              completed={completed}
+                              additionalDescription={additionalDescription}
+                            />
+                          );
+                        })}
+                    </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                       {Object.entries(powers)
                         .filter(([key, power]) => key.includes("Book_"))
