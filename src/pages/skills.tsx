@@ -58,6 +58,7 @@ export default function SkillsMasteryPowers() {
           additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
         }
       } else if (powers.has(name)) {
+        // use the size of playerPowers and compare to reqs
         if (playerPowers.size >= reqs[name]) completed = true;
         else {
           additionalDescription = ` - ${reqs[name] - playerPowers.size} left`;
