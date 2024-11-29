@@ -225,7 +225,7 @@ export default function SkillsMasteryPowers() {
             <section className="space-y-3">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  Skill Achievements
+                  Skills
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
