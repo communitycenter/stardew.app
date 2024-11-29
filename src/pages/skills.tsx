@@ -49,7 +49,6 @@ export default function SkillsMasteryPowers() {
 
     if (activePlayer) {
       const skills = new Set(["Singular Talent", "Master Of The Five Ways"]);
-      const quests = new Set(["Gofer", "A Big Help"]);
       const powers = new Set(["Well-Read"]);
 
       if (skills.has(name)) {
@@ -57,14 +56,6 @@ export default function SkillsMasteryPowers() {
         if (maxLevelCount >= reqs[name]) completed = true;
         else {
           additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
-        }
-      } else if (quests.has(name)) {
-        // use general.questsCompleted and compare to reqs
-        const questsCompleted = activePlayer.general?.questsCompleted ?? 0;
-
-        if (questsCompleted >= reqs[name]) completed = true;
-        else {
-          additionalDescription = ` - ${reqs[name] - questsCompleted} left`;
         }
       } else if (powers.has(name)) {
         if (playerPowers.size >= reqs[name]) completed = true;
