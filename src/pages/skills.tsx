@@ -49,7 +49,6 @@ export default function SkillsMasteryPowers() {
 
     if (activePlayer) {
       const skills = new Set(["Singular Talent", "Master Of The Five Ways"]);
-      const quests = new Set(["Gofer", "A Big Help"]);
       const powers = new Set(["Well-Read"]);
 
       if (skills.has(name)) {
@@ -58,15 +57,8 @@ export default function SkillsMasteryPowers() {
         else {
           additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
         }
-      } else if (quests.has(name)) {
-        // use general.questsCompleted and compare to reqs
-        const questsCompleted = activePlayer.general?.questsCompleted ?? 0;
-
-        if (questsCompleted >= reqs[name]) completed = true;
-        else {
-          additionalDescription = ` - ${reqs[name] - questsCompleted} left`;
-        }
       } else if (powers.has(name)) {
+        // use the size of playerPowers and compare to reqs
         if (playerPowers.size >= reqs[name]) completed = true;
         else {
           additionalDescription = ` - ${reqs[name] - playerPowers.size} left`;
@@ -233,7 +225,7 @@ export default function SkillsMasteryPowers() {
             <section className="space-y-3">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  Skill Achievements
+                  Skills
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
