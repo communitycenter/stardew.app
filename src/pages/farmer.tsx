@@ -188,7 +188,7 @@ export default function Farmer() {
                 <AccordionContent>
                   <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
                     <InfoCard
-                      title="Player Name"
+                      title="Farmer Name"
                       description={
                         activePlayer?.general?.name ?? "No Info Found"
                       }
@@ -209,7 +209,7 @@ export default function Farmer() {
                       Icon={ClockIcon}
                     />
                     <InfoCard
-                      title="Money Earned"
+                      title="Farm Earnings"
                       description={
                         activePlayer?.general?.totalMoneyEarned
                           ? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
