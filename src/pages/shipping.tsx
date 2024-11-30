@@ -249,7 +249,7 @@ export default function Shipping() {
                 <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
-                    placeholder="Search Recipes"
+                    placeholder="Search Items"
                   />
                 </Command>
               </div>

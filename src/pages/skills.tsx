@@ -33,6 +33,7 @@ import {
 const reqs: Record<string, number> = {
   "Singular Talent": 1, // platform specific
   "Master Of The Five Ways": 5, // platform specific
+  "Well-Read": 19,
 };
 
 export default function SkillsMasteryPowers() {
@@ -48,7 +49,7 @@ export default function SkillsMasteryPowers() {
 
     if (activePlayer) {
       const skills = new Set(["Singular Talent", "Master Of The Five Ways"]);
-      const quests = new Set(["Gofer", "A Big Help"]);
+      const powers = new Set(["Well-Read"]);
 
       if (skills.has(name)) {
         // use maxLevelCount and compare to reqs
@@ -56,13 +57,11 @@ export default function SkillsMasteryPowers() {
         else {
           additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
         }
-      } else if (quests.has(name)) {
-        // use general.questsCompleted and compare to reqs
-        const questsCompleted = activePlayer.general?.questsCompleted ?? 0;
-
-        if (questsCompleted >= reqs[name]) completed = true;
+      } else if (powers.has(name)) {
+        // use the size of playerPowers and compare to reqs
+        if (playerPowers.size >= reqs[name]) completed = true;
         else {
-          additionalDescription = ` - ${reqs[name] - questsCompleted} left`;
+          additionalDescription = ` - ${reqs[name] - playerPowers.size} left`;
         }
       }
     }
@@ -226,7 +225,7 @@ export default function SkillsMasteryPowers() {
             <section className="space-y-3">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-                  Skill Achievements
+                  Skills
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
@@ -474,6 +473,25 @@ export default function SkillsMasteryPowers() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
+                      {Object.values(achievements)
+                        .filter((achievement) =>
+                          achievement.description.includes("power book"),
+                        )
+                        .map((achievement) => {
+                          const { completed, additionalDescription } =
+                            getAchievementProgress(achievement.name);
+
+                          return (
+                            <AchievementCard
+                              key={achievement.id}
+                              achievement={achievement}
+                              completed={completed}
+                              additionalDescription={additionalDescription}
+                            />
+                          );
+                        })}
+                    </div>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                       {Object.entries(powers)
                         .filter(([key, power]) => key.includes("Book_"))

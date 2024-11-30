@@ -188,11 +188,18 @@ export default function Farmer() {
                 <AccordionContent>
                   <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
                     <InfoCard
-                      title="Player Name"
+                      title="Farmer Name"
                       description={
                         activePlayer?.general?.name ?? "No Info Found"
                       }
                       Icon={UserIcon}
+                    />
+                    <InfoCard
+                      title="Farmer Level"
+                      description={
+                        activePlayer ? playerLevel.toString() : "No Info Found"
+                      }
+                      Icon={ChartBarIcon}
                     />
                     <InfoCard
                       title="Farm Information"
@@ -202,14 +209,7 @@ export default function Farmer() {
                       Icon={HomeIcon}
                     />
                     <InfoCard
-                      title="Playtime"
-                      description={
-                        activePlayer?.general?.timePlayed ?? "No Info Found"
-                      }
-                      Icon={ClockIcon}
-                    />
-                    <InfoCard
-                      title="Money Earned"
+                      title="Farm Earnings"
                       description={
                         activePlayer?.general?.totalMoneyEarned
                           ? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
@@ -218,11 +218,11 @@ export default function Farmer() {
                       Icon={CurrencyDollarIcon}
                     />
                     <InfoCard
-                      title="Farmer Level"
+                      title="Playtime"
                       description={
-                        activePlayer ? playerLevel.toString() : "No Info Found"
+                        activePlayer?.general?.timePlayed ?? "No Info Found"
                       }
-                      Icon={ChartBarIcon}
+                      Icon={ClockIcon}
                     />
                     <InfoCard
                       title="Quests Completed"

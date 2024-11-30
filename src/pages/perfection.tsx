@@ -6,11 +6,13 @@ import fish from "@/data/fish.json";
 import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
 import { monsters } from "@/lib/parsers/monsters";
+import achievements from "@/data/achievements.json";
 
 import { usePlayers } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 
+import { AchievementCard } from "@/components/cards/achievement-card";
 import { InputCard } from "@/components/cards/input-card";
 import { PerfectionCard } from "@/components/cards/perfection-card";
 import { PercentageIndicator } from "@/components/percentage";
@@ -27,10 +29,33 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+const reqs: Record<string, number> = {
+  "Protector Of The Valley": Object.keys(monsters).length,
+};
+
 const semverGte = require("semver/functions/gte");
 
 export default function Perfection() {
   const { activePlayer } = usePlayers();
+
+  const getAchievementProgress = (name: string) => {
+    let completed = false;
+    let additionalDescription = "";
+
+    if (activePlayer) {
+      const goals = new Set(["Protector Of The Valley"]);
+
+      if (goals.has(name)) {
+        // use slayerQuestsCompleted and compare to reqs
+        if (slayerQuestsCompleted >= reqs[name]) completed = true;
+        else {
+          additionalDescription = ` - ${reqs[name] - slayerQuestsCompleted} left`;
+        }
+      }
+    }
+
+    return { completed, additionalDescription };
+  };
 
   const gameVersion = useMemo(() => {
     if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
@@ -419,6 +444,25 @@ export default function Perfection() {
             <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               Monster Slayer Goals
             </h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
+              {Object.values(achievements)
+                .filter((achievement) =>
+                  achievement.description.includes("goals"),
+                )
+                .map((achievement) => {
+                  const { completed, additionalDescription } =
+                    getAchievementProgress(achievement.name);
+
+                  return (
+                    <AchievementCard
+                      key={achievement.id}
+                      achievement={achievement}
+                      completed={completed}
+                      additionalDescription={additionalDescription}
+                    />
+                  );
+                })}
+            </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.keys(monsters).map((group) => (
                 <InputCard

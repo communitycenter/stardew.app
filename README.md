@@ -91,6 +91,13 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/nekosoffy">
+            <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="nekosoffy"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Sarag1">
             <img src="https://avatars.githubusercontent.com/u/77425990?v=4" width="100;" alt="Sarag1"/>
             <br />
@@ -124,15 +131,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Gustavo Brito</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/cnrad">
             <img src="https://avatars.githubusercontent.com/u/83192247?v=4" width="100;" alt="cnrad"/>
             <br />
             <sub><b>Conrad Crawford</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/TheLostSoul">
             <img src="https://avatars.githubusercontent.com/u/718358?v=4" width="100;" alt="TheLostSoul"/>
@@ -167,15 +174,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Danny Hand</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/dannykd">
             <img src="https://avatars.githubusercontent.com/u/92613890?v=4" width="100;" alt="dannykd"/>
             <br />
             <sub><b>Danny Doan</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/caoimhebyrne">
             <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
