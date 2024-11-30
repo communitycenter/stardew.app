@@ -68,6 +68,13 @@ export default function Museum() {
     return { completed, additionalDescription };
   };
 
+  const remainingDonations = {
+    artifacts:
+      Object.values(museum.artifacts).length - museumArtifactCollected.size,
+    minerals:
+      Object.values(museum.minerals).length - museumMineralCollected.size,
+  };
+
   return (
     <>
       <Head>
@@ -142,13 +149,13 @@ export default function Museum() {
                       <FilterButton
                         target={"0"}
                         _filter={_artifactFilter}
-                        title="Not Donated"
+                        title={`Not Donated (${remainingDonations.artifacts})`}
                         setFilter={setArtifactFilter}
                       />
                       <FilterButton
                         target={"2"}
                         _filter={_artifactFilter}
-                        title="Donated"
+                        title={`Donated (${museumArtifactCollected.size})`}
                         setFilter={setArtifactFilter}
                       />
                     </div>
@@ -187,13 +194,13 @@ export default function Museum() {
               <FilterButton
                 target={"0"}
                 _filter={_mineralFilter}
-                title="Not Donated"
+                title={`Not Donated (${remainingDonations.minerals})`}
                 setFilter={setMineralFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_mineralFilter}
-                title="Donated"
+                title={`Donated (${museumMineralCollected.size})`}
                 setFilter={setMineralFilter}
               />
             </div>
