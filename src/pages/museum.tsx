@@ -20,6 +20,13 @@ import {
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
+const reqs: Record<string, number> = {
+  "A Complete Collection": Object.values(museum).flatMap((item) =>
+    Object.values(item),
+  ).length,
+  "Treasure Trove": 40,
+};
+
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
   const [museumArtifact, setMuseumArtifact] = useState<MuseumItem | null>(null);
@@ -53,25 +60,16 @@ export default function Museum() {
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
+    const collection =
+      museumArtifactCollected.size + museumMineralCollected.size;
 
     if (!activePlayer || !activePlayer.museum)
       return { completed, additionalDescription };
 
-    if (name === "Treasure Trove") {
-      completed =
-        museumArtifactCollected.size + museumMineralCollected.size >= 40;
+    if (Object.hasOwn(reqs, name)) {
+      completed = collection >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          40 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
-      }
-    } else {
-      completed =
-        museumArtifactCollected.size + museumMineralCollected.size >= 95;
-      if (!completed) {
-        additionalDescription = ` - ${
-          95 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
+        additionalDescription = ` - ${reqs[name] - collection} left`;
       }
     }
 
