@@ -195,18 +195,18 @@ export default function Farmer() {
                       Icon={UserIcon}
                     />
                     <InfoCard
+                      title="Farmer Level"
+                      description={
+                        activePlayer ? playerLevel.toString() : "No Info Found"
+                      }
+                      Icon={ChartBarIcon}
+                    />
+                    <InfoCard
                       title="Farm Information"
                       description={
                         activePlayer?.general?.farmInfo ?? "No Info Found"
                       }
                       Icon={HomeIcon}
-                    />
-                    <InfoCard
-                      title="Playtime"
-                      description={
-                        activePlayer?.general?.timePlayed ?? "No Info Found"
-                      }
-                      Icon={ClockIcon}
                     />
                     <InfoCard
                       title="Farm Earnings"
@@ -218,11 +218,11 @@ export default function Farmer() {
                       Icon={CurrencyDollarIcon}
                     />
                     <InfoCard
-                      title="Farmer Level"
+                      title="Playtime"
                       description={
-                        activePlayer ? playerLevel.toString() : "No Info Found"
+                        activePlayer?.general?.timePlayed ?? "No Info Found"
                       }
-                      Icon={ChartBarIcon}
+                      Icon={ClockIcon}
                     />
                     <InfoCard
                       title="Quests Completed"
