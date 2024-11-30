@@ -91,6 +91,13 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/nekosoffy">
+            <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="nekosoffy"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/Sarag1">
             <img src="https://avatars.githubusercontent.com/u/77425990?v=4" width="100;" alt="Sarag1"/>
             <br />
@@ -109,13 +116,6 @@ Below are some incredible people that the website wouldn't be without today.
             <img src="https://avatars.githubusercontent.com/u/122586790?v=4" width="100;" alt="tindolt"/>
             <br />
             <sub><b>Tindolt</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/nekosoffy">
-            <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="nekosoffy"/>
-            <br />
-            <sub><b>Null</b></sub>
         </a>
     </td>
     <td align="center">
