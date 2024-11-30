@@ -94,7 +94,7 @@ export default function Crafting() {
     completed = craftedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${reqs[name] - craftedCount} more`;
+      additionalDescription = ` - ${reqs[name] - craftedCount} left`;
     }
 
     return { completed, additionalDescription };

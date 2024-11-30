@@ -497,9 +497,7 @@ export default function Bundles() {
       }, 0);
       completed = completedCount >= 30;
       if (!completed) {
-        additionalDescription = ` - ${
-          30 - completedCount
-        } more bundles to complete the community center`;
+        additionalDescription = ` - ${30 - completedCount} bundles left`;
       }
     }
 
@@ -509,9 +507,7 @@ export default function Bundles() {
           activePlayer?.general?.jojaMembership?.developmentProjects?.length;
         completed = completedCount >= 5;
         if (!completed) {
-          additionalDescription = ` - ${
-            5 - completedCount
-          } more Joja Community Development projects needed`;
+          additionalDescription = ` - ${5 - completedCount} projects left`;
         }
       }
     }

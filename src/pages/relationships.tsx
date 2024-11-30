@@ -55,7 +55,7 @@ export default function Relationships() {
 
     let fiveHeartCount = 0;
     for (const relationship of Object.values(
-      activePlayer.social.relationships
+      activePlayer.social.relationships,
     )) {
       if (relationship.points >= 250 * 5) fiveHeartCount++;
     }
@@ -67,7 +67,7 @@ export default function Relationships() {
 
     let tenHeartCount = 0;
     for (const relationship of Object.values(
-      activePlayer.social.relationships
+      activePlayer.social.relationships,
     )) {
       if (relationship.points >= 250 * 10) tenHeartCount++;
     }
@@ -89,19 +89,19 @@ export default function Relationships() {
       // use 5 heart count relationships
       completed = fiveHeartCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${reqs[name] - fiveHeartCount} more`;
+        additionalDescription = ` - ${reqs[name] - fiveHeartCount} left`;
       }
     } else if (ten.has(name)) {
       // use 10 heart count relationships
       completed = tenHeartCount >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${reqs[name] - tenHeartCount} more`;
+        additionalDescription = ` - ${reqs[name] - tenHeartCount} left`;
       }
     } else if (house.has(name)) {
       // house upgrades
       completed = (activePlayer.social.houseUpgradeLevel ?? 0) >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${activePlayer.social.houseUpgradeLevel}/${reqs[name]}`;
+        additionalDescription = ` - ${reqs[name] - (activePlayer.social.houseUpgradeLevel ?? 0)} left`;
       }
     } else {
       // get married and have two kids
@@ -113,7 +113,7 @@ export default function Relationships() {
         completed = true;
       }
       if (!completed) {
-        additionalDescription = ` - ${activePlayer.social.childrenCount}/2 kids`;
+        additionalDescription = ` - ${2 - (activePlayer.social.childrenCount ?? 0)} left`;
       }
     }
     return { completed, additionalDescription };
@@ -155,9 +155,9 @@ export default function Relationships() {
         />
       </Head>
       <main
-        className={`flex min-h-screen md:border-l border-neutral-200 dark:border-neutral-800 pt-2 pb-8 px-5 md:px-8`}
+        className={`flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
       >
-        <div className="mx-auto w-full space-y-4 mt-4">
+        <div className="mx-auto mt-4 w-full space-y-4">
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Social & Family Tracker
           </h1>
@@ -243,7 +243,7 @@ export default function Relationships() {
                         .filter(
                           (a) =>
                             a.description.includes("house") ||
-                            a.description.includes("married")
+                            a.description.includes("married"),
                         )
                         .map((a) => {
                           const { completed, additionalDescription } =
@@ -268,8 +268,8 @@ export default function Relationships() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Villagers
             </h2>
-            <div className="grid grid-cols-1 lg:flex justify-between gap-2">
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:flex">
+            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
                 <FilterButton
                   target={"0"}
                   _filter={_filter}
@@ -283,7 +283,7 @@ export default function Relationships() {
                   setFilter={setFilter}
                 />
               </div>
-              <div className="grid grid-cols-1 sm:flex gap-2 items-stretch">
+              <div className="grid grid-cols-1 items-stretch gap-2 sm:flex">
                 <FilterSearch
                   _filter={sort}
                   title="Sort By"
@@ -291,7 +291,7 @@ export default function Relationships() {
                   setFilter={setSort}
                   icon={IconAdjustments}
                 />
-                <Command className="border border-b-0 max-w-xs dark:border-neutral-800">
+                <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
                   <CommandInput
                     onValueChange={(v) => setSearch(v)}
                     placeholder="Search Villagers"

@@ -63,7 +63,7 @@ export default function Museum() {
       if (!completed) {
         additionalDescription = ` - ${
           40 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
+        } left`;
       }
     } else {
       completed =
@@ -71,7 +71,7 @@ export default function Museum() {
       if (!completed) {
         additionalDescription = ` - ${
           95 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
+        } left`;
       }
     }
 
