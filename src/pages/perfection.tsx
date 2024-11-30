@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/card";
 
 const reqs: Record<string, number> = {
-  "Protector Of The Valley": 12,
+  "Protector Of The Valley": Object.keys(monsters).length,
 };
 
 const semverGte = require("semver/functions/gte");
