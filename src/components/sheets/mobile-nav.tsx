@@ -209,27 +209,19 @@ export const MobileNav = ({
                       onClick={() => {
                         deleteCookie("token", {
                           maxAge: 0,
-                          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                            ? "localhost"
-                            : "stardew.app",
+                          domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
                         });
                         deleteCookie("uid", {
                           maxAge: 0,
-                          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                            ? "localhost"
-                            : "stardew.app",
+                          domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
                         });
                         deleteCookie("oauth_state", {
                           maxAge: 0,
-                          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                            ? "localhost"
-                            : "stardew.app",
+                          domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
                         });
                         deleteCookie("discord_user", {
                           maxAge: 0,
-                          domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-                            ? "localhost"
-                            : "stardew.app",
+                          domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
                         });
                         return (window.location.href = "/");
                       }}

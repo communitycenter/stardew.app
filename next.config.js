@@ -92,7 +92,10 @@ module.exports = withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
-    disableServerWebpackPlugin: true,
-    disableClientWebpackPlugin: true
+
+    ...(process.env.DISABLE_SENTRY === 'true'  ? {
+      disableServerWebpackPlugin: true,
+      disableClientWebpackPlugin: true
+    } : {})
   },
 );

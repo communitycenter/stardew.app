@@ -75,9 +75,7 @@ export async function getUID(
       req,
       res,
       maxAge: 60 * 60 * 24 * 365,
-      domain: parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!)
-        ? "localhost"
-        : "stardew.app",
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN,
     });
   }
   return uid;
@@ -115,10 +113,14 @@ export const verifyToken = (token: string, key: string) => {
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
   const uid = await getUID(req, res);
+
+  console.log("UID : ", uid);
   const players = await db
     .select()
     .from(schema.saves)
     .where(eq(schema.saves.user_id, uid));
+  
+  console.log("Players : ", players);
   res.json(players);
 }
 

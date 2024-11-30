@@ -1,4 +1,6 @@
 -- fuck prisma me and my homies hate prisma
+USE stardewapp;
+
 create table Users (
 	id varchar(64) not null,
 	discord_id varchar(191) not null,
