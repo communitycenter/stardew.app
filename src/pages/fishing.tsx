@@ -116,12 +116,12 @@ export default function Fishing() {
       const totalCaught = activePlayer?.fishing?.totalCaught ?? 0;
       completed = totalCaught >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${reqs[name] - totalCaught} more`;
+        additionalDescription = ` - ${reqs[name] - totalCaught} left`;
       }
     } else {
       completed = fishCaught.size >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${reqs[name] - fishCaught.size} more`;
+        additionalDescription = ` - ${reqs[name] - fishCaught.size} left`;
       }
     }
     return { completed, additionalDescription };

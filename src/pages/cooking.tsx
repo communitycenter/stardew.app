@@ -92,7 +92,7 @@ export default function Cooking() {
     completed = cookedCount >= reqs[name];
 
     if (!completed) {
-      additionalDescription = ` - ${reqs[name] - cookedCount} more`;
+      additionalDescription = ` - ${reqs[name] - cookedCount} left`;
     }
     return { completed, additionalDescription };
   };

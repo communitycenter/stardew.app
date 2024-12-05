@@ -54,7 +54,7 @@ export default function Museum() {
 
     if (!activePlayer || !activePlayer.museum)
       return { completed, additionalDescription };
-
+    
     const collection =
       museumArtifactCollected.size + museumMineralCollected.size;
 
