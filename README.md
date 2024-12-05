@@ -76,25 +76,25 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/softy-dev">
+            <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="softy-dev"/>
+            <br />
+            <sub><b>Softy</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/TheLDB">
             <img src="https://avatars.githubusercontent.com/u/29960599?v=4" width="100;" alt="TheLDB"/>
             <br />
             <sub><b>Landon</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/brandonsaldan">
             <img src="https://avatars.githubusercontent.com/u/26472557?v=4" width="100;" alt="brandonsaldan"/>
             <br />
             <sub><b>Brandon Saldan</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/nekosoffy">
-            <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="nekosoffy"/>
-            <br />
-            <sub><b>Null</b></sub>
         </a>
     </td>
     <td align="center">
