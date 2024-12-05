@@ -4,7 +4,7 @@ import achievements from "@/data/achievements.json";
 import museum from "@/data/museum.json";
 
 import { MuseumItem } from "@/types/items";
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
@@ -20,6 +20,13 @@ import {
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
+const reqs: Record<string, number> = {
+  "A Complete Collection": Object.values(museum).flatMap((item) =>
+    Object.values(item),
+  ).length,
+  "Treasure Trove": 40,
+};
+
 export default function Museum() {
   const [open, setIsOpen] = useState(false);
   const [museumArtifact, setMuseumArtifact] = useState<MuseumItem | null>(null);
@@ -27,28 +34,19 @@ export default function Museum() {
   const [_artifactFilter, setArtifactFilter] = useState("all");
   const [_mineralFilter, setMineralFilter] = useState("all");
 
-  const [museumArtifactCollected, setMuseumArtifactCollected] = useState<
-    Set<string>
-  >(new Set());
-
-  const [museumMineralCollected, setMuseumMineralCollected] = useState<
-    Set<string>
-  >(new Set());
-
   const { activePlayer } = usePlayers();
   const { show, toggleShow } = usePreferences();
 
   // unblur dialog
   const [showPrompt, setPromptOpen] = useState(false);
 
-  useEffect(() => {
-    if (activePlayer) {
-      setMuseumArtifactCollected(
-        new Set(activePlayer?.museum?.artifacts ?? []),
-      );
-      setMuseumMineralCollected(new Set(activePlayer?.museum?.minerals ?? []));
-    }
-  }, [activePlayer]);
+  const [museumArtifactCollected, museumMineralCollected] = useMemo(
+    () => [
+      new Set<string>(activePlayer?.museum?.artifacts ?? []),
+      new Set<string>(activePlayer?.museum?.minerals ?? []),
+    ],
+    [activePlayer],
+  );
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
@@ -57,25 +55,24 @@ export default function Museum() {
     if (!activePlayer || !activePlayer.museum)
       return { completed, additionalDescription };
 
-    if (name === "Treasure Trove") {
-      completed =
-        museumArtifactCollected.size + museumMineralCollected.size >= 40;
+    const collection =
+      museumArtifactCollected.size + museumMineralCollected.size;
+
+    if (Object.hasOwn(reqs, name)) {
+      completed = collection >= reqs[name];
       if (!completed) {
-        additionalDescription = ` - ${
-          40 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
-      }
-    } else {
-      completed =
-        museumArtifactCollected.size + museumMineralCollected.size >= 95;
-      if (!completed) {
-        additionalDescription = ` - ${
-          95 - (museumArtifactCollected.size + museumMineralCollected.size)
-        } more`;
+        additionalDescription = ` - ${reqs[name] - collection} left`;
       }
     }
 
     return { completed, additionalDescription };
+  };
+
+  const remainingDonations = {
+    artifacts:
+      Object.values(museum.artifacts).length - museumArtifactCollected.size,
+    minerals:
+      Object.values(museum.minerals).length - museumMineralCollected.size,
   };
 
   return (
@@ -152,13 +149,13 @@ export default function Museum() {
                       <FilterButton
                         target={"0"}
                         _filter={_artifactFilter}
-                        title="Not Donated"
+                        title={`Not Donated (${remainingDonations.artifacts})`}
                         setFilter={setArtifactFilter}
                       />
                       <FilterButton
                         target={"2"}
                         _filter={_artifactFilter}
-                        title="Donated"
+                        title={`Donated (${museumArtifactCollected.size})`}
                         setFilter={setArtifactFilter}
                       />
                     </div>
@@ -197,13 +194,13 @@ export default function Museum() {
               <FilterButton
                 target={"0"}
                 _filter={_mineralFilter}
-                title="Not Donated"
+                title={`Not Donated (${remainingDonations.minerals})`}
                 setFilter={setMineralFilter}
               />
               <FilterButton
                 target={"2"}
                 _filter={_mineralFilter}
-                title="Donated"
+                title={`Donated (${museumMineralCollected.size})`}
                 setFilter={setMineralFilter}
               />
             </div>
