@@ -69,17 +69,17 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/hex2f">
-            <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="hex2f"/>
-            <br />
-            <sub><b>Leah Lundqvist</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/softy-dev">
             <img src="https://avatars.githubusercontent.com/u/161766793?v=4" width="100;" alt="softy-dev"/>
             <br />
             <sub><b>Softy</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/hex2f">
+            <img src="https://avatars.githubusercontent.com/u/16632409?v=4" width="100;" alt="hex2f"/>
+            <br />
+            <sub><b>Leah Lundqvist</b></sub>
         </a>
     </td>
     <td align="center">
