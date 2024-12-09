@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PlayersProvider>
         <PreferencesProvider>
-          <div className={`${inter.className}`}>
+          <div className={GeistSans.className}>
             <div className="sticky top-0 z-10 dark:bg-neutral-950">
               <Topbar />
             </div>
