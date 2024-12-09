@@ -30,20 +30,19 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <PlayersProvider>
         <PreferencesProvider>
-          <div className={GeistSans.className}>
-            <div className="sticky top-0 z-10 dark:bg-neutral-950">
-              <Topbar />
-            </div>
-            <div>
-              <Sidebar className="hidden max-h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip md:fixed md:flex md:w-72 md:flex-col" />
-              <div className="md:pl-72">
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <main>
                 <ErrorBoundary>
-                  <Component {...pageProps} />
+                  <main className={GeistSans.className}>
+                    <Component {...pageProps} />
+                  </main>
                 </ErrorBoundary>
                 <Toaster richColors />
-              </div>
-            </div>
-          </div>
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
         </PreferencesProvider>
       </PlayersProvider>
     </ThemeProvider>
