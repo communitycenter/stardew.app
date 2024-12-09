@@ -27,7 +27,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useFeatureFlagVariantKey } from "posthog-js/react";
 import { toast } from "sonner";
 import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
@@ -65,42 +64,9 @@ export function Topbar() {
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
-  const seeChangelog = useFeatureFlagVariantKey("changelog_location");
-
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
   }, []);
-
-  useEffect(() => {
-    const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
-
-    if (hasSeenChangelog) {
-      return;
-    }
-
-    if (!seeChangelog) return;
-
-    switch (seeChangelog) {
-      case "control":
-        break;
-      case "toast":
-        toast.message("stardew.app 2.2.0 is out!", {
-          description: "We now support the 1.6 update!",
-          action: {
-            label: "Check it out!",
-            onClick: () => {
-              setChangelogOpen(true);
-            },
-          },
-        });
-        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
-        break;
-      case "popup":
-        setChangelogOpen(true);
-        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
-        break;
-    }
-  }, [seeChangelog]);
 
   return (
     <>
