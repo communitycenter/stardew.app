@@ -75,55 +75,44 @@ export default function Perfection() {
     return activePlayer.perfection.perfectionWaivers;
   }, [activePlayer]);
 
-  // StardewValley.Utility.cs::percentGameComplete()
-  const [craftedCount, craftedPercent, totalCrafting] = useMemo(() => {
-    // StardewValley.Utility.cs::getCraftedRecipesPercent()
-    if (!activePlayer || !activePlayer.crafting?.recipes) {
-      return [0, 0, Object.keys(craftingRecipes).length];
+  const [basicShippedCount, basicShippedPercent, totalShipping] = useMemo(() => {
+    if (!activePlayer || !activePlayer.shipping?.shipped) {
+      return [0, 0, Object.keys(shippingItems).length];
     }
-      
-    // find all recipes that have a value of 2 (crafted)
-    const count = 
-    Object.values(activePlayer.crafting.recipes)
-    .filter((r) => r === 2).length;
 
-    // total count based on the player's game version
-    const total = Object.values(craftingRecipes).filter((r) =>
-      semverGte(gameVersion, r.minVersion),
-    ).length;
+    const basicShippedCount = Object.keys(activePlayer.shipping.shipped).filter((i) => {
+      // exclude clam from the count if the game version is 1.6.0 or higher
+      if (i === "372" && semverGte(gameVersion, "1.6.0")) return false;
+      return true;
+    }).length;
+
+    const totalShipping =
+      Object.values(shippingItems).filter((i) =>
+        semverGte(gameVersion, i.minVersion),
+      ).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
+
+    return [basicShippedCount, toPercent(basicShippedCount, totalShipping), totalShipping];
+  }, [activePlayer]);
+
+  const [obelisksCount, obelisksPercent, obelisksTotal] = useMemo(() => {
+    const total = 4;
+    if (!activePlayer || !activePlayer.perfection?.numObelisks) return [0, 0, total];
+    const count = activePlayer.perfection.numObelisks;
 
     return [count, toPercent(count, total), total];
   }, [activePlayer]);
 
-  const [cookedCount, cookedPercent, totalCooking] = useMemo(() => {
-    // StardewValley.Utility.cs::getCookedRecipesPercent()
-    if (!activePlayer || !activePlayer.cooking?.recipes) {
-      return [0, 0, Object.keys(cookingRecipes).length];
+  const [slayerGoalsCount, slayerGoalsPercent, totalSlayerGoals] = useMemo(() => {
+    let total = Object.keys(monsters).length;
+    if (!activePlayer || !activePlayer.monsters?.monstersKilled) return [0, 0, total];
+    let count = 0;
+    const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
+
+    for (const monster of Object.keys(monstersKilled)) {
+      if (monstersKilled[monster] >= monsters[monster].count) {
+        count++;
+      }
     }
-
-    // find all recipes that have a value of 2 (cooked)
-    const count = 
-    Object.values(activePlayer.cooking.recipes)
-    .filter((r) => r === 2).length;
-
-    const total = Object.values(cookingRecipes).filter((r) =>
-      semverGte(gameVersion, r.minVersion),
-    ).length;
-
-    return [count, toPercent(count, total), total];
-  }, [activePlayer]);
-
-  const [fishCaughtCount, fishCaughtPercent, totalFish] = useMemo(() => {
-    // StardewValley.Utility.cs::getFishCaughtPercent()
-    if (!activePlayer || !activePlayer.fishing?.fishCaught) {
-      return [0, 0, Object.keys(fish).length];
-    }
-
-    const count = activePlayer.fishing.fishCaught.length;
-
-    const total = Object.values(fish).filter((f) =>
-      semverGte(gameVersion, f.minVersion),
-    ).length;
 
     return [count, toPercent(count, total), total];
   }, [activePlayer]);
@@ -146,48 +135,6 @@ export default function Perfection() {
     return [count, toPercent(count, total), total];
   }, [activePlayer]);
 
-  const [basicShippedCount, basicShippedPercent, totalShipping] = useMemo(() => {
-    if (!activePlayer || !activePlayer.shipping?.shipped) {
-      return [0, 0, Object.keys(shippingItems).length];
-    }
-
-    const basicShippedCount = Object.keys(activePlayer.shipping.shipped).filter((i) => {
-      // exclude clam from the count if the game version is 1.6.0 or higher
-      if (i === "372" && semverGte(gameVersion, "1.6.0")) return false;
-      return true;
-    }).length;
-
-    const totalShipping =
-      Object.values(shippingItems).filter((i) =>
-        semverGte(gameVersion, i.minVersion),
-      ).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
-
-    return [basicShippedCount, toPercent(basicShippedCount, totalShipping), totalShipping];
-  }, [activePlayer]);
-
-  const [slayerGoalsCount, slayerGoalsPercent, totalSlayerGoals] = useMemo(() => {
-    let total = Object.keys(monsters).length;
-    if (!activePlayer || !activePlayer.monsters?.monstersKilled) return [0, 0, total];
-    let count = 0;
-    const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
-
-    for (const monster of Object.keys(monstersKilled)) {
-      if (monstersKilled[monster] >= monsters[monster].count) {
-        count++;
-      }
-    }
-
-    return [count, toPercent(count, total), total];
-  }, [activePlayer]);
-
-  const [walnutsFoundCount, walnutsFoundPercent, totalWalnuts] = useMemo(() => {
-    const total = Object.values(walnuts).reduce((ac, items) => ac + items.count, 0);
-    if (!activePlayer || !activePlayer.walnuts?.found) return [0, 0, total];
-    const count = Object.entries(activePlayer?.walnuts?.found).reduce((a, b) => a + b[1], 0);
-
-    return [count, toPercent(count, total), total];
-  }, [activePlayer]);
-
   const [playerLevelCount, playerLevelPercent, playerLevelTotal] = useMemo(() => {
     let count = 0;
     const total = 25;
@@ -206,18 +153,71 @@ export default function Perfection() {
     return [count, toPercent(count, total), total];
   }, [activePlayer]);
 
-  const [obelisksCount, obelisksPercent, obelisksTotal] = useMemo(() => {
-    const total = 4;
-    if (!activePlayer || !activePlayer.perfection?.numObelisks) return [0, 0, total];
-    const count = activePlayer.perfection.numObelisks;
-
-    return [count, toPercent(count, total), total];
-  }, [activePlayer]);
-
   const [stardropsFoundCount, stardropsFoundPercent, stardropsFoundTotal] = useMemo(() => {
     const total = 7;
     if (!activePlayer || !activePlayer.general?.stardrops) return [0, 0, total];
     const count = activePlayer.general.stardrops.length;
+
+    return [count, toPercent(count, total), total];
+  }, [activePlayer]);
+
+  const [cookedCount, cookedPercent, totalCooking] = useMemo(() => {
+    // StardewValley.Utility.cs::getCookedRecipesPercent()
+    if (!activePlayer || !activePlayer.cooking?.recipes) {
+      return [0, 0, Object.keys(cookingRecipes).length];
+    }
+
+    // find all recipes that have a value of 2 (cooked)
+    const count = 
+    Object.values(activePlayer.cooking.recipes)
+    .filter((r) => r === 2).length;
+
+    const total = Object.values(cookingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion),
+    ).length;
+
+    return [count, toPercent(count, total), total];
+  }, [activePlayer]);
+
+  // StardewValley.Utility.cs::percentGameComplete()
+  const [craftedCount, craftedPercent, totalCrafting] = useMemo(() => {
+    // StardewValley.Utility.cs::getCraftedRecipesPercent()
+    if (!activePlayer || !activePlayer.crafting?.recipes) {
+      return [0, 0, Object.keys(craftingRecipes).length];
+    }
+      
+    // find all recipes that have a value of 2 (crafted)
+    const count = 
+    Object.values(activePlayer.crafting.recipes)
+    .filter((r) => r === 2).length;
+
+    // total count based on the player's game version
+    const total = Object.values(craftingRecipes).filter((r) =>
+      semverGte(gameVersion, r.minVersion),
+    ).length;
+
+    return [count, toPercent(count, total), total];
+  }, [activePlayer]);
+
+  const [fishCaughtCount, fishCaughtPercent, totalFish] = useMemo(() => {
+    // StardewValley.Utility.cs::getFishCaughtPercent()
+    if (!activePlayer || !activePlayer.fishing?.fishCaught) {
+      return [0, 0, Object.keys(fish).length];
+    }
+
+    const count = activePlayer.fishing.fishCaught.length;
+
+    const total = Object.values(fish).filter((f) =>
+      semverGte(gameVersion, f.minVersion),
+    ).length;
+
+    return [count, toPercent(count, total), total];
+  }, [activePlayer]);
+
+  const [walnutsFoundCount, walnutsFoundPercent, totalWalnuts] = useMemo(() => {
+    const total = Object.values(walnuts).reduce((ac, items) => ac + items.count, 0);
+    if (!activePlayer || !activePlayer.walnuts?.found) return [0, 0, total];
+    const count = Object.entries(activePlayer?.walnuts?.found).reduce((a, b) => a + b[1], 0);
 
     return [count, toPercent(count, total), total];
   }, [activePlayer]);
