@@ -37,7 +37,7 @@ const reqs: Record<string, number> = {
 const semverGte = require("semver/functions/gte");
 
 export default function Perfection() {
-  const { activePlayer } = usePlayers();
+  const { activePlayer, players } = usePlayers();
 
   const toPercent = (count: number, total: number): number => {
     if (total === 0) return 0;
@@ -63,6 +63,11 @@ export default function Perfection() {
     return { completed, additionalDescription };
   };
 
+  const groupedFarmers = useMemo(() => {
+    if (!players) return [];
+    return players.filter((player: any) => player.general.farmInfo === activePlayer?.general?.farmInfo);
+  }, [activePlayer, players]);
+
   const gameVersion = useMemo(() => {
     if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
 
@@ -70,126 +75,190 @@ export default function Perfection() {
   }, [activePlayer]);
 
   const perfectionWaivers = useMemo(() => {
-    if (!activePlayer || !activePlayer.perfection?.perfectionWaivers) return 0;
-
-    return activePlayer.perfection.perfectionWaivers;
-  }, [activePlayer]);
+    if (!groupedFarmers || 
+      !groupedFarmers.some(player => player.perfection?.perfectionWaivers)) return 0;
+  
+    const waivers = groupedFarmers
+      .map(player => player.perfection?.perfectionWaivers ?? 0);
+  
+    return Math.max(...waivers);
+  }, [groupedFarmers]);
 
   const [basicShippedCount, basicShippedPercent, totalShipping] = useMemo(() => {
-    if (!activePlayer || !activePlayer.shipping?.shipped) {
-      return [0, 0, Object.keys(shippingItems).length];
+    if (!groupedFarmers ||
+      !groupedFarmers.some(player => player.shipping?.shipped)) {
+        return [0, 0, Object.keys(shippingItems).length];
     }
 
-    const basicShippedCount = Object.keys(activePlayer.shipping.shipped).filter((i) => {
+    const groupedCount = groupedFarmers
+    .map(player => Object.keys(player.shipping?.shipped || {})
+    .filter((i) => {
       // exclude clam from the count if the game version is 1.6.0 or higher
       if (i === "372" && semverGte(gameVersion, "1.6.0")) return false;
       return true;
-    }).length;
+    }).length);
 
-    const totalShipping =
+    const count = Math.max(...groupedCount, 0);
+
+    const total =
       Object.values(shippingItems).filter((i) =>
         semverGte(gameVersion, i.minVersion),
       ).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
 
-    return [basicShippedCount, toPercent(basicShippedCount, totalShipping), totalShipping];
-  }, [activePlayer]);
+    return [count, toPercent(count, total), total];
+  }, [groupedFarmers, gameVersion]);
 
   const [obelisksCount, obelisksPercent, obelisksTotal] = useMemo(() => {
     const total = 4;
-    if (!activePlayer || !activePlayer.perfection?.numObelisks) return [0, 0, total];
-    const count = activePlayer.perfection.numObelisks;
 
-    return [count, toPercent(count, total), total];
-  }, [activePlayer]);
-
-  const [slayerGoalsCount, slayerGoalsPercent, totalSlayerGoals] = useMemo(() => {
-    let total = Object.keys(monsters).length;
-    if (!activePlayer || !activePlayer.monsters?.monstersKilled) return [0, 0, total];
-    let count = 0;
-    const monstersKilled = activePlayer?.monsters?.monstersKilled ?? {};
-
-    for (const monster of Object.keys(monstersKilled)) {
-      if (monstersKilled[monster] >= monsters[monster].count) {
-        count++;
-      }
+    if (!groupedFarmers ||
+      !groupedFarmers.some(player => player.perfection?.numObelisks)) {
+        return [0, 0, total];
     }
 
+    const groupedCount = groupedFarmers
+      .map(player => player.perfection?.numObelisks ?? 0);
+
+    const count = Math.max(...groupedCount, 0);
+
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers]);
+
+  const [isClockOnFarm, clockPercent] = useMemo(() => {
+    if (!groupedFarmers ||
+      !groupedFarmers.some(player => player.perfection?.goldenClock)) {
+        return [false, 0];
+    }
+
+    return [true, 100];
+  }, [groupedFarmers]);
+
+  const [slayerGoalsCount, slayerGoalsPercent, totalSlayerGoals] = useMemo(() => {
+    const total = Object.keys(monsters).length;
+  
+    if (!groupedFarmers || !groupedFarmers.some(player => player.monsters?.monstersKilled)) {
+      return [0, 0, total];
+    }
+  
+    // Precompute the monster goal counts for quick access
+    const goalMap = Object.fromEntries(
+      Object.keys(monsters).map(monster => [monster, monsters[monster].count])
+    );
+  
+    const groupedCount = groupedFarmers.map(player => {
+      const monstersKilled = player?.monsters?.monstersKilled ?? {};
+      let count = 0;
+
+      for (const monster in monstersKilled) {
+        if (monstersKilled[monster] >= goalMap[monster]) {
+          count++;
+        }
+      }
+
+      return count;
+    });
+  
+    const count = Math.max(...groupedCount, 0);
+  
+    return [count, toPercent(count, total), total];
+  }, [groupedFarmers]);
 
   const [maxedFriendshipsCount, maxedFriendshipsPercent, totalFriendships] = useMemo(() => {
     // StardewValley.Utility.cs::getMaxedFriendshipPercent()
     const total = Object.keys(villagers).length;
-    if (!activePlayer || !activePlayer.social?.relationships) return [0, 0, total];
-    let count = 0;
 
-    for (const name of Object.keys(activePlayer.social.relationships)) {
-      const { datable } = villagers[name as keyof typeof villagers];
-      const friendshipPoints = activePlayer.social.relationships[name].points;
-
-      // check if hearts are maxed, for non-dateable NPCs its 250 * 10
-      // for dateable NPCs its 250 * 8 (doesn't matter if they are dating or not)
-      if (friendshipPoints >= (datable ? 250 * 8 : 250 * 10)) count++;
+    if (!groupedFarmers || !groupedFarmers.some(player => player.social?.relationships)) {
+      return [0, 0, total];
     }
 
+    const groupedCount = groupedFarmers.map(player => {
+      let count = 0;
+
+      for (const name of Object.keys(player.social?.relationships || {})) {
+        const { datable } = villagers[name as keyof typeof villagers];
+        const friendshipPoints = player.social?.relationships[name].points ?? 0;
+  
+        // check if hearts are maxed, for non-dateable NPCs its 250 * 10
+        // for dateable NPCs its 250 * 8 (doesn't matter if they are dating or not)
+        if (friendshipPoints >= (datable ? 250 * 8 : 250 * 10)) count++;
+      }
+
+      return count;
+    });
+
+    const count = Math.max(...groupedCount, 0);
+
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers]);
 
   const [playerLevelCount, playerLevelPercent, playerLevelTotal] = useMemo(() => {
-    let count = 0;
     const total = 25;
 
-    if (activePlayer) {
-      if (activePlayer.general?.skills) {
-        const { farming, fishing, foraging, mining, combat } =
-          activePlayer.general.skills;
+    const groupedCount = groupedFarmers.map((player) => {
+      const { farming = 0, fishing = 0, foraging = 0, mining = 0, combat = 0} 
+        = player.general?.skills || {};
+      return Math.floor((farming + fishing + foraging + mining + combat) / 2);
+    });
 
-        count = Math.floor(
-          (farming + fishing + foraging + mining + combat) / 2,
-        );
-      }
-    }
+    const count = Math.max(...groupedCount, 0);
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers]);
 
   const [stardropsFoundCount, stardropsFoundPercent, stardropsFoundTotal] = useMemo(() => {
     const total = 7;
-    if (!activePlayer || !activePlayer.general?.stardrops) return [0, 0, total];
-    const count = activePlayer.general.stardrops.length;
+
+    if (!groupedFarmers || !groupedFarmers.some(player => player.general?.stardrops)) {
+      return [0, 0, total];
+    }
+
+    const groupedCount = groupedFarmers
+      .map(player => player.general?.stardrops?.length ?? 0);
+
+    const count = Math.max(...groupedCount, 0);
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers]);
 
   const [cookedCount, cookedPercent, totalCooking] = useMemo(() => {
     // StardewValley.Utility.cs::getCookedRecipesPercent()
-    if (!activePlayer || !activePlayer.cooking?.recipes) {
+    if (!groupedFarmers || 
+      groupedFarmers.length === 0 || 
+      !groupedFarmers.some(player => player.cooking?.recipes)) {
       return [0, 0, Object.keys(cookingRecipes).length];
     }
 
     // find all recipes that have a value of 2 (cooked)
-    const count = 
-    Object.values(activePlayer.cooking.recipes)
-    .filter((r) => r === 2).length;
+    const groupedCount: number[] = groupedFarmers
+      .map(player => Object.values(player.cooking?.recipes || {})
+      .filter(recipeValue => recipeValue === 2).length
+    );
+
+    const count = Math.max(...groupedCount, 0);
 
     const total = Object.values(cookingRecipes).filter((r) =>
       semverGte(gameVersion, r.minVersion),
     ).length;
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers, gameVersion]);
 
   // StardewValley.Utility.cs::percentGameComplete()
   const [craftedCount, craftedPercent, totalCrafting] = useMemo(() => {
     // StardewValley.Utility.cs::getCraftedRecipesPercent()
-    if (!activePlayer || !activePlayer.crafting?.recipes) {
+    if (!groupedFarmers || 
+      groupedFarmers.length === 0 || 
+      !groupedFarmers.some(player => player.crafting?.recipes)) {
       return [0, 0, Object.keys(craftingRecipes).length];
     }
       
     // find all recipes that have a value of 2 (crafted)
-    const count = 
-    Object.values(activePlayer.crafting.recipes)
-    .filter((r) => r === 2).length;
+    const groupedCount: number[] = groupedFarmers
+      .map(player => Object.values(player.crafting?.recipes || {})
+      .filter(recipeValue => recipeValue === 2).length
+    );
+
+    const count = Math.max(...groupedCount, 0);
 
     // total count based on the player's game version
     const total = Object.values(craftingRecipes).filter((r) =>
@@ -197,30 +266,45 @@ export default function Perfection() {
     ).length;
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers, gameVersion]);
 
   const [fishCaughtCount, fishCaughtPercent, totalFish] = useMemo(() => {
     // StardewValley.Utility.cs::getFishCaughtPercent()
-    if (!activePlayer || !activePlayer.fishing?.fishCaught) {
+    if (!groupedFarmers || 
+      groupedFarmers.length === 0 || 
+      !groupedFarmers.some(player => player.fishing?.fishCaught)) {
       return [0, 0, Object.keys(fish).length];
     }
 
-    const count = activePlayer.fishing.fishCaught.length;
+    const groupedCount = groupedFarmers
+      .map(player => player.fishing?.fishCaught?.length ?? 0);
+
+    const count = Math.max(...groupedCount);
 
     const total = Object.values(fish).filter((f) =>
       semverGte(gameVersion, f.minVersion),
     ).length;
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers, gameVersion]);
 
   const [walnutsFoundCount, walnutsFoundPercent, totalWalnuts] = useMemo(() => {
     const total = Object.values(walnuts).reduce((ac, items) => ac + items.count, 0);
-    if (!activePlayer || !activePlayer.walnuts?.found) return [0, 0, total];
-    const count = Object.entries(activePlayer?.walnuts?.found).reduce((a, b) => a + b[1], 0);
+
+    if (!groupedFarmers || 
+      groupedFarmers.length === 0 || 
+      !groupedFarmers.some(player => player.walnuts?.found)) {
+      return [0, 0, total];
+    }
+
+    const groupedCount = groupedFarmers.map(player => 
+      Object.entries(player.walnuts?.found || {}).reduce((a, b) => a + b[1], 0)
+    );
+
+    const count = Math.max(...groupedCount, 0);
 
     return [count, toPercent(count, total), total];
-  }, [activePlayer]);
+  }, [groupedFarmers]);
 
   const percentComplete = useMemo(() => {
     // Reference: StardewValley.Utility.cs::percentGameComplete()
@@ -236,7 +320,7 @@ export default function Perfection() {
     count += obelisksCount;
     total += 4;
 
-    count += activePlayer.perfection?.goldenClock ? 10 : 0;
+    count += isClockOnFarm ? 10 : 0;
     total += 10;
 
     count += slayerGoalsCount >= totalSlayerGoals ? 10 : 0;
@@ -265,12 +349,16 @@ export default function Perfection() {
 
     return toPercent(count, total);
   }, [
+    activePlayer,
     basicShippedPercent,
     obelisksCount,
+    isClockOnFarm,
     slayerGoalsCount,
+    totalSlayerGoals,
     maxedFriendshipsPercent,
     playerLevelPercent,
     stardropsFoundCount,
+    stardropsFoundTotal,
     cookedPercent,
     craftedPercent,
     fishCaughtPercent,
@@ -314,7 +402,7 @@ export default function Perfection() {
             <section className="space-y-3">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-                  Perfection Goals
+                  {"Farm's Perfection Goals"}
                 </AccordionTrigger>
                 <AccordionContent asChild>
                   <div className="grid grid-cols-1 grid-rows-4 gap-4 xl:grid-cols-3 2xl:grid-cols-4">
@@ -359,14 +447,11 @@ export default function Perfection() {
                     />
                     <PerfectionCard
                       title="Golden Clock on Farm"
-                      description={`${
-                        activePlayer?.perfection?.goldenClock
+                      description={`${isClockOnFarm
                           ? "Completed"
                           : "Missing"
                       }`}
-                      percentage={
-                        activePlayer?.perfection?.goldenClock ? 100 : 0
-                      }
+                      percentage={clockPercent}
                       footer="10% of total perfection"
                     />
                     <PerfectionCard
