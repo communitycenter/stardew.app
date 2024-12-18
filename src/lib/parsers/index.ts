@@ -9,6 +9,7 @@ import { parsePerfection } from "@/lib/parsers/perfection";
 import { parseShipping } from "@/lib/parsers/shipping";
 import { findChildren, parseSocial } from "@/lib/parsers/social";
 import { parsePowers } from "@/lib/parsers/powers";
+import { parseAnimals } from "@/lib/parsers/animals";
 
 export {
   findChildren,
@@ -23,4 +24,5 @@ export {
   parseShipping,
   parseSocial,
   parsePowers,
+  parseAnimals,
 };
