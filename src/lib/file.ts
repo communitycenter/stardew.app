@@ -14,6 +14,7 @@ import {
   parseShipping,
   parseSocial,
   parsePowers,
+  parseAnimals,
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseNotes } from "./parsers/notes";
@@ -89,6 +90,19 @@ export function parseSaveFile(xml: string) {
     // Map of uniqueMultiplayerID to array of children names
     const children = findChildren(prefix, saveFile.SaveGame);
 
+    const findInGameLocation = (location: string) => {
+      return saveFile.SaveGame.locations.GameLocation.find(
+        (obj: any) => obj[`@_${prefix}:type`] === location,
+      );
+    }
+
+    const parsedAnimals = parseAnimals(
+      findInGameLocation("Farm").buildings.Building,
+      findInGameLocation("Farm").characters.NPC,
+      findInGameLocation("FarmHouse").characters.NPC,
+      prefix,
+    )
+
     let processedPlayers: any[] = [];
 
     // get the saveGame.player's mailReceived, mailForTomorrow, mailbox so we don't
@@ -138,6 +152,10 @@ export function parseSaveFile(xml: string) {
           hostMailForTomorrow,
           hostMailbox,
         ),
+        animals: {
+          ...parsedAnimals,
+          horse: player.horseName,
+        },
       };
       processedPlayers.push(processedPlayer);
     });
