@@ -8,7 +8,7 @@
     <img align=center src="https://github.com/communitycenter/stardew.app/blob/main/.github/background.png?raw=true" alt="Stardew.app Logo" width="500" /></br>
 </p>
 
-The website uses [Next.js](https://nextjs.org) for its frontend, [PlanetScale](https://planetscale.com) for its database, and a mixture of TypeScript and Python scripts to supplement data into the website. Internally, we use [Linear](https://linear.app) and [Pierre](https://pierre.co) for issue tracking and branch management.
+The website uses [Next.js](https://nextjs.org) for its frontend, self-hosted MySQL for its database, and a mixture of TypeScript and Python scripts to supplement data into the website. Internally, we use [Linear](https://linear.app) for issue tracking and branch management.
 
 ---
 
@@ -40,7 +40,7 @@ The website uses [Next.js](https://nextjs.org) for its frontend, [PlanetScale](h
     <img align=center src="https://github.com/communitycenter/stardew.app/blob/main/.github/contributing.png?raw=true" alt="Stardew.app Logo" width="500" /></br>
 </p>
 
-Thank you so much for wanting to contribute to stardew.app! This GitHub repository serves as a read-only mirror from our branch on Pierre, however contributions are still more than welcome (and can be merged in regardless!) We ask that you ensure your code is neat, adheres to the current programming style of the project, and runs without errors. Other than that, feel free to fix bugs, add features, and do whatever you desire to improve the website! stardew.app is built by the community, for the community, so we appreciate your contribution.
+Thank you so much for wanting to contribute to stardew.app! We ask that you ensure your code is neat, adheres to the current programming style of the project, and runs without errors. Other than that, feel free to fix bugs, add features, and do whatever you desire to improve the website! stardew.app is built by the community, for the community, so we appreciate your contribution.
 
 Below are some incredible people that the website wouldn't be without today.
 
