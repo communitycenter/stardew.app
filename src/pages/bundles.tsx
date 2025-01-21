@@ -594,7 +594,6 @@ export default function Bundles() {
                   return false;
                 }
               }).filter((f) => {
-                console.log("bundle:", f);
                 if (_filter === "0") {
                   return f.bundleStatus.slice(0, f.bundle.items.length).includes(false);
                 } else if (_filter === "2") {
