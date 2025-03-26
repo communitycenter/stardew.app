@@ -63,7 +63,7 @@ export function Topbar() {
 
   const [isDevelopment, setIsDevelopment] = useState(false);
 
-  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+  const { activePlayer } = useContext(PlayersContext);
 
   const seeChangelog = useFeatureFlagVariantKey("changelog_location");
 
