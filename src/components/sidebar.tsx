@@ -23,6 +23,7 @@ import {
   IconSettings,
   IconShirt,
   IconStars,
+  IconSparkles,
 } from "@tabler/icons-react";
 
 import {
@@ -82,6 +83,32 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div className={className}>
       <div className="grid w-72 grid-cols-3 gap-2 px-3 pt-4">
+        <div className="relative col-span-3">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="relative w-full overflow-hidden hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500"
+                  asChild
+                >
+                  <a
+                    href={"https://feedback.stardew.app"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <IconSparkles size={20} />
+                    <span>Feedback & Roadmap</span>
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="left">
+                <p>Share your thoughts with us!</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>

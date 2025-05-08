@@ -196,17 +196,21 @@ export function Topbar() {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem
-                  data-umami-event="Open feedback"
                   onClick={() => {
-                    setFeedbackOpen(true);
+                    window.open(
+                      "https://feedback.stardew.app/board/features?cursor=1&order=top&limit=10",
+                      "_blank",
+                    );
                   }}
                 >
                   Send us a message!
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  data-umami-event="Open bug report"
                   onClick={() => {
-                    setBugreportOpen(true);
+                    window.open(
+                      "https://feedback.stardew.app/board/bugs?cursor=1&order=top&limit=10",
+                      "_blank",
+                    );
                   }}
                 >
                   Report a bug!
