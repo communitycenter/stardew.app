@@ -4,7 +4,7 @@ import Head from "next/head";
 import useSWR from "swr";
 
 import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { deleteCookie, getCookie } from "cookies-next";
 
 import { usePreferences } from "@/contexts/preferences-context";
@@ -172,6 +172,7 @@ type GroupedPlayers = {
 };
 
 export default function Account() {
+  const router = useRouter();
   const api = useSWR<User>(
     "/api",
     // @ts-expect-error
@@ -184,6 +185,45 @@ export default function Account() {
 
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [inputType, setInputType] = useState<"password" | "text">("password");
+  const [activeTab, setActiveTab] = useState<string>("site");
+
+  useEffect(() => {
+    if (router.isReady) {
+      const pageQuery = router.query.page;
+      if (
+        typeof pageQuery === "string" &&
+        ["site", "authentication", "saves"].includes(pageQuery)
+      ) {
+        if (activeTab !== pageQuery) {
+          setActiveTab(pageQuery);
+        }
+      } else if (pageQuery && activeTab !== "site") {
+        setActiveTab("site");
+        router.push(
+          {
+            pathname: router.pathname,
+            query: { ...router.query, page: "site" },
+          },
+          undefined,
+          { shallow: true },
+        );
+      } else if (!pageQuery && activeTab !== "site") {
+        if (activeTab !== "site") setActiveTab("site");
+      }
+    }
+  }, [router.isReady, router.query.page, activeTab, router]);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, page: value },
+      },
+      undefined,
+      { shallow: true },
+    );
+  };
 
   // group players by farmInfo
   const groupedPlayers: GroupedPlayers | undefined = useMemo(() => {
@@ -210,7 +250,7 @@ export default function Account() {
       </Head>
       <main className="flex min-h-[calc(100vh-65px)] border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8">
         <div className="mx-auto mt-4 w-full max-w-5xl space-y-8">
-          <Tabs defaultValue="site">
+          <Tabs value={activeTab} onValueChange={handleTabChange}>
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="site">Site Settings</TabsTrigger>
               <TabsTrigger value="authentication">Authentication</TabsTrigger>
