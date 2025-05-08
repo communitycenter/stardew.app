@@ -27,7 +27,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useFeatureFlagVariantKey } from "posthog-js/react";
 import { toast } from "sonner";
 import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
@@ -62,8 +61,6 @@ export function Topbar() {
   const [isDevelopment, setIsDevelopment] = useState(false);
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
-
-  const seeChangelog = useFeatureFlagVariantKey("changelog_location");
 
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
