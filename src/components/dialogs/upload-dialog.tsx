@@ -111,7 +111,7 @@ const InstructionsDialog = ({
             <>
               <Button variant="secondary" asChild>
                 <a
-                  href="https://discord.gg/stardewapp"
+                  href="https://stardew.app/discord"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
