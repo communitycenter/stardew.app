@@ -100,6 +100,34 @@ export const BulkActionDialog = ({
     );
   }
 
+  if (type === "museum") {
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Bulk Action</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="secondary"
+              onClick={() => handleBulkAction(2)}
+              disabled={selectedItems.size === 0}
+            >
+              Set All Selected as Donated
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => handleBulkAction(0)}
+              disabled={selectedItems.size === 0}
+            >
+              Set All Selected as Not Donated
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
