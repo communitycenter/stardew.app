@@ -72,35 +72,22 @@ export const BulkActionDialog = ({
     close();
   };
 
-  if (type === "shipping") {
-    return (
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Bulk Action</DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col gap-2">
-            <Button
-              variant="secondary"
-              onClick={() => handleBulkAction(2)}
-              disabled={selectedItems.size === 0}
-            >
-              Set All Selected as Caught
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => handleBulkAction(0)}
-              disabled={selectedItems.size === 0}
-            >
-              Set All Selected as Uncaught
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
+  let foundLabel = "Set All Selected as Completed";
+  let notFoundLabel = "Set All Selected as Incomplete";
+  if (type === "museum") {
+    foundLabel = "Set All Selected as Found";
+    notFoundLabel = "Set All Selected as Not Found";
+  } else if (type === "shipping") {
+    foundLabel = "Set All Selected as Shipped";
+    notFoundLabel = "Set All Selected as Unshipped";
   }
 
-  if (type === "museum") {
+  if (
+    type === "museum" ||
+    type === "shipping" ||
+    type === "cooking" ||
+    type === "crafting"
+  ) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
@@ -113,18 +100,14 @@ export const BulkActionDialog = ({
               onClick={() => handleBulkAction(2)}
               disabled={selectedItems.size === 0}
             >
-              {onBulkAction && window.location.pathname.includes("walnuts")
-                ? "Set All Selected as Found"
-                : "Set All Selected as Donated"}
+              {foundLabel}
             </Button>
             <Button
               variant="secondary"
               onClick={() => handleBulkAction(0)}
               disabled={selectedItems.size === 0}
             >
-              {onBulkAction && window.location.pathname.includes("walnuts")
-                ? "Set All Selected as Not Found"
-                : "Set All Selected as Not Donated"}
+              {notFoundLabel}
             </Button>
           </div>
         </DialogContent>
