@@ -188,7 +188,9 @@ export default function Cooking() {
                 variant="outline"
                 type="single"
                 value={_filter}
-                onValueChange={(val) => val && setFilter(val)}
+                onValueChange={(val) =>
+                  setFilter(val === _filter ? "all" : val)
+                }
                 className="gap-2"
               >
                 <ToggleGroupItem value="0" aria-label="Show Unknown">
@@ -239,17 +241,18 @@ export default function Cooking() {
                     : "Select Multiple"}
                 </Button>
                 {isMultiSelectMode && (
-                  <button
-                    className="ml-1 flex items-center justify-center rounded-md border border-neutral-200 bg-white p-2 text-neutral-500 shadow-sm hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800"
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="ml-1"
                     onClick={() => {
                       clearSelection();
                       toggleMultiSelectMode();
                     }}
                     aria-label="Cancel Multi-Select"
-                    type="button"
                   >
                     <X className="h-4 w-4" />
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
