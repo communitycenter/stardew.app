@@ -99,7 +99,7 @@ export const FilterSearch = ({
       <PopoverTrigger asChild>
         <div
           aria-expanded={open}
-          className="flex items-center justify-between space-x-3 rounded-md border px-3 py-2.5 text-sm text-neutral-500 outline-none hover:cursor-pointer hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
+          className="flex h-9 items-center justify-between space-x-3 rounded-md border px-4 py-2 text-sm text-neutral-500 outline-none hover:cursor-pointer hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
         >
           <div className="flex items-center gap-2">
             <Icon className="h-4 w-4 shrink-0 opacity-50" />
