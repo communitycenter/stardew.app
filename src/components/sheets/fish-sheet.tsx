@@ -121,11 +121,12 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
               </>
             ) : (
               <>
-                {fishCaught.has(fish?.itemID ?? 0) ? (
+                {fishCaught.has(fish?.itemID?.toString() ?? "0") ? (
                   <Button
                     variant="secondary"
                     disabled={
-                      !activePlayer || !fishCaught.has(fish?.itemID ?? 0)
+                      !activePlayer ||
+                      !fishCaught.has(fish?.itemID?.toString() ?? "0")
                     }
                     data-umami-event="Set incompleted"
                     onClick={() => {
@@ -138,7 +139,8 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
                   <Button
                     variant="secondary"
                     disabled={
-                      !activePlayer || fishCaught.has(fish?.itemID ?? 0)
+                      !activePlayer ||
+                      fishCaught.has(fish?.itemID?.toString() ?? "0")
                     }
                     data-umami-event="Set completed"
                     onClick={() => {
