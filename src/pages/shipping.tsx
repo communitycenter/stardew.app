@@ -102,13 +102,19 @@ export default function Shipping() {
         if (semverGte(gameVersion, "1.6.0") && key === "372") return; // Clam and Smoked Fish is excluded in 1.6
 
         // Polyculture calculation
-        if (shipping_items[key as keyof typeof shipping_items].polyculture) {
+        if (
+          shipping_items[key as keyof typeof shipping_items] &&
+          shipping_items[key as keyof typeof shipping_items].polyculture
+        ) {
           if ((activePlayer.shipping?.shipped[key] ?? 0) >= 15)
             polycultureCount++;
         }
 
         // Monoculture calculation
-        if (shipping_items[key as keyof typeof shipping_items].monoculture) {
+        if (
+          shipping_items[key as keyof typeof shipping_items] &&
+          shipping_items[key as keyof typeof shipping_items].monoculture
+        ) {
           if ((activePlayer.shipping?.shipped[key] ?? 0) >= 300)
             monocultureAchieved = true;
         }
