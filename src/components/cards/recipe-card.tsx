@@ -6,9 +6,10 @@ import objects from "@/data/objects.json";
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { useMultiSelect } from "@/contexts/multi-select-context";
 
 import { NewItemBadge } from "@/components/new-item-badge";
 import {
@@ -41,6 +42,9 @@ interface Props<T extends Recipe> {
    * @memberof Props
    */
   setPromptOpen?: Dispatch<SetStateAction<boolean>>;
+
+  index: number;
+  allRecipes: T[];
 }
 
 export const RecipeCard = <T extends Recipe>({
@@ -50,8 +54,14 @@ export const RecipeCard = <T extends Recipe>({
   setObject,
   setPromptOpen,
   show,
+  index,
+  allRecipes,
 }: Props<T>) => {
   const { activePlayer, patchPlayer } = usePlayers();
+  const { isMultiSelectMode, selectedItems, toggleItem, addItems } =
+    useMultiSelect();
+  const lastSelectedIndex = useRef<number | null>(null);
+
   let colorClass = "";
   switch (status) {
     case 1:
@@ -110,6 +120,34 @@ export const RecipeCard = <T extends Recipe>({
     await patchPlayer(patch);
   }
 
+  const isSelected = selectedItems.has(recipe.itemID.toString());
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isMultiSelectMode) {
+      if (e.shiftKey && lastSelectedIndex.current !== null) {
+        // Select range of items
+        const start = Math.min(lastSelectedIndex.current, index);
+        const end = Math.max(lastSelectedIndex.current, index);
+        const itemsToSelect = allRecipes
+          .slice(start, end + 1)
+          .map((r) => r.itemID.toString());
+        addItems(itemsToSelect);
+      } else {
+        // Single item selection
+        toggleItem(recipe.itemID.toString());
+        lastSelectedIndex.current = index;
+      }
+      return;
+    }
+
+    if (recipe.minVersion === "1.6.0" && !show && status < 1) {
+      setPromptOpen?.(true);
+      return;
+    }
+    setObject(recipe);
+    setIsOpen(true);
+  };
+
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
@@ -117,17 +155,13 @@ export const RecipeCard = <T extends Recipe>({
           className={cn(
             "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
             colorClass,
+            isMultiSelectMode && isSelected && "ring-2 ring-blue-500",
           )}
-          onClick={() => {
-            if (recipe.minVersion === "1.6.0" && !show && status < 1) {
-              setPromptOpen?.(true);
-              return;
-            }
-            setObject(recipe);
-            setIsOpen(true);
-          }}
+          onClick={handleClick}
         >
-          {recipe.minVersion === "1.6.0" && <NewItemBadge version={recipe.minVersion}/>}
+          {recipe.minVersion === "1.6.0" && (
+            <NewItemBadge version={recipe.minVersion} />
+          )}
           <div
             className={cn(
               "flex items-center space-x-3 truncate text-left",
@@ -150,7 +184,9 @@ export const RecipeCard = <T extends Recipe>({
               </p>
             </div>
           </div>
-          <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+          {!isMultiSelectMode && (
+            <IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+          )}
         </button>
       </ContextMenuTrigger>
       <ContextMenuContent className="w-48">

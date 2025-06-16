@@ -25,6 +25,7 @@ interface ButtonProps {
   target: string;
   _filter: string;
   setFilter: Dispatch<SetStateAction<string>>;
+  className?: string;
 }
 
 interface DataItem {
@@ -51,6 +52,7 @@ export const FilterButton = ({
   target,
   _filter,
   setFilter,
+  className,
 }: ButtonProps) => {
   const { activePlayer } = useContext(PlayersContext);
 
@@ -66,8 +68,9 @@ export const FilterButton = ({
   return (
     <button
       className={cn(
-        "flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white p-2 pr-3 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 hover:bg-neutral-100 hover:dark:bg-neutral-800 hover:cursor-pointer disabled:hover:cursor-not-allowed disabled:hover:bg-white disabled:hover:dark:bg-neutral-950",
-        _filter === target ? "bg-neutral-100 dark:bg-neutral-800" : ""
+        "flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white p-2 pr-3 text-neutral-950 shadow-sm hover:cursor-pointer hover:bg-neutral-100 disabled:hover:cursor-not-allowed disabled:hover:bg-white dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 hover:dark:bg-neutral-800 disabled:hover:dark:bg-neutral-950",
+        _filter === target ? "bg-neutral-100 dark:bg-neutral-800" : "",
+        className,
       )}
       onClick={() => handleClick()}
       disabled={!activePlayer}
@@ -96,11 +99,11 @@ export const FilterSearch = ({
       <PopoverTrigger asChild>
         <div
           aria-expanded={open}
-          className="flex items-center border justify-between rounded-md space-x-3 px-3 py-2.5 text-sm outline-none text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-400 dark:border-neutral-800 hover:cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          className="flex items-center justify-between space-x-3 rounded-md border px-3 py-2.5 text-sm text-neutral-500 outline-none hover:cursor-pointer hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
         >
           <div className="flex items-center gap-2">
             <Icon className="h-4 w-4 shrink-0 opacity-50" />
-            <p className="text-sm whitespace-nowrap	">
+            <p className="whitespace-nowrap text-sm	">
               {_filter === "all" || _filter === "both" || _filter === "name"
                 ? title
                 : data.find((item) => item.value === _filter)?.label}
@@ -127,7 +130,7 @@ export const FilterSearch = ({
                 <CheckIcon
                   className={cn(
                     "mr-2 h-4 w-4",
-                    _filter === item.value ? "opacity-100" : "opacity-0"
+                    _filter === item.value ? "opacity-100" : "opacity-0",
                   )}
                 />
                 {item.label}
