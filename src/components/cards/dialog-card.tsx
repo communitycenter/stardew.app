@@ -28,6 +28,7 @@ import {
 
 import { Stardrop } from "@/lib/parsers/general";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import { useMultiSelect } from "@/contexts/multi-select-context";
 
 interface Props {
   title: string;
@@ -65,12 +66,17 @@ export const DialogCard = ({
 }: Props) => {
   const { activePlayer, patchPlayer } = usePlayers();
   const [open, setOpen] = useState(false);
+  const { isMultiSelectMode, selectedItems, toggleItem } = useMultiSelect();
 
   const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
   let checkedClass = completed
     ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
     : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
+
+  if (isMultiSelectMode && selectedItems.has(_id)) {
+    checkedClass += " ring-2 ring-primary";
+  }
 
   async function handleStatusChange(status: boolean) {
     if (!activePlayer) return;
@@ -156,6 +162,10 @@ export const DialogCard = ({
           checkedClass,
         )}
         onClick={(e) => {
+          if (isMultiSelectMode) {
+            toggleItem(_id);
+            return;
+          }
           if (minVersion === "1.6.0" && !show && !completed) {
             e.preventDefault();
             setPromptOpen?.(true);

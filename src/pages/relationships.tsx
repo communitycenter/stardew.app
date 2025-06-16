@@ -20,6 +20,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
 
 import { HeartIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { IconBabyCarriage, IconAdjustments } from "@tabler/icons-react";
@@ -39,6 +41,11 @@ const sort_filters = [
   { value: "name", label: "Name" },
   { value: "hearts", label: "Hearts" },
 ];
+
+const bubbleColors: Record<string, string> = {
+  "0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // incomplete
+  "2": "border-green-900 bg-green-500/20", // completed
+};
 
 export default function Relationships() {
   const { activePlayer } = usePlayers();
@@ -269,19 +276,35 @@ export default function Relationships() {
               All Villagers
             </h2>
             <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
-              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-                <FilterButton
-                  target={"0"}
-                  _filter={_filter}
-                  title={"Incomplete"}
-                  setFilter={setFilter}
-                />
-                <FilterButton
-                  target={"2"}
-                  _filter={_filter}
-                  title="Completed"
-                  setFilter={setFilter}
-                />
+              <div className="flex flex-row items-center gap-2">
+                <ToggleGroup
+                  variant="outline"
+                  type="single"
+                  value={_filter}
+                  onValueChange={(val) =>
+                    setFilter(val === _filter ? "all" : val)
+                  }
+                  className="gap-2"
+                >
+                  <ToggleGroupItem value="0" aria-label="Show Incomplete">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["0"],
+                      )}
+                    />
+                    <span className="align-middle">Incomplete</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="2" aria-label="Show Completed">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["2"],
+                      )}
+                    />
+                    <span className="align-middle">Completed</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
               </div>
               <div className="grid grid-cols-1 items-stretch gap-2 sm:flex">
                 <FilterSearch
@@ -291,13 +314,16 @@ export default function Relationships() {
                   setFilter={setSort}
                   icon={IconAdjustments}
                 />
-                <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
-                  <CommandInput
-                    onValueChange={(v) => setSearch(v)}
-                    placeholder="Search Villagers"
-                  />
-                </Command>
               </div>
+            </div>
+            {/* Search Bar Row */}
+            <div className="mt-2 w-full">
+              <Command className="w-full border border-b-0 dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Villagers"
+                />
+              </Command>
             </div>
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-4">
               {Object.values(villagers)
