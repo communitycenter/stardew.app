@@ -22,6 +22,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Command, CommandInput } from "@/components/ui/command";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
 
 import { IconClock } from "@tabler/icons-react";
 
@@ -56,9 +58,15 @@ const seasons = [
   },
 ];
 
+const bubbleColors: Record<string, string> = {
+  "0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // unshipped
+  "1": "border-green-900 bg-green-500/20", // shipped
+  "2": "border-blue-900 bg-blue-500/20", // polyculture
+};
+
 export default function Shipping() {
   const [search, setSearch] = useState("");
-  const [_filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("all");
   const [_seasonFilter, setSeasonFilter] = useState("all");
 
   const [showPrompt, setPromptOpen] = useState(false);
@@ -152,6 +160,20 @@ export default function Shipping() {
     return { completed, additionalDescription };
   };
 
+  // Calculate completedCount based on filtered items
+  const completedCount = Object.values(typedShippingItems)
+    .filter((i) => {
+      // Clam is excluded in 1.6, so we won't show it
+      if (i.itemID === "372") return !semverGte(gameVersion, "1.6.0");
+      return true;
+    })
+    .filter((i) => semverGte(gameVersion, i.minVersion))
+    .filter((i) => {
+      if (_seasonFilter === "all") return true;
+      return i.seasons.includes(_seasonFilter);
+    })
+    .filter((i) => i.itemID in basicShipped).length;
+
   return (
     <>
       <Head>
@@ -218,31 +240,52 @@ export default function Shipping() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Items
             </h2>
-            {/* Filters */}
-            <div className="grid grid-cols-1 justify-between gap-2 xl:flex">
-              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-                <FilterButton
-                  target={"0"}
-                  _filter={_filter}
-                  title={`Unshipped (${
-                    reqs["Full Shipment"] - basicShippedCount
-                  })`}
-                  setFilter={setFilter}
-                />
-                <FilterButton
-                  target={"1"}
-                  _filter={_filter}
-                  title={`Polyculture (${
-                    reqs["Polyculture"] - polycultureCount
-                  })`}
-                  setFilter={setFilter}
-                />
-                <FilterButton
-                  target={"2"}
-                  _filter={_filter}
-                  title={`Completed (${basicShippedCount})`}
-                  setFilter={setFilter}
-                />
+            {/* Filters and Actions Row */}
+            <div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-row items-center gap-2">
+                <ToggleGroup
+                  variant="outline"
+                  type="single"
+                  value={filter}
+                  onValueChange={(val) =>
+                    setFilter(val === filter ? "all" : val)
+                  }
+                  className="gap-2"
+                >
+                  <ToggleGroupItem value="0" aria-label="Show Unshipped">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["0"],
+                      )}
+                    />
+                    <span className="align-middle">
+                      Unshipped ({reqs["Full Shipment"] - basicShippedCount})
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="1" aria-label="Show Polyculture">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["2"],
+                      )}
+                    />
+                    <span className="align-middle">
+                      Polyculture ({reqs["Polyculture"] - polycultureCount})
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="2" aria-label="Show Completed">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["1"],
+                      )}
+                    />
+                    <span className="align-middle">
+                      Completed ({completedCount})
+                    </span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
               </div>
               <div className="flex gap-2">
                 <FilterSearch
@@ -252,13 +295,16 @@ export default function Shipping() {
                   setFilter={setSeasonFilter}
                   icon={IconClock}
                 />
-                <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
-                  <CommandInput
-                    onValueChange={(v) => setSearch(v)}
-                    placeholder="Search Items"
-                  />
-                </Command>
               </div>
+            </div>
+            {/* Search Bar Row */}
+            <div className="mt-2 w-full">
+              <Command className="w-full border border-b-0 dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setSearch(v)}
+                  placeholder="Search Items"
+                />
+              </Command>
             </div>
             {/* Items */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -276,24 +322,20 @@ export default function Shipping() {
                   return name.toLowerCase().includes(search.toLowerCase());
                 })
                 .filter((i) => {
-                  if (_filter === "0") {
-                    // Item not shipped
+                  if (filter === "0") {
+                    // Unshipped
                     return !(i.itemID in basicShipped);
-                  } else if (_filter === "1") {
-                    // Polyculture crops that need completing
+                  } else if (filter === "1") {
+                    // Polyculture in progress
                     return (
                       i.itemID in shipping_items &&
                       shipping_items[i.itemID as keyof typeof shipping_items]
                         .polyculture &&
                       (!basicShipped[i.itemID] || basicShipped[i.itemID]! < 15)
                     );
-                  } else if (_filter === "2") {
-                    // Shipped/Completed (we won't check for monoculture here)
-                    return i.itemID in basicShipped &&
-                      shipping_items[i.itemID as keyof typeof shipping_items]
-                        .polyculture
-                      ? basicShipped[i.itemID]! >= 15
-                      : basicShipped[i.itemID]! >= 1;
+                  } else if (filter === "2") {
+                    // Completed (all shipped)
+                    return i.itemID in basicShipped;
                   } else return true; // all recipes
                 })
                 .filter((i) => {
