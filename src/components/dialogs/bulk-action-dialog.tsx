@@ -113,14 +113,18 @@ export const BulkActionDialog = ({
               onClick={() => handleBulkAction(2)}
               disabled={selectedItems.size === 0}
             >
-              Set All Selected as Donated
+              {onBulkAction && window.location.pathname.includes("walnuts")
+                ? "Set All Selected as Found"
+                : "Set All Selected as Donated"}
             </Button>
             <Button
               variant="secondary"
               onClick={() => handleBulkAction(0)}
               disabled={selectedItems.size === 0}
             >
-              Set All Selected as Not Donated
+              {onBulkAction && window.location.pathname.includes("walnuts")
+                ? "Set All Selected as Not Found"
+                : "Set All Selected as Not Donated"}
             </Button>
           </div>
         </DialogContent>
