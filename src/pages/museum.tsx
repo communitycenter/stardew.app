@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
 import museum from "@/data/museum.json";
+import objects from "@/data/objects.json";
 
 import { MuseumItem } from "@/types/items";
 import { useState, useMemo } from "react";
@@ -25,6 +26,7 @@ import { useMultiSelect } from "@/contexts/multi-select-context";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { Command, CommandInput } from "@/components/ui/command";
 
 const reqs: Record<string, number> = {
   "A Complete Collection": Object.values(museum).flatMap((item) =>
@@ -67,6 +69,9 @@ export default function Museum() {
   } = useMultiSelect();
   const [bulkActionOpen, setBulkActionOpen] = useState(false);
   const [bulkType, setBulkType] = useState<"artifact" | "mineral">("artifact");
+
+  const [artifactSearch, setArtifactSearch] = useState("");
+  const [mineralSearch, setMineralSearch] = useState("");
 
   const getAchievementProgress = (name: string) => {
     let completed = false;
@@ -273,8 +278,26 @@ export default function Museum() {
                         )}
                       </div>
                     </div>
+                    {/* Search Bar Row */}
+                    <div className="mt-2 w-full">
+                      <Command className="w-full border border-b-0 dark:border-neutral-800">
+                        <CommandInput
+                          onValueChange={(v) => setArtifactSearch(v)}
+                          placeholder="Search Artifacts"
+                        />
+                      </Command>
+                    </div>
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
                       {Object.values(museum.artifacts)
+                        .filter((f) => {
+                          if (!artifactSearch) return true;
+                          const name =
+                            objects[f.itemID as keyof typeof objects]?.name ||
+                            "";
+                          return name
+                            .toLowerCase()
+                            .includes(artifactSearch.toLowerCase());
+                        })
                         .filter((f) => {
                           if (_artifactFilter === "0") {
                             return !museumArtifactCollected.has(f.itemID); // incompleted
@@ -372,8 +395,25 @@ export default function Museum() {
                 )}
               </div>
             </div>
+            {/* Search Bar Row */}
+            <div className="mt-2 w-full">
+              <Command className="w-full border border-b-0 dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setMineralSearch(v)}
+                  placeholder="Search Minerals"
+                />
+              </Command>
+            </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(museum.minerals)
+                .filter((f) => {
+                  if (!mineralSearch) return true;
+                  const name =
+                    objects[f.itemID as keyof typeof objects]?.name || "";
+                  return name
+                    .toLowerCase()
+                    .includes(mineralSearch.toLowerCase());
+                })
                 .filter((f) => {
                   if (_mineralFilter === "0") {
                     return !museumMineralCollected.has(f.itemID); // incompleted
