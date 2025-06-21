@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import achievements from "@/data/achievements.json";
 import museum from "@/data/museum.json";
+import objects from "@/data/objects.json";
 
 import { MuseumItem } from "@/types/items";
 import { useState, useMemo } from "react";
@@ -19,12 +20,24 @@ import {
 } from "@/components/ui/accordion";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
+import { useMultiSelect } from "@/contexts/multi-select-context";
+import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+import { Command, CommandInput } from "@/components/ui/command";
 
 const reqs: Record<string, number> = {
   "A Complete Collection": Object.values(museum).flatMap((item) =>
     Object.values(item),
   ).length,
   "Treasure Trove": 40,
+};
+
+const bubbleColors: Record<string, string> = {
+  "0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // not donated
+  "2": "border-green-900 bg-green-500/20", // donated
 };
 
 export default function Museum() {
@@ -48,13 +61,25 @@ export default function Museum() {
     [activePlayer],
   );
 
+  const {
+    isMultiSelectMode,
+    toggleMultiSelectMode,
+    selectedItems,
+    clearSelection,
+  } = useMultiSelect();
+  const [bulkActionOpen, setBulkActionOpen] = useState(false);
+  const [bulkType, setBulkType] = useState<"artifact" | "mineral">("artifact");
+
+  const [artifactSearch, setArtifactSearch] = useState("");
+  const [mineralSearch, setMineralSearch] = useState("");
+
   const getAchievementProgress = (name: string) => {
     let completed = false;
     let additionalDescription = "";
 
     if (!activePlayer || !activePlayer.museum)
       return { completed, additionalDescription };
-    
+
     const collection =
       museumArtifactCollected.size + museumMineralCollected.size;
 
@@ -73,6 +98,39 @@ export default function Museum() {
       Object.values(museum.artifacts).length - museumArtifactCollected.size,
     minerals:
       Object.values(museum.minerals).length - museumMineralCollected.size,
+  };
+
+  // Calculate donatedCount for artifacts based on filtered items
+  const donatedArtifactCount = Object.values(museum.artifacts).filter((f) =>
+    museumArtifactCollected.has(f.itemID),
+  ).length;
+
+  // Custom bulk action handler for museum
+  const { patchPlayer } = usePlayers();
+  const handleMuseumBulkAction = async (
+    status: number | null,
+    selectedItems: Set<string>,
+    close: () => void,
+  ) => {
+    if (!activePlayer) return;
+    const patch: any = { museum: {} };
+    if (bulkType === "artifact") {
+      const current = new Set(activePlayer.museum?.artifacts ?? []);
+      selectedItems.forEach((id) => {
+        if (status === 2) current.add(id);
+        if (status === 0) current.delete(id);
+      });
+      patch.museum.artifacts = Array.from(current);
+    } else {
+      const current = new Set(activePlayer.museum?.minerals ?? []);
+      selectedItems.forEach((id) => {
+        if (status === 2) current.add(id);
+        if (status === 0) current.delete(id);
+      });
+      patch.museum.minerals = Array.from(current);
+    }
+    await patchPlayer(patch);
+    close();
   };
 
   return (
@@ -145,22 +203,101 @@ export default function Museum() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-3">
-                    <div className="flex space-x-4">
-                      <FilterButton
-                        target={"0"}
-                        _filter={_artifactFilter}
-                        title={`Not Donated (${remainingDonations.artifacts})`}
-                        setFilter={setArtifactFilter}
-                      />
-                      <FilterButton
-                        target={"2"}
-                        _filter={_artifactFilter}
-                        title={`Donated (${museumArtifactCollected.size})`}
-                        setFilter={setArtifactFilter}
-                      />
+                    <div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                      <div className="flex flex-row items-center gap-2">
+                        <ToggleGroup
+                          variant="outline"
+                          type="single"
+                          value={_artifactFilter}
+                          onValueChange={(val) =>
+                            setArtifactFilter(
+                              val === _artifactFilter ? "all" : val,
+                            )
+                          }
+                          className="gap-2"
+                        >
+                          <ToggleGroupItem
+                            value="0"
+                            aria-label="Show Not Donated"
+                          >
+                            <span
+                              className={cn(
+                                "inline-block h-4 w-4 rounded-full border align-middle",
+                                bubbleColors["0"],
+                              )}
+                            />
+                            <span className="align-middle">
+                              Not Donated ({remainingDonations.artifacts})
+                            </span>
+                          </ToggleGroupItem>
+                          <ToggleGroupItem value="2" aria-label="Show Donated">
+                            <span
+                              className={cn(
+                                "inline-block h-4 w-4 rounded-full border align-middle",
+                                bubbleColors["2"],
+                              )}
+                            />
+                            <span className="align-middle">
+                              Donated ({donatedArtifactCount})
+                            </span>
+                          </ToggleGroupItem>
+                        </ToggleGroup>
+                      </div>
+                      <div className="flex flex-row items-center gap-2">
+                        <Button
+                          variant={isMultiSelectMode ? "default" : "outline"}
+                          onClick={() => {
+                            setBulkType("artifact");
+                            if (isMultiSelectMode) {
+                              setBulkActionOpen(true);
+                            } else {
+                              toggleMultiSelectMode();
+                            }
+                          }}
+                          disabled={
+                            isMultiSelectMode && selectedItems.size === 0
+                          }
+                        >
+                          {isMultiSelectMode
+                            ? `Bulk Action (${selectedItems.size})`
+                            : "Select Multiple"}
+                        </Button>
+                        {isMultiSelectMode && (
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="ml-1"
+                            onClick={() => {
+                              clearSelection();
+                              toggleMultiSelectMode();
+                            }}
+                            aria-label="Cancel Multi-Select"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                    {/* Search Bar Row */}
+                    <div className="mt-2 w-full">
+                      <Command className="w-full border border-b-0 dark:border-neutral-800">
+                        <CommandInput
+                          onValueChange={(v) => setArtifactSearch(v)}
+                          placeholder="Search Artifacts"
+                        />
+                      </Command>
                     </div>
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
                       {Object.values(museum.artifacts)
+                        .filter((f) => {
+                          if (!artifactSearch) return true;
+                          const name =
+                            objects[f.itemID as keyof typeof objects]?.name ||
+                            "";
+                          return name
+                            .toLowerCase()
+                            .includes(artifactSearch.toLowerCase());
+                        })
                         .filter((f) => {
                           if (_artifactFilter === "0") {
                             return !museumArtifactCollected.has(f.itemID); // incompleted
@@ -190,22 +327,93 @@ export default function Museum() {
             <h2 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Minerals
             </h2>
-            <div className="flex space-x-4">
-              <FilterButton
-                target={"0"}
-                _filter={_mineralFilter}
-                title={`Not Donated (${remainingDonations.minerals})`}
-                setFilter={setMineralFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_mineralFilter}
-                title={`Donated (${museumMineralCollected.size})`}
-                setFilter={setMineralFilter}
-              />
+            <div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-row items-center gap-2">
+                <ToggleGroup
+                  variant="outline"
+                  type="single"
+                  value={_mineralFilter}
+                  onValueChange={(val) =>
+                    setMineralFilter(val === _mineralFilter ? "all" : val)
+                  }
+                  className="gap-2"
+                >
+                  <ToggleGroupItem value="0" aria-label="Show Not Donated">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["0"],
+                      )}
+                    />
+                    <span className="align-middle">
+                      Not Donated ({remainingDonations.minerals})
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="2" aria-label="Show Donated">
+                    <span
+                      className={cn(
+                        "inline-block h-4 w-4 rounded-full border align-middle",
+                        bubbleColors["2"],
+                      )}
+                    />
+                    <span className="align-middle">
+                      Donated ({museumMineralCollected.size})
+                    </span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+              <div className="flex flex-row items-center gap-2">
+                <Button
+                  variant={isMultiSelectMode ? "default" : "outline"}
+                  onClick={() => {
+                    setBulkType("mineral");
+                    if (isMultiSelectMode) {
+                      setBulkActionOpen(true);
+                    } else {
+                      toggleMultiSelectMode();
+                    }
+                  }}
+                  disabled={isMultiSelectMode && selectedItems.size === 0}
+                >
+                  {isMultiSelectMode
+                    ? `Bulk Action (${selectedItems.size})`
+                    : "Select Multiple"}
+                </Button>
+                {isMultiSelectMode && (
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="ml-1"
+                    onClick={() => {
+                      clearSelection();
+                      toggleMultiSelectMode();
+                    }}
+                    aria-label="Cancel Multi-Select"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+            </div>
+            {/* Search Bar Row */}
+            <div className="mt-2 w-full">
+              <Command className="w-full border border-b-0 dark:border-neutral-800">
+                <CommandInput
+                  onValueChange={(v) => setMineralSearch(v)}
+                  placeholder="Search Minerals"
+                />
+              </Command>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {Object.values(museum.minerals)
+                .filter((f) => {
+                  if (!mineralSearch) return true;
+                  const name =
+                    objects[f.itemID as keyof typeof objects]?.name || "";
+                  return name
+                    .toLowerCase()
+                    .includes(mineralSearch.toLowerCase());
+                })
                 .filter((f) => {
                   if (_mineralFilter === "0") {
                     return !museumMineralCollected.has(f.itemID); // incompleted
@@ -236,6 +444,12 @@ export default function Museum() {
           open={showPrompt}
           setOpen={setPromptOpen}
           toggleShow={toggleShow}
+        />
+        <BulkActionDialog
+          open={bulkActionOpen}
+          setOpen={setBulkActionOpen}
+          type="museum"
+          onBulkAction={handleMuseumBulkAction}
         />
       </main>
     </>

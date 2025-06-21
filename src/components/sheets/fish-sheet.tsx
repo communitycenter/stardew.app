@@ -28,6 +28,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
+import { useMultiSelect } from "@/contexts/multi-select-context";
 
 interface Props {
   open: boolean;
@@ -37,6 +38,7 @@ interface Props {
 
 export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
   const { activePlayer, patchPlayer } = useContext(PlayersContext);
+  const { selectedItems, clearSelection } = useMultiSelect();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const fishCaught = useMemo(() => {
@@ -62,8 +64,8 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
   async function handleStatusChange(status: number) {
     if (!activePlayer || !fish) return;
 
-    if (status === 2) fishCaught.add(fish.itemID);
-    if (status === 0) fishCaught.delete(fish.itemID);
+    if (status === 2) fishCaught.add(fish.itemID.toString());
+    if (status === 0) fishCaught.delete(fish.itemID.toString());
 
     const patch = {
       fishing: {
@@ -74,6 +76,161 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
     await patchPlayer(patch);
     setIsOpen(false);
   }
+
+  async function handleBulkStatusChange(status: number) {
+    if (!activePlayer || selectedItems.size === 0) return;
+
+    const newFishCaught = new Set(fishCaught);
+    selectedItems.forEach((itemId) => {
+      if (status === 2) newFishCaught.add(itemId.toString());
+      if (status === 0) newFishCaught.delete(itemId.toString());
+    });
+
+    const patch = {
+      fishing: {
+        fishCaught: Array.from(newFishCaught),
+      },
+    };
+
+    await patchPlayer(patch);
+    clearSelection();
+    setIsOpen(false);
+  }
+
+  const content = (
+    <>
+      <div className="mt-4 space-y-6">
+        <section className="space-y-2">
+          <div className="grid grid-cols-1 gap-2">
+            {selectedItems.size > 0 ? (
+              <>
+                <Button
+                  variant="secondary"
+                  data-umami-event="Bulk set completed"
+                  onClick={() => handleBulkStatusChange(2)}
+                >
+                  Set All Selected as Caught
+                </Button>
+                <Button
+                  variant="secondary"
+                  data-umami-event="Bulk set incompleted"
+                  onClick={() => handleBulkStatusChange(0)}
+                >
+                  Set All Selected as Uncaught
+                </Button>
+              </>
+            ) : (
+              <>
+                {fishCaught.has(fish?.itemID?.toString() ?? "0") ? (
+                  <Button
+                    variant="secondary"
+                    disabled={
+                      !activePlayer ||
+                      !fishCaught.has(fish?.itemID?.toString() ?? "0")
+                    }
+                    data-umami-event="Set incompleted"
+                    onClick={() => {
+                      handleStatusChange(0);
+                    }}
+                  >
+                    Set Uncaught
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    disabled={
+                      !activePlayer ||
+                      fishCaught.has(fish?.itemID?.toString() ?? "0")
+                    }
+                    data-umami-event="Set completed"
+                    onClick={() => {
+                      handleStatusChange(2);
+                    }}
+                  >
+                    Set Caught
+                  </Button>
+                )}
+              </>
+            )}
+            {!activePlayer && <CreatePlayerRedirect />}
+            {name && (
+              <Button variant="outline" data-umami-event="Visit wiki" asChild>
+                <a
+                  className="flex items-center"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`https://stardewvalleywiki.com/${name.replaceAll(
+                    " ",
+                    "_",
+                  )}`}
+                >
+                  Visit Wiki Page
+                  <IconExternalLink className="h-4"></IconExternalLink>
+                </a>
+              </Button>
+            )}
+          </div>
+        </section>
+        {fish && (
+          <>
+            <section className="space-y-2">
+              <h3 className="font-semibold">Location</h3>
+              <Separator />
+              <ul className="list-inside list-disc">
+                {fish.locations.map((location) => (
+                  <li
+                    key={location}
+                    className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
+                  >
+                    {location}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            {!fish.trapFish && (
+              <>
+                <section className="space-y-2">
+                  <h3 className="font-semibold">Season</h3>
+                  <Separator />
+                  <ul className="list-inside list-disc">
+                    {fish.seasons.map((season) => (
+                      <li
+                        key={season}
+                        className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
+                      >
+                        {season}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+                <section className="space-y-2">
+                  <h3 className="font-semibold">Time</h3>
+                  <Separator />
+                  <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                    {fish.time}
+                  </p>
+                </section>
+                <section className="space-y-2">
+                  <h3 className="font-semibold">Weather</h3>
+                  <Separator />
+                  <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                    {fish.weather}
+                  </p>
+                </section>
+                <section className="space-y-2">
+                  <h3 className="font-semibold">Difficulty</h3>
+                  <Separator />
+                  <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                    {fish.difficulty}
+                  </p>
+                </section>
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </>
+  );
 
   if (isDesktop) {
     return (
@@ -95,111 +252,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
               {description ? description : "No Description Found"}
             </SheetDescription>
           </SheetHeader>
-          {fish && (
-            <div className="mt-4 space-y-6">
-              <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-2">
-                  {fishCaught.has(fish.itemID) ? (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || !fishCaught.has(fish.itemID)}
-                      data-umami-event="Set incompleted"
-                      onClick={() => {
-                        handleStatusChange(0);
-                      }}
-                    >
-                      Set Uncaught
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || fishCaught.has(fish.itemID)}
-                      data-umami-event="Set completed"
-                      onClick={() => {
-                        handleStatusChange(2);
-                      }}
-                    >
-                      Set Caught
-                    </Button>
-                  )}
-                  {!activePlayer && <CreatePlayerRedirect />}
-                  {name && (
-                    <Button
-                      variant="outline"
-                      data-umami-event="Visit wiki"
-                      asChild
-                    >
-                      <a
-                        className="flex items-center"
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://stardewvalleywiki.com/${name.replaceAll(
-                          " ",
-                          "_",
-                        )}`}
-                      >
-                        Visit Wiki Page
-                        <IconExternalLink className="h-4"></IconExternalLink>
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </section>
-              <section className="space-y-2">
-                <h3 className="font-semibold">Location</h3>
-                <Separator />
-                <ul className="list-inside list-disc">
-                  {fish.locations.map((location) => (
-                    <li
-                      key={location}
-                      className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
-                    >
-                      {location}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-              {!fish.trapFish && (
-                <>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Season</h3>
-                    <Separator />
-                    <ul className="list-inside list-disc">
-                      {fish.seasons.map((season) => (
-                        <li
-                          key={season}
-                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
-                        >
-                          {season}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Time</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.time}
-                    </p>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Weather</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.weather}
-                    </p>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Difficulty</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.difficulty}
-                    </p>
-                  </section>
-                </>
-              )}
-            </div>
-          )}
+          {content}
         </SheetContent>
       </Sheet>
     );
@@ -225,111 +278,7 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
               {description ? description : "No Description Found"}
             </DrawerDescription>
           </DrawerHeader>
-          {fish && (
-            <div className="space-y-6 p-6">
-              <section className="space-y-2">
-                <div className="grid grid-cols-1 gap-2">
-                  {fishCaught.has(fish.itemID) ? (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || !fishCaught.has(fish.itemID)}
-                      data-umami-event="Set incompleted"
-                      onClick={() => {
-                        handleStatusChange(0);
-                      }}
-                    >
-                      Set Uncaught
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="secondary"
-                      disabled={!activePlayer || fishCaught.has(fish.itemID)}
-                      data-umami-event="Set completed"
-                      onClick={() => {
-                        handleStatusChange(2);
-                      }}
-                    >
-                      Set Caught
-                    </Button>
-                  )}
-                  {!activePlayer && <CreatePlayerRedirect />}
-                  {name && (
-                    <Button
-                      variant="outline"
-                      data-umami-event="Visit wiki"
-                      asChild
-                    >
-                      <a
-                        className="flex items-center"
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://stardewvalleywiki.com/${name.replaceAll(
-                          " ",
-                          "_",
-                        )}`}
-                      >
-                        Visit Wiki Page
-                        <IconExternalLink className="h-4"></IconExternalLink>
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </section>
-              <section className="space-y-2">
-                <h3 className="font-semibold">Location</h3>
-                <Separator />
-                <ul className="list-inside list-disc">
-                  {fish.locations.map((location) => (
-                    <li
-                      key={location}
-                      className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
-                    >
-                      {location}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-              {!fish.trapFish && (
-                <>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Season</h3>
-                    <Separator />
-                    <ul className="list-inside list-disc">
-                      {fish.seasons.map((season) => (
-                        <li
-                          key={season}
-                          className="mt-1 text-sm text-neutral-500 dark:text-neutral-400"
-                        >
-                          {season}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Time</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.time}
-                    </p>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Weather</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.weather}
-                    </p>
-                  </section>
-                  <section className="space-y-2">
-                    <h3 className="font-semibold">Difficulty</h3>
-                    <Separator />
-                    <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                      {fish.difficulty}
-                    </p>
-                  </section>
-                </>
-              )}
-            </div>
-          )}
+          <div className="space-y-6 p-6">{content}</div>
         </ScrollArea>
       </DrawerContent>
     </Drawer>
