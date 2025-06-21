@@ -13,7 +13,7 @@ import {
 interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
-  type: "cooking" | "crafting" | "shipping" | "museum";
+  type: "cooking" | "crafting" | "shipping" | "museum" | "fishing";
   onBulkAction?: (
     status: number | null,
     selectedItems: Set<string>,
@@ -75,19 +75,17 @@ export const BulkActionDialog = ({
   let foundLabel = "Set All Selected as Completed";
   let notFoundLabel = "Set All Selected as Incomplete";
   if (type === "museum") {
-    foundLabel = "Set All Selected as Found";
-    notFoundLabel = "Set All Selected as Not Found";
+    foundLabel = "Set All Selected as Donated";
+    notFoundLabel = "Set All Selected as Not Donated";
   } else if (type === "shipping") {
     foundLabel = "Set All Selected as Shipped";
     notFoundLabel = "Set All Selected as Unshipped";
+  } else if (type === "fishing") {
+    foundLabel = "Set All Selected as Caught";
+    notFoundLabel = "Set All Selected as Uncaught";
   }
 
-  if (
-    type === "museum" ||
-    type === "shipping" ||
-    type === "cooking" ||
-    type === "crafting"
-  ) {
+  if (type === "museum" || type === "shipping" || type === "fishing") {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
@@ -110,6 +108,51 @@ export const BulkActionDialog = ({
               {notFoundLabel}
             </Button>
           </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  if (type === "cooking" || type === "crafting") {
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Bulk Action</DialogTitle>
+            <DialogDescription>
+              {selectedItems.size} items selected
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-1 gap-2">
+              <Button
+                variant="outline"
+                onClick={() => handleBulkAction(null)}
+                disabled={!activePlayer}
+              >
+                Set Unknown
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => handleBulkAction(1)}
+                disabled={!activePlayer}
+              >
+                Set Known
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => handleBulkAction(2)}
+                disabled={!activePlayer}
+              >
+                Set Completed
+              </Button>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="secondary" onClick={() => setOpen(false)}>
+              Cancel
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     );

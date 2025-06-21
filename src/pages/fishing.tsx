@@ -386,7 +386,7 @@ export default function Fishing() {
         <BulkActionDialog
           open={bulkActionOpen}
           setOpen={setBulkActionOpen}
-          type="shipping"
+          type="fishing"
           onBulkAction={handleFishingBulkAction}
         />
       </main>
