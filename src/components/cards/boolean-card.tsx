@@ -5,6 +5,7 @@ import type { ItemData, MuseumItem } from "@/types/items";
 import { Dispatch, SetStateAction } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
+import { useMultiSelect } from "@/contexts/multi-select-context";
 
 import { NewItemBadge } from "@/components/new-item-badge";
 import {
@@ -66,6 +67,7 @@ export const BooleanCard = ({
   handleStatusChange,
 }: BooleanCardProps) => {
   const { activePlayer, patchPlayer } = usePlayers();
+  const { isMultiSelectMode, selectedItems, toggleItem } = useMultiSelect();
   // let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
   // let dataSource = objects;
   let iconURL: string;
@@ -137,6 +139,8 @@ export const BooleanCard = ({
     await patchPlayer(patch);
   }
 
+  const isSelected = selectedItems.has(item.itemID.toString());
+
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>
@@ -146,8 +150,13 @@ export const BooleanCard = ({
             completed
               ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
               : "border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800",
+            isMultiSelectMode && isSelected && "ring-primary ring-2",
           )}
           onClick={() => {
+            if (isMultiSelectMode) {
+              toggleItem(item.itemID.toString());
+              return;
+            }
             if (minVersion === "1.6.0" && !show && !completed) {
               setPromptOpen?.(true);
               return;

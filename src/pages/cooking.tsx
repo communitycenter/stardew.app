@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { X } from "lucide-react";
 
 import achievements from "@/data/achievements.json";
 import recipes from "@/data/cooking.json";
@@ -8,11 +9,13 @@ import type { Recipe } from "@/types/recipe";
 
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useMultiSelect } from "@/contexts/multi-select-context";
 import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { FilterButton } from "@/components/filter-btn";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
@@ -21,7 +24,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 const semverGte = require("semver/functions/gte");
 
@@ -29,6 +35,12 @@ const reqs: Record<string, number> = {
   Cook: 10,
   "Sous Chef": 25,
   "Gourmet Chef": Object.keys(recipes).length, // 1.6 default
+};
+
+const bubbleColors: Record<string, string> = {
+  "0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // unknown or not completed
+  "1": "border-yellow-900 bg-yellow-500/20", // known, but not completed
+  "2": "border-green-900 bg-green-500/20", // completed
 };
 
 export default function Cooking() {
@@ -42,11 +54,18 @@ export default function Cooking() {
 
   const [search, setSearch] = useState("");
   const [_filter, setFilter] = useState("all");
+  const [bulkActionOpen, setBulkActionOpen] = useState(false);
 
   const [showPrompt, setPromptOpen] = useState(false);
 
   const { activePlayer } = usePlayers();
   const { show, toggleShow } = usePreferences();
+  const {
+    isMultiSelectMode,
+    toggleMultiSelectMode,
+    selectedItems,
+    clearSelection,
+  } = useMultiSelect();
 
   useEffect(() => {
     if (activePlayer) {
@@ -163,31 +182,86 @@ export default function Cooking() {
             <h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
               All Recipes
             </h3>
-            {/* Filters */}
-            <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
-              <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-                <FilterButton
-                  target={"0"}
-                  _filter={_filter}
-                  title={`Unknown (${
-                    reqs["Gourmet Chef"] - (knownCount + cookedCount)
-                  })`}
-                  setFilter={setFilter}
-                />
-                <FilterButton
-                  target={"1"}
-                  _filter={_filter}
-                  title={`Known (${knownCount})`}
-                  setFilter={setFilter}
-                />
-                <FilterButton
-                  target={"2"}
-                  _filter={_filter}
-                  title={`Cooked (${cookedCount})`}
-                  setFilter={setFilter}
-                />
+            {/* Filters and Actions Row */}
+            <div className="flex w-full flex-row items-center justify-between">
+              <ToggleGroup
+                variant="outline"
+                type="single"
+                value={_filter}
+                onValueChange={(val) =>
+                  setFilter(val === _filter ? "all" : val)
+                }
+                className="gap-2"
+              >
+                <ToggleGroupItem value="0" aria-label="Show Unknown">
+                  <span
+                    className={cn(
+                      "inline-block h-4 w-4 rounded-full border align-middle",
+                      bubbleColors["0"],
+                    )}
+                  />
+                  <span className="align-middle">
+                    Unknown ({reqs["Gourmet Chef"] - (knownCount + cookedCount)}
+                    )
+                  </span>
+                </ToggleGroupItem>
+                <ToggleGroupItem value="1" aria-label="Show Known">
+                  <span
+                    className={cn(
+                      "inline-block h-4 w-4 rounded-full border align-middle",
+                      bubbleColors["1"],
+                    )}
+                  />
+                  <span className="align-middle">Known ({knownCount})</span>
+                </ToggleGroupItem>
+                <ToggleGroupItem value="2" aria-label="Show Cooked">
+                  <span
+                    className={cn(
+                      "inline-block h-4 w-4 rounded-full border align-middle",
+                      bubbleColors["2"],
+                    )}
+                  />
+                  <span className="align-middle">Cooked ({cookedCount})</span>
+                </ToggleGroupItem>
+              </ToggleGroup>
+              <div className="flex flex-row items-center gap-2">
+                <Button
+                  variant={isMultiSelectMode ? "default" : "outline"}
+                  onClick={() => {
+                    if (isMultiSelectMode) {
+                      setBulkActionOpen(true);
+                    } else {
+                      toggleMultiSelectMode();
+                    }
+                  }}
+                  disabled={
+                    !activePlayer ||
+                    (isMultiSelectMode && selectedItems.size === 0)
+                  }
+                >
+                  {isMultiSelectMode
+                    ? `Bulk Action (${selectedItems.size})`
+                    : "Select Multiple"}
+                </Button>
+                {isMultiSelectMode && (
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="ml-1"
+                    onClick={() => {
+                      clearSelection();
+                      toggleMultiSelectMode();
+                    }}
+                    aria-label="Cancel Multi-Select"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
               </div>
-              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
+            </div>
+            {/* Search Bar Row */}
+            <div className="mt-2 w-full">
+              <Command className="w-full border border-b-0 dark:border-neutral-800">
                 <CommandInput
                   onValueChange={(v) => setSearch(v)}
                   placeholder="Search Recipes"
@@ -221,7 +295,7 @@ export default function Cooking() {
                     );
                   } else return true; // all recipes
                 })
-                .map((f) => (
+                .map((f, index, filteredRecipes) => (
                   <RecipeCard
                     key={f.itemID}
                     recipe={f}
@@ -232,6 +306,8 @@ export default function Cooking() {
                     setObject={setRecipe}
                     setPromptOpen={setPromptOpen}
                     show={show}
+                    index={index}
+                    allRecipes={filteredRecipes}
                   />
                 ))}
             </div>
@@ -242,6 +318,11 @@ export default function Cooking() {
           open={showPrompt}
           setOpen={setPromptOpen}
           toggleShow={toggleShow}
+        />
+        <BulkActionDialog
+          open={bulkActionOpen}
+          setOpen={setBulkActionOpen}
+          type="cooking"
         />
       </main>
     </>

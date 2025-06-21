@@ -33,13 +33,13 @@ import { parseSaveFile } from "@/lib/file";
 import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
 
+import { IconSparkles } from "@tabler/icons-react";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
+
 interface Props {
   open: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   setDeletionOpen: Dispatch<SetStateAction<boolean>>;
-  setCreditsOpen: Dispatch<SetStateAction<boolean>>;
-  setFeedbackOpen: Dispatch<SetStateAction<boolean>>;
-  setBugreportOpen: Dispatch<SetStateAction<boolean>>;
   setLoginOpen: Dispatch<SetStateAction<boolean>>;
 
   inputRef: MutableRefObject<HTMLInputElement | null>;
@@ -50,9 +50,6 @@ export const MobileNav = ({
   setIsOpen,
   inputRef,
   setDeletionOpen,
-  setCreditsOpen,
-  setFeedbackOpen,
-  setBugreportOpen,
   setLoginOpen,
 }: Props) => {
   const api = useSWR<User>(
@@ -132,6 +129,7 @@ export const MobileNav = ({
                       data-umami-event="Log in"
                       onClick={() => {
                         setLoginOpen(true);
+                        setIsOpen(false);
                       }}
                     >
                       Log In with Discord
@@ -140,7 +138,9 @@ export const MobileNav = ({
                     <Button
                       variant="positive"
                       className=" dark:hover:text-white"
-                      onClick={() => inputRef.current?.click()}
+                      onClick={() => {
+                        inputRef.current?.click();
+                      }}
                     >
                       Upload
                       <input
@@ -151,6 +151,22 @@ export const MobileNav = ({
                           handleChange(e)
                         }
                       />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="relative w-full overflow-hidden hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500"
+                      asChild
+                    >
+                      <a
+                        href={"https://feedback.stardew.app"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-center gap-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <IconSparkles size={20} />
+                        <span>Feedback & Roadmap</span>
+                      </a>
                     </Button>
                   </>
                 )}
@@ -167,44 +183,63 @@ export const MobileNav = ({
                       </Avatar>
                       <span className="truncate">{api.data.discord_name}</span>
                     </Button>
+
+                    <Button
+                      variant="outline"
+                      className="relative w-full overflow-hidden hover:bg-green-500 hover:text-neutral-50 dark:hover:bg-green-500"
+                      asChild
+                    >
+                      <a
+                        href={"https://feedback.stardew.app"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-center gap-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <IconSparkles size={20} />
+                        <span>Feedback & Roadmap</span>
+                      </a>
+                    </Button>
+
+                    {/* Divider */}
+                    <div className="my-2 border-b border-neutral-200 dark:border-neutral-800" />
+
                     <div className="grid grid-cols-2 gap-2">
                       <Button
                         variant="positive"
                         className=" dark:hover:text-white"
-                        onClick={() => inputRef.current?.click()}
+                        onClick={() => {
+                          inputRef.current?.click();
+                        }}
                       >
                         Upload
                       </Button>
                       <Button
                         variant="destructive"
-                        onClick={() => setDeletionOpen(true)}
+                        onClick={() => {
+                          setDeletionOpen(true);
+                          setIsOpen(false);
+                        }}
                       >
                         Delete saves
                       </Button>
                     </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <Button
-                        onClick={() => setFeedbackOpen(true)}
-                        className="w-full"
-                        variant="outline"
+
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link
+                        href="/account?page=saves"
+                        className="flex items-center justify-center gap-2"
                       >
-                        Feedback
-                      </Button>
-                      <Button
-                        onClick={() => setBugreportOpen(true)}
-                        className="w-full"
-                        variant="outline"
-                      >
-                        Bug report
-                      </Button>
-                      <Button
-                        onClick={() => setCreditsOpen(true)}
-                        className="w-full"
-                        variant="outline"
-                      >
-                        Credits
-                      </Button>
-                    </div>
+                        <PencilSquareIcon className="h-5 w-5" />
+                        Edit Farmer
+                      </Link>
+                    </Button>
+
                     <Button
                       onClick={() => {
                         deleteCookie("token", {

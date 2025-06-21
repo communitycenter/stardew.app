@@ -14,6 +14,12 @@ import { FilterButton, FilterSearch } from "@/components/filter-btn";
 import { Command, CommandInput } from "@/components/ui/command";
 
 import { IconMapPin } from "@tabler/icons-react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
+import { useMultiSelect } from "@/contexts/multi-select-context";
+import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,14 +57,28 @@ const type = [
     label: "Volcano",
   },
 ];
+
+const bubbleColors: Record<string, string> = {
+  "0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // unfound
+  "2": "border-green-900 bg-green-500/20", // found
+};
+
 export default function IslandWalnuts() {
-  const { activePlayer } = usePlayers();
+  const { activePlayer, patchPlayer } = usePlayers();
   const [walnutsFound, setWalnutsFound] = useState<Set<string>>(new Set());
 
   const [_filter, setFilter] = useState("all");
   const [_locationFilter, setLocationFilter] = useState("all");
 
   const [search, setSearch] = useState("");
+
+  const {
+    isMultiSelectMode,
+    toggleMultiSelectMode,
+    selectedItems,
+    clearSelection,
+  } = useMultiSelect();
+  const [bulkActionOpen, setBulkActionOpen] = useState(false);
 
   useEffect(() => {
     if (activePlayer && activePlayer.walnuts?.found) {
@@ -86,6 +106,24 @@ export default function IslandWalnuts() {
       } else return true; // all
     });
   }, [walnutsFound, _filter]);
+
+  // Custom bulk action handler for walnuts
+  const handleWalnutBulkAction = async (
+    status: number | null,
+    selectedItems: Set<string>,
+    close: () => void,
+  ) => {
+    if (!activePlayer) return;
+    const current = { ...activePlayer.walnuts?.found };
+    selectedItems.forEach((id) => {
+      if (status === 2) current[id] = walnuts[id].count;
+      if (status === 0) current[id] = 0;
+    });
+    await patchPlayer({
+      walnuts: { found: current },
+    });
+    close();
+  };
 
   return (
     <>
@@ -116,33 +154,54 @@ export default function IslandWalnuts() {
           <h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
             Golden Walnut Tracker
           </h1>
-          <div className="grid grid-cols-1 justify-between gap-2 lg:flex">
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-              <FilterButton
-                target={"0"}
-                _filter={_filter}
-                title={`Unfound (${
-                  130 -
-                    Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
+          {/* Filters and Actions Row */}
+          <div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-row items-center gap-2">
+              <ToggleGroup
+                variant="outline"
+                type="single"
+                value={_filter}
+                onValueChange={(val) =>
+                  setFilter(val === _filter ? "all" : val)
+                }
+                className="gap-2"
+              >
+                <ToggleGroupItem value="0" aria-label="Show Unfound">
+                  <span
+                    className={cn(
+                      "inline-block h-4 w-4 rounded-full border align-middle",
+                      bubbleColors["0"],
+                    )}
+                  />
+                  <span className="align-middle">
+                    Unfound (
+                    {130 -
+                      Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
+                        (a, b) => a + b[1],
+                        0,
+                      )}
+                    )
+                  </span>
+                </ToggleGroupItem>
+                <ToggleGroupItem value="2" aria-label="Show Found">
+                  <span
+                    className={cn(
+                      "inline-block h-4 w-4 rounded-full border align-middle",
+                      bubbleColors["2"],
+                    )}
+                  />
+                  <span className="align-middle">
+                    Found (
+                    {Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
                       (a, b) => a + b[1],
                       0,
-                    ) ?? 0
-                })`}
-                setFilter={setFilter}
-              />
-              <FilterButton
-                target={"2"}
-                _filter={_filter}
-                title={`Found (${
-                  Object.entries(activePlayer?.walnuts?.found ?? {}).reduce(
-                    (a, b) => a + b[1],
-                    0,
-                  ) ?? 0
-                })`}
-                setFilter={setFilter}
-              />
+                    )}
+                    )
+                  </span>
+                </ToggleGroupItem>
+              </ToggleGroup>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-row items-center gap-2">
               <FilterSearch
                 _filter={_locationFilter}
                 title={"Location"}
@@ -150,13 +209,48 @@ export default function IslandWalnuts() {
                 setFilter={setLocationFilter}
                 icon={IconMapPin}
               />
-              <Command className="max-w-xs border border-b-0 dark:border-neutral-800">
-                <CommandInput
-                  onValueChange={(v) => setSearch(v)}
-                  placeholder="Search Walnuts"
-                />
-              </Command>
+              <Button
+                variant={isMultiSelectMode ? "default" : "outline"}
+                onClick={() => {
+                  if (isMultiSelectMode) {
+                    setBulkActionOpen(true);
+                  } else {
+                    toggleMultiSelectMode();
+                  }
+                }}
+                disabled={
+                  !activePlayer ||
+                  (isMultiSelectMode && selectedItems.size === 0)
+                }
+              >
+                {isMultiSelectMode
+                  ? `Bulk Action (${selectedItems.size})`
+                  : "Select Multiple"}
+              </Button>
+              {isMultiSelectMode && (
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="ml-1"
+                  onClick={() => {
+                    clearSelection();
+                    toggleMultiSelectMode();
+                  }}
+                  aria-label="Cancel Multi-Select"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
             </div>
+          </div>
+          {/* Search Bar Row */}
+          <div className="mt-2 w-full">
+            <Command className="w-full border border-b-0 dark:border-neutral-800">
+              <CommandInput
+                onValueChange={(v) => setSearch(v)}
+                placeholder="Search Walnuts"
+              />
+            </Command>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {displayedWalnuts
@@ -194,6 +288,12 @@ export default function IslandWalnuts() {
               })}
           </div>
         </div>
+        <BulkActionDialog
+          open={bulkActionOpen}
+          setOpen={setBulkActionOpen}
+          type="museum"
+          onBulkAction={handleWalnutBulkAction}
+        />
       </main>
     </>
   );

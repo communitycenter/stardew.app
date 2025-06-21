@@ -27,7 +27,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useFeatureFlagVariantKey } from "posthog-js/react";
 import { toast } from "sonner";
 import { BugReportDialog } from "./dialogs/bugreport-dialog";
 import { ChangelogDialog } from "./dialogs/changelog-dialog";
@@ -56,8 +55,6 @@ export function Topbar() {
   const [creditsOpen, setCreditsOpen] = useState(false);
   const [deletionOpen, setDeletionOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
-  const [changelogOpen, setChangelogOpen] = useState(false);
-  const [bugreportOpen, setBugreportOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
 
@@ -65,42 +62,9 @@ export function Topbar() {
 
   const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 
-  const seeChangelog = useFeatureFlagVariantKey("changelog_location");
-
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
   }, []);
-
-  useEffect(() => {
-    const hasSeenChangelog = window.localStorage.getItem("has_seen_changelog");
-
-    if (hasSeenChangelog) {
-      return;
-    }
-
-    if (!seeChangelog) return;
-
-    switch (seeChangelog) {
-      case "control":
-        break;
-      case "toast":
-        toast.message("stardew.app 2.2.0 is out!", {
-          description: "We now support the 1.6 update!",
-          action: {
-            label: "Check it out!",
-            onClick: () => {
-              setChangelogOpen(true);
-            },
-          },
-        });
-        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
-        break;
-      case "popup":
-        setChangelogOpen(true);
-        window.localStorage.setItem("has_seen_changelog", JSON.stringify(true));
-        break;
-    }
-  }, [seeChangelog]);
 
   return (
     <>
@@ -196,17 +160,21 @@ export function Topbar() {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem
-                  data-umami-event="Open feedback"
                   onClick={() => {
-                    setFeedbackOpen(true);
+                    window.open(
+                      "https://feedback.stardew.app/board/features?cursor=1&order=top&limit=10",
+                      "_blank",
+                    );
                   }}
                 >
                   Send us a message!
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  data-umami-event="Open bug report"
                   onClick={() => {
-                    setBugreportOpen(true);
+                    window.open(
+                      "https://feedback.stardew.app/board/bugs?cursor=1&order=top&limit=10",
+                      "_blank",
+                    );
                   }}
                 >
                   Report a bug!
@@ -266,17 +234,12 @@ export function Topbar() {
         open={mobileOpen}
         setIsOpen={setMobileOpen}
         setDeletionOpen={setDeletionOpen}
-        setFeedbackOpen={setFeedbackOpen}
-        setCreditsOpen={setCreditsOpen}
-        setBugreportOpen={setBugreportOpen}
         setLoginOpen={setLoginOpen}
         inputRef={inputRef}
       />
       <CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
       <DeletionDialog open={deletionOpen} setOpen={setDeletionOpen} />
       <FeedbackDialog open={feedbackOpen} setOpen={setFeedbackOpen} />
-      <ChangelogDialog open={changelogOpen} setOpen={setChangelogOpen} />
-      <BugReportDialog open={bugreportOpen} setOpen={setBugreportOpen} />
       <LoginDialog open={loginOpen} setOpen={setLoginOpen} />
       <UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
     </>

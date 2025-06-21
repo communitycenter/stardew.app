@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import { XMLParser } from "fast-xml-parser";
 
 import {
@@ -146,7 +145,6 @@ export function parseSaveFile(xml: string) {
 
     return processedPlayers;
   } catch (e) {
-    Sentry.captureException(e);
     throw new Error(`${e}`);
   }
 }
