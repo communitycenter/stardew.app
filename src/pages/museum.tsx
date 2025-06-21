@@ -255,7 +255,8 @@ export default function Museum() {
                             }
                           }}
                           disabled={
-                            isMultiSelectMode && selectedItems.size === 0
+                            !activePlayer ||
+                            (isMultiSelectMode && selectedItems.size === 0)
                           }
                         >
                           {isMultiSelectMode
@@ -373,7 +374,10 @@ export default function Museum() {
                       toggleMultiSelectMode();
                     }
                   }}
-                  disabled={isMultiSelectMode && selectedItems.size === 0}
+                  disabled={
+                    !activePlayer ||
+                    (isMultiSelectMode && selectedItems.size === 0)
+                  }
                 >
                   {isMultiSelectMode
                     ? `Bulk Action (${selectedItems.size})`

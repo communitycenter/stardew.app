@@ -290,7 +290,10 @@ export default function Fishing() {
                       toggleMultiSelectMode();
                     }
                   }}
-                  disabled={isMultiSelectMode && selectedItems.size === 0}
+                  disabled={
+                    !activePlayer ||
+                    (isMultiSelectMode && selectedItems.size === 0)
+                  }
                 >
                   {isMultiSelectMode
                     ? `Bulk Action (${selectedItems.size})`
