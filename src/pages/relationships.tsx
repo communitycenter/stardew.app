@@ -205,7 +205,7 @@ export default function Relationships() {
                       Icon={HomeIcon}
                     />
                     <InfoCard
-                      title="Spouse"
+                      title={activePlayer?.social?.spouse === "Krobus" ? 'Roommate': 'Spouse'}
                       description={activePlayer?.social?.spouse ?? "No Info"}
                       Icon={UsersIcon}
                     />
