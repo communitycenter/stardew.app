@@ -192,7 +192,7 @@
   "Buried_IslandWest_39_24": {
     "count": 1,
     "name": "Island West Buried",
-    "description": "In Tiget Slime area, between tufts of long grass (39,24)"
+    "description": "In Tiger Slime area, between tufts of long grass (39,24)"
   },
   "Buried_IslandWest_88_14": {
     "count": 1,
@@ -294,17 +294,17 @@
   "VolcanoBarrel": {
     "count": 5,
     "name": "Breaking Volcano \"Barrels\"",
-    "description": "Barrels in the volcano have a chance to drop walnuts upon death"
+    "description": "Barrels in the volcano have a chance to drop walnuts when broken"
   },
   "VolcanoMining": {
     "count": 5,
     "name": "Mining Stones in Volcano",
-    "description": "Stones have a chance to drop walnuts upon death"
+    "description": "Stones in the volcano have a chance to drop walnuts when broken"
   },
   "VolcanoMonsterDrop": {
     "count": 5,
     "name": "Killing Monsters in Volcano",
-    "description": "Monsters have a chance to drop walnuts upon death"
+    "description": "Monsters in the volcano have a chance to drop walnuts when defeated"
   },
   "IslandFarming": {
     "count": 5,
@@ -314,7 +314,7 @@
   "MusselStone": {
     "count": 5,
     "name": "Breaking Shell Stones on Island Farm Beach",
-    "description": "Breaing shell stones on the beach has a chance to drop walnuts"
+    "description": "Breaking shell stones on the beach has a chance to drop walnuts"
   },
   "IslandFishing": {
     "count": 5,
