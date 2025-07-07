@@ -60,7 +60,7 @@ export function Topbar() {
 
   const [isDevelopment, setIsDevelopment] = useState(false);
 
-  const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+  const { activePlayer } = useContext(PlayersContext);
 
   useEffect(() => {
     setIsDevelopment(parseInt(process.env.NEXT_PUBLIC_DEVELOPMENT!) === 1);
