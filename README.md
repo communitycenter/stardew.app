@@ -119,20 +119,27 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/killerdroid99">
+            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="killerdroid99"/>
+            <br />
+            <sub><b>Aniket Jena</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/moonggae">
             <img src="https://avatars.githubusercontent.com/u/74220198?v=4" width="100;" alt="moonggae"/>
             <br />
             <sub><b>Euigeun Choi</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/lucaspr98">
             <img src="https://avatars.githubusercontent.com/u/19675844?v=4" width="100;" alt="lucaspr98"/>
             <br />
             <sub><b>Lucas Ramos</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/gustuxd">
             <img src="https://avatars.githubusercontent.com/u/18200593?v=4" width="100;" alt="gustuxd"/>
@@ -167,15 +174,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Ian Mitchell</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/OfficialCRUGG">
             <img src="https://avatars.githubusercontent.com/u/25248999?v=4" width="100;" alt="OfficialCRUGG"/>
             <br />
             <sub><b>Dennis Paulus</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/dannyhand">
             <img src="https://avatars.githubusercontent.com/u/45862923?v=4" width="100;" alt="dannyhand"/>
