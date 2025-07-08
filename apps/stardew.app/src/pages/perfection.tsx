@@ -6,7 +6,6 @@ import craftingRecipes from "@/data/crafting.json";
 import fish from "@/data/fish.json";
 import shippingItems from "@/data/shipping.json";
 import villagers from "@/data/villagers.json";
-import { monsters } from "@/lib/parsers/monsters";
 
 import { usePlayers } from "@/contexts/players-context";
 import { cn } from "@/lib/utils";
@@ -28,6 +27,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+
+import { monsters } from "@communitycenter/stardew-save-parser";
 
 const reqs: Record<string, number> = {
 	"Protector Of The Valley": Object.keys(monsters).length,

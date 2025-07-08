@@ -29,7 +29,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import { parseSaveFile } from "@/lib/file";
+import { parseSaveFile } from "@communitycenter/stardew-save-parser";
 import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
 

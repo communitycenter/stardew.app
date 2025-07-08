@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import { parseSaveFile } from "@/lib/file";
+import { parseSaveFile } from "@communitycenter/stardew-save-parser";
 import { ChangeEvent, useRef, useState } from "react";
 
 import { toast } from "sonner";

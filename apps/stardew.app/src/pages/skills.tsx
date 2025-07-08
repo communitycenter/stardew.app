@@ -28,7 +28,7 @@ import { Progress } from "@/components/ui/progress";
 import {
 	getCurrentMasteryLevel,
 	getMasteryExpNeededForLevel,
-} from "@/lib/utils";
+} from "@communitycenter/stardew-save-parser";
 
 const reqs: Record<string, number> = {
 	"Singular Talent": 1, // platform specific

@@ -14,6 +14,7 @@
 		"typecheck": "tsgo --noEmit"
 	},
 	"dependencies": {
+		"@communitycenter/stardew-save-parser": "workspace:*",
 		"@heroicons/react": "^2.0.18",
 		"@hookform/resolvers": "^3.9.1",
 		"@marsidev/react-turnstile": "^0.5.3",

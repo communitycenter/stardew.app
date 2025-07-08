@@ -8,7 +8,7 @@ import type { CraftingRecipe, Recipe } from "@/types/recipe";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
-import { deweaponize } from "@/lib/utils";
+import { deweaponize } from "@communitycenter/stardew-save-parser";
 
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 import { Button } from "@/components/ui/button";

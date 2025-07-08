@@ -10,20 +10,22 @@ import {
 	useState,
 } from "react";
 
-import type { CookingRet } from "@/lib/parsers/cooking";
-import type { CraftingRet } from "@/lib/parsers/crafting";
-import type { FishRet } from "@/lib/parsers/fishing";
-import type { GeneralRet } from "@/lib/parsers/general";
-import type { MonstersRet } from "@/lib/parsers/monsters";
-import type { MuseumRet } from "@/lib/parsers/museum";
-import type { NotesRet } from "@/lib/parsers/notes";
-import type { PerfectionRet } from "@/lib/parsers/perfection";
-import type { PowersRet } from "@/lib/parsers/powers";
-import type { ScrapsRet } from "@/lib/parsers/scraps";
-import type { ShippingRet } from "@/lib/parsers/shipping";
-import type { SocialRet } from "@/lib/parsers/social";
-import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { BundleWithStatus } from "@/types/bundles";
+import type {
+	CookingRet,
+	CraftingRet,
+	FishRet,
+	GeneralRet,
+	MonstersRet,
+	MuseumRet,
+	NotesRet,
+	PerfectionRet,
+	PowersRet,
+	ScrapsRet,
+	ShippingRet,
+	SocialRet,
+	WalnutRet,
+} from "@communitycenter/stardew-save-parser";
 import type { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
@@ -114,7 +116,7 @@ function normalizePatch(
 				for (const arrIndex in patch[key]) {
 					newPatch[key][arrIndex] = normalizePatch(
 						patch[key][arrIndex],
-						// @ts-expect-error not sure what this is
+						// @ts-ignore
 						target[key][arrIndex],
 						true,
 					);
