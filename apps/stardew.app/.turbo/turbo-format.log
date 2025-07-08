@@ -1,0 +1,54 @@
+
+[0m[2m[35m$[0m [2m[1mbun run prettier . --check[0m
+Checking formatting...
+.eslintrc.json[2K[1G.prettierrc[2K[1G[[33mwarn[39m] .prettierrc
+.turbo/turbo-format.log[2K[1G.turbo/turbo-typecheck.log[2K[1Gdrizzle.config.ts[2K[1Gnext.config.js[2K[1Gpackage.json[2K[1Gpostcss.config.js[2K[1G[[33mwarn[39m] postcss.config.js
+public/404.png[2K[1Gpublic/construction.gif[2K[1Gpublic/create.png[2K[1Gpublic/dance.gif[2K[1Gpublic/discord.png[2K[1Gpublic/favicon.png[2K[1Gpublic/fonts/3-by-5-pixel-font.woff2[2K[1Gpublic/github.png[2K[1Gpublic/images/notes/1004.webp[2K[1Gpublic/images/notes/1006.webp[2K[1Gpublic/images/notes/1010.webp[2K[1Gpublic/images/notes/11.webp[2K[1Gpublic/images/notes/16.webp[2K[1Gpublic/images/notes/17.webp[2K[1Gpublic/images/notes/18.webp[2K[1Gpublic/images/notes/19.webp[2K[1Gpublic/images/notes/20.webp[2K[1Gpublic/images/notes/21.webp[2K[1Gpublic/sitemap.xml[2K[1Gpublic/upload.png[2K[1Gpublic/youtube.png[2K[1Gsrc/components/cards/achievement-card.tsx[2K[1Gsrc/components/cards/boolean-card.tsx[2K[1Gsrc/components/cards/bundle-item-card.tsx[2K[1Gsrc/components/cards/dialog-card.tsx[2K[1Gsrc/components/cards/info-card.tsx[2K[1G[[33mwarn[39m] src/components/cards/info-card.tsx
+src/components/cards/input-card.tsx[2K[1Gsrc/components/cards/perfection-card.tsx[2K[1G[[33mwarn[39m] src/components/cards/perfection-card.tsx
+src/components/cards/recipe-card.tsx[2K[1Gsrc/components/cards/shipping-card.tsx[2K[1G[[33mwarn[39m] src/components/cards/shipping-card.tsx
+src/components/cards/villager-card.tsx[2K[1Gsrc/components/construction.tsx[2K[1G[[33mwarn[39m] src/components/construction.tsx
+src/components/createPlayerRedirect.tsx[2K[1G[[33mwarn[39m] src/components/createPlayerRedirect.tsx
+src/components/dialogs/bugreport-dialog.tsx[2K[1Gsrc/components/dialogs/bulk-action-dialog.tsx[2K[1Gsrc/components/dialogs/changelog-dialog.tsx[2K[1Gsrc/components/dialogs/credits-dialog.tsx[2K[1Gsrc/components/dialogs/deletion-dialog.tsx[2K[1Gsrc/components/dialogs/feedback-dialog.tsx[2K[1Gsrc/components/dialogs/login-dialog.tsx[2K[1Gsrc/components/dialogs/unblur-dialog.tsx[2K[1Gsrc/components/dialogs/upload-dialog.tsx[2K[1Gsrc/components/error-boundary.tsx[2K[1Gsrc/components/filter-btn.tsx[2K[1Gsrc/components/new-item-badge.tsx[2K[1Gsrc/components/percentage.tsx[2K[1Gsrc/components/preset-selector.tsx[2K[1G[[33mwarn[39m] src/components/preset-selector.tsx
+src/components/sheets/bundle-sheet.tsx[2K[1Gsrc/components/sheets/fish-sheet.tsx[2K[1Gsrc/components/sheets/mobile-nav.tsx[2K[1Gsrc/components/sheets/museum-sheet.tsx[2K[1Gsrc/components/sheets/recipe-sheet.tsx[2K[1Gsrc/components/sheets/villager-sheet.tsx[2K[1Gsrc/components/sidebar.tsx[2K[1Gsrc/components/theme-provider.tsx[2K[1Gsrc/components/top-bar.tsx[2K[1Gsrc/components/ui/accordion.tsx[2K[1Gsrc/components/ui/avatar.tsx[2K[1G[[33mwarn[39m] src/components/ui/avatar.tsx
+src/components/ui/button.tsx[2K[1Gsrc/components/ui/card.tsx[2K[1G[[33mwarn[39m] src/components/ui/card.tsx
+src/components/ui/checkbox.tsx[2K[1G[[33mwarn[39m] src/components/ui/checkbox.tsx
+src/components/ui/command.tsx[2K[1G[[33mwarn[39m] src/components/ui/command.tsx
+src/components/ui/context-menu.tsx[2K[1G[[33mwarn[39m] src/components/ui/context-menu.tsx
+src/components/ui/dialog.tsx[2K[1G[[33mwarn[39m] src/components/ui/dialog.tsx
+src/components/ui/drawer.tsx[2K[1G[[33mwarn[39m] src/components/ui/drawer.tsx
+src/components/ui/dropdown-menu.tsx[2K[1G[[33mwarn[39m] src/components/ui/dropdown-menu.tsx
+src/components/ui/form.tsx[2K[1G[[33mwarn[39m] src/components/ui/form.tsx
+src/components/ui/input.tsx[2K[1G[[33mwarn[39m] src/components/ui/input.tsx
+src/components/ui/item-with-overlay.tsx[2K[1Gsrc/components/ui/label.tsx[2K[1G[[33mwarn[39m] src/components/ui/label.tsx
+src/components/ui/popover.tsx[2K[1G[[33mwarn[39m] src/components/ui/popover.tsx
+src/components/ui/progress.tsx[2K[1Gsrc/components/ui/scroll-area.tsx[2K[1G[[33mwarn[39m] src/components/ui/scroll-area.tsx
+src/components/ui/select.tsx[2K[1G[[33mwarn[39m] src/components/ui/select.tsx
+src/components/ui/separator.tsx[2K[1G[[33mwarn[39m] src/components/ui/separator.tsx
+src/components/ui/sheet.tsx[2K[1Gsrc/components/ui/skeleton.tsx[2K[1G[[33mwarn[39m] src/components/ui/skeleton.tsx
+src/components/ui/switch.tsx[2K[1G[[33mwarn[39m] src/components/ui/switch.tsx
+src/components/ui/tabs.tsx[2K[1G[[33mwarn[39m] src/components/ui/tabs.tsx
+src/components/ui/textarea.tsx[2K[1G[[33mwarn[39m] src/components/ui/textarea.tsx
+src/components/ui/toast.tsx[2K[1G[[33mwarn[39m] src/components/ui/toast.tsx
+src/components/ui/toggle-group.tsx[2K[1G[[33mwarn[39m] src/components/ui/toggle-group.tsx
+src/components/ui/toggle.tsx[2K[1G[[33mwarn[39m] src/components/ui/toggle.tsx
+src/components/ui/tooltip.tsx[2K[1G[[33mwarn[39m] src/components/ui/tooltip.tsx
+src/contexts/multi-select-context.tsx[2K[1Gsrc/contexts/players-context.tsx[2K[1Gsrc/contexts/preferences-context.tsx[2K[1Gsrc/data/achievements.json[2K[1G[[33mwarn[39m] src/data/achievements.json
+src/data/artifacts.json[2K[1G[[33mwarn[39m] src/data/artifacts.json
+src/data/big_craftables.json[2K[1G[[33mwarn[39m] src/data/big_craftables.json
+src/data/bundles.json[2K[1Gsrc/data/cooking_ingredients.json[2K[1Gsrc/data/cooking.json[2K[1G[[33mwarn[39m] src/data/cooking.json
+src/data/crafting.json[2K[1Gsrc/data/fish.json[2K[1G[[33mwarn[39m] src/data/fish.json
+src/data/monsters.json[2K[1Gsrc/data/museum.json[2K[1Gsrc/data/objects.json[2K[1Gsrc/data/powers.json[2K[1G[[33mwarn[39m] src/data/powers.json
+src/data/secret_notes.json[2K[1Gsrc/data/shipping.json[2K[1Gsrc/data/villagers.json[2K[1Gsrc/data/walnuts.json[2K[1Gsrc/db/index.ts[2K[1Gsrc/db/migration.ts[2K[1Gsrc/db/schema.ts[2K[1Gsrc/drizzle/0000_spooky_arachne.sql[2K[1Gsrc/drizzle/0001_futuristic_bullseye.sql[2K[1Gsrc/drizzle/meta/_journal.json[2K[1G[[33mwarn[39m] src/drizzle/meta/_journal.json
+src/drizzle/meta/0000_snapshot.json[2K[1G[[33mwarn[39m] src/drizzle/meta/0000_snapshot.json
+src/drizzle/meta/0001_snapshot.json[2K[1G[[33mwarn[39m] src/drizzle/meta/0001_snapshot.json
+src/lib/constants.ts[2K[1Gsrc/lib/file.ts[2K[1Gsrc/lib/parsers/animals.ts[2K[1Gsrc/lib/parsers/bundles.ts[2K[1Gsrc/lib/parsers/cooking.ts[2K[1Gsrc/lib/parsers/crafting.ts[2K[1Gsrc/lib/parsers/fishing.ts[2K[1Gsrc/lib/parsers/general.ts[2K[1Gsrc/lib/parsers/index.ts[2K[1Gsrc/lib/parsers/monsters.ts[2K[1Gsrc/lib/parsers/museum.ts[2K[1Gsrc/lib/parsers/notes.ts[2K[1Gsrc/lib/parsers/perfection.ts[2K[1Gsrc/lib/parsers/powers.ts[2K[1Gsrc/lib/parsers/scraps.ts[2K[1Gsrc/lib/parsers/shipping.ts[2K[1Gsrc/lib/parsers/social.ts[2K[1G[[33mwarn[39m] src/lib/parsers/social.ts
+src/lib/parsers/walnuts.ts[2K[1Gsrc/lib/utils.ts[2K[1Gsrc/pages/_app.tsx[2K[1Gsrc/pages/_document.tsx[2K[1G[[33mwarn[39m] src/pages/_document.tsx
+src/pages/_error.jsx[2K[1Gsrc/pages/404.tsx[2K[1G[[33mwarn[39m] src/pages/404.tsx
+src/pages/account.tsx[2K[1Gsrc/pages/api/bug.ts[2K[1Gsrc/pages/api/feedback.ts[2K[1G[[33mwarn[39m] src/pages/api/feedback.ts
+src/pages/api/index.ts[2K[1G[[33mwarn[39m] src/pages/api/index.ts
+src/pages/api/oauth/callback.ts[2K[1Gsrc/pages/api/oauth/index.ts[2K[1Gsrc/pages/api/saves/[playerId].ts[2K[1Gsrc/pages/api/saves/index.ts[2K[1Gsrc/pages/bundles.tsx[2K[1Gsrc/pages/cooking.tsx[2K[1Gsrc/pages/crafting.tsx[2K[1Gsrc/pages/editor/create.tsx[2K[1Gsrc/pages/editor/edit.tsx[2K[1Gsrc/pages/farmer.tsx[2K[1Gsrc/pages/fishing.tsx[2K[1Gsrc/pages/index.tsx[2K[1Gsrc/pages/island/scraps.tsx[2K[1Gsrc/pages/island/walnuts.tsx[2K[1Gsrc/pages/museum.tsx[2K[1Gsrc/pages/notes.tsx[2K[1Gsrc/pages/perfection.tsx[2K[1Gsrc/pages/relationships.tsx[2K[1G[[33mwarn[39m] src/pages/relationships.tsx
+src/pages/shipping.tsx[2K[1Gsrc/pages/skills.tsx[2K[1Gsrc/pages/whats-new.tsx[2K[1Gsrc/styles/globals.css[2K[1Gsrc/types/bundles.ts[2K[1Gsrc/types/data.ts[2K[1Gsrc/types/items.ts[2K[1Gsrc/types/recipe.ts[2K[1Gtailwind.config.js[2K[1G[[33mwarn[39m] tailwind.config.js
+tsconfig.json[2K[1G[[33mwarn[39m] tsconfig.json
+[[33mwarn[39m] Code style issues found in 48 files. Run Prettier with --write to fix.
+[0m[31merror[0m[2m:[0m "[1mprettier[0m" exited with code 1
+[0m[31merror[0m[2m:[0m script [1m"format"[0m exited with code 1[0m

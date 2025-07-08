@@ -1,0 +1,1377 @@
+{
+  "194": {
+    "ingredients": [
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "194",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Starter Recipe - no steps required!"
+  },
+  "195": {
+    "ingredients": [
+      {
+        "itemID": "-5",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "195",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 28, Year 1"
+  },
+  "196": {
+    "ingredients": [
+      {
+        "itemID": "20",
+        "quantity": 1
+      },
+      {
+        "itemID": "22",
+        "quantity": 1
+      },
+      {
+        "itemID": "419",
+        "quantity": 1
+      }
+    ],
+    "itemID": "196",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Emily."
+  },
+  "197": {
+    "ingredients": [
+      {
+        "itemID": "190",
+        "quantity": 1
+      },
+      {
+        "itemID": "424",
+        "quantity": 1
+      }
+    ],
+    "itemID": "197",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Pam."
+  },
+  "198": {
+    "ingredients": [
+      {
+        "itemID": "145",
+        "quantity": 1
+      },
+      {
+        "itemID": "132",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      }
+    ],
+    "itemID": "198",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 7, Year 1"
+  },
+  "199": {
+    "ingredients": [
+      {
+        "itemID": "24",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "419",
+        "quantity": 1
+      }
+    ],
+    "itemID": "199",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Caroline."
+  },
+  "200": {
+    "ingredients": [
+      {
+        "itemID": "256",
+        "quantity": 1
+      },
+      {
+        "itemID": "284",
+        "quantity": 1
+      }
+    ],
+    "itemID": "200",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Caroline."
+  },
+  "201": {
+    "ingredients": [
+      {
+        "itemID": "194",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "210",
+        "quantity": 1
+      },
+      {
+        "itemID": "211",
+        "quantity": 1
+      }
+    ],
+    "itemID": "201",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 21, Year 2"
+  },
+  "202": {
+    "ingredients": [
+      {
+        "itemID": "151",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "202",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Jodi."
+  },
+  "203": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "722",
+        "quantity": 1
+      },
+      {
+        "itemID": "308",
+        "quantity": 1
+      }
+    ],
+    "itemID": "203",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Shane."
+  },
+  "204": {
+    "ingredients": [
+      {
+        "itemID": "154",
+        "quantity": 1
+      },
+      {
+        "itemID": "229",
+        "quantity": 1
+      },
+      {
+        "itemID": "597",
+        "quantity": 1
+      }
+    ],
+    "itemID": "204",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 28, Year 2"
+  },
+  "205": {
+    "ingredients": [
+      {
+        "itemID": "404",
+        "quantity": 1
+      },
+      {
+        "itemID": "257",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "205",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Demetrius."
+  },
+  "206": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      },
+      {
+        "itemID": "424",
+        "quantity": 1
+      }
+    ],
+    "itemID": "206",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 7, Year 2"
+  },
+  "207": {
+    "ingredients": [
+      {
+        "itemID": "188",
+        "quantity": 2
+      }
+    ],
+    "itemID": "207",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Clint."
+  },
+  "208": {
+    "ingredients": [
+      {
+        "itemID": "280",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "208",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 21, Year 1"
+  },
+  "209": {
+    "ingredients": [
+      {
+        "itemID": "142",
+        "quantity": 4
+      }
+    ],
+    "itemID": "209",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 7, Year 2"
+  },
+  "210": {
+    "ingredients": [
+      {
+        "itemID": "192",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "210",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 14, Year 2"
+  },
+  "211": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "211",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 14, Year 1"
+  },
+  "212": {
+    "ingredients": [
+      {
+        "itemID": "139",
+        "quantity": 1
+      },
+      {
+        "itemID": "300",
+        "quantity": 1
+      },
+      {
+        "itemID": "250",
+        "quantity": 1
+      }
+    ],
+    "itemID": "212",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Gus."
+  },
+  "213": {
+    "ingredients": [
+      {
+        "itemID": "130",
+        "quantity": 1
+      },
+      {
+        "itemID": "229",
+        "quantity": 1
+      },
+      {
+        "itemID": "266",
+        "quantity": 1
+      },
+      {
+        "itemID": "306",
+        "quantity": 1
+      }
+    ],
+    "itemID": "213",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Linus."
+  },
+  "214": {
+    "ingredients": [
+      {
+        "itemID": "136",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "214",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Kent."
+  },
+  "215": {
+    "ingredients": [
+      {
+        "itemID": "260",
+        "quantity": 1
+      },
+      {
+        "itemID": "424",
+        "quantity": 1
+      }
+    ],
+    "itemID": "215",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Shane."
+  },
+  "216": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      }
+    ],
+    "itemID": "216",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 28, Year 1"
+  },
+  "218": {
+    "ingredients": [
+      {
+        "itemID": "88",
+        "quantity": 1
+      },
+      {
+        "itemID": "720",
+        "quantity": 1
+      },
+      {
+        "itemID": "404",
+        "quantity": 1
+      }
+    ],
+    "itemID": "218",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Sandy."
+  },
+  "219": {
+    "ingredients": [
+      {
+        "itemID": "138",
+        "quantity": 1
+      },
+      {
+        "itemID": "153",
+        "quantity": 1
+      }
+    ],
+    "itemID": "219",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 14, Year 1"
+  },
+  "220": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "220",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 14, Year 1"
+  },
+  "221": {
+    "ingredients": [
+      {
+        "itemID": "254",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "221",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 21, Year 2"
+  },
+  "222": {
+    "ingredients": [
+      {
+        "itemID": "252",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "222",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Marnie."
+  },
+  "223": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "223",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Evelyn (4-heart event)."
+  },
+  "224": {
+    "ingredients": [
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      }
+    ],
+    "itemID": "224",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Lewis."
+  },
+  "225": {
+    "ingredients": [
+      {
+        "itemID": "148",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "225",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with George."
+  },
+  "226": {
+    "ingredients": [
+      {
+        "itemID": "148",
+        "quantity": 1
+      },
+      {
+        "itemID": "260",
+        "quantity": 1
+      }
+    ],
+    "itemID": "226",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with George."
+  },
+  "227": {
+    "ingredients": [
+      {
+        "itemID": "-4",
+        "quantity": 1
+      }
+    ],
+    "itemID": "227",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Linus."
+  },
+  "228": {
+    "ingredients": [
+      {
+        "itemID": "-4",
+        "quantity": 1
+      },
+      {
+        "itemID": "152",
+        "quantity": 1
+      },
+      {
+        "itemID": "423",
+        "quantity": 1
+      }
+    ],
+    "itemID": "228",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 21, Year 1"
+  },
+  "229": {
+    "ingredients": [
+      {
+        "itemID": "270",
+        "quantity": 1
+      }
+    ],
+    "itemID": "229",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 7, Year 1"
+  },
+  "230": {
+    "ingredients": [
+      {
+        "itemID": "266",
+        "quantity": 1
+      },
+      {
+        "itemID": "264",
+        "quantity": 1
+      }
+    ],
+    "itemID": "230",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Emily."
+  },
+  "231": {
+    "ingredients": [
+      {
+        "itemID": "272",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      }
+    ],
+    "itemID": "231",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Lewis."
+  },
+  "232": {
+    "ingredients": [
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "423",
+        "quantity": 1
+      }
+    ],
+    "itemID": "232",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Evelyn."
+  },
+  "233": {
+    "ingredients": [
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "233",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Jodi."
+  },
+  "234": {
+    "ingredients": [
+      {
+        "itemID": "258",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      }
+    ],
+    "itemID": "234",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Pierre."
+  },
+  "235": {
+    "ingredients": [
+      {
+        "itemID": "280",
+        "quantity": 1
+      },
+      {
+        "itemID": "276",
+        "quantity": 1
+      }
+    ],
+    "itemID": "235",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Demetrius."
+  },
+  "236": {
+    "ingredients": [
+      {
+        "itemID": "276",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "236",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Robin."
+  },
+  "237": {
+    "ingredients": [
+      {
+        "itemID": "278",
+        "quantity": 1
+      },
+      {
+        "itemID": "282",
+        "quantity": 1
+      },
+      {
+        "itemID": "274",
+        "quantity": 1
+      }
+    ],
+    "itemID": "237",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Kent."
+  },
+  "238": {
+    "ingredients": [
+      {
+        "itemID": "282",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "238",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Gus."
+  },
+  "239": {
+    "ingredients": [
+      {
+        "itemID": "216",
+        "quantity": 1
+      },
+      {
+        "itemID": "282",
+        "quantity": 1
+      },
+      {
+        "itemID": "408",
+        "quantity": 1
+      }
+    ],
+    "itemID": "239",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Pam."
+  },
+  "240": {
+    "ingredients": [
+      {
+        "itemID": "195",
+        "quantity": 1
+      },
+      {
+        "itemID": "24",
+        "quantity": 1
+      }
+    ],
+    "itemID": "240",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 3 in Farming skill."
+  },
+  "241": {
+    "ingredients": [
+      {
+        "itemID": "216",
+        "quantity": 1
+      },
+      {
+        "itemID": "78",
+        "quantity": 1
+      },
+      {
+        "itemID": "272",
+        "quantity": 1
+      }
+    ],
+    "itemID": "241",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 8 in Foraging skill."
+  },
+  "242": {
+    "ingredients": [
+      {
+        "itemID": "131",
+        "quantity": 2
+      },
+      {
+        "itemID": "210",
+        "quantity": 1
+      }
+    ],
+    "itemID": "242",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 3 in Fishing skill."
+  },
+  "243": {
+    "ingredients": [
+      {
+        "itemID": "78",
+        "quantity": 2
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "243",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 3 in Mining skill."
+  },
+  "244": {
+    "ingredients": [
+      {
+        "itemID": "78",
+        "quantity": 1
+      },
+      {
+        "itemID": "412",
+        "quantity": 1
+      }
+    ],
+    "itemID": "244",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 3 in Combat skill."
+  },
+  "253": {
+    "ingredients": [
+      {
+        "itemID": "395",
+        "quantity": 3
+      }
+    ],
+    "itemID": "253",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Stardrop Saloon for 5,000g."
+  },
+  "265": {
+    "ingredients": [
+      {
+        "itemID": "267",
+        "quantity": 1
+      },
+      {
+        "itemID": "269",
+        "quantity": 1
+      },
+      {
+        "itemID": "814",
+        "quantity": 1
+      }
+    ],
+    "itemID": "265",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 9 in Fishing skill."
+  },
+  "456": {
+    "ingredients": [
+      {
+        "itemID": "153",
+        "quantity": 4
+      }
+    ],
+    "itemID": "456",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Clint."
+  },
+  "457": {
+    "ingredients": [
+      {
+        "itemID": "157",
+        "quantity": 2
+      }
+    ],
+    "itemID": "457",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Marnie."
+  },
+  "604": {
+    "ingredients": [
+      {
+        "itemID": "406",
+        "quantity": 2
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "604",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 7, Year 1"
+  },
+  "605": {
+    "ingredients": [
+      {
+        "itemID": "274",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "605",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 28, Year 1"
+  },
+  "606": {
+    "ingredients": [
+      {
+        "itemID": "78",
+        "quantity": 1
+      },
+      {
+        "itemID": "404",
+        "quantity": 1
+      },
+      {
+        "itemID": "250",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "606",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 7, Year 1"
+  },
+  "607": {
+    "ingredients": [
+      {
+        "itemID": "408",
+        "quantity": 3
+      }
+    ],
+    "itemID": "607",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 28, Year 2"
+  },
+  "608": {
+    "ingredients": [
+      {
+        "itemID": "276",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "608",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 21, Year 1"
+  },
+  "609": {
+    "ingredients": [
+      {
+        "itemID": "247",
+        "quantity": 1
+      },
+      {
+        "itemID": "419",
+        "quantity": 1
+      },
+      {
+        "itemID": "264",
+        "quantity": 1
+      }
+    ],
+    "itemID": "609",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 21, Year 1"
+  },
+  "610": {
+    "ingredients": [
+      {
+        "itemID": "258",
+        "quantity": 1
+      },
+      {
+        "itemID": "254",
+        "quantity": 1
+      },
+      {
+        "itemID": "634",
+        "quantity": 1
+      }
+    ],
+    "itemID": "610",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 7, Year 2"
+  },
+  "611": {
+    "ingredients": [
+      {
+        "itemID": "410",
+        "quantity": 2
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      }
+    ],
+    "itemID": "611",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 14, Year 2"
+  },
+  "612": {
+    "ingredients": [
+      {
+        "itemID": "282",
+        "quantity": 1
+      },
+      {
+        "itemID": "613",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "612",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 28, Year 1"
+  },
+  "618": {
+    "ingredients": [
+      {
+        "itemID": "216",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      }
+    ],
+    "itemID": "618",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 21, Year 2"
+  },
+  "648": {
+    "ingredients": [
+      {
+        "itemID": "266",
+        "quantity": 1
+      },
+      {
+        "itemID": "419",
+        "quantity": 1
+      },
+      {
+        "itemID": "306",
+        "quantity": 1
+      }
+    ],
+    "itemID": "648",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Spring 14, Year 1"
+  },
+  "649": {
+    "ingredients": [
+      {
+        "itemID": "247",
+        "quantity": 1
+      },
+      {
+        "itemID": "259",
+        "quantity": 1
+      },
+      {
+        "itemID": "248",
+        "quantity": 1
+      }
+    ],
+    "itemID": "649",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 28, Year 2"
+  },
+  "651": {
+    "ingredients": [
+      {
+        "itemID": "376",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "651",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 7, Year 2"
+  },
+  "727": {
+    "ingredients": [
+      {
+        "itemID": "372",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "727",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Willy."
+  },
+  "728": {
+    "ingredients": [
+      {
+        "itemID": "716",
+        "quantity": 1
+      },
+      {
+        "itemID": "719",
+        "quantity": 1
+      },
+      {
+        "itemID": "722",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      }
+    ],
+    "itemID": "728",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Willy."
+  },
+  "729": {
+    "ingredients": [
+      {
+        "itemID": "721",
+        "quantity": 1
+      },
+      {
+        "itemID": "248",
+        "quantity": 1
+      }
+    ],
+    "itemID": "729",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 5 hearts with Willy."
+  },
+  "730": {
+    "ingredients": [
+      {
+        "itemID": "715",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      }
+    ],
+    "itemID": "730",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 14, Year 2"
+  },
+  "731": {
+    "ingredients": [
+      {
+        "itemID": "724",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      }
+    ],
+    "itemID": "731",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Summer 14, Year 2"
+  },
+  "732": {
+    "ingredients": [
+      {
+        "itemID": "717",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "-5",
+        "quantity": 1
+      },
+      {
+        "itemID": "247",
+        "quantity": 1
+      }
+    ],
+    "itemID": "732",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Fall 21, Year 2"
+  },
+  "733": {
+    "ingredients": [
+      {
+        "itemID": "720",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      },
+      {
+        "itemID": "16",
+        "quantity": 1
+      }
+    ],
+    "itemID": "733",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Winter 28, Year 2"
+  },
+  "903": {
+    "ingredients": [
+      {
+        "itemID": "829",
+        "quantity": 3
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "903",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Dwarf Shop in Volcano Dungeon for 1,000g."
+  },
+  "904": {
+    "ingredients": [
+      {
+        "itemID": "91",
+        "quantity": 1
+      },
+      {
+        "itemID": "-6",
+        "quantity": 1
+      },
+      {
+        "itemID": "245",
+        "quantity": 1
+      }
+    ],
+    "itemID": "904",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Island Trader for 30 Bone Fragments."
+  },
+  "905": {
+    "ingredients": [
+      {
+        "itemID": "834",
+        "quantity": 1
+      },
+      {
+        "itemID": "88",
+        "quantity": 1
+      },
+      {
+        "itemID": "423",
+        "quantity": 1
+      }
+    ],
+    "itemID": "905",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 7 hearts with Leo."
+  },
+  "906": {
+    "ingredients": [
+      {
+        "itemID": "830",
+        "quantity": 4
+      }
+    ],
+    "itemID": "906",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach 3 hearts with Leo."
+  },
+  "907": {
+    "ingredients": [
+      {
+        "itemID": "88",
+        "quantity": 1
+      },
+      {
+        "itemID": "832",
+        "quantity": 1
+      },
+      {
+        "itemID": "260",
+        "quantity": 1
+      }
+    ],
+    "itemID": "907",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Ginger Island Resort for 2,000g."
+  },
+  "921": {
+    "ingredients": [
+      {
+        "itemID": "814",
+        "quantity": 1
+      },
+      {
+        "itemID": "246",
+        "quantity": 1
+      },
+      {
+        "itemID": "256",
+        "quantity": 1
+      }
+    ],
+    "itemID": "921",
+    "minVersion": "1.5.0",
+    "unlockConditions": "Reach level 9 in Combat skill."
+  },
+  "MossSoup": {
+    "ingredients": [
+      {
+        "itemID": "Moss",
+        "quantity": 20
+      }
+    ],
+    "itemID": "MossSoup",
+    "minVersion": "1.6.0",
+    "unlockConditions": "Reach level 3 in Foraging skill."
+  }
+}
