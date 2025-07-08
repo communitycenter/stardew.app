@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { useMultiSelect } from "@/contexts/multi-select-context";
-import { Stardrop } from "@/lib/parsers/general";
+import { Stardrop } from '@communitycenter/stardew-save-parser'
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 interface Props {

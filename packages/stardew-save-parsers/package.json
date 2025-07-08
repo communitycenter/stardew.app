@@ -1,0 +1,42 @@
+{
+  "name": "@communitycenter/stardew-save-parser",
+  "public": true,
+  "type": "module",
+  "version": "1.0.2",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "Parsers for Stardew Valley",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "stardew",
+    "stardew-valley"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/communitycenter/parsers#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/communitycenter/parsers.git"
+  },
+  "bugs": "https://feedback.stardew.app",
+  "author": "Jack LaFond <jack@jacklafond.com>",
+  "devDependencies": {
+    "bun-plugin-dts": "^0.3.0",
+    "@types/bun": "^1.1.10"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.5",
+    "semver": "^7.7.2"
+  }
+}
