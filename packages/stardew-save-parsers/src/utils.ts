@@ -33,7 +33,7 @@ export function getAllFarmhands(saveGame: any): any[] {
   return farmhands;
 }
 
-function findAllByKey(obj: any, searchKey: string) {
+export function findAllByKey(obj: any, searchKey: string) {
   let results: any[] = [];
 
   Object.keys(obj).forEach((key) => {
@@ -57,8 +57,8 @@ export function deweaponize(incoming: string) {
   if (str.startsWith("(")) {
     const split = str.split(")");
     return {
-      key: split[0].replace("(", ""),
-      value: split[1].trim(),
+      key: split[0]?.replace("(", "") ?? "",
+      value: split[1]?.trim() ?? "",
     };
   } else {
     return {

@@ -84,7 +84,7 @@ export const parseMonsters = (player: any): MonstersRet => {
       let runningTotal = 0;
 
       // go through each of the targets and look up the amount killed
-      for (const monster of goal.targets) {
+      for (const monster of goal?.targets ?? []) {
         // dangerous versions of monsters are added to the non-dangerous version
         if (monster.endsWith(" (dangerous)")) continue;
 

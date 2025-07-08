@@ -27,6 +27,7 @@ import {
   hasOrWillReceiveMail,
   getMasteryExpNeededForLevel,
   getCurrentMasteryLevel,
+  findAllByKey,
 } from "./utils";
 
 export * from "./types/responses";
@@ -43,6 +44,7 @@ export {
   getMasteryExpNeededForLevel,
   getCurrentMasteryLevel,
   monsters,
+  findAllByKey,
 };
 
 const semverSatisfies = require("semver/functions/satisfies");

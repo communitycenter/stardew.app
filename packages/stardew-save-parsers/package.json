@@ -3,22 +3,13 @@
   "public": true,
   "type": "module",
   "version": "1.0.2",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "description": "Parsers for Stardew Valley",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    ".": "./src/index.ts",
+    "./types": "./src/types/index.ts",
+    "./utils": "./src/utils.ts",
+    "./parsers": "./src/parsers/index.ts"
   },
-  "scripts": {
-    "build": "bun run build.ts",
-    "prepublishOnly": "bun run build"
-  },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "stardew",
     "stardew-valley"

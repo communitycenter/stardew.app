@@ -7,11 +7,12 @@ import {
 	DialogTitle,
 } from "@/components/ui/dialog";
 import { PlayersContext } from "@/contexts/players-context";
-import { parseSaveFile } from '@communitycenter/stardew-save-parser'
+
 import { useContext, useState } from "react";
 import Dropzone from "react-dropzone";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { parseSaveFile } from "@communitycenter/stardew-save-parser";
 
 interface Props {
 	open: boolean;

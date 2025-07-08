@@ -29,9 +29,9 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import { parseSaveFile } from '@communitycenter/stardew-save-parser'
 import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
+import { parseSaveFile } from "@communitycenter/stardew-save-parser";
 
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { IconSparkles } from "@tabler/icons-react";
