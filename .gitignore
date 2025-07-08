@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# turbo
+.turbo
+
 # venv for python processors
 venv/
 .venv/
