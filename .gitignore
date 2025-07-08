@@ -1,56 +1,15 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-pnpm-lock.yaml
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+node_modules
+.next/
+out/
 .DS_Store
 *.pem
-
-# debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
+.env
 .vercel
-
-# typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# venv for python processors
-venv/
-.venv/
-
-# vscode settings
-.vscode/
-.env
-
-# raw game data
-/src/research/raw_data/*.json
-/scripts/content/**/*.json
-
-# local saves for testing and inspection
-/save_files
-
-# python stuff
+.turbo
+venv
+.venv
 __pycache__/
-# Sentry Config File
 .sentryclirc
