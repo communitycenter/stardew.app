@@ -25,7 +25,10 @@ import {
 import { DialogCard } from "@/components/cards/dialog-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { Progress } from "@/components/ui/progress";
-import { getCurrentMasteryLevel, getMasteryExpNeededForLevel } from '@communitycenter/stardew-save-parser'
+import {
+	getCurrentMasteryLevel,
+	getMasteryExpNeededForLevel,
+} from "@communitycenter/stardew-save-parser";
 
 const reqs: Record<string, number> = {
 	"Singular Talent": 1, // platform specific

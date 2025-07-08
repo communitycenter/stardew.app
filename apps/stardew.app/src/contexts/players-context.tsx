@@ -10,8 +10,22 @@ import {
 	useState,
 } from "react";
 
-import type { CookingRet, CraftingRet, FishRet, GeneralRet, MonstersRet, MuseumRet, NotesRet, PerfectionRet, PowersRet, ScrapsRet, ShippingRet, SocialRet, WalnutRet } from '@communitycenter/stardew-save-parser'
 import type { BundleWithStatus } from "@/types/bundles";
+import type {
+	CookingRet,
+	CraftingRet,
+	FishRet,
+	GeneralRet,
+	MonstersRet,
+	MuseumRet,
+	NotesRet,
+	PerfectionRet,
+	PowersRet,
+	ScrapsRet,
+	ShippingRet,
+	SocialRet,
+	WalnutRet,
+} from "@communitycenter/stardew-save-parser";
 import type { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
