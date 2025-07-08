@@ -116,7 +116,7 @@ function normalizePatch(
 				for (const arrIndex in patch[key]) {
 					newPatch[key][arrIndex] = normalizePatch(
 						patch[key][arrIndex],
-						// @ts-expect-error not sure what this is
+						// @ts-ignore
 						target[key][arrIndex],
 						true,
 					);
