@@ -4,16 +4,16 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Player, getUID } from ".";
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
-  const playerId = req.query.playerId as string | undefined;
-  if (!playerId) return res.status(400).end();
+	const playerId = req.query.playerId as string | undefined;
+	if (!playerId) return res.status(400).end();
 
-  const uid = await getUID(req, res);
-  const player = JSON.parse(req.body) as Player;
-  if (!player) return res.status(400).end();
+	const uid = await getUID(req, res);
+	const player = JSON.parse(req.body) as Player;
+	if (!player) return res.status(400).end();
 
-  try {
-    await db.execute(
-      sql`
+	try {
+		await db.execute(
+			sql`
 			UPDATE Saves SET
 				general=JSON_MERGE_PATCH(general, ${player.general ? JSON.stringify(player.general) : "{}"}),
         bundles=JSON_MERGE_PATCH(bundles, ${player.bundles ? JSON.stringify(player.bundles) : "[]"}),
@@ -31,25 +31,25 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
         powers=JSON_MERGE_PATCH(powers, ${player.powers ? JSON.stringify(player.powers) : "{}"})
 			WHERE _id = ${playerId} AND user_id = ${uid}
 		`,
-    );
-    res.status(200).end();
-  } catch (e) {
-    console.log(e);
-    res.status(500).end();
-  }
+		);
+		res.status(200).end();
+	} catch (e) {
+		console.log(e);
+		res.status(500).end();
+	}
 }
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
+	req: NextApiRequest,
+	res: NextApiResponse,
 ) {
-  try {
-    switch (req.method) {
-      case "PATCH":
-        return await patch(req, res);
-    }
-    res.status(405).end();
-  } catch (e: any) {
-    res.send(e.message);
-  }
+	try {
+		switch (req.method) {
+			case "PATCH":
+				return await patch(req, res);
+		}
+		res.status(405).end();
+	} catch (e: any) {
+		res.send(e.message);
+	}
 }

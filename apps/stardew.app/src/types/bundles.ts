@@ -4,8 +4,8 @@
  * @property {boolean[]} bundleStatus - An array indicating the collection status of each item in the bundle.
  */
 export interface BundleWithStatus {
-  bundle: Bundle;
-  bundleStatus: boolean[];
+	bundle: Bundle;
+	bundleStatus: boolean[];
 }
 
 /**
@@ -13,7 +13,7 @@ export interface BundleWithStatus {
  * @property {Bundle[]} options - Additional bundle choices available.
  */
 export interface BundleWithStatusAndOptions extends BundleWithStatus {
-  options: Bundle[];
+	options: Bundle[];
 }
 
 /**
@@ -29,9 +29,9 @@ export type ItemQuality = "0" | "1" | "2" | "3";
  * @property {ItemQuality} itemQuality - Quality level of the item.
  */
 export type BundleItem = {
-  itemID: string;
-  itemQuantity: number;
-  itemQuality: ItemQuality;
+	itemID: string;
+	itemQuantity: number;
+	itemQuality: ItemQuality;
 };
 
 /**
@@ -39,7 +39,7 @@ export type BundleItem = {
  * @property {BundleItem[]} options - Alternative items that can also be used to fulfill the bundle requirements.
  */
 export interface BundleItemWithOptions extends BundleItem {
-  options: BundleItem[];
+	options: BundleItem[];
 }
 
 /**
@@ -48,16 +48,16 @@ export interface BundleItemWithOptions extends BundleItem {
  * @property {number} index - Position of the item within the bundle.
  */
 export interface BundleItemWithLocation extends BundleItem {
-  bundleID: string;
-  index: number;
+	bundleID: string;
+	index: number;
 }
 
 /**
  * Combines BundleItemWithLocation and BundleItemWithOptions, including location, options, and item details.
  */
 export interface BundleItemWithLocationAndOptions
-  extends BundleItemWithLocation,
-    BundleItemWithOptions {}
+	extends BundleItemWithLocation,
+		BundleItemWithOptions {}
 
 /**
  * Describes a reward for completing a bundle.
@@ -66,9 +66,9 @@ export interface BundleItemWithLocationAndOptions
  * @property {number} itemQuantity - Quantity of the reward item.
  */
 export type BundleReward = {
-  itemType: string;
-  itemID: string;
-  itemQuantity: number;
+	itemType: string;
+	itemID: string;
+	itemQuantity: number;
 };
 
 /**
@@ -82,13 +82,13 @@ export type BundleReward = {
  * @property {BundleReward} bundleReward - Reward granted upon completion of the bundle.
  */
 export interface Bundle {
-  name: string;
-  areaName?: CommunityCenterRoomName;
-  localizedName?: string;
-  color?: number;
-  items: (BundleItem | Randomizer)[];
-  itemsRequired: number;
-  bundleReward: BundleReward;
+	name: string;
+	areaName?: CommunityCenterRoomName;
+	localizedName?: string;
+	color?: number;
+	items: (BundleItem | Randomizer)[];
+	itemsRequired: number;
+	bundleReward: BundleReward;
 }
 
 /**
@@ -98,9 +98,9 @@ export interface Bundle {
  * @property {number} selectionCount - Number of items or bundles to select.
  */
 export type Randomizer = {
-  randomizer: true;
-  options: (Bundle | BundleItem | Randomizer)[];
-  selectionCount: number;
+	randomizer: true;
+	options: (Bundle | BundleItem | Randomizer)[];
+	selectionCount: number;
 };
 
 /**
@@ -109,7 +109,7 @@ export type Randomizer = {
  * @returns {boolean} - True if the object is a Randomizer, otherwise false.
  */
 export function isRandomizer(obj: any): obj is Randomizer {
-  return obj.randomizer;
+	return obj.randomizer;
 }
 
 /**
@@ -121,18 +121,18 @@ export type CommunityCenterRoom = (Randomizer | Bundle)[];
  * Enumberated names of rooms in the Community Center.
  */
 export type CommunityCenterRoomName =
-  | "Pantry"
-  | "Crafts Room"
-  | "Fish Tank"
-  | "Boiler Room"
-  | "Vault"
-  | "Bulletin Board"
-  | "Abandoned Joja Mart";
+	| "Pantry"
+	| "Crafts Room"
+	| "Fish Tank"
+	| "Boiler Room"
+	| "Vault"
+	| "Bulletin Board"
+	| "Abandoned Joja Mart";
 
 /**
  * Represents the entire Community Center, mapping room names to their contents.
  */
 export type CommunityCenter = Record<
-  CommunityCenterRoomName,
-  CommunityCenterRoom
+	CommunityCenterRoomName,
+	CommunityCenterRoom
 >;

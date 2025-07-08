@@ -18,208 +18,208 @@ import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
 } from "@/components/ui/dialog";
 
+import { useMultiSelect } from "@/contexts/multi-select-context";
 import { Stardrop } from "@/lib/parsers/general";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-import { useMultiSelect } from "@/contexts/multi-select-context";
 
 interface Props {
-  title: string;
-  description: string | ReactNode;
-  iconURL: string;
-  completed?: boolean;
-  _id: string;
-  _type: "stardrop" | "note" | "scrap" | "walnut" | "power";
-  /**
-   * Whether the user prefers to see new content
-   *
-   * @type {boolean}
-   * @memberof Props
-   */
-  show?: boolean;
+	title: string;
+	description: string | ReactNode;
+	iconURL: string;
+	completed?: boolean;
+	_id: string;
+	_type: "stardrop" | "note" | "scrap" | "walnut" | "power";
+	/**
+	 * Whether the user prefers to see new content
+	 *
+	 * @type {boolean}
+	 * @memberof Props
+	 */
+	show?: boolean;
 
-  /**
-   * The handler to display the new content confirmation prompt
-   *
-   * @type {Dispatch<SetStateAction<boolean>>}
-   * @memberof Props
-   */
-  setPromptOpen?: Dispatch<SetStateAction<boolean>>;
+	/**
+	 * The handler to display the new content confirmation prompt
+	 *
+	 * @type {Dispatch<SetStateAction<boolean>>}
+	 * @memberof Props
+	 */
+	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DialogCard = ({
-  title,
-  description,
-  iconURL,
-  completed,
-  _id,
-  _type,
-  show,
-  setPromptOpen,
+	title,
+	description,
+	iconURL,
+	completed,
+	_id,
+	_type,
+	show,
+	setPromptOpen,
 }: Props) => {
-  const { activePlayer, patchPlayer } = usePlayers();
-  const [open, setOpen] = useState(false);
-  const { isMultiSelectMode, selectedItems, toggleItem } = useMultiSelect();
+	const { activePlayer, patchPlayer } = usePlayers();
+	const [open, setOpen] = useState(false);
+	const { isMultiSelectMode, selectedItems, toggleItem } = useMultiSelect();
 
-  const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
+	const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
-  let checkedClass = completed
-    ? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-    : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
+	let checkedClass = completed
+		? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
+		: "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
 
-  if (isMultiSelectMode && selectedItems.has(_id)) {
-    checkedClass += " ring-2 ring-primary";
-  }
+	if (isMultiSelectMode && selectedItems.has(_id)) {
+		checkedClass += " ring-2 ring-primary";
+	}
 
-  async function handleStatusChange(status: boolean) {
-    if (!activePlayer) return;
+	async function handleStatusChange(status: boolean) {
+		if (!activePlayer) return;
 
-    let patch = {};
-    switch (_type) {
-      case "stardrop":
-        const stardrops = new Set(activePlayer.general?.stardrops ?? []);
-        if (status) stardrops.add(_id as Stardrop);
-        else stardrops.delete(_id as Stardrop);
+		let patch = {};
+		switch (_type) {
+			case "stardrop":
+				const stardrops = new Set(activePlayer.general?.stardrops ?? []);
+				if (status) stardrops.add(_id as Stardrop);
+				else stardrops.delete(_id as Stardrop);
 
-        patch = {
-          general: {
-            stardrops: Array.from(stardrops),
-          },
-        };
-        break;
+				patch = {
+					general: {
+						stardrops: Array.from(stardrops),
+					},
+				};
+				break;
 
-      case "note":
-        const notes = new Set(activePlayer.notes?.found ?? []);
-        if (status) notes.add(parseInt(_id));
-        else notes.delete(parseInt(_id));
+			case "note":
+				const notes = new Set(activePlayer.notes?.found ?? []);
+				if (status) notes.add(parseInt(_id));
+				else notes.delete(parseInt(_id));
 
-        patch = {
-          notes: {
-            found: Array.from(notes),
-          },
-        };
-        break;
+				patch = {
+					notes: {
+						found: Array.from(notes),
+					},
+				};
+				break;
 
-      case "scrap":
-        const scraps = new Set(activePlayer.scraps?.found ?? []);
-        if (status) scraps.add(parseInt(_id));
-        else scraps.delete(parseInt(_id));
+			case "scrap":
+				const scraps = new Set(activePlayer.scraps?.found ?? []);
+				if (status) scraps.add(parseInt(_id));
+				else scraps.delete(parseInt(_id));
 
-        patch = {
-          scraps: {
-            found: Array.from(scraps),
-          },
-        };
-        break;
+				patch = {
+					scraps: {
+						found: Array.from(scraps),
+					},
+				};
+				break;
 
-      case "walnut":
-        const walnuts = activePlayer.walnuts?.found ?? {};
-        if (status) walnuts[_id] = walnutData[_id].count;
-        else walnuts[_id] = 0;
+			case "walnut":
+				const walnuts = activePlayer.walnuts?.found ?? {};
+				if (status) walnuts[_id] = walnutData[_id].count;
+				else walnuts[_id] = 0;
 
-        patch = {
-          walnuts: {
-            found: walnuts,
-          },
-        };
-        break;
+				patch = {
+					walnuts: {
+						found: walnuts,
+					},
+				};
+				break;
 
-      case "power":
-        let powers = new Set(activePlayer?.powers?.collection ?? []);
+			case "power":
+				let powers = new Set(activePlayer?.powers?.collection ?? []);
 
-        console.log("initial powers:", powers);
+				console.log("initial powers:", powers);
 
-        if (status) powers.add(_id);
-        else powers.delete(_id);
+				if (status) powers.add(_id);
+				else powers.delete(_id);
 
-        console.log("final powers:", powers);
+				console.log("final powers:", powers);
 
-        patch = {
-          powers: {
-            collection: Array.from(powers),
-          },
-        };
-    }
+				patch = {
+					powers: {
+						collection: Array.from(powers),
+					},
+				};
+		}
 
-    if (Object.keys(patch).length === 0) return;
+		if (Object.keys(patch).length === 0) return;
 
-    await patchPlayer(patch);
-    setOpen(false);
-  }
+		await patchPlayer(patch);
+		setOpen(false);
+	}
 
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <div
-        className={cn(
-          "relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
-          checkedClass,
-        )}
-        onClick={(e) => {
-          if (isMultiSelectMode) {
-            toggleItem(_id);
-            return;
-          }
-          if (minVersion === "1.6.0" && !show && !completed) {
-            e.preventDefault();
-            setPromptOpen?.(true);
-            return;
-          }
-          setOpen(true);
-        }}
-      >
-        {minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
-        <div
-          className={cn(
-            "flex items-center space-x-3 truncate text-left",
-            minVersion === "1.6.0" && !show && !completed && "blur-sm",
-          )}
-        >
-          <Image src={iconURL} alt={title} width={32} height={32} />
-          <p>{title}</p>
-        </div>
-        <ChevronRightIcon className="h-5 w-5" />
-      </div>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-        </DialogHeader>
-        <DialogDescription className="whitespace-pre-wrap">
-          {description}
-        </DialogDescription>
-        <DialogFooter className="gap-4 sm:gap-0">
-          {completed ? (
-            <Button
-              variant="secondary"
-              disabled={!activePlayer || !completed}
-              data-umami-event="Set incompleted"
-              onClick={() => {
-                handleStatusChange(false);
-              }}
-            >
-              Set Incomplete
-            </Button>
-          ) : (
-            <Button
-              variant="secondary"
-              disabled={!activePlayer || completed}
-              data-umami-event="Set completed"
-              onClick={() => {
-                handleStatusChange(true);
-              }}
-            >
-              Set Completed
-            </Button>
-          )}
-        </DialogFooter>
-        {!activePlayer && <CreatePlayerRedirect />}
-      </DialogContent>
-    </Dialog>
-  );
+	return (
+		<Dialog open={open} onOpenChange={setOpen}>
+			<div
+				className={cn(
+					"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
+					checkedClass,
+				)}
+				onClick={(e) => {
+					if (isMultiSelectMode) {
+						toggleItem(_id);
+						return;
+					}
+					if (minVersion === "1.6.0" && !show && !completed) {
+						e.preventDefault();
+						setPromptOpen?.(true);
+						return;
+					}
+					setOpen(true);
+				}}
+			>
+				{minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
+				<div
+					className={cn(
+						"flex items-center space-x-3 truncate text-left",
+						minVersion === "1.6.0" && !show && !completed && "blur-sm",
+					)}
+				>
+					<Image src={iconURL} alt={title} width={32} height={32} />
+					<p>{title}</p>
+				</div>
+				<ChevronRightIcon className="h-5 w-5" />
+			</div>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>{title}</DialogTitle>
+				</DialogHeader>
+				<DialogDescription className="whitespace-pre-wrap">
+					{description}
+				</DialogDescription>
+				<DialogFooter className="gap-4 sm:gap-0">
+					{completed ? (
+						<Button
+							variant="secondary"
+							disabled={!activePlayer || !completed}
+							data-umami-event="Set incompleted"
+							onClick={() => {
+								handleStatusChange(false);
+							}}
+						>
+							Set Incomplete
+						</Button>
+					) : (
+						<Button
+							variant="secondary"
+							disabled={!activePlayer || completed}
+							data-umami-event="Set completed"
+							onClick={() => {
+								handleStatusChange(true);
+							}}
+						>
+							Set Completed
+						</Button>
+					)}
+				</DialogFooter>
+				{!activePlayer && <CreatePlayerRedirect />}
+			</DialogContent>
+		</Dialog>
+	);
 };

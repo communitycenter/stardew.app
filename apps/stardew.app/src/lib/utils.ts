@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 const semverSatisfies = require("semver/functions/satisfies");
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+	return twMerge(clsx(inputs));
 }
 
 /**
@@ -14,65 +14,65 @@ export function cn(...inputs: ClassValue[]) {
  * @return {*} An array of farmhand objects
  */
 export function getAllFarmhands(saveGame: any): any[] {
-  let farmhands: any[] = [];
-  const version: string = saveGame.gameVersion.toString();
+	let farmhands: any[] = [];
+	const version: string = saveGame.gameVersion.toString();
 
-  if (saveGame.player) {
-    farmhands.push(saveGame.player);
-  }
+	if (saveGame.player) {
+		farmhands.push(saveGame.player);
+	}
 
-  if (semverSatisfies(version, "<1.6.0")) {
-    // we'll need to recursively find all farmhands for <1.6
-    farmhands = farmhands.concat(findAllByKey(saveGame, "farmhand"));
-  } else {
-    // for the new 1.6 format, there's a <farmhands> array tag with <Farmer> objects
-    if (saveGame.farmhands && saveGame.farmhands.Farmer) {
-      if (Array.isArray(saveGame.farmhands.Farmer)) {
-        // multiple farmhands so we'll concat them
-        farmhands = farmhands.concat(saveGame.farmhands.Farmer);
-      } else {
-        // only one farmhand
-        farmhands.push(saveGame.farmhands.Farmer);
-      }
-    }
-  }
+	if (semverSatisfies(version, "<1.6.0")) {
+		// we'll need to recursively find all farmhands for <1.6
+		farmhands = farmhands.concat(findAllByKey(saveGame, "farmhand"));
+	} else {
+		// for the new 1.6 format, there's a <farmhands> array tag with <Farmer> objects
+		if (saveGame.farmhands && saveGame.farmhands.Farmer) {
+			if (Array.isArray(saveGame.farmhands.Farmer)) {
+				// multiple farmhands so we'll concat them
+				farmhands = farmhands.concat(saveGame.farmhands.Farmer);
+			} else {
+				// only one farmhand
+				farmhands.push(saveGame.farmhands.Farmer);
+			}
+		}
+	}
 
-  return farmhands;
+	return farmhands;
 }
 
 function findAllByKey(obj: any, searchKey: string) {
-  let results: any[] = [];
+	let results: any[] = [];
 
-  Object.keys(obj).forEach((key) => {
-    if (key === searchKey) {
-      let farmhand = obj[key];
+	Object.keys(obj).forEach((key) => {
+		if (key === searchKey) {
+			let farmhand = obj[key];
 
-      if (!farmhand.name || !farmhand.UniqueMultiplayerID) {
-        return;
-      }
+			if (!farmhand.name || !farmhand.UniqueMultiplayerID) {
+				return;
+			}
 
-      results.push(obj[key]);
-    } else if (typeof obj[key] === "object" && key !== "player") {
-      results = results.concat(findAllByKey(obj[key], searchKey));
-    }
-  });
-  return results;
+			results.push(obj[key]);
+		} else if (typeof obj[key] === "object" && key !== "player") {
+			results = results.concat(findAllByKey(obj[key], searchKey));
+		}
+	});
+	return results;
 }
 
 export function deweaponize(incoming: string) {
-  let str = incoming.toString();
-  if (str.startsWith("(")) {
-    const split = str.split(")");
-    return {
-      key: split[0].replace("(", ""),
-      value: split[1].trim(),
-    };
-  } else {
-    return {
-      key: "",
-      value: str,
-    };
-  }
+	let str = incoming.toString();
+	if (str.startsWith("(")) {
+		const split = str.split(")");
+		return {
+			key: split[0].replace("(", ""),
+			value: split[1].trim(),
+		};
+	} else {
+		return {
+			key: "",
+			value: str,
+		};
+	}
 }
 
 /**
@@ -83,15 +83,15 @@ export function deweaponize(incoming: string) {
  * @return {*}  {boolean} True if the player object is in the new 1.6 format
  */
 export function isPlayerFormatUpdated(player: any): boolean {
-  const version = player.gameVersion.toString();
-  if (version !== "-1" && semverSatisfies(version, ">=1.6")) return true;
+	const version = player.gameVersion.toString();
+	if (version !== "-1" && semverSatisfies(version, ">=1.6")) return true;
 
-  // just to be safe, we should check in multiple places for occurrences of the new format
-  // but the only thing I can think of right now is the stats
-  // player.stats.Values should be null for farmhands which haven't applied the 1.6 update
-  if (player.stats && !player.stats.Values) return false;
+	// just to be safe, we should check in multiple places for occurrences of the new format
+	// but the only thing I can think of right now is the stats
+	// player.stats.Values should be null for farmhands which haven't applied the 1.6 update
+	if (player.stats && !player.stats.Values) return false;
 
-  return true;
+	return true;
 }
 
 /**
@@ -102,26 +102,26 @@ export function isPlayerFormatUpdated(player: any): boolean {
  * @return {*}  {number} The value of the stat.
  */
 export function GetStatValue(Values: any, key: string): number {
-  let value = 0;
+	let value = 0;
 
-  if (!Values) return value;
+	if (!Values) return value;
 
-  // there should, by default, be an array of items, but we'll check for a single item just in case
-  if (!Array.isArray(Values.item)) {
-    if (Values.item.key.string === key) {
-      value = Values.item.value.unsignedInt;
-    }
-    return value;
-  }
+	// there should, by default, be an array of items, but we'll check for a single item just in case
+	if (!Array.isArray(Values.item)) {
+		if (Values.item.key.string === key) {
+			value = Values.item.value.unsignedInt;
+		}
+		return value;
+	}
 
-  for (const item of Values.item) {
-    if (item.key.string === key) {
-      value = item.value.unsignedInt;
-      break;
-    }
-  }
+	for (const item of Values.item) {
+		if (item.key.string === key) {
+			value = item.value.unsignedInt;
+			break;
+		}
+	}
 
-  return value;
+	return value;
 }
 
 /**
@@ -133,13 +133,13 @@ export function GetStatValue(Values: any, key: string): number {
  * @return {*}  {any[]} The list from the object, or an empty array if the object is undefined.
  */
 export function GetListOrEmpty(obj: any, key: string): any[] {
-  if (!obj || typeof obj === "undefined") return [];
+	if (!obj || typeof obj === "undefined") return [];
 
-  if (Array.isArray(obj[key])) {
-    return obj[key];
-  } else {
-    return [obj[key]];
-  }
+	if (Array.isArray(obj[key])) {
+		return obj[key];
+	} else {
+		return [obj[key]];
+	}
 }
 
 /**
@@ -153,19 +153,19 @@ export function GetListOrEmpty(obj: any, key: string): any[] {
  * @return {*} {boolean} True if the player has or will receive the mail.
  */
 export function hasOrWillReceiveMail(
-  mailId: string,
-  mailReceived: Set<string>,
-  mailForTomorrow: Set<string>,
-  mailbox: Set<string>,
+	mailId: string,
+	mailReceived: Set<string>,
+	mailForTomorrow: Set<string>,
+	mailbox: Set<string>,
 ): boolean {
-  if (
-    !mailReceived.has(mailId) &&
-    !mailForTomorrow.has(mailId) &&
-    !mailbox.has(mailId)
-  ) {
-    return mailForTomorrow.has(mailId + "%&NL&%");
-  }
-  return true;
+	if (
+		!mailReceived.has(mailId) &&
+		!mailForTomorrow.has(mailId) &&
+		!mailbox.has(mailId)
+	) {
+		return mailForTomorrow.has(mailId + "%&NL&%");
+	}
+	return true;
 }
 
 /**
@@ -177,22 +177,22 @@ export function hasOrWillReceiveMail(
  * @return {*}  {number} The amount of experience needed to achieve the given level.
  */
 export function getMasteryExpNeededForLevel(level: number): number {
-  switch (level) {
-    case 0:
-      return 0;
-    case 1:
-      return 10_000;
-    case 2:
-      return 25_000;
-    case 3:
-      return 45_000;
-    case 4:
-      return 70_000;
-    case 5:
-      return 100_000;
-    default:
-      return Number.MAX_SAFE_INTEGER;
-  }
+	switch (level) {
+		case 0:
+			return 0;
+		case 1:
+			return 10_000;
+		case 2:
+			return 25_000;
+		case 3:
+			return 45_000;
+		case 4:
+			return 70_000;
+		case 5:
+			return 100_000;
+		default:
+			return Number.MAX_SAFE_INTEGER;
+	}
 }
 
 /**
@@ -204,12 +204,12 @@ export function getMasteryExpNeededForLevel(level: number): number {
  * @return {*}  {number} The player's current mastery level.
  */
 export function getCurrentMasteryLevel(exp: number): number {
-  let level = 0;
+	let level = 0;
 
-  for (let i = 1; i <= 5; i++) {
-    if (exp >= getMasteryExpNeededForLevel(i)) {
-      level++;
-    }
-  }
-  return level;
+	for (let i = 1; i <= 5; i++) {
+		if (exp >= getMasteryExpNeededForLevel(i)) {
+			level++;
+		}
+	}
+	return level;
 }
