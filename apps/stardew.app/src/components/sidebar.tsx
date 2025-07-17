@@ -24,6 +24,7 @@ import {
 	IconShirt,
 	IconSparkles,
 	IconStars,
+	IconPencilUp,
 } from "@tabler/icons-react";
 
 import {
@@ -41,6 +42,7 @@ export const miscNavigation = [
 	{ name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
 	{ name: "Secret Notes", href: "/notes", icon: IconNote },
 	{ name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
+	{ name: "Island Upgrades", href: "/island/upgrades", icon: IconPencilUp },
 	{ name: "Account Settings", href: "/account", icon: IconSettings },
 ];
 

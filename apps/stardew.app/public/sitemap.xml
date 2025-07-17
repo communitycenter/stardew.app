@@ -65,6 +65,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://stardew.app/island/upgrades</loc>
+  <lastmod>2025-07-17T15:09:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://stardew.app/editor/create</loc>
   <lastmod>2024-03-19T15:09:23+00:00</lastmod>
   <priority>0.80</priority>
