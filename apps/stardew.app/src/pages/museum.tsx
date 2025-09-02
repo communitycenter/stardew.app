@@ -135,7 +135,7 @@ export default function Museum() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Museum</title>
+				<title>Stardew Valley Museum Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Museum Artifacts | stardew.app"

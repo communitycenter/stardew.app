@@ -227,7 +227,7 @@ export default function Editor() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Editor</title>
+				<title>Stardew Valley Editor | stardew.app</title>
 				<meta
 					name="description"
 					content="Create or edit the current farmhand. Nintendo Switch, PC, and Mobile players can all use this tool to create their farmhand and track their progress towards 100% completion."

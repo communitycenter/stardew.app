@@ -517,8 +517,11 @@ export default function Bundles() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Bundles</title>
-				<meta name="title" content="Stardew Valley Bundles | stardew.app" />
+				<title>Stardew Valley Bundles Tracker | stardew.app</title>
+				<meta
+					name="title"
+					content="Stardew Valley Bundles Tracker | stardew.app"
+				/>
 				<meta
 					name="description"
 					content="Track and manage items needed for bundles in Stardew Valley's Community Center. Keep tabs on the items you've collected and monitor your progress towards completing the bundles. Discover what items are still needed to fulfill each bundle requirement and restore the Community Center to its former glory."

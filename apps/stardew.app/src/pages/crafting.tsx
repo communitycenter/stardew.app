@@ -130,7 +130,7 @@ export default function Crafting() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Crafting</title>
+				<title>Stardew Valley Crafting Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Crafting Recipes | stardew.app"

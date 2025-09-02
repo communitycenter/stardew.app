@@ -128,8 +128,11 @@ export default function IslandWalnuts() {
 	return (
 		<>
 			<Head>
-				<meta name="title" content="stardew.app | Golden Walnut Tracker" />
-				<title>stardew.app | Golden Walnuts</title>
+				<meta
+					name="title"
+					content="Stardew Valley Golden Walnuts Tracker | stardew.app"
+				/>
+				<title>Stardew Valley Golden Walnuts Tracker | stardew.app</title>
 				<meta
 					name="description"
 					content="Track and collect Golden Walnuts in Stardew Valley. Keep tabs on the Golden Walnuts you've found and monitor your progress towards collecting them all. Discover the locations and secrets of each Golden Walnut and unlock valuable rewards on the island."

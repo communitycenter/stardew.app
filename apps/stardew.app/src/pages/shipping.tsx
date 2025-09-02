@@ -177,7 +177,7 @@ export default function Shipping() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Shipping</title>
+				<title>Stardew Valley Shipping Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Shipping Tracker | stardew.app"

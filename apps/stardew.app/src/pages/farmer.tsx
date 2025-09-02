@@ -152,7 +152,7 @@ export default function Farmer() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Farmer</title>
+				<title>Stardew Valley Farmer Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Player Tracker | stardew.app"

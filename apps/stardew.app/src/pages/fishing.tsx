@@ -167,7 +167,7 @@ export default function Fishing() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Fishing</title>
+				<title>Stardew Valley Fishing Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Fishing Tracker | stardew.app"

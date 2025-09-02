@@ -139,7 +139,7 @@ export default function Relationships() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Social</title>
+				<title>Stardew Valley Relationships Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Villagers Tracker | stardew.app"

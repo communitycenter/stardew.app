@@ -100,8 +100,11 @@ export default function RarecrowsPage() {
 	return (
 		<>
 			<Head>
-				<meta name="title" content="stardew.app | Rarecrow Tracker" />
-				<title>stardew.app | Rarecrows</title>
+				<meta
+					name="title"
+					content="Stardew Valley Rarecrows Tracker | stardew.app"
+				/>
+				<title>Stardew Valley Rarecrows Tracker | stardew.app</title>
 				<meta
 					name="description"
 					content="Track and collect Rarecrows in Stardew Valley. Keep tabs on the Rarecrows you've found and monitor your progress towards collecting them all. Collect all 8 unique rarecrows to unlock the Deluxe Scarecrow recipe."
