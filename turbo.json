@@ -1,55 +1,76 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"ui": "tui",
-	"tasks": {
-		"clean": {
-			"dependsOn": [],
-			"cache": false
-		},
-		"format": {
-			"dependsOn": []
-		},
-		"lint": {
-			"dependsOn": ["^build", "^lint"]
-		},
-		"typecheck": {
-			"dependsOn": ["^typecheck"]
-		},
-		"test": {
-			"dependsOn": ["^build", "^test"],
-			"env": [
-				"FEEDBACK_WEBHOOK",
-				"TURNSTILE_KEY",
-				"LINEAR_API_KEY",
-				"LINEAR_TEAM_ID",
-				"LINEAR_BUG_LABEL"
-			]
-		},
-		"build": {
-			"dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
-			"outputs": [".next/**", "!.next/cache/**"],
-			"env": [
-				"FEEDBACK_WEBHOOK",
-				"TURNSTILE_KEY",
-				"LINEAR_API_KEY",
-				"LINEAR_TEAM_ID",
-				"LINEAR_BUG_LABEL"
-			]
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true,
-			"env": [
-				"MIXPANEL_API",
-				"FEEDBACK_WEBHOOK",
-				"TURNSTILE_KEY",
-				"SENTRY_AUTH_TOKEN",
-				"SENTRY_IGNORE_API_RESOLUTION_ERROR",
-				"LINEAR_API_KEY",
-				"LINEAR_TEAM_ID",
-				"LINEAR_BUG_LABEL"
-			]
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "clean": {
+      "dependsOn": [],
+      "cache": false
+    },
+    "format": {
+      "dependsOn": []
+    },
+    "lint": {
+      "dependsOn": ["^build", "^lint"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    },
+    "test": {
+      "dependsOn": ["^build", "^test"],
+      "env": [
+        "FEEDBACK_WEBHOOK",
+        "TURNSTILE_KEY",
+        "LINEAR_API_KEY",
+        "LINEAR_TEAM_ID",
+        "LINEAR_BUG_LABEL",
+        "COOKIE_SECRET",
+        "DISCORD_ID",
+        "DISCORD_SECRET",
+        "DISCORD_REDIRECT",
+        "DISCORD_TOKEN",
+        "DISCORD_GUILD",
+        "DATABASE_URL"
+      ]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "FEEDBACK_WEBHOOK",
+        "TURNSTILE_KEY",
+        "LINEAR_API_KEY",
+        "LINEAR_TEAM_ID",
+        "LINEAR_BUG_LABEL",
+        "COOKIE_SECRET",
+        "DISCORD_ID",
+        "DISCORD_SECRET",
+        "DISCORD_REDIRECT",
+        "DISCORD_TOKEN",
+        "DISCORD_GUILD",
+        "DATABASE_URL"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": [
+        "MIXPANEL_API",
+        "FEEDBACK_WEBHOOK",
+        "TURNSTILE_KEY",
+        "SENTRY_AUTH_TOKEN",
+        "SENTRY_IGNORE_API_RESOLUTION_ERROR",
+        "LINEAR_API_KEY",
+        "LINEAR_TEAM_ID",
+        "LINEAR_BUG_LABEL",
+        "COOKIE_SECRET",
+        "DISCORD_ID",
+        "DISCORD_SECRET",
+        "DISCORD_REDIRECT",
+        "DISCORD_TOKEN",
+        "DISCORD_GUILD",
+        "DATABASE_URL"
+      ]
+    }
+  }
 }

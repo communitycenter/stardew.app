@@ -58,7 +58,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Stardew Valley 100% completion</title>
+				<title>Stardew Valley Completion Tracker | stardew.app</title>
 				<meta
 					name="description"
 					content="Upload your Stardew Valley save file to track your progress towards 100% completion. Supports the new 1.6 update!"

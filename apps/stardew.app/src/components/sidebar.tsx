@@ -11,6 +11,7 @@ import {
 	IconBrandDiscord,
 	IconBrandGithub,
 	IconBuildingWarehouse,
+	IconCarrot,
 	IconEgg,
 	IconFishHook,
 	IconGardenCart,
@@ -39,6 +40,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
 	{ name: "Bundles", href: "/bundles", icon: IconBox },
+	{ name: "Rarecrows", href: "/rarecrows", icon: IconCarrot },
 	{ name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
 	{ name: "Secret Notes", href: "/notes", icon: IconNote },
 	{ name: "Journal Scraps", href: "/island/scraps", icon: IconBook },

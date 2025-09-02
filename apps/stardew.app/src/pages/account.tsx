@@ -241,7 +241,7 @@ export default function Account() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Account Settings</title>
+				<title>Stardew Valley Account Settings | stardew.app</title>
 				<meta
 					name="description"
 					content="Manage your stardew.app account. Manage your data, saves, and more."

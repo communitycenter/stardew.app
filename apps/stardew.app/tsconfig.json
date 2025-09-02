@@ -20,6 +20,11 @@
 			"$db": ["./src/db"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"../../drizzle.config.ts"
+	],
 	"exclude": ["node_modules"]
 }

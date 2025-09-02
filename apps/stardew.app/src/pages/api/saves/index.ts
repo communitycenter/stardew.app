@@ -31,6 +31,7 @@ export interface Player {
 	scraps?: object;
 	perfection?: object;
 	powers?: object;
+	rarecrows?: object;
 }
 
 export async function getUID(
@@ -141,7 +142,7 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 			}
 			res.status(200).end();
 		} catch (e) {
-			// console.log(e);
+			console.log(e);
 			res.status(500).end();
 		}
 	}

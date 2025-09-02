@@ -36,7 +36,7 @@ interface Props {
 	iconURL: string;
 	completed?: boolean;
 	_id: string;
-	_type: "stardrop" | "note" | "scrap" | "walnut" | "power" | "island_upgrade";
+	_type: "stardrop" | "note" | "scrap" | "walnut" | "power" | "rarecrow" | "island_upgrade";
 	/**
 	 * Whether the user prefers to see new content
 	 *
@@ -157,6 +157,14 @@ export const DialogCard = ({
 						islandUpgrades: Array.from(islandUpgrades),
 					},
 				};
+				break;
+
+			case "rarecrow":
+				const rarecrows = new Set(activePlayer.rarecrows || []);
+				if (status) rarecrows.add(_id);
+				else rarecrows.delete(_id);
+
+				patch = { rarecrows: Array.from(rarecrows) };
 				break;
 		}
 

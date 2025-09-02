@@ -52,7 +52,7 @@ export default function SecretNotes() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Secret Notes</title>
+				<title>Stardew Valley Secret Notes Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley Secret Notes Locations | stardew.app"

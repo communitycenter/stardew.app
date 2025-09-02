@@ -308,5 +308,45 @@
 		"description": "You can write a custom message on this sign.",
 		"minVersion": "1.6.0",
 		"name": "Text Sign"
+	},
+	"110": {
+		"description": "Purchase at the Stardew Valley Fair for 800 tokens.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #1"
+	},
+	"113": {
+		"description": "Purchase at the Spirit's Eve festival for 5,000g.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #2"
+	},
+	"126": {
+		"description": "Purchase at the Casino for 10,000 Qi coin.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #3"
+	},
+	"136": {
+		"description": "Purchase at the Traveling Cart randomly during fall or winter for 4,000g, or purchase at the Festival of Ice for 5,000g.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #4"
+	},
+	"137": {
+		"description": "Purchase at the Flower Dance for 2,500g.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #5"
+	},
+	"138": {
+		"description": "Purchase from the Dwarf for 2,500g.",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #6"
+	},
+	"139": {
+		"description": "Donate 20 Artifacts (not counting Minerals) to the Museum. \n(Can be purchased from the Night Market once the first one is earned.)",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #7"
+	},
+	"140": {
+		"description": "Donate 40 items to the Museum.\n(Can be purchased from the Night Market once the first one is earned.)",
+		"minVersion": "1.5.0",
+		"name": "Rarecrow #8"
 	}
 }

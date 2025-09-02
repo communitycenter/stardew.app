@@ -13,7 +13,7 @@ import { usePlayers } from "@/contexts/players-context";
 interface Props {
 	open: boolean;
 	setOpen: (open: boolean) => void;
-	type: "cooking" | "crafting" | "shipping" | "museum" | "fishing";
+	type: "cooking" | "crafting" | "shipping" | "museum" | "fishing" | "rarecrow";
 	onBulkAction?: (
 		status: number | null,
 		selectedItems: Set<string>,

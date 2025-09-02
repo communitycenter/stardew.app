@@ -28,14 +28,20 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 				notes=JSON_MERGE_PATCH(notes, ${player.notes ? JSON.stringify(player.notes) : "{}"}),
 				scraps=JSON_MERGE_PATCH(scraps, ${player.scraps ? JSON.stringify(player.scraps) : "{}"}),
 				perfection=JSON_MERGE_PATCH(perfection, ${player.perfection ? JSON.stringify(player.perfection) : "{}"}),
-        powers=JSON_MERGE_PATCH(powers, ${player.powers ? JSON.stringify(player.powers) : "{}"})
+        powers=JSON_MERGE_PATCH(powers, ${player.powers ? JSON.stringify(player.powers) : "{}"}),
+				rarecrows=JSON_MERGE_PATCH(rarecrows, ${player.rarecrows ? JSON.stringify(player.rarecrows) : "[]"})
 			WHERE _id = ${playerId} AND user_id = ${uid}
 		`,
 		);
 		res.status(200).end();
 	} catch (e) {
-		console.log(e);
-		res.status(500).end();
+		console.error("Database update error:", e);
+		console.error("Player data:", JSON.stringify(player, null, 2));
+		console.error("Player ID:", playerId);
+		console.error("User ID:", uid);
+		res
+			.status(500)
+			.json({ error: e instanceof Error ? e.message : "Unknown error" });
 	}
 }
 
@@ -50,6 +56,7 @@ export default async function handler(
 		}
 		res.status(405).end();
 	} catch (e: any) {
-		res.send(e.message);
+		console.error("Handler error:", e);
+		res.status(500).json({ error: e.message });
 	}
 }

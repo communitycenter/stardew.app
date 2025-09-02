@@ -194,7 +194,7 @@ export default function SkillsMasteryPowers() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Skills & Mastery</title>
+				<title>Stardew Valley Skills Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley 1.6 Skills & Mastery | stardew.app"

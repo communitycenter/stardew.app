@@ -271,7 +271,7 @@ export default function Perfection() {
 	return (
 		<>
 			<Head>
-				<title>stardew.app | Perfection</title>
+				<title>Stardew Valley Perfection Tracker | stardew.app</title>
 				<meta
 					name="title"
 					content="Stardew Valley 1.6 Perfection Tracker | stardew.app"
