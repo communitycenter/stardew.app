@@ -134,74 +134,10 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/AnotherPillow">
-            <img src="https://avatars.githubusercontent.com/u/85362273?v=4" width="100;" alt="AnotherPillow"/>
+        <a href="https://github.com/moonggae">
+            <img src="https://avatars.githubusercontent.com/u/74220198?v=4" width="100;" alt="moonggae"/>
             <br />
-            <sub><b>Null</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/colemilne54">
-            <img src="https://avatars.githubusercontent.com/u/20178496?v=4" width="100;" alt="colemilne54"/>
-            <br />
-            <sub><b>Cole Milne</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/caoimhebyrne">
-            <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
-            <br />
-            <sub><b>Caoimhe</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/dannykd">
-            <img src="https://avatars.githubusercontent.com/u/92613890?v=4" width="100;" alt="dannykd"/>
-            <br />
-            <sub><b>Danny Doan</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/dannyhand">
-            <img src="https://avatars.githubusercontent.com/u/45862923?v=4" width="100;" alt="dannyhand"/>
-            <br />
-            <sub><b>Danny Hand</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/OfficialCRUGG">
-            <img src="https://avatars.githubusercontent.com/u/25248999?v=4" width="100;" alt="OfficialCRUGG"/>
-            <br />
-            <sub><b>Dennis Paulus</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/Terrance">
-            <img src="https://avatars.githubusercontent.com/u/4025899?v=4" width="100;" alt="Terrance"/>
-            <br />
-            <sub><b>Terrance</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/TheLostSoul">
-            <img src="https://avatars.githubusercontent.com/u/718358?v=4" width="100;" alt="TheLostSoul"/>
-            <br />
-            <sub><b>Michael Harrington</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/cnrad">
-            <img src="https://avatars.githubusercontent.com/u/83192247?v=4" width="100;" alt="cnrad"/>
-            <br />
-            <sub><b>Conrad Crawford</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/gustuxd">
-            <img src="https://avatars.githubusercontent.com/u/18200593?v=4" width="100;" alt="gustuxd"/>
-            <br />
-            <sub><b>Gustavo Brito</b></sub>
+            <sub><b>Euigeun Choi</b></sub>
         </a>
     </td>
     <td align="center">
@@ -212,10 +148,82 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/moonggae">
-            <img src="https://avatars.githubusercontent.com/u/74220198?v=4" width="100;" alt="moonggae"/>
+        <a href="https://github.com/gustuxd">
+            <img src="https://avatars.githubusercontent.com/u/18200593?v=4" width="100;" alt="gustuxd"/>
             <br />
-            <sub><b>Euigeun Choi</b></sub>
+            <sub><b>Gustavo Brito</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/cnrad">
+            <img src="https://avatars.githubusercontent.com/u/83192247?v=4" width="100;" alt="cnrad"/>
+            <br />
+            <sub><b>Conrad Crawford</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/TheLostSoul">
+            <img src="https://avatars.githubusercontent.com/u/718358?v=4" width="100;" alt="TheLostSoul"/>
+            <br />
+            <sub><b>Michael Harrington</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Terrance">
+            <img src="https://avatars.githubusercontent.com/u/4025899?v=4" width="100;" alt="Terrance"/>
+            <br />
+            <sub><b>Terrance</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/JakobDev">
+            <img src="https://avatars.githubusercontent.com/u/15185051?v=4" width="100;" alt="JakobDev"/>
+            <br />
+            <sub><b>JakobDev</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/OfficialCRUGG">
+            <img src="https://avatars.githubusercontent.com/u/25248999?v=4" width="100;" alt="OfficialCRUGG"/>
+            <br />
+            <sub><b>Dennis Paulus</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/dannyhand">
+            <img src="https://avatars.githubusercontent.com/u/45862923?v=4" width="100;" alt="dannyhand"/>
+            <br />
+            <sub><b>Danny Hand</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/dannykd">
+            <img src="https://avatars.githubusercontent.com/u/92613890?v=4" width="100;" alt="dannykd"/>
+            <br />
+            <sub><b>Danny Doan</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/caoimhebyrne">
+            <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
+            <br />
+            <sub><b>Caoimhe</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/colemilne54">
+            <img src="https://avatars.githubusercontent.com/u/20178496?v=4" width="100;" alt="colemilne54"/>
+            <br />
+            <sub><b>Cole Milne</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/AnotherPillow">
+            <img src="https://avatars.githubusercontent.com/u/85362273?v=4" width="100;" alt="AnotherPillow"/>
+            <br />
+            <sub><b>Null</b></sub>
         </a>
     </td></tr>
 </table>
