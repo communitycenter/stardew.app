@@ -20,12 +20,12 @@ import {
 	IconHome2,
 	IconId,
 	IconNote,
+	IconPencilUp,
 	IconProgress,
 	IconSettings,
 	IconShirt,
 	IconSparkles,
 	IconStars,
-	IconPencilUp,
 } from "@tabler/icons-react";
 
 import {
@@ -40,11 +40,8 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
 	{ name: "Bundles", href: "/bundles", icon: IconBox },
-	{ name: "Rarecrows", href: "/rarecrows", icon: IconCarrot },
-	{ name: "Walnuts", href: "/island/walnuts", icon: IconProgress },
 	{ name: "Secret Notes", href: "/notes", icon: IconNote },
-	{ name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
-	{ name: "Island Upgrades", href: "/island/upgrades", icon: IconPencilUp },
+	{ name: "Rarecrows", href: "/rarecrows", icon: IconCarrot },
 	{ name: "Account Settings", href: "/account", icon: IconSettings },
 ];
 
@@ -63,6 +60,12 @@ export const collectionsNavigation = [
 	{ name: "Fishing", href: "/fishing", icon: IconFishHook },
 	{ name: "Shipping", href: "/shipping", icon: IconGardenCart },
 	{ name: "Museum & Artifacts", href: "/museum", icon: IconBuildingWarehouse },
+];
+
+export const islandNavigation = [
+	{ name: "Golden Walnuts", href: "/island/walnuts", icon: IconProgress },
+	{ name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
+	{ name: "Island Upgrades", href: "/island/upgrades", icon: IconPencilUp },
 ];
 
 export const linksNavigation = [
@@ -201,6 +204,28 @@ export function Sidebar({ className }: SidebarProps) {
 				<SidebarCategory>Collections</SidebarCategory>
 				<div className="space-y-1">
 					{collectionsNavigation.map((item) => (
+						<Button
+							key={item.href}
+							variant={pathname === item.href ? "secondary" : "ghost"}
+							className={cn(
+								"w-full justify-start",
+								item.href === pathname
+									? ""
+									: "text-neutral-600 dark:text-neutral-400",
+							)}
+							asChild
+						>
+							<Link href={item.href}>
+								<item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
+								{item.name}
+							</Link>
+						</Button>
+					))}
+				</div>
+
+				<SidebarCategory>Ginger Island</SidebarCategory>
+				<div className="space-y-1">
+					{islandNavigation.map((item) => (
 						<Button
 							key={item.href}
 							variant={pathname === item.href ? "secondary" : "ghost"}

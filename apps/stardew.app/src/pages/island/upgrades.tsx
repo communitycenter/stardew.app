@@ -3,6 +3,7 @@ import { usePlayers } from "@/contexts/players-context";
 import upgrades from "@/data/island_upgrades.json";
 import { Inter } from "next/font/google";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,7 +13,11 @@ export default function IslandUpgrades() {
 	const [islandUpgrades, setIslandUpgrades] = useState<Set<String>>(new Set());
 
 	useEffect(() => {
-		if (activePlayer && activePlayer.general && activePlayer.general.islandUpgrades) {
+		if (
+			activePlayer &&
+			activePlayer.general &&
+			activePlayer.general.islandUpgrades
+		) {
 			setIslandUpgrades(new Set(activePlayer.general.islandUpgrades));
 		}
 	}, [activePlayer]);
@@ -23,23 +28,42 @@ export default function IslandUpgrades() {
 			<DialogCard
 				key={id}
 				title={upgrade.name}
-				description=<div className="space-y-6">
-					<section className="space-y-2">
-						<h3 className="font-semibold">Cost</h3>
-						<div data-orientation="horizontal" role="none" className="shrink-0 bg-neutral-200 dark:bg-neutral-800 h-[1px] w-full"></div>
-						<span>{upgrade.cost}</span>
-					</section>
-					<section className="space-y-2">
-						<h3 className="font-semibold">Description</h3>
-						<div data-orientation="horizontal" role="none" className="shrink-0 bg-neutral-200 dark:bg-neutral-800 h-[1px] w-full"></div>
-						<span>{upgrade.description}</span>
-					</section>
-					<section className="space-y-2">
-						<h3 className="font-semibold">Location</h3>
-						<div data-orientation="horizontal" role="none" className="shrink-0 bg-neutral-200 dark:bg-neutral-800 h-[1px] w-full"></div>
-						<span>{upgrade.location}</span>
-					</section>
-				</div>
+				description={
+					<div className="space-y-6 text-white">
+						<section className="space-y-1">
+							<h3 className="font-semibold text-white">Cost</h3>
+							<span className="text-white flex items-center gap-1">
+								<span
+									className="align-middle"
+									style={{ imageRendering: "pixelated" }}
+								>
+									{upgrade.cost}
+								</span>
+								<span
+									className="w-5 h-5 align-middle relative flex items-center"
+									style={{ imageRendering: "pixelated" }}
+								>
+									<Image
+										src="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
+										alt="Golden Walnut"
+										fill
+										className="object-contain"
+										style={{ imageRendering: "pixelated" }}
+										unoptimized
+									/>
+								</span>
+							</span>
+						</section>
+						<section className="space-y-1">
+							<h3 className="font-semibold text-white">Description</h3>
+							<span className="block text-white">{upgrade.description}</span>
+						</section>
+						<section className="space-y-1">
+							<h3 className="font-semibold text-white">Location</h3>
+							<span className="block text-white">{upgrade.location}</span>
+						</section>
+					</div>
+				}
 				iconURL="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
 				completed={activePlayer ? islandUpgrades.has(id) : false}
 				_id={id}
@@ -51,11 +75,16 @@ export default function IslandUpgrades() {
 	return (
 		<>
 			<Head>
-				<meta name="title" content="stardew.app | Island Upgrades Tracker" />
-				<title>stardew.app | Island Upgrades</title>
+				<meta
+					name="title"
+					content="Stardew Valley Ginger Island Upgrades Tracker | stardew.app"
+				/>
+				<title>
+					Stardew Valley Ginger Island Upgrades Tracker | stardew.app
+				</title>
 				<meta
 					name="description"
-					content="Track and discover Ginger Island Upgrades in Stardew Valley."
+					content="Track and discover Ginger Island Upgrades in Stardew Valley. Keep tabs on the upgrades you've discovered and monitor your progress towards completing them all. Discover the locations and secrets of each upgrade and unlock valuable rewards on the island."
 				/>
 				<meta
 					name="og:description"
@@ -65,10 +94,7 @@ export default function IslandUpgrades() {
 					name="twitter:description"
 					content="Track and discover Ginger Island Upgrades in Stardew Valley,"
 				/>
-				<meta
-					name="keywords"
-					content="stardew valley Ginger Island"
-				/>
+				<meta name="keywords" content="stardew valley Ginger Island" />
 			</Head>
 			<main
 				className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
