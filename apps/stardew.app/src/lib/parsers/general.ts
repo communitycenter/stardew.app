@@ -193,6 +193,54 @@ function parseAchievements(player: any): AchievementsRet {
 	}
 }
 
+/* ------------------------------ island upgrade parser -------------------------------- */
+export type IslandUpgradeMail =
+	| "Island_FirstParrot"
+	| "Island_Turtle"
+	| "Island_UpgradeHouse"
+	| "Island_Resort"
+	| "Island_UpgradeTrader"
+	| "Island_UpgradeBridge"
+	| "Island_UpgradeParrotPlatform"
+	| "Island_UpgradeHouse_Mailbox"
+	| "Island_W_Obelisk"
+	| "Island_VolcanoBridge"
+	| "Island_VolcanoShortcutOut";
+const ISLANDUPGRADEMAIL = new Set<IslandUpgradeMail>([
+	"Island_FirstParrot",
+	"Island_Turtle",
+	"Island_UpgradeHouse",
+	"Island_Resort",
+	"Island_UpgradeTrader",
+	"Island_UpgradeBridge",
+	"Island_UpgradeParrotPlatform",
+	"Island_UpgradeHouse_Mailbox",
+	"Island_W_Obelisk",
+	"Island_VolcanoBridge",
+	"Island_VolcanoShortcutOut",
+]);
+
+type IslandUpgradesRet = IslandUpgradeMail[];
+
+function parseIslandUpgrades(player: any): IslandUpgradesRet {
+	try {
+		let islandUpgrades: IslandUpgradeMail[] = [];
+
+		const mailReceived = new Set<string>(
+			GetListOrEmpty(player.mailReceived, "string"),
+		);
+
+		for (const mail of Array.from(mailReceived)) {
+			if (ISLANDUPGRADEMAIL.has(mail as IslandUpgradeMail))
+				islandUpgrades.push(mail as IslandUpgradeMail);
+		}
+
+		return islandUpgrades;
+	} catch (error) {
+		throw error;
+	}
+}
+
 /* ----------------------------- general parser ----------------------------- */
 const farmTypes = [
 	"Standard",
@@ -217,6 +265,7 @@ export interface GeneralRet {
 	gameVersion?: string;
 	jojaMembership?: JojaRet;
 	achievements?: AchievementsRet;
+	islandUpgrades?: IslandUpgradesRet;
 }
 
 export function parseGeneral(
@@ -249,6 +298,7 @@ export function parseGeneral(
 		const experience = parseExperience(player);
 		const jojaMembership = parseJoja(player);
 		const achievements = parseAchievements(player);
+		const islandUpgrades = parseIslandUpgrades(player);
 
 		return {
 			name,
@@ -262,6 +312,7 @@ export function parseGeneral(
 			gameVersion,
 			jojaMembership,
 			achievements,
+			islandUpgrades,
 		};
 	} catch (e) {
 		if (process.env.NODE_ENV === "development") {

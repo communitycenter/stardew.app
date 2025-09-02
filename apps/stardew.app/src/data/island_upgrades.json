@@ -1,0 +1,68 @@
+{
+    "Island_FirstParrot": {
+        "cost": "1",
+        "name": "Ginger Island North",
+        "description": "Unlock access to the north side of the island",
+        "location": "Leo's house"
+    },
+    "Island_Turtle": {
+        "cost": "10",
+        "name": "Ginger Island West",
+        "description": "Unlock access to the west side of the island",
+        "location": "Ginger Island South"
+    },
+    "Island_UpgradeHouse": {
+        "cost": "20",
+        "name": "Ginger Island Farmhouse",
+        "description": "Unlock the Farmhouse on the west side of the island, which can be used to sleep in to pass the day without leaving the island",
+        "location": "Ginger Island West"
+    },
+    "Island_UpgradeHouse_Mailbox": {
+        "cost": "5",
+        "name": "Farmhouse Mailbox",
+        "description": "Allow players to access their mail without leaving the island",
+        "location": "Ginger Island Farmhouse"
+    },
+    "Island_W_Obelisk": {
+        "cost": "20",
+        "name": "Farm Obelisk",
+        "description": "Allow players to teleport back to the farm, similar to a warp totem",
+        "location": "Ginger Island Farmhouse"
+    },
+    "Island_UpgradeBridge": {
+        "cost": "10",
+        "name": "Island Dig Site",
+        "description": "Repair the bridge to access the island dig site",
+        "location": "Ginger Island North"
+    },
+    "Island_UpgradeTrader": {
+        "cost": "10",
+        "name": "Island Trader",
+        "description": "Unlock the Island Trader shop",
+        "location": "Ginger Island North"
+    },
+    "Island_VolcanoBridge": {
+        "cost": "5",
+        "name": "Volcano Bridge",
+        "description": "Unlock a permanent bridge into the volcano so that players no longer have to have their watering can to get in",
+        "location": "Volcano Dungeon entrance"
+    },
+    "Island_VolcanoShortcutOut": {
+        "cost": "5",
+        "name": "Volcano Exit Shortcut",
+        "description": "Unlock an escape shortcut from level 5 of the Volcano Dungeon, allowing quick access to Island North",
+        "location": "Volcano Dungeon level 5"
+    },
+    "Island_Resort": {
+        "cost": "20",
+        "name": "Island Resort",
+        "description": "Unlock a beach resort. NPCs from the town will occasionally come to visit the resort. This also unlocks Island Southeast and the Pirate Cove",
+        "location": "Ginger Island South"
+    },
+    "Island_UpgradeParrotPlatform": {
+        "cost": "10",
+        "name": "Parrot Express",
+        "description": "Unlock a fast travel system to quickly get around the island",
+        "location": "Ginger Island"
+    }
+}
