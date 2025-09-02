@@ -69,6 +69,20 @@
   <lastmod>2024-03-19T15:09:23+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://stardew.app/rarecrows</loc>
+  <lastmod>2025-09-02T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stardew.app/bundles</loc>
+  <lastmod>2025-09-02T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stardew.app/skills</loc>
+  <lastmod>2025-09-02T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
