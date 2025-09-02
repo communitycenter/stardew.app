@@ -36,7 +36,7 @@ interface Props {
 	iconURL: string;
 	completed?: boolean;
 	_id: string;
-	_type: "stardrop" | "note" | "scrap" | "walnut" | "power";
+	_type: "stardrop" | "note" | "scrap" | "walnut" | "power" | "rarecrow";
 	/**
 	 * Whether the user prefers to see new content
 	 *
