@@ -146,6 +146,16 @@ export const DialogCard = ({
 						collection: Array.from(powers),
 					},
 				};
+
+				break;
+
+			case "rarecrow":
+				const rarecrows = new Set(activePlayer.rarecrows || []);
+				if (status) rarecrows.add(_id);
+				else rarecrows.delete(_id);
+
+				patch = { rarecrows: Array.from(rarecrows) };
+				break;
 		}
 
 		if (Object.keys(patch).length === 0) return;
