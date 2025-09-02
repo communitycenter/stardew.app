@@ -13,12 +13,13 @@ import {
 	IconAlertCircle,
 	IconHeart,
 	IconHome,
+	IconLoader2,
 	IconMoodHappy,
 	IconPaw,
 	IconUpload,
 } from "@tabler/icons-react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const animalTypes = [
 	{ value: "all", label: "All Animals" },
@@ -75,9 +76,24 @@ const barnAnimals = [
 	"Ostrich",
 ];
 
-export default function Animals() {
+// Loading component for Suspense fallback
+const AnimalsLoading = () => (
+	<div className="flex flex-col items-center justify-center py-12 text-center">
+		<IconLoader2 className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
+		<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+			Loading Animals...
+		</h3>
+		<p className="text-muted-foreground">
+			Please wait while we load your animal data.
+		</p>
+	</div>
+);
+
+// Main animals content component
+const AnimalsContent = () => {
 	const { activePlayer } = usePlayers();
 	const [animalsData, setAnimalsData] = useState<AnimalsData | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const [search, setSearch] = useState("");
 	const [filter, setFilter] = useState("all");
 	const [sortBy, setSortBy] = useState("name");
@@ -128,6 +144,7 @@ export default function Animals() {
 		if (activePlayer?.animals) {
 			setAnimalsData(activePlayer.animals as AnimalsData);
 		}
+		setIsLoading(false);
 	}, [activePlayer]);
 
 	const getImageUrl = (animalType: string) => {
@@ -258,39 +275,38 @@ export default function Animals() {
 	const getTotalAnimals = () => {
 		if (!animalsData) return 0;
 		return (
-			animalsData.farmAnimals.length +
-			animalsData.pets.length +
+			(animalsData.farmAnimals?.length || 0) +
+			(animalsData.pets?.length || 0) +
 			(animalsData.horse ? 1 : 0)
 		);
 	};
 
 	const getCoopAnimalsCount = () => {
-		if (!animalsData) return 0;
+		if (!animalsData || !animalsData.farmAnimals) return 0;
 		return animalsData.farmAnimals.filter((animal) =>
 			coopAnimals.includes(animal.type),
 		).length;
 	};
 
 	const getBarnAnimalsCount = () => {
-		if (!animalsData) return 0;
+		if (!animalsData || !animalsData.farmAnimals) return 0;
 		return animalsData.farmAnimals.filter((animal) =>
 			barnAnimals.includes(animal.type),
 		).length;
 	};
 
 	const getPetsCount = () => {
-		if (!animalsData) return 0;
+		if (!animalsData || !animalsData.pets) return 0;
 		return animalsData.pets.length;
 	};
 
 	const getMaxFriendshipAnimals = () => {
 		if (!animalsData) return 0;
-		const maxFarmAnimals = animalsData.farmAnimals.filter(
-			(animal) => animal.friendship >= 1000,
-		).length;
-		const maxPets = animalsData.pets.filter(
-			(pet) => pet.friendship >= 1000,
-		).length;
+		const maxFarmAnimals =
+			animalsData.farmAnimals?.filter((animal) => animal.friendship >= 1000)
+				.length || 0;
+		const maxPets =
+			animalsData.pets?.filter((pet) => pet.friendship >= 1000).length || 0;
 		return maxFarmAnimals + maxPets;
 	};
 
@@ -389,7 +405,7 @@ export default function Animals() {
 						</div>
 					)}
 
-					{hasUploadedSave && !hasAnimalData && (
+					{hasUploadedSave && !isLoading && !hasAnimalData && (
 						<div className="relative flex min-h-[calc(100vh-250px)] w-full items-center justify-center">
 							<BlurredPreview />
 
@@ -423,8 +439,21 @@ export default function Animals() {
 						</div>
 					)}
 
+					{/* Loading State */}
+					{hasUploadedSave && isLoading && (
+						<div className="flex flex-col items-center justify-center py-12 text-center">
+							<IconLoader2 className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
+							<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+								Loading Animals...
+							</h3>
+							<p className="text-muted-foreground">
+								Please wait while we load your animal data.
+							</p>
+						</div>
+					)}
+
 					{/* Main Content - Only show for uploaded saves with animal data */}
-					{hasUploadedSave && hasAnimalData && (
+					{hasUploadedSave && !isLoading && hasAnimalData && (
 						<>
 							{/* Statistics Section */}
 							<section className="space-y-3">
@@ -502,7 +531,7 @@ export default function Animals() {
 							{/* Animals Grid */}
 							<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
 								{/* Farm Animals */}
-								{animalsData &&
+								{animalsData?.farmAnimals &&
 									filterAndSortAnimals(animalsData.farmAnimals, "farm").map(
 										(animal) => (
 											<AnimalCard
@@ -514,7 +543,7 @@ export default function Animals() {
 										),
 									)}
 								{/* Pets */}
-								{animalsData &&
+								{animalsData?.pets &&
 									filterAndSortAnimals(animalsData.pets, "pet").map((pet) => (
 										<AnimalCard
 											key={`pet-${pet.name}`}
@@ -563,5 +592,14 @@ export default function Animals() {
 			</main>
 			<UploadDialog open={uploadOpen} setOpen={setUploadOpen} />
 		</>
+	);
+};
+
+// Main Animals component with Suspense
+export default function Animals() {
+	return (
+		<Suspense fallback={<AnimalsLoading />}>
+			<AnimalsContent />
+		</Suspense>
 	);
 }
