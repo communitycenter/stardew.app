@@ -16,6 +16,7 @@ import {
 	parseSocial,
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
+import { parseAnimals } from "./parsers/animals";
 import { parseNotes } from "./parsers/notes";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
@@ -64,7 +65,8 @@ export function parseSaveFile(xml: string) {
 		const prefix =
 			typeof saveFile.SaveGame["@_xmlns:xsi"] === "undefined" ? "p3" : "xsi";
 
-		// console.log(prefix === "xsi" ? "PC" : "Mobile");
+		// Determine platform based on prefix
+		const platform = prefix === "xsi" ? "PC" : "Mobile";
 
 		const parsedBundles = parseBundles(
 			saveFile.SaveGame.bundleData,
@@ -105,7 +107,21 @@ export function parseSaveFile(xml: string) {
 
 		const parsedRarecrows = parseRarecrows(prefix, saveFile.SaveGame, players);
 
-		console.log("parsedRarecrows", parsedRarecrows);
+		const findInGameLocation = (location: string) => {
+			return saveFile.SaveGame.locations.GameLocation.find(
+				(obj: any) => obj[`@_${prefix}:type`] === location,
+			);
+		};
+
+		const farmLocation = findInGameLocation("Farm");
+		const farmHouseLocation = findInGameLocation("FarmHouse");
+
+		const parsedAnimals = parseAnimals(
+			farmLocation?.buildings?.Building || [],
+			farmLocation?.characters?.NPC || null,
+			farmHouseLocation?.characters?.NPC || null,
+			prefix,
+		);
 
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
@@ -115,6 +131,7 @@ export function parseSaveFile(xml: string) {
 					player,
 					saveFile.SaveGame.whichFarm.toString(),
 					version,
+					platform,
 				),
 				bundles: parsedBundles,
 				fishing: parseFishing(player, version),
@@ -143,9 +160,15 @@ export function parseSaveFile(xml: string) {
 					hostMailbox,
 				),
 				rarecrows: parsedRarecrows,
+				animals: {
+					...parsedAnimals,
+					horse: player.horseName,
+				},
 			};
 			processedPlayers.push(processedPlayer);
 		});
+
+		console.log("processedPlayers", processedPlayers);
 
 		// processedPlayers.forEach((p) =>
 		//   console.log(`Player: ${p.general.name} | powers:`, p.powers.collection),

@@ -266,12 +266,14 @@ export interface GeneralRet {
 	jojaMembership?: JojaRet;
 	achievements?: AchievementsRet;
 	islandUpgrades?: IslandUpgradesRet;
+	platform?: "PC" | "Mobile" | "Console";
 }
 
 export function parseGeneral(
 	player: any,
 	whichFarm: string,
 	gameVersion: string,
+	platform?: "PC" | "Mobile",
 ): GeneralRet {
 	try {
 		const playerFormatUpdated = isPlayerFormatUpdated(player);
@@ -300,7 +302,7 @@ export function parseGeneral(
 		const achievements = parseAchievements(player);
 		const islandUpgrades = parseIslandUpgrades(player);
 
-		return {
+		const result: GeneralRet = {
 			name,
 			timePlayed,
 			farmInfo,
@@ -314,6 +316,13 @@ export function parseGeneral(
 			achievements,
 			islandUpgrades,
 		};
+
+		// Only include platform if it's known to be PC or Mobile
+		if (platform) {
+			result.platform = platform;
+		}
+
+		return result;
 	} catch (e) {
 		if (process.env.NODE_ENV === "development") {
 			console.log(e);

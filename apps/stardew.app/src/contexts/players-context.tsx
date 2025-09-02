@@ -25,6 +25,7 @@ import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { BundleWithStatus } from "@/types/bundles";
+import type { AnimalsData } from "@/types/data";
 import type { DeepPartial } from "react-hook-form";
 
 export interface PlayerType {
@@ -44,6 +45,7 @@ export interface PlayerType {
 	perfection?: PerfectionRet;
 	powers?: PowersRet;
 	rarecrows?: RarecrowRet;
+	animals?: AnimalsData;
 }
 
 interface PlayersContextProps {

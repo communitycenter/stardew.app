@@ -15,3 +15,23 @@ export interface MonsterGoal {
 	reward: string;
 	targets: string[];
 }
+
+export interface FarmAnimal {
+	name: string;
+	type: string;
+	age: number;
+	friendship: number;
+	happiness: number;
+}
+
+export interface Pet {
+	name: string;
+	type: string;
+	friendship: number;
+}
+
+export interface AnimalsData {
+	farmAnimals: FarmAnimal[];
+	pets: Pet[];
+	horse?: string;
+}

@@ -10,9 +10,11 @@ import { parsePowers } from "@/lib/parsers/powers";
 import { parseRarecrows } from "@/lib/parsers/rarecrows";
 import { parseShipping } from "@/lib/parsers/shipping";
 import { findChildren, parseSocial } from "@/lib/parsers/social";
+import { parseAnimals } from "./animals";
 
 export {
 	findChildren,
+	parseAnimals,
 	parseBundles,
 	parseCooking,
 	parseCrafting,

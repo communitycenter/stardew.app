@@ -37,6 +37,7 @@ export const saves = mysqlTable(
 		powers: json("powers").notNull().default({}),
 		bundles: json("bundles").notNull().default([]),
 		rarecrows: json("rarecrows").notNull().default([]),
+		animals: json("animals").notNull().default({}),
 	},
 	(table) => {
 		return {

@@ -32,6 +32,7 @@ export interface Player {
 	perfection?: object;
 	powers?: object;
 	rarecrows?: object;
+	animals?: object;
 }
 
 export async function getUID(
