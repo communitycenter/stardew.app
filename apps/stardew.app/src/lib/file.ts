@@ -103,6 +103,8 @@ export function parseSaveFile(xml: string) {
 			GetListOrEmpty(saveFile.SaveGame.player.mailbox, "string"),
 		);
 
+		const parsedRarecrows = parseRarecrows(prefix, saveFile.SaveGame, players);
+
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
@@ -138,7 +140,7 @@ export function parseSaveFile(xml: string) {
 					hostMailForTomorrow,
 					hostMailbox,
 				),
-				rarecrows: parseRarecrows(prefix, saveFile.SaveGame, player),
+				rarecrows: parsedRarecrows,
 			};
 			processedPlayers.push(processedPlayer);
 		});
