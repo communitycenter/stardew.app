@@ -94,10 +94,7 @@ export default function Animals() {
 
 	// Check if they have animal data (not just empty object)
 	const hasAnimalData =
-		activePlayer?.animals &&
-		(activePlayer.animals.farmAnimals?.length > 0 ||
-			activePlayer.animals.pets?.length > 0 ||
-			activePlayer.animals.horse);
+		activePlayer?.animals && Object.keys(activePlayer.animals).length > 0;
 
 	// Animal image URLs - you can replace these with your external URLs
 	const animalImages: Record<string, string> = {
