@@ -1,6 +1,4 @@
-export interface RarecrowRet {
-	rarecrows: string[]; // array of unique parentSheetIndex values found
-}
+export type RarecrowRet = string[]; // array of unique parentSheetIndex values found
 
 // Recursive function to search through any object for rarecrows
 function findRarecrowsInObject(obj: any, path: string = ""): any[] {
@@ -77,7 +75,7 @@ export function parseRarecrows(
 			rarecrowsSet.add(rarecrowType);
 		});
 
-		return { rarecrows: Array.from(rarecrowsSet) };
+		return Array.from(rarecrowsSet);
 	} catch (err) {
 		if (err instanceof Error)
 			throw new Error(`Error in parseRarecrows: ${err.message}`);

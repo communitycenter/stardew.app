@@ -19,7 +19,7 @@ import type { MuseumRet } from "@/lib/parsers/museum";
 import type { NotesRet } from "@/lib/parsers/notes";
 import type { PerfectionRet } from "@/lib/parsers/perfection";
 import type { PowersRet } from "@/lib/parsers/powers";
-import { RarecrowRet } from "@/lib/parsers/rarecrows";
+import type { RarecrowRet } from "@/lib/parsers/rarecrows";
 import type { ScrapsRet } from "@/lib/parsers/scraps";
 import type { ShippingRet } from "@/lib/parsers/shipping";
 import type { SocialRet } from "@/lib/parsers/social";

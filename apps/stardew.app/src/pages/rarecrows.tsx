@@ -86,13 +86,13 @@ export default function RarecrowsPage() {
 		close: () => void,
 	) => {
 		if (!activePlayer) return;
-		const current = new Set(activePlayer.rarecrows?.rarecrows || []);
+		const current = new Set(activePlayer.rarecrows || []);
 		selectedItems.forEach((id) => {
 			if (status === 2) current.add(id);
 			if (status === 0) current.delete(id);
 		});
 		await patchPlayer({
-			rarecrows: { rarecrows: Array.from(current) },
+			rarecrows: Array.from(current),
 		});
 		close();
 	};

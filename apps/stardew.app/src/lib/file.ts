@@ -105,6 +105,8 @@ export function parseSaveFile(xml: string) {
 
 		const parsedRarecrows = parseRarecrows(prefix, saveFile.SaveGame, players);
 
+		console.log("parsedRarecrows", parsedRarecrows);
+
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
