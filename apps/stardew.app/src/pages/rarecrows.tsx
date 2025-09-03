@@ -30,18 +30,6 @@ const RARECROW_DATA: Record<
 	{} as Record<number, (typeof big_craftables)[keyof typeof big_craftables]>,
 );
 
-// TODO: move to CDN
-const RARECROW_IMAGES: Record<number, string> = {
-	110: "https://stardewvalleywiki.com/mediawiki/images/6/62/Rarecrow_1.png",
-	113: "https://stardewvalleywiki.com/mediawiki/images/2/28/Rarecrow_2.png",
-	126: "https://stardewvalleywiki.com/mediawiki/images/e/ea/Rarecrow_3.png",
-	136: "https://stardewvalleywiki.com/mediawiki/images/e/ef/Rarecrow_4.png",
-	137: "https://stardewvalleywiki.com/mediawiki/images/9/9f/Rarecrow_5.png",
-	138: "https://stardewvalleywiki.com/mediawiki/images/2/29/Rarecrow_6.png",
-	139: "https://stardewvalleywiki.com/mediawiki/images/5/52/Rarecrow_7.png",
-	140: "https://stardewvalleywiki.com/mediawiki/images/b/bb/Rarecrow_8.png",
-} as const;
-
 const bubbleColors: Record<string, string> = {
 	"0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // unfound
 	"2": "border-green-900 bg-green-500/20", // found
@@ -224,7 +212,7 @@ export default function RarecrowsPage() {
 										key={id}
 										title={RARECROW_DATA[id].name}
 										description={RARECROW_DATA[id].description}
-										iconURL={RARECROW_IMAGES[id]}
+										iconURL={`https://cdn.stardew.app/images/(BC)${id}.webp`}
 										completed={rarecrowsFound.has(id.toString())}
 										_id={id.toString()}
 										_type="rarecrow"

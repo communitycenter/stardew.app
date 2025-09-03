@@ -135,8 +135,8 @@ const AnimalsContent = () => {
 		"Ostrich": "https://cdn.stardew.app/images/(MISC)Ostrich.webp",
 
 		// Pets
-		"Cat": "https://cdn.stardew.app/images/(MISC)Cat_2.webp",
-		"Dog": "https://cdn.stardew.app/images/(MISC)Dog_1.webp",
+		"Cat": "https://cdn.stardew.app/images/(MISC)Cat.webp",
+		"Dog": "https://cdn.stardew.app/images/(MISC)Dog.webp",
 		"Turtle": "https://cdn.stardew.app/images/(MISC)Turtle.webp",
 	};
 
