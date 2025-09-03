@@ -29,10 +29,10 @@ export default function IslandUpgrades() {
 				key={id}
 				title={upgrade.name}
 				description={
-					<div className="space-y-6 text-white">
+					<div className="space-y-6 ">
 						<section className="space-y-1">
-							<h3 className="font-semibold text-white">Cost</h3>
-							<span className="text-white flex items-center gap-1">
+							<h3 className="font-semibold ">Cost</h3>
+							<span className=" flex items-center gap-1">
 								<span
 									className="align-middle"
 									style={{ imageRendering: "pixelated" }}
@@ -55,12 +55,12 @@ export default function IslandUpgrades() {
 							</span>
 						</section>
 						<section className="space-y-1">
-							<h3 className="font-semibold text-white">Description</h3>
-							<span className="block text-white">{upgrade.description}</span>
+							<h3 className="font-semibold ">Description</h3>
+							<span className="block ">{upgrade.description}</span>
 						</section>
 						<section className="space-y-1">
-							<h3 className="font-semibold text-white">Location</h3>
-							<span className="block text-white">{upgrade.location}</span>
+							<h3 className="font-semibold ">Location</h3>
+							<span className="block ">{upgrade.location}</span>
 						</section>
 					</div>
 				}
@@ -100,7 +100,7 @@ export default function IslandUpgrades() {
 				className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
 			>
 				<div className="mx-auto mt-4 w-full space-y-4">
-					<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
+					<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:">
 						Island Upgrades Tracker{" "}
 						{activePlayer
 							? `(${islandUpgrades.size}/${upgradeCards.length})`
