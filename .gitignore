@@ -13,3 +13,7 @@ venv
 .venv
 __pycache__/
 .sentryclirc
+
+# Test directories
+saves/
+output/

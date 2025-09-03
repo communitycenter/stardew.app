@@ -1,0 +1,18 @@
+{
+  "name": "inventory-parser-test",
+  "version": "1.0.0",
+  "description": "Test script for the inventory parser",
+  "main": "test-inventory.js",
+  "scripts": {
+    "test": "node test-inventory.js",
+    "test-ts": "npx ts-node test-inventory.ts"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}

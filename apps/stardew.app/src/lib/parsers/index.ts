@@ -3,6 +3,7 @@ import { parseCooking } from "@/lib/parsers/cooking";
 import { parseCrafting } from "@/lib/parsers/crafting";
 import { parseFishing } from "@/lib/parsers/fishing";
 import { parseGeneral } from "@/lib/parsers/general";
+import { parseInventory } from "@/lib/parsers/inventory";
 import { parseMonsters } from "@/lib/parsers/monsters";
 import { parseMuseum } from "@/lib/parsers/museum";
 import { parsePerfection } from "@/lib/parsers/perfection";
@@ -20,6 +21,7 @@ export {
 	parseCrafting,
 	parseFishing,
 	parseGeneral,
+	parseInventory,
 	parseMonsters,
 	parseMuseum,
 	parsePerfection,

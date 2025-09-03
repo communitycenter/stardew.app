@@ -7,6 +7,7 @@ import {
 	parseCrafting,
 	parseFishing,
 	parseGeneral,
+	parseInventory,
 	parseMonsters,
 	parseMuseum,
 	parsePerfection,
@@ -123,6 +124,8 @@ export function parseSaveFile(xml: string) {
 			prefix,
 		);
 
+		const inventory = parseInventory(prefix, saveFile.SaveGame, players);
+
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
@@ -164,11 +167,10 @@ export function parseSaveFile(xml: string) {
 					...parsedAnimals,
 					horse: player.horseName,
 				},
+				inventory,
 			};
 			processedPlayers.push(processedPlayer);
 		});
-
-		console.log("processedPlayers", processedPlayers);
 
 		// processedPlayers.forEach((p) =>
 		//   console.log(`Player: ${p.general.name} | powers:`, p.powers.collection),
