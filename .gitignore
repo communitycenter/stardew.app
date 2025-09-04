@@ -13,3 +13,4 @@ venv
 .venv
 __pycache__/
 .sentryclirc
+.env.sentry-build-plugin
