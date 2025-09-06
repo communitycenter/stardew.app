@@ -18,6 +18,7 @@ import {
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseAnimals } from "./parsers/animals";
 import { parseNotes } from "./parsers/notes";
+import { parseRaccoon } from "./parsers/raccoon";
 import { parseScraps } from "./parsers/scraps";
 import { parseWalnuts } from "./parsers/walnuts";
 
@@ -123,6 +124,12 @@ export function parseSaveFile(xml: string) {
 			prefix,
 		);
 
+		const parsedRaccoon = parseRaccoon(
+			saveFile.SaveGame.useLegacyRandom,
+			saveFile.SaveGame.uniqueIDForThisGame,
+			saveFile.SaveGame.timesFedRaccoons,
+		);
+
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
@@ -164,11 +171,10 @@ export function parseSaveFile(xml: string) {
 					...parsedAnimals,
 					horse: player.horseName,
 				},
+				raccoon: parsedRaccoon,
 			};
 			processedPlayers.push(processedPlayer);
 		});
-
-		console.log("processedPlayers", processedPlayers);
 
 		// processedPlayers.forEach((p) =>
 		//   console.log(`Player: ${p.general.name} | powers:`, p.powers.collection),

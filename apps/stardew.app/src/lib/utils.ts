@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import XXH from "xxhashjs";
 
 const semverSatisfies = require("semver/functions/satisfies");
 
@@ -212,4 +213,40 @@ export function getCurrentMasteryLevel(exp: number): number {
 		}
 	}
 	return level;
+}
+
+function getHashFromArray(...values: number[]): number {
+	// JS implementation of StardewValley.Utility.GetDeterministicHashCode() with int array argument
+	const array = new Int32Array(values);
+	const H = XXH.h32();
+	return H.update(array.buffer).digest().toNumber();
+}
+
+export function getRandomSeed(
+	legacyRandom: number,
+	a: number,
+	b: number = 0,
+	c: number = 0,
+	d: number = 0,
+	e: number = 0,
+): number {
+	// Calculates seed value based on the logic of StardewValley.Utility.CreateRandomSeed()
+	if (legacyRandom) {
+		return Math.floor(
+			((a % 2147483647) +
+				(b % 2147483647) +
+				(c % 2147483647) +
+				(d % 2147483647) +
+				(e % 2147483647)) %
+				2147483647,
+		);
+	} else {
+		return getHashFromArray(
+			a % 2147483647,
+			b % 2147483647,
+			c % 2147483647,
+			d % 2147483647,
+			e % 2147483647,
+		);
+	}
 }

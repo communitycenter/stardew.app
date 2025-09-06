@@ -1,0 +1,177 @@
+{
+	"first": [
+		{
+			"item": ["722", "721", "716", "719", "723", "718", "372"],
+			"quantity": 5
+		},
+		{
+			"item": [
+				["136", "132", "700", "702", "156", "267", "706"],
+				[
+					"136",
+					"132",
+					"700",
+					"702",
+					"156",
+					"267",
+					"706",
+					"138",
+					"701",
+					"146",
+					"130"
+				],
+				["136", "132", "700", "702", "156", "701", "269", "139", "139"],
+				["136", "132", "700", "702", "156", "146", "130", "141", "269"]
+			],
+			"quantity": 1
+		},
+		{
+			"reward": [
+				"CarrotSeeds",
+				"SummerSquashSeeds",
+				"BroccoliSeeds",
+				"PowdermelonSeeds"
+			],
+			"quantity": 25
+		}
+	],
+	"second": [
+		{
+			"item": [
+				["90", "634", "638", "400", "88"],
+				["90", "258", "260", "635", "636", "88", "396"],
+				["90", "613", "282", "637", "410", "88", "406"],
+				["90", "414", "414", "88", "Powdermelon", "Powdermelon"]
+			],
+			"quantity": 1
+		},
+		{
+			"reward": ["Book_WildSeeds"],
+			"quantity": 1
+		}
+	],
+	"third": [
+		{
+			"item": [
+				["422", "404", "257"],
+				["422", "404"],
+				["422", "404", "281"],
+				["422", "404"]
+			],
+			"quantity": 1
+		},
+		{
+			"item": ["Any Egg (excluding Dinosaur)", "78", "157"],
+			"quantity": 5
+		},
+		{
+			"reward": ["Raccoon Hat"],
+			"quantity": 1
+		}
+	],
+	"fourth": [
+		{
+			"item": [
+				["190", "188", "250", "192", "16", "22", "Carrot", "Carrot"],
+				["270", "264", "256", "78", "SummerSquash", "SummerSquash"],
+				["Broccoli", "Broccoli", "278", "272", "276"],
+				["416", "412", "78"]
+			],
+			"quantity": 1
+		},
+		{
+			"reward": ["872"],
+			"quantity": 5
+		}
+	],
+	"fifth": [
+		{
+			"item": ["Moss"],
+			"quantity": 10
+		},
+		{
+			"item": ["110"],
+			"quantity": 1
+		},
+		{
+			"item": ["168"],
+			"quantity": 5
+		},
+		{
+			"item": ["766"],
+			"quantity": 99
+		},
+		{
+			"item": ["767"],
+			"quantity": 20
+		},
+		{
+			"item": ["535"],
+			"quantity": 8
+		},
+		{
+			"item": ["536"],
+			"quantity": 5
+		},
+		{
+			"item": ["537"],
+			"quantity": 3
+		},
+		{
+			"item": ["393"],
+			"quantity": 4
+		},
+		{
+			"item": ["397"],
+			"quantity": 2
+		},
+		{
+			"item": ["684"],
+			"quantity": 20
+		},
+		{
+			"item": ["72"],
+			"quantity": 1
+		},
+		{
+			"item": ["68"],
+			"quantity": 3
+		},
+		{
+			"item": ["156"],
+			"quantity": 3
+		},
+		{
+			"reward": ["Jungle Tank"],
+			"quantity": 1
+		}
+	],
+	"randomRewards": [
+		{
+			"reward": ["872"],
+			"quantity": 7
+		},
+		{
+			"reward": ["PurpleBook"],
+			"quantity": 1
+		},
+		{
+			"reward": ["Next unshipped item (other than Roe and Artisan Goods)"],
+			"quantity": 1,
+			"fallback": { "reward": ["MysteryBox"], "quantity": 5 }
+		},
+		{
+			"reward": ["StardropTea"],
+			"quantity": 1
+		},
+		{
+			"reward": [
+				"CarrotSeeds",
+				"SummerSquashSeeds",
+				"BroccoliSeeds",
+				"PowdermelonSeeds"
+			],
+			"quantity": 25
+		}
+	]
+}
