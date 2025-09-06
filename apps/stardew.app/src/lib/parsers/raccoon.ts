@@ -20,7 +20,7 @@ interface ParsedRequests {
 // Context object used during parsing of each request
 interface RequestContext {
 	requestItems: Request[]; // The array of items/rewards for the current request
-	rng: InstanceType<typeof CSRandom>[]; // Array of RNG instances, one per season
+	rng: CSRandom[]; // Array of RNG instances, one per season
 	prevRoll: number[]; // Array storing the last picked index per season, used to avoid duplicates
 }
 
@@ -60,7 +60,7 @@ const getObjectName = (key: string | string[]) =>
 
 // This selects an item for each season, optionally avoiding duplicates from prevRoll
 const generateSeasonArray = (
-	rng: InstanceType<typeof CSRandom>[],
+	rng: CSRandom[],
 	items: string[] | string[][],
 	prefix: string,
 	prevRoll?: number[],
@@ -226,8 +226,7 @@ const handleReward = (
 		if (rewardDef) pushReward(ctx, rewardDef);
 	} else {
 		// Random rewards: generate RNG and pick one
-		const RewardCtor: any = CSRandom as any;
-		const rewardRng = new RewardCtor(
+		const rewardRng = new CSRandom(
 			getRandomSeed(legacyRandom, saveID, (timesFed + 1) * SEED_MULTIPLIER),
 		);
 		for (let i = 0; i < RNG_BURN_COUNT; i++) {
@@ -262,8 +261,7 @@ export function parseRaccoon(
 
 		// Initialize RNGs, one per season
 		for (let s = 0; s < SEASONS; s++) {
-			const CSRandomCtor: any = CSRandom as any;
-			ctx.rng[s] = new CSRandomCtor(
+			ctx.rng[s] = new CSRandom(
 				getRandomSeed(legacyRandom, saveID, timesFed * SEED_MULTIPLIER),
 			);
 
