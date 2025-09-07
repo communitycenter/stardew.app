@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { useMultiSelect } from "@/contexts/multi-select-context";
-import { Stardrop, IslandUpgradeMail } from "@/lib/parsers/general";
+import { IslandUpgradeMail, Stardrop } from "@/lib/parsers/general";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 interface Props {
@@ -36,7 +36,14 @@ interface Props {
 	iconURL: string;
 	completed?: boolean;
 	_id: string;
-	_type: "stardrop" | "note" | "scrap" | "walnut" | "power" | "rarecrow" | "island_upgrade";
+	_type:
+		| "stardrop"
+		| "note"
+		| "scrap"
+		| "walnut"
+		| "power"
+		| "rarecrow"
+		| "island_upgrade";
 	/**
 	 * Whether the user prefers to see new content
 	 *
@@ -134,21 +141,20 @@ export const DialogCard = ({
 			case "power":
 				let powers = new Set(activePlayer?.powers?.collection ?? []);
 
-				console.log("initial powers:", powers);
-
 				if (status) powers.add(_id);
 				else powers.delete(_id);
-
-				console.log("final powers:", powers);
 
 				patch = {
 					powers: {
 						collection: Array.from(powers),
 					},
 				};
+				break;
 
 			case "island_upgrade":
-				const islandUpgrades = new Set(activePlayer.general?.islandUpgrades ?? []);
+				const islandUpgrades = new Set(
+					activePlayer.general?.islandUpgrades ?? [],
+				);
 				if (status) islandUpgrades.add(_id as IslandUpgradeMail);
 				else islandUpgrades.delete(_id as IslandUpgradeMail);
 

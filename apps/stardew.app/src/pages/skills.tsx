@@ -58,10 +58,14 @@ export default function SkillsMasteryPowers() {
 					additionalDescription = ` - ${reqs[name] - maxLevelCount} left`;
 				}
 			} else if (powers.has(name)) {
-				// use the size of playerPowers and compare to reqs
-				if (playerPowers.size >= reqs[name]) completed = true;
+				// use the length of books from playerPowers and compare to reqs
+				const books = Array.from(playerPowers).filter((power) =>
+					power.startsWith("Book"),
+				);
+
+				if (books.length >= reqs[name]) completed = true;
 				else {
-					additionalDescription = ` - ${reqs[name] - playerPowers.size} left`;
+					additionalDescription = ` - ${reqs[name] - books.length} left`;
 				}
 			}
 		}
