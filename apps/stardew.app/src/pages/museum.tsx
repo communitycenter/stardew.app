@@ -175,6 +175,11 @@ export default function Museum() {
 									<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 										{Object.values(achievements)
 											.filter((a) => a.description.includes("museum"))
+											.sort((a, b) => {
+												if (a.name === "A Complete Collection") return 1;
+												if (b.name === "A Complete Collection") return -1;
+												return a.id - b.id;
+											})
 											.map((achievement) => {
 												const { completed, additionalDescription } =
 													getAchievementProgress(achievement.name);

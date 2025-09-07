@@ -60,7 +60,7 @@ export const collectionsNavigation = [
 	{ name: "Crafting", href: "/crafting", icon: IconHammer },
 	{ name: "Fishing", href: "/fishing", icon: IconFishHook },
 	{ name: "Shipping", href: "/shipping", icon: IconGardenCart },
-	{ name: "Museum & Artifacts", href: "/museum", icon: IconBuildingWarehouse },
+	{ name: "Museum", href: "/museum", icon: IconBuildingWarehouse },
 ];
 
 export const islandNavigation = [
