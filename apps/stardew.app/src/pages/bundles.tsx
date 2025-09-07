@@ -130,7 +130,7 @@ function BundleAccordion(props: BundleAccordionProps): JSX.Element {
 	const remainingCount = requiredItems - completedItems;
 	const bundleCompleted = completedItems >= requiredItems;
 
-	const bundleName = props.bundleWithStatus.bundle.localizedName;
+	const bundleName = props.bundleWithStatus.bundle.name;
 
 	const [selectedBundleName, setSelectedBundleName] = useState(
 		props.bundleWithStatus.bundle.name,
