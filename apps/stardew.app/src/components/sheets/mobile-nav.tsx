@@ -22,6 +22,7 @@ import { PlayersContext } from "@/contexts/players-context";
 
 import {
 	collectionsNavigation,
+	islandNavigation,
 	linksNavigation,
 	miscNavigation,
 	playerNavigation,
@@ -71,8 +72,6 @@ export const MobileNav = ({
 		setIsOpen(false);
 
 		if (typeof file === "undefined" || !file) return;
-
-		console.log(file);
 
 		if (file.type !== "") {
 			toast.error("Invalid file type", {
@@ -315,6 +314,36 @@ export const MobileNav = ({
 								</h4>
 								<div className="space-y-1">
 									{collectionsNavigation.map((item) => (
+										<Button
+											key={item.href}
+											variant={pathname === item.href ? "secondary" : "ghost"}
+											className={cn(
+												"w-full justify-start",
+												item.href === pathname
+													? ""
+													: "text-neutral-600 dark:text-neutral-400",
+											)}
+											asChild
+											onClick={() => setIsOpen(false)}
+										>
+											<Link href={item.href}>
+												<item.icon
+													className="mr-2 h-4 w-4"
+													aria-hidden="true"
+												/>
+												{item.name}
+											</Link>
+										</Button>
+									))}
+								</div>
+							</section>
+							{/* Ginger Island */}
+							<section>
+								<h4 className="mb-2 mt-4 font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
+									Ginger Island
+								</h4>
+								<div className="space-y-1">
+									{islandNavigation.map((item) => (
 										<Button
 											key={item.href}
 											variant={pathname === item.href ? "secondary" : "ghost"}
