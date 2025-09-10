@@ -224,6 +224,10 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 						// which will clobber the existing bundle data since mysql doesn't support arrays properly.
 						normalizedPatch.bundles = activePlayer.bundles;
 					}
+					if (!normalizedPatch.rarecrows) {
+						// Turns out, the same issue exists for rarecrows!
+						normalizedPatch.rarecrows = activePlayer.rarecrows;
+					}
 					// console.log("Normalizing patch:");
 					// console.dir(normalizedPatch);
 					await fetch(`/api/saves/${activePlayer._id}`, {
