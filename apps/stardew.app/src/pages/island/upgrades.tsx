@@ -100,7 +100,7 @@ export default function IslandUpgrades() {
 				className={`flex min-h-screen border-neutral-200 dark:border-neutral-800 md:border-l ${inter.className} px-8 py-2`}
 			>
 				<div className="mx-auto mt-4 w-full space-y-4">
-					<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:">
+					<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
 						Island Upgrades Tracker{" "}
 						{activePlayer
 							? `(${islandUpgrades.size}/${upgradeCards.length})`
