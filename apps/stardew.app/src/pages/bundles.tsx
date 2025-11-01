@@ -37,7 +37,10 @@ import { PlayerType, usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
-import { BundleItemCard } from "@/components/cards/bundle-item-card";
+import {
+	BundleItemCard,
+	bundleItemName,
+} from "@/components/cards/bundle-item-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle-sheet";
 import {
@@ -47,7 +50,10 @@ import {
 	AccordionTrigger,
 	AccordionTriggerNoToggle,
 } from "@/components/ui/accordion";
+import { Command, CommandInput } from "@/components/ui/command";
 import { Progress } from "@/components/ui/progress";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconSettings } from "@tabler/icons-react";
 import clsx from "clsx";
@@ -58,6 +64,12 @@ export const ItemQualityToString = {
 	"1": "Silver",
 	"2": "Gold",
 	"3": "Iridium",
+};
+
+const bubbleColors: Record<string, string> = {
+	"0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // unknown or not completed
+	"1": "border-yellow-900 bg-yellow-500/20", // known, but not completed
+	"2": "border-green-900 bg-green-500/20", // completed
 };
 
 type BundleAccordionProps = {
@@ -71,6 +83,12 @@ type AccordionSectionProps = {
 	title: string;
 	children: JSX.Element | JSX.Element[];
 	completedCount?: number;
+};
+
+type FilteredBundle = {
+	bundleWithStatus: BundleWithStatus;
+	items: (BundleItem | Randomizer)[];
+	matchesSearch: boolean;
 };
 
 const CommunityCenterRooms: CommunityCenterRoomName[] = [
@@ -417,6 +435,11 @@ export default function Bundles() {
 	let [open, setIsOpen] = useState(false);
 	let [object, setObject] = useState<BundleItemWithLocation | null>(null);
 	let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
+	let [completeCount, setCompleteCount] = useState(0);
+	let [incompleteCount, setIncompleteCount] = useState(0);
+	let [filter, setFilter] = useState("all");
+	let [search, setSearch] = useState("");
+
 	const { activePlayer, patchPlayer } = usePlayers();
 
 	function GetActiveBundles(
@@ -477,7 +500,13 @@ export default function Bundles() {
 	}
 
 	useEffect(() => {
-		setBundles(GetActiveBundles(activePlayer));
+		const activeBundles = GetActiveBundles(activePlayer);
+		const _completeCount = activeBundles.filter(BundleCompleted).length;
+		const _incompleteCount = activeBundles.length - _completeCount;
+
+		setBundles(activeBundles);
+		setCompleteCount(_completeCount);
+		setIncompleteCount(_incompleteCount);
 	}, [activePlayer]);
 
 	const getAchievementProgress = (name: string) => {
@@ -563,9 +592,53 @@ export default function Bundles() {
 								);
 							})}
 					</AccordionSection>
+					{/* Filters and Actions Row */}
+					<div className="flex w-full flex-row items-center justify-between">
+						<ToggleGroup
+							variant="outline"
+							type="single"
+							value={filter}
+							onValueChange={(val: string) =>
+								setFilter(val === filter ? "all" : val)
+							}
+							className="gap-2"
+						>
+							<ToggleGroupItem value="0" aria-label="Show Incomplete">
+								<span
+									className={cn(
+										"inline-block h-4 w-4 rounded-full border align-middle",
+										bubbleColors["0"],
+									)}
+								/>
+								<span className="align-middle">
+									Incomplete ({incompleteCount})
+								</span>
+							</ToggleGroupItem>
+							<ToggleGroupItem value="2" aria-label="Show Complete">
+								<span
+									className={cn(
+										"inline-block h-4 w-4 rounded-full border align-middle",
+										bubbleColors["2"],
+									)}
+								/>
+								<span className="align-middle">Complete ({completeCount})</span>
+							</ToggleGroupItem>
+						</ToggleGroup>
+					</div>
+					{/* Search Bar Row */}
+					<div className="mt-2 w-full">
+						<Command className="w-full border border-b-0 dark:border-neutral-800">
+							<CommandInput
+								onValueChange={(v) => setSearch(v?.toLowerCase())}
+								placeholder="Search Bundles"
+							/>
+						</Command>
+					</div>
 					{CommunityCenterRooms.map((roomName: CommunityCenterRoomName) => {
 						let roomBundles: BundleWithStatus[] = [];
 						let completedCount = 0;
+						const roomMatched =
+							!search || roomName.toLowerCase().includes(search);
 						if (activePlayer && Array.isArray(activePlayer.bundles)) {
 							roomBundles = activePlayer.bundles.filter((bundleWithStatus) => {
 								if (bundleWithStatus?.bundle) {
@@ -584,13 +657,64 @@ export default function Bundles() {
 									bundleWithStatus.bundle.areaName === roomName,
 							);
 						}
+						const filteredBundles: FilteredBundle[] = roomBundles
+							.filter((bundleWithStatus) => {
+								switch (filter) {
+									case "0":
+										return !BundleCompleted(bundleWithStatus);
+									case "2":
+										return BundleCompleted(bundleWithStatus);
+									case "all":
+									default:
+										return true;
+								}
+							})
+							.map((bundleWithStatus): FilteredBundle => {
+								const bundleMatched =
+									roomMatched ||
+									bundleWithStatus.bundle.name.toLowerCase().includes(search);
+
+								return {
+									bundleWithStatus: bundleWithStatus,
+									items: bundleWithStatus.bundle.items
+										.filter((_, idx) => {
+											switch (filter) {
+												case "0":
+													return !bundleWithStatus.bundleStatus[idx];
+												case "2":
+													return bundleWithStatus.bundleStatus[idx];
+												case "all":
+												default:
+													return true;
+											}
+										})
+										.filter((item) => {
+											if (bundleMatched) {
+												return true;
+											}
+
+											return (
+												!isRandomizer(item) &&
+												bundleItemName(item).toLowerCase().includes(search)
+											);
+										}),
+									matchesSearch: bundleMatched,
+								};
+							})
+							.filter((filteredBundle) => filteredBundle.items.length !== 0);
+
+						if (filteredBundles.length === 0) {
+							return;
+						}
+
 						return (
 							<AccordionSection
 								key={roomName}
 								title={roomName}
 								completedCount={completedCount}
 							>
-								{roomBundles.map((bundleWithStatus: BundleWithStatus) => {
+								{filteredBundles.map((filteredBundle: FilteredBundle) => {
+									const bundleWithStatus = filteredBundle.bundleWithStatus;
 									return (
 										<BundleAccordion
 											key={bundleWithStatus.bundle.localizedName}
@@ -606,32 +730,30 @@ export default function Bundles() {
 											})}
 											onChangeBundle={SwapBundle}
 										>
-											{bundleWithStatus.bundle.items.map ? (
-												bundleWithStatus.bundle.items.map(
-													(item, index: number) => {
-														if (isRandomizer(item)) {
-															// Guard clause for type coercion
-															return <></>;
-														}
-														const BundleItemWithLocation: BundleItemWithLocation =
-															{
-																...item,
-																index: index,
-																bundleID: bundleWithStatus.bundle.name,
-															};
-														return (
-															<BundleItemCard
-																key={item.itemID + "-" + index}
-																item={BundleItemWithLocation}
-																setIsOpen={setIsOpen}
-																completed={bundleWithStatus.bundleStatus[index]}
-																setObject={setObject}
-																show={show}
-																setPromptOpen={setPromptOpen}
-															/>
-														);
-													},
-												)
+											{filteredBundle.items ? (
+												filteredBundle.items.map((item, index: number) => {
+													if (isRandomizer(item)) {
+														// Guard clause for type coercion
+														return <></>;
+													}
+													const BundleItemWithLocation: BundleItemWithLocation =
+														{
+															...item,
+															index: index,
+															bundleID: bundleWithStatus.bundle.name,
+														};
+													return (
+														<BundleItemCard
+															key={item.itemID + "-" + index}
+															item={BundleItemWithLocation}
+															setIsOpen={setIsOpen}
+															completed={bundleWithStatus.bundleStatus[index]}
+															setObject={setObject}
+															show={show}
+															setPromptOpen={setPromptOpen}
+														/>
+													);
+												})
 											) : (
 												<>error</>
 											)}
