@@ -177,6 +177,13 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/FracturedShader">
+            <img src="https://avatars.githubusercontent.com/u/2058808?v=4" width="100;" alt="FracturedShader"/>
+            <br />
+            <sub><b>Robert Plante</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/JakobDev">
             <img src="https://avatars.githubusercontent.com/u/15185051?v=4" width="100;" alt="JakobDev"/>
             <br />
@@ -210,15 +217,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Caoimhe</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/colemilne54">
             <img src="https://avatars.githubusercontent.com/u/20178496?v=4" width="100;" alt="colemilne54"/>
             <br />
             <sub><b>Cole Milne</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/AnotherPillow">
             <img src="https://avatars.githubusercontent.com/u/85362273?v=4" width="100;" alt="AnotherPillow"/>
