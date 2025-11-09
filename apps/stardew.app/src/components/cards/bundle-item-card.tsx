@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import { usePlayers } from "@/contexts/players-context";
 
 import { categoryIcons, goldIcons } from "@/lib/constants";
-import { BundleItemWithLocation } from "@/types/bundles";
+import { BundleItem, BundleItemWithLocation } from "@/types/bundles";
 import { BooleanCard } from "./boolean-card";
 
 interface BundleItemCardProps {
@@ -27,6 +27,23 @@ interface BundleItemCardProps {
 	 * @memberof BundleItemCardProps
 	 */
 	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
+}
+
+const categoryItems: Record<string, string> = {
+	"-4": "Any Fish",
+	"-5": "Any Egg",
+	"-6": "Any Milk",
+	"-777": "Wild Seeds (Any)",
+};
+
+export function bundleItemName<T extends BundleItem>(item: T): string {
+	if (item.itemID == "-1") {
+		return "Gold";
+	} else if (item.itemID in categoryItems) {
+		return categoryItems[item.itemID];
+	}
+
+	return objects[item.itemID as keyof typeof objects]?.name;
 }
 
 export const BundleItemCard = ({
@@ -51,13 +68,6 @@ export const BundleItemCard = ({
 	}
 	let overrides: Record<string, string | number | boolean | undefined> = {};
 	let unknownItem: Boolean = false;
-
-	const categoryItems: Record<string, string> = {
-		"-4": "Any Fish",
-		"-5": "Any Egg",
-		"-6": "Any Milk",
-		"-777": "Wild Seeds (Any)",
-	};
 
 	if (item.itemID == "-1") {
 		//Special case for handling gold in Vault bundles
