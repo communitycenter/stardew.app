@@ -16,6 +16,7 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterSearch } from "@/components/filter-btn";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
 	Accordion,
@@ -27,6 +28,9 @@ import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
+
+import { IngredientList } from "@/components/ingredient-list";
+import { IconClock } from "@tabler/icons-react";
 
 const semverGte = require("semver/functions/gte");
 
@@ -41,6 +45,29 @@ const bubbleColors: Record<string, string> = {
 	"1": "border-yellow-900 bg-yellow-500/20", // known, but not completed
 	"2": "border-green-900 bg-green-500/20", // completed
 };
+
+const seasons = [
+	{
+		value: "all",
+		label: "All Seasons",
+	},
+	{
+		value: "Spring",
+		label: "Spring",
+	},
+	{
+		value: "Summer",
+		label: "Summer",
+	},
+	{
+		value: "Fall",
+		label: "Fall",
+	},
+	{
+		value: "Winter",
+		label: "Winter",
+	},
+];
 
 export default function Cooking() {
 	const [open, setIsOpen] = useState(false);
@@ -65,6 +92,8 @@ export default function Cooking() {
 		selectedItems,
 		clearSelection,
 	} = useMultiSelect();
+
+	const [_seasonFilter, setSeasonFilter] = useState("all");
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -172,6 +201,73 @@ export default function Cooking() {
 												);
 											})}
 									</div>
+								</AccordionContent>
+							</AccordionItem>
+						</section>
+					</Accordion>
+					{/* Needed Ingredients Section */}
+					<Accordion type="single" collapsible asChild>
+						<section className="space-y-3">
+							<AccordionItem value="item-1">
+								<AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+									Needed Ingredients
+								</AccordionTrigger>
+								<AccordionContent asChild>
+									{/* Filters and Actions Row */}
+									<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+										<div className="flex flex-row items-center gap-2">
+											<ToggleGroup
+												variant="outline"
+												type="single"
+												value={_filter}
+												onValueChange={(val) =>
+													setFilter(val === _filter ? "all" : val)
+												}
+												className="gap-2"
+											>
+												<ToggleGroupItem value="0" aria-label="Show Unknown">
+													<span
+														className={cn(
+															"inline-block h-4 w-4 rounded-full border align-middle",
+															bubbleColors["0"],
+														)}
+													/>
+													<span className="align-middle">
+														Unknown (
+														{reqs["Gourmet Chef"] - (knownCount + cookedCount)})
+													</span>
+												</ToggleGroupItem>
+												<ToggleGroupItem value="1" aria-label="Show Known">
+													<span
+														className={cn(
+															"inline-block h-4 w-4 rounded-full border align-middle",
+															bubbleColors["1"],
+														)}
+													/>
+													<span className="align-middle">
+														Known ({knownCount})
+													</span>
+												</ToggleGroupItem>
+											</ToggleGroup>
+										</div>
+										<div className="flex gap-2">
+											<FilterSearch
+												_filter={_seasonFilter}
+												title={"Seasons"}
+												data={seasons}
+												setFilter={setSeasonFilter}
+												icon={IconClock}
+											/>
+										</div>
+									</div>
+									<IngredientList<Recipe>
+										recipes={recipes}
+										playerRecipes={playerRecipes}
+										show={show}
+										setPromptOpen={setPromptOpen}
+										filterKnown={_filter}
+										filterSeason={_seasonFilter}
+									/>
 								</AccordionContent>
 							</AccordionItem>
 						</section>
