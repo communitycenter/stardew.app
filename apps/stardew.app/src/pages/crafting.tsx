@@ -16,6 +16,7 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { RequiredIngredientsList } from "@/components/required-ingredients-list";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
 	Accordion,
@@ -26,7 +27,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { cn } from "@/lib/utils";
+import { useFeatureGate } from "@/contexts/feature-gate-context";
+import {
+	cn,
+	composeShoppingList,
+	composeShoppingListItems,
+	getFilteredRecipes,
+} from "@/lib/utils";
 import { X } from "lucide-react";
 
 const semverGte = require("semver/functions/gte");
@@ -65,6 +72,8 @@ export default function Crafting() {
 		selectedItems,
 		clearSelection,
 	} = useMultiSelect();
+	const { isFeatureEnabled } = useFeatureGate();
+	const isCraftingIngredientsEnabled = isFeatureEnabled("crafting-ingredients");
 
 	const [bulkActionOpen, setBulkActionOpen] = useState(false);
 
@@ -126,6 +135,28 @@ export default function Crafting() {
 			return objects[id as keyof typeof objects].name;
 		}
 	};
+
+	const [filteredRecipes, requiredIngredients, totalQuantity] = useMemo(() => {
+		const filteredRecipes = getFilteredRecipes<CraftingRecipe>(
+			recipes,
+			gameVersion,
+			search,
+			_filter,
+			playerRecipes,
+			(r: CraftingRecipe) => getName(r.itemID, r.isBigCraftable),
+		);
+
+		const shoppingList = composeShoppingList(filteredRecipes);
+
+		const totalQuantity = Object.values(shoppingList).reduce(
+			(acc, quantity) => acc + quantity,
+			0,
+		);
+
+		const shoppingListItems = composeShoppingListItems(shoppingList);
+
+		return [filteredRecipes, shoppingListItems, totalQuantity];
+	}, [gameVersion, playerRecipes, search, _filter]);
 
 	return (
 		<>
@@ -281,48 +312,30 @@ export default function Crafting() {
 						</div>
 						{/* Cards */}
 						<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-							{Object.values(recipes)
-								.filter((r) => semverGte(gameVersion, r.minVersion))
-								.filter((r) => {
-									if (!search) return true;
-									const name = getName(r.itemID, r.isBigCraftable);
-									return name.toLowerCase().includes(search.toLowerCase());
-								})
-								.filter((r) => {
-									if (_filter === "0") {
-										// unknown recipes (not in playerRecipes)
-										return !(
-											r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
-										);
-									} else if (_filter === "1") {
-										// known recipes (in playerRecipes) and not cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
-										);
-									} else if (_filter === "2") {
-										// cooked recipes (in playerRecipes) and cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
-										);
-									} else return true; // all recipes
-								})
-								.map((f, index, filteredRecipes) => (
-									<RecipeCard<CraftingRecipe>
-										key={f.itemID}
-										recipe={f}
-										status={
-											f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
-										}
-										setIsOpen={setIsOpen}
-										setObject={setRecipe}
-										setPromptOpen={setPromptOpen}
-										show={show}
-										index={index}
-										allRecipes={filteredRecipes as CraftingRecipe[]}
-									/>
-								))}
+							{filteredRecipes.map((f, index, filteredRecipes) => (
+								<RecipeCard<CraftingRecipe>
+									key={f.itemID}
+									recipe={f}
+									status={
+										f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
+									}
+									setIsOpen={setIsOpen}
+									setObject={setRecipe}
+									setPromptOpen={setPromptOpen}
+									show={show}
+									index={index}
+									allRecipes={filteredRecipes as CraftingRecipe[]}
+								/>
+							))}
 						</div>
 					</section>
+					{/* Required Ingredients Section */}
+					{isCraftingIngredientsEnabled && (
+						<RequiredIngredientsList
+							title={`Required Ingredients (x${totalQuantity})`}
+							requiredIngredients={requiredIngredients}
+						/>
+					)}
 				</div>
 				<RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
 				<UnblurDialog
