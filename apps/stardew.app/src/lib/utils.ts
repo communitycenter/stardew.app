@@ -271,3 +271,77 @@ export function bundleItemName<T extends BundleItem>(item: T): string {
 
 	return objects[item.itemID as keyof typeof objects]?.name;
 }
+
+export const composeShoppingListItems = (
+	shoppingList: Record<string, number>,
+) =>
+	Object.entries(shoppingList)
+		.sort((a, b) => b[1] - a[1])
+		.map(([itemID, quantity]) => {
+			const imagePath =
+				parseInt(itemID, 10) < 0
+					? `(C)${itemID}`
+					: /\(\S+\)/.test(itemID)
+						? itemID
+						: `(O)${itemID}`;
+
+			return {
+				itemID,
+				quantity,
+				name: bundleItemName({
+					itemID,
+					itemQuantity: quantity as number,
+					itemQuality: "0",
+				}),
+				sourceURL: `https://cdn.stardew.app/images/${imagePath}.webp`,
+			};
+		});
+
+interface Recipe {
+	ingredients: Array<{
+		itemID: string;
+		quantity: number;
+	}>;
+	itemID: string;
+	minVersion: string;
+	unlockConditions: string;
+}
+
+export const composeShoppingList = (filteredRecipes: Recipe[]) =>
+	filteredRecipes.reduce(
+		(acc, r) => {
+			r.ingredients.forEach((i) => {
+				acc[i.itemID] = (acc[i.itemID] || 0) + i.quantity;
+			});
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
+
+export const getFilteredRecipes = <T extends Recipe>(
+	recipes: Record<string, T>,
+	gameVersion: string,
+	search: string,
+	_filter: string,
+	playerRecipes: Record<string, 0 | 1 | 2>,
+	getNameFn: (r: T) => string,
+): T[] => {
+	return Object.values(recipes)
+		.filter((r) => semverGte(gameVersion, r.minVersion))
+		.filter((r) => {
+			if (!search) return true;
+			return getNameFn(r).toLowerCase().includes(search.toLowerCase());
+		})
+		.filter((r) => {
+			if (_filter === "0") {
+				// unknown recipes (not in playerRecipes)
+				return !(r.itemID in playerRecipes && playerRecipes[r.itemID] > 0);
+			} else if (_filter === "1") {
+				// known recipes (in playerRecipes) and not cooked
+				return r.itemID in playerRecipes && playerRecipes[r.itemID] === 1;
+			} else if (_filter === "2") {
+				// cooked recipes (in playerRecipes) and cooked
+				return r.itemID in playerRecipes && playerRecipes[r.itemID] === 2;
+			} else return true; // all recipes
+		});
+};

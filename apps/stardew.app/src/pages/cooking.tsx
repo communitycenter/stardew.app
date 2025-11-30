@@ -16,6 +16,7 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { RequiredIngredientsList } from "@/components/required-ingredients-list";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
 	Accordion,
@@ -26,7 +27,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { cn } from "@/lib/utils";
+import { useFeatureGate } from "@/contexts/feature-gate-context";
+import {
+	cn,
+	composeShoppingList,
+	composeShoppingListItems,
+	getFilteredRecipes,
+} from "@/lib/utils";
 
 const semverGte = require("semver/functions/gte");
 
@@ -64,7 +71,11 @@ export default function Cooking() {
 		toggleMultiSelectMode,
 		selectedItems,
 		clearSelection,
+		addItems,
 	} = useMultiSelect();
+
+	const { isFeatureEnabled } = useFeatureGate();
+	const isCookingIngredientsEnabled = isFeatureEnabled("cooking-ingredients");
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -114,6 +125,28 @@ export default function Cooking() {
 		}
 		return { completed, additionalDescription };
 	};
+
+	const [filteredRecipes, requiredIngredients, totalQuantity] = useMemo(() => {
+		const filteredRecipes = getFilteredRecipes(
+			recipes,
+			gameVersion,
+			search,
+			_filter,
+			playerRecipes,
+			(r) => objects[r.itemID as keyof typeof objects].name,
+		);
+
+		const shoppingList = composeShoppingList(filteredRecipes);
+
+		const totalQuantity = Object.values(shoppingList).reduce(
+			(acc, quantity) => acc + quantity,
+			0,
+		);
+
+		const shoppingListItems = composeShoppingListItems(shoppingList);
+
+		return [filteredRecipes, shoppingListItems, totalQuantity];
+	}, [gameVersion, playerRecipes, search, _filter]);
 
 	return (
 		<>
@@ -224,6 +257,17 @@ export default function Cooking() {
 								</ToggleGroupItem>
 							</ToggleGroup>
 							<div className="flex flex-row items-center gap-2">
+								{isMultiSelectMode && (
+									<Button
+										variant={isMultiSelectMode ? "default" : "outline"}
+										onClick={() => {
+											addItems(filteredRecipes.map((r) => r.itemID));
+										}}
+									>
+										Select All
+									</Button>
+								)}
+
 								<Button
 									variant={isMultiSelectMode ? "default" : "outline"}
 									onClick={() => {
@@ -269,48 +313,30 @@ export default function Cooking() {
 						</div>
 						{/* Cards */}
 						<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-							{Object.values(recipes)
-								.filter((r) => semverGte(gameVersion, r.minVersion))
-								.filter((r) => {
-									if (!search) return true;
-									const name = objects[r.itemID as keyof typeof objects].name;
-									return name.toLowerCase().includes(search.toLowerCase());
-								})
-								.filter((r) => {
-									if (_filter === "0") {
-										// unknown recipes (not in playerRecipes)
-										return !(
-											r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
-										);
-									} else if (_filter === "1") {
-										// known recipes (in playerRecipes) and not cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
-										);
-									} else if (_filter === "2") {
-										// cooked recipes (in playerRecipes) and cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
-										);
-									} else return true; // all recipes
-								})
-								.map((f, index, filteredRecipes) => (
-									<RecipeCard
-										key={f.itemID}
-										recipe={f}
-										status={
-											f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
-										}
-										setIsOpen={setIsOpen}
-										setObject={setRecipe}
-										setPromptOpen={setPromptOpen}
-										show={show}
-										index={index}
-										allRecipes={filteredRecipes}
-									/>
-								))}
+							{filteredRecipes.map((f, index, filteredRecipes) => (
+								<RecipeCard
+									key={f.itemID}
+									recipe={f}
+									status={
+										f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
+									}
+									setIsOpen={setIsOpen}
+									setObject={setRecipe}
+									setPromptOpen={setPromptOpen}
+									show={show}
+									index={index}
+									allRecipes={filteredRecipes}
+								/>
+							))}
 						</div>
 					</section>
+					{/* Required Ingredients Section */}
+					{isCookingIngredientsEnabled && (
+						<RequiredIngredientsList
+							title={`Required Ingredients (x${totalQuantity})`}
+							requiredIngredients={requiredIngredients}
+						/>
+					)}
 				</div>
 				<RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
 				<UnblurDialog
