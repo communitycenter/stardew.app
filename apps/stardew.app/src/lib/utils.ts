@@ -2,7 +2,11 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import XXH from "xxhashjs";
 
+import objects from "@/data/objects.json";
+import { BundleItem } from "@/types/bundles";
+
 const semverSatisfies = require("semver/functions/satisfies");
+const semverGte = require("semver/functions/gte");
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -249,4 +253,21 @@ export function getRandomSeed(
 			e % 2147483647,
 		);
 	}
+}
+
+export const categoryItems: Record<string, string> = {
+	"-4": "Any Fish",
+	"-5": "Any Egg",
+	"-6": "Any Milk",
+	"-777": "Wild Seeds (Any)",
+};
+
+export function bundleItemName<T extends BundleItem>(item: T): string {
+	if (item.itemID == "-1") {
+		return "Gold";
+	} else if (item.itemID in categoryItems) {
+		return categoryItems[item.itemID];
+	}
+
+	return objects[item.itemID as keyof typeof objects]?.name;
 }

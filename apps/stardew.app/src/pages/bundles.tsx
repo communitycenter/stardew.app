@@ -38,8 +38,7 @@ import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import {
-	BundleItemCard,
-	bundleItemName,
+	BundleItemCard
 } from "@/components/cards/bundle-item-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle-sheet";
@@ -53,7 +52,7 @@ import {
 import { Command, CommandInput } from "@/components/ui/command";
 import { Progress } from "@/components/ui/progress";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { cn } from "@/lib/utils";
+import { bundleItemName, cn } from "@/lib/utils";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IconSettings } from "@tabler/icons-react";
 import clsx from "clsx";
