@@ -4,7 +4,11 @@ import type { Recipe } from "@/types/recipe";
 
 import { usePlayers } from "@/contexts/players-context";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
-import { IngredientCard, IngredientMinVersion } from "./cards/ingredient-card";
+import {
+	IngredientCard,
+	IngredientMinVersion,
+	IngredientName,
+} from "./cards/ingredient-card";
 
 const semverGte = require("semver/functions/gte");
 
@@ -36,6 +40,11 @@ interface Props<T extends Recipe> {
 	filterSeason?: string;
 
 	/**
+	 * Allow for searching for specific ingredients.
+	 */
+	searchText?: string;
+
+	/**
 	 * Whether the user prefers to see new content
 	 *
 	 * @type {boolean}
@@ -53,10 +62,13 @@ interface Props<T extends Recipe> {
 }
 
 class IngredientData {
+	id: string = "";
 	counts: [number, number, number] = [0, 0, 0];
 	seasons: string[] = [];
 
 	constructor(itemID: string) {
+		this.id = itemID;
+
 		if (itemID in shipping_items) {
 			this.seasons =
 				shipping_items[itemID as keyof typeof shipping_items].seasons;
@@ -69,8 +81,9 @@ type IngredientsRecord = Record<string, IngredientData>;
 export const IngredientList = <T extends Recipe>({
 	recipes,
 	playerRecipes,
-	filterKnown = "",
+	filterKnown,
 	filterSeason = "all",
+	searchText,
 	setPromptOpen,
 	show,
 }: Props<T>) => {
@@ -88,7 +101,7 @@ export const IngredientList = <T extends Recipe>({
 		}
 	}, [activePlayer]);
 
-	const ingredientCounts: IngredientsRecord = useMemo(() => {
+	const ingredientCounts: IngredientData[] = useMemo(() => {
 		const reduceIngredients = (
 			acc: IngredientsRecord,
 			[_, v]: [string, T],
@@ -108,18 +121,40 @@ export const IngredientList = <T extends Recipe>({
 				return a;
 			}, acc);
 
-		return Object.entries(recipes).reduce(
+		const ingredientsMap: IngredientsRecord = Object.entries(recipes).reduce(
 			(acc, [id, v]) =>
 				reduceIngredients(acc, [id, v], playerRecipes[v.itemID] ?? 0),
 			{},
 		);
+
+		return Object.values(ingredientsMap).sort((a, b) => {
+			const a_name = IngredientName(a.id);
+			const b_name = IngredientName(b.id);
+
+			if (a_name === b_name) {
+				return 0;
+			}
+
+			return a_name < b_name ? -1 : 1;
+		});
 	}, [recipes, playerRecipes]);
 
 	return (
 		<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-			{Object.entries(ingredientCounts)
-				.filter(([id, _]) => semverGte(gameVersion, IngredientMinVersion(id)))
-				.filter(([_, details]) => {
+			{ingredientCounts
+				.filter((details) =>
+					semverGte(gameVersion, IngredientMinVersion(details.id)),
+				)
+				.filter((details) => {
+					if (!searchText) {
+						return true;
+					}
+
+					return IngredientName(details.id)
+						.toLowerCase()
+						.includes(searchText.toLowerCase());
+				})
+				.filter((details) => {
 					if (filterSeason === "all") {
 						return true;
 					}
@@ -129,16 +164,16 @@ export const IngredientList = <T extends Recipe>({
 						details.seasons.includes(filterSeason)
 					);
 				})
-				.map(([id, details]): [string, number] => {
+				.map((details): [string, number] => {
 					switch (filterKnown) {
 						case "0":
-							return [id, details.counts[0]];
+							return [details.id, details.counts[0]];
 						case "1":
-							return [id, details.counts[1]];
+							return [details.id, details.counts[1]];
 						case "2":
-							return [id, 0];
+							return [details.id, 0];
 						default:
-							return [id, details.counts[0] + details.counts[1]];
+							return [details.id, details.counts[0] + details.counts[1]];
 					}
 				})
 				.filter(([_, count]) => count > 0)

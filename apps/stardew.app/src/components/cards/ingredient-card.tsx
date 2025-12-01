@@ -85,6 +85,18 @@ export function IngredientMinVersion(itemID: string): string {
 	return objects[itemID as keyof typeof objects].minVersion;
 }
 
+export function IngredientName(itemID: string): string {
+	// if itemID is less than 0, it's a category
+	if (itemID.startsWith("-")) {
+		return categoryItems[itemID];
+	} else if (deweaponize(itemID).key === "BC") {
+		const item_id = deweaponize(itemID).value;
+		return bigCraftables[item_id as keyof typeof bigCraftables].name;
+	} else {
+		return objects[itemID as keyof typeof objects].name;
+	}
+}
+
 function GetItemDetails(itemID: string): Item {
 	// if itemID is less than 0, it's a category
 	if (itemID.startsWith("-")) {

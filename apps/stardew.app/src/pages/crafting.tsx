@@ -79,6 +79,7 @@ export default function Crafting() {
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
 	const [search, setSearch] = useState("");
+	const [ingredientSearch, setIngredientSearch] = useState("");
 	const [_filter, setFilter] = useState("all");
 	const [_seasonFilter, setSeasonFilter] = useState("all");
 
@@ -271,6 +272,15 @@ export default function Crafting() {
 											/>
 										</div>
 									</div>
+									{/* Search Bar Row */}
+									<div className="mt-2 w-full">
+										<Command className="w-full border border-b-0 dark:border-neutral-800">
+											<CommandInput
+												onValueChange={(v) => setIngredientSearch(v)}
+												placeholder="Search Ingredients"
+											/>
+										</Command>
+									</div>
 									<IngredientList<CraftingRecipe>
 										recipes={recipes}
 										playerRecipes={playerRecipes}
@@ -278,6 +288,7 @@ export default function Crafting() {
 										setPromptOpen={setPromptOpen}
 										filterKnown={_filter}
 										filterSeason={_seasonFilter}
+										searchText={ingredientSearch}
 									/>
 								</AccordionContent>
 							</AccordionItem>
