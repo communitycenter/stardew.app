@@ -1,14 +1,19 @@
+import fishes from "@/data/fish.json";
 import shipping_items from "@/data/shipping.json";
 
+import type { FishType } from "@/types/items";
 import type { Recipe } from "@/types/recipe";
 
 import { usePlayers } from "@/contexts/players-context";
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+
+import { BooleanCard } from "./cards/boolean-card";
 import {
 	IngredientCard,
 	IngredientMinVersion,
 	IngredientName,
 } from "./cards/ingredient-card";
+import { FishSheet } from "./sheets/fish-sheet";
 
 const semverGte = require("semver/functions/gte");
 
@@ -69,7 +74,13 @@ class IngredientData {
 	constructor(itemID: string) {
 		this.id = itemID;
 
-		if (itemID in shipping_items) {
+		if (itemID in fishes) {
+			const f = fishes[itemID as keyof typeof fishes];
+
+			if ("seasons" in f) {
+				this.seasons = f.seasons;
+			}
+		} else if (itemID in shipping_items) {
 			this.seasons =
 				shipping_items[itemID as keyof typeof shipping_items].seasons;
 		}
@@ -90,6 +101,9 @@ export const IngredientList = <T extends Recipe>({
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
 	const { activePlayer } = usePlayers();
+
+	const [open, setIsOpen] = useState(false);
+	const [fish, setFish] = useState<FishType | null>(null);
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -140,52 +154,79 @@ export const IngredientList = <T extends Recipe>({
 	}, [recipes, playerRecipes]);
 
 	return (
-		<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-			{ingredientCounts
-				.filter((details) =>
-					semverGte(gameVersion, IngredientMinVersion(details.id)),
-				)
-				.filter((details) => {
-					if (!searchText) {
-						return true;
-					}
+		<>
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+				{ingredientCounts
+					.filter((details) =>
+						semverGte(gameVersion, IngredientMinVersion(details.id)),
+					)
+					.filter((details) => {
+						if (!searchText) {
+							return true;
+						}
 
-					return IngredientName(details.id)
-						.toLowerCase()
-						.includes(searchText.toLowerCase());
-				})
-				.filter((details) => {
-					if (filterSeason === "all") {
-						return true;
-					}
+						return IngredientName(details.id)
+							.toLowerCase()
+							.includes(searchText.toLowerCase());
+					})
+					.filter((details) => {
+						if (filterSeason === "all") {
+							return true;
+						}
 
-					return (
-						details.seasons.length == 0 ||
-						details.seasons.includes(filterSeason)
-					);
-				})
-				.map((details): [string, number] => {
-					switch (filterKnown) {
-						case "0":
-							return [details.id, details.counts[0]];
-						case "1":
-							return [details.id, details.counts[1]];
-						case "2":
-							return [details.id, 0];
-						default:
-							return [details.id, details.counts[0] + details.counts[1]];
-					}
-				})
-				.filter(([_, count]) => count > 0)
-				.map(([id, count]) => (
-					<IngredientCard
-						key={id}
-						itemID={id}
-						count={count}
-						show={show}
-						setPromptOpen={setPromptOpen}
-					/>
-				))}
-		</div>
+						return (
+							details.seasons.length == 0 ||
+							details.seasons.includes(filterSeason)
+						);
+					})
+					.map((details): [string, number] => {
+						switch (filterKnown) {
+							case "0":
+								return [details.id, details.counts[0]];
+							case "1":
+								return [details.id, details.counts[1]];
+							case "2":
+								return [details.id, 0];
+							default:
+								return [details.id, details.counts[0] + details.counts[1]];
+						}
+					})
+					.filter(([_, count]) => count > 0)
+					.map(([id, count]) => {
+						if (id in fishes) {
+							const f = fishes[id as keyof typeof fishes];
+
+							return (
+								<BooleanCard
+									key={f.itemID}
+									item={f as FishType}
+									completed={false}
+									setIsOpen={setIsOpen}
+									setObject={setFish}
+									type="fish"
+									setPromptOpen={setPromptOpen}
+									show={show}
+								/>
+							);
+						} else {
+							return (
+								<IngredientCard
+									key={id}
+									itemID={id}
+									count={count}
+									show={show}
+									setPromptOpen={setPromptOpen}
+								/>
+							);
+						}
+					})}
+			</div>
+			<FishSheet
+				open={open}
+				setIsOpen={setIsOpen}
+				fish={fish}
+				showCaught={false}
+			/>
+		</>
 	);
 };
