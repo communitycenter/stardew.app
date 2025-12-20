@@ -86,7 +86,7 @@ export default function Cooking() {
 	const [showPrompt, setPromptOpen] = useState(false);
 
 	const { activePlayer } = usePlayers();
-	const { show, toggleShow } = usePreferences();
+	const { show, toggleShow, showBetaFeatures } = usePreferences();
 	const {
 		isMultiSelectMode,
 		toggleMultiSelectMode,
@@ -207,82 +207,86 @@ export default function Cooking() {
 						</section>
 					</Accordion>
 					{/* Needed Ingredients Section */}
-					<Accordion type="single" collapsible asChild>
-						<section className="space-y-3">
-							<AccordionItem value="item-1">
-								<AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
-									Needed Ingredients
-								</AccordionTrigger>
-								<AccordionContent asChild>
-									{/* Filters and Actions Row */}
-									<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
-										<div className="flex flex-row items-center gap-2">
-											<ToggleGroup
-												variant="outline"
-												type="single"
-												value={_filter}
-												onValueChange={(val) =>
-													setFilter(val === _filter ? "all" : val)
-												}
-												className="gap-2"
-											>
-												<ToggleGroupItem value="0" aria-label="Show Unknown">
-													<span
-														className={cn(
-															"inline-block h-4 w-4 rounded-full border align-middle",
-															bubbleColors["0"],
-														)}
-													/>
-													<span className="align-middle">
-														Unknown (
-														{reqs["Gourmet Chef"] - (knownCount + cookedCount)})
-													</span>
-												</ToggleGroupItem>
-												<ToggleGroupItem value="1" aria-label="Show Known">
-													<span
-														className={cn(
-															"inline-block h-4 w-4 rounded-full border align-middle",
-															bubbleColors["1"],
-														)}
-													/>
-													<span className="align-middle">
-														Known ({knownCount})
-													</span>
-												</ToggleGroupItem>
-											</ToggleGroup>
+					{showBetaFeatures && (
+						<Accordion type="single" collapsible asChild>
+							<section className="space-y-3">
+								<AccordionItem value="item-1">
+									<AccordionTrigger className="ml-1 pt-0 text-xl font-semibold text-gray-900 dark:text-white">
+										Needed Ingredients
+									</AccordionTrigger>
+									<AccordionContent asChild>
+										{/* Filters and Actions Row */}
+										<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+											<div className="flex flex-row items-center gap-2">
+												<ToggleGroup
+													variant="outline"
+													type="single"
+													value={_filter}
+													onValueChange={(val) =>
+														setFilter(val === _filter ? "all" : val)
+													}
+													className="gap-2"
+												>
+													<ToggleGroupItem value="0" aria-label="Show Unknown">
+														<span
+															className={cn(
+																"inline-block h-4 w-4 rounded-full border align-middle",
+																bubbleColors["0"],
+															)}
+														/>
+														<span className="align-middle">
+															Unknown (
+															{reqs["Gourmet Chef"] -
+																(knownCount + cookedCount)}
+															)
+														</span>
+													</ToggleGroupItem>
+													<ToggleGroupItem value="1" aria-label="Show Known">
+														<span
+															className={cn(
+																"inline-block h-4 w-4 rounded-full border align-middle",
+																bubbleColors["1"],
+															)}
+														/>
+														<span className="align-middle">
+															Known ({knownCount})
+														</span>
+													</ToggleGroupItem>
+												</ToggleGroup>
+											</div>
+											<div className="flex gap-2">
+												<FilterSearch
+													_filter={_seasonFilter}
+													title={"Seasons"}
+													data={seasons}
+													setFilter={setSeasonFilter}
+													icon={IconClock}
+												/>
+											</div>
 										</div>
-										<div className="flex gap-2">
-											<FilterSearch
-												_filter={_seasonFilter}
-												title={"Seasons"}
-												data={seasons}
-												setFilter={setSeasonFilter}
-												icon={IconClock}
-											/>
+										{/* Search Bar Row */}
+										<div className="my-2 w-full">
+											<Command className="w-full border border-b-0 dark:border-neutral-800">
+												<CommandInput
+													onValueChange={(v) => setIngredientSearch(v)}
+													placeholder="Search Ingredients"
+												/>
+											</Command>
 										</div>
-									</div>
-									{/* Search Bar Row */}
-									<div className="mt-2 w-full">
-										<Command className="w-full border border-b-0 dark:border-neutral-800">
-											<CommandInput
-												onValueChange={(v) => setIngredientSearch(v)}
-												placeholder="Search Ingredients"
-											/>
-										</Command>
-									</div>
-									<IngredientList<Recipe>
-										recipes={recipes}
-										playerRecipes={playerRecipes}
-										show={show}
-										setPromptOpen={setPromptOpen}
-										filterKnown={_filter}
-										filterSeason={_seasonFilter}
-										searchText={ingredientSearch}
-									/>
-								</AccordionContent>
-							</AccordionItem>
-						</section>
-					</Accordion>
+										<IngredientList<Recipe>
+											recipes={recipes}
+											playerRecipes={playerRecipes}
+											show={show}
+											setPromptOpen={setPromptOpen}
+											filterKnown={_filter}
+											filterSeason={_seasonFilter}
+											searchText={ingredientSearch}
+										/>
+									</AccordionContent>
+								</AccordionItem>
+							</section>
+						</Accordion>
+					)}
 					{/* All Recipes Section */}
 					<section className="space-y-3">
 						<h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">

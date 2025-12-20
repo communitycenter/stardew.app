@@ -181,7 +181,8 @@ export default function Account() {
 	);
 
 	const { players } = usePlayers();
-	const { show, toggleShow } = usePreferences();
+	const { show, toggleShow, showBetaFeatures, toggleBetaFeatures } =
+		usePreferences();
 
 	const [deletionOpen, setDeletionOpen] = useState(false);
 	const [inputType, setInputType] = useState<"password" | "text">("password");
@@ -284,6 +285,30 @@ export default function Account() {
 														const res = toggleShow();
 														toast.success(
 															`1.6 content has been ${res ? "enabled" : "disabled"}.`,
+														);
+													}}
+												/>
+											</div>
+										</span>
+									</CardHeader>
+								</Card>
+								<Card>
+									<CardHeader className=" border-neutral-200 dark:border-neutral-800">
+										<span className="flex flex-row items-center justify-between">
+											<div className="space-y-1">
+												<CardTitle>Beta Features</CardTitle>
+												<CardDescription>
+													Enable experimental features across the application.
+												</CardDescription>
+											</div>
+											<div>
+												<Switch
+													id="beta-features-switch"
+													defaultChecked={showBetaFeatures}
+													onCheckedChange={() => {
+														const res = toggleBetaFeatures();
+														toast.success(
+															`Beta features have been ${res ? "enabled" : "disabled"}.`,
 														);
 													}}
 												/>
