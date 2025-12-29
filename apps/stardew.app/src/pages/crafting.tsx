@@ -10,12 +10,17 @@ import type { CraftingRecipe } from "@/types/recipe";
 import { useMultiSelect } from "@/contexts/multi-select-context";
 import { usePlayers } from "@/contexts/players-context";
 import { usePreferences } from "@/contexts/preferences-context";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
+import { BetaFeaturesDialog } from "@/components/dialogs/beta-features-dialog";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { FilterSearch } from "@/components/filter-btn";
+import { IngredientList } from "@/components/ingredient-list";
+import { NewItemBadge } from "@/components/new-item-badge";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
 	Accordion,
@@ -25,8 +30,10 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
+import { IconClock } from "@tabler/icons-react";
 import { X } from "lucide-react";
 
 const semverGte = require("semver/functions/gte");
@@ -43,7 +50,32 @@ const bubbleColors: Record<string, string> = {
 	"2": "border-green-900 bg-green-500/20", // completed
 };
 
+const seasons = [
+	{
+		value: "all",
+		label: "All Seasons",
+	},
+	{
+		value: "Spring",
+		label: "Spring",
+	},
+	{
+		value: "Summer",
+		label: "Summer",
+	},
+	{
+		value: "Fall",
+		label: "Fall",
+	},
+	{
+		value: "Winter",
+		label: "Winter",
+	},
+];
+
 export default function Crafting() {
+	const router = useRouter();
+
 	const [open, setIsOpen] = useState(false);
 	const [recipe, setRecipe] = useState<CraftingRecipe | null>(null);
 	const [playerRecipes, setPlayerRecipes] = useState<{
@@ -52,13 +84,19 @@ export default function Crafting() {
 
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
+	const [activeTab, setActiveTab] = useState<string>("recipes");
+
 	const [search, setSearch] = useState("");
+	const [ingredientSearch, setIngredientSearch] = useState("");
 	const [_filter, setFilter] = useState("all");
+	const [_seasonFilter, setSeasonFilter] = useState("all");
 
 	const [showPrompt, setPromptOpen] = useState(false);
+	const [betaDialogOpen, setBetaDialogOpen] = useState(false);
 
 	const { activePlayer } = usePlayers();
-	const { show, toggleShow } = usePreferences();
+	const { show, toggleShow, showBetaFeatures, toggleBetaFeatures } =
+		usePreferences();
 	const {
 		isMultiSelectMode,
 		toggleMultiSelectMode,
@@ -127,6 +165,38 @@ export default function Crafting() {
 		}
 	};
 
+	useEffect(() => {
+		if (router.isReady) {
+			const tabParam = router.query.trackingTab;
+			if (
+				typeof tabParam === "string" &&
+				activeTab !== tabParam &&
+				["recipes", "ingredients"].includes(tabParam)
+			) {
+				setActiveTab(tabParam);
+			}
+		}
+	}, [router.isReady, router.query.trackingTab, activeTab, router]);
+
+	const handleTabChange = (value: string) => {
+		if (value == activeTab) {
+			return;
+		}
+		// If trying to switch to ingredients tab and beta features aren't enabled, show dialog
+		if (value === "ingredients" && !showBetaFeatures) {
+			setBetaDialogOpen(true);
+			return;
+		}
+		router.push(
+			{
+				pathname: router.pathname,
+				query: { ...router.query, trackingTab: value },
+			},
+			undefined,
+			{ shallow: true },
+		);
+	};
+
 	return (
 		<>
 			<Head>
@@ -188,147 +258,244 @@ export default function Crafting() {
 							</AccordionItem>
 						</section>
 					</Accordion>
-					{/* All Recipes Section */}
-					<section className="space-y-3">
-						<h3 className="ml-1 text-xl font-semibold text-gray-900 dark:text-white">
-							All Recipes
-						</h3>
-						{/* Filters and Actions Row */}
-						<div className="flex w-full flex-row items-center justify-between">
-							<ToggleGroup
-								variant="outline"
-								type="single"
-								value={_filter}
-								onValueChange={(val) =>
-									setFilter(val === _filter ? "all" : val)
-								}
-								className="gap-2"
-							>
-								<ToggleGroupItem value="0" aria-label="Show Unknown">
-									<span
-										className={cn(
-											"inline-block h-4 w-4 rounded-full border align-middle",
-											bubbleColors["0"],
-										)}
-									/>
-									<span className="align-middle">
-										Unknown (
-										{reqs["Craft Master"] - (knownCount + craftedCount)})
-									</span>
-								</ToggleGroupItem>
-								<ToggleGroupItem value="1" aria-label="Show Known">
-									<span
-										className={cn(
-											"inline-block h-4 w-4 rounded-full border align-middle",
-											bubbleColors["1"],
-										)}
-									/>
-									<span className="align-middle">Known ({knownCount})</span>
-								</ToggleGroupItem>
-								<ToggleGroupItem value="2" aria-label="Show Crafted">
-									<span
-										className={cn(
-											"inline-block h-4 w-4 rounded-full border align-middle",
-											bubbleColors["2"],
-										)}
-									/>
-									<span className="align-middle">Crafted ({craftedCount})</span>
-								</ToggleGroupItem>
-							</ToggleGroup>
-							<div className="flex flex-row items-center gap-2">
-								<Button
-									variant={isMultiSelectMode ? "default" : "outline"}
-									onClick={() => {
-										if (isMultiSelectMode) {
-											setBulkActionOpen(true);
-										} else {
-											toggleMultiSelectMode();
-										}
-									}}
-									disabled={
-										!activePlayer ||
-										(isMultiSelectMode && selectedItems.size === 0)
+					<Tabs value={activeTab} onValueChange={handleTabChange}>
+						<TabsList className="grid w-full grid-cols-2">
+							<TabsTrigger value="recipes">All Recipes</TabsTrigger>
+							<TabsTrigger value="ingredients" className="relative">
+								Ingredient Tracker <NewItemBadge version="beta" />
+							</TabsTrigger>
+						</TabsList>
+						{/* All Recipes Section */}
+						<TabsContent value="recipes" className="mt-4">
+							{/* Filters and Actions Row */}
+							<div className="flex w-full flex-row items-center justify-between">
+								<ToggleGroup
+									variant="outline"
+									type="single"
+									value={_filter}
+									onValueChange={(val) =>
+										setFilter(val === _filter ? "all" : val)
 									}
+									className="gap-2"
 								>
-									{isMultiSelectMode
-										? `Bulk Action (${selectedItems.size})`
-										: "Select Multiple"}
-								</Button>
-								{isMultiSelectMode && (
+									<ToggleGroupItem value="0" aria-label="Show Unknown">
+										<span
+											className={cn(
+												"inline-block h-4 w-4 rounded-full border align-middle",
+												bubbleColors["0"],
+											)}
+										/>
+										<span className="align-middle">
+											Unknown (
+											{reqs["Craft Master"] - (knownCount + craftedCount)})
+										</span>
+									</ToggleGroupItem>
+									<ToggleGroupItem value="1" aria-label="Show Known">
+										<span
+											className={cn(
+												"inline-block h-4 w-4 rounded-full border align-middle",
+												bubbleColors["1"],
+											)}
+										/>
+										<span className="align-middle">Known ({knownCount})</span>
+									</ToggleGroupItem>
+									<ToggleGroupItem value="2" aria-label="Show Crafted">
+										<span
+											className={cn(
+												"inline-block h-4 w-4 rounded-full border align-middle",
+												bubbleColors["2"],
+											)}
+										/>
+										<span className="align-middle">
+											Crafted ({craftedCount})
+										</span>
+									</ToggleGroupItem>
+								</ToggleGroup>
+								<div className="flex flex-row items-center gap-2">
 									<Button
-										variant="outline"
-										size="icon"
-										className="ml-1"
+										variant={isMultiSelectMode ? "default" : "outline"}
 										onClick={() => {
-											clearSelection();
-											toggleMultiSelectMode();
+											if (isMultiSelectMode) {
+												setBulkActionOpen(true);
+											} else {
+												toggleMultiSelectMode();
+											}
 										}}
-										aria-label="Cancel Multi-Select"
-									>
-										<X className="h-4 w-4" />
-									</Button>
-								)}
-							</div>
-						</div>
-						{/* Search Bar Row */}
-						<div className="mt-2 w-full">
-							<Command className="w-full border border-b-0 dark:border-neutral-800">
-								<CommandInput
-									onValueChange={(v) => setSearch(v)}
-									placeholder="Search Recipes"
-								/>
-							</Command>
-						</div>
-						{/* Cards */}
-						<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-							{Object.values(recipes)
-								.filter((r) => semverGte(gameVersion, r.minVersion))
-								.filter((r) => {
-									if (!search) return true;
-									const name = getName(r.itemID, r.isBigCraftable);
-									return name.toLowerCase().includes(search.toLowerCase());
-								})
-								.filter((r) => {
-									if (_filter === "0") {
-										// unknown recipes (not in playerRecipes)
-										return !(
-											r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
-										);
-									} else if (_filter === "1") {
-										// known recipes (in playerRecipes) and not cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 1
-										);
-									} else if (_filter === "2") {
-										// cooked recipes (in playerRecipes) and cooked
-										return (
-											r.itemID in playerRecipes && playerRecipes[r.itemID] === 2
-										);
-									} else return true; // all recipes
-								})
-								.map((f, index, filteredRecipes) => (
-									<RecipeCard<CraftingRecipe>
-										key={f.itemID}
-										recipe={f}
-										status={
-											f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
+										disabled={
+											!activePlayer ||
+											(isMultiSelectMode && selectedItems.size === 0)
 										}
-										setIsOpen={setIsOpen}
-										setObject={setRecipe}
-										setPromptOpen={setPromptOpen}
-										show={show}
-										index={index}
-										allRecipes={filteredRecipes as CraftingRecipe[]}
+									>
+										{isMultiSelectMode
+											? `Bulk Action (${selectedItems.size})`
+											: "Select Multiple"}
+									</Button>
+									{isMultiSelectMode && (
+										<Button
+											variant="outline"
+											size="icon"
+											className="ml-1"
+											onClick={() => {
+												clearSelection();
+												toggleMultiSelectMode();
+											}}
+											aria-label="Cancel Multi-Select"
+										>
+											<X className="h-4 w-4" />
+										</Button>
+									)}
+								</div>
+							</div>
+							{/* Search Bar Row */}
+							<div className="mt-2 w-full">
+								<Command className="w-full border border-b-0 dark:border-neutral-800">
+									<CommandInput
+										onValueChange={(v) => setSearch(v)}
+										placeholder="Search Recipes"
 									/>
-								))}
-						</div>
-					</section>
+								</Command>
+							</div>
+							{/* Cards */}
+							<div className="grid grid-cols-1 mt-2 gap-4 md:grid-cols-2 xl:grid-cols-4">
+								{Object.values(recipes)
+									.filter((r) => semverGte(gameVersion, r.minVersion))
+									.filter((r) => {
+										if (!search) return true;
+										const name = getName(r.itemID, r.isBigCraftable);
+										return name.toLowerCase().includes(search.toLowerCase());
+									})
+									.filter((r) => {
+										if (_filter === "0") {
+											// unknown recipes (not in playerRecipes)
+											return !(
+												r.itemID in playerRecipes && playerRecipes[r.itemID] > 0
+											);
+										} else if (_filter === "1") {
+											// known recipes (in playerRecipes) and not cooked
+											return (
+												r.itemID in playerRecipes &&
+												playerRecipes[r.itemID] === 1
+											);
+										} else if (_filter === "2") {
+											// cooked recipes (in playerRecipes) and cooked
+											return (
+												r.itemID in playerRecipes &&
+												playerRecipes[r.itemID] === 2
+											);
+										} else return true; // all recipes
+									})
+									.map((f, index, filteredRecipes) => (
+										<RecipeCard<CraftingRecipe>
+											key={f.itemID}
+											recipe={f}
+											status={
+												f.itemID in playerRecipes ? playerRecipes[f.itemID] : 0
+											}
+											setIsOpen={setIsOpen}
+											setObject={setRecipe}
+											setPromptOpen={setPromptOpen}
+											show={show}
+											index={index}
+											allRecipes={filteredRecipes as CraftingRecipe[]}
+										/>
+									))}
+							</div>
+						</TabsContent>
+						{/* Needed Ingredients Section */}
+						<TabsContent value="ingredients" className="mt-4">
+							{/* Filters and Actions Row */}
+							<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+								<div className="flex flex-row items-center gap-2">
+									<ToggleGroup
+										variant="outline"
+										type="single"
+										value={_filter}
+										onValueChange={(val) =>
+											setFilter(val === _filter ? "all" : val)
+										}
+										className="gap-2"
+									>
+										<ToggleGroupItem value="0" aria-label="Show Unknown">
+											<span
+												className={cn(
+													"inline-block h-4 w-4 rounded-full border align-middle",
+													bubbleColors["0"],
+												)}
+											/>
+											<span className="align-middle">
+												Unknown (
+												{reqs["Craft Master"] - (knownCount + craftedCount)})
+											</span>
+										</ToggleGroupItem>
+										<ToggleGroupItem value="1" aria-label="Show Known">
+											<span
+												className={cn(
+													"inline-block h-4 w-4 rounded-full border align-middle",
+													bubbleColors["1"],
+												)}
+											/>
+											<span className="align-middle">Known ({knownCount})</span>
+										</ToggleGroupItem>
+									</ToggleGroup>
+								</div>
+								<div className="flex gap-2">
+									<FilterSearch
+										_filter={_seasonFilter}
+										title={"Seasons"}
+										data={seasons}
+										setFilter={setSeasonFilter}
+										icon={IconClock}
+									/>
+								</div>
+							</div>
+							{/* Search Bar Row */}
+							<div className="my-2 w-full">
+								<Command className="w-full border border-b-0 dark:border-neutral-800">
+									<CommandInput
+										onValueChange={(v) => setIngredientSearch(v)}
+										placeholder="Search Ingredients"
+									/>
+								</Command>
+							</div>
+							<IngredientList<CraftingRecipe>
+								recipes={recipes}
+								playerRecipes={playerRecipes}
+								show={show}
+								setPromptOpen={setPromptOpen}
+								filterKnown={_filter}
+								filterSeason={_seasonFilter}
+								searchText={ingredientSearch}
+							/>
+						</TabsContent>
+					</Tabs>
 				</div>
 				<RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
 				<UnblurDialog
 					open={showPrompt}
 					setOpen={setPromptOpen}
 					toggleShow={toggleShow}
+				/>
+				<BetaFeaturesDialog
+					open={betaDialogOpen}
+					setOpen={setBetaDialogOpen}
+					toggleBetaFeatures={() => {
+						const enabled = toggleBetaFeatures();
+						if (enabled) {
+							// Switch to ingredients tab after enabling
+							router.push(
+								{
+									pathname: router.pathname,
+									query: {
+										...router.query,
+										trackingTab: "ingredients",
+									},
+								},
+								undefined,
+								{ shallow: true },
+							);
+						}
+						return enabled;
+					}}
 				/>
 				<BulkActionDialog
 					open={bulkActionOpen}

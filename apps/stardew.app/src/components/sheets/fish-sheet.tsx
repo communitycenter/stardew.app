@@ -34,9 +34,15 @@ interface Props {
 	open: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	fish: FishType | null;
+	showCaught?: boolean;
 }
 
-export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
+export const FishSheet = ({
+	open,
+	setIsOpen,
+	fish,
+	showCaught = true,
+}: Props) => {
 	const { activePlayer, patchPlayer } = useContext(PlayersContext);
 	const { selectedItems, clearSelection } = useMultiSelect();
 	const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -102,57 +108,58 @@ export const FishSheet = ({ open, setIsOpen, fish }: Props) => {
 			<div className="mt-4 space-y-6">
 				<section className="space-y-2">
 					<div className="grid grid-cols-1 gap-2">
-						{selectedItems.size > 0 ? (
-							<>
-								<Button
-									variant="secondary"
-									data-umami-event="Bulk set completed"
-									onClick={() => handleBulkStatusChange(2)}
-								>
-									Set All Selected as Caught
-								</Button>
-								<Button
-									variant="secondary"
-									data-umami-event="Bulk set incompleted"
-									onClick={() => handleBulkStatusChange(0)}
-								>
-									Set All Selected as Uncaught
-								</Button>
-							</>
-						) : (
-							<>
-								{fishCaught.has(fish?.itemID?.toString() ?? "0") ? (
+						{showCaught &&
+							(selectedItems.size > 0 ? (
+								<>
 									<Button
 										variant="secondary"
-										disabled={
-											!activePlayer ||
-											!fishCaught.has(fish?.itemID?.toString() ?? "0")
-										}
-										data-umami-event="Set incompleted"
-										onClick={() => {
-											handleStatusChange(0);
-										}}
+										data-umami-event="Bulk set completed"
+										onClick={() => handleBulkStatusChange(2)}
 									>
-										Set Uncaught
+										Set All Selected as Caught
 									</Button>
-								) : (
 									<Button
 										variant="secondary"
-										disabled={
-											!activePlayer ||
-											fishCaught.has(fish?.itemID?.toString() ?? "0")
-										}
-										data-umami-event="Set completed"
-										onClick={() => {
-											handleStatusChange(2);
-										}}
+										data-umami-event="Bulk set incompleted"
+										onClick={() => handleBulkStatusChange(0)}
 									>
-										Set Caught
+										Set All Selected as Uncaught
 									</Button>
-								)}
-							</>
-						)}
-						{!activePlayer && <CreatePlayerRedirect />}
+								</>
+							) : (
+								<>
+									{fishCaught.has(fish?.itemID?.toString() ?? "0") ? (
+										<Button
+											variant="secondary"
+											disabled={
+												!activePlayer ||
+												!fishCaught.has(fish?.itemID?.toString() ?? "0")
+											}
+											data-umami-event="Set incompleted"
+											onClick={() => {
+												handleStatusChange(0);
+											}}
+										>
+											Set Uncaught
+										</Button>
+									) : (
+										<Button
+											variant="secondary"
+											disabled={
+												!activePlayer ||
+												fishCaught.has(fish?.itemID?.toString() ?? "0")
+											}
+											data-umami-event="Set completed"
+											onClick={() => {
+												handleStatusChange(2);
+											}}
+										>
+											Set Caught
+										</Button>
+									)}
+								</>
+							))}
+						{showCaught && !activePlayer && <CreatePlayerRedirect />}
 						{name && (
 							<Button variant="outline" data-umami-event="Visit wiki" asChild>
 								<a

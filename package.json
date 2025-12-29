@@ -24,6 +24,8 @@
 		"typescript": "5.8.2"
 	},
 	"dependencies": {
+		"baseline-browser-mapping": "^2.9.11",
+		"caniuse-lite": "^1.0.30001761",
 		"drizzle-orm": "^0.44.5"
 	}
 }
