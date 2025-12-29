@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 
 import achievements from "@/data/achievements.json";
 import bigobjects from "@/data/big_craftables.json";
@@ -16,6 +15,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
+import { BetaFeaturesDialog } from "@/components/dialogs/beta-features-dialog";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterSearch } from "@/components/filter-btn";
@@ -92,6 +92,7 @@ export default function Crafting() {
 	const [_seasonFilter, setSeasonFilter] = useState("all");
 
 	const [showPrompt, setPromptOpen] = useState(false);
+	const [betaDialogOpen, setBetaDialogOpen] = useState(false);
 
 	const { activePlayer } = usePlayers();
 	const { show, toggleShow, showBetaFeatures, toggleBetaFeatures } =
@@ -181,6 +182,11 @@ export default function Crafting() {
 		if (value == activeTab) {
 			return;
 		}
+		// If trying to switch to ingredients tab and beta features aren't enabled, show dialog
+		if (value === "ingredients" && !showBetaFeatures) {
+			setBetaDialogOpen(true);
+			return;
+		}
 		router.push(
 			{
 				pathname: router.pathname,
@@ -253,14 +259,14 @@ export default function Crafting() {
 						</section>
 					</Accordion>
 					<Tabs value={activeTab} onValueChange={handleTabChange}>
-						<TabsList className="grid w-full grid-cols-3">
+						<TabsList className="grid w-full grid-cols-2">
 							<TabsTrigger value="recipes">All Recipes</TabsTrigger>
 							<TabsTrigger value="ingredients" className="relative">
 								Ingredient Tracker <NewItemBadge version="beta" />
 							</TabsTrigger>
 						</TabsList>
 						{/* All Recipes Section */}
-						<TabsContent value="recipes" className="mt-4 space-y-8">
+						<TabsContent value="recipes" className="mt-4">
 							{/* Filters and Actions Row */}
 							<div className="flex w-full flex-row items-center justify-between">
 								<ToggleGroup
@@ -350,7 +356,7 @@ export default function Crafting() {
 								</Command>
 							</div>
 							{/* Cards */}
-							<div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+							<div className="grid grid-cols-1 mt-2 gap-4 md:grid-cols-2 xl:grid-cols-4">
 								{Object.values(recipes)
 									.filter((r) => semverGte(gameVersion, r.minVersion))
 									.filter((r) => {
@@ -395,27 +401,7 @@ export default function Crafting() {
 									))}
 							</div>
 						</TabsContent>
-						<TabsContent value="ingredients" className="mt-4 space-y-8">
-							{!showBetaFeatures && (
-								<>
-									<h3>Show Beta Features?</h3>
-									<p>
-										This feature is currently in beta and will likely change
-										often based on feedback. You can always disable beta
-										features again in your{" "}
-										<Link
-											href="/account"
-											className="underline hover:text-neutral-400 hover:dark:text-neutral-300"
-										>
-											account settings
-										</Link>
-										.
-									</p>
-									<Button onClick={toggleBetaFeatures}>
-										Show Beta Features
-									</Button>
-								</>
-							)}
+						<TabsContent value="ingredients" className="mt-4">
 							{/* Needed Ingredients Section */}
 							{showBetaFeatures && (
 								<>
@@ -495,6 +481,28 @@ export default function Crafting() {
 					open={showPrompt}
 					setOpen={setPromptOpen}
 					toggleShow={toggleShow}
+				/>
+				<BetaFeaturesDialog
+					open={betaDialogOpen}
+					setOpen={setBetaDialogOpen}
+					toggleBetaFeatures={() => {
+						const enabled = toggleBetaFeatures();
+						if (enabled) {
+							// Switch to ingredients tab after enabling
+							router.push(
+								{
+									pathname: router.pathname,
+									query: {
+										...router.query,
+										trackingTab: "ingredients",
+									},
+								},
+								undefined,
+								{ shallow: true },
+							);
+						}
+						return enabled;
+					}}
 				/>
 				<BulkActionDialog
 					open={bulkActionOpen}
