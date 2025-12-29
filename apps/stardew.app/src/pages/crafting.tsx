@@ -401,78 +401,71 @@ export default function Crafting() {
 									))}
 							</div>
 						</TabsContent>
+						{/* Needed Ingredients Section */}
 						<TabsContent value="ingredients" className="mt-4">
-							{/* Needed Ingredients Section */}
-							{showBetaFeatures && (
-								<>
-									{/* Filters and Actions Row */}
-									<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
-										<div className="flex flex-row items-center gap-2">
-											<ToggleGroup
-												variant="outline"
-												type="single"
-												value={_filter}
-												onValueChange={(val) =>
-													setFilter(val === _filter ? "all" : val)
-												}
-												className="gap-2"
-											>
-												<ToggleGroupItem value="0" aria-label="Show Unknown">
-													<span
-														className={cn(
-															"inline-block h-4 w-4 rounded-full border align-middle",
-															bubbleColors["0"],
-														)}
-													/>
-													<span className="align-middle">
-														Unknown (
-														{reqs["Craft Master"] - (knownCount + craftedCount)}
-														)
-													</span>
-												</ToggleGroupItem>
-												<ToggleGroupItem value="1" aria-label="Show Known">
-													<span
-														className={cn(
-															"inline-block h-4 w-4 rounded-full border align-middle",
-															bubbleColors["1"],
-														)}
-													/>
-													<span className="align-middle">
-														Known ({knownCount})
-													</span>
-												</ToggleGroupItem>
-											</ToggleGroup>
-										</div>
-										<div className="flex gap-2">
-											<FilterSearch
-												_filter={_seasonFilter}
-												title={"Seasons"}
-												data={seasons}
-												setFilter={setSeasonFilter}
-												icon={IconClock}
+							{/* Filters and Actions Row */}
+							<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+								<div className="flex flex-row items-center gap-2">
+									<ToggleGroup
+										variant="outline"
+										type="single"
+										value={_filter}
+										onValueChange={(val) =>
+											setFilter(val === _filter ? "all" : val)
+										}
+										className="gap-2"
+									>
+										<ToggleGroupItem value="0" aria-label="Show Unknown">
+											<span
+												className={cn(
+													"inline-block h-4 w-4 rounded-full border align-middle",
+													bubbleColors["0"],
+												)}
 											/>
-										</div>
-									</div>
-									{/* Search Bar Row */}
-									<div className="my-2 w-full">
-										<Command className="w-full border border-b-0 dark:border-neutral-800">
-											<CommandInput
-												onValueChange={(v) => setIngredientSearch(v)}
-												placeholder="Search Ingredients"
+											<span className="align-middle">
+												Unknown (
+												{reqs["Craft Master"] - (knownCount + craftedCount)})
+											</span>
+										</ToggleGroupItem>
+										<ToggleGroupItem value="1" aria-label="Show Known">
+											<span
+												className={cn(
+													"inline-block h-4 w-4 rounded-full border align-middle",
+													bubbleColors["1"],
+												)}
 											/>
-										</Command>
-									</div>
-									<IngredientList<CraftingRecipe>
-										recipes={recipes}
-										playerRecipes={playerRecipes}
-										show={show}
-										setPromptOpen={setPromptOpen}
-										filterKnown={_filter}
-										filterSeason={_seasonFilter}
-										searchText={ingredientSearch}
+											<span className="align-middle">Known ({knownCount})</span>
+										</ToggleGroupItem>
+									</ToggleGroup>
+								</div>
+								<div className="flex gap-2">
+									<FilterSearch
+										_filter={_seasonFilter}
+										title={"Seasons"}
+										data={seasons}
+										setFilter={setSeasonFilter}
+										icon={IconClock}
 									/>
-								</>
-							)}
+								</div>
+							</div>
+							{/* Search Bar Row */}
+							<div className="my-2 w-full">
+								<Command className="w-full border border-b-0 dark:border-neutral-800">
+									<CommandInput
+										onValueChange={(v) => setIngredientSearch(v)}
+										placeholder="Search Ingredients"
+									/>
+								</Command>
+							</div>
+							<IngredientList<CraftingRecipe>
+								recipes={recipes}
+								playerRecipes={playerRecipes}
+								show={show}
+								setPromptOpen={setPromptOpen}
+								filterKnown={_filter}
+								filterSeason={_seasonFilter}
+								searchText={ingredientSearch}
+							/>
 						</TabsContent>
 					</Tabs>
 				</div>
