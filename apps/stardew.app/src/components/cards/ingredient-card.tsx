@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 import bigCraftables from "@/data/big_craftables.json";
+import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
+
+import type { FishType } from "@/types/items";
 
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -9,6 +12,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { deweaponize } from "@/lib/utils";
 
 import { NewItemBadge } from "@/components/new-item-badge";
+import { FishSheet } from "@/components/sheets/fish-sheet";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -142,85 +146,100 @@ export const IngredientCard = ({
 	show,
 	setPromptOpen,
 }: Props) => {
-	const [open, setOpen] = useState(false);
+	const [dialogOpen, setDialogOpen] = useState(false);
+	const [fishOpen, setFishOpen] = useState(false);
 
-	let item = GetItemDetails(itemID);
+	const item = GetItemDetails(itemID);
+	const isFish = itemID in fishes;
+	const fish = isFish
+		? (fishes[itemID as keyof typeof fishes] as FishType)
+		: null;
+
+	const openChanged = isFish ? setFishOpen : setDialogOpen;
 
 	return (
-		<Dialog open={open} onOpenChange={setOpen}>
-			<DialogTrigger asChild>
-				<div
-					className={cn(
-						"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
-						"border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800",
-					)}
-					onClick={(e) => {
-						if (item.minVersion === "1.6.0" && !show) {
-							e.preventDefault();
-							setPromptOpen?.(true);
-							return;
-						}
-					}}
-				>
-					{item.minVersion === "1.6.0" && (
-						<NewItemBadge version={item.minVersion} />
-					)}
+		<>
+			<Dialog open={dialogOpen} onOpenChange={openChanged}>
+				<DialogTrigger asChild>
 					<div
 						className={cn(
-							"flex items-center space-x-3 truncate text-left",
-							item.minVersion === "1.6.0" && !show && "blur-sm",
+							"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+							"border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800",
 						)}
+						onClick={(e) => {
+							if (item.minVersion === "1.6.0" && !show) {
+								e.preventDefault();
+								setPromptOpen?.(true);
+								return;
+							}
+						}}
 					>
+						{item.minVersion === "1.6.0" && (
+							<NewItemBadge version={item.minVersion} />
+						)}
+						<div
+							className={cn(
+								"flex items-center space-x-3 truncate text-left",
+								item.minVersion === "1.6.0" && !show && "blur-sm",
+							)}
+						>
+							<Image
+								src={item.iconURL}
+								alt={item.name}
+								className="rounded-sm"
+								width={32}
+								height={32}
+							/>
+							<div className="min-w-0 flex-1 pr-3">
+								<p className="truncate font-medium">{`${item.name} (${count}x)`}</p>
+								<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+									{item.description ?? ""}
+								</p>
+							</div>
+						</div>
+						<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+					</div>
+				</DialogTrigger>
+				<DialogContent>
+					<DialogHeader>
 						<Image
 							src={item.iconURL}
 							alt={item.name}
-							className="rounded-sm"
-							width={32}
-							height={32}
+							className="mx-auto rounded-sm"
+							width={42}
+							height={42}
 						/>
-						<div className="min-w-0 flex-1 pr-3">
-							<p className="truncate font-medium">{`${item.name} (${count}x)`}</p>
-							<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-								{item.description ?? ""}
-							</p>
-						</div>
-					</div>
-					<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
-				</div>
-			</DialogTrigger>
-			<DialogContent>
-				<DialogHeader>
-					<Image
-						src={item.iconURL}
-						alt={item.name}
-						className="mx-auto rounded-sm"
-						width={42}
-						height={42}
-					/>
-					<DialogTitle className="text-center">{item.name}</DialogTitle>
-					<DialogDescription className="text-center">
-						{item.description}
-					</DialogDescription>
-				</DialogHeader>
-				<DialogFooter className="gap-3 sm:justify-between sm:gap-0">
-					<Button variant="outline">
-						<a
-							className="flex items-center"
-							target="_blank"
-							rel="noreferrer"
-							href={`https://stardewvalleywiki.com/${item.wikiName}`}
-						>
-							Visit Wiki Page
-							<IconExternalLink className="h-4"></IconExternalLink>
-						</a>
-					</Button>
-					<div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-0 sm:space-x-2">
-						<Button variant="secondary" onClick={() => setOpen(false)}>
-							Close
+						<DialogTitle className="text-center">{item.name}</DialogTitle>
+						<DialogDescription className="text-center">
+							{item.description}
+						</DialogDescription>
+					</DialogHeader>
+					<DialogFooter className="gap-3 sm:justify-between sm:gap-0">
+						<Button variant="outline">
+							<a
+								className="flex items-center"
+								target="_blank"
+								rel="noreferrer"
+								href={`https://stardewvalleywiki.com/${item.wikiName}`}
+							>
+								Visit Wiki Page
+								<IconExternalLink className="h-4"></IconExternalLink>
+							</a>
 						</Button>
-					</div>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
+						<div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-0 sm:space-x-2">
+							<Button variant="secondary" onClick={() => setDialogOpen(false)}>
+								Close
+							</Button>
+						</div>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
+			<FishSheet
+				open={fishOpen}
+				setIsOpen={setFishOpen}
+				fish={fish}
+				showCaught={false}
+			/>
+		</>
 	);
 };

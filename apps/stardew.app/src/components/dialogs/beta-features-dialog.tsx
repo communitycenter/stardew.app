@@ -28,9 +28,8 @@ export const BetaFeaturesDialog = ({
 				<DialogHeader>
 					<DialogTitle>Show Beta Features</DialogTitle>
 					<DialogDescription>
-						This feature is currently in beta and will likely change often
-						based on feedback. You can always disable beta features again in
-						your{" "}
+						This feature is currently in beta and will likely change often based
+						on feedback. You can always disable beta features again in your{" "}
 						<Link
 							href="/account"
 							className="underline hover:text-neutral-400 hover:dark:text-neutral-300"
@@ -54,4 +53,3 @@ export const BetaFeaturesDialog = ({
 		</Dialog>
 	);
 };
-
