@@ -106,10 +106,10 @@ export const FishSheet = ({
 	const content = (
 		<>
 			<div className="mt-4 space-y-6">
-				{showCaught && (
-					<section className="space-y-2">
-						<div className="grid grid-cols-1 gap-2">
-							{selectedItems.size > 0 ? (
+				<section className="space-y-2">
+					<div className="grid grid-cols-1 gap-2">
+						{showCaught &&
+							(selectedItems.size > 0 ? (
 								<>
 									<Button
 										variant="secondary"
@@ -158,27 +158,26 @@ export const FishSheet = ({
 										</Button>
 									)}
 								</>
-							)}
-							{!activePlayer && <CreatePlayerRedirect />}
-							{name && (
-								<Button variant="outline" data-umami-event="Visit wiki" asChild>
-									<a
-										className="flex items-center"
-										target="_blank"
-										rel="noreferrer"
-										href={`https://stardewvalleywiki.com/${name.replaceAll(
-											" ",
-											"_",
-										)}`}
-									>
-										Visit Wiki Page
-										<IconExternalLink className="h-4"></IconExternalLink>
-									</a>
-								</Button>
-							)}
-						</div>
-					</section>
-				)}
+							))}
+						{showCaught && !activePlayer && <CreatePlayerRedirect />}
+						{name && (
+							<Button variant="outline" data-umami-event="Visit wiki" asChild>
+								<a
+									className="flex items-center"
+									target="_blank"
+									rel="noreferrer"
+									href={`https://stardewvalleywiki.com/${name.replaceAll(
+										" ",
+										"_",
+									)}`}
+								>
+									Visit Wiki Page
+									<IconExternalLink className="h-4"></IconExternalLink>
+								</a>
+							</Button>
+						)}
+					</div>
+				</section>
 				{fish && (
 					<>
 						<section className="space-y-2">
