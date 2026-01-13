@@ -1,29 +1,29 @@
 {
-	"name": "communitycenter",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev --filter=stardew.app --ui=stream",
-		"lint": "turbo lint",
-		"typecheck": "turbo typecheck",
-		"format": "turbo format",
-		"test": "turbo test",
-		"clean": "turbo clean && rimraf .turbo"
-	},
-	"packageManager": "bun@1.2.0",
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
-	"devDependencies": {
-		"@typescript/native-preview": "7.0.0-dev.20250707.2",
-		"drizzle-kit": "^0.31.4",
-		"prettier": "3.4.2",
-		"rimraf": "6.0.1",
-		"turbo": "2.4.0",
-		"typescript": "5.8.2"
-	},
-	"dependencies": {
-		"drizzle-orm": "^0.44.5"
-	}
+  "name": "communitycenter",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev --filter=stardew.app --ui=stream",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "format": "turbo format",
+    "test": "turbo test",
+    "clean": "turbo clean && rimraf .turbo"
+  },
+  "packageManager": "bun@1.2.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20250707.2",
+    "drizzle-kit": "^0.31.4",
+    "prettier": "3.4.2",
+    "rimraf": "6.0.1",
+    "turbo": "2.4.0",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.5"
+  }
 }
