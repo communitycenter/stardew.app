@@ -12,6 +12,7 @@ import { usePlayers } from "@/contexts/players-context";
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
+import { CardQuickActions } from "@/components/cards/card-quick-actions";
 import {
 	Dialog,
 	DialogContent,
@@ -24,7 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { IconChevronRight, IconExternalLink, IconPlus } from "@tabler/icons-react";
+import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
 
 interface Props {
 	item: ShippingItem;
@@ -166,23 +167,13 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
 						<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
 					</div>
 				</DialogTrigger>
-				{activePlayer && (
-					<Button
-						aria-label={`Increment ${name} shipped count`}
-						size="icon"
-						type="button"
-						variant="outline"
-						className={cn(
-							"flex-shrink-0 rounded-lg text-neutral-950 dark:text-neutral-50",
-							classes[_status],
-						)}
-						onClick={() => {
-							incrementShippedCount();
-						}}
-					>
-						<IconPlus className="h-4 w-4" />
-					</Button>
-				)}
+				<CardQuickActions
+					addLabel={`Increment ${name} shipped count`}
+					className={classes[_status]}
+					onAdd={() => {
+						incrementShippedCount();
+					}}
+				/>
 			</div>
 			<DialogContent>
 				<DialogHeader>
