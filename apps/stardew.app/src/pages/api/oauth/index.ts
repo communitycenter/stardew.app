@@ -8,7 +8,6 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>,
 ) {
-	console.log(!req.query.discord ? `&guilds.join` : ``);
 	const state = crypto.randomBytes(4).toString("hex");
 	setCookie("oauth_state", state, {
 		req,
@@ -23,6 +22,8 @@ export default function handler(
 			process.env.DISCORD_ID
 		}&redirect_uri=${encodeURIComponent(
 			process.env.DISCORD_REDIRECT ?? "",
-		)}&state=${state}&response_type=code&scope=identify${req.query && !req.query.discord ? `` : `%20guilds.join`}`,
+		)}&state=${state}&response_type=code&scope=identify${
+			req.query.discord === "true" ? `%20guilds.join` : ``
+		}`,
 	);
 }
