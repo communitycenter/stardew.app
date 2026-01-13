@@ -8,7 +8,8 @@
 		"typecheck": "turbo typecheck",
 		"format": "turbo format",
 		"test": "turbo test",
-		"clean": "turbo clean && rimraf .turbo"
+		"clean": "turbo clean && rimraf .turbo",
+		"prepLocalEnv": "python scripts/prep-local-env.py"
 	},
 	"packageManager": "bun@1.2.0",
 	"workspaces": [
