@@ -24,8 +24,8 @@ def read_env_value(path: Path, key: str) -> Optional[str]:
         env_key, value = line.split("=", 1)
         if env_key.strip() != key:
             continue
-        value = value.strip()
-        if value and value[0] == value[-1] and value[0] in ("\"", "'"):
+        value = value.strip().split("#")[0]
+        if value and value[0] == value[-1] and value[0] in ('"', "'"):
             value = value[1:-1]
         return value
     return None
@@ -106,19 +106,34 @@ def create_database(database_url: str) -> int:
 
 
 def run_drizzle_push() -> int:
-    local_bin = ROOT_DIR / "node_modules" / ".bin" / (
-        "drizzle-kit.cmd" if os.name == "nt" else "drizzle-kit"
+    local_bin = (
+        ROOT_DIR
+        / "node_modules"
+        / ".bin"
+        / ("drizzle-kit.cmd" if os.name == "nt" else "drizzle-kit")
     )
     if os.name == "nt":
-        cmd = [str(local_bin), "push"] if local_bin.exists() else ["npx.cmd", "drizzle-kit", "push"]
-        result = subprocess.run([
-            "cmd.exe",
-            "/c",
-            *cmd,
-        ], cwd=str(ROOT_DIR), env=os.environ)
+        cmd = (
+            [str(local_bin), "push"]
+            if local_bin.exists()
+            else ["npx.cmd", "-y", "drizzle-kit", "push"]
+        )
+        result = subprocess.run(
+            [
+                "cmd.exe",
+                "/c",
+                *cmd,
+            ],
+            cwd=str(ROOT_DIR),
+            env=os.environ,
+        )
         return result.returncode
 
-    cmd = [str(local_bin), "push"] if local_bin.exists() else ["npx", "drizzle-kit", "push"]
+    cmd = (
+        [str(local_bin), "push"]
+        if local_bin.exists()
+        else ["npx", "-y", "drizzle-kit", "push"]
+    )
     result = subprocess.run(cmd, cwd=str(ROOT_DIR), env=os.environ)
     return result.returncode
 

@@ -241,5 +241,6 @@ Below are some incredible people that the website wouldn't be without today.
 ## Local Database Setup
 
 1. Copy `apps/stardew.app/.env.local.example` to `apps/stardew.app/.env.local` and update the MySQL credentials.
-2. Ensure MySQL is running locally.
-3. Run `bun run prepLocalEnv` to create the database and sync the schema for local testing.
+2. Run `bun install` to install project dependencies.
+3. Ensure MySQL is running locally.
+4. Run `bun run prepLocalEnv` to create the database and sync the schema for local testing.
