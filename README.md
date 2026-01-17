@@ -134,6 +134,13 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/sol3uk">
+            <img src="https://avatars.githubusercontent.com/u/26093813?v=4" width="100;" alt="sol3uk"/>
+            <br />
+            <sub><b>Ben Ashley</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/moonggae">
             <img src="https://avatars.githubusercontent.com/u/74220198?v=4" width="100;" alt="moonggae"/>
             <br />
@@ -167,15 +174,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Michael Harrington</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/Terrance">
             <img src="https://avatars.githubusercontent.com/u/4025899?v=4" width="100;" alt="Terrance"/>
             <br />
             <sub><b>Terrance</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/FracturedShader">
             <img src="https://avatars.githubusercontent.com/u/2058808?v=4" width="100;" alt="FracturedShader"/>
@@ -210,15 +217,15 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Danny Doan</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/caoimhebyrne">
             <img src="https://avatars.githubusercontent.com/u/71222289?v=4" width="100;" alt="caoimhebyrne"/>
             <br />
             <sub><b>Caoimhe</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/colemilne54">
             <img src="https://avatars.githubusercontent.com/u/20178496?v=4" width="100;" alt="colemilne54"/>
