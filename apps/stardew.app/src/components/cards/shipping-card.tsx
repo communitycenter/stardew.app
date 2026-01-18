@@ -12,6 +12,7 @@ import { usePlayers } from "@/contexts/players-context";
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
 import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
+import { CardQuickActions } from "@/components/cards/card-quick-actions";
 import {
 	Dialog,
 	DialogContent,
@@ -88,69 +89,92 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
 	const iconURL = `https://cdn.stardew.app/images/(O)${item.itemID}.webp`;
 	const name = objects[item.itemID as keyof typeof objects].name;
 	const description = objects[item.itemID as keyof typeof objects].description;
+	const isNewItemHidden =
+		item.minVersion === "1.6.0" && !show && _status < 1;
 
-	async function handleSave() {
+	async function updateShippedCount(nextCount: number) {
 		if (!activePlayer) return;
 
+		const patch = {
+			shipping: {
+				shipped: {
+					[item.itemID]: nextCount === 0 ? null : nextCount,
+				},
+			},
+		};
+
+		await patchPlayer(patch);
+	}
+
+	async function handleSave() {
 		// don't make any requests if the value hasn't changed
 		if (value === _count || value < 0) {
 			setOpen(false);
 			return;
 		}
 
-		const patch = {
-			shipping: {
-				shipped: {
-					[item.itemID]: value === 0 ? null : value,
-				},
-			},
-		};
-
-		await patchPlayer(patch);
+		await updateShippedCount(value);
 		setOpen(false);
+	}
+
+	async function incrementShippedCount() {
+		if (isNewItemHidden) {
+			setPromptOpen?.(true);
+			return;
+		}
+
+		await updateShippedCount(_count + 1);
 	}
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
-			<DialogTrigger asChild>
-				<div
-					className={cn(
-						"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
-						classes[_status],
-					)}
-					onClick={(e) => {
-						if (item.minVersion === "1.6.0" && !show && _status < 1) {
-							e.preventDefault();
-							setPromptOpen?.(true);
-							return;
-						}
-					}}
-				>
-					{item.minVersion === "1.6.0" && (
-						<NewItemBadge version={item.minVersion} />
-					)}
+			<div className="flex w-full items-center gap-2">
+				<DialogTrigger asChild>
 					<div
 						className={cn(
-							"flex items-center space-x-3 truncate text-left",
-							item.minVersion === "1.6.0" && !show && _status < 1 && "blur-sm",
+							"relative flex min-w-0 flex-1 select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
+							classes[_status],
 						)}
+						onClick={(e) => {
+							if (isNewItemHidden) {
+								e.preventDefault();
+								setPromptOpen?.(true);
+							}
+						}}
 					>
-						<Image
-							src={iconURL}
-							alt={name}
-							className="rounded-sm"
-							width={32}
-							height={32}
-						/>
-						<div className="min-w-0 flex-1 pr-3">
-							<p className="truncate font-medium">{`${name} (${_count}x)`}</p>
-							<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-								{description}
-							</p>
+						{item.minVersion === "1.6.0" && (
+							<NewItemBadge version={item.minVersion} />
+						)}
+						<div
+							className={cn(
+								"flex items-center space-x-3 truncate text-left",
+								isNewItemHidden && "blur-sm",
+							)}
+						>
+							<Image
+								src={iconURL}
+								alt={name}
+								className="rounded-sm"
+								width={32}
+								height={32}
+							/>
+							<div className="min-w-0 flex-1 pr-3">
+								<p className="truncate font-medium">{`${name} (${_count}x)`}</p>
+								<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+									{description}
+								</p>
+							</div>
 						</div>
+						<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
 					</div>
-					<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
-				</div>
-			</DialogTrigger>
+				</DialogTrigger>
+				<CardQuickActions
+					addLabel={`Increment ${name} shipped count`}
+					className={classes[_status]}
+					onAdd={() => {
+						incrementShippedCount();
+					}}
+				/>
+			</div>
 			<DialogContent>
 				<DialogHeader>
 					<Image
