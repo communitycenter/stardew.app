@@ -112,6 +112,13 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/killerdroid99">
+            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="killerdroid99"/>
+            <br />
+            <sub><b>Aniket Jena</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/ms7m">
             <img src="https://avatars.githubusercontent.com/u/37344632?v=4" width="100;" alt="ms7m"/>
             <br />
@@ -123,13 +130,6 @@ Below are some incredible people that the website wouldn't be without today.
             <img src="https://avatars.githubusercontent.com/u/122586790?v=4" width="100;" alt="tindolt"/>
             <br />
             <sub><b>Tindolt</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/killerdroid99">
-            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="killerdroid99"/>
-            <br />
-            <sub><b>Aniket Jena</b></sub>
         </a>
     </td></tr>
 <tr>
