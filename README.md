@@ -42,7 +42,7 @@ The website uses [Next.js](https://nextjs.org) for its frontend, self-hosted MyS
 
 Thank you so much for wanting to contribute to stardew.app! We ask that you ensure your code is neat, adheres to the current programming style of the project, and runs without errors. Other than that, feel free to fix bugs, add features, and do whatever you desire to improve the website! stardew.app is built by the community, for the community, so we appreciate your contribution.
 
-Below are some incredible people that the website wouldn't be without today.
+Below are some incredible people that the website wouldn't be without today!
 
 <!-- readme: contributors -start -->
 <table>
