@@ -29,7 +29,7 @@ import { useMultiSelect } from "@/contexts/multi-select-context";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
-import { IconClock, IconCloud } from "@tabler/icons-react";
+import { IconClock, IconCloud, IconMapPin } from "@tabler/icons-react";
 
 const semverGte = require("semver/functions/gte");
 
@@ -78,6 +78,55 @@ const seasons = [
 	},
 ];
 
+const locationGroups: Record<string, string[]> = {
+	Ocean: [
+		"Ocean",
+		"East Pier on The Beach",
+		"Beach Farm",
+		"Fishing Pole: Ocean",
+		"Foraging: The Beach",
+	],
+	River: [
+		"River",
+		"Town River",
+		"Forest River",
+		"North of JojaMart on the wooden plank bridge",
+	],
+	"Mountain Lake": ["Mountain Lake", "The Mountain Lake, near the log"],
+	"Forest Pond": [
+		"Forest Pond",
+		"Forest Farm Pond",
+		"Waterfalls",
+		"Cindersap Forest Waterfalls",
+		"South end of Arrowhead Island in Cindersap Forest",
+	],
+	"Secret Woods": ["Secret Woods"],
+	"Ginger Island": [
+		"Ginger Island",
+		"Ginger Island North & West (freshwater)",
+		"Pirate Cove",
+		"Volcano Caldera",
+		"Turtle",
+	],
+	"The Mines": [
+		"The Mines",
+		"Floor 20 of The Mines",
+		"Floor 100 of The Mines",
+		'The "Dangerous Mines"',
+		"The Mines, Floor 60",
+	],
+	"The Sewers": ["The Sewers", "Mutant Bug Lair"],
+	"The Desert": ["The Desert"],
+	"Witch's Swamp": ["Witch's Swamp"],
+	"Crab Pot": ["Crab Pot: Freshwater", "Crab Pot: Saltwater"],
+	"Night Market": ["Submarine at Night Market"],
+};
+
+const locations = [
+	{ value: "all", label: "All Locations" },
+	...Object.keys(locationGroups).map((k) => ({ value: k, label: k })),
+];
+
 const bubbleColors: Record<string, string> = {
 	"0": "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950", // incomplete
 	"2": "border-green-900 bg-green-500/20", // completed
@@ -95,6 +144,7 @@ export default function Fishing() {
 	const [_filter, setFilter] = useState("all");
 	const [_weatherFilter, setWeatherFilter] = useState("both");
 	const [_seasonFilter, setSeasonFilter] = useState("all");
+	const [_locationFilter, setLocationFilter] = useState("all");
 
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
@@ -281,6 +331,13 @@ export default function Fishing() {
 									icon={IconClock}
 									setFilter={setSeasonFilter}
 								/>
+								<FilterSearch
+									title="Location"
+									_filter={_locationFilter}
+									data={locations}
+									icon={IconMapPin}
+									setFilter={setLocationFilter}
+								/>
 								<Button
 									variant={isMultiSelectMode ? "default" : "outline"}
 									onClick={() => {
@@ -361,6 +418,12 @@ export default function Fishing() {
 										return f.seasons.includes(_seasonFilter);
 									}
 									return true;
+								})
+								.filter((f) => {
+									if (_locationFilter === "all") return true;
+									if (!("locations" in f)) return false;
+									const group = locationGroups[_locationFilter] ?? [];
+									return f.locations.some((loc) => group.includes(loc));
 								})
 								.map((f) => (
 									<BooleanCard
