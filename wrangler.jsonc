@@ -20,7 +20,6 @@
 			"id": "c9e4c81328964d2fb725879e7a09ff15",
 		},
 	],
-	// Non-sensitive configuration values
 	"vars": {
 		"DISCORD_GUILD": "1001999306900897872",
 		"DISCORD_ID": "1003311521817968752",
@@ -29,6 +28,9 @@
 		"logs": {
 			"enabled": true,
 			"invocation_logs": true,
+		},
+		"traces": {
+			"enabled": true,
 		},
 	},
 }

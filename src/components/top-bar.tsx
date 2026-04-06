@@ -10,6 +10,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { PlayersContext } from "@/contexts/players-context";
 import { clearClientAuthCookies, isInternalHostname } from "@/lib/client-env";
 
+import { ChangelogDialog, CHANGELOG_VERSION } from "@/components/dialogs/changelog-dialog";
 import { CreditsDialog } from "@/components/dialogs/credits-dialog";
 import { DeletionDialog } from "@/components/dialogs/deletion-dialog";
 import { PresetSelector } from "@/components/preset-selector";
@@ -27,6 +28,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { IconSparkles } from "@tabler/icons-react";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
 import { LoginDialog } from "./dialogs/login-dialog";
 import { UploadDialog } from "./dialogs/upload-dialog";
@@ -48,6 +50,7 @@ export function Topbar() {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const [changelogOpen, setChangelogOpen] = useState(false);
 	const [creditsOpen, setCreditsOpen] = useState(false);
 	const [deletionOpen, setDeletionOpen] = useState(false);
 	const [feedbackOpen, setFeedbackOpen] = useState(false);
@@ -62,6 +65,13 @@ export function Topbar() {
 		setIsInternal(isInternalHostname(window.location.hostname));
 	}, []);
 
+	useEffect(() => {
+		const seen = localStorage.getItem("changelog_seen_version");
+		if (seen !== CHANGELOG_VERSION) {
+			setChangelogOpen(true);
+		}
+	}, []);
+
 	return (
 		<>
 			<div className="flex items-center justify-between bg-white px-7 py-3.5 dark:bg-neutral-950 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
@@ -74,6 +84,13 @@ export function Topbar() {
 						alt="stardew.app logo"
 					/>
 					<h1 className="pl-3 font-medium">stardew.app</h1>
+					<button
+						onClick={() => setChangelogOpen(true)}
+						className="ml-2 flex items-center gap-1 rounded-full border border-blue-300 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600 dark:border-blue-700 dark:bg-blue-950 dark:text-blue-300"
+					>
+						<IconSparkles size={12} />
+						What&apos;s new?
+					</button>
 					{isInternal && (
 						<span className="ml-2 rounded-full bg-red-100 px-2 py-1 text-xs text-red-500 dark:bg-red-800 dark:text-red-400">
 							Internal
@@ -209,6 +226,14 @@ export function Topbar() {
 				setDeletionOpen={setDeletionOpen}
 				setLoginOpen={setLoginOpen}
 				inputRef={inputRef}
+			/>
+			<ChangelogDialog
+				open={changelogOpen}
+				setOpen={(open) => {
+					if (!open)
+						localStorage.setItem("changelog_seen_version", CHANGELOG_VERSION);
+					setChangelogOpen(open);
+				}}
 			/>
 			<CreditsDialog open={creditsOpen} setOpen={setCreditsOpen} />
 			<DeletionDialog open={deletionOpen} setOpen={setDeletionOpen} />

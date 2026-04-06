@@ -11,6 +11,8 @@ module.exports = {
 				fixStyle: "inline-type-imports",
 			},
 		],
+		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/no-require-imports": 0,
 		"@typescript-eslint/no-empty-interface": 0,
 	},
 };
