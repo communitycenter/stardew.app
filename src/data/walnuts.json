@@ -111,32 +111,32 @@
 	},
 	"IslandLeftPlantRestored": {
 		"count": 1,
-		"name": "Field Office Plant Survey Reward",
+		"name": "Field Office Plant Survey",
 		"description": "Correct count is 22 plants"
 	},
 	"IslandRightPlantRestored": {
 		"count": 1,
-		"name": "Field Office Starfish Survey Reward",
+		"name": "Field Office Starfish Survey",
 		"description": "Correct count is 18 starfish"
 	},
 	"IslandBatRestored": {
 		"count": 1,
-		"name": "Field Office Mummified Bat Reward",
+		"name": "Field Office Mummified Bat",
 		"description": "Found by breaking non-ore rocks in the Volcano"
 	},
 	"IslandFrogRestored": {
 		"count": 1,
-		"name": "Field Office Mummified Frog Reward",
+		"name": "Field Office Mummified Frog",
 		"description": "Found by cutting weeds in Jungle"
 	},
 	"IslandCenterSkeletonRestored": {
 		"count": 6,
-		"name": "Field Office Mammal Skeleton Reward",
+		"name": "Field Office Mammal Skeleton",
 		"description": "Skull -- Found in Golden Coconuts\nSpine -- Found by fishing in Island North\nLeg (2) -- Found by breaking fossil stones (high chance)\nRibs -- Found by breaking fossil stones (low chance)\nTail -- Found by panning in Island North"
 	},
 	"IslandSnakeRestored": {
 		"count": 3,
-		"name": "Field Office Snake Skeleton Reward",
+		"name": "Field Office Snake Skeleton",
 		"description": "Skull -- Found by digging artifact spots in Island North or West\n    and fishing in Island West\nVertebra (2) -- Found by digging artifact spots in Island West"
 	},
 	"Bush_IslandWest_104_3": {
@@ -246,27 +246,27 @@
 	},
 	"BananaShrine": {
 		"count": 3,
-		"name": "Island Jungle Banana Shrine Reward",
+		"name": "Island Jungle Banana Shrine",
 		"description": "Place a banana on the shrine"
 	},
 	"IslandGourmand1": {
 		"count": 5,
-		"name": "Island Farm Cave Gourmand Reward #1",
+		"name": "Island Farm Cave Gourmand #1",
 		"description": "Grow some melons for the Gourmand"
 	},
 	"IslandGourmand2": {
 		"count": 5,
-		"name": "Island Farm Cave Gourmand Reward #2",
+		"name": "Island Farm Cave Gourmand #2",
 		"description": "Grow some wheat for the Gourmand"
 	},
 	"IslandGourmand3": {
 		"count": 5,
-		"name": "Island Farm Cave Gourmand Reward #3",
+		"name": "Island Farm Cave Gourmand #3",
 		"description": "Grow some garlic for the Gourmand"
 	},
 	"IslandShrinePuzzle": {
 		"count": 5,
-		"name": "Island Jungle Gem Shrine Reward",
+		"name": "Island Jungle Gem Shrine",
 		"description": "Place gems dropped by the birds on appropriate pedestals"
 	},
 	"GoldenCoconut": {
@@ -274,7 +274,7 @@
 		"name": "Break a Golden Coconut",
 		"description": ""
 	},
-	"Birdie": { "count": 5, "name": "Birdie's Quest Reward", "description": "" },
+	"Birdie": { "count": 5, "name": "Birdie's Quest", "description": "" },
 	"Darts": { "count": 3, "name": "Winning Darts Minigame", "description": "" },
 	"TigerSlimeNut": {
 		"count": 1,

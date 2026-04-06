@@ -272,9 +272,7 @@ export default function IslandWalnuts() {
 								return (
 									<DialogCard
 										key={id}
-										title={`${walnut.name} ${
-											walnut.count > 1 ? `(${walnut.count}x)` : ""
-										}`}
+										title={walnut.name}
 										description={walnut.description}
 										iconURL="https://stardewvalleywiki.com/mediawiki/images/5/54/Golden_Walnut.png"
 										completed={
@@ -284,6 +282,8 @@ export default function IslandWalnuts() {
 													: false
 												: false
 										}
+										currentCount={activePlayer?.walnuts?.found?.[id] ?? 0}
+										maxCount={walnut.count}
 										_id={id}
 										_type="walnut"
 									/>

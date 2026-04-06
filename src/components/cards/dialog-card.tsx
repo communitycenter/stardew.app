@@ -44,6 +44,10 @@ interface Props {
 		| "power"
 		| "rarecrow"
 		| "island_upgrade";
+	/** For multi-walnut sources: how many have been collected so far */
+	currentCount?: number;
+	/** For multi-walnut sources: total available from this source */
+	maxCount?: number;
 	/**
 	 * Whether the user prefers to see new content
 	 *
@@ -68,18 +72,27 @@ export const DialogCard = ({
 	completed,
 	_id,
 	_type,
+	currentCount,
+	maxCount,
 	show,
 	setPromptOpen,
 }: Props) => {
 	const { activePlayer, patchPlayer } = usePlayers();
 	const [open, setOpen] = useState(false);
+	const [pendingCount, setPendingCount] = useState(currentCount ?? 0);
 	const { isMultiSelectMode, selectedItems, toggleItem } = useMultiSelect();
+
+	const isCountable = _type === "walnut" && maxCount != null && maxCount > 1;
+	const isPartial =
+		isCountable && (currentCount ?? 0) > 0 && (currentCount ?? 0) < maxCount!;
 
 	const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
 	let checkedClass = completed
 		? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
-		: "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
+		: isPartial
+			? "border-yellow-900 bg-yellow-500/20 hover:bg-yellow-500/30 dark:bg-yellow-500/10 hover:dark:bg-yellow-500/20"
+			: "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
 
 	if (isMultiSelectMode && selectedItems.has(_id)) {
 		checkedClass += " ring-2 ring-primary";
@@ -180,8 +193,18 @@ export const DialogCard = ({
 		setOpen(false);
 	}
 
+	async function handleCountChange(newCount: number) {
+		if (!activePlayer) return;
+		const updated = { ...(activePlayer.walnuts?.found ?? {}), [_id]: newCount };
+		void patchPlayer({ walnuts: { found: updated } });
+		setOpen(false);
+	}
+
 	return (
-		<Dialog open={open} onOpenChange={setOpen}>
+		<Dialog
+			open={open}
+			onOpenChange={setOpen}
+		>
 			<div
 				className={cn(
 					"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
@@ -197,20 +220,28 @@ export const DialogCard = ({
 						setPromptOpen?.(true);
 						return;
 					}
+					setPendingCount(currentCount ?? 0);
 					setOpen(true);
 				}}
 			>
 				{minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
 				<div
 					className={cn(
-						"flex items-center space-x-3 truncate text-left",
+						"flex min-w-0 items-center space-x-3 text-left",
 						minVersion === "1.6.0" && !show && !completed && "blur-sm",
 					)}
 				>
-					<Image src={iconURL} alt={title} width={32} height={32} />
-					<p>{title}</p>
+					<Image src={iconURL} alt={title} width={32} height={32} className="shrink-0" />
+					<p className="truncate">{title}</p>
 				</div>
-				<ChevronRightIcon className="h-5 w-5" />
+				<div className="flex shrink-0 items-center gap-2">
+					{isCountable && (
+						<span className="text-sm tabular-nums text-neutral-500 dark:text-neutral-400">
+							{currentCount ?? 0}/{maxCount}
+						</span>
+					)}
+					<ChevronRightIcon className="h-5 w-5" />
+				</div>
 			</div>
 			<DialogContent>
 				<DialogHeader>
@@ -220,7 +251,41 @@ export const DialogCard = ({
 					{description}
 				</DialogDescription>
 				<DialogFooter className="gap-4 sm:gap-0">
-					{completed ? (
+					{isCountable ? (
+						<div className="flex w-full items-center justify-between gap-3">
+							<div className="flex items-center gap-2">
+								<Button
+									variant="outline"
+									size="icon"
+									disabled={!activePlayer || pendingCount <= 0}
+									onClick={() => setPendingCount((c) => Math.max(0, c - 1))}
+									aria-label="Remove one walnut"
+								>
+									−
+								</Button>
+								<span className="min-w-[3rem] text-center text-sm tabular-nums">
+									{pendingCount} / {maxCount}
+								</span>
+								<Button
+									variant="outline"
+									size="icon"
+									disabled={!activePlayer || pendingCount >= maxCount!}
+									onClick={() =>
+										setPendingCount((c) => Math.min(maxCount!, c + 1))
+									}
+									aria-label="Add one walnut"
+								>
+									+
+								</Button>
+							</div>
+							<Button
+								disabled={!activePlayer || pendingCount === (currentCount ?? 0)}
+								onClick={() => handleCountChange(pendingCount)}
+							>
+								Save
+							</Button>
+						</div>
+					) : completed ? (
 						<Button
 							variant="secondary"
 							disabled={!activePlayer || !completed}
