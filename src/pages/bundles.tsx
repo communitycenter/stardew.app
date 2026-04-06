@@ -3,6 +3,8 @@ import { type ReactElement } from "react";
 
 import achievements from "@/data/achievements.json";
 import bundlesData from "@/data/bundles.json";
+import fishData from "@/data/fish.json";
+import shippingData from "@/data/shipping.json";
 
 import {
 	Bundle,
@@ -55,8 +57,9 @@ import { Command, CommandInput } from "@/components/ui/command";
 import { Progress } from "@/components/ui/progress";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
+import { FilterSearch } from "@/components/filter-btn";
 import { useMediaQuery } from "@react-hook/media-query";
-import { IconSettings } from "@tabler/icons-react";
+import { IconClock, IconSettings } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
@@ -72,6 +75,27 @@ const bubbleColors: Record<string, string> = {
 	"1": "border-yellow-900 bg-yellow-500/20", // known, but not completed
 	"2": "border-green-900 bg-green-500/20", // completed
 };
+
+const seasons = [
+	{ value: "all", label: "All Seasons" },
+	{ value: "Spring", label: "Spring" },
+	{ value: "Summer", label: "Summer" },
+	{ value: "Fall", label: "Fall" },
+	{ value: "Winter", label: "Winter" },
+];
+
+function itemAvailableInSeason(item: BundleItem, season: string): boolean {
+	const id = item.itemID;
+	const fish = (fishData as Record<string, { seasons?: string[] }>)[id];
+	if (fish?.seasons) {
+		return fish.seasons.includes(season);
+	}
+	const shipping = (shippingData as Record<string, { seasons?: string[] }>)[id];
+	if (shipping?.seasons && shipping.seasons.length > 0) {
+		return shipping.seasons.includes(season);
+	}
+	return true;
+}
 
 type BundleAccordionProps = {
 	bundleWithStatus: BundleWithStatus;
@@ -439,6 +463,7 @@ export default function Bundles() {
 	let [completeCount, setCompleteCount] = useState(0);
 	let [incompleteCount, setIncompleteCount] = useState(0);
 	let [filter, setFilter] = useState("all");
+	let [_seasonFilter, setSeasonFilter] = useState("all");
 	let [search, setSearch] = useState("");
 
 	const { activePlayer, patchPlayer } = usePlayers();
@@ -594,7 +619,7 @@ export default function Bundles() {
 							})}
 					</AccordionSection>
 					{/* Filters and Actions Row */}
-					<div className="flex w-full flex-row items-center justify-between">
+					<div className="flex w-full flex-row items-center justify-between gap-2">
 						<ToggleGroup
 							variant="outline"
 							type="single"
@@ -625,6 +650,13 @@ export default function Bundles() {
 								<span className="align-middle">Complete ({completeCount})</span>
 							</ToggleGroupItem>
 						</ToggleGroup>
+						<FilterSearch
+							title="Season"
+							_filter={_seasonFilter}
+							data={seasons}
+							icon={IconClock}
+							setFilter={setSeasonFilter}
+						/>
 					</div>
 					{/* Search Bar Row */}
 					<div className="mt-2 w-full">
@@ -688,6 +720,14 @@ export default function Bundles() {
 												default:
 													return true;
 											}
+										})
+										.filter((item) => {
+											if (_seasonFilter === "all") return true;
+											if (isRandomizer(item)) return true;
+											return itemAvailableInSeason(
+												item as BundleItem,
+												_seasonFilter,
+											);
 										})
 										.filter((item) => {
 											if (bundleMatched) {
