@@ -7,13 +7,11 @@ import fishes from "@/data/fish.json";
 import objects from "@/data/objects.json";
 
 import { usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 import { useEffect, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterSearch } from "@/components/filter-btn";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import {
@@ -137,10 +135,7 @@ export default function Fishing() {
 	const [fish, setFish] = useState<FishType | null>(null);
 	const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
-	// unblur dialog
-	const [showPrompt, setPromptOpen] = useState(false);
-
-	const [search, setSearch] = useState("");
+const [search, setSearch] = useState("");
 	const [_filter, setFilter] = useState("all");
 	const [_weatherFilter, setWeatherFilter] = useState("both");
 	const [_seasonFilter, setSeasonFilter] = useState("all");
@@ -149,7 +144,6 @@ export default function Fishing() {
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
 	const { activePlayer, patchPlayer } = usePlayers();
-	const { show, toggleShow } = usePreferences();
 
 	const {
 		isMultiSelectMode,
@@ -433,19 +427,12 @@ export default function Fishing() {
 										setIsOpen={setIsOpen}
 										setObject={setFish}
 										type="fish"
-										setPromptOpen={setPromptOpen}
-										show={show}
 									/>
 								))}
 						</div>
 					</section>
 				</div>
 				<FishSheet open={open} setIsOpen={setIsOpen} fish={fish} />
-				<UnblurDialog
-					open={showPrompt}
-					setOpen={setPromptOpen}
-					toggleShow={toggleShow}
-				/>
 				<BulkActionDialog
 					open={bulkActionOpen}
 					setOpen={setBulkActionOpen}

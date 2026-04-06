@@ -115,7 +115,7 @@ function SectionCard({ section }: { section: Section }) {
 	return (
 		<Card
 			className={cn(
-				complete && "border-green-900 bg-green-500/5 dark:border-green-900 dark:bg-green-500/5",
+				complete && "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10",
 			)}
 		>
 			<CardHeader className="pb-2">

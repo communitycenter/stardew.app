@@ -7,7 +7,6 @@ import { Dispatch, SetStateAction } from "react";
 import { useMultiSelect } from "@/contexts/multi-select-context";
 import { usePlayers } from "@/contexts/players-context";
 
-import { NewItemBadge } from "@/components/new-item-badge";
 import {
 	ContextMenu,
 	ContextMenuCheckboxItem,
@@ -35,22 +34,6 @@ interface BooleanCardProps {
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	setObject: any; // TODO: update as we add more types
 	handleStatusChange?: (status: number) => void;
-
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof BooleanCardProps
-	 */
-	show: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof BooleanCardProps
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const BooleanCard = ({
@@ -59,11 +42,9 @@ export const BooleanCard = ({
 	quantity,
 	quality,
 	type,
-	show,
 	completed,
 	setIsOpen,
 	setObject,
-	setPromptOpen,
 	handleStatusChange,
 }: BooleanCardProps) => {
 	const { activePlayer, patchPlayer } = usePlayers();
@@ -157,20 +138,12 @@ export const BooleanCard = ({
 							toggleItem(item.itemID.toString());
 							return;
 						}
-						if (minVersion === "1.6.0" && !show && !completed) {
-							setPromptOpen?.(true);
-							return;
-						}
 						setObject(item);
 						setIsOpen(true);
 					}}
 				>
-					{minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
 					<div
-						className={
-							"flex items-center space-x-3 truncate text-left" +
-							(minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
-						}
+						className="flex items-center space-x-3 truncate text-left"
 					>
 						<ItemWithOverlay
 							src={iconURL}
@@ -189,10 +162,7 @@ export const BooleanCard = ({
 						</div>
 					</div>
 					<IconChevronRight
-						className={
-							"h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" +
-							(minVersion === "1.6.0" && !show && !completed ? " blur-sm" : "")
-						}
+						className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400"
 					/>
 				</button>
 			</ContextMenuTrigger>

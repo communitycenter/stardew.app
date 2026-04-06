@@ -17,10 +17,8 @@ import { AchievementCard } from "@/components/cards/achievement-card";
 import { RecipeCard } from "@/components/cards/recipe-card";
 import { BetaFeaturesDialog } from "@/components/dialogs/beta-features-dialog";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterSearch } from "@/components/filter-btn";
 import { IngredientList } from "@/components/ingredient-list";
-import { NewItemBadge } from "@/components/new-item-badge";
 import { RecipeSheet } from "@/components/sheets/recipe-sheet";
 import {
 	Accordion,
@@ -91,12 +89,10 @@ export default function Crafting() {
 	const [_filter, setFilter] = useState("all");
 	const [_seasonFilter, setSeasonFilter] = useState("all");
 
-	const [showPrompt, setPromptOpen] = useState(false);
 	const [betaDialogOpen, setBetaDialogOpen] = useState(false);
 
 	const { activePlayer } = usePlayers();
-	const { show, toggleShow, showBetaFeatures, toggleBetaFeatures } =
-		usePreferences();
+	const { showBetaFeatures, toggleBetaFeatures } = usePreferences();
 	const {
 		isMultiSelectMode,
 		toggleMultiSelectMode,
@@ -262,7 +258,7 @@ export default function Crafting() {
 						<TabsList className="grid w-full grid-cols-2">
 							<TabsTrigger value="recipes">All Recipes</TabsTrigger>
 							<TabsTrigger value="ingredients" className="relative">
-								Ingredient Tracker <NewItemBadge version="beta" />
+								Ingredient Tracker <span className="absolute -right-1 -top-1 rounded-full bg-yellow-400 px-1 text-[10px] font-semibold text-yellow-900">beta</span>
 							</TabsTrigger>
 						</TabsList>
 						{/* All Recipes Section */}
@@ -393,8 +389,6 @@ export default function Crafting() {
 											}
 											setIsOpen={setIsOpen}
 											setObject={setRecipe}
-											setPromptOpen={setPromptOpen}
-											show={show}
 											index={index}
 											allRecipes={filteredRecipes as CraftingRecipe[]}
 										/>
@@ -460,8 +454,6 @@ export default function Crafting() {
 							<IngredientList<CraftingRecipe>
 								recipes={recipes}
 								playerRecipes={playerRecipes}
-								show={show}
-								setPromptOpen={setPromptOpen}
 								filterKnown={_filter}
 								filterSeason={_seasonFilter}
 								searchText={ingredientSearch}
@@ -470,11 +462,6 @@ export default function Crafting() {
 					</Tabs>
 				</div>
 				<RecipeSheet open={open} setIsOpen={setIsOpen} recipe={recipe} />
-				<UnblurDialog
-					open={showPrompt}
-					setOpen={setPromptOpen}
-					toggleShow={toggleShow}
-				/>
 				<BetaFeaturesDialog
 					open={betaDialogOpen}
 					setOpen={setBetaDialogOpen}

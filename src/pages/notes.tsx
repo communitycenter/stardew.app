@@ -4,14 +4,12 @@ import Image from "next/image";
 import notes from "@/data/secret_notes.json";
 
 import { usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 import { type ReactElement, useEffect, useState } from "react";
 
 import { DialogCard } from "@/components/cards/dialog-card";
 
 export default function SecretNotes() {
 	const { activePlayer } = usePlayers();
-	const { show } = usePreferences();
 
 	const [notesSeen, setNotesSeen] = useState<Set<number>>(new Set());
 
@@ -44,7 +42,6 @@ export default function SecretNotes() {
 				completed={activePlayer ? notesSeen.has(parseInt(id)) : false}
 				_id={id}
 				_type="note"
-				show={show}
 			/>,
 		);
 	});

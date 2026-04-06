@@ -13,20 +13,6 @@ interface BundleItemCardProps {
 	completed?: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	setObject: any; // TODO: update as we add more types
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof BundleItemCardProps
-	 */
-	show: boolean;
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof BundleItemCardProps
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const categoryItems: Record<string, string> = {
@@ -48,11 +34,9 @@ export function bundleItemName<T extends BundleItem>(item: T): string {
 
 export const BundleItemCard = ({
 	item,
-	show,
 	completed,
 	setIsOpen,
 	setObject,
-	setPromptOpen,
 }: BundleItemCardProps) => {
 	const { activePlayer, patchPlayer } = usePlayers();
 	// let itemType = "O"; //Todo add item types to object data files, and use them here to hotswap data source
@@ -156,11 +140,9 @@ export const BundleItemCard = ({
 					: itemQuantity
 			}
 			quality={itemCopy.itemQuality}
-			show={show}
 			completed={completed}
 			setIsOpen={setIsOpen}
 			setObject={setObject}
-			setPromptOpen={setPromptOpen}
 			handleStatusChange={handleStatusChange}
 		/>
 	);

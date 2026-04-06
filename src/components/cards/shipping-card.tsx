@@ -5,12 +5,11 @@ import objects from "@/data/objects.json";
 import type { ShippingItem } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { usePlayers } from "@/contexts/players-context";
 
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
-import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -28,22 +27,6 @@ import { IconChevronRight, IconExternalLink } from "@tabler/icons-react";
 
 interface Props {
 	item: ShippingItem;
-
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof Props
-	 */
-	show: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof Props
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const classes = [
@@ -52,7 +35,7 @@ const classes = [
 	"border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20",
 ];
 
-export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
+export const ShippingCard = ({ item }: Props) => {
 	const { activePlayer, patchPlayer } = usePlayers();
 
 	const [open, setOpen] = useState(false);
@@ -117,22 +100,9 @@ export const ShippingCard = ({ item, show, setPromptOpen }: Props) => {
 						"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
 						classes[_status],
 					)}
-					onClick={(e) => {
-						if (item.minVersion === "1.6.0" && !show && _status < 1) {
-							e.preventDefault();
-							setPromptOpen?.(true);
-							return;
-						}
-					}}
 				>
-					{item.minVersion === "1.6.0" && (
-						<NewItemBadge version={item.minVersion} />
-					)}
 					<div
-						className={cn(
-							"flex items-center space-x-3 truncate text-left",
-							item.minVersion === "1.6.0" && !show && _status < 1 && "blur-sm",
-						)}
+						className="flex items-center space-x-3 truncate text-left"
 					>
 						<Image
 							src={iconURL}

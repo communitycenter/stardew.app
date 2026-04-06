@@ -182,8 +182,7 @@ export default function Account() {
 	);
 
 	const { players } = usePlayers();
-	const { show, toggleShow, showBetaFeatures, toggleBetaFeatures } =
-		usePreferences();
+	const { showBetaFeatures, toggleBetaFeatures } = usePreferences();
 
 	const [deletionOpen, setDeletionOpen] = useState(false);
 	const [inputType, setInputType] = useState<"password" | "text">("password");
@@ -268,31 +267,6 @@ export default function Account() {
 										Manage and view your site settings.
 									</p>
 								</div>
-								<Card>
-									<CardHeader className=" border-neutral-200 dark:border-neutral-800">
-										<span className="flex flex-row items-center justify-between">
-											<div className="space-y-1">
-												<CardTitle>Show New Content</CardTitle>
-												<CardDescription>
-													This will enable 1.6 content on the site - don&apos;t
-													use if you don&apos;t want to see 1.6 spoilers!
-												</CardDescription>
-											</div>
-											<div>
-												<Switch
-													id="new-content-switch"
-													defaultChecked={show}
-													onCheckedChange={() => {
-														const res = toggleShow();
-														toast.success(
-															`1.6 content has been ${res ? "enabled" : "disabled"}.`,
-														);
-													}}
-												/>
-											</div>
-										</span>
-									</CardHeader>
-								</Card>
 								<Card>
 									<CardHeader className=" border-neutral-200 dark:border-neutral-800">
 										<span className="flex flex-row items-center justify-between">

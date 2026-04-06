@@ -4,7 +4,7 @@ import shipping_items from "@/data/shipping.json";
 import type { Recipe } from "@/types/recipe";
 
 import { usePlayers } from "@/contexts/players-context";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
 	IngredientCard,
@@ -46,21 +46,6 @@ interface Props<T extends Recipe> {
 	 */
 	searchText?: string;
 
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof Props
-	 */
-	show: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof Props
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 class IngredientData {
@@ -92,8 +77,6 @@ export const IngredientList = <T extends Recipe>({
 	filterKnown,
 	filterSeason = "all",
 	searchText,
-	setPromptOpen,
-	show,
 }: Props<T>) => {
 	const [gameVersion, setGameVersion] = useState("1.6.0");
 
@@ -190,8 +173,6 @@ export const IngredientList = <T extends Recipe>({
 						key={id}
 						itemID={id}
 						count={count}
-						show={show}
-						setPromptOpen={setPromptOpen}
 					/>
 				))}
 		</div>

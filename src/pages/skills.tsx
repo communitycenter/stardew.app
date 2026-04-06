@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 import { usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 import { useMemo, useState } from "react";
 
 import achievements from "@/data/achievements.json";
@@ -23,7 +22,6 @@ import {
 } from "@/components/ui/tooltip";
 
 import { DialogCard } from "@/components/cards/dialog-card";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -49,13 +47,9 @@ const reqs: Record<string, number> = {
 export default function SkillsMasteryPowers() {
 	const { activePlayer, patchPlayer } = usePlayers();
 
-	// unblur dialog
-	const [showPrompt, setPromptOpen] = useState(false);
-
 	const [editSkillOpen, setEditSkillOpen] = useState(false);
 	const [editSkillName, setEditSkillName] = useState<string>("");
 	const [editSkillValue, setEditSkillValue] = useState(0);
-	const { show, toggleShow } = usePreferences();
 
 	const getAchievementProgress = (name: string) => {
 		let completed = false;
@@ -494,8 +488,6 @@ export default function SkillsMasteryPowers() {
 												title="Mastery"
 												description={`Level ${masteryExp.level ?? 0}`}
 												sourceURL="https://cdn.stardew.app/images/(POWER)Mastery_Farming.webp"
-												minVersion="1.6.0"
-												show={show || masteryExp.level > 0}
 											>
 												{playerExperiencePoints && (
 													<TooltipProvider>
@@ -541,13 +533,11 @@ export default function SkillsMasteryPowers() {
 														<DialogCard
 															_type="power"
 															_id={key}
-															setPromptOpen={setPromptOpen}
 															completed={playerPowers.has(key)}
 															key={key}
 															title={power.name}
 															description={power.description ?? "???"}
 															iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
-															show={show}
 														/>
 													);
 												})}
@@ -593,13 +583,11 @@ export default function SkillsMasteryPowers() {
 														<DialogCard
 															_type="power"
 															_id={key}
-															setPromptOpen={setPromptOpen}
 															completed={playerPowers.has(key)}
 															key={key}
 															title={power.name}
 															description={power.description ?? "???"}
 															iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
-															show={show}
 														/>
 													);
 												})}
@@ -628,8 +616,6 @@ export default function SkillsMasteryPowers() {
 												title={power.name}
 												description={power.description ?? "???"}
 												iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
-												show={show}
-												setPromptOpen={setPromptOpen}
 											/>
 										);
 									})}
@@ -638,11 +624,6 @@ export default function SkillsMasteryPowers() {
 					</section>
 				</div>
 			</main>
-			<UnblurDialog
-				open={showPrompt}
-				setOpen={setPromptOpen}
-				toggleShow={toggleShow}
-			/>
 			<Dialog open={editSkillOpen} onOpenChange={setEditSkillOpen}>
 				<DialogContent>
 					<DialogHeader>

@@ -8,12 +8,10 @@ import shipping_items from "@/data/shipping.json";
 export const typedShippingItems: Record<string, ShippingItem> = shipping_items;
 
 import { usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 import { useMemo, useState } from "react";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { ShippingCard } from "@/components/cards/shipping-card";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { FilterSearch } from "@/components/filter-btn";
 import {
 	Accordion,
@@ -69,10 +67,7 @@ export default function Shipping() {
 	const [filter, setFilter] = useState("all");
 	const [_seasonFilter, setSeasonFilter] = useState("all");
 
-	const [showPrompt, setPromptOpen] = useState(false);
-
 	const { activePlayer } = usePlayers();
-	const { show, toggleShow } = usePreferences();
 
 	const gameVersion = useMemo(() => {
 		if (!activePlayer || !activePlayer.general?.gameVersion) return "1.6.0";
@@ -346,19 +341,12 @@ export default function Shipping() {
 									<ShippingCard
 										key={i.itemID}
 										item={i}
-										show={show}
-										setPromptOpen={setPromptOpen}
 									/>
 								))}
 						</div>
 					</section>
 				</div>
 			</main>
-			<UnblurDialog
-				open={showPrompt}
-				setOpen={setPromptOpen}
-				toggleShow={toggleShow}
-			/>
 		</>
 	);
 }

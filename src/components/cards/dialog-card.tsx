@@ -12,10 +12,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import { usePlayers } from "@/contexts/players-context";
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { ReactNode, useState } from "react";
 
 import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
-import { NewItemBadge } from "@/components/new-item-badge";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -48,21 +47,6 @@ interface Props {
 	currentCount?: number;
 	/** For multi-walnut sources: total available from this source */
 	maxCount?: number;
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof Props
-	 */
-	show?: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof Props
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DialogCard = ({
@@ -74,8 +58,6 @@ export const DialogCard = ({
 	_type,
 	currentCount,
 	maxCount,
-	show,
-	setPromptOpen,
 }: Props) => {
 	const { activePlayer, patchPlayer } = usePlayers();
 	const [open, setOpen] = useState(false);
@@ -85,8 +67,6 @@ export const DialogCard = ({
 	const isCountable = _type === "walnut" && maxCount != null && maxCount > 1;
 	const isPartial =
 		isCountable && (currentCount ?? 0) > 0 && (currentCount ?? 0) < maxCount!;
-
-	const minVersion = _type === "power" ? powersData[_id].minVersion : "1.5.0";
 
 	let checkedClass = completed
 		? "border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20"
@@ -210,26 +190,17 @@ export const DialogCard = ({
 					"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
 					checkedClass,
 				)}
-				onClick={(e) => {
+				onClick={() => {
 					if (isMultiSelectMode) {
 						toggleItem(_id);
-						return;
-					}
-					if (minVersion === "1.6.0" && !show && !completed) {
-						e.preventDefault();
-						setPromptOpen?.(true);
 						return;
 					}
 					setPendingCount(currentCount ?? 0);
 					setOpen(true);
 				}}
 			>
-				{minVersion === "1.6.0" && <NewItemBadge version={minVersion} />}
 				<div
-					className={cn(
-						"flex min-w-0 items-center space-x-3 text-left",
-						minVersion === "1.6.0" && !show && !completed && "blur-sm",
-					)}
+					className="flex min-w-0 items-center space-x-3 text-left"
 				>
 					<Image src={iconURL} alt={title} width={32} height={32} className="shrink-0" />
 					<p className="truncate">{title}</p>

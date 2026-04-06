@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { NewItemBadge } from "../new-item-badge";
 
 interface Props {
 	title: string;
@@ -8,8 +7,6 @@ interface Props {
 	Icon?: any;
 	sourceURL?: string;
 	children?: React.ReactNode;
-	minVersion?: string;
-	show?: boolean;
 }
 
 export const InfoCard = ({
@@ -18,8 +15,6 @@ export const InfoCard = ({
 	description,
 	sourceURL,
 	children,
-	minVersion,
-	show,
 }: Props) => {
 	return (
 		<div
@@ -27,13 +22,9 @@ export const InfoCard = ({
 				"relative bg-white px-5 py-4 text-neutral-950 shadow-none dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
 			)}
 		>
-			{minVersion === "1.6.0" && (
-				<NewItemBadge version={minVersion} position="inside" />
-			)}
 			<div
 				className={cn(
 					"flex items-center space-x-3 truncate rounded-lg border-none border-neutral-200",
-					minVersion === "1.6.0" && !show && "blur-sm",
 				)}
 			>
 				{Icon && <Icon className="h-6 w-6 dark:text-white" />}

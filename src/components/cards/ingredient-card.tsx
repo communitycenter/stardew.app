@@ -7,11 +7,10 @@ import objects from "@/data/objects.json";
 import type { FishType } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 import { deweaponize } from "@/lib/utils";
 
-import { NewItemBadge } from "@/components/new-item-badge";
 import { FishSheet } from "@/components/sheets/fish-sheet";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,22 +35,6 @@ interface Props {
 	 * Number to display as the needed count in the card
 	 */
 	count: number;
-
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof Props
-	 */
-	show: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof Props
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 interface Item {
@@ -143,8 +126,6 @@ function GetItemDetails(itemID: string): Item {
 export const IngredientCard = ({
 	itemID,
 	count,
-	show,
-	setPromptOpen,
 }: Props) => {
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [fishOpen, setFishOpen] = useState(false);
@@ -166,22 +147,9 @@ export const IngredientCard = ({
 							"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
 							"border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800",
 						)}
-						onClick={(e) => {
-							if (item.minVersion === "1.6.0" && !show) {
-								e.preventDefault();
-								setPromptOpen?.(true);
-								return;
-							}
-						}}
 					>
-						{item.minVersion === "1.6.0" && (
-							<NewItemBadge version={item.minVersion} />
-						)}
 						<div
-							className={cn(
-								"flex items-center space-x-3 truncate text-left",
-								item.minVersion === "1.6.0" && !show && "blur-sm",
-							)}
+							className="flex items-center space-x-3 truncate text-left"
 						>
 							<Image
 								src={item.iconURL}

@@ -11,7 +11,6 @@ import { Dispatch, SetStateAction, useRef } from "react";
 import { useMultiSelect } from "@/contexts/multi-select-context";
 import { usePlayers } from "@/contexts/players-context";
 
-import { NewItemBadge } from "@/components/new-item-badge";
 import {
 	ContextMenu,
 	ContextMenuCheckboxItem,
@@ -26,23 +25,6 @@ interface Props<T extends Recipe> {
 	status: number;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	setObject: Dispatch<SetStateAction<T | null>>;
-
-	/**
-	 * Whether the user prefers to see new content
-	 *
-	 * @type {boolean}
-	 * @memberof Props
-	 */
-	show: boolean;
-
-	/**
-	 * The handler to display the new content confirmation prompt
-	 *
-	 * @type {Dispatch<SetStateAction<boolean>>}
-	 * @memberof Props
-	 */
-	setPromptOpen?: Dispatch<SetStateAction<boolean>>;
-
 	index: number;
 	allRecipes: T[];
 }
@@ -52,8 +34,6 @@ export const RecipeCard = <T extends Recipe>({
 	status,
 	setIsOpen,
 	setObject,
-	setPromptOpen,
-	show,
 	index,
 	allRecipes,
 }: Props<T>) => {
@@ -140,10 +120,6 @@ export const RecipeCard = <T extends Recipe>({
 			return;
 		}
 
-		if (recipe.minVersion === "1.6.0" && !show && status < 1) {
-			setPromptOpen?.(true);
-			return;
-		}
 		setObject(recipe);
 		setIsOpen(true);
 	};
@@ -159,14 +135,8 @@ export const RecipeCard = <T extends Recipe>({
 					)}
 					onClick={handleClick}
 				>
-					{recipe.minVersion === "1.6.0" && (
-						<NewItemBadge version={recipe.minVersion} />
-					)}
 					<div
-						className={cn(
-							"flex items-center space-x-3 truncate text-left",
-							recipe.minVersion === "1.6.0" && !show && status < 1 && "blur-sm",
-						)}
+						className="flex items-center space-x-3 truncate text-left"
 					>
 						<Image
 							src={iconURL}

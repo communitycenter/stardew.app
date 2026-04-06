@@ -10,7 +10,6 @@ import { useMemo, useState } from "react";
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { BooleanCard } from "@/components/cards/boolean-card";
 import { BulkActionDialog } from "@/components/dialogs/bulk-action-dialog";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import { MuseumSheet } from "@/components/sheets/museum-sheet";
 import {
 	Accordion,
@@ -23,7 +22,6 @@ import { Command, CommandInput } from "@/components/ui/command";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useMultiSelect } from "@/contexts/multi-select-context";
 import { usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
@@ -47,10 +45,6 @@ export default function Museum() {
 	const [_mineralFilter, setMineralFilter] = useState("all");
 
 	const { activePlayer } = usePlayers();
-	const { show, toggleShow } = usePreferences();
-
-	// unblur dialog
-	const [showPrompt, setPromptOpen] = useState(false);
 
 	const [museumArtifactCollected, museumMineralCollected] = useMemo(
 		() => [
@@ -318,7 +312,6 @@ export default function Museum() {
 														setIsOpen={setIsOpen}
 														setObject={setMuseumArtifact}
 														type="artifact"
-														show={show}
 													/>
 												))}
 										</div>
@@ -437,8 +430,7 @@ export default function Museum() {
 										setIsOpen={setIsOpen}
 										setObject={setMuseumArtifact}
 										type="mineral"
-										show={show}
-									/>
+								/>
 								))}
 						</div>
 					</section>
@@ -447,11 +439,6 @@ export default function Museum() {
 					open={open}
 					setIsOpen={setIsOpen}
 					trinket={museumArtifact}
-				/>
-				<UnblurDialog
-					open={showPrompt}
-					setOpen={setPromptOpen}
-					toggleShow={toggleShow}
 				/>
 				<BulkActionDialog
 					open={bulkActionOpen}

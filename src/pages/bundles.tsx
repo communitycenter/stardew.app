@@ -37,14 +37,12 @@ import {
 } from "@/components/ui/tooltip";
 
 import { PlayerType, usePlayers } from "@/contexts/players-context";
-import { usePreferences } from "@/contexts/preferences-context";
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import {
 	BundleItemCard,
 	bundleItemName,
 } from "@/components/cards/bundle-item-card";
-import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
 import BundleSheet from "@/components/sheets/bundle-sheet";
 import {
 	Accordion,
@@ -453,10 +451,6 @@ function GenerateFreshBundles(): BundleWithStatus[] {
 }
 
 export default function Bundles() {
-	// unblur dialog
-	const [showPrompt, setPromptOpen] = useState(false);
-	const { show, toggleShow } = usePreferences();
-
 	let [open, setIsOpen] = useState(false);
 	let [object, setObject] = useState<BundleItemWithLocation | null>(null);
 	let [bundles, setBundles] = useState<BundleWithStatus[]>([]);
@@ -790,8 +784,6 @@ export default function Bundles() {
 															setIsOpen={setIsOpen}
 															completed={bundleWithStatus.bundleStatus[index]}
 															setObject={setObject}
-															show={show}
-															setPromptOpen={setPromptOpen}
 														/>
 													);
 												})
@@ -808,11 +800,6 @@ export default function Bundles() {
 						open={open}
 						setIsOpen={setIsOpen}
 						bundleItemWithLocation={object}
-					/>
-					<UnblurDialog
-						open={showPrompt}
-						setOpen={setPromptOpen}
-						toggleShow={toggleShow}
 					/>
 				</div>
 			</main>
