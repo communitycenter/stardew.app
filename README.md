@@ -91,6 +91,13 @@ Below are some incredible people that the website wouldn't be without today.
     </td></tr>
 <tr>
     <td align="center">
+        <a href="https://github.com/FracturedShader">
+            <img src="https://avatars.githubusercontent.com/u/2058808?v=4" width="100;" alt="FracturedShader"/>
+            <br />
+            <sub><b>Robert Plante</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/TheLDB">
             <img src="https://avatars.githubusercontent.com/u/29960599?v=4" width="100;" alt="TheLDB"/>
             <br />
@@ -119,20 +126,20 @@ Below are some incredible people that the website wouldn't be without today.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Aniket-Jena-02">
+            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="Aniket-Jena-02"/>
+            <br />
+            <sub><b>Aniket Jena</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/tindolt">
             <img src="https://avatars.githubusercontent.com/u/122586790?v=4" width="100;" alt="tindolt"/>
             <br />
             <sub><b>Tindolt</b></sub>
         </a>
     </td>
-    <td align="center">
-        <a href="https://github.com/killerdroid99">
-            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="killerdroid99"/>
-            <br />
-            <sub><b>Aniket Jena</b></sub>
-        </a>
-    </td></tr>
-<tr>
     <td align="center">
         <a href="https://github.com/sol3uk">
             <img src="https://avatars.githubusercontent.com/u/26093813?v=4" width="100;" alt="sol3uk"/>
@@ -167,27 +174,20 @@ Below are some incredible people that the website wouldn't be without today.
             <br />
             <sub><b>Conrad Crawford</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/TheLostSoul">
             <img src="https://avatars.githubusercontent.com/u/718358?v=4" width="100;" alt="TheLostSoul"/>
             <br />
             <sub><b>Michael Harrington</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Terrance">
             <img src="https://avatars.githubusercontent.com/u/4025899?v=4" width="100;" alt="Terrance"/>
             <br />
             <sub><b>Terrance</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/FracturedShader">
-            <img src="https://avatars.githubusercontent.com/u/2058808?v=4" width="100;" alt="FracturedShader"/>
-            <br />
-            <sub><b>Robert Plante</b></sub>
         </a>
     </td>
     <td align="center">
