@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
@@ -14,9 +13,29 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { toast } from "sonner";
-import { Card } from "../ui/card";
 
-const listOfPeopleWeNeedToThank = [
+const CORE_CONTRIBUTORS = [
+	{
+		name: "Jack LaFond",
+		github: "jacc",
+		links: {
+			website: "https://jack.bio",
+			linkedin: "https://linkedin.com/in/jacklafond",
+			github: "https://github.com/jacc",
+		},
+	},
+	{
+		name: "Clemente Solorio",
+		github: "clxmente",
+		links: {
+			website: "https://www.solorio.dev/",
+			linkedin: "https://linkedin.com/in/clementesolorio",
+			github: "https://github.com/clxmente",
+		},
+	},
+];
+
+const THANKS = [
 	"Blink18260000",
 	"Brandon Saldan",
 	"Leah Lundqvist",
@@ -35,95 +54,99 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogContent>
+				<DialogHeader>
+					<DialogTitle className="flex items-center justify-center gap-2">
+						<Image
+							src="https://stardewvalleywiki.com/mediawiki/images/c/c8/Emojis043.png"
+							alt="Heart icon"
+							width={20}
+							height={20}
+						/>
+						Credits
+					</DialogTitle>
+				</DialogHeader>
+
+				{/* Core contributors */}
+				<div className="grid grid-cols-2 gap-3">
+					{CORE_CONTRIBUTORS.map((person) => (
+						<div
+							key={person.github}
+							className="flex items-center gap-3 rounded-lg border border-neutral-200 p-3 dark:border-neutral-800"
+						>
+							<Image
+								src={`https://github.com/${person.github}.png`}
+								alt={person.name}
+								width={36}
+								height={36}
+								className="rounded-md"
+							/>
+							<div className="min-w-0">
+								<p className="truncate text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+									{person.name}
+								</p>
+								<div className="mt-0.5 flex items-center gap-1.5">
+									<Link
+										href={person.links.website}
+										target="_blank"
+										className="text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-200"
+									>
+										<IconLink size={14} />
+									</Link>
+									<Link
+										href={person.links.linkedin}
+										target="_blank"
+										className="text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-200"
+									>
+										<IconBrandLinkedin size={14} />
+									</Link>
+									<Link
+										href={person.links.github}
+										target="_blank"
+										className="text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-200"
+									>
+										<IconBrandGithub size={14} />
+									</Link>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				{/* Special thanks */}
+				<div>
+					<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500">
+						Special Thanks
+					</p>
+					<div className="grid grid-cols-3 gap-2">
+						{THANKS.map((name) => (
+							<div
+								key={name}
+								className="rounded-md border border-neutral-200 px-2 py-1.5 dark:border-neutral-800"
+							>
+								<p className="text-center text-xs text-neutral-600 dark:text-neutral-400">
+									{name}
+								</p>
+							</div>
+						))}
+						<div
+							className="col-span-3 cursor-pointer rounded-md border border-neutral-200 px-2 py-1.5 transition-colors hover:border-neutral-300 dark:border-neutral-800 dark:hover:border-neutral-700"
+							onClick={() => toast.info("Seriously, we love you!")}
+						>
+							<p className="text-center text-xs text-neutral-600 dark:text-neutral-400">
+								You, the user — thank you!
+							</p>
+						</div>
+					</div>
+				</div>
+
 				<div className="flex justify-center">
 					<Image
-						src="https://stardewvalleywiki.com/mediawiki/images/c/c8/Emojis043.png"
-						alt={"Heart icon"}
-						width={48}
-						height={48}
+						src="/dance.gif"
+						alt="Dancing emoji"
+						width={200}
+						height={80}
 					/>
 				</div>
-				<DialogHeader>
-					<DialogTitle className="text-center">Credits</DialogTitle>
-				</DialogHeader>
-				<DialogDescription className="grid grid-cols-1 gap-2 md:grid-cols-2">
-					<Card className="p-4">
-						<div className="flex gap-2">
-							<Image
-								src="https://github.com/jacc.png"
-								alt={"Heart icon"}
-								width={40}
-								height={40}
-								className="rounded-md"
-							/>
-							<div className="mr-1">
-								<h1 className="text-md font-bold">Jack LaFond</h1>
-								<div className="flex">
-									<Link href="https://jack.bio">
-										<IconLink className="w-5" />
-									</Link>
-									<Link href="https://jack.link/linkedin">
-										<IconBrandLinkedin className="w-5" />
-									</Link>
-									<Link href="https://jack.link/github">
-										<IconBrandGithub className="w-5" />
-									</Link>
-								</div>
-							</div>
-						</div>
-					</Card>
-					<Card className="p-4">
-						<div className="flex gap-2">
-							<Image
-								src="https://github.com/clxmente.png"
-								alt={"Heart icon"}
-								width={40}
-								height={40}
-								className="rounded-md"
-							/>
-							<div className="mr-1">
-								<h1 className="text-md font-bold">Clemente Solorio</h1>
-								<div className="flex">
-									<Link href="https://www.solorio.dev/">
-										<IconLink className="w-5" />
-									</Link>
-									<Link href="https://linkedin.com/in/clementesolorio">
-										<IconBrandLinkedin className="w-5" />
-									</Link>
-									<Link href="https://github.com/clxmente">
-										<IconBrandGithub className="w-5" />
-									</Link>
-								</div>
-							</div>
-						</div>
-					</Card>
-				</DialogDescription>
-				<DialogDescription className="grid grid-cols-2 gap-2 md:grid-cols-3">
-					{listOfPeopleWeNeedToThank.map((person) => (
-						<Card className="p-2" key={person}>
-							<h1 className="text-md text-center text-gray-600 dark:text-gray-400">
-								{person}
-							</h1>
-						</Card>
-					))}
-				</DialogDescription>
-				<Card
-					className="p-2"
-					onClick={() => toast.info("Seriously, we love you!")}
-				>
-					<h1 className="text-center text-sm text-gray-600 hover:cursor-pointer dark:text-gray-400">
-						You, the user - thank you!
-					</h1>
-				</Card>
-				<DialogDescription className="flex items-center justify-center">
-					<Image
-						src={"/dance.gif"}
-						alt={"Dancing emoji"}
-						className="items-center justify-center"
-						width={250}
-						height={100}
-					/>
-				</DialogDescription>
 			</DialogContent>
 		</Dialog>
 	);
