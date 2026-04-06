@@ -3,7 +3,13 @@ import Image from "next/image";
 import type { Villager } from "@/types/items";
 
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, ReactElement, useContext, useMemo } from "react";
+import {
+	Dispatch,
+	SetStateAction,
+	ReactElement,
+	useContext,
+	useMemo,
+} from "react";
 
 import { PlayersContext } from "@/contexts/players-context";
 

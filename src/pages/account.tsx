@@ -175,11 +175,10 @@ type GroupedPlayers = {
 
 export default function Account() {
 	const router = useRouter();
-	const api = useSWR<User>(
-		"/api/me",
-		fetchJson<User>,
-		{ refreshInterval: 0, revalidateOnFocus: false },
-	);
+	const api = useSWR<User>("/api/me", fetchJson<User>, {
+		refreshInterval: 0,
+		revalidateOnFocus: false,
+	});
 
 	const { players } = usePlayers();
 	const { showBetaFeatures, toggleBetaFeatures } = usePreferences();
@@ -268,7 +267,7 @@ export default function Account() {
 									</p>
 								</div>
 								<Card>
-									<CardHeader className=" border-neutral-200 dark:border-neutral-800">
+									<CardHeader className="border-neutral-200 dark:border-neutral-800">
 										<span className="flex flex-row items-center justify-between">
 											<div className="space-y-1">
 												<CardTitle>Beta Features</CardTitle>

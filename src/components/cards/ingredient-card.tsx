@@ -123,10 +123,7 @@ function GetItemDetails(itemID: string): Item {
 	}
 }
 
-export const IngredientCard = ({
-	itemID,
-	count,
-}: Props) => {
+export const IngredientCard = ({ itemID, count }: Props) => {
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [fishOpen, setFishOpen] = useState(false);
 
@@ -145,12 +142,10 @@ export const IngredientCard = ({
 					<div
 						className={cn(
 							"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-left text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
-							"border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+							"border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800",
 						)}
 					>
-						<div
-							className="flex items-center space-x-3 truncate text-left"
-						>
+						<div className="flex items-center space-x-3 truncate text-left">
 							<Image
 								src={item.iconURL}
 								alt={item.name}

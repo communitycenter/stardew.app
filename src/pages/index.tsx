@@ -69,7 +69,7 @@ export default function Home() {
 				/>
 			</Head>
 			<main
-				className={`flex min-h-[calc(100vh-65px)]  flex-col items-center border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
+				className={`flex min-h-[calc(100vh-65px)] flex-col items-center border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8`}
 			>
 				<main className="flex max-w-2xl flex-grow flex-col items-center justify-center">
 					<div className="mb-4 flex items-center gap-2">
@@ -97,7 +97,7 @@ export default function Home() {
 							onClick={() => {
 								setLoginOpen(true);
 							}}
-							className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
+							className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
 						>
 							<Image
 								src="/discord.png"
@@ -115,7 +115,7 @@ export default function Home() {
 						</div>
 
 						<div
-							className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
+							className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
 							onClick={() => {
 								inputRef.current?.click();
 							}}
@@ -145,7 +145,7 @@ export default function Home() {
 							href="/editor/create"
 							data-umami-event="Create farmhand (from home page)"
 						>
-							<div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
+							<div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
 								<Image
 									src="/create.png"
 									alt="Create a farmhand"
@@ -163,7 +163,7 @@ export default function Home() {
 						</Link>
 
 						<Link href="/github" data-umami-event="GitHub (from home page)">
-							<div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white  px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
+							<div className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600">
 								<Image
 									src="/github.png"
 									alt="Look at GitHub"

@@ -46,7 +46,7 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
 				<DialogHeader>
 					<DialogTitle className="text-center">Credits</DialogTitle>
 				</DialogHeader>
-				<DialogDescription className="grid grid-cols-1 gap-2 md:grid-cols-2 ">
+				<DialogDescription className="grid grid-cols-1 gap-2 md:grid-cols-2">
 					<Card className="p-4">
 						<div className="flex gap-2">
 							<Image
@@ -57,7 +57,7 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
 								className="rounded-md"
 							/>
 							<div className="mr-1">
-								<h1 className=" text-md font-bold">Jack LaFond</h1>
+								<h1 className="text-md font-bold">Jack LaFond</h1>
 								<div className="flex">
 									<Link href="https://jack.bio">
 										<IconLink className="w-5" />

@@ -7,12 +7,12 @@
 		"build:turbo": "next build --turbopack",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
 		"clean": "rimraf .next .open-next .turbo",
+		"deploy": "bun scripts/opennext.mjs deploy",
 		"dev": "next dev",
 		"dev:turbo": "next dev --turbopack",
 		"format": "bun run prettier . --check",
 		"lint": "next lint",
 		"preview": "bun scripts/opennext.mjs preview",
-		"deploy": "bun scripts/opennext.mjs deploy",
 		"start": "next start",
 		"typecheck": "tsgo --noEmit"
 	},

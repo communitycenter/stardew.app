@@ -77,14 +77,14 @@ const seasons = [
 ];
 
 const locationGroups: Record<string, string[]> = {
-	Ocean: [
+	"Ocean": [
 		"Ocean",
 		"East Pier on The Beach",
 		"Beach Farm",
 		"Fishing Pole: Ocean",
 		"Foraging: The Beach",
 	],
-	River: [
+	"River": [
 		"River",
 		"Town River",
 		"Forest River",
@@ -135,7 +135,7 @@ export default function Fishing() {
 	const [fish, setFish] = useState<FishType | null>(null);
 	const [fishCaught, setFishCaught] = useState<Set<string>>(new Set());
 
-const [search, setSearch] = useState("");
+	const [search, setSearch] = useState("");
 	const [_filter, setFilter] = useState("all");
 	const [_weatherFilter, setWeatherFilter] = useState("both");
 	const [_seasonFilter, setSeasonFilter] = useState("all");

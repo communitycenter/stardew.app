@@ -5,7 +5,7 @@ import { IconHome, IconPaw } from "@tabler/icons-react";
 
 export function BlurredPreview() {
 	return (
-		<div className="absolute inset-0 overflow-hidden opacity-40 blur-md pointer-events-none select-none">
+		<div className="pointer-events-none absolute inset-0 select-none overflow-hidden opacity-40 blur-md">
 			<div className="space-y-4 p-4">
 				{/* Sample Statistics */}
 				<section className="space-y-3">

@@ -23,8 +23,8 @@ export const PerfectionCard = ({
 	return (
 		<Card {...rest} className={checkedClass}>
 			<div className="grid grid-cols-3">
-				<div className="flex flex-col col-span-2">
-					<CardHeader className="flex flex-row items-cnter justify-between space-y-0 pb-2">
+				<div className="col-span-2 flex flex-col">
+					<CardHeader className="items-cnter flex flex-row justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-semibold">{title}</CardTitle>
 					</CardHeader>
 					<CardContent>
@@ -34,7 +34,7 @@ export const PerfectionCard = ({
 						</p>
 					</CardContent>
 				</div>
-				<div className="flex justify-end items-center p-5">
+				<div className="flex items-center justify-end p-5">
 					<PercentageIndicator percentage={percentage} className="h-16 w-16" />
 				</div>
 			</div>

@@ -103,7 +103,7 @@ export const FilterSearch = ({
 				>
 					<div className="flex items-center gap-2">
 						<Icon className="h-4 w-4 shrink-0 opacity-50" />
-						<p className="whitespace-nowrap text-sm	">
+						<p className="whitespace-nowrap text-sm">
 							{_filter === "all" || _filter === "both" || _filter === "name"
 								? title
 								: data.find((item) => item.value === _filter)?.label}

@@ -41,11 +41,10 @@ export interface User {
 }
 
 export function Topbar() {
-	const api = useSWR<User>(
-		"/api/me",
-		fetchJson<User>,
-		{ refreshInterval: 0, revalidateOnFocus: false },
-	);
+	const api = useSWR<User>("/api/me", fetchJson<User>, {
+		refreshInterval: 0,
+		revalidateOnFocus: false,
+	});
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const [mobileOpen, setMobileOpen] = useState(false);

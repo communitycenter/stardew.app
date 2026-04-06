@@ -79,8 +79,8 @@ const barnAnimals = [
 // Loading component for Suspense fallback
 const AnimalsLoading = () => (
 	<div className="flex flex-col items-center justify-center py-12 text-center">
-		<IconLoader2 className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
-		<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+		<IconLoader2 className="text-muted-foreground mb-4 h-12 w-12 animate-spin" />
+		<h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 			Loading Animals...
 		</h3>
 		<p className="text-muted-foreground">
@@ -341,7 +341,7 @@ const AnimalsContent = () => {
 						<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
 							Animals Tracker
 						</h1>
-						<Badge className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 align-middle">
+						<Badge className="bg-blue-100 align-middle text-xs text-blue-800 dark:bg-blue-900 dark:text-blue-200">
 							Beta
 						</Badge>
 					</div>
@@ -352,15 +352,15 @@ const AnimalsContent = () => {
 							<BlurredPreview />
 
 							{/* Foreground Alert */}
-							<div className="relative z-10 w-full max-w-2xl rounded-lg border border-blue-200 bg-blue-50/95 p-6 dark:border-blue-800 dark:bg-blue-900/95 backdrop-blur-sm flex flex-col items-start">
+							<div className="relative z-10 flex w-full max-w-2xl flex-col items-start rounded-lg border border-blue-200 bg-blue-50/95 p-6 backdrop-blur-sm dark:border-blue-800 dark:bg-blue-900/95">
 								<div className="flex flex-row items-center justify-center gap-2">
 									<IconPaw className="h-10 w-10 text-blue-500" />
 									<h2 className="text-xl font-semibold text-blue-900 dark:text-blue-100">
 										Please upload your save file!
 									</h2>
 								</div>
-								<div className="w-full mt-2">
-									<div className="py-2 text-lg text-blue-700 dark:text-blue-300 font-semibold">
+								<div className="mt-2 w-full">
+									<div className="py-2 text-lg font-semibold text-blue-700 dark:text-blue-300">
 										Don&apos;t have a save file?
 									</div>
 									<div className="text-md text-blue-600 dark:text-blue-400">
@@ -383,7 +383,7 @@ const AnimalsContent = () => {
 												href="https://stardew.app/discord"
 												target="_blank"
 												rel="noopener noreferrer"
-												className="underline text-blue-700 dark:text-blue-300"
+												className="text-blue-700 underline dark:text-blue-300"
 											>
 												Discord
 											</a>
@@ -394,9 +394,9 @@ const AnimalsContent = () => {
 									<div className="mt-6 flex justify-end">
 										<Button
 											onClick={() => setUploadOpen(true)}
-											className="bg-blue-600 hover:bg-blue-700 text-white"
+											className="bg-blue-600 text-white hover:bg-blue-700"
 										>
-											<IconUpload className="h-4 w-4 mr-2" />
+											<IconUpload className="mr-2 h-4 w-4" />
 											Upload Save File
 										</Button>
 									</div>
@@ -410,14 +410,14 @@ const AnimalsContent = () => {
 							<BlurredPreview />
 
 							{/* Foreground Alert */}
-							<div className="relative z-10 w-full max-w-2xl rounded-lg border border-blue-200 bg-blue-50/95 p-6 dark:border-blue-800 dark:bg-blue-900/95 backdrop-blur-sm flex flex-col items-start">
+							<div className="relative z-10 flex w-full max-w-2xl flex-col items-start rounded-lg border border-blue-200 bg-blue-50/95 p-6 backdrop-blur-sm dark:border-blue-800 dark:bg-blue-900/95">
 								<div className="flex flex-row items-center justify-center gap-2">
 									<IconAlertCircle className="h-10 w-10 text-blue-500" />
 									<h2 className="text-xl font-semibold text-blue-900 dark:text-blue-100">
 										Re-upload Required
 									</h2>
 								</div>
-								<div className="w-full mt-2">
+								<div className="mt-2 w-full">
 									<div className="text-lg text-blue-600 dark:text-blue-400">
 										<p>
 											Your save file was uploaded before animal tracking was
@@ -428,9 +428,9 @@ const AnimalsContent = () => {
 									<div className="mt-6 flex justify-end">
 										<Button
 											onClick={() => setUploadOpen(true)}
-											className="bg-blue-600 hover:bg-blue-700 text-white"
+											className="bg-blue-600 text-white hover:bg-blue-700"
 										>
-											<IconUpload className="h-4 w-4 mr-2" />
+											<IconUpload className="mr-2 h-4 w-4" />
 											Re-upload Save File
 										</Button>
 									</div>
@@ -442,8 +442,8 @@ const AnimalsContent = () => {
 					{/* Loading State */}
 					{hasUploadedSave && isLoading && (
 						<div className="flex flex-col items-center justify-center py-12 text-center">
-							<IconLoader2 className="h-12 w-12 text-muted-foreground mb-4 animate-spin" />
-							<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+							<IconLoader2 className="text-muted-foreground mb-4 h-12 w-12 animate-spin" />
+							<h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 								Loading Animals...
 							</h3>
 							<p className="text-muted-foreground">
@@ -563,8 +563,8 @@ const AnimalsContent = () => {
 							{/* Empty State */}
 							{animalsData && getTotalAnimals() === 0 && (
 								<div className="flex flex-col items-center justify-center py-12 text-center">
-									<IconPaw className="h-12 w-12 text-muted-foreground mb-4" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+									<IconPaw className="text-muted-foreground mb-4 h-12 w-12" />
+									<h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 										No Animals Found
 									</h3>
 									<p className="text-muted-foreground">
@@ -577,8 +577,8 @@ const AnimalsContent = () => {
 							{/* No Data State */}
 							{!animalsData && (
 								<div className="flex flex-col items-center justify-center py-12 text-center">
-									<IconPaw className="h-12 w-12 text-muted-foreground mb-4" />
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+									<IconPaw className="text-muted-foreground mb-4 h-12 w-12" />
+									<h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
 										No Save Data
 									</h3>
 									<p className="text-muted-foreground">

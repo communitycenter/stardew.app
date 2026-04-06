@@ -38,7 +38,7 @@ export default function ItemWithOverlay({
 				src={qualityStars[quality]}
 				alt={"Quality Star"}
 				className={
-					className ? "absolute bottom-0 left-0 rounded-sm " : className
+					className ? "absolute bottom-0 left-0 rounded-sm" : className
 				}
 				width={starSize}
 				height={starSize}

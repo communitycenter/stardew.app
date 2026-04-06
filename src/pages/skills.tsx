@@ -262,228 +262,240 @@ export default function SkillsMasteryPowers() {
 										</div>
 										<div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-6">
 											<div className="relative">
-											<InfoCard
-												title="Farming"
-												description={`Level ${
-													activePlayer?.general?.skills?.farming ?? 0
-												}`}
-												sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
-											>
-												{playerExperiencePoints && (
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger asChild>
-																<Progress
-																	value={
-																		playerExperiencePoints.farming.percentage
-																	}
-																	max={100}
-																/>
-															</TooltipTrigger>
-															<TooltipContent side="bottom">
-																{playerExperiencePoints.farming
-																	.experiencePointsRemaining === 0 &&
-																playerExperiencePoints.farming.percentage ===
-																	100
-																	? "Max level"
-																	: `${playerExperiencePoints.farming.experiencePointsRemaining} XP remaining`}
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
-												)}
-											</InfoCard>
-											{activePlayer && (
-												<button
-													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-													onClick={() => {
-														setEditSkillName("farming");
-														setEditSkillValue(activePlayer.general?.skills?.farming ?? 0);
-														setEditSkillOpen(true);
-													}}
-													aria-label="Edit Farming Level"
+												<InfoCard
+													title="Farming"
+													description={`Level ${
+														activePlayer?.general?.skills?.farming ?? 0
+													}`}
+													sourceURL="https://stardewvalleywiki.com/mediawiki/images/8/82/Farming_Skill_Icon.png"
 												>
-													<PencilSquareIcon className="h-4 w-4" />
-												</button>
-											)}
-										</div>
+													{playerExperiencePoints && (
+														<TooltipProvider>
+															<Tooltip>
+																<TooltipTrigger asChild>
+																	<Progress
+																		value={
+																			playerExperiencePoints.farming.percentage
+																		}
+																		max={100}
+																	/>
+																</TooltipTrigger>
+																<TooltipContent side="bottom">
+																	{playerExperiencePoints.farming
+																		.experiencePointsRemaining === 0 &&
+																	playerExperiencePoints.farming.percentage ===
+																		100
+																		? "Max level"
+																		: `${playerExperiencePoints.farming.experiencePointsRemaining} XP remaining`}
+																</TooltipContent>
+															</Tooltip>
+														</TooltipProvider>
+													)}
+												</InfoCard>
+												{activePlayer && (
+													<button
+														className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+														onClick={() => {
+															setEditSkillName("farming");
+															setEditSkillValue(
+																activePlayer.general?.skills?.farming ?? 0,
+															);
+															setEditSkillOpen(true);
+														}}
+														aria-label="Edit Farming Level"
+													>
+														<PencilSquareIcon className="h-4 w-4" />
+													</button>
+												)}
+											</div>
 											<div className="relative">
-											<InfoCard
-												title="Fishing"
-												description={`Level ${
-													activePlayer?.general?.skills?.fishing ?? 0
-												} `}
-												sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
-											>
-												{playerExperiencePoints && (
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger asChild>
-																<Progress
-																	value={
-																		playerExperiencePoints.fishing.percentage
-																	}
-																	max={100}
-																/>
-															</TooltipTrigger>
-															<TooltipContent side="bottom">
-																{playerExperiencePoints.fishing
-																	.experiencePointsRemaining === 0 &&
-																playerExperiencePoints.fishing.percentage ===
-																	100
-																	? "Max level"
-																	: `${playerExperiencePoints.fishing.experiencePointsRemaining} XP remaining`}
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
-												)}
-											</InfoCard>
-											{activePlayer && (
-												<button
-													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-													onClick={() => {
-														setEditSkillName("fishing");
-														setEditSkillValue(activePlayer.general?.skills?.fishing ?? 0);
-														setEditSkillOpen(true);
-													}}
-													aria-label="Edit Fishing Level"
+												<InfoCard
+													title="Fishing"
+													description={`Level ${
+														activePlayer?.general?.skills?.fishing ?? 0
+													} `}
+													sourceURL="https://stardewvalleywiki.com/mediawiki/images/e/e7/Fishing_Skill_Icon.png"
 												>
-													<PencilSquareIcon className="h-4 w-4" />
-												</button>
-											)}
-										</div>
+													{playerExperiencePoints && (
+														<TooltipProvider>
+															<Tooltip>
+																<TooltipTrigger asChild>
+																	<Progress
+																		value={
+																			playerExperiencePoints.fishing.percentage
+																		}
+																		max={100}
+																	/>
+																</TooltipTrigger>
+																<TooltipContent side="bottom">
+																	{playerExperiencePoints.fishing
+																		.experiencePointsRemaining === 0 &&
+																	playerExperiencePoints.fishing.percentage ===
+																		100
+																		? "Max level"
+																		: `${playerExperiencePoints.fishing.experiencePointsRemaining} XP remaining`}
+																</TooltipContent>
+															</Tooltip>
+														</TooltipProvider>
+													)}
+												</InfoCard>
+												{activePlayer && (
+													<button
+														className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+														onClick={() => {
+															setEditSkillName("fishing");
+															setEditSkillValue(
+																activePlayer.general?.skills?.fishing ?? 0,
+															);
+															setEditSkillOpen(true);
+														}}
+														aria-label="Edit Fishing Level"
+													>
+														<PencilSquareIcon className="h-4 w-4" />
+													</button>
+												)}
+											</div>
 											<div className="relative">
-											<InfoCard
-												title="Foraging"
-												description={`Level ${
-													activePlayer?.general?.skills?.foraging ?? 0
-												}`}
-												sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
-											>
-												{playerExperiencePoints && (
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger asChild>
-																<Progress
-																	value={
-																		playerExperiencePoints.foraging.percentage
-																	}
-																	max={100}
-																/>
-															</TooltipTrigger>
-															<TooltipContent side="bottom">
-																{playerExperiencePoints.foraging
-																	.experiencePointsRemaining === 0 &&
-																playerExperiencePoints.foraging.percentage ===
-																	100
-																	? "Max level"
-																	: `${playerExperiencePoints.foraging.experiencePointsRemaining} XP remaining`}
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
-												)}
-											</InfoCard>
-											{activePlayer && (
-												<button
-													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-													onClick={() => {
-														setEditSkillName("foraging");
-														setEditSkillValue(activePlayer.general?.skills?.foraging ?? 0);
-														setEditSkillOpen(true);
-													}}
-													aria-label="Edit Foraging Level"
+												<InfoCard
+													title="Foraging"
+													description={`Level ${
+														activePlayer?.general?.skills?.foraging ?? 0
+													}`}
+													sourceURL="https://stardewvalleywiki.com/mediawiki/images/f/f1/Foraging_Skill_Icon.png"
 												>
-													<PencilSquareIcon className="h-4 w-4" />
-												</button>
-											)}
-										</div>
+													{playerExperiencePoints && (
+														<TooltipProvider>
+															<Tooltip>
+																<TooltipTrigger asChild>
+																	<Progress
+																		value={
+																			playerExperiencePoints.foraging.percentage
+																		}
+																		max={100}
+																	/>
+																</TooltipTrigger>
+																<TooltipContent side="bottom">
+																	{playerExperiencePoints.foraging
+																		.experiencePointsRemaining === 0 &&
+																	playerExperiencePoints.foraging.percentage ===
+																		100
+																		? "Max level"
+																		: `${playerExperiencePoints.foraging.experiencePointsRemaining} XP remaining`}
+																</TooltipContent>
+															</Tooltip>
+														</TooltipProvider>
+													)}
+												</InfoCard>
+												{activePlayer && (
+													<button
+														className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+														onClick={() => {
+															setEditSkillName("foraging");
+															setEditSkillValue(
+																activePlayer.general?.skills?.foraging ?? 0,
+															);
+															setEditSkillOpen(true);
+														}}
+														aria-label="Edit Foraging Level"
+													>
+														<PencilSquareIcon className="h-4 w-4" />
+													</button>
+												)}
+											</div>
 											<div className="relative">
-											<InfoCard
-												title="Mining"
-												description={`Level ${
-													activePlayer?.general?.skills?.mining ?? 0
-												}`}
-												sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
-											>
-												{playerExperiencePoints && (
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger asChild>
-																<Progress
-																	value={
-																		playerExperiencePoints.mining.percentage
-																	}
-																	max={100}
-																/>
-															</TooltipTrigger>
-															<TooltipContent side="bottom">
-																{playerExperiencePoints.mining
-																	.experiencePointsRemaining === 0 &&
-																playerExperiencePoints.mining.percentage === 100
-																	? "Max level"
-																	: `${playerExperiencePoints.mining.experiencePointsRemaining} XP remaining`}
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
-												)}
-											</InfoCard>
-											{activePlayer && (
-												<button
-													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-													onClick={() => {
-														setEditSkillName("mining");
-														setEditSkillValue(activePlayer.general?.skills?.mining ?? 0);
-														setEditSkillOpen(true);
-													}}
-													aria-label="Edit Mining Level"
+												<InfoCard
+													title="Mining"
+													description={`Level ${
+														activePlayer?.general?.skills?.mining ?? 0
+													}`}
+													sourceURL="https://stardewvalleywiki.com/mediawiki/images/2/2f/Mining_Skill_Icon.png"
 												>
-													<PencilSquareIcon className="h-4 w-4" />
-												</button>
-											)}
-										</div>
+													{playerExperiencePoints && (
+														<TooltipProvider>
+															<Tooltip>
+																<TooltipTrigger asChild>
+																	<Progress
+																		value={
+																			playerExperiencePoints.mining.percentage
+																		}
+																		max={100}
+																	/>
+																</TooltipTrigger>
+																<TooltipContent side="bottom">
+																	{playerExperiencePoints.mining
+																		.experiencePointsRemaining === 0 &&
+																	playerExperiencePoints.mining.percentage ===
+																		100
+																		? "Max level"
+																		: `${playerExperiencePoints.mining.experiencePointsRemaining} XP remaining`}
+																</TooltipContent>
+															</Tooltip>
+														</TooltipProvider>
+													)}
+												</InfoCard>
+												{activePlayer && (
+													<button
+														className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+														onClick={() => {
+															setEditSkillName("mining");
+															setEditSkillValue(
+																activePlayer.general?.skills?.mining ?? 0,
+															);
+															setEditSkillOpen(true);
+														}}
+														aria-label="Edit Mining Level"
+													>
+														<PencilSquareIcon className="h-4 w-4" />
+													</button>
+												)}
+											</div>
 											<div className="relative">
-											<InfoCard
-												title="Combat"
-												description={`Level ${
-													activePlayer?.general?.skills?.combat ?? 0
-												}`}
-												sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
-											>
-												{playerExperiencePoints && (
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger asChild>
-																<Progress
-																	value={
-																		playerExperiencePoints.combat.percentage
-																	}
-																	max={100}
-																/>
-															</TooltipTrigger>
-															<TooltipContent side="bottom">
-																{playerExperiencePoints.combat
-																	.experiencePointsRemaining === 0 &&
-																playerExperiencePoints.combat.percentage === 100
-																	? "Max level"
-																	: `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`}
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
-												)}
-											</InfoCard>
-											{activePlayer && (
-												<button
-													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-													onClick={() => {
-														setEditSkillName("combat");
-														setEditSkillValue(activePlayer.general?.skills?.combat ?? 0);
-														setEditSkillOpen(true);
-													}}
-													aria-label="Edit Combat Level"
+												<InfoCard
+													title="Combat"
+													description={`Level ${
+														activePlayer?.general?.skills?.combat ?? 0
+													}`}
+													sourceURL="https://stardewvalleywiki.com/mediawiki/images/c/cf/Combat_Skill_Icon.png"
 												>
-													<PencilSquareIcon className="h-4 w-4" />
-												</button>
-											)}
-										</div>
+													{playerExperiencePoints && (
+														<TooltipProvider>
+															<Tooltip>
+																<TooltipTrigger asChild>
+																	<Progress
+																		value={
+																			playerExperiencePoints.combat.percentage
+																		}
+																		max={100}
+																	/>
+																</TooltipTrigger>
+																<TooltipContent side="bottom">
+																	{playerExperiencePoints.combat
+																		.experiencePointsRemaining === 0 &&
+																	playerExperiencePoints.combat.percentage ===
+																		100
+																		? "Max level"
+																		: `${playerExperiencePoints.combat.experiencePointsRemaining} XP remaining`}
+																</TooltipContent>
+															</Tooltip>
+														</TooltipProvider>
+													)}
+												</InfoCard>
+												{activePlayer && (
+													<button
+														className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+														onClick={() => {
+															setEditSkillName("combat");
+															setEditSkillValue(
+																activePlayer.general?.skills?.combat ?? 0,
+															);
+															setEditSkillOpen(true);
+														}}
+														aria-label="Edit Combat Level"
+													>
+														<PencilSquareIcon className="h-4 w-4" />
+													</button>
+												)}
+											</div>
 											<InfoCard
 												title="Mastery"
 												description={`Level ${masteryExp.level ?? 0}`}

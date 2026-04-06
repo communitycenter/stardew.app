@@ -30,7 +30,7 @@ export function getRequestHost(req: NextApiRequest) {
 	const forwardedHost = req.headers["x-forwarded-host"];
 	const hostHeader = Array.isArray(forwardedHost)
 		? forwardedHost[0]
-		: forwardedHost ?? req.headers.host;
+		: (forwardedHost ?? req.headers.host);
 
 	if (!hostHeader) return undefined;
 

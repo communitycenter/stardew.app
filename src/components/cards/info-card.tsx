@@ -52,7 +52,7 @@ export const InfoCard = ({
 							{description}
 						</p>
 					) : null}
-					{children && <div className="mt-1 ">{children}</div>}
+					{children && <div className="mt-1">{children}</div>}
 				</div>
 			</div>
 		</div>

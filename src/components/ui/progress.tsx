@@ -11,35 +11,37 @@ interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 	showText?: boolean;
 }
 
-const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(({ className, value, max, color, showText = false, ...props }, ref) => (
-	<div className="flex items-center space-x-2">
-		<ProgressPrimitive.Root
-			ref={ref}
-			className={cn(
-				"relative flex h-2 w-full overflow-hidden rounded-full bg-neutral-900/20 dark:bg-neutral-50/20 ",
-				className,
-			)}
-			{...props}
-		>
-			<ProgressPrimitive.Indicator
+const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
+	({ className, value, max, color, showText = false, ...props }, ref) => (
+		<div className="flex items-center space-x-2">
+			<ProgressPrimitive.Root
+				ref={ref}
 				className={cn(
-					"h-full w-full flex-1 transition-all",
-					color || "bg-neutral-900 dark:bg-neutral-50",
+					"relative flex h-2 w-full overflow-hidden rounded-full bg-neutral-900/20 dark:bg-neutral-50/20",
+					className,
 				)}
-				style={{
-					transform: `translateX(-${100 - (value && max ? (value / max) * 100 : 0)}%)`,
-				}}
-			/>
-		</ProgressPrimitive.Root>
-		{showText && (
-			<span className="flex text-sm">
-				{typeof value === "number" && typeof max === "number"
-					? `${value} / ${max}`
-					: ``}
-			</span>
-		)}
-	</div>
-));
+				{...props}
+			>
+				<ProgressPrimitive.Indicator
+					className={cn(
+						"h-full w-full flex-1 transition-all",
+						color || "bg-neutral-900 dark:bg-neutral-50",
+					)}
+					style={{
+						transform: `translateX(-${100 - (value && max ? (value / max) * 100 : 0)}%)`,
+					}}
+				/>
+			</ProgressPrimitive.Root>
+			{showText && (
+				<span className="flex text-sm">
+					{typeof value === "number" && typeof max === "number"
+						? `${value} / ${max}`
+						: ``}
+				</span>
+			)}
+		</div>
+	),
+);
 Progress.displayName = ProgressPrimitive.Root.displayName;
 
 export { Progress };

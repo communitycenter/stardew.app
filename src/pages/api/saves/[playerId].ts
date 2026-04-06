@@ -34,7 +34,10 @@ const mergeableFields = [
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
-		res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
 
 		const playerId = req.query.playerId as string | undefined;
 		if (!playerId) return res.status(400).end();

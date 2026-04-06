@@ -430,7 +430,7 @@ export default function Museum() {
 										setIsOpen={setIsOpen}
 										setObject={setMuseumArtifact}
 										type="mineral"
-								/>
+									/>
 								))}
 						</div>
 					</section>

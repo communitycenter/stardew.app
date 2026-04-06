@@ -19,17 +19,17 @@ export function HorseCard({ horseName }: HorseCardProps) {
 				</div>
 			</CardHeader>
 			<CardContent className="space-y-3">
-				<div className="text-sm text-muted-foreground">
+				<div className="text-muted-foreground text-sm">
 					Your trusty steed for faster travel around Stardew Valley.
 				</div>
 				<div className="space-y-2">
-					<div className="text-xs text-muted-foreground">
+					<div className="text-muted-foreground text-xs">
 						• Increases movement speed by 30%
 					</div>
-					<div className="text-xs text-muted-foreground">
+					<div className="text-muted-foreground text-xs">
 						• Can be fed carrots once per day
 					</div>
-					<div className="text-xs text-muted-foreground">
+					<div className="text-muted-foreground text-xs">
 						• Can wear hats for customization
 					</div>
 				</div>

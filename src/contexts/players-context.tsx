@@ -212,7 +212,9 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 			const res = await fetch("/api/saves", {
 				method: "DELETE",
 				headers: playerId ? { "Content-Type": "application/json" } : undefined,
-				body: playerId ? JSON.stringify({ _id: playerId, type: "player" }) : undefined,
+				body: playerId
+					? JSON.stringify({ _id: playerId, type: "player" })
+					: undefined,
 			});
 			if (!res.ok) {
 				throw new Error(`Failed to delete players: ${res.status}`);
@@ -231,9 +233,12 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 		[activePlayerId, api, persistActivePlayerId, resolveActivePlayerId],
 	);
 
-	const setActivePlayer = useCallback((player?: PlayerType) => {
-		persistActivePlayerId(player?._id);
-	}, [persistActivePlayerId]);
+	const setActivePlayer = useCallback(
+		(player?: PlayerType) => {
+			persistActivePlayerId(player?._id);
+		},
+		[persistActivePlayerId],
+	);
 
 	return (
 		<PlayersContext.Provider

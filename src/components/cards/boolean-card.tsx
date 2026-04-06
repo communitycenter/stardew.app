@@ -142,9 +142,7 @@ export const BooleanCard = ({
 						setIsOpen(true);
 					}}
 				>
-					<div
-						className="flex items-center space-x-3 truncate text-left"
-					>
+					<div className="flex items-center space-x-3 truncate text-left">
 						<ItemWithOverlay
 							src={iconURL}
 							alt={name}
@@ -161,9 +159,7 @@ export const BooleanCard = ({
 							</p>
 						</div>
 					</div>
-					<IconChevronRight
-						className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400"
-					/>
+					<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
 				</button>
 			</ContextMenuTrigger>
 

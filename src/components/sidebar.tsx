@@ -53,7 +53,7 @@ export const playerNavigation = [
 	{ name: "Skills & Mastery", href: "/skills", icon: IconStars },
 	{ name: "Relationships", href: "/relationships", icon: IconHeart },
 	{ name: "Animals", href: "/animals", icon: IconPaw },
-		{ name: "Perfection", href: "/perfection", icon: IconAward },
+	{ name: "Perfection", href: "/perfection", icon: IconAward },
 	{ name: "Grandpa's Evaluation", href: "/grandpa", icon: IconFlameFilled },
 ];
 

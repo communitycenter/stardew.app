@@ -26,11 +26,10 @@ type BugReportResponse = {
 };
 
 export const BugReportDialog = ({ open, setOpen }: Props) => {
-	const api = useSWR<User>(
-		"/api/me",
-		fetchJson<User>,
-		{ refreshInterval: 0, revalidateOnFocus: false },
-	);
+	const api = useSWR<User>("/api/me", fetchJson<User>, {
+		refreshInterval: 0,
+		revalidateOnFocus: false,
+	});
 
 	const [submitted, setSubmitted] = useState(false);
 	const [loading, setLoading] = useState(false);

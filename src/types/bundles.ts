@@ -56,8 +56,7 @@ export interface BundleItemWithLocation extends BundleItem {
  * Combines BundleItemWithLocation and BundleItemWithOptions, including location, options, and item details.
  */
 export interface BundleItemWithLocationAndOptions
-	extends BundleItemWithLocation,
-		BundleItemWithOptions {}
+	extends BundleItemWithLocation, BundleItemWithOptions {}
 
 /**
  * Describes a reward for completing a bundle.

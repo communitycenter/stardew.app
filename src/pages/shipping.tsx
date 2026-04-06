@@ -338,10 +338,7 @@ export default function Shipping() {
 									return i.seasons.includes(_seasonFilter);
 								})
 								.map((i) => (
-									<ShippingCard
-										key={i.itemID}
-										item={i}
-									/>
+									<ShippingCard key={i.itemID} item={i} />
 								))}
 						</div>
 					</section>

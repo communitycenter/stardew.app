@@ -17,7 +17,12 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { CaretSortIcon, CheckIcon, MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
+import {
+	CaretSortIcon,
+	CheckIcon,
+	MagnifyingGlassIcon,
+	PlusIcon,
+} from "@radix-ui/react-icons";
 
 export function PresetSelector() {
 	const router = useRouter();
@@ -42,12 +47,15 @@ export function PresetSelector() {
 		if (!search) return groupedPlayers;
 		const lower = search.toLowerCase();
 		return groupedPlayers
-			.map(([farmInfo, farmPlayers]) => [
-				farmInfo,
-				farmPlayers.filter((p) =>
-					(p.general?.name ?? "").toLowerCase().includes(lower),
-				),
-			] as [string, PlayerType[]])
+			.map(
+				([farmInfo, farmPlayers]) =>
+					[
+						farmInfo,
+						farmPlayers.filter((p) =>
+							(p.general?.name ?? "").toLowerCase().includes(lower),
+						),
+					] as [string, PlayerType[]],
+			)
 			.filter(([, farmPlayers]) => farmPlayers.length > 0);
 	}, [groupedPlayers, search]);
 

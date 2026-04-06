@@ -38,7 +38,7 @@ const AccordionTrigger = React.forwardRef<
 			{pullRight ? (
 				<div className="flex">
 					{pullRight}
-					<ChevronDownIcon className=" ml-2 h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />
+					<ChevronDownIcon className="ml-2 h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />
 				</div>
 			) : (
 				<ChevronDownIcon className="h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 dark:text-neutral-400" />

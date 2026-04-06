@@ -134,7 +134,10 @@ async function getPlayersByUid(db: Db, uid: string) {
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
-		res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
 
 		const uid = await getUID(req, res, db);
 		const players = await getPlayersByUid(db, uid);
@@ -145,7 +148,10 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
-		res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
 
 		const uid = await getUID(req, res, db);
 		const players = parseRequestBody<Player[]>(req.body);
@@ -192,9 +198,11 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 				return res.status(400).end();
 			}
 
-			await db.delete(schema.saves).where(
-				and(eq(schema.saves.user_id, uid), eq(schema.saves._id, playerId)),
-			);
+			await db
+				.delete(schema.saves)
+				.where(
+					and(eq(schema.saves.user_id, uid), eq(schema.saves._id, playerId)),
+				);
 		} else if (type === "account") {
 			await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));
 			await db.delete(schema.users).where(eq(schema.users.id, uid));
@@ -209,7 +217,10 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 		}
 
 		const remainingPlayers = await getPlayersByUid(db, uid);
-		res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
 		res.status(200).json(remainingPlayers);
 	});
 }
@@ -217,7 +228,7 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse,
-	) {
+) {
 	try {
 		switch (req.method) {
 			case "GET":
@@ -231,6 +242,8 @@ export default async function handler(
 	} catch (e: any) {
 		console.error(e);
 		const status = res.statusCode >= 400 ? res.statusCode : 500;
-		res.status(status).send(e instanceof Error ? e.message : "Internal Server Error");
+		res
+			.status(status)
+			.send(e instanceof Error ? e.message : "Internal Server Error");
 	}
 }

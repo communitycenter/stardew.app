@@ -135,9 +135,7 @@ export const RecipeCard = <T extends Recipe>({
 					)}
 					onClick={handleClick}
 				>
-					<div
-						className="flex items-center space-x-3 truncate text-left"
-					>
+					<div className="flex items-center space-x-3 truncate text-left">
 						<Image
 							src={iconURL}
 							alt={name}

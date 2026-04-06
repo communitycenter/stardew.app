@@ -101,9 +101,7 @@ export const ShippingCard = ({ item }: Props) => {
 						classes[_status],
 					)}
 				>
-					<div
-						className="flex items-center space-x-3 truncate text-left"
-					>
+					<div className="flex items-center space-x-3 truncate text-left">
 						<Image
 							src={iconURL}
 							alt={name}

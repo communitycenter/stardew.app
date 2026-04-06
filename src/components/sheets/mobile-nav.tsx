@@ -54,11 +54,10 @@ export const MobileNav = ({
 	setDeletionOpen,
 	setLoginOpen,
 }: Props) => {
-	const api = useSWR<User>(
-		"/api/me",
-		fetchJson<User>,
-		{ refreshInterval: 0, revalidateOnFocus: false },
-	);
+	const api = useSWR<User>("/api/me", fetchJson<User>, {
+		refreshInterval: 0,
+		revalidateOnFocus: false,
+	});
 
 	const pathname = usePathname();
 	const [loading, setLoading] = useState(false);
@@ -136,7 +135,7 @@ export const MobileNav = ({
 
 										<Button
 											variant="positive"
-											className=" dark:hover:text-white"
+											className="dark:hover:text-white"
 											onClick={() => {
 												inputRef.current?.click();
 											}}
@@ -206,7 +205,7 @@ export const MobileNav = ({
 										<div className="grid grid-cols-2 gap-2">
 											<Button
 												variant="positive"
-												className=" dark:hover:text-white"
+												className="dark:hover:text-white"
 												onClick={() => {
 													inputRef.current?.click();
 												}}

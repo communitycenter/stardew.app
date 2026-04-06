@@ -29,10 +29,10 @@ export default function IslandUpgrades() {
 				key={id}
 				title={upgrade.name}
 				description={
-					<div className="space-y-6 ">
+					<div className="space-y-6">
 						<section className="space-y-1">
-							<h3 className="font-semibold ">Cost</h3>
-							<span className=" flex items-center gap-1">
+							<h3 className="font-semibold">Cost</h3>
+							<span className="flex items-center gap-1">
 								<span
 									className="align-middle"
 									style={{ imageRendering: "pixelated" }}
@@ -40,7 +40,7 @@ export default function IslandUpgrades() {
 									{upgrade.cost}
 								</span>
 								<span
-									className="w-5 h-5 align-middle relative flex items-center"
+									className="relative flex h-5 w-5 items-center align-middle"
 									style={{ imageRendering: "pixelated" }}
 								>
 									<Image
@@ -55,12 +55,12 @@ export default function IslandUpgrades() {
 							</span>
 						</section>
 						<section className="space-y-1">
-							<h3 className="font-semibold ">Description</h3>
-							<span className="block ">{upgrade.description}</span>
+							<h3 className="font-semibold">Description</h3>
+							<span className="block">{upgrade.description}</span>
 						</section>
 						<section className="space-y-1">
-							<h3 className="font-semibold ">Location</h3>
-							<span className="block ">{upgrade.location}</span>
+							<h3 className="font-semibold">Location</h3>
+							<span className="block">{upgrade.location}</span>
 						</section>
 					</div>
 				}

@@ -258,7 +258,10 @@ export default function Crafting() {
 						<TabsList className="grid w-full grid-cols-2">
 							<TabsTrigger value="recipes">All Recipes</TabsTrigger>
 							<TabsTrigger value="ingredients" className="relative">
-								Ingredient Tracker <span className="absolute -right-1 -top-1 rounded-full bg-yellow-400 px-1 text-[10px] font-semibold text-yellow-900">beta</span>
+								Ingredient Tracker{" "}
+								<span className="absolute -right-1 -top-1 rounded-full bg-yellow-400 px-1 text-[10px] font-semibold text-yellow-900">
+									beta
+								</span>
 							</TabsTrigger>
 						</TabsList>
 						{/* All Recipes Section */}
@@ -352,7 +355,7 @@ export default function Crafting() {
 								</Command>
 							</div>
 							{/* Cards */}
-							<div className="grid grid-cols-1 mt-2 gap-4 md:grid-cols-2 xl:grid-cols-4">
+							<div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
 								{Object.values(recipes)
 									.filter((r) => semverGte(gameVersion, r.minVersion))
 									.filter((r) => {

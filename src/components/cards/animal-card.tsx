@@ -100,7 +100,7 @@ export function AnimalCard({ animal, type, imageUrl }: AnimalCardProps) {
 							height={32}
 							className="rounded-sm"
 						/>
-						<CardTitle className="text-lg font-medium truncate">
+						<CardTitle className="truncate text-lg font-medium">
 							{animal.name}
 						</CardTitle>
 					</div>
@@ -129,7 +129,7 @@ export function AnimalCard({ animal, type, imageUrl }: AnimalCardProps) {
 							/>
 							<span className="text-sm font-medium">Friendship</span>
 						</div>
-						<span className="text-sm text-muted-foreground">
+						<span className="text-muted-foreground text-sm">
 							{animal.friendship}/1000
 						</span>
 					</div>
@@ -139,7 +139,7 @@ export function AnimalCard({ animal, type, imageUrl }: AnimalCardProps) {
 						className="h-2"
 						color={friendshipInfo.color}
 					/>
-					<div className="text-xs text-muted-foreground text-center">
+					<div className="text-muted-foreground text-center text-xs">
 						{friendshipInfo.level}
 					</div>
 				</div>
@@ -154,7 +154,7 @@ export function AnimalCard({ animal, type, imageUrl }: AnimalCardProps) {
 								/>
 								<span className="text-sm font-medium">Happiness</span>
 							</div>
-							<span className="text-sm text-muted-foreground">
+							<span className="text-muted-foreground text-sm">
 								{farmAnimal.happiness}/255
 							</span>
 						</div>
@@ -164,7 +164,7 @@ export function AnimalCard({ animal, type, imageUrl }: AnimalCardProps) {
 							className="h-2"
 							color={happinessInfo.color}
 						/>
-						<div className="text-xs text-muted-foreground text-center">
+						<div className="text-muted-foreground text-center text-xs">
 							{happinessInfo.level}
 						</div>
 					</div>

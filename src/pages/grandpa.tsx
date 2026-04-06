@@ -31,7 +31,8 @@ const TOTAL_MUSEUM_ITEMS = Object.values(objects).filter(
 function bundleCompleted(bws: any): boolean {
 	if (!bws?.bundleStatus) return false;
 	const completed = (bws.bundleStatus as boolean[]).filter(Boolean).length;
-	if (bws.bundle.itemsRequired === -1) return completed >= bws.bundle.items.length;
+	if (bws.bundle.itemsRequired === -1)
+		return completed >= bws.bundle.items.length;
 	return completed >= bws.bundle.itemsRequired;
 }
 
@@ -115,12 +116,15 @@ function SectionCard({ section }: { section: Section }) {
 	return (
 		<Card
 			className={cn(
-				complete && "border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10",
+				complete &&
+					"border-green-900 bg-green-500/20 dark:border-green-900 dark:bg-green-500/10",
 			)}
 		>
 			<CardHeader className="pb-2">
 				<div className="flex items-center justify-between">
-					<CardTitle className="text-base font-semibold">{section.title}</CardTitle>
+					<CardTitle className="text-base font-semibold">
+						{section.title}
+					</CardTitle>
 					<span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
 						{earnedPoints} / {section.maxPoints} pts
 					</span>
@@ -171,7 +175,11 @@ export default function Grandpa() {
 	}, [activePlayer, players]);
 
 	const totalEarned = useMemo(
-		() => Math.max(...groupedFarmers.map((p: any) => p.general?.totalMoneyEarned ?? 0), 0),
+		() =>
+			Math.max(
+				...groupedFarmers.map((p: any) => p.general?.totalMoneyEarned ?? 0),
+				0,
+			),
 		[groupedFarmers],
 	);
 
@@ -180,7 +188,13 @@ export default function Grandpa() {
 			Math.max(
 				...groupedFarmers.map((p: any) => {
 					const s = p.general?.skills ?? {};
-					return (s.farming ?? 0) + (s.fishing ?? 0) + (s.foraging ?? 0) + (s.mining ?? 0) + (s.combat ?? 0);
+					return (
+						(s.farming ?? 0) +
+						(s.fishing ?? 0) +
+						(s.foraging ?? 0) +
+						(s.mining ?? 0) +
+						(s.combat ?? 0)
+					);
 				}),
 				0,
 			),
@@ -206,12 +220,18 @@ export default function Grandpa() {
 	);
 
 	const hasPetMaxFriendship = useMemo(
-		() => groupedFarmers.some((p: any) => (p.animals?.pets ?? []).some((pet: any) => pet.friendship >= 1000)),
+		() =>
+			groupedFarmers.some((p: any) =>
+				(p.animals?.pets ?? []).some((pet: any) => pet.friendship >= 1000),
+			),
 		[groupedFarmers],
 	);
 
 	const isMarriedWithFullHouse = useMemo(
-		() => groupedFarmers.some((p: any) => p.social?.spouse && (p.social?.houseUpgradeLevel ?? 0) >= 2),
+		() =>
+			groupedFarmers.some(
+				(p: any) => p.social?.spouse && (p.social?.houseUpgradeLevel ?? 0) >= 2,
+			),
 		[groupedFarmers],
 	);
 
@@ -219,36 +239,54 @@ export default function Grandpa() {
 		() =>
 			groupedFarmers.some((p: any) => {
 				const bundles: any[] = p.bundles ?? [];
-				const ccBundles = bundles.filter((b) => CC_ROOMS.includes(b.bundle?.areaName));
-				return ccBundles.length > 0 && ccBundles.every((b) => bundleCompleted(b));
+				const ccBundles = bundles.filter((b) =>
+					CC_ROOMS.includes(b.bundle?.areaName),
+				);
+				return (
+					ccBundles.length > 0 && ccBundles.every((b) => bundleCompleted(b))
+				);
 			}),
 		[groupedFarmers],
 	);
 
 	const deepestMine = useMemo(
-		() => Math.max(...groupedFarmers.map((p: any) => p.monsters?.deepestMineLevel ?? 0), 0),
+		() =>
+			Math.max(
+				...groupedFarmers.map((p: any) => p.monsters?.deepestMineLevel ?? 0),
+				0,
+			),
 		[groupedFarmers],
 	);
 
 	const museumDonations = useMemo(
 		() =>
 			Math.max(
-				...groupedFarmers.map((p: any) => (p.museum?.artifacts?.length ?? 0) + (p.museum?.minerals?.length ?? 0)),
+				...groupedFarmers.map(
+					(p: any) =>
+						(p.museum?.artifacts?.length ?? 0) +
+						(p.museum?.minerals?.length ?? 0),
+				),
 				0,
 			),
 		[groupedFarmers],
 	);
 
 	const [fishCaughtCount, totalFish] = useMemo(() => {
-		const total = Object.values(fish).filter((f) => semverGte(gameVersion, f.minVersion)).length;
-		const count = Math.max(...groupedFarmers.map((p: any) => p.fishing?.fishCaught?.length ?? 0), 0);
+		const total = Object.values(fish).filter((f) =>
+			semverGte(gameVersion, f.minVersion),
+		).length;
+		const count = Math.max(
+			...groupedFarmers.map((p: any) => p.fishing?.fishCaught?.length ?? 0),
+			0,
+		);
 		return [count, total];
 	}, [groupedFarmers, gameVersion]);
 
 	const [shippedCount, totalShipping] = useMemo(() => {
 		const total =
-			Object.values(shippingItems).filter((i) => semverGte(gameVersion, i.minVersion)).length -
-			(semverGte(gameVersion, "1.6.0") ? 1 : 0);
+			Object.values(shippingItems).filter((i) =>
+				semverGte(gameVersion, i.minVersion),
+			).length - (semverGte(gameVersion, "1.6.0") ? 1 : 0);
 		const count = Math.max(
 			...groupedFarmers.map(
 				(p: any) =>
@@ -267,74 +305,196 @@ export default function Grandpa() {
 				title: "Earnings",
 				maxPoints: 7,
 				criteria: [
-					{ label: "Earned 50,000g", description: `${totalEarned.toLocaleString()}g total earned`, points: 1, earned: totalEarned >= 50_000 },
-					{ label: "Earned 100,000g", description: "", points: 1, earned: totalEarned >= 100_000 },
-					{ label: "Earned 200,000g", description: "", points: 1, earned: totalEarned >= 200_000 },
-					{ label: "Earned 300,000g", description: "", points: 1, earned: totalEarned >= 300_000 },
-					{ label: "Earned 500,000g", description: "", points: 1, earned: totalEarned >= 500_000 },
-					{ label: "Earned 1,000,000g", description: "", points: 2, earned: totalEarned >= 1_000_000 },
+					{
+						label: "Earned 50,000g",
+						description: `${totalEarned.toLocaleString()}g total earned`,
+						points: 1,
+						earned: totalEarned >= 50_000,
+					},
+					{
+						label: "Earned 100,000g",
+						description: "",
+						points: 1,
+						earned: totalEarned >= 100_000,
+					},
+					{
+						label: "Earned 200,000g",
+						description: "",
+						points: 1,
+						earned: totalEarned >= 200_000,
+					},
+					{
+						label: "Earned 300,000g",
+						description: "",
+						points: 1,
+						earned: totalEarned >= 300_000,
+					},
+					{
+						label: "Earned 500,000g",
+						description: "",
+						points: 1,
+						earned: totalEarned >= 500_000,
+					},
+					{
+						label: "Earned 1,000,000g",
+						description: "",
+						points: 2,
+						earned: totalEarned >= 1_000_000,
+					},
 				],
 			},
 			{
 				title: "Skills",
 				maxPoints: 2,
 				criteria: [
-					{ label: "Total skill level ≥ 30", description: `${totalSkillLevels} / 50 total levels`, points: 1, earned: totalSkillLevels >= 30 },
-					{ label: "Total skill level ≥ 50 (all maxed)", description: "", points: 1, earned: totalSkillLevels >= 50 },
+					{
+						label: "Total skill level ≥ 30",
+						description: `${totalSkillLevels} / 50 total levels`,
+						points: 1,
+						earned: totalSkillLevels >= 30,
+					},
+					{
+						label: "Total skill level ≥ 50 (all maxed)",
+						description: "",
+						points: 1,
+						earned: totalSkillLevels >= 50,
+					},
 				],
 			},
 			{
 				title: "Relationships",
 				maxPoints: 4,
 				criteria: [
-					{ label: "8-heart friends with 5+ villagers", description: `${eightHeartCount} at 8+ hearts`, points: 1, earned: eightHeartCount >= 5 },
-					{ label: "8-heart friends with 10+ villagers", description: "", points: 1, earned: eightHeartCount >= 10 },
-					{ label: "Pet at maximum friendship", description: "Water the pet bowl daily", points: 1, earned: hasPetMaxFriendship },
-					{ label: "Married with fully upgraded house", description: "Requires marriage + 2 house upgrades", points: 1, earned: isMarriedWithFullHouse },
+					{
+						label: "8-heart friends with 5+ villagers",
+						description: `${eightHeartCount} at 8+ hearts`,
+						points: 1,
+						earned: eightHeartCount >= 5,
+					},
+					{
+						label: "8-heart friends with 10+ villagers",
+						description: "",
+						points: 1,
+						earned: eightHeartCount >= 10,
+					},
+					{
+						label: "Pet at maximum friendship",
+						description: "Water the pet bowl daily",
+						points: 1,
+						earned: hasPetMaxFriendship,
+					},
+					{
+						label: "Married with fully upgraded house",
+						description: "Requires marriage + 2 house upgrades",
+						points: 1,
+						earned: isMarriedWithFullHouse,
+					},
 				],
 			},
 			{
 				title: "Unlocks",
 				maxPoints: 5,
 				criteria: [
-					{ label: "Complete the Community Center", description: "All 6 room bundles", points: 3, earned: isCCComplete },
-					{ label: "Obtain the Skull Key (mine floor 120)", description: `Deepest: ${deepestMine} / 120`, points: 1, earned: deepestMine >= 120 },
-					{ label: "Unlock the Sewer (60+ museum donations)", description: `${museumDonations} / 60 donated`, points: 1, earned: museumDonations >= 60 },
+					{
+						label: "Complete the Community Center",
+						description: "All 6 room bundles",
+						points: 3,
+						earned: isCCComplete,
+					},
+					{
+						label: "Obtain the Skull Key (mine floor 120)",
+						description: `Deepest: ${deepestMine} / 120`,
+						points: 1,
+						earned: deepestMine >= 120,
+					},
+					{
+						label: "Unlock the Sewer (60+ museum donations)",
+						description: `${museumDonations} / 60 donated`,
+						points: 1,
+						earned: museumDonations >= 60,
+					},
 				],
 			},
 			{
 				title: "Collections",
 				maxPoints: 3,
 				criteria: [
-					{ label: "Complete the Museum", description: `${museumDonations} / ${TOTAL_MUSEUM_ITEMS} items`, points: 1, earned: museumDonations >= TOTAL_MUSEUM_ITEMS },
-					{ label: "Catch every fish", description: `${fishCaughtCount} / ${totalFish} caught`, points: 1, earned: fishCaughtCount >= totalFish },
-					{ label: "Ship one of every item", description: `${shippedCount} / ${totalShipping} shipped`, points: 1, earned: shippedCount >= totalShipping },
+					{
+						label: "Complete the Museum",
+						description: `${museumDonations} / ${TOTAL_MUSEUM_ITEMS} items`,
+						points: 1,
+						earned: museumDonations >= TOTAL_MUSEUM_ITEMS,
+					},
+					{
+						label: "Catch every fish",
+						description: `${fishCaughtCount} / ${totalFish} caught`,
+						points: 1,
+						earned: fishCaughtCount >= totalFish,
+					},
+					{
+						label: "Ship one of every item",
+						description: `${shippedCount} / ${totalShipping} shipped`,
+						points: 1,
+						earned: shippedCount >= totalShipping,
+					},
 				],
 			},
 		],
-		[totalEarned, totalSkillLevels, eightHeartCount, hasPetMaxFriendship, isMarriedWithFullHouse, isCCComplete, deepestMine, museumDonations, fishCaughtCount, totalFish, shippedCount, totalShipping],
+		[
+			totalEarned,
+			totalSkillLevels,
+			eightHeartCount,
+			hasPetMaxFriendship,
+			isMarriedWithFullHouse,
+			isCCComplete,
+			deepestMine,
+			museumDonations,
+			fishCaughtCount,
+			totalFish,
+			shippedCount,
+			totalShipping,
+		],
 	);
 
 	const totalPoints = useMemo(
-		() => sections.flatMap((s) => s.criteria).reduce((sum, c) => sum + (c.earned ? c.points : 0), 0),
+		() =>
+			sections
+				.flatMap((s) => s.criteria)
+				.reduce((sum, c) => sum + (c.earned ? c.points : 0), 0),
 		[sections],
 	);
 
 	const candles = candlesForPoints(totalPoints);
-	const pointsToNext = candles < 4 ? ([4, 8, 12][candles] ?? 12) - totalPoints : 0;
+	const pointsToNext =
+		candles < 4 ? ([4, 8, 12][candles] ?? 12) - totalPoints : 0;
 
 	return (
 		<>
 			<Head>
-				<title>{farmName ? `Grandpa's Evaluation for ${farmName} | stardew.app` : "Stardew Valley Grandpa's Evaluation | stardew.app"}</title>
-				<meta name="title" content="Stardew Valley Grandpa's Evaluation | stardew.app" />
-				<meta name="description" content="Track your score for Grandpa's Evaluation in Stardew Valley. See how many candles you'll earn and what criteria you still need to meet." />
-				<meta name="keywords" content="stardew valley grandpa evaluation, grandpa score, grandpa candles, stardew valley year 3, stardew app" />
+				<title>
+					{farmName
+						? `Grandpa's Evaluation for ${farmName} | stardew.app`
+						: "Stardew Valley Grandpa's Evaluation | stardew.app"}
+				</title>
+				<meta
+					name="title"
+					content="Stardew Valley Grandpa's Evaluation | stardew.app"
+				/>
+				<meta
+					name="description"
+					content="Track your score for Grandpa's Evaluation in Stardew Valley. See how many candles you'll earn and what criteria you still need to meet."
+				/>
+				<meta
+					name="keywords"
+					content="stardew valley grandpa evaluation, grandpa score, grandpa candles, stardew valley year 3, stardew app"
+				/>
 			</Head>
 			<main className="flex min-h-screen border-neutral-200 px-5 pb-8 pt-2 dark:border-neutral-800 md:border-l md:px-8">
 				<div className="mx-auto mt-4 w-full space-y-4">
 					<h1 className="ml-1 text-2xl font-semibold text-gray-900 dark:text-white">
-						{farmName ? `Grandpa's Evaluation for ${farmName}` : "Grandpa's Evaluation"}
+						{farmName
+							? `Grandpa's Evaluation for ${farmName}`
+							: "Grandpa's Evaluation"}
 					</h1>
 
 					{/* Score summary */}
@@ -342,9 +502,11 @@ export default function Grandpa() {
 						<CardContent className="flex items-center justify-between gap-4 p-5">
 							<div className="flex items-center gap-4">
 								<Image
-									src={candles === 4
-										? "https://stardewvalleywiki.com/mediawiki/images/5/51/Grandpa_Speaking.png"
-										: "https://stardewvalleywiki.com/mediawiki/images/8/88/Grandpa.png"}
+									src={
+										candles === 4
+											? "https://stardewvalleywiki.com/mediawiki/images/5/51/Grandpa_Speaking.png"
+											: "https://stardewvalleywiki.com/mediawiki/images/8/88/Grandpa.png"
+									}
 									alt="Grandpa"
 									width={64}
 									height={64}
@@ -373,7 +535,11 @@ export default function Grandpa() {
 										key={i}
 										size={32}
 										style={{ color: i <= candles ? "#54C7FB" : undefined }}
-										className={i <= candles ? "" : "text-neutral-200 dark:text-neutral-700"}
+										className={
+											i <= candles
+												? ""
+												: "text-neutral-200 dark:text-neutral-700"
+										}
 									/>
 								))}
 							</div>

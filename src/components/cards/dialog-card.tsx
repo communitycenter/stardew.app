@@ -181,10 +181,7 @@ export const DialogCard = ({
 	}
 
 	return (
-		<Dialog
-			open={open}
-			onOpenChange={setOpen}
-		>
+		<Dialog open={open} onOpenChange={setOpen}>
 			<div
 				className={cn(
 					"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
@@ -199,10 +196,14 @@ export const DialogCard = ({
 					setOpen(true);
 				}}
 			>
-				<div
-					className="flex min-w-0 items-center space-x-3 text-left"
-				>
-					<Image src={iconURL} alt={title} width={32} height={32} className="shrink-0" />
+				<div className="flex min-w-0 items-center space-x-3 text-left">
+					<Image
+						src={iconURL}
+						alt={title}
+						width={32}
+						height={32}
+						className="shrink-0"
+					/>
 					<p className="truncate">{title}</p>
 				</div>
 				<div className="flex shrink-0 items-center gap-2">

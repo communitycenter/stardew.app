@@ -45,7 +45,6 @@ interface Props<T extends Recipe> {
 	 * Allow for searching for specific ingredients.
 	 */
 	searchText?: string;
-
 }
 
 class IngredientData {
@@ -169,11 +168,7 @@ export const IngredientList = <T extends Recipe>({
 				})
 				.filter(([_, count]) => count > 0)
 				.map(([id, count]) => (
-					<IngredientCard
-						key={id}
-						itemID={id}
-						count={count}
-					/>
+					<IngredientCard key={id} itemID={id} count={count} />
 				))}
 		</div>
 	);

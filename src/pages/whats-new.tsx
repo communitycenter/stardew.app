@@ -130,7 +130,7 @@ export default function Bundles() {
 							):
 						</h2>
 						{newPowers.map(([key, power]) => (
-							<div key={key} className="flex flex-row items-center space-x-2 ">
+							<div key={key} className="flex flex-row items-center space-x-2">
 								<Image
 									src={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
 									alt={key}
@@ -149,7 +149,7 @@ export default function Bundles() {
 							):
 						</h2>
 						{newBooks.map(([key, power]) => (
-							<div key={key} className="flex flex-row items-center space-x-2 ">
+							<div key={key} className="flex flex-row items-center space-x-2">
 								<Image
 									src={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
 									alt={key}
@@ -168,7 +168,7 @@ export default function Bundles() {
 							):
 						</h2>
 						{newMastery.map(([key, power]) => (
-							<div key={key} className="flex flex-row items-center space-x-2 ">
+							<div key={key} className="flex flex-row items-center space-x-2">
 								<Image
 									src={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
 									alt={key}

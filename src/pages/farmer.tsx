@@ -386,64 +386,64 @@ export default function Farmer() {
 					</section>
 				</div>
 			</main>
-		<Dialog open={editMoneyOpen} onOpenChange={setEditMoneyOpen}>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>Update Farm Earnings</DialogTitle>
-				</DialogHeader>
-				<Input
-					type="number"
-					min={0}
-					value={editMoneyValue}
-					onChange={(e) => setEditMoneyValue(Number(e.target.value))}
-					placeholder="Total gold earned"
-				/>
-				<DialogFooter>
-					<Button variant="outline" onClick={() => setEditMoneyOpen(false)}>
-						Cancel
-					</Button>
-					<Button
-						onClick={async () => {
-							await patchPlayer({
-								general: { totalMoneyEarned: editMoneyValue },
-							});
-							setEditMoneyOpen(false);
-						}}
-					>
-						Save
-					</Button>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
-		<Dialog open={editQuestsOpen} onOpenChange={setEditQuestsOpen}>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>Update Quests Completed</DialogTitle>
-				</DialogHeader>
-				<Input
-					type="number"
-					min={0}
-					value={editQuestsValue}
-					onChange={(e) => setEditQuestsValue(Number(e.target.value))}
-					placeholder="Number of quests completed"
-				/>
-				<DialogFooter>
-					<Button variant="outline" onClick={() => setEditQuestsOpen(false)}>
-						Cancel
-					</Button>
-					<Button
-						onClick={async () => {
-							await patchPlayer({
-								general: { questsCompleted: editQuestsValue },
-							});
-							setEditQuestsOpen(false);
-						}}
-					>
-						Save
-					</Button>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
+			<Dialog open={editMoneyOpen} onOpenChange={setEditMoneyOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Update Farm Earnings</DialogTitle>
+					</DialogHeader>
+					<Input
+						type="number"
+						min={0}
+						value={editMoneyValue}
+						onChange={(e) => setEditMoneyValue(Number(e.target.value))}
+						placeholder="Total gold earned"
+					/>
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setEditMoneyOpen(false)}>
+							Cancel
+						</Button>
+						<Button
+							onClick={async () => {
+								await patchPlayer({
+									general: { totalMoneyEarned: editMoneyValue },
+								});
+								setEditMoneyOpen(false);
+							}}
+						>
+							Save
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
+			<Dialog open={editQuestsOpen} onOpenChange={setEditQuestsOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Update Quests Completed</DialogTitle>
+					</DialogHeader>
+					<Input
+						type="number"
+						min={0}
+						value={editQuestsValue}
+						onChange={(e) => setEditQuestsValue(Number(e.target.value))}
+						placeholder="Number of quests completed"
+					/>
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setEditQuestsOpen(false)}>
+							Cancel
+						</Button>
+						<Button
+							onClick={async () => {
+								await patchPlayer({
+									general: { questsCompleted: editQuestsValue },
+								});
+								setEditQuestsOpen(false);
+							}}
+						>
+							Save
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 		</>
 	);
 }

@@ -18,11 +18,10 @@ import useSWR from "swr";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
-	const api = useSWR<User>(
-		"/api/me",
-		fetchJson<User>,
-		{ refreshInterval: 0, revalidateOnFocus: false },
-	);
+	const api = useSWR<User>("/api/me", fetchJson<User>, {
+		refreshInterval: 0,
+		revalidateOnFocus: false,
+	});
 
 	return (
 		<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
