@@ -30,11 +30,11 @@ export default function App({ Component, pageProps }: AppProps) {
 				<PreferencesProvider>
 					<MultiSelectProvider>
 						<div className={`${inter.className}`}>
-							<div className="sticky top-0 z-10 dark:bg-neutral-950">
+							<div className="fixed top-0 z-10 w-full bg-white dark:bg-neutral-950">
 								<Topbar />
 							</div>
-							<div>
-								<Sidebar className="hidden max-h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip md:fixed md:flex md:w-72 md:flex-col" />
+							<div className="pt-[65px]">
+								<Sidebar className="hidden max-h-[calc(100vh-65px)] overflow-y-auto overflow-x-clip md:fixed md:top-[65px] md:flex md:w-72 md:flex-col" />
 								<div className="md:pl-72">
 									<ErrorBoundary>
 										<Component {...pageProps} />
