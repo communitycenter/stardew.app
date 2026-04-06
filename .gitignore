@@ -1,10 +1,13 @@
 node_modules
 .next/
+.open-next/
+.wrangler/
 out/
 .DS_Store
 *.pem
 npm-debug.log*
 .env
+.env.*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
@@ -12,5 +15,10 @@ next-env.d.ts
 venv
 .venv
 __pycache__/
-.sentryclirc
-.env.sentry-build-plugin
+.env*.local
+.dev.vars*
+AGENTS.md
+cloudflare-env.d.ts
+.agents/
+.claude/
+dist/

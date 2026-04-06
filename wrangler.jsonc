@@ -1,0 +1,34 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "stardew-app",
+	"compatibility_date": "2026-03-03",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "stardew-app"
+		}
+	],
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "c9e4c81328964d2fb725879e7a09ff15"
+		}
+	],
+	// Non-sensitive configuration values
+	"vars": {
+		"DISCORD_GUILD": "1001999306900897872",
+		"DISCORD_ID": "1003311521817968752"
+	},
+	"observability": {
+		"logs": {
+			"enabled": true,
+			"invocation_logs": true
+		}
+	},
+}
