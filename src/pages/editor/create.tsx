@@ -88,7 +88,7 @@ export const skillsArray = [
 ] as const;
 
 export default function Editor() {
-	let [disabled, setDisabled] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 	const router = useRouter();
 	const { uploadPlayers } = usePlayers();
 
@@ -447,7 +447,7 @@ export default function Editor() {
 																		</SelectTrigger>
 																	</FormControl>
 																	<SelectContent>
-																		<SelectItem value="1">0</SelectItem>
+																		<SelectItem value="0">0</SelectItem>
 																		<SelectItem value="1">1</SelectItem>
 																		<SelectItem value="2">2</SelectItem>
 																	</SelectContent>
