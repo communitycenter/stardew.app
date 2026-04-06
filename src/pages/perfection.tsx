@@ -426,7 +426,7 @@ export default function Perfection() {
 				<title>Stardew Valley Perfection Tracker | stardew.app</title>
 				<meta
 					name="title"
-					content="Stardew Valley 1.6 Perfection Tracker | stardew.app"
+					content="Stardew Valley Perfection Tracker (1.6 – 1.6.9) | stardew.app"
 				/>
 				<meta
 					name="description"

@@ -171,7 +171,7 @@ export default function Farmer() {
 				/>
 				<meta
 					name="description"
-					content="Track and manage your achievements and Stardrops in Stardew Valley's new 1.6 update. Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
+					content="Track and manage your achievements and Stardrops in Stardew Valley (supports 1.6 through 1.6.9). Keep tabs on the achievements you've unlocked and monitor your progress towards completing them all. Discover the locations and conditions for acquiring Stardrops and unlock their powerful effects. Maximize your skill level and become a master of the valley."
 				/>
 				<meta
 					name="og:description"

@@ -18,14 +18,14 @@ export default function Document() {
 				<meta charSet="utf-8" />
 				<meta
 					name="description"
-					content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
+					content="Keep track of your Stardew Valley progression through 1.6.9. Upload your save file and track your progress towards 100% completion."
 				/>
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content="https://stardew.app" />
 				<meta property="og:title" content="Stardew.app" />
 				<meta
 					property="og:description"
-					content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
+					content="Keep track of your Stardew Valley progression through 1.6.9. Upload your save file and track your progress towards 100% completion."
 				/>
 
 				<meta property="og:thumbnail" content="/favicon.png" />
@@ -37,7 +37,7 @@ export default function Document() {
 				<meta name="twitter:title" content="stardew.app" />
 				<meta
 					name="twitter:description"
-					content="Keep track of your Stardew Valley 1.5 and 1.6 progression. Upload your save file and track your progress towards 100% completion."
+					content="Keep track of your Stardew Valley progression through 1.6.9. Upload your save file and track your progress towards 100% completion."
 				/>
 				<meta name="twitter:image" content="/favicon.png" />
 				<meta name="twitter:image:width" content="512" />

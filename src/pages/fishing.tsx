@@ -218,7 +218,7 @@ export default function Fishing() {
 				/>
 				<meta
 					name="description"
-					content="Track your Stardew Valley fishing progress in the new 1.6 update. Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
+					content="Track your Stardew Valley fishing progress (supports 1.6 through 1.6.9). Monitor your catch count, rare fish, and tackle usage to become a master angler. Discover the best fishing spots, seasons, and weather conditions for each fish. Take your fishing game to the next level and aim for 100% completion in Stardew Valley."
 				/>
 				<meta
 					name="og:description"

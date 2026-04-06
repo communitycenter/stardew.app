@@ -209,19 +209,19 @@ export default function SkillsMasteryPowers() {
 				<title>Stardew Valley Skills Tracker | stardew.app</title>
 				<meta
 					name="title"
-					content="Stardew Valley 1.6 Skills & Mastery | stardew.app"
+					content="Stardew Valley Skills & Mastery (1.6 – 1.6.9) | stardew.app"
 				/>
 				<meta
 					name="description"
-					content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
+					content="Track your progress towards achieving mastery in Stardew Valley (1.6 through 1.6.9), including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
 				/>
 				<meta
 					name="og:description"
-					content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
+					content="Track your progress towards achieving mastery in Stardew Valley (1.6 through 1.6.9), including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
 				/>
 				<meta
 					name="twitter:description"
-					content="Track your progress towards achieving mastery in Stardew Valley 1.6, including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
+					content="Track your progress towards achieving mastery in Stardew Valley (1.6 through 1.6.9), including skill achievements, special items, and powers. See your progress towards mastering all the skills and unlocking valuable rewards in the game."
 				/>
 				<meta
 					name="keywords"

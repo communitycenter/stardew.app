@@ -193,15 +193,15 @@ export default function Cooking() {
 				/>
 				<meta
 					name="description"
-					content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
+					content="Find and discover new cooking recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
 				/>
 				<meta
 					name="og:description"
-					content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
+					content="Find and discover new cooking recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
 				/>
 				<meta
 					name="twitter:description"
-					content="Find and discover new cooking recipes in the Stardew Valley 1.6 update. Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
+					content="Find and discover new cooking recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep track of the recipes you've learned and monitor your progress towards becoming a skilled chef."
 				/>
 				<meta
 					name="keywords"

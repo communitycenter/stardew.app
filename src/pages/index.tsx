@@ -61,11 +61,11 @@ export default function Home() {
 				<title>Stardew Valley Completion Tracker | stardew.app</title>
 				<meta
 					name="description"
-					content="Upload your Stardew Valley save file to track your progress towards 100% completion. Supports the new 1.6 update!"
+					content="Upload your Stardew Valley save file to track your progress towards 100% completion. Supports Stardew Valley 1.6 through 1.6.9."
 				/>
 				<meta
 					name="keywords"
-					content="stardew valley tracker, stardew tracker, stardew valley perfection tracker, stardew perfection tracker, stardew completion tracker, stardew valley collection tracker, stardew progress checker, stardew valley checklist app, stardew valley tracker app, stardew valley app, stardew app, perfection tracker stardew, stardew checker, stardew valley checker, stardew valley completion tracker, tracker stardew valley, stardew valley save checker, stardew valley companion app, stardew valley progress tracker, stardew valley checklist app, stardew valley, stardew valley tracker app, stardew valley app"
+					content="stardew valley tracker, stardew tracker, stardew valley perfection tracker, stardew perfection tracker, stardew completion tracker, stardew valley collection tracker, stardew progress checker, stardew valley checklist app, stardew valley tracker app, stardew valley app, stardew app, perfection tracker stardew, stardew checker, stardew valley checker, stardew valley completion tracker, tracker stardew valley, stardew valley save checker, stardew valley companion app, stardew valley progress tracker, stardew valley checklist app, stardew valley, stardew valley tracker app, stardew valley app, stardew valley 1.6.9, stardew 1.6.9, stardew valley 1.6.9 tracker, stardew valley 1.6.9 checklist, stardew valley 1.6 tracker, stardew valley 1.6 checklist"
 				/>
 			</Head>
 			<main

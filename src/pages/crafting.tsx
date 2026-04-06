@@ -203,15 +203,15 @@ export default function Crafting() {
 				/>
 				<meta
 					name="description"
-					content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+					content="Track and complete crafting recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
 				/>
 				<meta
 					name="og:description"
-					content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+					content="Track and complete crafting recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
 				/>
 				<meta
 					name="twitter:description"
-					content="Track and complete crafting recipes in Stardew Valley's new 1.6 update. Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
+					content="Track and complete crafting recipes in Stardew Valley (supports 1.6 through 1.6.9). Keep tabs on the crafting recipes you've unlocked and monitor your progress towards completing the full recipe collection. Discover what recipes are left to unlock and become a master crafter in Stardew Valley."
 				/>
 				<meta
 					name="keywords"
