@@ -24,7 +24,17 @@ import {
 
 import { DialogCard } from "@/components/cards/dialog-card";
 import { UnblurDialog } from "@/components/dialogs/unblur-dialog";
+import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import {
 	getCurrentMasteryLevel,
 	getMasteryExpNeededForLevel,
@@ -37,10 +47,14 @@ const reqs: Record<string, number> = {
 };
 
 export default function SkillsMasteryPowers() {
-	const { activePlayer } = usePlayers();
+	const { activePlayer, patchPlayer } = usePlayers();
 
 	// unblur dialog
 	const [showPrompt, setPromptOpen] = useState(false);
+
+	const [editSkillOpen, setEditSkillOpen] = useState(false);
+	const [editSkillName, setEditSkillName] = useState<string>("");
+	const [editSkillValue, setEditSkillValue] = useState(0);
 	const { show, toggleShow } = usePreferences();
 
 	const getAchievementProgress = (name: string) => {
@@ -253,6 +267,7 @@ export default function SkillsMasteryPowers() {
 												})}
 										</div>
 										<div className="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-3 xl:grid-cols-6">
+											<div className="relative">
 											<InfoCard
 												title="Farming"
 												description={`Level ${
@@ -283,6 +298,21 @@ export default function SkillsMasteryPowers() {
 													</TooltipProvider>
 												)}
 											</InfoCard>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditSkillName("farming");
+														setEditSkillValue(activePlayer.general?.skills?.farming ?? 0);
+														setEditSkillOpen(true);
+													}}
+													aria-label="Edit Farming Level"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
+											<div className="relative">
 											<InfoCard
 												title="Fishing"
 												description={`Level ${
@@ -313,6 +343,21 @@ export default function SkillsMasteryPowers() {
 													</TooltipProvider>
 												)}
 											</InfoCard>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditSkillName("fishing");
+														setEditSkillValue(activePlayer.general?.skills?.fishing ?? 0);
+														setEditSkillOpen(true);
+													}}
+													aria-label="Edit Fishing Level"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
+											<div className="relative">
 											<InfoCard
 												title="Foraging"
 												description={`Level ${
@@ -343,6 +388,21 @@ export default function SkillsMasteryPowers() {
 													</TooltipProvider>
 												)}
 											</InfoCard>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditSkillName("foraging");
+														setEditSkillValue(activePlayer.general?.skills?.foraging ?? 0);
+														setEditSkillOpen(true);
+													}}
+													aria-label="Edit Foraging Level"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
+											<div className="relative">
 											<InfoCard
 												title="Mining"
 												description={`Level ${
@@ -372,6 +432,21 @@ export default function SkillsMasteryPowers() {
 													</TooltipProvider>
 												)}
 											</InfoCard>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditSkillName("mining");
+														setEditSkillValue(activePlayer.general?.skills?.mining ?? 0);
+														setEditSkillOpen(true);
+													}}
+													aria-label="Edit Mining Level"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
+											<div className="relative">
 											<InfoCard
 												title="Combat"
 												description={`Level ${
@@ -401,6 +476,20 @@ export default function SkillsMasteryPowers() {
 													</TooltipProvider>
 												)}
 											</InfoCard>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditSkillName("combat");
+														setEditSkillValue(activePlayer.general?.skills?.combat ?? 0);
+														setEditSkillOpen(true);
+													}}
+													aria-label="Edit Combat Level"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
 											<InfoCard
 												title="Mastery"
 												description={`Level ${masteryExp.level ?? 0}`}
@@ -554,6 +643,46 @@ export default function SkillsMasteryPowers() {
 				setOpen={setPromptOpen}
 				toggleShow={toggleShow}
 			/>
+			<Dialog open={editSkillOpen} onOpenChange={setEditSkillOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>
+							Edit{" "}
+							{editSkillName.charAt(0).toUpperCase() + editSkillName.slice(1)}{" "}
+							Level
+						</DialogTitle>
+					</DialogHeader>
+					<Input
+						type="number"
+						min={0}
+						max={10}
+						value={editSkillValue}
+						onChange={(e) =>
+							setEditSkillValue(
+								Math.min(10, Math.max(0, Number(e.target.value))),
+							)
+						}
+					/>
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setEditSkillOpen(false)}>
+							Cancel
+						</Button>
+						<Button
+							onClick={async () => {
+								await patchPlayer({
+									general: {
+										skills: { [editSkillName]: editSkillValue },
+										experience: { [editSkillName]: 0 },
+									},
+								});
+								setEditSkillOpen(false);
+							}}
+						>
+							Save
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 		</>
 	);
 }

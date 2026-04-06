@@ -10,6 +10,15 @@ import { usePreferences } from "@/contexts/preferences-context";
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { DialogCard } from "@/components/cards/dialog-card";
 import { InfoCard } from "@/components/cards/info-card";
+import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import {
 	Accordion,
 	AccordionContent,
@@ -23,6 +32,7 @@ import {
 	ClockIcon,
 	CurrencyDollarIcon,
 	HomeIcon,
+	PencilSquareIcon,
 	StarIcon,
 	UserIcon,
 } from "@heroicons/react/24/solid";
@@ -82,10 +92,14 @@ const reqs: Record<string, number> = {
 };
 
 export default function Farmer() {
-	const { activePlayer } = usePlayers();
+	const { activePlayer, patchPlayer } = usePlayers();
 	const { show } = usePreferences();
 
 	const [stardrops, setStardrops] = useState(new Set());
+	const [editMoneyOpen, setEditMoneyOpen] = useState(false);
+	const [editQuestsOpen, setEditQuestsOpen] = useState(false);
+	const [editMoneyValue, setEditMoneyValue] = useState(0);
+	const [editQuestsValue, setEditQuestsValue] = useState(0);
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -208,15 +222,31 @@ export default function Farmer() {
 											}
 											Icon={HomeIcon}
 										/>
-										<InfoCard
-											title="Farm Earnings"
-											description={
-												activePlayer?.general?.totalMoneyEarned
-													? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
-													: "No Info Found"
-											}
-											Icon={CurrencyDollarIcon}
-										/>
+										<div className="relative">
+											<InfoCard
+												title="Farm Earnings"
+												description={
+													activePlayer?.general?.totalMoneyEarned
+														? `${activePlayer.general.totalMoneyEarned.toLocaleString()}g`
+														: "No Info Found"
+												}
+												Icon={CurrencyDollarIcon}
+											/>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditMoneyValue(
+															activePlayer.general?.totalMoneyEarned ?? 0,
+														);
+														setEditMoneyOpen(true);
+													}}
+													aria-label="Edit Farm Earnings"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
 										<InfoCard
 											title="Playtime"
 											description={
@@ -224,15 +254,31 @@ export default function Farmer() {
 											}
 											Icon={ClockIcon}
 										/>
-										<InfoCard
-											title="Quests Completed"
-											description={
-												activePlayer?.general?.questsCompleted
-													? activePlayer.general.questsCompleted.toString()
-													: "No Info Found"
-											}
-											Icon={BriefcaseIcon}
-										/>
+										<div className="relative">
+											<InfoCard
+												title="Quests Completed"
+												description={
+													activePlayer?.general?.questsCompleted
+														? activePlayer.general.questsCompleted.toString()
+														: "No Info Found"
+												}
+												Icon={BriefcaseIcon}
+											/>
+											{activePlayer && (
+												<button
+													className="absolute right-2 top-2 rounded p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+													onClick={() => {
+														setEditQuestsValue(
+															activePlayer.general?.questsCompleted ?? 0,
+														);
+														setEditQuestsOpen(true);
+													}}
+													aria-label="Edit Quests Completed"
+												>
+													<PencilSquareIcon className="h-4 w-4" />
+												</button>
+											)}
+										</div>
 										<InfoCard
 											title="Stardrops Found"
 											description={
@@ -343,6 +389,64 @@ export default function Farmer() {
 					</section>
 				</div>
 			</main>
+		<Dialog open={editMoneyOpen} onOpenChange={setEditMoneyOpen}>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>Update Farm Earnings</DialogTitle>
+				</DialogHeader>
+				<Input
+					type="number"
+					min={0}
+					value={editMoneyValue}
+					onChange={(e) => setEditMoneyValue(Number(e.target.value))}
+					placeholder="Total gold earned"
+				/>
+				<DialogFooter>
+					<Button variant="outline" onClick={() => setEditMoneyOpen(false)}>
+						Cancel
+					</Button>
+					<Button
+						onClick={async () => {
+							await patchPlayer({
+								general: { totalMoneyEarned: editMoneyValue },
+							});
+							setEditMoneyOpen(false);
+						}}
+					>
+						Save
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
+		<Dialog open={editQuestsOpen} onOpenChange={setEditQuestsOpen}>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>Update Quests Completed</DialogTitle>
+				</DialogHeader>
+				<Input
+					type="number"
+					min={0}
+					value={editQuestsValue}
+					onChange={(e) => setEditQuestsValue(Number(e.target.value))}
+					placeholder="Number of quests completed"
+				/>
+				<DialogFooter>
+					<Button variant="outline" onClick={() => setEditQuestsOpen(false)}>
+						Cancel
+					</Button>
+					<Button
+						onClick={async () => {
+							await patchPlayer({
+								general: { questsCompleted: editQuestsValue },
+							});
+							setEditQuestsOpen(false);
+						}}
+					>
+						Save
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 		</>
 	);
 }

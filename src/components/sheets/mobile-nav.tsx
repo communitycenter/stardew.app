@@ -231,7 +231,7 @@ export const MobileNav = ({
 											onClick={() => setIsOpen(false)}
 										>
 											<Link
-												href="/account?page=saves"
+												href="/editor/edit"
 												className="flex items-center justify-center gap-2"
 											>
 												<PencilSquareIcon className="h-5 w-5" />
