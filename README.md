@@ -16,10 +16,10 @@ The website uses [Next.js](https://nextjs.org) for its frontend, self-hosted MyS
     <img align=center src="https://github.com/communitycenter/stardew.app/blob/main/.github/info.png?raw=true" alt="Stardew.app Logo" width="500" /></br>
 </p>
 
-| Feature                         |     | Notes                |
-| ------------------------------- | --- | -------------------- |
+| Feature                         |     | Notes |
+| ------------------------------- | --- | ----- |
 | 100% perfection tracking        | ✅  |
-| All 1.6 content                 | ⚠️  | Missing animals page |
+| All 1.6 content                 | ✅  |
 | Achievement tracking            | ✅  |
 | Fish tracker with location info | ✅  |
 | Shipping tracker with crop info | ✅  |
@@ -245,9 +245,28 @@ Below are some incredible people that the website wouldn't be without today.
 
 ---
 
-## Local Database Setup
+## Local Development Setup
 
-1. Copy `apps/stardew.app/.env.local.example` to `apps/stardew.app/.env.local` and update the MySQL credentials.
-2. Run `bun install` to install project dependencies.
+1. Run `bun install` to install project dependencies.
+2. Copy `.env.local.example` to `.env.local` and update the MySQL credentials.
 3. Ensure MySQL is running locally.
-4. Run `bun run prepLocalEnv` to create the database and sync the schema for local testing.
+4. Run `bun run prepLocalEnv` to create the database and sync the schema.
+5. Run `bun run dev` to start the Next.js dev server at http://localhost:3000.
+
+### Testing against Cloudflare Workers locally
+
+`bun run dev` runs a standard Next.js dev server — fast for iteration, but it does not emulate the Cloudflare runtime. To test with the actual Workers runtime locally (Hyperdrive bindings, etc.), use:
+
+```
+bun run preview
+```
+
+This builds the OpenNext Cloudflare bundle and runs it via Wrangler's local dev environment.
+
+### Deploying
+
+```
+bun run deploy
+```
+
+This builds the OpenNext bundle and deploys it to Cloudflare Workers via Wrangler.
