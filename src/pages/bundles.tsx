@@ -182,8 +182,19 @@ function BundleAccordion(props: BundleAccordionProps): ReactElement {
 		props.bundleWithStatus.bundle.name,
 	);
 
+	const [accordionValue, setAccordionValue] = useState<string | undefined>(
+		bundleCompleted ? undefined : "item-1",
+	);
+
+	// Collapse when bundle becomes completed
+	useEffect(() => {
+		if (bundleCompleted) {
+			setAccordionValue(undefined);
+		}
+	}, [bundleCompleted]);
+
 	return (
-		<Accordion type="single" collapsible defaultValue="item-1" asChild>
+		<Accordion type="single" collapsible value={accordionValue} onValueChange={(v) => setAccordionValue(v || undefined)} asChild>
 			<section
 				className={clsx(
 					"relative h-min select-none justify-between space-y-3 rounded-lg border px-5 pt-4 text-neutral-950 shadow-sm hover:cursor-pointer dark:text-neutral-50",
