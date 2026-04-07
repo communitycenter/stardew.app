@@ -50,4 +50,7 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-initOpenNextCloudflareForDev();
+
+if (process.env.NODE_ENV === "development") {
+      initOpenNextCloudflareForDev();
+}
