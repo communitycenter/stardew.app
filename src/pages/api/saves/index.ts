@@ -56,37 +56,30 @@ export async function getUID(
 ): Promise<string> {
 	let uid = getCookie("uid", { req, res });
 	if (uid && typeof uid === "string") {
-		// uids can be anonymous, so we need to check if the user exists
+		// Only authenticated users (those with a token cookie) need a DB lookup.
+		// Anonymous users will never be in the users table, so skip the query.
+		const token = getCookie("token", { req, res });
+		if (token) {
+			const [user] = await db
+				.select()
+				.from(schema.users)
+				.where(eq(schema.users.id, uid))
+				.limit(1);
 
-		const [user] = await db
-			.select()
-			.from(schema.users)
-			.where(eq(schema.users.id, uid))
-			.limit(1);
-
-		if (user) {
-			// user exists, so we check if the user is authenticated
-			// verify that the user has a stored token
-			let token = getCookie("token", { req, res });
-			if (!token) {
-				res.status(400);
-				throw new Error("User is not authenticated (1)");
-			}
-			// verify that the token is valid
-			const { valid, userId } = verifyToken(
-				token as string,
-				user.cookie_secret,
-			);
-			if (!valid || userId !== uid) {
-				res.status(400);
-				throw new Error(`User is not authenticated (valid token: ${valid})`);
+			if (user) {
+				const { valid, userId } = verifyToken(
+					token as string,
+					user.cookie_secret,
+				);
+				if (!valid || userId !== uid) {
+					res.status(400);
+					throw new Error(`User is not authenticated (valid token: ${valid})`);
+				}
 			}
 		}
-		// everything is ok, so we return the uid
 		return uid as string;
 	} else {
 		console.log("Generating new UID...");
-		// no uid, so we create an anonymous one
 		uid = crypto.randomBytes(16).toString("hex");
 		setCookie("uid", uid, {
 			req,
