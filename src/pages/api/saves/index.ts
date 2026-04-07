@@ -3,7 +3,6 @@ import { withDb } from "$db";
 import * as schema from "$drizzle/schema";
 import { getServerCookieDomain } from "@/lib/cookies";
 import { getCookie, setCookie } from "cookies-next";
-import crypto from "crypto";
 import { and, eq } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -49,15 +48,61 @@ export interface Player {
 	animals?: object;
 }
 
+function randomHex(byteCount: number): string {
+	const bytes = new Uint8Array(byteCount);
+	crypto.getRandomValues(bytes);
+	return Array.from(bytes)
+		.map((b) => b.toString(16).padStart(2, "0"))
+		.join("");
+}
+
+async function hmacSign(key: string, data: string): Promise<string> {
+	const encoder = new TextEncoder();
+	const cryptoKey = await crypto.subtle.importKey(
+		"raw",
+		encoder.encode(key),
+		{ name: "HMAC", hash: "SHA-256" },
+		false,
+		["sign"],
+	);
+	const signature = await crypto.subtle.sign(
+		"HMAC",
+		cryptoKey,
+		encoder.encode(data),
+	);
+	return Array.from(new Uint8Array(signature))
+		.map((b) => b.toString(16).padStart(2, "0"))
+		.join("");
+}
+
+async function hmacVerify(
+	key: string,
+	data: string,
+	signature: string,
+): Promise<boolean> {
+	const expected = await hmacSign(key, data);
+	return expected === signature;
+}
+
+export interface AuthResult {
+	uid: string;
+	user?: SqlUser;
+}
+
 export async function getUID(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>,
 	db: Db,
-): Promise<string> {
+): Promise<AuthResult> {
 	let uid = getCookie("uid", { req, res });
 	if (uid && typeof uid === "string") {
-		// uids can be anonymous, so we need to check if the user exists
+		// Check if user has a token cookie - if not, they're anonymous
+		const token = getCookie("token", { req, res });
+		if (!token) {
+			return { uid };
+		}
 
+		// User has a token, so verify it against the DB
 		const [user] = await db
 			.select()
 			.from(schema.users)
@@ -65,29 +110,24 @@ export async function getUID(
 			.limit(1);
 
 		if (user) {
-			// user exists, so we check if the user is authenticated
-			// verify that the user has a stored token
-			let token = getCookie("token", { req, res });
-			if (!token) {
-				res.status(400);
-				throw new Error("User is not authenticated (1)");
-			}
-			// verify that the token is valid
-			const { valid, userId } = verifyToken(
+			const { valid, userId } = await verifyToken(
 				token as string,
 				user.cookie_secret,
 			);
 			if (!valid || userId !== uid) {
 				res.status(400);
-				throw new Error(`User is not authenticated (valid token: ${valid})`);
+				throw new Error(
+					`User is not authenticated (valid token: ${valid})`,
+				);
 			}
+			return { uid, user: user as SqlUser };
 		}
-		// everything is ok, so we return the uid
-		return uid as string;
+
+		// uid cookie exists but user not in DB - treat as anonymous
+		return { uid };
 	} else {
-		console.log("Generating new UID...");
 		// no uid, so we create an anonymous one
-		uid = crypto.randomBytes(16).toString("hex");
+		uid = randomHex(16);
 		setCookie("uid", uid, {
 			req,
 			res,
@@ -95,34 +135,29 @@ export async function getUID(
 			domain: getServerCookieDomain(req),
 		});
 	}
-	return uid;
+	return { uid };
 }
 
-// magic functions dreamt up by me, i think they're secure lol, i use them a lot - Leah
-export const createToken = (userId: string, key: string, validFor: number) => {
+export const createToken = async (
+	userId: string,
+	key: string,
+	validFor: number,
+) => {
 	const expires = Math.floor(new Date().getTime() / 1000 + validFor);
-	const salt = crypto.randomBytes(8).toString("hex");
-	const payload = Buffer.from(`${expires}.${userId}.${salt}`, "utf8").toString(
-		"base64",
-	);
-	const signature = crypto
-		.createHmac("sha256", key)
-		.update(payload)
-		.digest("hex");
+	const salt = randomHex(8);
+	const payload = btoa(`${expires}.${userId}.${salt}`);
+	const signature = await hmacSign(key, payload);
 	return { token: `${payload}.${signature}`, expires };
 };
 
-export const verifyToken = (token: string, key: string) => {
+export const verifyToken = async (token: string, key: string) => {
 	const [payload, signature] = token.split(".");
-	const decoded = Buffer.from(payload, "base64").toString("utf8");
+	const decoded = atob(payload);
 	const [expires, userId] = decoded.split(".");
-	const expectedSignature = crypto
-		.createHmac("sha256", key)
-		.update(payload)
-		.digest("hex");
+	const valid = await hmacVerify(key, payload, signature);
 	return {
 		valid:
-			signature === expectedSignature &&
+			valid &&
 			parseInt(expires) > Math.floor(new Date().getTime() / 1000),
 		userId,
 	};
@@ -139,7 +174,7 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
 			"no-store, no-cache, must-revalidate, max-age=0",
 		);
 
-		const uid = await getUID(req, res, db);
+		const { uid } = await getUID(req, res, db);
 		const players = await getPlayersByUid(db, uid);
 
 		res.json(players);
@@ -153,26 +188,29 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 			"no-store, no-cache, must-revalidate, max-age=0",
 		);
 
-		const uid = await getUID(req, res, db);
+		const { uid } = await getUID(req, res, db);
 		const players = parseRequestBody<Player[]>(req.body);
 
 		try {
-			for (const player of players) {
-				if (!player._id) continue;
-
-				await db
-					.insert(schema.saves)
-					.values({
-						_id: player._id,
-						user_id: uid,
-						...player,
-					})
-					.onDuplicateKeyUpdate({
-						set: {
-							user_id: uid,
-							...player,
-						},
-					});
+			const validPlayers = players.filter((p) => p._id);
+			if (validPlayers.length > 0) {
+				await Promise.all(
+					validPlayers.map((player) =>
+						db
+							.insert(schema.saves)
+							.values({
+								_id: player._id!,
+								user_id: uid,
+								...player,
+							})
+							.onDuplicateKeyUpdate({
+								set: {
+									user_id: uid,
+									...player,
+								},
+							}),
+					),
+				);
 			}
 
 			const savedPlayers = await getPlayersByUid(db, uid);
@@ -186,7 +224,7 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 
 async function _delete(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
-		const uid = await getUID(req, res, db);
+		const { uid } = await getUID(req, res, db);
 		const body = req.body
 			? parseRequestBody<{ type?: string; _id?: string }>(req.body)
 			: undefined;
@@ -201,7 +239,10 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 			await db
 				.delete(schema.saves)
 				.where(
-					and(eq(schema.saves.user_id, uid), eq(schema.saves._id, playerId)),
+					and(
+						eq(schema.saves.user_id, uid),
+						eq(schema.saves._id, playerId),
+					),
 				);
 		} else if (type === "account") {
 			await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));

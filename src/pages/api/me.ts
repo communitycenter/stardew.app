@@ -6,16 +6,20 @@ import { getUID } from "./saves";
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
-		const uid = await getUID(req, res, db);
+		const { uid, user } = await getUID(req, res, db);
 		if (!uid) return res.status(401).end();
 
-		const [user] = await db
+		// If getUID already fetched the user (authenticated), reuse it
+		if (user) return res.json(user);
+
+		// Otherwise look up by uid (anonymous user, may not exist)
+		const [dbUser] = await db
 			.select()
 			.from(schema.users)
 			.where(eq(schema.users.id, uid))
 			.limit(1);
 
-		return res.json(user);
+		return res.json(dbUser);
 	});
 }
 

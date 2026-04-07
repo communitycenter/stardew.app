@@ -1,6 +1,5 @@
 import { setCookie } from "cookies-next";
 import { getRequestOrigin, getServerCookieDomain } from "@/lib/cookies";
-import crypto from "crypto";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = Record<string, any>;
@@ -16,7 +15,11 @@ export default function handler(
 	}
 
 	const redirectUri = `${origin}/api/oauth/callback`;
-	const state = crypto.randomBytes(4).toString("hex");
+	const bytes = new Uint8Array(4);
+	crypto.getRandomValues(bytes);
+	const state = Array.from(bytes)
+		.map((b) => b.toString(16).padStart(2, "0"))
+		.join("");
 	setCookie("oauth_state", state, {
 		req,
 		res,

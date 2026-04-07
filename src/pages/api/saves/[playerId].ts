@@ -42,7 +42,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 		const playerId = req.query.playerId as string | undefined;
 		if (!playerId) return res.status(400).end();
 
-		const uid = await getUID(req, res, db);
+		const { uid } = await getUID(req, res, db);
 		const player = parseRequestBody<Player>(req.body);
 		if (!player) return res.status(400).end();
 

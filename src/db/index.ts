@@ -1,14 +1,17 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
 import { createPool } from "mysql2/promise";
-import { cache } from "react";
 import * as schema from "./schema";
 
 export type Db = MySql2Database<typeof schema>;
 
-export const getDb = cache(() => {
+let _db: Db | undefined;
+
+export function getDb(): Db {
+	if (_db) return _db;
+
 	const { env } = getCloudflareContext();
-	return drizzle(
+	_db = drizzle(
 		createPool({
 			host: env.HYPERDRIVE.host,
 			user: env.HYPERDRIVE.user,
@@ -18,12 +21,10 @@ export const getDb = cache(() => {
 			disableEval: true,
 			connectionLimit: 1,
 		}),
-		{
-			schema,
-			mode: "default",
-		},
+		{ schema, mode: "default" },
 	);
-});
+	return _db;
+}
 
 export async function withDb<T>(callback: (db: Db) => Promise<T>): Promise<T> {
 	return callback(getDb());

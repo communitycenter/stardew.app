@@ -2,7 +2,6 @@ import * as schema from "$drizzle/schema";
 import { withDb } from "@/db";
 import { getRequestOrigin, getServerCookieDomain } from "@/lib/cookies";
 import { getCookie, setCookie } from "cookies-next";
-import crypto from "crypto";
 import { eq } from "drizzle-orm";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createToken } from "../saves";
@@ -110,8 +109,13 @@ export default async function handler(
 				.where(eq(schema.users.id, uid))
 				.limit(1);
 
+			const randomBytes = new Uint8Array(16);
+			crypto.getRandomValues(randomBytes);
 			let cookieSecret =
-				user?.cookie_secret ?? crypto.randomBytes(16).toString("hex");
+				user?.cookie_secret ??
+				Array.from(randomBytes)
+					.map((b) => b.toString(16).padStart(2, "0"))
+					.join("");
 
 			if (!user) {
 				let [discordUser] = await db
@@ -184,7 +188,7 @@ export default async function handler(
 				maxAge: 60 * 60 * 24 * 365,
 			});
 
-			const token = createToken(user.id, cookieSecret, 60 * 60 * 24 * 365);
+			const token = await createToken(user.id, cookieSecret, 60 * 60 * 24 * 365);
 			setCookie("token", token.token, {
 				req,
 				res,
