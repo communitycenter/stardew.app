@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "next build",
 		"build:turbo": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts && next build --turbopack",
-		"build:worker": "bunx opennextjs-cloudflare build",
+		"build:worker": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts && bunx opennextjs-cloudflare build",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
 		"clean": "rimraf .next .open-next .turbo",
 		"deploy": "bun scripts/opennext.mjs deploy",

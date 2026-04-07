@@ -6,8 +6,6 @@ import * as schema from "./schema";
 
 export type Db = MySql2Database<typeof schema>;
 
-// cache() scopes this to a single request — subsequent calls within the same
-// request return the same instance; a fresh pool is created for each new request.
 export const getDb = cache(() => {
 	const { env } = getCloudflareContext();
 	return drizzle(
@@ -18,6 +16,7 @@ export const getDb = cache(() => {
 			database: env.HYPERDRIVE.database,
 			port: env.HYPERDRIVE.port,
 			disableEval: true,
+			connectionLimit: 1,
 		}),
 		{
 			schema,
