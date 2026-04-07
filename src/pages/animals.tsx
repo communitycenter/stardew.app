@@ -56,6 +56,7 @@ const happinessLevels = [
 ];
 
 const coopAnimals = [
+	"White Chicken",
 	"Chicken",
 	"Brown Chicken",
 	"Blue Chicken",
