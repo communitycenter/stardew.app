@@ -3,8 +3,8 @@
 	"version": "2.3.0",
 	"private": true,
 	"scripts": {
-		"build": "next build",
-		"build:turbo": "next build --turbopack",
+		"build": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts && next build",
+		"build:turbo": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts && next build --turbopack",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
 		"clean": "rimraf .next .open-next .turbo",
 		"deploy": "bun scripts/opennext.mjs deploy",
