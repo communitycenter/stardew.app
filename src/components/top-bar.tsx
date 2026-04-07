@@ -28,7 +28,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { IconSparkles } from "@tabler/icons-react";
+import { IconMoon, IconSparkles, IconSun } from "@tabler/icons-react";
+import { useTheme } from "next-themes";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
 import { LoginDialog } from "./dialogs/login-dialog";
 import { UploadDialog } from "./dialogs/upload-dialog";
@@ -60,6 +61,7 @@ export function Topbar() {
 	const [isInternal, setIsInternal] = useState(false);
 
 	const { activePlayer } = useContext(PlayersContext);
+	const { theme, setTheme } = useTheme();
 
 	useEffect(() => {
 		setIsInternal(isInternalHostname(window.location.hostname));
@@ -98,13 +100,31 @@ export function Topbar() {
 					)}
 				</div>
 				{/* Mobile Menu */}
-				<div className="flex justify-end md:hidden">
+				<div className="flex items-center gap-2 md:hidden">
+					<Button
+						variant="outline"
+						size="icon"
+						onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+						aria-label="Toggle theme"
+					>
+						<IconSun className="h-4 w-4 dark:hidden" />
+						<IconMoon className="hidden h-4 w-4 dark:block" />
+					</Button>
 					<Button variant="outline" onClick={() => setMobileOpen(true)}>
 						<HamburgerMenuIcon className="h-4 w-4" />
 					</Button>
 				</div>
 				{/* Desktop Version */}
 				<div className="ml-auto hidden w-full space-x-2 sm:justify-end md:flex">
+					<Button
+						variant="outline"
+						size="icon"
+						onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+						aria-label="Toggle theme"
+					>
+						<IconSun className="h-4 w-4 dark:hidden" />
+						<IconMoon className="hidden h-4 w-4 dark:block" />
+					</Button>
 					<PresetSelector />
 					{activePlayer && (
 						<Button variant="outline" data-umami-event="Edit player">
