@@ -78,7 +78,7 @@ export function parsePowers(
 						);
 						break;
 					case "stat":
-						unlocked = GetStatValue(player.stats.Values, power.flag) === 1;
+						unlocked = GetStatValue(player.stats.Values, power.flag) > 0;
 						break;
 					case "event":
 						unlocked = eventsSeen.has(power.flag);
