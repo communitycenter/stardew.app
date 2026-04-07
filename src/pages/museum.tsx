@@ -87,10 +87,14 @@ export default function Museum() {
 	};
 
 	const remainingDonations = {
-		artifacts:
+		artifacts: Math.max(
+			0,
 			Object.values(museum.artifacts).length - museumArtifactCollected.size,
-		minerals:
+		),
+		minerals: Math.max(
+			0,
 			Object.values(museum.minerals).length - museumMineralCollected.size,
+		),
 	};
 
 	// Calculate donatedCount for artifacts based on filtered items

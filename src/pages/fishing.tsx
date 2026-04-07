@@ -294,7 +294,7 @@ export default function Fishing() {
 											)}
 										/>
 										<span className="align-middle">
-											Uncaught ({reqs["Master Angler"] - fishCaught.size})
+											Uncaught ({Math.max(0, reqs["Master Angler"] - fishCaught.size)})
 										</span>
 									</ToggleGroupItem>
 									<ToggleGroupItem value="2" aria-label="Show Caught">
