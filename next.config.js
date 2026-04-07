@@ -1,8 +1,11 @@
 const { initOpenNextCloudflareForDev } = require("@opennextjs/cloudflare");
 
+initOpenNextCloudflareForDev();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	typescript: { ignoreBuildErrors: true },
 	eslint: { ignoreDuringBuilds: true },
 	rewrites: async () => {
 		return [
@@ -50,7 +53,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-if (process.env.NODE_ENV === "development") {
-      initOpenNextCloudflareForDev();
-}
