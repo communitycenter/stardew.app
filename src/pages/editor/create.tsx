@@ -38,6 +38,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
+import { getMasteryExpNeededForLevel } from "@/lib/utils";
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 
 function generateUniqueIdentifier() {
@@ -77,6 +78,7 @@ export const formSchema = z.object({
 	foraging: z.coerce.number().min(0).max(10).optional(),
 	mining: z.coerce.number().min(0).max(10).optional(),
 	combat: z.coerce.number().min(0).max(10).optional(),
+	masteryLevel: z.coerce.number().min(0).max(5).optional(),
 });
 
 export const skillsArray = [
@@ -113,6 +115,7 @@ export default function Editor() {
 			foraging: 0,
 			mining: 0,
 			combat: 0,
+			masteryLevel: 0,
 		},
 	});
 
@@ -148,6 +151,9 @@ export default function Editor() {
 			perfection: {
 				numObelisks: values.numObelisks ?? 0,
 				goldenClock: values.goldenClock ?? false,
+			},
+			powers: {
+				MasteryExp: getMasteryExpNeededForLevel(values.masteryLevel ?? 0),
 			},
 		};
 
@@ -540,6 +546,36 @@ export default function Editor() {
 												</div>
 											</>
 										)}
+										<FormField
+											control={form.control}
+											name="masteryLevel"
+											render={({ field }) => (
+												<FormItem>
+													<FormLabel htmlFor="masteryLevel">
+														Mastery Level
+													</FormLabel>
+													<Select
+														onValueChange={field.onChange}
+														value={field.value?.toString()}
+													>
+														<FormControl id="masteryLevel">
+															<SelectTrigger>
+																<SelectValue placeholder="Select" />
+															</SelectTrigger>
+														</FormControl>
+														<SelectContent>
+															<SelectItem value="0">0 (None)</SelectItem>
+															<SelectItem value="1">1 (Novice)</SelectItem>
+															<SelectItem value="2">2 (Apprentice)</SelectItem>
+															<SelectItem value="3">3 (Journeyman)</SelectItem>
+															<SelectItem value="4">4 (Expert)</SelectItem>
+															<SelectItem value="5">5 (Master)</SelectItem>
+														</SelectContent>
+													</Select>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
 										<Button
 											variant="outline"
 											type="button"

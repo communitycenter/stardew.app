@@ -37,6 +37,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { getCurrentMasteryLevel, getMasteryExpNeededForLevel } from "@/lib/utils";
 import { toast } from "sonner";
 import { formSchema } from "./create";
 
@@ -59,6 +60,9 @@ export default function Editor() {
 	const [_mining, _setMining] = useState<string | undefined>(undefined);
 	const [_combat, _setCombat] = useState<string | undefined>(undefined);
 	const [_gameVersion, _setGameVersion] = useState<string | undefined>(
+		undefined,
+	);
+	const [_masteryLevel, _setMasteryLevel] = useState<string | undefined>(
 		undefined,
 	);
 
@@ -92,6 +96,7 @@ export default function Editor() {
 			foraging: undefined,
 			mining: undefined,
 			combat: undefined,
+			masteryLevel: undefined,
 		},
 	});
 
@@ -114,6 +119,9 @@ export default function Editor() {
 			foraging: activePlayer?.general?.skills?.foraging ?? undefined,
 			mining: activePlayer?.general?.skills?.mining ?? undefined,
 			combat: activePlayer?.general?.skills?.combat ?? undefined,
+			masteryLevel: activePlayer?.powers?.MasteryExp != null
+				? getCurrentMasteryLevel(activePlayer.powers.MasteryExp)
+				: undefined,
 		});
 		// TODO: bro there has to be a better way to do this
 		_setFarmType(farmListInfo[1]);
@@ -138,6 +146,11 @@ export default function Editor() {
 		_setMining(activePlayer?.general?.skills?.mining?.toString() ?? undefined);
 		_setCombat(activePlayer?.general?.skills?.combat?.toString() ?? undefined);
 		_setGameVersion(activePlayer?.general?.gameVersion ?? undefined);
+		_setMasteryLevel(
+			activePlayer?.powers?.MasteryExp != null
+				? getCurrentMasteryLevel(activePlayer.powers.MasteryExp).toString()
+				: undefined,
+		);
 	}, [activePlayer, form, farmListInfo]);
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -218,6 +231,10 @@ export default function Editor() {
 			notes: activePlayer?.notes ?? undefined,
 			scraps: activePlayer?.scraps ?? undefined,
 			walnuts: activePlayer?.walnuts ?? undefined,
+			powers: {
+				collection: activePlayer?.powers?.collection ?? [],
+				MasteryExp: getMasteryExpNeededForLevel(values.masteryLevel ?? 0),
+			},
 		};
 
 		await uploadPlayers([player]);
@@ -739,6 +756,40 @@ export default function Editor() {
 											)}
 										/>
 									</div>
+									{/* Mastery Level */}
+									<FormField
+										control={form.control}
+										name="masteryLevel"
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel htmlFor="masteryLevel">
+													Mastery Level
+												</FormLabel>
+												<Select
+													onValueChange={(v) => {
+														field.onChange(v);
+														_setMasteryLevel(v);
+													}}
+													value={_masteryLevel}
+												>
+													<FormControl id="masteryLevel">
+														<SelectTrigger>
+															<SelectValue placeholder="Select" />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectItem value="0">0 (None)</SelectItem>
+														<SelectItem value="1">1 (Novice)</SelectItem>
+														<SelectItem value="2">2 (Apprentice)</SelectItem>
+														<SelectItem value="3">3 (Journeyman)</SelectItem>
+														<SelectItem value="4">4 (Expert)</SelectItem>
+														<SelectItem value="5">5 (Master)</SelectItem>
+													</SelectContent>
+												</Select>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
 									<div className="flex w-full gap-3">
 										<Button
 											variant="destructive"
