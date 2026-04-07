@@ -108,9 +108,14 @@ type AccordionSectionProps = {
 	completedCount?: number;
 };
 
+type IndexedItem = {
+	item: BundleItem | Randomizer;
+	originalIndex: number;
+};
+
 type FilteredBundle = {
 	bundleWithStatus: BundleWithStatus;
-	items: (BundleItem | Randomizer)[];
+	items: IndexedItem[];
 	matchesSearch: boolean;
 };
 
@@ -704,7 +709,8 @@ export default function Bundles() {
 								return {
 									bundleWithStatus: bundleWithStatus,
 									items: bundleWithStatus.bundle.items
-										.filter((_, idx) => {
+										.map((item, idx) => ({ item, originalIndex: idx }))
+										.filter(({ originalIndex: idx }) => {
 											switch (filter) {
 												case "0":
 													return !bundleWithStatus.bundleStatus[idx];
@@ -715,7 +721,7 @@ export default function Bundles() {
 													return true;
 											}
 										})
-										.filter((item) => {
+										.filter(({ item }) => {
 											if (_seasonFilter === "all") return true;
 											if (isRandomizer(item)) return true;
 											return itemAvailableInSeason(
@@ -723,7 +729,7 @@ export default function Bundles() {
 												_seasonFilter,
 											);
 										})
-										.filter((item) => {
+										.filter(({ item }) => {
 											if (bundleMatched) {
 												return true;
 											}
@@ -766,23 +772,23 @@ export default function Bundles() {
 											onChangeBundle={SwapBundle}
 										>
 											{filteredBundle.items ? (
-												filteredBundle.items.map((item, index: number) => {
+												filteredBundle.items.map(({ item, originalIndex }) => {
 													if (isRandomizer(item)) {
 														// Guard clause for type coercion
 														return <></>;
 													}
-													const BundleItemWithLocation: BundleItemWithLocation =
+													const bundleItemWithLocation: BundleItemWithLocation =
 														{
 															...item,
-															index: index,
+															index: originalIndex,
 															bundleID: bundleWithStatus.bundle.name,
 														};
 													return (
 														<BundleItemCard
-															key={item.itemID + "-" + index}
-															item={BundleItemWithLocation}
+															key={item.itemID + "-" + originalIndex}
+															item={bundleItemWithLocation}
 															setIsOpen={setIsOpen}
-															completed={bundleWithStatus.bundleStatus[index]}
+															completed={bundleWithStatus.bundleStatus[originalIndex]}
 															setObject={setObject}
 														/>
 													);
