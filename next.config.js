@@ -1,4 +1,7 @@
-if (process.env.NODE_ENV === "development") {
+if (
+	process.env.NODE_ENV === "development" &&
+	process.env.STARDEW_APP_LOCAL_ONLY !== "1"
+) {
 	const { initOpenNextCloudflareForDev } = require("@opennextjs/cloudflare");
 	initOpenNextCloudflareForDev();
 }
@@ -6,6 +9,7 @@ if (process.env.NODE_ENV === "development") {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	output: "standalone",
 	typescript: { ignoreBuildErrors: true },
 	eslint: { ignoreDuringBuilds: true },
 	rewrites: async () => {

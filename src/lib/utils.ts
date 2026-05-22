@@ -16,7 +16,7 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function getAllFarmhands(saveGame: any): any[] {
 	let farmhands: any[] = [];
-	const version: string = saveGame.gameVersion.toString();
+	const version: string = saveGame.gameVersion?.toString() ?? "1.4.5";
 
 	if (saveGame.player) {
 		farmhands.push(saveGame.player);

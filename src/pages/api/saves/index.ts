@@ -5,9 +5,75 @@ import { getServerCookieDomain } from "@/lib/cookies";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
 import { and, eq } from "drizzle-orm";
+import { mkdir, readFile, writeFile } from "fs/promises";
 import { NextApiRequest, NextApiResponse } from "next";
+import path from "path";
 
 type Data = Record<string, any>;
+
+type LocalSaveStore = Map<string, Player[]>;
+
+let localStoreLoaded = false;
+
+function isLocalOnlyMode() {
+	return process.env.STARDEW_APP_LOCAL_ONLY === "1";
+}
+
+function getLocalStore(): LocalSaveStore {
+	const globalStore = globalThis as typeof globalThis & {
+		__stardewAppLocalSaveStore?: LocalSaveStore;
+	};
+
+	if (!globalStore.__stardewAppLocalSaveStore) {
+		globalStore.__stardewAppLocalSaveStore = new Map();
+	}
+
+	return globalStore.__stardewAppLocalSaveStore;
+}
+
+function getLocalStorePath(): string | undefined {
+	return process.env.STARDEW_APP_LOCAL_STORE;
+}
+
+function setLocalDebugHeaders(res: NextApiResponse): void {
+	const storePath = getLocalStorePath();
+	if (storePath) {
+		res.setHeader("X-Stardew-Local-Store", storePath);
+	}
+}
+
+async function loadLocalStore(): Promise<LocalSaveStore> {
+	const store = getLocalStore();
+	if (localStoreLoaded) return store;
+
+	localStoreLoaded = true;
+	const storePath = getLocalStorePath();
+	if (!storePath) return store;
+
+	try {
+		const raw = (await readFile(storePath, "utf8")).replace(/^\uFEFF/, "");
+		const data = JSON.parse(raw) as Record<string, Player[]>;
+		store.clear();
+		for (const [uid, players] of Object.entries(data)) {
+			store.set(uid, players);
+		}
+	} catch (error: any) {
+		if (error?.code !== "ENOENT") {
+			console.warn(`Failed to load local save store: ${error.message}`);
+		}
+	}
+
+	return store;
+}
+
+async function persistLocalStore(store: LocalSaveStore): Promise<void> {
+	const storePath = getLocalStorePath();
+	if (!storePath) return;
+
+	const data = Object.fromEntries(store.entries());
+	await mkdir(path.dirname(storePath), { recursive: true });
+	await writeFile(storePath, JSON.stringify(data, null, 2), "utf8");
+}
 
 function parseRequestBody<T>(body: unknown): T {
 	if (typeof body === "string") {
@@ -91,6 +157,20 @@ export async function getUID(
 	return uid;
 }
 
+function getLocalUID(req: NextApiRequest, res: NextApiResponse<Data>): string {
+	let uid = getCookie("uid", { req, res });
+	if (uid && typeof uid === "string") return uid;
+
+	uid = crypto.randomBytes(16).toString("hex");
+	setCookie("uid", uid, {
+		req,
+		res,
+		maxAge: 60 * 60 * 24 * 365,
+		domain: getServerCookieDomain(req),
+	});
+	return uid;
+}
+
 // magic functions dreamt up by me, i think they're secure lol, i use them a lot - Leah
 export const createToken = (userId: string, key: string, validFor: number) => {
 	const expires = Math.floor(new Date().getTime() / 1000 + validFor);
@@ -126,6 +206,17 @@ async function getPlayersByUid(db: Db, uid: string) {
 }
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
+	if (isLocalOnlyMode()) {
+		const uid = getLocalUID(req, res);
+		const store = await loadLocalStore();
+		setLocalDebugHeaders(res);
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
+		return res.json(store.get(uid) ?? []);
+	}
+
 	return withDb(async (db) => {
 		res.setHeader(
 			"Cache-Control",
@@ -140,6 +231,29 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
+	if (isLocalOnlyMode()) {
+		const uid = getLocalUID(req, res);
+		const players = parseRequestBody<Player[]>(req.body);
+		const store = await loadLocalStore();
+		setLocalDebugHeaders(res);
+		const existing = store.get(uid) ?? [];
+		const byId = new Map(existing.map((player) => [player._id, player]));
+
+		for (const player of players) {
+			if (!player._id) continue;
+			byId.set(player._id, player);
+		}
+
+		const savedPlayers = Array.from(byId.values());
+		store.set(uid, savedPlayers);
+		await persistLocalStore(store);
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
+		return res.status(200).json(savedPlayers);
+	}
+
 	return withDb(async (db) => {
 		res.setHeader(
 			"Cache-Control",
@@ -178,6 +292,31 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function _delete(req: NextApiRequest, res: NextApiResponse) {
+	if (isLocalOnlyMode()) {
+		const uid = getLocalUID(req, res);
+		const body = req.body
+			? parseRequestBody<{ type?: string; _id?: string }>(req.body)
+			: undefined;
+		const store = await loadLocalStore();
+		setLocalDebugHeaders(res);
+
+		if (body?.type === "player" && body._id) {
+			store.set(
+				uid,
+				(store.get(uid) ?? []).filter((player) => player._id !== body._id),
+			);
+		} else {
+			store.delete(uid);
+		}
+
+		await persistLocalStore(store);
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, max-age=0",
+		);
+		return res.status(200).json(store.get(uid) ?? []);
+	}
+
 	return withDb(async (db) => {
 		const uid = await getUID(req, res, db);
 		const body = req.body

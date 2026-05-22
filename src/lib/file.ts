@@ -15,6 +15,12 @@ import {
 	parseShipping,
 	parseSocial,
 } from "@/lib/parsers";
+import {
+	getTypeAttributePrefix,
+	normalizeSaveXml,
+	validateDecryptedConsoleSave,
+} from "@/lib/console-save";
+import type { SavePlatform } from "@/lib/console-save";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseAnimals } from "./parsers/animals";
 import { parseNotes } from "./parsers/notes";
@@ -25,11 +31,21 @@ import { parseWalnuts } from "./parsers/walnuts";
 const semverSatisfies = require("semver/functions/satisfies");
 const semverCoerce = require("semver/functions/coerce");
 
-export function parseSaveFile(xml: string) {
+interface ParseSaveFileOptions {
+	platformHint?: SavePlatform;
+}
+
+export function parseSaveFile(xml: string, options: ParseSaveFileOptions = {}) {
 	const parser = new XMLParser({ ignoreAttributes: false });
 	let saveFile: any = null;
+	const validation = validateDecryptedConsoleSave(xml);
+
+	if (validation.isRawConsoleContainer || !validation.isXml) {
+		throw new Error(validation.reason);
+	}
+
 	try {
-		saveFile = parser.parse(xml);
+		saveFile = parser.parse(normalizeSaveXml(xml));
 	} catch (e) {
 		if (e instanceof TypeError) {
 			throw new Error(
@@ -39,6 +55,12 @@ export function parseSaveFile(xml: string) {
 	}
 
 	try {
+		if (!saveFile.SaveGame) {
+			throw new Error(
+				"Invalid file uploaded. Couldn't find the Stardew Valley SaveGame root.",
+			);
+		}
+
 		let versionString: string = "";
 		if (!saveFile.SaveGame.gameVersion) {
 			versionString = "1.4.5"; // assume 1.4.5 if gameVersion is not present
@@ -63,11 +85,11 @@ export function parseSaveFile(xml: string) {
 		players = getAllFarmhands(saveFile.SaveGame);
 
 		// find the prefix to use for attributes (xsi for pc, p3 for mobile)
-		const prefix =
-			typeof saveFile.SaveGame["@_xmlns:xsi"] === "undefined" ? "p3" : "xsi";
+		const prefix = getTypeAttributePrefix(saveFile.SaveGame);
 
-		// Determine platform based on prefix
-		const platform = prefix === "xsi" ? "PC" : "Mobile";
+		// Decrypted console saves are normal Stardew XML; callers can set a hint
+		// when the source is known because the XML itself is usually indistinguishable.
+		const platform = options.platformHint ?? (prefix === "xsi" ? "PC" : "Mobile");
 
 		const parsedBundles = parseBundles(
 			saveFile.SaveGame.bundleData,

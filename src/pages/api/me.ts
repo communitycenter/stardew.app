@@ -6,6 +6,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getUID } from "./saves";
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
+	if (process.env.STARDEW_APP_LOCAL_ONLY === "1") {
+		return res.json(undefined);
+	}
+
 	return withDb(async (db) => {
 		const uid = await getUID(req, res, db);
 		if (!uid) return res.status(401).end();
