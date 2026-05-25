@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { fetchJson } from "@/lib/fetch";
 import { parseSaveFile } from "@/lib/file";
+import { readBestSaveFileText } from "@/lib/save-loader";
 import { toast } from "sonner";
 import { ScrollArea } from "../ui/scroll-area";
 
@@ -66,48 +67,35 @@ export const MobileNav = ({
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 
-		const file = e.target!.files![0];
+		const files = e.target.files;
+		const file = files?.[0];
 
 		setIsOpen(false);
 
-		if (typeof file === "undefined" || !file) return;
+		if (!files?.length || typeof file === "undefined" || !file) return;
 
-		if (file.type !== "") {
+		if (files.length === 1 && file.type !== "") {
 			toast.error("Invalid file type", {
 				description: "Please upload a Stardew Valley save file.",
 			});
 			return;
 		}
 
-		const reader = new FileReader();
+		const uploadPromise = (async () => {
+			const { text } = await readBestSaveFileText(files);
+			const players = parseSaveFile(text);
+			await uploadPlayers(players);
+			return "Your save file was successfully uploaded!";
+		})();
 
-		let uploadPromise;
-
-		reader.onloadstart = () => {
-			uploadPromise = new Promise((resolve, reject) => {
-				reader.onload = async function (event) {
-					try {
-						const players = parseSaveFile(event.target?.result as string);
-						await uploadPlayers(players);
-						resolve("Your save file was successfully uploaded!");
-					} catch (err) {
-						reject(err instanceof Error ? err.message : "Unknown error.");
-					}
-				};
-			});
-
-			// Start the loading toast
-			toast.promise(uploadPromise, {
-				loading: "Uploading your save file...",
-				success: (data) => `${data}`,
-				error: (err) => `There was an error parsing your save file:\n${err}`,
-			});
-
-			// Reset the input
-			uploadPromise = null;
-		};
-
-		reader.readAsText(file);
+		toast.promise(uploadPromise, {
+			loading: "Uploading your save file...",
+			success: (data) => `${data}`,
+			error: (err) =>
+				`There was an error parsing your save file:\n${
+					err instanceof Error ? err.message : "Unknown error."
+				}`,
+		});
 	};
 
 	return (
@@ -145,6 +133,7 @@ export const MobileNav = ({
 												type="file"
 												ref={inputRef}
 												className="hidden"
+												multiple
 												onChange={(e: ChangeEvent<HTMLInputElement>) =>
 													handleChange(e)
 												}

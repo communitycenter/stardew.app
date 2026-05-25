@@ -1,4 +1,5 @@
 import { GetListOrEmpty, GetStatValue, isPlayerFormatUpdated } from "../utils";
+import type { SavePlatform } from "@/lib/console-save";
 
 function msToTime(time: number): string {
 	const hrs = Math.floor(time / 3600000);
@@ -266,14 +267,14 @@ export interface GeneralRet {
 	jojaMembership?: JojaRet;
 	achievements?: AchievementsRet;
 	islandUpgrades?: IslandUpgradesRet;
-	platform?: "PC" | "Mobile" | "Console";
+	platform?: SavePlatform;
 }
 
 export function parseGeneral(
 	player: any,
 	whichFarm: string,
 	gameVersion: string,
-	platform?: "PC" | "Mobile",
+	platform?: SavePlatform,
 ): GeneralRet {
 	try {
 		const playerFormatUpdated = isPlayerFormatUpdated(player);

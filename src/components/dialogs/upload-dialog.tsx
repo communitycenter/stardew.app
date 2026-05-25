@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { PlayersContext } from "@/contexts/players-context";
 import { parseSaveFile } from "@/lib/file";
+import { readBestSaveFileText } from "@/lib/save-loader";
 import { useContext, useState } from "react";
 import Dropzone from "react-dropzone";
 import { toast } from "sonner";
@@ -21,7 +22,7 @@ interface Props {
 interface InstructionsDialogProps {
 	open: boolean;
 	setOpen: (open: boolean) => void;
-	platform: "Mac" | "Windows" | "Linux" | "Switch";
+	platform: "Mac" | "Windows" | "Linux" | "Switch" | "PlayStation";
 }
 
 const InstructionsDialog = ({
@@ -78,6 +79,16 @@ const InstructionsDialog = ({
 						"We apologize for any inconvenience this may cause.",
 					],
 				};
+			case "PlayStation":
+				return {
+					title: "PS4 and PS Vita Save Files",
+					path: "",
+					steps: [
+						"Export the save with Apollo Save Tool, Save Wizard, VitaShell Open Decrypted, psvpfstools, or an equivalent tool.",
+						"If the export gives you farm folders, upload the farm-named payload such as Farmer_123456789 or Farmmc_355939291.",
+						"The app can read plain XML and zlib-compressed PlayStation payloads. SaveGameInfo and pfsSKKey metadata are not complete saves by themselves.",
+					],
+				};
 		}
 	};
 
@@ -131,50 +142,36 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 	const { activePlayer, uploadPlayers } = useContext(PlayersContext);
 	const [instructionsOpen, setInstructionsOpen] = useState(false);
 	const [selectedPlatform, setSelectedPlatform] = useState<
-		"Mac" | "Windows" | "Linux" | "Switch"
+		"Mac" | "Windows" | "Linux" | "Switch" | "PlayStation"
 	>("Mac");
 
-	const handleChange = (file: File) => {
+	const handleChange = (files: File[]) => {
 		setOpen(false);
 
-		if (typeof file === "undefined" || !file) return;
+		if (!files.length) return;
 
-		if (file.type !== "") {
+		if (files.length === 1 && files[0].type !== "") {
 			toast.error("Invalid file type", {
 				description: "Please upload a Stardew Valley save file.",
 			});
 			return;
 		}
 
-		const reader = new FileReader();
+		const uploadPromise = (async () => {
+			const { text } = await readBestSaveFileText(files);
+			const players = parseSaveFile(text);
+			await uploadPlayers(players);
+			return "Your save file was successfully uploaded!";
+		})();
 
-		let uploadPromise;
-
-		reader.onloadstart = () => {
-			uploadPromise = new Promise((resolve, reject) => {
-				reader.onload = async function (event) {
-					try {
-						const players = parseSaveFile(event.target?.result as string);
-						await uploadPlayers(players);
-						resolve("Your save file was successfully uploaded!");
-					} catch (err) {
-						reject(err instanceof Error ? err.message : "Unknown error.");
-					}
-				};
-			});
-
-			// Start the loading toast
-			toast.promise(uploadPromise, {
-				loading: "Uploading your save file...",
-				success: (data) => `${data}`,
-				error: (err) => `There was an error parsing your save file:\n${err}`,
-			});
-
-			// Reset the input
-			uploadPromise = null;
-		};
-
-		reader.readAsText(file);
+		toast.promise(uploadPromise, {
+			loading: "Uploading your save file...",
+			success: (data) => `${data}`,
+			error: (err) =>
+				`There was an error parsing your save file:\n${
+					err instanceof Error ? err.message : "Unknown error."
+				}`,
+		});
 	};
 
 	return (
@@ -187,9 +184,10 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 					<DialogDescription>
 						<Dropzone
 							onDrop={(acceptedFiles) => {
-								handleChange(acceptedFiles[0]);
+								handleChange(acceptedFiles);
 							}}
 							useFsAccessApi={false}
+							multiple
 						>
 							{({ getRootProps, getInputProps }) => (
 								<>
@@ -257,6 +255,16 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 								className="w-full"
 							>
 								Nintendo Switch
+							</Button>
+							<Button
+								variant={"secondary"}
+								onClick={() => {
+									setSelectedPlatform("PlayStation");
+									setInstructionsOpen(true);
+								}}
+								className="w-full"
+							>
+								PS4 / PS Vita
 							</Button>
 						</div>
 					</div>

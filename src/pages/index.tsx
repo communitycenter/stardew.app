@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { parseSaveFile } from "@/lib/file";
+import { readBestSaveFileText } from "@/lib/save-loader";
 import { ChangeEvent, useRef, useState } from "react";
 
 import { toast } from "sonner";
@@ -16,44 +17,64 @@ export default function Home() {
 	const [loginOpen, setLoginOpen] = useState(false);
 
 	const inputRef = useRef<HTMLInputElement | null>(null);
+	const folderInputRef = useRef<HTMLInputElement | null>(null);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 
-		const file = e.target!.files![0];
+		const files = e.target.files;
+		const file = files?.[0];
 
-		if (typeof file === "undefined" || !file) return;
+		if (!files?.length || typeof file === "undefined" || !file) return;
 
-		if (file.type !== "") {
+		if (files.length === 1 && file.type !== "") {
 			toast.error("Invalid File Type", {
 				description: "Please upload a Stardew Valley save file.",
 			});
 			return;
 		}
 
-		const reader = new FileReader();
+		const uploadPromise = (async () => {
+			const { text } = await readBestSaveFileText(files);
+			const players = parseSaveFile(text);
+			await uploadPlayers(players);
+		})();
 
-		reader.onloadstart = () => {
-			toast.loading("Uploading Save File", {
-				description: "Please wait while we upload your save file.",
-			});
-		};
-
-		reader.onload = async function (event) {
-			try {
-				const players = parseSaveFile(event.target?.result as string);
-				await uploadPlayers(players);
-				toast.success("Uploaded Save File", {
-					description: "Your save file has been uploaded successfully",
-				});
-			} catch (err) {
-				toast.error("Error Parsing File", {
-					description: err instanceof Error ? err.message : "Unknown error.",
-				});
-			}
-		};
-		reader.readAsText(file);
+		toast.promise(uploadPromise, {
+			loading: "Uploading Save File",
+			success: "Uploaded Save File",
+			error: (err) =>
+				`Error parsing file: ${
+					err instanceof Error ? err.message : "Unknown error."
+				}`,
+		});
 	};
+
+	const handleFolderChange = async (e: ChangeEvent<HTMLInputElement>) => {
+		e.preventDefault();
+		if (!e.target.files?.length) return;
+
+		toast.promise(
+			(async () => {
+				const { text } = await readBestSaveFileText(e.target.files!);
+				const players = parseSaveFile(text);
+				await uploadPlayers(players);
+			})(),
+			{
+				loading: "Uploading PlayStation save folder...",
+				success: "Uploaded Save File",
+				error: (err) =>
+					`Error parsing file: ${
+						err instanceof Error ? err.message : "Unknown error."
+					}`,
+			},
+		);
+	};
+
+	const uploadFolderInputProps = {
+		webkitdirectory: "",
+		directory: "",
+	} as Record<string, string>;
 
 	return (
 		<>
@@ -138,8 +159,39 @@ export default function Home() {
 								type="file"
 								ref={inputRef}
 								className="hidden"
+								multiple
 								onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
 							/>
+							<input
+								type="file"
+								className="hidden"
+								multiple
+								{...uploadFolderInputProps}
+								ref={folderInputRef}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									handleFolderChange(e)
+								}
+							/>
+						</div>
+						<div
+							className="flex select-none items-center space-x-3 rounded-lg border border-neutral-200 bg-white px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer hover:border-blue-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 dark:hover:border-blue-600"
+							onClick={() => {
+								folderInputRef.current?.click();
+							}}
+						>
+							<Image
+								src="/upload.png"
+								alt="Upload a PlayStation save folder"
+								className="rounded-sm"
+								width={48}
+								height={48}
+							/>
+							<div className="min-w-0 flex-1">
+								<p className="truncate font-medium">Upload PS4 / Vita folder</p>
+								<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
+									Select an exported folder with farm payloads and SaveGameInfo.
+								</p>
+							</div>
 						</div>
 						<Link
 							href="/editor/create"
