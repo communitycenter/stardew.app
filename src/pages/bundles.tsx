@@ -22,6 +22,7 @@ import {
 import {
 	DropdownMenu,
 	DropdownMenuContent,
+	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuRadioGroup,
 	DropdownMenuRadioItem,
@@ -57,7 +58,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
 import { FilterSearch } from "@/components/filter-btn";
 import { useMediaQuery } from "@react-hook/media-query";
-import { IconClock, IconSettings } from "@tabler/icons-react";
+import { IconClock, IconDotsVertical } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
@@ -167,6 +168,7 @@ function AccordionSection(props: AccordionSectionProps): ReactElement {
 
 function BundleAccordion(props: BundleAccordionProps): ReactElement {
 	const isDesktop = useMediaQuery("only screen and (min-width: 768px)");
+	const { activePlayer, patchPlayer } = usePlayers();
 	const { bundle, bundleStatus } = props.bundleWithStatus;
 
 	const totalItems = bundle.items.length;
@@ -177,6 +179,37 @@ function BundleAccordion(props: BundleAccordionProps): ReactElement {
 	const bundleCompleted = completedItems >= requiredItems;
 
 	const bundleName = props.bundleWithStatus.bundle.name;
+
+	function handleCompleteAll(complete: boolean) {
+		const bundles = activePlayer?.bundles ?? [];
+		const bundleIndex = bundles.findIndex(
+			(bundleWithStatus) => bundleWithStatus.bundle.name === bundleName,
+		);
+		if (bundleIndex === -1) return;
+
+		const nextBundleStatus: Record<number, boolean> = {};
+		for (let i = 0; i < bundle.items.length; i++) {
+			nextBundleStatus[i] = complete;
+		}
+		if (!complete) {
+			// SV marks out-of-bounds indexes true when a bundle completes;
+			// clear those too so BundleCompleted() doesn't still count it done.
+			for (let i = bundle.items.length; i < bundleStatus.length; i++) {
+				nextBundleStatus[i] = false;
+			}
+		}
+
+		let patch = {
+			bundles: {
+				[bundleIndex]: {
+					bundleStatus: nextBundleStatus,
+				},
+			},
+		};
+
+		// @ts-ignore
+		void patchPlayer(patch);
+	}
 
 	const [selectedBundleName, setSelectedBundleName] = useState(
 		props.bundleWithStatus.bundle.name,
@@ -210,55 +243,67 @@ function BundleAccordion(props: BundleAccordionProps): ReactElement {
 						<div>
 							<div className="flex items-center gap-3">
 								<span>{bundleName} Bundle</span>
-								{props.alternateOptions &&
-									props.alternateOptions.length > 0 && (
-										<DropdownMenu>
-											<TooltipProvider>
-												<Tooltip>
-													<TooltipTrigger>
-														<DropdownMenuTrigger asChild>
-															<IconSettings
-																size={16}
-																className="relative top-0.5 text-neutral-500 dark:text-neutral-400"
-															/>
-														</DropdownMenuTrigger>
-													</TooltipTrigger>
-													<TooltipContent>
-														<p>Change Bundle</p>
-													</TooltipContent>
-												</Tooltip>
-											</TooltipProvider>
+								<DropdownMenu>
+									<TooltipProvider>
+										<Tooltip>
+											<TooltipTrigger asChild>
+												<DropdownMenuTrigger asChild>
+													<IconDotsVertical
+														size={16}
+														className="text-neutral-500 dark:text-neutral-400"
+														onClick={(e) => e.stopPropagation()}
+													/>
+												</DropdownMenuTrigger>
+											</TooltipTrigger>
+											<TooltipContent>
+												<p>Bundle Options</p>
+											</TooltipContent>
+										</Tooltip>
+									</TooltipProvider>
 
-											<DropdownMenuContent className="w-56">
-												<DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
-												<DropdownMenuSeparator />
-												<DropdownMenuRadioGroup
-													value={selectedBundleName}
-													onValueChange={(newBundleName) => {
-														setSelectedBundleName(newBundleName);
-														const selectedBundle = props.alternateOptions?.find(
-															(bundle) => bundle.name === newBundleName,
-														);
-														if (props.onChangeBundle && selectedBundle) {
-															props.onChangeBundle(
-																selectedBundle,
-																props.bundleWithStatus,
-															);
-														}
-													}}
-												>
-													{props.alternateOptions.map((newBundle) => (
-														<DropdownMenuRadioItem
-															key={newBundle.name}
-															value={newBundle.name}
-														>
-															{newBundle.localizedName}
-														</DropdownMenuRadioItem>
-													))}
-												</DropdownMenuRadioGroup>
-											</DropdownMenuContent>
-										</DropdownMenu>
-									)}
+									<DropdownMenuContent className="w-56">
+										<DropdownMenuItem
+											disabled={!activePlayer}
+											onClick={() => handleCompleteAll(!bundleCompleted)}
+										>
+											{bundleCompleted
+												? "Clear All Items"
+												: "Mark All Items Complete"}
+										</DropdownMenuItem>
+										{props.alternateOptions &&
+											props.alternateOptions.length > 0 && (
+												<>
+													<DropdownMenuSeparator />
+													<DropdownMenuLabel>Remix Bundles</DropdownMenuLabel>
+													<DropdownMenuRadioGroup
+														value={selectedBundleName}
+														onValueChange={(newBundleName) => {
+															setSelectedBundleName(newBundleName);
+															const selectedBundle =
+																props.alternateOptions?.find(
+																	(bundle) => bundle.name === newBundleName,
+																);
+															if (props.onChangeBundle && selectedBundle) {
+																props.onChangeBundle(
+																	selectedBundle,
+																	props.bundleWithStatus,
+																);
+															}
+														}}
+													>
+														{props.alternateOptions.map((newBundle) => (
+															<DropdownMenuRadioItem
+																key={newBundle.name}
+																value={newBundle.name}
+															>
+																{newBundle.localizedName}
+															</DropdownMenuRadioItem>
+														))}
+													</DropdownMenuRadioGroup>
+												</>
+											)}
+									</DropdownMenuContent>
+								</DropdownMenu>
 							</div>
 						</div>
 						{!bundleCompleted && (
