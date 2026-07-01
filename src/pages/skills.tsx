@@ -4,7 +4,11 @@ import { usePlayers } from "@/contexts/players-context";
 import { useMemo, useState } from "react";
 
 import achievements from "@/data/achievements.json";
+import books from "@/data/books.json";
 import powers from "@/data/powers.json";
+
+import type { Book } from "@/types/items";
+const booksData = books as Record<string, Book>;
 
 import { AchievementCard } from "@/components/cards/achievement-card";
 import { InfoCard } from "@/components/cards/info-card";
@@ -591,6 +595,16 @@ export default function SkillsMasteryPowers() {
 											{Object.entries(powers)
 												.filter(([key, power]) => key.includes("Book_"))
 												.map(([key, power]) => {
+													const book = booksData[key];
+
+													let description = power.description ?? "???";
+													if (book) {
+														description += `\n\nSubsequent reading: ${book.subsequentReading ?? "Nothing"}`;
+														description += `\n\nLocation:\n${book.locations
+															.map((location) => `• ${location}`)
+															.join("\n")}`;
+													}
+
 													return (
 														<DialogCard
 															_type="power"
@@ -598,7 +612,7 @@ export default function SkillsMasteryPowers() {
 															completed={playerPowers.has(key)}
 															key={key}
 															title={power.name}
-															description={power.description ?? "???"}
+															description={description}
 															iconURL={`https://cdn.stardew.app/images/(POWER)${key}.webp`}
 														/>
 													);

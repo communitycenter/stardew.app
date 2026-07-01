@@ -23,6 +23,16 @@ class MuseumPiece(TypedDict):
     itemID: str
 
 
+class Book(TypedDict):
+    itemID: str
+    name: str
+    description: str
+    subsequentReading: Optional[str]
+    locations: list[str]
+    type: Literal["Power Book", "Skill Book"]
+    minVersion: str
+
+
 class Achievement(TypedDict):
     iconURL: str
     name: str

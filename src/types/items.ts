@@ -62,6 +62,15 @@ export interface WalnutMapType {
 	[key: string]: WalnutType;
 }
 
+// Interface for readable books, both Power Books and Skill Books
+export interface Book extends ItemData {
+	name: string; // Display name of the book
+	description: string; // In-game description shown for the book
+	subsequentReading: string | null; // Effect of reading the book again, null for skill books
+	locations: string[]; // Locations/sources where the book can be obtained
+	type: "Power Book" | "Skill Book"; // Which of the two book categories this is
+}
+
 // Interface for villager data
 export interface Villager {
 	birthday: string; // Villager's birthday
