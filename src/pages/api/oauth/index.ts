@@ -23,9 +23,14 @@ export default function handler(
 		domain: getServerCookieDomain(req),
 		maxAge: 60 * 60 * 24 * 365,
 	});
+
+	const shouldJoinGuild = req.query?.discord === 'true';
+
 	res.redirect(
-		`https://discord.com/api/oauth2/authorize?client_id=${
-			process.env.DISCORD_ID
-		}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}&response_type=code&scope=identify${req.query && !req.query.discord ? `` : `%20guilds.join`}`,
+    	`https://discord.com/api/oauth2/authorize?client_id=${
+        	process.env.DISCORD_ID
+    	}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}&response_type=code&scope=identify${
+        	shouldJoinGuild ? '%20guilds.join' : ''
+    	}`,
 	);
 }

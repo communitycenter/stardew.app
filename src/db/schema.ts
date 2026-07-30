@@ -1,4 +1,5 @@
 import { index, json, mysqlTable, varchar } from "drizzle-orm/mysql-core";
+import {mysqlEnum, primaryKey} from "drizzle-orm/mysql-core";
 
 export const users = mysqlTable(
 	"Users",
@@ -20,8 +21,8 @@ export const users = mysqlTable(
 export const saves = mysqlTable(
 	"Saves",
 	{
-		_id: varchar("_id", { length: 64 }).notNull().unique(),
-		user_id: varchar("user_id", { length: 64 }).notNull().unique().primaryKey(),
+		_id: varchar("_id", { length: 64 }).notNull().unique().primaryKey(),
+		farmId: varchar("farm_id", { length: 64 }).notNull(),
 		general: json("general").notNull().default({}),
 		fishing: json("fishing").notNull().default({}),
 		cooking: json("cooking").notNull().default({}),
@@ -38,10 +39,27 @@ export const saves = mysqlTable(
 		bundles: json("bundles").notNull().default([]),
 		rarecrows: json("rarecrows").notNull().default([]),
 		animals: json("animals").notNull().default({}),
+	});
+
+
+export const ownership = mysqlTable(
+	"Ownership",
+	{
+		userId: varchar("user_id", { length: 64 })
+			.notNull()
+			.references(() => users.id),
+
+		saveId: varchar("save_id", { length: 32 })
+			.notNull()
+			.references(() => saves._id),
+
+		role: mysqlEnum("role", ["owner", "editor", "viewer"])
+			.default("viewer")
+			.notNull(),
 	},
-	(table) => {
-		return {
-			user_id: index("Saves_user_id").on(table.user_id),
-		};
-	},
+	(table) => [
+		primaryKey({
+			columns: [table.userId, table.saveId],
+		}),
+	],
 );

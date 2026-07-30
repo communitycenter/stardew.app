@@ -5,7 +5,7 @@ import { getServerCookieDomain } from "@/lib/cookies";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
 import { and, eq } from "drizzle-orm";
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 type Data = Record<string, any>;
 
@@ -31,6 +31,7 @@ export interface SqlUser {
 
 export interface Player {
 	_id?: string;
+	farmId?: string;
 	general?: object;
 	bundles?: Array<object>;
 	fishing?: object;
@@ -122,7 +123,22 @@ export const verifyToken = (token: string, key: string) => {
 };
 
 async function getPlayersByUid(db: Db, uid: string) {
-	return db.select().from(schema.saves).where(eq(schema.saves.user_id, uid));
+	return db
+		.select({
+			save: schema.saves,
+		})
+		.from(schema.ownership)
+		.innerJoin(
+			schema.saves,
+			eq(schema.ownership.saveId, schema.saves._id),
+		)
+		.where(eq(schema.ownership.userId, uid))
+		.then((rows) => rows.map((r) => r.save));
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function getPlayersByFarmId(db: Db, farmId: string) {
+	return db.select().from(schema.saves).where(eq(schema.saves.farmId, farmId));
 }
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
@@ -153,25 +169,64 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 			for (const player of players) {
 				if (!player._id) continue;
 
+				// Does the save already exist?
+				const [existingSave] = await db
+					.select()
+					.from(schema.saves)
+					.where(eq(schema.saves._id, player._id))
+					.limit(1);
+
+				if (!existingSave) {
+					// Create new save + ownership
+					await db.transaction(async (tx) => {
+						await tx.insert(schema.saves).values({
+							_id: player._id,
+							farmId: String(player.farmId),
+							...player,
+						});
+
+						await tx.insert(schema.ownership).values({
+							userId: uid,
+							saveId: player._id,
+							role: "owner",
+						});
+					});
+
+					continue;
+				}
+
+				// Existing save - check permission
+				const [permission] = await db
+					.select()
+					.from(schema.ownership)
+					.where(
+						and(
+							eq(schema.ownership.userId, uid),
+							eq(schema.ownership.saveId, player._id),
+						),
+					)
+					.limit(1);
+
+				if (!permission) {
+					return res
+						.status(403)
+						.json({ error: `No access to save ${player._id}` });
+				}
+
+				// Update save
 				await db
-					.insert(schema.saves)
-					.values({
-						_id: player._id,
-						user_id: uid,
+					.update(schema.saves)
+					.set({
+						farmId: String(player.farmId),
 						...player,
 					})
-					.onDuplicateKeyUpdate({
-						set: {
-							user_id: uid,
-							...player,
-						},
-					});
+					.where(eq(schema.saves._id, player._id));
 			}
 
 			const savedPlayers = await getPlayersByUid(db, uid);
 			res.status(200).json(savedPlayers);
 		} catch (e) {
-			console.log(e);
+			console.error(e);
 			res.status(500).end();
 		}
 	});
@@ -191,22 +246,40 @@ async function _delete(req: NextApiRequest, res: NextApiResponse) {
 				return res.status(400).end();
 			}
 
-			await db
-				.delete(schema.saves)
+			const [ownership] = await db
+				.select()
+				.from(schema.ownership)
 				.where(
-					and(eq(schema.saves.user_id, uid), eq(schema.saves._id, playerId)),
+					and(
+						eq(schema.ownership.userId, uid),
+						eq(schema.ownership.saveId, playerId),
+						eq(schema.ownership.role, "owner"),
+					),
 				);
+
+			if (!ownership) {
+				return res.status(403).end();
+			}
+
+			await db.transaction(async (tx) => {
+				await tx
+					.delete(schema.ownership)
+					.where(eq(schema.ownership.saveId, playerId));
+
+				await tx
+					.delete(schema.saves)
+					.where(eq(schema.saves._id, playerId));
+			});
 		} else if (type === "account") {
-			await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));
-			await db.delete(schema.users).where(eq(schema.users.id, uid));
+			await db
+				.delete(schema.ownership)
+				.where(eq(schema.ownership.userId, uid));
 
 			res.setHeader(
 				"Cache-Control",
 				"no-store, no-cache, must-revalidate, max-age=0",
 			);
 			return res.status(204).end();
-		} else {
-			await db.delete(schema.saves).where(eq(schema.saves.user_id, uid));
 		}
 
 		const remainingPlayers = await getPlayersByUid(db, uid);

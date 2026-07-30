@@ -8,15 +8,25 @@ import {
 } from "@/components/ui/dialog";
 import { PlayersContext } from "@/contexts/players-context";
 import { parseSaveFile } from "@/lib/file";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import Dropzone from "react-dropzone";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import {useRouter} from "next/router";
 
 interface Props {
 	open: boolean;
 	setOpen: (open: boolean) => void;
 }
+
+type SaveFileHandle = {
+	getFile: () => Promise<File>;
+};
+
+type FilePickerWindow = Window &
+	typeof globalThis & {
+	showOpenFilePicker?: () => Promise<SaveFileHandle[]>;
+};
 
 interface InstructionsDialogProps {
 	open: boolean;
@@ -25,10 +35,10 @@ interface InstructionsDialogProps {
 }
 
 const InstructionsDialog = ({
-	open,
-	setOpen,
-	platform,
-}: InstructionsDialogProps) => {
+								open,
+								setOpen,
+								platform,
+							}: InstructionsDialogProps) => {
 	const getInstructions = () => {
 		switch (platform) {
 			case "Mac":
@@ -128,53 +138,93 @@ const InstructionsDialog = ({
 };
 
 export const UploadDialog = ({ open, setOpen }: Props) => {
-	const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+	const router = useRouter();
+	const { uploadPlayers } = useContext(PlayersContext);
+	const [syncHandle, setSyncHandle] = useState<SaveFileHandle | null>(null);
+	const lastSyncedModified = useRef<number | null>(null);
 	const [instructionsOpen, setInstructionsOpen] = useState(false);
 	const [selectedPlatform, setSelectedPlatform] = useState<
 		"Mac" | "Windows" | "Linux" | "Switch"
 	>("Mac");
 
+	const uploadFile = useCallback(
+		async (file: File, redirectToFarm: boolean) => {
+			if (typeof file === "undefined" || !file) return;
+
+			if (file.type !== "") {
+				throw new Error("Please select a Stardew Valley save file.");
+			}
+
+			const saveText = await file.text();
+			const players = parseSaveFile(saveText);
+			const farmId = players[0]?.farmId;
+			await uploadPlayers(players);
+
+			if (redirectToFarm && farmId) {
+				await router.push(`/farm/${farmId}`);
+			}
+		},
+		[router, uploadPlayers],
+	);
+
 	const handleChange = (file: File) => {
 		setOpen(false);
+		toast.promise(uploadFile(file, true), {
+			loading: "Uploading your save file...",
+			success: "Your save file was successfully uploaded!",
+			error: (err) => `There was an error parsing your save file:\n${err}`,
+		});
+	};
 
-		if (typeof file === "undefined" || !file) return;
+	useEffect(() => {
+		if (!syncHandle) return;
 
-		if (file.type !== "") {
-			toast.error("Invalid file type", {
-				description: "Please upload a Stardew Valley save file.",
+		const syncIfChanged = async () => {
+			try {
+				const file = await syncHandle.getFile();
+				if (file.lastModified === lastSyncedModified.current) return;
+
+				await uploadFile(file, false);
+				lastSyncedModified.current = file.lastModified;
+				toast.success("Save file synced", {
+					description: "Your latest Stardew Valley progress is now loaded.",
+				});
+			} catch (err) {
+				console.error("Automatic save sync failed:", err);
+			}
+		};
+
+		const interval = window.setInterval(() => void syncIfChanged(), 60_000);
+		return () => window.clearInterval(interval);
+	}, [syncHandle, uploadFile]);
+
+	const connectAutomaticSync = async () => {
+		const pickerWindow = window as FilePickerWindow;
+		if (!pickerWindow.showOpenFilePicker) {
+			toast.error("Automatic sync is not supported in this browser", {
+				description: "Use a current Chromium-based browser such as Chrome or Edge.",
 			});
 			return;
 		}
 
-		const reader = new FileReader();
-
-		let uploadPromise;
-
-		reader.onloadstart = () => {
-			uploadPromise = new Promise((resolve, reject) => {
-				reader.onload = async function (event) {
-					try {
-						const players = parseSaveFile(event.target?.result as string);
-						await uploadPlayers(players);
-						resolve("Your save file was successfully uploaded!");
-					} catch (err) {
-						reject(err instanceof Error ? err.message : "Unknown error.");
-					}
-				};
+		try {
+			// Stardew's save files do not have a file extension, so this must allow
+			// all files instead of filtering for XML.
+			const [handle] = await pickerWindow.showOpenFilePicker();
+			const file = await handle.getFile();
+			await uploadFile(file, true);
+			lastSyncedModified.current = file.lastModified;
+			setSyncHandle(handle);
+			setOpen(false);
+			toast.success("Automatic sync connected", {
+				description: "This tab will check the selected save file every minute.",
 			});
-
-			// Start the loading toast
-			toast.promise(uploadPromise, {
-				loading: "Uploading your save file...",
-				success: (data) => `${data}`,
-				error: (err) => `There was an error parsing your save file:\n${err}`,
+		} catch (err) {
+			if (err instanceof DOMException && err.name === "AbortError") return;
+			toast.error("Could not connect automatic sync", {
+				description: err instanceof Error ? err.message : "Unknown error.",
 			});
-
-			// Reset the input
-			uploadPromise = null;
-		};
-
-		reader.readAsText(file);
+		}
 	};
 
 	return (
@@ -210,6 +260,15 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 							)}
 						</Dropzone>
 					</DialogDescription>
+					<div className="space-y-2 rounded-md border p-3 text-left">
+						<p className="font-medium">Keep this save in sync</p>
+						<p className="text-muted-foreground text-sm">
+							Choose the original save file to re-read it automatically every minute while this tab is open.
+						</p>
+						<Button variant="outline" className="w-full" onClick={() => void connectAutomaticSync()}>
+							{syncHandle ? "Automatic sync connected" : "Connect automatic sync"}
+						</Button>
+					</div>
 					<div className="space-y-4">
 						<div className="text-left">
 							<p className="font-medium">Need help finding your save?</p>

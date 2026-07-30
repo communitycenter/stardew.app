@@ -47,17 +47,36 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 		if (!player) return res.status(400).end();
 
 		try {
-			const [existingSave] = await db
-				.select()
-				.from(schema.saves)
+			const [result] = await db
+				.select({
+					save: schema.saves,
+					role: schema.ownership.role,
+				})
+				.from(schema.ownership)
+				.innerJoin(
+					schema.saves,
+					eq(schema.ownership.saveId, schema.saves._id),
+				)
 				.where(
-					and(eq(schema.saves._id, playerId), eq(schema.saves.user_id, uid)),
+					and(
+						eq(schema.ownership.userId, uid),
+						eq(schema.ownership.saveId, playerId),
+					),
 				)
 				.limit(1);
 
-			if (!existingSave) {
+			if (!result) {
+				// Either the save doesn't exist or the user has no access.
 				return res.status(404).json({ error: "Save not found" });
 			}
+
+			if (result.role === "viewer") {
+				return res.status(403).json({
+					error: "You don't have permission to edit this save.",
+				});
+			}
+
+			const existingSave = result.save;
 
 			const updates = mergeableFields.reduce(
 				(acc, field) => {
@@ -78,9 +97,7 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 			await db
 				.update(schema.saves)
 				.set(updates)
-				.where(
-					and(eq(schema.saves._id, playerId), eq(schema.saves.user_id, uid)),
-				);
+				.where(eq(schema.saves._id, playerId));
 
 			res.status(204).end();
 		} catch (e) {

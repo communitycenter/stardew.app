@@ -5,58 +5,69 @@ import objects from "@/data/objects.json";
 
 import type { CraftingRecipe, Recipe } from "@/types/recipe";
 
-import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-import { useMultiSelect } from "@/contexts/multi-select-context";
 import { usePlayers } from "@/contexts/players-context";
+import { deweaponize } from "@/lib/utils";
 
+import { CreatePlayerRedirect } from "@/components/createPlayerRedirect";
+import { Button } from "@/components/ui/button";
 import {
-	ContextMenu,
-	ContextMenuCheckboxItem,
-	ContextMenuContent,
-	ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-
-import { IconChevronRight } from "@tabler/icons-react";
+	Drawer,
+	DrawerContent,
+	DrawerDescription,
+	DrawerHeader,
+	DrawerTitle,
+} from "@/components/ui/drawer";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+} from "@/components/ui/sheet";
+import { useMediaQuery } from "@react-hook/media-query";
+import { IconExternalLink } from "@tabler/icons-react";
 
 interface Props<T extends Recipe> {
-	recipe: T;
-	status: number;
+	open: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
-	setObject: Dispatch<SetStateAction<T | null>>;
-	index: number;
-	allRecipes: T[];
+	recipe: T | null;
 }
 
-export const RecipeCard = <T extends Recipe>({
-	recipe,
-	status,
-	setIsOpen,
-	setObject,
-	index,
-	allRecipes,
-}: Props<T>) => {
-	const { activePlayer, patchPlayer } = usePlayers();
-	const { isMultiSelectMode, selectedItems, toggleItem, addItems } =
-		useMultiSelect();
-	const lastSelectedIndex = useRef<number | null>(null);
+const categoryItems: Record<string, string> = {
+	"-4": "Any Fish",
+	"-5": "Any Egg",
+	"-6": "Any Milk",
+	"-777": "Wild Seeds (Any)",
+};
 
-	let colorClass = "";
-	switch (status) {
-		case 1:
-			colorClass =
-				"border-yellow-900 bg-yellow-500/20 hover:bg-yellow-500/30 dark:bg-yellow-500/10 hover:dark:bg-yellow-500/20";
-			break;
-		case 2:
-			colorClass =
-				"border-green-900 bg-green-500/20 hover:bg-green-500/30 dark:bg-green-500/10 hover:dark:bg-green-500/20";
-			break;
-		default:
-			colorClass =
-				"border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800";
-			break;
-	}
+const categoryIcons: Record<string, string> = {
+	"-4": "https://stardewvalleywiki.com/mediawiki/images/0/04/Sardine.png",
+	"-5": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Large_Egg.png",
+	"-6": "https://stardewvalleywiki.com/mediawiki/images/9/92/Milk.png",
+	"-777":
+		"https://stardewvalleywiki.com/mediawiki/images/3/39/Spring_Seeds.png",
+};
+
+export const RecipeSheet = <T extends Recipe>({
+												  open,
+												  setIsOpen,
+												  recipe,
+											  }: Props<T>) => {
+	const { activePlayer, patchPlayer } = usePlayers();
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	// accepts any type that extends Recipe (CraftingRecipe, CookingRecipe, etc.)
 	// returns true if the recipe is of type U and CraftingRecipe which for now
@@ -67,27 +78,40 @@ export const RecipeCard = <T extends Recipe>({
 		return "isBigCraftable" in recipe;
 	}
 
-	const iconURL =
-		isCraftingRecipe(recipe) && recipe.isBigCraftable
-			? `https://cdn.stardew.app/images/(BC)${recipe.itemID}.webp`
-			: `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`;
+	const status = !activePlayer || !recipe
+		? 0
+		: isCraftingRecipe(recipe)
+			? (activePlayer.crafting?.recipes?.[recipe.itemID] ?? 0)
+			: (activePlayer.cooking?.recipes?.[recipe.itemID] ?? 0);
 
-	const name = isCraftingRecipe(recipe)
-		? recipe.isBigCraftable
-			? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+	const iconURL = recipe
+		? isCraftingRecipe(recipe)
+			? recipe.isBigCraftable
+				? `https://cdn.stardew.app/images/(BC)${recipe.itemID}.webp`
+				: `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+			: `https://cdn.stardew.app/images/(O)${recipe.itemID}.webp`
+		: null;
+
+	const name =
+		recipe && isCraftingRecipe(recipe)
+			? recipe.isBigCraftable
+				? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
 					.name
-			: objects[recipe.itemID.toString() as keyof typeof objects].name
-		: objects[recipe.itemID.toString() as keyof typeof objects].name;
+				: objects[recipe.itemID.toString() as keyof typeof objects].name
+			: recipe &&
+			objects[recipe.itemID.toString() as keyof typeof objects].name;
 
-	const description = isCraftingRecipe(recipe)
-		? recipe.isBigCraftable
-			? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
+	const description = recipe
+		? isCraftingRecipe(recipe)
+			? recipe.isBigCraftable
+				? bigCraftables[recipe.itemID.toString() as keyof typeof bigCraftables]
 					.description
+				: objects[recipe.itemID.toString() as keyof typeof objects].description
 			: objects[recipe.itemID.toString() as keyof typeof objects].description
-		: objects[recipe.itemID.toString() as keyof typeof objects].description;
+		: null;
 
 	async function handleStatusChange(newStatus: number | null) {
-		if (!activePlayer) return;
+		if (!activePlayer || !recipe) return;
 
 		const patch = {
 			[isCraftingRecipe(recipe) ? "crafting" : "cooking"]: {
@@ -97,101 +121,353 @@ export const RecipeCard = <T extends Recipe>({
 			},
 		};
 
-		void patchPlayer(patch);
+		patchPlayer(patch);
+		setIsOpen(false);
 	}
 
-	const isSelected = selectedItems.has(recipe.itemID.toString());
-
-	const handleClick = (e: React.MouseEvent) => {
-		if (isMultiSelectMode) {
-			if (e.shiftKey && lastSelectedIndex.current !== null) {
-				// Select range of items
-				const start = Math.min(lastSelectedIndex.current, index);
-				const end = Math.max(lastSelectedIndex.current, index);
-				const itemsToSelect = allRecipes
-					.slice(start, end + 1)
-					.map((r) => r.itemID.toString());
-				addItems(itemsToSelect);
-			} else {
-				// Single item selection
-				toggleItem(recipe.itemID.toString());
-				lastSelectedIndex.current = index;
-			}
-			return;
+	function shouldDisableButton(status: number) {
+		// if this is the current status, disable the button
+		if (!recipe) return true;
+		if (isCraftingRecipe(recipe)) {
+			return status === activePlayer?.crafting?.recipes?.[recipe.itemID];
+		} else {
+			return status === activePlayer?.cooking?.recipes?.[recipe.itemID];
 		}
+	}
 
-		setObject(recipe);
-		setIsOpen(true);
-	};
+	if (isDesktop) {
+		return (
+			<Sheet open={open} onOpenChange={setIsOpen}>
+				<SheetContent>
+					<SheetHeader className="mt-4">
+						<div className="flex justify-center">
+							<Image
+								src={
+									iconURL ??
+									"https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+								}
+								alt={name ? name : "No Info"}
+								width={64}
+								height={
+									recipe && isCraftingRecipe(recipe)
+										? recipe.isBigCraftable
+											? 128
+											: 64
+										: 64
+								}
+							/>
+						</div>
+						<SheetTitle className="text-center">
+							{name ? name : "No Info"}
+						</SheetTitle>
+						<SheetDescription className="text-center italic">
+							{description ? description : "No Description Found"}
+						</SheetDescription>
+					</SheetHeader>
+					{recipe && (
+						<div className="mt-4 space-y-6">
+							<section className="space-y-2">
+								<h3 className="font-semibold">Actions</h3>
+								<Separator />
+								<Select
+									value={status.toString()}
+									onValueChange={(val) => {
+										handleStatusChange(parseInt(val));
+									}}
+									disabled={!activePlayer}
+								>
+									<SelectTrigger>
+										<SelectValue placeholder="Change Status...">
+											{status === 0
+												? "Unknown"
+												: status === 1
+													? "Known"
+													: "Completed"}
+										</SelectValue>
+									</SelectTrigger>
+									<SelectContent>
+										<SelectGroup>
+											<SelectLabel>Change Status</SelectLabel>
+											<SelectItem value="0">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
+													<p>Set Unknown</p>
+												</div>
+											</SelectItem>
+											<SelectItem value="1">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
+													<p>Set Known</p>
+												</div>
+											</SelectItem>
+											<SelectItem value="2">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
+													<p>Set Completed</p>
+												</div>
+											</SelectItem>
+										</SelectGroup>
+									</SelectContent>
+								</Select>
+								<div>{!activePlayer && <CreatePlayerRedirect />}</div>
+								{name && (
+									<Button
+										variant="outline"
+										data-umami-event="Visit wiki"
+										asChild
+										className="w-full"
+									>
+										<a
+											className="flex items-center"
+											target="_blank"
+											rel="noreferrer"
+											href={`https://stardewvalleywiki.com/${name.replaceAll(
+												" ",
+												"_",
+											)}`}
+										>
+											Visit Wiki Page
+											<IconExternalLink className="h-4"></IconExternalLink>
+										</a>
+									</Button>
+								)}
+							</section>
+							<section className="space-y-2">
+								<h3 className="font-semibold">How to unlock</h3>
+								<Separator />
+								<p className="text-sm text-neutral-500 dark:text-neutral-400">
+									{recipe.unlockConditions}
+								</p>
+							</section>
+							<section className="space-y-2">
+								<h3 className="font-semibold">Ingredients</h3>
+								<Separator />
+								<ul className="list-inside list-none space-y-3">
+									{recipe.ingredients.map((ingredient) => {
+										let item;
+										let isCategory = false;
+										let isBC = false;
+
+										// if itemID is greater than 0, it's an object
+										if (!ingredient.itemID.startsWith("-")) {
+											// check if it's a big craftable or not
+											if (deweaponize(ingredient.itemID).key === "BC") {
+												let item_id = deweaponize(ingredient.itemID).value;
+												isBC = true;
+												item =
+													bigCraftables[item_id as keyof typeof bigCraftables];
+											} else {
+												item =
+													objects[ingredient.itemID as keyof typeof objects];
+											}
+										} else {
+											// otherwise, it's a category
+											isCategory = true;
+											item = {
+												name: categoryItems[ingredient.itemID],
+											};
+										}
+
+										return (
+											<li
+												key={ingredient.itemID}
+												className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
+											>
+												<div className="flex items-center space-x-2">
+													<Image
+														src={
+															isCategory
+																? `https://cdn.stardew.app/images/(C)${ingredient.itemID}.webp`
+																: isBC
+																	? `https://cdn.stardew.app/images/(BC)${deweaponize(ingredient.itemID).value}.webp`
+																	: `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
+														}
+														alt={item.name}
+														width={32}
+														height={isBC ? 64 : 32}
+														quality={25}
+													/>
+													<p className="font-semibold">
+														• {item.name} ({ingredient.quantity}x)
+													</p>
+												</div>
+											</li>
+										);
+									})}
+								</ul>
+							</section>
+						</div>
+					)}
+				</SheetContent>
+			</Sheet>
+		);
+	}
 
 	return (
-		<ContextMenu>
-			<ContextMenuTrigger asChild>
-				<button
-					className={cn(
-						"relative flex select-none items-center justify-between rounded-lg border px-5 py-4 text-neutral-950 shadow-sm transition-colors hover:cursor-pointer dark:text-neutral-50",
-						colorClass,
-						isMultiSelectMode && isSelected && "ring-2 ring-blue-500",
-					)}
-					onClick={handleClick}
-				>
-					<div className="flex items-center space-x-3 truncate text-left">
-						<Image
-							src={iconURL}
-							alt={name}
-							className="rounded-sm"
-							width={
-								isCraftingRecipe(recipe) && recipe.isBigCraftable ? 16 : 32
-							}
-							height={32}
-						/>
-						<div className="min-w-0 flex-1">
-							<p className="truncate font-medium">{name}</p>
-							<p className="truncate text-sm text-neutral-500 dark:text-neutral-400">
-								{description}
-							</p>
+		<Drawer open={open} onOpenChange={setIsOpen}>
+			<DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90dvh]">
+				<ScrollArea className="overflow-auto">
+					<DrawerHeader className="-mb-4 mt-4">
+						<div className="flex justify-center">
+							<Image
+								src={
+									iconURL ??
+									"https://stardewvalleywiki.com/mediawiki/images/5/59/Secret_Heart.png"
+								}
+								alt={name ? name : "No Info"}
+								width={64}
+								height={
+									recipe && isCraftingRecipe(recipe)
+										? recipe.isBigCraftable
+											? 128
+											: 64
+										: 64
+								}
+							/>
 						</div>
-					</div>
-					{!isMultiSelectMode && (
-						<IconChevronRight className="h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400" />
+						<DrawerTitle className="text-center">
+							{name ? name : "No Info"}
+						</DrawerTitle>
+						<DrawerDescription className="text-center italic">
+							{description ? description : "No Description Found"}
+						</DrawerDescription>
+					</DrawerHeader>
+					{recipe && (
+						<div className="space-y-6 p-6">
+							<section className="space-y-2">
+								<h3 className="font-semibold">Actions</h3>
+								<Separator />
+								<Select
+									value={status.toString()}
+									onValueChange={(val) => {
+										handleStatusChange(parseInt(val));
+									}}
+									disabled={!activePlayer}
+								>
+									<SelectTrigger>
+										<SelectValue placeholder="Change Status...">
+											{status === 0
+												? "Unknown"
+												: status === 1
+													? "Known"
+													: "Completed"}
+										</SelectValue>
+									</SelectTrigger>
+									<SelectContent>
+										<SelectGroup>
+											<SelectLabel>Change Status</SelectLabel>
+											<SelectItem value="0">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
+													<p>Set Unknown</p>
+												</div>
+											</SelectItem>
+											<SelectItem value="1">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
+													<p>Set Known</p>
+												</div>
+											</SelectItem>
+											<SelectItem value="2">
+												<div className="flex items-center gap-2">
+													<div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
+													<p>Set Completed</p>
+												</div>
+											</SelectItem>
+										</SelectGroup>
+									</SelectContent>
+								</Select>
+								<div>{!activePlayer && <CreatePlayerRedirect />}</div>
+								{name && (
+									<Button
+										variant="outline"
+										data-umami-event="Visit wiki"
+										asChild
+										className="w-full"
+									>
+										<a
+											className="flex items-center"
+											target="_blank"
+											rel="noreferrer"
+											href={`https://stardewvalleywiki.com/${name.replaceAll(
+												" ",
+												"_",
+											)}`}
+										>
+											Visit Wiki Page
+											<IconExternalLink className="h-4"></IconExternalLink>
+										</a>
+									</Button>
+								)}
+							</section>
+							<section className="space-y-2">
+								<h3 className="font-semibold">How to unlock</h3>
+								<Separator />
+								<p className="text-sm text-neutral-500 dark:text-neutral-400">
+									{recipe.unlockConditions}
+								</p>
+							</section>
+							<section className="space-y-2">
+								<h3 className="font-semibold">Ingredients</h3>
+								<Separator />
+								<ul className="list-inside list-none space-y-3">
+									{recipe.ingredients.map((ingredient) => {
+										let item;
+										let isCategory = false;
+										let isBC = false;
+
+										// if itemID is greater than 0, it's an object
+										if (!ingredient.itemID.startsWith("-")) {
+											// check if it's a big craftable or not
+											if (deweaponize(ingredient.itemID).key === "BC") {
+												let item_id = deweaponize(ingredient.itemID).value;
+												isBC = true;
+												item =
+													bigCraftables[item_id as keyof typeof bigCraftables];
+											} else {
+												item =
+													objects[ingredient.itemID as keyof typeof objects];
+											}
+										} else {
+											// otherwise, it's a category
+											isCategory = true;
+											item = {
+												name: categoryItems[ingredient.itemID],
+											};
+										}
+
+										return (
+											<li
+												key={ingredient.itemID}
+												className="mt-1 text-sm font-semibold text-neutral-500 dark:text-neutral-400"
+											>
+												<div className="flex items-center space-x-2">
+													<Image
+														src={
+															isCategory
+																? `https://cdn.stardew.app/images/(C)${ingredient.itemID}.webp`
+																: isBC
+																	? `https://cdn.stardew.app/images/(BC)${deweaponize(ingredient.itemID).value}.webp`
+																	: `https://cdn.stardew.app/images/(O)${ingredient.itemID}.webp`
+														}
+														alt={item.name}
+														width={32}
+														height={isBC ? 64 : 32}
+														quality={25}
+													/>
+													<p className="font-semibold">
+														• {item.name} ({ingredient.quantity}x)
+													</p>
+												</div>
+											</li>
+										);
+									})}
+								</ul>
+							</section>
+						</div>
 					)}
-				</button>
-			</ContextMenuTrigger>
-			<ContextMenuContent className="w-48">
-				<ContextMenuCheckboxItem
-					className="gap-2 pl-8"
-					checked={status === 0}
-					disabled={status === 0 || !activePlayer}
-					onClick={() => {
-						handleStatusChange(null);
-					}}
-				>
-					<div className="h-4 w-4 rounded-full border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" />
-					<p>Set Unknown</p>
-				</ContextMenuCheckboxItem>
-				<ContextMenuCheckboxItem
-					className="gap-2 pl-8"
-					checked={status === 1}
-					disabled={status === 1 || !activePlayer}
-					onClick={() => {
-						handleStatusChange(1);
-					}}
-				>
-					<div className="h-4 w-4 rounded-full border border-yellow-900 bg-yellow-500/20 dark:bg-yellow-500/10" />
-					Set Known
-				</ContextMenuCheckboxItem>
-				<ContextMenuCheckboxItem
-					className="gap-2 pl-8"
-					checked={status === 2}
-					disabled={status === 2 || !activePlayer}
-					onClick={() => {
-						handleStatusChange(2);
-					}}
-				>
-					<div className="h-4 w-4 rounded-full border border-green-900 bg-green-500/20 dark:bg-green-500/10" />
-					Set Completed
-				</ContextMenuCheckboxItem>
-			</ContextMenuContent>
-		</ContextMenu>
+				</ScrollArea>
+			</DrawerContent>
+		</Drawer>
 	);
 };

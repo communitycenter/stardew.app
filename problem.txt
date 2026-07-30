@@ -1,0 +1,7 @@
+Create a system that allows for save files that are loaded and saved onto accounts to be shared with others using the website and a specified URL, e.g. "domain.net/farm/<_id>". Use the unique "_id" that are stored in the database with each save. The save files already has a storing mechanism for multiple different saves in the database, as they're usually linked to the account already.
+The new save file URL system should be the already existing page that exists when a save is loaded, just under a specific URL relating to the id of the farm. Do not implement a UI for accessing these for now.
+Only allow the save file that is selected to be shared, and do not allow all save files on the account to be accessed through one link. A save can be shared by copying and sharing the URL that has the id in. For now anyone with the link can access and edit the save.
+Currently, for item and bundle checklists, you can manually mark them completed by clicking the "Set Completed" button.
+Ensure that this is updated on the website version of the save file whenever changed, whether automatically by save file upload or user, by implementing a WebSocket notification service that broadcasts update events to clients viewing the same shared farm. Upon receiving an update event, clients revalidate the affected SWR cache by re-fetching the existing REST endpoint.
+Run the Websocket service separately.
+For now give all users the permission to edit checklists.

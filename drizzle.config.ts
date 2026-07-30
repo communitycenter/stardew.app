@@ -5,6 +5,6 @@ export default defineConfig({
 	out: "./src/drizzle",
 	dialect: "mysql",
 	dbCredentials: {
-		url: process.env.CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE!,
+		url: process.env.DATABASE_URL!,
 	},
 });

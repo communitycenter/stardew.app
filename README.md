@@ -260,20 +260,7 @@ Below are some incredible people that the website wouldn't be without today!
 4. Run `bun run prepLocalEnv` to create the database and sync the schema.
 5. Run `bun run dev` to start the Next.js dev server at http://localhost:3000.
 
-### Testing against Cloudflare Workers locally
-
-`bun run dev` runs a standard Next.js dev server — fast for iteration, but it does not emulate the Cloudflare runtime. To test with the actual Workers runtime locally (Hyperdrive bindings, etc.), use:
-
-```
-bun run preview
-```
-
-This builds the OpenNext Cloudflare bundle and runs it via Wrangler's local dev environment.
+`bun run dev` runs a standard Next.js dev server — fast for iteration.
 
 ### Deploying
 
-```
-bun run deploy
-```
-
-This builds the OpenNext bundle and deploys it to Cloudflare Workers via Wrangler.

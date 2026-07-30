@@ -35,7 +35,7 @@ export const LoginDialog = ({ open, setOpen }: Props) => {
 						<div className="items-top flex space-x-2 pt-2 text-left">
 							<Checkbox
 								id="ccdiscord"
-								defaultChecked={joinDiscord}
+								checked={joinDiscord}
 								onCheckedChange={(checked) => setJoinDiscord(Boolean(checked))}
 							/>
 							<div className="grid gap-1.5 leading-none">

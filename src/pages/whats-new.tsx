@@ -5,7 +5,7 @@ import powers from "@/data/powers.json";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { typedShippingItems } from "./shipping";
+import { typedShippingItems } from "./farm/[id]/shipping";
 
 const newShipping = Object.values(typedShippingItems).filter((i) => {
 	if (i.minVersion === "1.6.0") return true;
@@ -70,7 +70,7 @@ export default function Bundles() {
 						</p>
 						<h2 className="text-xl font-bold">
 							New Items (which can be tracked{" "}
-							<Link className="text-blue-500 underline" href="/crafting">
+							<Link className="text-blue-500 underline" href="/farm/[id]/crafting">
 								on stardew.app
 							</Link>
 							):
@@ -97,7 +97,7 @@ export default function Bundles() {
 						))}
 						<h2 className="text-xl font-bold">
 							New Fish (which can be tracked{" "}
-							<Link className="text-blue-500 underline" href="/fishing">
+							<Link className="text-blue-500 underline" href="/farm/[id]/fishing">
 								on stardew.app
 							</Link>
 							):
@@ -124,7 +124,7 @@ export default function Bundles() {
 						))}
 						<h2 className="text-xl font-bold">
 							New Special Items (which can be tracked{" "}
-							<Link className="text-blue-500 underline" href="/fishing">
+							<Link className="text-blue-500 underline" href="/farm/[id]/fishing">
 								on stardew.app
 							</Link>
 							):
@@ -143,7 +143,7 @@ export default function Bundles() {
 						))}
 						<h2 className="text-xl font-bold">
 							New Powers (which can be tracked{" "}
-							<Link className="text-blue-500 underline" href="/fishing">
+							<Link className="text-blue-500 underline" href="/farm/[id]/fishing">
 								on stardew.app
 							</Link>
 							):
@@ -162,7 +162,7 @@ export default function Bundles() {
 						))}
 						<h2 className="text-xl font-bold">
 							New Mastery Perks (which can be tracked{" "}
-							<Link className="text-blue-500 underline" href="/fishing">
+							<Link className="text-blue-500 underline" href="/farm/[id]/fishing">
 								on stardew.app
 							</Link>
 							):

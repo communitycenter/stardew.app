@@ -3,13 +3,10 @@ import useSWR from "swr";
 import {
 	createContext,
 	ReactNode,
-	startTransition,
 	useCallback,
 	useContext,
 	useEffect,
 	useMemo,
-	useOptimistic,
-	useRef,
 	useState,
 } from "react";
 
@@ -32,9 +29,12 @@ import type { AnimalsData } from "@/types/data";
 import { fetchJson } from "@/lib/fetch";
 import { applyPlayerPatch } from "@/lib/player-patch";
 import type { DeepPartial } from "react-hook-form";
+import {useRouter} from "next/router";
 
 export interface PlayerType {
 	_id: string;
+	farmId: string;
+	role?: "owner" | "editor" | "viewer";
 	general?: GeneralRet;
 	bundles?: BundleWithStatus[];
 	fishing?: FishRet;
@@ -59,6 +59,7 @@ interface PlayersContextProps {
 	deletePlayers: (playerId?: string) => Promise<PlayerType[]>;
 	patchPlayer: (patch: DeepPartial<PlayerType>) => Promise<void>;
 	activePlayer?: PlayerType;
+	farmId?: string;
 	setActivePlayer: (player?: PlayerType) => void;
 }
 
@@ -70,24 +71,24 @@ export const PlayersContext = createContext<PlayersContextProps>({
 });
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
-	const api = useSWR<PlayerType[]>("/api/saves", fetchJson<PlayerType[]>);
+	const router = useRouter();
+	const { farm_id } = router.query as { farm_id?: string };
+
+	const api = useSWR<PlayerType[]>(
+		farm_id ? `/api/saves/farm/${farm_id}` : "/api/saves",
+		fetchJson<PlayerType[]>,
+	);
+
 	const [activePlayerId, setActivePlayerId] = useState<string>();
-	const patchQueue = useRef(Promise.resolve());
+	const [activeFarmId, setActiveFarmIdState] = useState<string>();
 	const players = useMemo(() => api.data ?? [], [api.data]);
 
-	const [optimisticPlayers, addOptimisticPatch] = useOptimistic<
-		PlayerType[],
-		{ playerId: string; patch: DeepPartial<PlayerType> }
-	>(players, (currentPlayers, { playerId, patch }) =>
-		currentPlayers.map((player) =>
-			player._id === playerId ? applyPlayerPatch(player, patch) : player,
-		),
+	const activePlayer = useMemo(
+		() => players.find((p) => p._id === activePlayerId),
+		[players, activePlayerId],
 	);
 
-	const activePlayer = useMemo(
-		() => optimisticPlayers.find((p) => p._id === activePlayerId),
-		[optimisticPlayers, activePlayerId],
-	);
+	const farmId = activeFarmId;
 
 	const persistActivePlayerId = useCallback((playerId?: string) => {
 		setActivePlayerId(playerId);
@@ -104,27 +105,41 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 		window.localStorage.removeItem("player_id");
 	}, []);
 
-	const resolveActivePlayerId = useCallback(
-		(nextPlayers: PlayerType[], preferredPlayerId?: string) => {
-			if (nextPlayers.length === 0) {
-				return undefined;
-			}
+	const persistFarmId = useCallback((newFarmId?: string) => {
+		setActiveFarmIdState(newFarmId);
 
-			if (
-				preferredPlayerId &&
-				nextPlayers.some((player) => player._id === preferredPlayerId)
-			) {
+		if (typeof window === "undefined") {
+			return;
+		}
+
+		if (newFarmId) {
+			window.localStorage.setItem("farm_id", newFarmId);
+			return;
+		}
+
+		window.localStorage.removeItem("farm_id");
+	}, []);
+
+	const resolveActivePlayerId = useCallback(
+		(nextPlayers: PlayerType[], preferredPlayerId?: string, farmId?: string) => {
+			const candidates = farmId
+				? nextPlayers.filter((p) => p.farmId === farmId)
+				: nextPlayers;
+
+			if (candidates.length === 0 ) return undefined;
+
+			if (preferredPlayerId && candidates.some((p) => p._id === preferredPlayerId)) {
 				return preferredPlayerId;
 			}
 
 			if (typeof window !== "undefined") {
 				const stored = window.localStorage.getItem("player_id");
-				if (stored && nextPlayers.some((player) => player._id === stored)) {
+				if (stored && candidates.some((p) => p._id === stored)) {
 					return stored;
 				}
 			}
 
-			return nextPlayers[0]._id;
+			return candidates.length === 1 ? candidates[0]._id : undefined;
 		},
 		[],
 	);
@@ -136,52 +151,51 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [activePlayerId, persistActivePlayerId, players, resolveActivePlayerId]);
 
+	useEffect(() => {
+		if (activePlayer?.farmId) {
+			persistFarmId(activePlayer.farmId);
+		}
+	}, [activePlayer, persistFarmId]);
+
 	const patchPlayer = useCallback(
-		(patch: DeepPartial<PlayerType>) => {
-			if (!activePlayerId) return Promise.resolve();
+		async (patch: DeepPartial<PlayerType>) => {
+			if (!activePlayerId) return;
 
-			const runPatch = async () => {
-				await api.mutate(
-					async (currentPlayers: PlayerType[] | undefined) => {
-						const currentPlayer = (currentPlayers ?? []).find(
-							(player) => player._id === activePlayerId,
-						);
-						if (!currentPlayer) {
-							return currentPlayers ?? [];
-						}
+			await api.mutate(
+				async (currentPlayers: PlayerType[] | undefined) => {
+					const currentPlayer = (currentPlayers ?? []).find(
+						(player) => player._id === activePlayerId,
+					);
+					if (!currentPlayer) return currentPlayers ?? [];
 
-						const res = await fetch(`/api/saves/${currentPlayer._id}`, {
-							method: "PATCH",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							body: JSON.stringify(patch),
-						});
-						if (!res.ok) {
-							throw new Error(`Failed to update player: ${res.status}`);
-						}
+					const res = await fetch(`/api/saves/${currentPlayer._id}`, {
+						method: "PATCH",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(patch),
+					});
+					if (!res.ok) {
+						throw new Error(`Failed to update player: ${res.status}`);
+					}
 
-						return (currentPlayers ?? []).map((player) =>
+					return (currentPlayers ?? []).map((player) =>
+						player._id === activePlayerId
+							? applyPlayerPatch(player, patch)
+							: player,
+					);
+				},
+				{
+					optimisticData: (currentPlayers: PlayerType[] | undefined) =>
+						(currentPlayers ?? []).map((player) =>
 							player._id === activePlayerId
 								? applyPlayerPatch(player, patch)
 								: player,
-						);
-					},
-					{ revalidate: false },
-				);
-			};
-
-			const queuedPatch = patchQueue.current.then(runPatch, runPatch);
-			patchQueue.current = queuedPatch.catch(() => undefined);
-
-			startTransition(async () => {
-				addOptimisticPatch({ playerId: activePlayerId, patch });
-				await queuedPatch;
-			});
-
-			return queuedPatch;
+						),
+					rollbackOnError: true,
+					revalidate: false,
+				},
+			);
 		},
-		[activePlayerId, api, addOptimisticPatch],
+		[activePlayerId, api],
 	);
 
 	const uploadPlayers = useCallback(
@@ -243,11 +257,12 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 	return (
 		<PlayersContext.Provider
 			value={{
-				players: optimisticPlayers,
+				players,
 				uploadPlayers,
 				deletePlayers,
 				patchPlayer,
 				activePlayer,
+				farmId: farmId,
 				setActivePlayer,
 			}}
 		>

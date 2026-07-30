@@ -31,7 +31,7 @@ export const BetaFeaturesDialog = ({
 						This feature is currently in beta and will likely change often based
 						on feedback. You can always disable beta features again in your{" "}
 						<Link
-							href="/account"
+							href="/farm/[id]/account"
 							className="underline hover:text-neutral-400 hover:dark:text-neutral-300"
 						>
 							account settings

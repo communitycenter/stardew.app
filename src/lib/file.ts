@@ -48,6 +48,8 @@ export function parseSaveFile(xml: string) {
 
 		const version = semverCoerce(versionString).version;
 
+		const farmId = saveFile.SaveGame.uniqueIDForThisGame
+
 		// make sure game version is at least 1.5.0
 		if (!semverSatisfies(version, ">=1.5.0 <1.7")) {
 			throw new Error(
@@ -134,6 +136,7 @@ export function parseSaveFile(xml: string) {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
 				_id: player.UniqueMultiplayerID,
+				farmId: farmId,
 				general: parseGeneral(
 					player,
 					saveFile.SaveGame.whichFarm.toString(),

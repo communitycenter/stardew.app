@@ -37,43 +37,44 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DiscordLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { usePlayers } from "@/contexts/players-context";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const miscNavigation = [
-	{ name: "Bundles", href: "/bundles", icon: IconBox },
-	{ name: "Secret Notes", href: "/notes", icon: IconNote },
-	{ name: "Rarecrows", href: "/rarecrows", icon: IconCarrot },
-	{ name: "Account Settings", href: "/account", icon: IconSettings },
+	{ name: "Bundles", path: "bundles", icon: IconBox },
+	{ name: "Secret Notes", path: "notes", icon: IconNote },
+	{ name: "Rarecrows", path: "rarecrows", icon: IconCarrot },
+	{ name: "Account Settings", path: "account", icon: IconSettings },
 ];
 
 export const playerNavigation = [
-	{ name: "Home", href: "/", icon: IconHome2 },
-	{ name: "Farmer", href: "/farmer", icon: IconId },
-	{ name: "Skills & Mastery", href: "/skills", icon: IconStars },
-	{ name: "Relationships", href: "/relationships", icon: IconHeart },
-	{ name: "Animals", href: "/animals", icon: IconPaw },
-	{ name: "Perfection", href: "/perfection", icon: IconAward },
-	{ name: "Grandpa's Evaluation", href: "/grandpa", icon: IconFlameFilled },
+	{ name: "Home", path: "", icon: IconHome2 },
+	{ name: "Farmer", path: "farmer", icon: IconId },
+	{ name: "Skills & Mastery", path: "skills", icon: IconStars },
+	{ name: "Relationships", path: "relationships", icon: IconHeart },
+	{ name: "Animals", path: "animals", icon: IconPaw },
+	{ name: "Perfection", path: "perfection", icon: IconAward },
+	{ name: "Grandpa's Evaluation", path: "grandpa", icon: IconFlameFilled },
 ];
 
 export const collectionsNavigation = [
-	{ name: "Cooking", href: "/cooking", icon: IconEgg },
-	{ name: "Crafting", href: "/crafting", icon: IconHammer },
-	{ name: "Fishing", href: "/fishing", icon: IconFishHook },
-	{ name: "Shipping", href: "/shipping", icon: IconGardenCart },
-	{ name: "Museum", href: "/museum", icon: IconBuildingWarehouse },
+	{ name: "Cooking", path: "cooking", icon: IconEgg },
+	{ name: "Crafting", path: "crafting", icon: IconHammer },
+	{ name: "Fishing", path: "fishing", icon: IconFishHook },
+	{ name: "Shipping", path: "shipping", icon: IconGardenCart },
+	{ name: "Museum", path: "museum", icon: IconBuildingWarehouse },
 ];
 
 export const islandNavigation = [
-	{ name: "Golden Walnuts", href: "/island/walnuts", icon: IconProgress },
-	{ name: "Journal Scraps", href: "/island/scraps", icon: IconBook },
-	{ name: "Island Upgrades", href: "/island/upgrades", icon: IconPencilUp },
+	{ name: "Golden Walnuts", path: "island/walnuts", icon: IconProgress },
+	{ name: "Journal Scraps", path: "island/scraps", icon: IconBook },
+	{ name: "Island Upgrades", path: "island/upgrades", icon: IconPencilUp },
 ];
 
 export const linksNavigation = [
-	{ name: "Discord", href: "/discord", icon: DiscordLogoIcon },
-	{ name: "GitHub", href: "/github", icon: GitHubLogoIcon },
+	{ name: "Discord", path: "discord", icon: DiscordLogoIcon },
+	{ name: "GitHub", path: "github", icon: GitHubLogoIcon },
 	{
 		name: "stardew.me",
 		href: "https://stardew.me/?utm_campaign=StardewApp&utm_source=Beta&utm_medium=Button",
@@ -88,7 +89,13 @@ export const SidebarCategory = ({ children }: { children: string }) => (
 );
 
 export function Sidebar({ className }: SidebarProps) {
+	const { farmId } = usePlayers();
 	const pathname = usePathname();
+
+	const getHref = (path: string) => {
+		if (!farmId) return `/${path}`;
+		return path ? `/farm/${farmId}/${path}`: `/farm/${farmId}`;
+	};
 
 	return (
 		<div className={className}>
@@ -185,89 +192,107 @@ export function Sidebar({ className }: SidebarProps) {
 			<nav className="px-3 pb-2">
 				<SidebarCategory>Player</SidebarCategory>
 				<div className="space-y-1">
-					{playerNavigation.map((item) => (
+					{playerNavigation.map((item) => {
+						const href = getHref(item.path);
+						const isActive = pathname === href;
+
+						return (
+
 						<Button
-							key={item.href}
-							variant={pathname === item.href ? "secondary" : "ghost"}
+							key={item.path}
+							variant={isActive ? "secondary" : "ghost"}
 							className={cn(
 								"w-full justify-start",
-								item.href === pathname
+								isActive
 									? ""
 									: "text-neutral-600 dark:text-neutral-400",
 							)}
 							asChild
 						>
-							<Link href={item.href}>
+							<Link href={href}>
 								<item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
 								{item.name}
 							</Link>
 						</Button>
-					))}
+					)})}
 				</div>
 				<SidebarCategory>Collections</SidebarCategory>
 				<div className="space-y-1">
-					{collectionsNavigation.map((item) => (
+					{collectionsNavigation.map((item) => {
+						const href = getHref(item.path);
+						const isActive = pathname === href;
+
+						return (
+
 						<Button
-							key={item.href}
-							variant={pathname === item.href ? "secondary" : "ghost"}
+							key={item.path}
+							variant={isActive ? "secondary" : "ghost"}
 							className={cn(
 								"w-full justify-start",
-								item.href === pathname
+								isActive
 									? ""
 									: "text-neutral-600 dark:text-neutral-400",
 							)}
 							asChild
 						>
-							<Link href={item.href}>
+							<Link href={href}>
 								<item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
 								{item.name}
 							</Link>
 						</Button>
-					))}
+					)})}
 				</div>
 
 				<SidebarCategory>Ginger Island</SidebarCategory>
 				<div className="space-y-1">
-					{islandNavigation.map((item) => (
+					{islandNavigation.map((item) => {
+						const href = getHref(item.path);
+						const isActive = pathname === href;
+
+						return (
 						<Button
-							key={item.href}
-							variant={pathname === item.href ? "secondary" : "ghost"}
+							key={item.path}
+							variant={isActive ? "secondary" : "ghost"}
 							className={cn(
 								"w-full justify-start",
-								item.href === pathname
+								isActive
 									? ""
 									: "text-neutral-600 dark:text-neutral-400",
 							)}
 							asChild
 						>
-							<Link href={item.href}>
+							<Link href={href}>
 								<item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
 								{item.name}
 							</Link>
 						</Button>
-					))}
+					)})}
 				</div>
 
 				<SidebarCategory>Misc</SidebarCategory>
 				<div className="space-y-1">
-					{miscNavigation.map((item) => (
+					{miscNavigation.map((item) => {
+						const href = getHref(item.path);
+						const isActive = pathname === href;
+
+						return (
 						<Button
-							key={item.href}
-							variant={pathname === item.href ? "secondary" : "ghost"}
+							key={item.path}
+							variant={isActive ? "secondary" : "ghost"}
 							className={cn(
 								"w-full justify-start",
-								item.href === pathname
+								isActive
 									? ""
 									: "text-neutral-600 dark:text-neutral-400",
 							)}
 							asChild
 						>
-							<Link href={item.href}>
+							<Link href={href}>
 								<item.icon className="mr-2 h-4 w-4" aria-hidden="true" />
 								{item.name}
 							</Link>
 						</Button>
-					))}
+					)})}
 				</div>
 			</nav>
 		</div>
