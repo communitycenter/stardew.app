@@ -37,12 +37,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import {
-	IconCloudCheck,
-	IconMoon,
-	IconSparkles,
-	IconSun,
-} from "@tabler/icons-react";
+import { IconCloudCheck, IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { FeedbackDialog } from "./dialogs/feedback-dialog";
 import { LoginDialog } from "./dialogs/login-dialog";
@@ -122,13 +117,6 @@ export function Topbar() {
 						alt="stardew.app logo"
 					/>
 					<h1 className="pl-3 font-medium">stardew.app</h1>
-					<button
-						onClick={() => setChangelogOpen(true)}
-						className="ml-2 flex items-center gap-1 rounded-full border border-blue-300 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600 dark:border-blue-700 dark:bg-blue-950 dark:text-blue-300"
-					>
-						<IconSparkles size={12} />
-						What&apos;s new?
-					</button>
 					{isInternal && (
 						<span className="ml-2 rounded-full bg-red-100 px-2 py-1 text-xs text-red-500 dark:bg-red-800 dark:text-red-400">
 							Internal
