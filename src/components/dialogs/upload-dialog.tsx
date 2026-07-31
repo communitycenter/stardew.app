@@ -8,7 +8,9 @@ import {
 } from "@/components/ui/dialog";
 import { PlayersContext } from "@/contexts/players-context";
 import { parseSaveFile } from "@/lib/file";
-import { useContext, useState } from "react";
+import type { FilePickerWindow, SaveFileHandle } from "@/types/save-sync";
+import { useRouter } from "next/router";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
@@ -128,54 +130,88 @@ const InstructionsDialog = ({
 };
 
 export const UploadDialog = ({ open, setOpen }: Props) => {
-	const { activePlayer, uploadPlayers } = useContext(PlayersContext);
+	const router = useRouter();
+	const { uploadPlayers, connectAutoSync } = useContext(PlayersContext);
 	const [instructionsOpen, setInstructionsOpen] = useState(false);
 	const [selectedPlatform, setSelectedPlatform] = useState<
 		"Mac" | "Windows" | "Linux" | "Switch"
 	>("Mac");
+	// Starts false on both server and client so the first client render still
+	// matches the SSR'd markup; flips right after mount once we can check.
+	const [supportsAutoSync, setSupportsAutoSync] = useState(false);
 
-	const handleChange = (file: File) => {
-		setOpen(false);
+	useEffect(() => {
+		setSupportsAutoSync(
+			typeof (window as FilePickerWindow).showOpenFilePicker === "function",
+		);
+	}, []);
 
-		if (typeof file === "undefined" || !file) return;
+	const uploadFile = useCallback(
+		async (file: File, redirectToFarm: boolean) => {
+			if (typeof file === "undefined" || !file) return;
 
-		if (file.type !== "") {
-			toast.error("Invalid file type", {
-				description: "Please upload a Stardew Valley save file.",
-			});
-			return;
-		}
+			if (file.type !== "") {
+				throw new Error("Please select a Stardew Valley save file.");
+			}
 
-		const reader = new FileReader();
+			const saveText = await file.text();
+			const players = parseSaveFile(saveText);
+			const farmId = players[0]?.farmId;
+			await uploadPlayers(players);
 
-		let uploadPromise;
+			if (redirectToFarm && farmId) {
+				await router.push(`/farm/${farmId}`);
+			}
+		},
+		[router, uploadPlayers],
+	);
 
-		reader.onloadstart = () => {
-			uploadPromise = new Promise((resolve, reject) => {
-				reader.onload = async function (event) {
-					try {
-						const players = parseSaveFile(event.target?.result as string);
-						await uploadPlayers(players);
-						resolve("Your save file was successfully uploaded!");
-					} catch (err) {
-						reject(err instanceof Error ? err.message : "Unknown error.");
-					}
-				};
-			});
+	// Handles a file from either the dropzone or the file picker. On browsers
+	// with the File System Access API, both paths can hand us a durable
+	// FileSystemFileHandle alongside the File — when they do, that's the
+	// trigger for automatic sync (owned by PlayersProvider, since this dialog
+	// itself is mounted more than once across the app). There's no separate
+	// "connect" step.
+	const handleIncomingFile = useCallback(
+		(file: File & { handle?: SaveFileHandle }) => {
+			if (typeof file === "undefined" || !file) return;
 
-			// Start the loading toast
-			toast.promise(uploadPromise, {
+			setOpen(false);
+			toast.promise(uploadFile(file, true), {
 				loading: "Uploading your save file...",
-				success: (data) => `${data}`,
+				success: file.handle
+					? "Uploaded! We'll keep this save synced while this tab is open."
+					: "Your save file was successfully uploaded!",
 				error: (err) => `There was an error parsing your save file:\n${err}`,
 			});
 
-			// Reset the input
-			uploadPromise = null;
-		};
+			if (file.handle) {
+				connectAutoSync(file.handle, file);
+			}
+		},
+		[connectAutoSync, setOpen, uploadFile],
+	);
 
-		reader.readAsText(file);
-	};
+	// Only meaningful on browsers with the File System Access API; falls back
+	// to react-dropzone's own `open()` (the classic <input type="file">)
+	// everywhere else, which can only ever produce a one-time upload.
+	const pickFileWithHandle = useCallback(async () => {
+		const pickerWindow = window as FilePickerWindow;
+		if (!pickerWindow.showOpenFilePicker) return;
+
+		try {
+			// Stardew's save files do not have a file extension, so this must allow
+			// all files instead of filtering for XML.
+			const [handle] = await pickerWindow.showOpenFilePicker();
+			const file = await handle.getFile();
+			handleIncomingFile(Object.assign(file, { handle }));
+		} catch (err) {
+			if (err instanceof DOMException && err.name === "AbortError") return;
+			toast.error("Could not open your save file", {
+				description: err instanceof Error ? err.message : "Unknown error.",
+			});
+		}
+	}, [handleIncomingFile]);
 
 	return (
 		<>
@@ -186,23 +222,42 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 					</DialogHeader>
 					<DialogDescription>
 						<Dropzone
-							onDrop={(acceptedFiles) => {
-								handleChange(acceptedFiles[0]);
-							}}
+							noClick
 							useFsAccessApi={false}
+							onDrop={(acceptedFiles) => {
+								handleIncomingFile(
+									acceptedFiles[0] as File & { handle?: SaveFileHandle },
+								);
+							}}
 						>
-							{({ getRootProps, getInputProps }) => (
+							{({ getRootProps, getInputProps, open }) => (
 								<>
 									<input className="h-full w-full" {...getInputProps()} />
 									<div className="h-[250px]">
 										<div
-											{...getRootProps()}
+											{...getRootProps({
+												onClick: (event) => {
+													event.preventDefault();
+													const pickerWindow = window as FilePickerWindow;
+													if (pickerWindow.showOpenFilePicker) {
+														void pickFileWithHandle();
+													} else {
+														open();
+													}
+												},
+											})}
 											className="flex h-full w-full cursor-pointer select-none items-center justify-center rounded-lg border-2 border-dashed border-gray-800 dark:border-gray-400"
 										>
 											<div className="select-text text-center">
 												<p>
 													Drag and drop your save file here, or click to browse!
 												</p>
+												{supportsAutoSync && (
+													<p className="text-muted-foreground mt-1 text-xs">
+														We&apos;ll keep it synced automatically while this
+														tab is open.
+													</p>
+												)}
 											</div>
 										</div>
 									</div>

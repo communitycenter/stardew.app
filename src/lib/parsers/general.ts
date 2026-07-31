@@ -253,6 +253,38 @@ const farmTypes = [
 	"Meadowlands",
 ];
 
+const dayOfWeekNames = [
+	"Mon",
+	"Tue",
+	"Wed",
+	"Thu",
+	"Fri",
+	"Sat",
+	"Sun",
+] as const;
+
+export interface DateRet {
+	season: "spring" | "summer" | "fall" | "winter";
+	day: number;
+	year: number;
+	dayOfWeek: (typeof dayOfWeekNames)[number];
+}
+
+// Stardew doesn't persist a time-of-day anywhere in the save — a save always
+// represents the start of a day (6am), whether it was written by sleeping or
+// by "Save and Quit" — so there's no "current time" to expose here.
+export type Weather = "sunny" | "rain" | "storm" | "snow" | "wind";
+
+export interface WorldState {
+	currentSeason?: string;
+	dayOfMonth?: number;
+	year?: number;
+	isRaining?: boolean;
+	isSnowing?: boolean;
+	isLightning?: boolean;
+	isDebrisWeather?: boolean;
+}
+
 export interface GeneralRet {
 	name?: string;
 	timePlayed?: string;
@@ -267,6 +299,59 @@ export interface GeneralRet {
 	achievements?: AchievementsRet;
 	islandUpgrades?: IslandUpgradesRet;
 	platform?: "PC" | "Mobile" | "Console";
+	date?: DateRet;
+	weather?: Weather;
+}
+
+// worldState is read straight from a user-uploaded save file (untyped XML),
+// so none of it can be trusted at runtime just because WorldState declares
+// types for it — a hand-edited or malicious save can put anything in these
+// fields. Every value below is type- and range-checked before it's allowed
+// to reach the parsed player object that gets stored and rendered.
+function parseDate(worldState?: WorldState): DateRet | undefined {
+	const { currentSeason, dayOfMonth, year } = worldState ?? {};
+	if (
+		typeof currentSeason !== "string" ||
+		typeof dayOfMonth !== "number" ||
+		typeof year !== "number" ||
+		!Number.isInteger(dayOfMonth) ||
+		!Number.isInteger(year)
+	) {
+		return undefined;
+	}
+
+	const season = currentSeason.toLowerCase();
+	if (
+		season !== "spring" &&
+		season !== "summer" &&
+		season !== "fall" &&
+		season !== "winter"
+	) {
+		return undefined;
+	}
+
+	// A legitimate save's day is always 1-28 and year is always >= 1; clamp
+	// rather than trust the raw numbers verbatim.
+	const day = Math.min(28, Math.max(1, dayOfMonth));
+	const clampedYear = Math.min(9999, Math.max(1, year));
+
+	// Day 1 of every season is always a Monday, and every season is exactly
+	// 28 days (4 weeks), so the day-of-week cycles predictably from the date.
+	const dayOfWeek = dayOfWeekNames[(day - 1) % 7];
+
+	return { season, day, year: clampedYear, dayOfWeek };
+}
+
+function parseWeather(worldState?: WorldState): Weather | undefined {
+	if (!worldState) return undefined;
+
+	// Strict `=== true` rather than truthy: a malicious save could put a
+	// string, number, or object here instead of a real boolean.
+	if (worldState.isLightning === true) return "storm";
+	if (worldState.isRaining === true) return "rain";
+	if (worldState.isSnowing === true) return "snow";
+	if (worldState.isDebrisWeather === true) return "wind";
+	return "sunny";
 }
 
 export function parseGeneral(
@@ -274,6 +359,7 @@ export function parseGeneral(
 	whichFarm: string,
 	gameVersion: string,
 	platform?: "PC" | "Mobile",
+	worldState?: WorldState,
 ): GeneralRet {
 	try {
 		const playerFormatUpdated = isPlayerFormatUpdated(player);
@@ -301,6 +387,8 @@ export function parseGeneral(
 		const jojaMembership = parseJoja(player);
 		const achievements = parseAchievements(player);
 		const islandUpgrades = parseIslandUpgrades(player);
+		const date = parseDate(worldState);
+		const weather = parseWeather(worldState);
 
 		const result: GeneralRet = {
 			name,
@@ -315,6 +403,8 @@ export function parseGeneral(
 			jojaMembership,
 			achievements,
 			islandUpgrades,
+			date,
+			weather,
 		};
 
 		// Only include platform if it's known to be PC or Mobile

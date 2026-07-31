@@ -55,6 +55,7 @@
 		"clsx": "^2.1.1",
 		"cmdk": "^1.0.0",
 		"cookies-next": "2.1.2",
+		"cuelume": "^0.2.1",
 		"drizzle-orm": "^0.45.1",
 		"fast-xml-parser": "^5.4.2",
 		"lucide-react": "0.522.0",

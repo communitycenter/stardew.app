@@ -1,3 +1,4 @@
+import { play } from "cuelume";
 import useSWR from "swr";
 
 import {
@@ -12,6 +13,7 @@ import {
 	useRef,
 	useState,
 } from "react";
+import { toast } from "sonner";
 
 import type { CookingRet } from "@/lib/parsers/cooking";
 import type { CraftingRet } from "@/lib/parsers/crafting";
@@ -29,7 +31,9 @@ import type { SocialRet } from "@/lib/parsers/social";
 import type { WalnutRet } from "@/lib/parsers/walnuts";
 import type { BundleWithStatus } from "@/types/bundles";
 import type { AnimalsData } from "@/types/data";
+import type { SaveFileHandle } from "@/types/save-sync";
 import { fetchJson } from "@/lib/fetch";
+import { parseSaveFile } from "@/lib/file";
 import { applyPlayerPatch } from "@/lib/player-patch";
 import type { DeepPartial } from "react-hook-form";
 
@@ -60,6 +64,9 @@ interface PlayersContextProps {
 	patchPlayer: (patch: DeepPartial<PlayerType>) => Promise<void>;
 	activePlayer?: PlayerType;
 	setActivePlayer: (player?: PlayerType) => void;
+	autoSyncActive: boolean;
+	autoSyncLastSyncedAt: number | null;
+	connectAutoSync: (handle: SaveFileHandle, file: File) => void;
 }
 
 export const PlayersContext = createContext<PlayersContextProps>({
@@ -67,6 +74,9 @@ export const PlayersContext = createContext<PlayersContextProps>({
 	deletePlayers: () => Promise.resolve([]),
 	patchPlayer: () => Promise.resolve(),
 	setActivePlayer: () => {},
+	autoSyncActive: false,
+	autoSyncLastSyncedAt: null,
+	connectAutoSync: () => {},
 });
 
 export const PlayersProvider = ({ children }: { children: ReactNode }) => {
@@ -240,6 +250,87 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 		[persistActivePlayerId],
 	);
 
+	// Auto-sync: once the upload dialog hands us a durable FileSystemFileHandle
+	// (from either a native file pick or a drop, on browsers that support it),
+	// this is the single place that polls it and re-uploads on change. Lives
+	// here rather than in the dialog because the dialog itself can be mounted
+	// more than once (top bar + a couple of pages); a handle owned by one
+	// instance's local state wouldn't be visible to the others.
+	const [autoSyncHandle, setAutoSyncHandle] = useState<SaveFileHandle | null>(
+		null,
+	);
+	const [autoSyncLastSyncedAt, setAutoSyncLastSyncedAt] = useState<
+		number | null
+	>(null);
+	const lastSyncedModified = useRef<number | null>(null);
+
+	const connectAutoSync = useCallback((handle: SaveFileHandle, file: File) => {
+		lastSyncedModified.current = file.lastModified;
+		setAutoSyncHandle(handle);
+		setAutoSyncLastSyncedAt(Date.now());
+	}, []);
+
+	useEffect(() => {
+		if (!autoSyncHandle) return;
+
+		let syncing = false;
+		let consecutiveFailures = 0;
+
+		const syncIfChanged = async () => {
+			if (syncing) return;
+			syncing = true;
+			try {
+				const file = await autoSyncHandle.getFile();
+				if (file.lastModified === lastSyncedModified.current) return;
+
+				const saveText = await file.text();
+				const players = parseSaveFile(saveText);
+				await uploadPlayers(players);
+
+				lastSyncedModified.current = file.lastModified;
+				consecutiveFailures = 0;
+				setAutoSyncLastSyncedAt(Date.now());
+				play("success");
+				toast.success("Save file synced", {
+					description: "Your latest Stardew Valley progress is now loaded.",
+				});
+			} catch (err) {
+				console.error("Automatic save sync failed:", err);
+				consecutiveFailures += 1;
+
+				// Don't retry a broken handle forever in the background — tell the
+				// user once and stop, rather than silently failing every interval.
+				if (consecutiveFailures >= 3) {
+					setAutoSyncHandle(null);
+					toast.error("Automatic sync stopped", {
+						description:
+							"We couldn't read your save file a few times in a row. Reconnect it from the upload dialog to keep it in sync.",
+					});
+				}
+			} finally {
+				syncing = false;
+			}
+		};
+
+		const interval = window.setInterval(() => void syncIfChanged(), 15_000);
+
+		// Browsers throttle (and can fully suspend) setInterval in hidden tabs,
+		// so a background game session can go well past the interval between
+		// real checks. Catching up the instant the tab regains focus bounds the
+		// worst case to "however long since this tab was last looked at."
+		const handleFocus = () => {
+			if (document.visibilityState === "visible") void syncIfChanged();
+		};
+		document.addEventListener("visibilitychange", handleFocus);
+		window.addEventListener("focus", handleFocus);
+
+		return () => {
+			window.clearInterval(interval);
+			document.removeEventListener("visibilitychange", handleFocus);
+			window.removeEventListener("focus", handleFocus);
+		};
+	}, [autoSyncHandle, uploadPlayers]);
+
 	return (
 		<PlayersContext.Provider
 			value={{
@@ -249,6 +340,9 @@ export const PlayersProvider = ({ children }: { children: ReactNode }) => {
 				patchPlayer,
 				activePlayer,
 				setActivePlayer,
+				autoSyncActive: autoSyncHandle !== null,
+				autoSyncLastSyncedAt,
+				connectAutoSync,
 			}}
 		>
 			{children}
