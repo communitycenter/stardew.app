@@ -141,8 +141,8 @@ Below are some incredible people that the website wouldn't be without today!
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Aniket-Jena-02">
-            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="Aniket-Jena-02"/>
+        <a href="https://github.com/aniket-jena-dev">
+            <img src="https://avatars.githubusercontent.com/u/75910246?v=4" width="100;" alt="aniket-jena-dev"/>
             <br />
             <sub><b>Aniket Jena</b></sub>
         </a>
