@@ -36,6 +36,7 @@ const CORE_CONTRIBUTORS = [
 ];
 
 const THANKS = [
+	"AngeloG503",
 	"Blink18260000",
 	"Brandon Saldan",
 	"Leah Lundqvist",
@@ -140,12 +141,7 @@ export const CreditsDialog = ({ open, setOpen }: Props) => {
 				</div>
 
 				<div className="flex justify-center">
-					<Image
-						src="/dance.gif"
-						alt="Dancing emoji"
-						width={200}
-						height={80}
-					/>
+					<Image src="/dance.gif" alt="Dancing emoji" width={200} height={80} />
 				</div>
 			</DialogContent>
 		</Dialog>
