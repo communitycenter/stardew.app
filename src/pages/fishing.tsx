@@ -341,9 +341,10 @@ export default function Fishing() {
 										pressed={includeAllSeasonFish}
 										onPressedChange={setIncludeAllSeasonFish}
 										aria-label="Toggle all-season fish"
+										className="flex-shrink-0 whitespace-nowrap"
 									>
 										<IconInfinity className="h-4 w-4" />
-										All-Season Fish
+										All-Season
 									</Toggle>
 								)}
 								<FilterSearch
