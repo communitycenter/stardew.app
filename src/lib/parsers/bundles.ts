@@ -10,11 +10,11 @@ import {
 const typedObjects: Record<
 	string,
 	Record<string, string | null>
-> = objects as Record<string, Record<string, string | null>>;
+> = objects as unknown as Record<string, Record<string, string | null>>;
 const typedBigCraftables: Record<
 	string,
 	Record<string, string | null>
-> = big_craftables as Record<string, Record<string, string | null>>;
+> = big_craftables as unknown as Record<string, Record<string, string | null>>;
 
 interface BundleCompletionData {
 	[bundleId: string]: boolean[];

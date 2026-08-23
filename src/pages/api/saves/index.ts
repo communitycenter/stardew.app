@@ -37,6 +37,7 @@ export interface Player {
 	cooking?: object;
 	crafting?: object;
 	shipping?: object;
+	items?: object;
 	museum?: object;
 	social?: object;
 	monsters?: object;
@@ -240,3 +241,13 @@ export default async function handler(
 			.send(e instanceof Error ? e.message : "Internal Server Error");
 	}
 }
+
+// Parsed saves now include every item in the world (items.world, repeated per
+// player), which can push a multiplayer upload past Next's default 1mb limit.
+export const config = {
+	api: {
+		bodyParser: {
+			sizeLimit: "10mb",
+		},
+	},
+};

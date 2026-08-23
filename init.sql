@@ -19,6 +19,7 @@ create table Saves (
 	cooking json not null default (JSON_OBJECT()),
 	crafting json not null default (JSON_OBJECT()),
 	shipping json not null default (JSON_OBJECT()),
+	items json not null default (JSON_OBJECT()),
 	museum json not null default (JSON_OBJECT()),
 	social json not null default (JSON_OBJECT()),
 	monsters json not null default (JSON_OBJECT()),

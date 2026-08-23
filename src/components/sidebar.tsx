@@ -12,6 +12,7 @@ import {
 	IconBrandGithub,
 	IconBuildingWarehouse,
 	IconCarrot,
+	IconCoins,
 	IconEgg,
 	IconFishHook,
 	IconFlameFilled,
@@ -50,6 +51,7 @@ export const miscNavigation = [
 export const playerNavigation = [
 	{ name: "Home", href: "/", icon: IconHome2 },
 	{ name: "Farmer", href: "/farmer", icon: IconId },
+	{ name: "Money", href: "/money", icon: IconCoins },
 	{ name: "Skills & Mastery", href: "/skills", icon: IconStars },
 	{ name: "Relationships", href: "/relationships", icon: IconHeart },
 	{ name: "Animals", href: "/animals", icon: IconPaw },

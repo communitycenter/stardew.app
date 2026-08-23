@@ -1,0 +1,305 @@
+{
+	"9": {
+		"name": "Lightning Rod",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"10": {
+		"name": "Bee House",
+		"minutes": 6400,
+		"byOutput": {
+			"340": 6400
+		}
+	},
+	"12": {
+		"name": "Keg",
+		"minutes": 2688,
+		"byOutput": {
+			"346": 1750,
+			"303": 2250,
+			"614": 180,
+			"395": 120,
+			"459": 600,
+			"419": 600,
+			"350": 6000,
+			"348": 10000
+		}
+	},
+	"13": {
+		"name": "Furnace",
+		"minutes": 210,
+		"byOutput": {
+			"334": 30,
+			"335": 120,
+			"336": 300,
+			"337": 480,
+			"338": 90,
+			"277": 10,
+			"910": 560
+		}
+	},
+	"15": {
+		"name": "Preserves Jar",
+		"minutes": 4500,
+		"byOutput": {
+			"445": 6000,
+			"447": 4000,
+			"342": 4000,
+			"344": 4000
+		}
+	},
+	"16": {
+		"name": "Cheese Press",
+		"minutes": 200,
+		"byOutput": {
+			"426": 200,
+			"424": 200
+		}
+	},
+	"17": {
+		"name": "Loom",
+		"minutes": 240,
+		"byOutput": {
+			"428": 240
+		}
+	},
+	"19": {
+		"name": "Oil Maker",
+		"minutes": 1155,
+		"byOutput": {
+			"247": 1420,
+			"432": 360
+		}
+	},
+	"20": {
+		"name": "Recycling Machine",
+		"minutes": 60,
+		"byOutput": {
+			"382": 60,
+			"380": 60,
+			"390": 60,
+			"388": 60,
+			"338": 60,
+			"428": 60,
+			"93": 60
+		}
+	},
+	"21": {
+		"name": "Crystalarium",
+		"minutes": 5000,
+		"byOutput": {
+			"80": 420,
+			"60": 3000,
+			"68": 1120,
+			"70": 2400,
+			"64": 3000,
+			"62": 2240,
+			"66": 1360,
+			"72": 7200,
+			"82": 1300,
+			"84": 1120,
+			"86": 800
+		}
+	},
+	"24": {
+		"name": "Mayonnaise Machine",
+		"minutes": 180,
+		"byOutput": {
+			"306": 180,
+			"307": 180,
+			"308": 180,
+			"807": 180
+		}
+	},
+	"25": {
+		"name": "Seed Maker",
+		"minutes": 20,
+		"byOutput": {}
+	},
+	"90": {
+		"name": "Bone Mill",
+		"minutes": 240,
+		"byOutput": {
+			"466": 240,
+			"465": 240,
+			"369": 240,
+			"805": 240
+		}
+	},
+	"101": {
+		"name": "101",
+		"minutes": 9000,
+		"byOutput": {}
+	},
+	"105": {
+		"name": "Tapper",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"114": {
+		"name": "Charcoal Kiln",
+		"minutes": 30,
+		"byOutput": {
+			"382": 30
+		}
+	},
+	"117": {
+		"name": "117",
+		"minutes": 1600,
+		"byOutput": {
+			"167": 1600
+		}
+	},
+	"127": {
+		"name": "127",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"128": {
+		"name": "128",
+		"minutes": 1600,
+		"byOutput": {
+			"422": 1600,
+			"281": 1600,
+			"257": 1600,
+			"420": 1600,
+			"404": 1600
+		}
+	},
+	"154": {
+		"name": "Worm Bin",
+		"minutes": 1600,
+		"byOutput": {
+			"685": 1600
+		}
+	},
+	"156": {
+		"name": "Slime Incubator",
+		"minutes": 4000,
+		"byOutput": {}
+	},
+	"158": {
+		"name": "Slime Egg-Press",
+		"minutes": 1200,
+		"byOutput": {
+			"439": 1200,
+			"437": 1200,
+			"413": 1200,
+			"680": 1200
+		}
+	},
+	"160": {
+		"name": "160",
+		"minutes": 1600,
+		"byOutput": {
+			"386": 1600
+		}
+	},
+	"163": {
+		"name": "Cask",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"182": {
+		"name": "Geode Crusher",
+		"minutes": 60,
+		"byOutput": {}
+	},
+	"211": {
+		"name": "211",
+		"minutes": 180,
+		"byOutput": {
+			"724": 180,
+			"725": 180,
+			"726": 180,
+			"388": 180
+		}
+	},
+	"231": {
+		"name": "Solar Panel",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"246": {
+		"name": "246",
+		"minutes": 1600,
+		"byOutput": {
+			"395": 1600
+		}
+	},
+	"254": {
+		"name": "Ostrich Incubator",
+		"minutes": 15000,
+		"byOutput": {}
+	},
+	"264": {
+		"name": "Heavy Tapper",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"265": {
+		"name": "265",
+		"minutes": 60,
+		"byOutput": {}
+	},
+	"280": {
+		"name": "280",
+		"minutes": 1600,
+		"byOutput": {
+			"74": 1600
+		}
+	},
+	"Anvil": {
+		"name": "Anvil",
+		"minutes": null,
+		"byOutput": {}
+	},
+	"BaitMaker": {
+		"name": "Bait Maker",
+		"minutes": 10,
+		"byOutput": {
+			"SpecificBait": 10
+		}
+	},
+	"Dehydrator": {
+		"name": "Dehydrator",
+		"minutes": 1600,
+		"byOutput": {
+			"Raisins": 1600,
+			"DriedFruit": 1600,
+			"DriedMushrooms": 1600
+		}
+	},
+	"DeluxeWormBin": {
+		"name": "Deluxe Worm Bin",
+		"minutes": 1600,
+		"byOutput": {
+			"DeluxeBait": 1600
+		}
+	},
+	"FishSmoker": {
+		"name": "Fish Smoker",
+		"minutes": 50,
+		"byOutput": {
+			"SmokedFish": 50
+		}
+	},
+	"HeavyFurnace": {
+		"name": "Heavy Furnace",
+		"minutes": 210,
+		"byOutput": {
+			"334": 30,
+			"335": 120,
+			"336": 300,
+			"337": 480,
+			"338": 90,
+			"277": 10,
+			"910": 560
+		}
+	},
+	"MushroomLog": {
+		"name": "Mushroom Log",
+		"minutes": 4800,
+		"byOutput": {}
+	}
+}

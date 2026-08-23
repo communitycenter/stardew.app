@@ -27,6 +27,7 @@ export const saves = mysqlTable(
 		cooking: json("cooking").notNull().default({}),
 		crafting: json("crafting").notNull().default({}),
 		shipping: json("shipping").notNull().default({}),
+		items: json("items").notNull().default({}),
 		museum: json("museum").notNull().default({}),
 		social: json("social").notNull().default({}),
 		monsters: json("monsters").notNull().default({}),

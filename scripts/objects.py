@@ -59,12 +59,15 @@ def get_objects() -> dict[str, Object]:
 
         minVersion = "1.5.0" if key in ALPHA_OBJ else "1.6.0"
 
+        price = value.get("Price", 0) or 0
+
         output[key] = {
             "category": category,
             "description": description,
             # "iconURL": iconURL, # As of 3.0.0, we now have the CDN link to the images
             "minVersion": minVersion,
             "name": name,
+            "price": price,
         }
 
     return output

@@ -65,11 +65,14 @@ def get_bigcraftables() -> dict[str, BigObject]:
         # else:
         #     iconURL = None
 
+        price = value.get("Price", 0) or 0
+
         output[itemID] = {
             "description": description,
             # "iconURL": iconURL,
             "minVersion": minVersion,
             "name": name,
+            "price": price,
         }
 
     return output

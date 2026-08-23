@@ -7,6 +7,7 @@ import {
 	parseCrafting,
 	parseFishing,
 	parseGeneral,
+	parseItems,
 	parseMonsters,
 	parseMuseum,
 	parsePerfection,
@@ -14,6 +15,7 @@ import {
 	parseRarecrows,
 	parseShipping,
 	parseSocial,
+	parseWorldItems,
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseAnimals } from "./parsers/animals";
@@ -108,6 +110,10 @@ export function parseSaveFile(xml: string) {
 
 		const parsedRarecrows = parseRarecrows(prefix, saveFile.SaveGame, players);
 
+		// all items found in the world (chests, machines, fridges, etc.),
+		// shared across every player like walnuts
+		const parsedWorldItems = parseWorldItems(prefix, saveFile.SaveGame);
+
 		const findInGameLocation = (location: string) => {
 			return saveFile.SaveGame.locations.GameLocation.find(
 				(obj: any) => obj[`@_${prefix}:type`] === location,
@@ -154,6 +160,12 @@ export function parseSaveFile(xml: string) {
 				cooking: parseCooking(player, version),
 				crafting: parseCrafting(player),
 				shipping: parseShipping(player, version),
+				items: parseItems(
+					player,
+					parsedWorldItems,
+					saveFile.SaveGame.player,
+					prefix,
+				),
 				museum: parsedMuseum,
 				social: parseSocial(
 					player,

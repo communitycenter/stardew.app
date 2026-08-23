@@ -15,6 +15,13 @@
 			"when": 1718511718218,
 			"tag": "0001_futuristic_bullseye",
 			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "5",
+			"when": 1750377600000,
+			"tag": "0002_add_items",
+			"breakpoints": true
 		}
 	]
 }

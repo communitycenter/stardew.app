@@ -19,6 +19,7 @@ import type { CookingRet } from "@/lib/parsers/cooking";
 import type { CraftingRet } from "@/lib/parsers/crafting";
 import type { FishRet } from "@/lib/parsers/fishing";
 import type { GeneralRet } from "@/lib/parsers/general";
+import type { ItemsRet } from "@/lib/parsers/items";
 import type { MonstersRet } from "@/lib/parsers/monsters";
 import type { MuseumRet } from "@/lib/parsers/museum";
 import type { NotesRet } from "@/lib/parsers/notes";
@@ -45,6 +46,7 @@ export interface PlayerType {
 	cooking?: CookingRet;
 	crafting?: CraftingRet;
 	shipping?: ShippingRet;
+	items?: ItemsRet;
 	museum?: MuseumRet;
 	social?: SocialRet;
 	monsters?: MonstersRet;

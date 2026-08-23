@@ -30,6 +30,9 @@ export const saves = mysqlTable(
 		shipping: json()
 			.default(sql`JSON_OBJECT()`)
 			.notNull(),
+		items: json()
+			.default(sql`JSON_OBJECT()`)
+			.notNull(),
 		museum: json()
 			.default(sql`JSON_OBJECT()`)
 			.notNull(),

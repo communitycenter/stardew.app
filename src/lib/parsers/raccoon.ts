@@ -49,7 +49,7 @@ function isRequestReward(
 const objects: Record<
 	string,
 	Record<string, string | null>
-> = objectsRaw as Record<string, Record<string, string | null>>;
+> = objectsRaw as unknown as Record<string, Record<string, string | null>>;
 
 const requests = requestsRaw as Requests;
 

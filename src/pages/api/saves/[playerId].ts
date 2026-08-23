@@ -30,6 +30,7 @@ const mergeableFields = [
 	"powers",
 	"rarecrows",
 	"animals",
+	"items",
 ] as const satisfies ReadonlyArray<keyof Player>;
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {

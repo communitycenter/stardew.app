@@ -2,351 +2,421 @@
 	"8": {
 		"description": "Prevents crows from attacking your crops. Has a limited radius (about 8 \"tiles\").",
 		"minVersion": "1.5.0",
-		"name": "Scarecrow"
+		"name": "Scarecrow",
+		"price": 50
 	},
 	"9": {
 		"description": "Collects energy from lightning storms and turns it into battery packs.",
 		"minVersion": "1.5.0",
-		"name": "Lightning Rod"
+		"name": "Lightning Rod",
+		"price": 50
 	},
 	"10": {
 		"description": "Place outside and wait for delicious honey! (Except in Winter).",
 		"minVersion": "1.5.0",
-		"name": "Bee House"
+		"name": "Bee House",
+		"price": 50
 	},
 	"12": {
 		"description": "Place a fruit or vegetable in here. Eventually it will turn into a beverage.",
 		"minVersion": "1.5.0",
-		"name": "Keg"
+		"name": "Keg",
+		"price": 50
 	},
 	"13": {
 		"description": "Turns ore and coal into metal bars.",
 		"minVersion": "1.5.0",
-		"name": "Furnace"
+		"name": "Furnace",
+		"price": 50
 	},
 	"15": {
 		"description": "Turns vegetables into pickles and fruit into jam.",
 		"minVersion": "1.5.0",
-		"name": "Preserves Jar"
+		"name": "Preserves Jar",
+		"price": 50
 	},
 	"16": {
 		"description": "Turns milk into cheese.",
 		"minVersion": "1.5.0",
-		"name": "Cheese Press"
+		"name": "Cheese Press",
+		"price": 50
 	},
 	"17": {
 		"description": "Turns raw wool into fine cloth.",
 		"minVersion": "1.5.0",
-		"name": "Loom"
+		"name": "Loom",
+		"price": 50
 	},
 	"19": {
 		"description": "Makes gourmet truffle oil.",
 		"minVersion": "1.5.0",
-		"name": "Oil Maker"
+		"name": "Oil Maker",
+		"price": 50
 	},
 	"20": {
 		"description": "Turns fishing trash into resources.",
 		"minVersion": "1.5.0",
-		"name": "Recycling Machine"
+		"name": "Recycling Machine",
+		"price": 50
 	},
 	"21": {
 		"description": "Insert a gem of your choice and it will grow copies.",
 		"minVersion": "1.5.0",
-		"name": "Crystalarium"
+		"name": "Crystalarium",
+		"price": 50
 	},
 	"24": {
 		"description": "Turns eggs into mayonnaise.",
 		"minVersion": "1.5.0",
-		"name": "Mayonnaise Machine"
+		"name": "Mayonnaise Machine",
+		"price": 50
 	},
 	"25": {
 		"description": "Place crops inside to produce a varying amount of seeds. Doesn't work with fruit tree crops.",
 		"minVersion": "1.5.0",
-		"name": "Seed Maker"
+		"name": "Seed Maker",
+		"price": 50
 	},
 	"37": {
 		"description": "Use an item on this to change what's displayed. The item won't be consumed.",
 		"minVersion": "1.5.0",
-		"name": "Wood Sign"
+		"name": "Wood Sign",
+		"price": 5
 	},
 	"38": {
 		"description": "Use an item on this to change what's displayed. The item won't be consumed.",
 		"minVersion": "1.5.0",
-		"name": "Stone Sign"
+		"name": "Stone Sign",
+		"price": 5
 	},
 	"39": {
 		"description": "Use an item on this to change what's displayed. The item won't be consumed.",
 		"minVersion": "1.5.0",
-		"name": "Dark Sign"
+		"name": "Dark Sign",
+		"price": 5
 	},
 	"62": {
 		"description": "Grows crops from any season when indoors. Outdoors, it can only house seasonal crops.",
 		"minVersion": "1.5.0",
-		"name": "Garden Pot"
+		"name": "Garden Pot",
+		"price": 1000
 	},
 	"71": {
 		"description": "Use this to move down a level in the mines.",
 		"minVersion": "1.5.0",
-		"name": "Staircase"
+		"name": "Staircase",
+		"price": 0
 	},
 	"83": {
 		"description": "There's something unsettling about the looks of this statue.",
 		"minVersion": "1.5.0",
-		"name": "Wicked Statue"
+		"name": "Wicked Statue",
+		"price": 0
 	},
 	"90": {
 		"description": "Turns bone items into fertilizers.",
 		"minVersion": "1.5.0",
-		"name": "Bone Mill"
+		"name": "Bone Mill",
+		"price": 0
 	},
 	"105": {
 		"description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product!",
 		"minVersion": "1.5.0",
-		"name": "Tapper"
+		"name": "Tapper",
+		"price": 0
 	},
 	"108": {
 		"description": "Flowers planted in an oak barrel. Blooms in spring and summer.",
 		"minVersion": "1.5.0",
-		"name": "Tub o' Flowers"
+		"name": "Tub o' Flowers",
+		"price": 0
 	},
 	"114": {
 		"description": "Turns 10 pieces of wood into one piece of coal.",
 		"minVersion": "1.5.0",
-		"name": "Charcoal Kiln"
+		"name": "Charcoal Kiln",
+		"price": 0
 	},
 	"130": {
 		"description": "A place to store your items.",
 		"minVersion": "1.5.0",
-		"name": "Chest"
+		"name": "Chest",
+		"price": 0
 	},
 	"143": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Wooden Brazier"
+		"name": "Wooden Brazier",
+		"price": 25
 	},
 	"144": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Stone Brazier"
+		"name": "Stone Brazier",
+		"price": 40
 	},
 	"145": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Gold Brazier"
+		"name": "Gold Brazier",
+		"price": 100
 	},
 	"146": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Campfire"
+		"name": "Campfire",
+		"price": 0
 	},
 	"147": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Stump Brazier"
+		"name": "Stump Brazier",
+		"price": 80
 	},
 	"148": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Carved Brazier"
+		"name": "Carved Brazier",
+		"price": 200
 	},
 	"149": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Skull Brazier"
+		"name": "Skull Brazier",
+		"price": 300
 	},
 	"150": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Barrel Brazier"
+		"name": "Barrel Brazier",
+		"price": 80
 	},
 	"151": {
 		"description": "Provides a moderate amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Marble Brazier"
+		"name": "Marble Brazier",
+		"price": 500
 	},
 	"152": {
 		"description": "Provides a good amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Wood Lamp-post"
+		"name": "Wood Lamp-post",
+		"price": 50
 	},
 	"153": {
 		"description": "Provides a good amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Iron Lamp-post"
+		"name": "Iron Lamp-post",
+		"price": 100
 	},
 	"154": {
 		"description": "Produces bait on a regular basis. The worms are self-sufficient.",
 		"minVersion": "1.5.0",
-		"name": "Worm Bin"
+		"name": "Worm Bin",
+		"price": 0
 	},
 	"156": {
 		"description": "Hatches slimes eggs into slimes. Allows you to raise slimes outdoors.",
 		"minVersion": "1.5.0",
-		"name": "Slime Incubator"
+		"name": "Slime Incubator",
+		"price": 0
 	},
 	"158": {
 		"description": "Compresses 100 pieces of slime into a slime egg. It's a miracle of science!",
 		"minVersion": "1.5.0",
-		"name": "Slime Egg-Press"
+		"name": "Slime Egg-Press",
+		"price": 0
 	},
 	"163": {
 		"description": "Use in the cellar to age products like wine and cheese.",
 		"minVersion": "1.5.0",
-		"name": "Cask"
+		"name": "Cask",
+		"price": 0
 	},
 	"167": {
 		"description": "Prevents crows from attacking your crops. Has a large radius (about 16 \"tiles\").",
 		"minVersion": "1.5.0",
-		"name": "Deluxe Scarecrow"
+		"name": "Deluxe Scarecrow",
+		"price": 50
 	},
 	"182": {
 		"description": "Breaks geodes open automatically.",
 		"minVersion": "1.5.0",
-		"name": "Geode Crusher"
+		"name": "Geode Crusher",
+		"price": 0
 	},
 	"209": {
 		"description": "Allows you to play your favorite tunes.",
 		"minVersion": "1.5.0",
-		"name": "Mini-Jukebox"
+		"name": "Mini-Jukebox",
+		"price": 1500
 	},
 	"231": {
 		"description": "Slowly generates batteries when left in the sun.",
 		"minVersion": "1.5.0",
-		"name": "Solar Panel"
+		"name": "Solar Panel",
+		"price": 0
 	},
 	"232": {
 		"description": "A place to store your items.",
 		"minVersion": "1.5.0",
-		"name": "Stone Chest"
+		"name": "Stone Chest",
+		"price": 0
 	},
 	"238": {
 		"description": "Place two on the farm to warp between them.",
 		"minVersion": "1.5.0",
-		"name": "Mini-Obelisk"
+		"name": "Mini-Obelisk",
+		"price": 0
 	},
 	"239": {
 		"description": "Scans the farm and displays useful information.",
 		"minVersion": "1.5.0",
-		"name": "Farm Computer"
+		"name": "Farm Computer",
+		"price": 0
 	},
 	"254": {
 		"description": "Hatches ostrich eggs into baby ostriches. Place in a barn.",
 		"minVersion": "1.5.0",
-		"name": "Ostrich Incubator"
+		"name": "Ostrich Incubator",
+		"price": 0
 	},
 	"264": {
 		"description": "Place on a maple, oak, or pine tree and wait for the reservoir to fill with product! Works twice as fast as a normal tapper.",
 		"minVersion": "1.5.0",
-		"name": "Heavy Tapper"
+		"name": "Heavy Tapper",
+		"price": 0
 	},
 	"275": {
 		"description": "Items placed inside will automatically be loaded into the machine in front of it.",
 		"minVersion": "1.5.0",
-		"name": "Hopper"
+		"name": "Hopper",
+		"price": 0
 	},
 	"Anvil": {
 		"description": "Allows you to re-forge trinkets, randomizing their stats. Costs 3 iridium bars per use.",
 		"minVersion": "1.6.0",
-		"name": "Anvil"
+		"name": "Anvil",
+		"price": 50
 	},
 	"BaitMaker": {
 		"description": "Place a fish inside to create targeted bait.",
 		"minVersion": "1.6.0",
-		"name": "Bait Maker"
+		"name": "Bait Maker",
+		"price": 50
 	},
 	"BigChest": {
 		"description": "It can store almost twice as much as a regular chest.",
 		"minVersion": "1.6.0",
-		"name": "Big Chest"
+		"name": "Big Chest",
+		"price": 0
 	},
 	"BigStoneChest": {
 		"description": "It can store almost twice as much as a regular chest.",
 		"minVersion": "1.6.0",
-		"name": "Big Stone Chest"
+		"name": "Big Stone Chest",
+		"price": 0
 	},
 	"Dehydrator": {
 		"description": "Place 5 pieces of fruit or edible mushrooms inside to dry them.",
 		"minVersion": "1.6.0",
-		"name": "Dehydrator"
+		"name": "Dehydrator",
+		"price": 50
 	},
 	"DeluxeWormBin": {
 		"description": "Produces Deluxe Bait on a regular basis. The worms are self-sufficient.",
 		"minVersion": "1.6.0",
-		"name": "Deluxe Worm Bin"
+		"name": "Deluxe Worm Bin",
+		"price": 0
 	},
 	"FishSmoker": {
 		"description": "Place fish inside with a piece of coal to create smoked fish, which is worth double. The quality of the fish is preserved.",
 		"minVersion": "1.6.0",
-		"name": "Fish Smoker"
+		"name": "Fish Smoker",
+		"price": 1000
 	},
 	"HeavyFurnace": {
 		"description": "It's more efficient than a regular furnace. Requires 25 pieces of ore and 3 coal per use.",
 		"minVersion": "1.6.0",
-		"name": "Heavy Furnace"
+		"name": "Heavy Furnace",
+		"price": 50
 	},
 	"MiniForge": {
 		"description": "Now, you can use a dwarvish forge from the convenience of your home.",
 		"minVersion": "1.6.0",
-		"name": "Mini-Forge"
+		"name": "Mini-Forge",
+		"price": 50
 	},
 	"MushroomLog": {
 		"description": "Grows mushrooms every so often. The more wild trees are nearby, the better it works.",
 		"minVersion": "1.6.0",
-		"name": "Mushroom Log"
+		"name": "Mushroom Log",
+		"price": 50
 	},
 	"StatueOfBlessings": {
 		"description": "Touching the statue gives a unique blessing every day.",
 		"minVersion": "1.6.0",
-		"name": "Statue Of Blessings"
+		"name": "Statue Of Blessings",
+		"price": 50
 	},
 	"StatueOfTheDwarfKing": {
 		"description": "Choose from two mining-related powers each day.",
 		"minVersion": "1.6.0",
-		"name": "Statue Of The Dwarf King"
+		"name": "Statue Of The Dwarf King",
+		"price": 50
 	},
 	"TextSign": {
 		"description": "You can write a custom message on this sign.",
 		"minVersion": "1.6.0",
-		"name": "Text Sign"
+		"name": "Text Sign",
+		"price": 50
 	},
 	"110": {
 		"description": "Purchase at the Stardew Valley Fair for 800 tokens.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #1"
+		"name": "Rarecrow #1",
+		"price": 0
 	},
 	"113": {
 		"description": "Purchase at the Spirit's Eve festival for 5,000g.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #2"
+		"name": "Rarecrow #2",
+		"price": 0
 	},
 	"126": {
 		"description": "Purchase at the Casino for 10,000 Qi coin.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #3"
+		"name": "Rarecrow #3",
+		"price": 0
 	},
 	"136": {
 		"description": "Purchase at the Traveling Cart randomly during fall or winter for 4,000g, or purchase at the Festival of Ice for 5,000g.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #4"
+		"name": "Rarecrow #4",
+		"price": 0
 	},
 	"137": {
 		"description": "Purchase at the Flower Dance for 2,500g.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #5"
+		"name": "Rarecrow #5",
+		"price": 0
 	},
 	"138": {
 		"description": "Purchase from the Dwarf for 2,500g.",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #6"
+		"name": "Rarecrow #6",
+		"price": 0
 	},
 	"139": {
 		"description": "Donate 20 Artifacts (not counting Minerals) to the Museum. \n(Can be purchased from the Night Market once the first one is earned.)",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #7"
+		"name": "Rarecrow #7",
+		"price": 0
 	},
 	"140": {
 		"description": "Donate 40 items to the Museum.\n(Can be purchased from the Night Market once the first one is earned.)",
 		"minVersion": "1.5.0",
-		"name": "Rarecrow #8"
+		"name": "Rarecrow #8",
+		"price": 0
 	}
 }

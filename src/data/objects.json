@@ -3,4818 +3,5621 @@
 		"category": "Litter",
 		"description": "A bunch of obnoxious weeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"2": {
 		"category": "Litter",
 		"description": "Break apart to obtain diamonds.",
 		"minVersion": "1.5.0",
-		"name": "Diamond Stone"
+		"name": "Diamond Stone",
+		"price": 0
 	},
 	"4": {
 		"category": "Litter",
 		"description": "Break apart to obtain rubies.",
 		"minVersion": "1.5.0",
-		"name": "Ruby Stone"
+		"name": "Ruby Stone",
+		"price": 0
 	},
 	"6": {
 		"category": "Litter",
 		"description": "Break apart to obtain jade.",
 		"minVersion": "1.5.0",
-		"name": "Jade Stone"
+		"name": "Jade Stone",
+		"price": 0
 	},
 	"8": {
 		"category": "Litter",
 		"description": "Break apart to obtain amethysts.",
 		"minVersion": "1.5.0",
-		"name": "Amethyst Stone"
+		"name": "Amethyst Stone",
+		"price": 0
 	},
 	"10": {
 		"category": "Litter",
 		"description": "Break apart to obtain topaz.",
 		"minVersion": "1.5.0",
-		"name": "Topaz Stone"
+		"name": "Topaz Stone",
+		"price": 0
 	},
 	"12": {
 		"category": "Litter",
 		"description": "Break apart to obtain emeralds.",
 		"minVersion": "1.5.0",
-		"name": "Emerald Stone"
+		"name": "Emerald Stone",
+		"price": 0
 	},
 	"14": {
 		"category": "Litter",
 		"description": "Break apart to obtain aquamarines.",
 		"minVersion": "1.5.0",
-		"name": "Aquamarine Stone"
+		"name": "Aquamarine Stone",
+		"price": 0
 	},
 	"16": {
 		"category": "Forage",
 		"description": "A spicy root found in the spring.",
 		"minVersion": "1.5.0",
-		"name": "Wild Horseradish"
+		"name": "Wild Horseradish",
+		"price": 50
 	},
 	"18": {
 		"category": "Forage",
 		"description": "A traditional spring flower that makes a nice gift.",
 		"minVersion": "1.5.0",
-		"name": "Daffodil"
+		"name": "Daffodil",
+		"price": 30
 	},
 	"20": {
 		"category": "Forage",
 		"description": "A tasty relative of the onion.",
 		"minVersion": "1.5.0",
-		"name": "Leek"
+		"name": "Leek",
+		"price": 60
 	},
 	"22": {
 		"category": "Forage",
 		"description": "Not the prettiest flower, but the leaves make a good salad.",
 		"minVersion": "1.5.0",
-		"name": "Dandelion"
+		"name": "Dandelion",
+		"price": 40
 	},
 	"24": {
 		"category": "Vegetable",
 		"description": "A spring tuber closely related to the carrot. It has an earthy taste and is full of nutrients.",
 		"minVersion": "1.5.0",
-		"name": "Parsnip"
+		"name": "Parsnip",
+		"price": 35
 	},
 	"25": {
 		"category": "Litter",
 		"description": "There's mussels in this stone.",
 		"minVersion": "1.5.0",
-		"name": "Mussel Stone"
+		"name": "Mussel Stone",
+		"price": 0
 	},
 	"30": {
 		"category": "Basic",
 		"description": "A versatile resource used for building and fuel.",
 		"minVersion": "1.5.0",
-		"name": "Lumber"
+		"name": "Lumber",
+		"price": 2
 	},
 	"32": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"34": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"36": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"38": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"40": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"42": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"44": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Gem Stone"
+		"name": "Gem Stone",
+		"price": 0
 	},
 	"46": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Mystic Stone"
+		"name": "Mystic Stone",
+		"price": 0
 	},
 	"48": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"50": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"52": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"54": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"56": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"58": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Snowy Stone"
+		"name": "Snowy Stone",
+		"price": 0
 	},
 	"60": {
 		"category": "Mineral",
 		"description": "A precious stone with a brilliant green color.",
 		"minVersion": "1.5.0",
-		"name": "Emerald"
+		"name": "Emerald",
+		"price": 250
 	},
 	"62": {
 		"category": "Mineral",
 		"description": "A shimmery blue-green gem.",
 		"minVersion": "1.5.0",
-		"name": "Aquamarine"
+		"name": "Aquamarine",
+		"price": 180
 	},
 	"64": {
 		"category": "Mineral",
 		"description": "A precious stone that is sought after for its rich color and beautiful luster.",
 		"minVersion": "1.5.0",
-		"name": "Ruby"
+		"name": "Ruby",
+		"price": 250
 	},
 	"66": {
 		"category": "Mineral",
 		"description": "A purple variant of quartz.",
 		"minVersion": "1.5.0",
-		"name": "Amethyst"
+		"name": "Amethyst",
+		"price": 100
 	},
 	"68": {
 		"category": "Mineral",
 		"description": "Fairly common but still prized for its beauty.",
 		"minVersion": "1.5.0",
-		"name": "Topaz"
+		"name": "Topaz",
+		"price": 80
 	},
 	"69": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Banana tree. Bears fruit in the summer, or all year round when planted on Ginger Island.",
 		"minVersion": "1.5.0",
-		"name": "Banana Sapling"
+		"name": "Banana Sapling",
+		"price": 850
 	},
 	"70": {
 		"category": "Mineral",
 		"description": "A pale green ornamental stone.",
 		"minVersion": "1.5.0",
-		"name": "Jade"
+		"name": "Jade",
+		"price": 200
 	},
 	"71": {
 		"category": "Quest",
 		"description": "Purple silk shorts trimmed in luxurious gold...",
 		"minVersion": "1.5.0",
-		"name": "Trimmed Lucky Purple Shorts"
+		"name": "Trimmed Lucky Purple Shorts",
+		"price": 0
 	},
 	"72": {
 		"category": "Mineral",
 		"description": "A rare and valuable gem.",
 		"minVersion": "1.5.0",
-		"name": "Diamond"
+		"name": "Diamond",
+		"price": 750
 	},
 	"73": {
 		"category": "Basic",
 		"description": "To the parrots of Ginger Island, this nut is the finest delicacy.",
 		"minVersion": "1.5.0",
-		"name": "Golden Walnut"
+		"name": "Golden Walnut",
+		"price": 250
 	},
 	"74": {
 		"category": "Mineral",
 		"description": "A very rare and powerful substance with unknown origins.",
 		"minVersion": "1.5.0",
-		"name": "Prismatic Shard"
+		"name": "Prismatic Shard",
+		"price": 2000
 	},
 	"75": {
 		"category": "Litter",
 		"description": "Break apart to obtain geodes.",
 		"minVersion": "1.5.0",
-		"name": "Geode Stone"
+		"name": "Geode Stone",
+		"price": 0
 	},
 	"76": {
 		"category": "Litter",
 		"description": "Break apart to obtain frozen geodes.",
 		"minVersion": "1.5.0",
-		"name": "Frozen Geode Stone"
+		"name": "Frozen Geode Stone",
+		"price": 0
 	},
 	"77": {
 		"category": "Litter",
 		"description": "Break apart to obtain magma geodes.",
 		"minVersion": "1.5.0",
-		"name": "Magma Geode Stone"
+		"name": "Magma Geode Stone",
+		"price": 0
 	},
 	"78": {
 		"category": "Forage",
 		"description": "A starchy snack found in caves. It helps miners work longer.",
 		"minVersion": "1.5.0",
-		"name": "Cave Carrot"
+		"name": "Cave Carrot",
+		"price": 25
 	},
 	"79": {
 		"category": "asdf",
 		"description": "It's old and crumpled, but if you look closely you can make out the details...",
 		"minVersion": "1.5.0",
-		"name": "Secret Note"
+		"name": "Secret Note",
+		"price": 1
 	},
 	"80": {
 		"category": "Mineral",
 		"description": "A clear crystal commonly found in caves and mines.",
 		"minVersion": "1.5.0",
-		"name": "Quartz"
+		"name": "Quartz",
+		"price": 25
 	},
 	"82": {
 		"category": "Mineral",
 		"description": "A glowing red crystal commonly found near hot lava.",
 		"minVersion": "1.5.0",
-		"name": "Fire Quartz"
+		"name": "Fire Quartz",
+		"price": 100
 	},
 	"84": {
 		"category": "Mineral",
 		"description": "A crystal fabled to be the frozen tears of a yeti.",
 		"minVersion": "1.5.0",
-		"name": "Frozen Tear"
+		"name": "Frozen Tear",
+		"price": 75
 	},
 	"86": {
 		"category": "Mineral",
 		"description": "A resinous substance found near the surface.",
 		"minVersion": "1.5.0",
-		"name": "Earth Crystal"
+		"name": "Earth Crystal",
+		"price": 50
 	},
 	"88": {
 		"category": "Fruit",
 		"description": "A seed of the coconut palm. It has many culinary uses.",
 		"minVersion": "1.5.0",
-		"name": "Coconut"
+		"name": "Coconut",
+		"price": 100
 	},
 	"90": {
 		"category": "Fruit",
 		"description": "The sweet fruit of the prickly pear cactus.",
 		"minVersion": "1.5.0",
-		"name": "Cactus Fruit"
+		"name": "Cactus Fruit",
+		"price": 75
 	},
 	"91": {
 		"category": "Fruit",
 		"description": "A sweet, starchy tropical fruit.",
 		"minVersion": "1.5.0",
-		"name": "Banana"
+		"name": "Banana",
+		"price": 150
 	},
 	"92": {
 		"category": "Forage",
 		"description": "A fluid obtained from trees.",
 		"minVersion": "1.5.0",
-		"name": "Sap"
+		"name": "Sap",
+		"price": 2
 	},
 	"93": {
 		"category": "Crafting",
 		"description": "Provides a modest amount of light.",
 		"minVersion": "1.5.0",
-		"name": "Torch"
+		"name": "Torch",
+		"price": 5
 	},
 	"94": {
 		"category": "Crafting",
 		"description": "It's unclear where the blue color comes from...",
 		"minVersion": "1.5.0",
-		"name": "Spirit Torch"
+		"name": "Spirit Torch",
+		"price": 5
 	},
 	"95": {
 		"category": "Litter",
 		"description": "Contains radioactive ore.",
 		"minVersion": "1.5.0",
-		"name": "Radioactive Stone"
+		"name": "Radioactive Stone",
+		"price": 0
 	},
 	"96": {
 		"category": "Artifact",
 		"description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a red bow.",
 		"minVersion": "1.5.0",
-		"name": "Dwarf Scroll I"
+		"name": "Dwarf Scroll I",
+		"price": 1
 	},
 	"97": {
 		"category": "Artifact",
 		"description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a green ribbon.",
 		"minVersion": "1.5.0",
-		"name": "Dwarf Scroll II"
+		"name": "Dwarf Scroll II",
+		"price": 1
 	},
 	"98": {
 		"category": "Artifact",
 		"description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a blue rope.",
 		"minVersion": "1.5.0",
-		"name": "Dwarf Scroll III"
+		"name": "Dwarf Scroll III",
+		"price": 1
 	},
 	"99": {
 		"category": "Artifact",
 		"description": "A yellowed scroll of parchment filled with dwarven script. This one's tied with a golden chain.",
 		"minVersion": "1.5.0",
-		"name": "Dwarf Scroll IV"
+		"name": "Dwarf Scroll IV",
+		"price": 1
 	},
 	"100": {
 		"category": "Artifact",
 		"description": "An ancient vessel made of ceramic material. Used to transport both dry and wet goods.",
 		"minVersion": "1.5.0",
-		"name": "Chipped Amphora"
+		"name": "Chipped Amphora",
+		"price": 40
 	},
 	"101": {
 		"category": "Artifact",
 		"description": "A crudely fashioned point used for hunting.",
 		"minVersion": "1.5.0",
-		"name": "Arrowhead"
+		"name": "Arrowhead",
+		"price": 40
 	},
 	"102": {
 		"category": "asdf",
 		"description": "Writings from a wide variety of time periods.",
 		"minVersion": "1.5.0",
-		"name": "Lost Book"
+		"name": "Lost Book",
+		"price": 0
 	},
 	"103": {
 		"category": "Artifact",
 		"description": "An ancient doll covered in grime. This doll may have been used as a toy, a decoration, or a prop in some kind of ritual.",
 		"minVersion": "1.5.0",
-		"name": "Ancient Doll"
+		"name": "Ancient Doll",
+		"price": 60
 	},
 	"104": {
 		"category": "Artifact",
 		"description": "Dirty but still beautiful. On the side is a flowing script thought by some to be the ancient language of the elves. No Elvish bones have ever been found.",
 		"minVersion": "1.5.0",
-		"name": "Elvish Jewelry"
+		"name": "Elvish Jewelry",
+		"price": 200
 	},
 	"105": {
 		"category": "Artifact",
 		"description": "Ancient people chewed on these to keep their teeth clean.",
 		"minVersion": "1.5.0",
-		"name": "Chewing Stick"
+		"name": "Chewing Stick",
+		"price": 50
 	},
 	"106": {
 		"category": "Artifact",
 		"description": "This exquisite fan most likely belonged to a noblewoman. Historians believe that the valley was a popular sixth-era vacation spot for the wealthy.",
 		"minVersion": "1.5.0",
-		"name": "Ornamental Fan"
+		"name": "Ornamental Fan",
+		"price": 300
 	},
 	"107": {
 		"category": "Artifact",
 		"description": "A giant dino egg... The entire shell is still intact!",
 		"minVersion": "1.5.0",
-		"name": "Dinosaur Egg"
+		"name": "Dinosaur Egg",
+		"price": 350
 	},
 	"108": {
 		"category": "Artifact",
 		"description": "A heavy black disc studded with peculiar red stones. When you hold it, you're overwhelmed with a feeling of dread.",
 		"minVersion": "1.5.0",
-		"name": "Rare Disc"
+		"name": "Rare Disc",
+		"price": 300
 	},
 	"109": {
 		"category": "Artifact",
 		"description": "It's the remains of an ancient sword. Most of the blade has turned to rust, but the hilt is very finely crafted.",
 		"minVersion": "1.5.0",
-		"name": "Ancient Sword"
+		"name": "Ancient Sword",
+		"price": 100
 	},
 	"110": {
 		"category": "Artifact",
 		"description": "A plain old spoon, probably ten years old. Not very interesting.",
 		"minVersion": "1.5.0",
-		"name": "Rusty Spoon"
+		"name": "Rusty Spoon",
+		"price": 25
 	},
 	"111": {
 		"category": "Artifact",
 		"description": "An old spur that was once attached to a cowboy's boot. People must have been raising animals in this area for many generations.",
 		"minVersion": "1.5.0",
-		"name": "Rusty Spur"
+		"name": "Rusty Spur",
+		"price": 25
 	},
 	"112": {
 		"category": "Artifact",
 		"description": "A well preserved cog that must have been part of some ancient machine. This could be dwarven technology.",
 		"minVersion": "1.5.0",
-		"name": "Rusty Cog"
+		"name": "Rusty Cog",
+		"price": 25
 	},
 	"113": {
 		"category": "Artifact",
 		"description": "It's a statue of a chicken on a bronze base. The ancient people of this area must have been very fond of chickens.",
 		"minVersion": "1.5.0",
-		"name": "Chicken Statue"
+		"name": "Chicken Statue",
+		"price": 50
 	},
 	"114": {
 		"category": "Artifact",
 		"description": "It's a dry old seed from some ancient plant. By all appearances it's long since dead...",
 		"minVersion": "1.5.0",
-		"name": "Ancient Seed"
+		"name": "Ancient Seed",
+		"price": 5
 	},
 	"115": {
 		"category": "Artifact",
 		"description": "Some kind of gnarly old digging tool.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Tool"
+		"name": "Prehistoric Tool",
+		"price": 50
 	},
 	"116": {
 		"category": "Artifact",
 		"description": "A starfish from the primordial ocean. It's an unusually pristine specimen!",
 		"minVersion": "1.5.0",
-		"name": "Dried Starfish"
+		"name": "Dried Starfish",
+		"price": 40
 	},
 	"117": {
 		"category": "Artifact",
 		"description": "It may have belonged to ancient pirates.",
 		"minVersion": "1.5.0",
-		"name": "Anchor"
+		"name": "Anchor",
+		"price": 100
 	},
 	"118": {
 		"category": "Artifact",
 		"description": "A mixture of glass shards smoothed by centuries of ocean surf. These could have belonged to an ancient mosaic or necklace.",
 		"minVersion": "1.5.0",
-		"name": "Glass Shards"
+		"name": "Glass Shards",
+		"price": 20
 	},
 	"119": {
 		"category": "Artifact",
 		"description": "It's a prehistoric wind instrument carved from an animal's bone. It produces an eerie tone.",
 		"minVersion": "1.5.0",
-		"name": "Bone Flute"
+		"name": "Bone Flute",
+		"price": 100
 	},
 	"120": {
 		"category": "Artifact",
 		"description": "One of the earliest tools employed by humans. This \"crude\" tool was created by striking one rock with another to form a sharp edge.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Handaxe"
+		"name": "Prehistoric Handaxe",
+		"price": 50
 	},
 	"121": {
 		"category": "Artifact",
 		"description": "It's one of the helmets commonly worn by dwarves. The thick metal plating protects them from falling debris and stalactites.",
 		"minVersion": "1.5.0",
-		"name": "Dwarvish Helm"
+		"name": "Dwarvish Helm",
+		"price": 100
 	},
 	"122": {
 		"category": "Artifact",
 		"description": "It's a piece of the advanced technology once known to the dwarves. It's still glowing and humming, but you're unable to understand how it works.",
 		"minVersion": "1.5.0",
-		"name": "Dwarf Gadget"
+		"name": "Dwarf Gadget",
+		"price": 200
 	},
 	"123": {
 		"category": "Artifact",
 		"description": "It's a drum made from wood and animal skin. It has a low, reverberating tone.",
 		"minVersion": "1.5.0",
-		"name": "Ancient Drum"
+		"name": "Ancient Drum",
+		"price": 100
 	},
 	"124": {
 		"category": "Artifact",
 		"description": "A creepy golden mask probably used in an ancient magic ritual. A socket in the forehead contains a large purple gemstone.",
 		"minVersion": "1.5.0",
-		"name": "Golden Mask"
+		"name": "Golden Mask",
+		"price": 500
 	},
 	"125": {
 		"category": "Artifact",
 		"description": "It's a golden slab with hieroglyphs and pictures emblazoned onto the front.",
 		"minVersion": "1.5.0",
-		"name": "Golden Relic"
+		"name": "Golden Relic",
+		"price": 250
 	},
 	"126": {
 		"category": "Artifact",
 		"description": "???",
 		"minVersion": "1.5.0",
-		"name": "Strange Doll (green)"
+		"name": "Strange Doll (green)",
+		"price": 1000
 	},
 	"127": {
 		"category": "Artifact",
 		"description": "???",
 		"minVersion": "1.5.0",
-		"name": "Strange Doll (yellow)"
+		"name": "Strange Doll (yellow)",
+		"price": 1000
 	},
 	"128": {
 		"category": "Fish",
 		"description": "Inflates when threatened.",
 		"minVersion": "1.5.0",
-		"name": "Pufferfish"
+		"name": "Pufferfish",
+		"price": 200
 	},
 	"129": {
 		"category": "Fish",
 		"description": "A small silver fish found in the ocean.",
 		"minVersion": "1.5.0",
-		"name": "Anchovy"
+		"name": "Anchovy",
+		"price": 30
 	},
 	"130": {
 		"category": "Fish",
 		"description": "A large fish that lives in the ocean.",
 		"minVersion": "1.5.0",
-		"name": "Tuna"
+		"name": "Tuna",
+		"price": 100
 	},
 	"131": {
 		"category": "Fish",
 		"description": "A common ocean fish.",
 		"minVersion": "1.5.0",
-		"name": "Sardine"
+		"name": "Sardine",
+		"price": 40
 	},
 	"132": {
 		"category": "Fish",
 		"description": "A fairly common river fish that becomes active at night.",
 		"minVersion": "1.5.0",
-		"name": "Bream"
+		"name": "Bream",
+		"price": 45
 	},
 	"136": {
 		"category": "Fish",
 		"description": "A popular fish that lives in lakes.",
 		"minVersion": "1.5.0",
-		"name": "Largemouth Bass"
+		"name": "Largemouth Bass",
+		"price": 100
 	},
 	"137": {
 		"category": "Fish",
 		"description": "A freshwater fish that is very sensitive to pollution.",
 		"minVersion": "1.5.0",
-		"name": "Smallmouth Bass"
+		"name": "Smallmouth Bass",
+		"price": 50
 	},
 	"138": {
 		"category": "Fish",
 		"description": "A freshwater trout with colorful markings.",
 		"minVersion": "1.5.0",
-		"name": "Rainbow Trout"
+		"name": "Rainbow Trout",
+		"price": 65
 	},
 	"139": {
 		"category": "Fish",
 		"description": "Swims upstream to lay its eggs.",
 		"minVersion": "1.5.0",
-		"name": "Salmon"
+		"name": "Salmon",
+		"price": 75
 	},
 	"140": {
 		"category": "Fish",
 		"description": "A freshwater fish caught at night.",
 		"minVersion": "1.5.0",
-		"name": "Walleye"
+		"name": "Walleye",
+		"price": 105
 	},
 	"141": {
 		"category": "Fish",
 		"description": "A freshwater fish of the winter.",
 		"minVersion": "1.5.0",
-		"name": "Perch"
+		"name": "Perch",
+		"price": 55
 	},
 	"142": {
 		"category": "Fish",
 		"description": "A common pond fish.",
 		"minVersion": "1.5.0",
-		"name": "Carp"
+		"name": "Carp",
+		"price": 30
 	},
 	"143": {
 		"category": "Fish",
 		"description": "An uncommon fish found in streams.",
 		"minVersion": "1.5.0",
-		"name": "Catfish"
+		"name": "Catfish",
+		"price": 200
 	},
 	"144": {
 		"category": "Fish",
 		"description": "A freshwater fish that's difficult to catch.",
 		"minVersion": "1.5.0",
-		"name": "Pike"
+		"name": "Pike",
+		"price": 100
 	},
 	"145": {
 		"category": "Fish",
 		"description": "A common river fish.",
 		"minVersion": "1.5.0",
-		"name": "Sunfish"
+		"name": "Sunfish",
+		"price": 30
 	},
 	"146": {
 		"category": "Fish",
 		"description": "Long ago these were kept as pets.",
 		"minVersion": "1.5.0",
-		"name": "Red Mullet"
+		"name": "Red Mullet",
+		"price": 75
 	},
 	"147": {
 		"category": "Fish",
 		"description": "A common ocean fish.",
 		"minVersion": "1.5.0",
-		"name": "Herring"
+		"name": "Herring",
+		"price": 30
 	},
 	"148": {
 		"category": "Fish",
 		"description": "A long, slippery little fish.",
 		"minVersion": "1.5.0",
-		"name": "Eel"
+		"name": "Eel",
+		"price": 85
 	},
 	"149": {
 		"category": "Fish",
 		"description": "A mysterious and intelligent creature.",
 		"minVersion": "1.5.0",
-		"name": "Octopus"
+		"name": "Octopus",
+		"price": 150
 	},
 	"150": {
 		"category": "Fish",
 		"description": "A popular fish with a nice red color.",
 		"minVersion": "1.5.0",
-		"name": "Red Snapper"
+		"name": "Red Snapper",
+		"price": 50
 	},
 	"151": {
 		"category": "Fish",
 		"description": "A deep sea creature that can grow to enormous size.",
 		"minVersion": "1.5.0",
-		"name": "Squid"
+		"name": "Squid",
+		"price": 80
 	},
 	"152": {
 		"category": "Fish",
 		"description": "It can be used in cooking.",
 		"minVersion": "1.5.0",
-		"name": "Seaweed"
+		"name": "Seaweed",
+		"price": 20
 	},
 	"153": {
 		"category": "Fish",
 		"description": "It's really slimy.",
 		"minVersion": "1.5.0",
-		"name": "Green Algae"
+		"name": "Green Algae",
+		"price": 15
 	},
 	"154": {
 		"category": "Fish",
 		"description": "A slippery, slimy creature found on the ocean floor.",
 		"minVersion": "1.5.0",
-		"name": "Sea Cucumber"
+		"name": "Sea Cucumber",
+		"price": 75
 	},
 	"155": {
 		"category": "Fish",
 		"description": "A rare, purple variety of sea cucumber.",
 		"minVersion": "1.5.0",
-		"name": "Super Cucumber"
+		"name": "Super Cucumber",
+		"price": 250
 	},
 	"156": {
 		"category": "Fish",
 		"description": "A pale, blind fish found in underground lakes.",
 		"minVersion": "1.5.0",
-		"name": "Ghostfish"
+		"name": "Ghostfish",
+		"price": 45
 	},
 	"157": {
 		"category": "Fish",
 		"description": "It's super slimy.",
 		"minVersion": "1.5.0",
-		"name": "White Algae"
+		"name": "White Algae",
+		"price": 25
 	},
 	"158": {
 		"category": "Fish",
 		"description": "A bizarre fish that's shaped like a brick.",
 		"minVersion": "1.5.0",
-		"name": "Stonefish"
+		"name": "Stonefish",
+		"price": 300
 	},
 	"159": {
 		"category": "Fish",
 		"description": "Lives deep in the ocean but likes to lay its eggs in the warm summer water.",
 		"minVersion": "1.5.0",
-		"name": "Crimsonfish"
+		"name": "Crimsonfish",
+		"price": 1500
 	},
 	"160": {
 		"category": "Fish",
 		"description": "Uses a bioluminescent dangler to attract prey.",
 		"minVersion": "1.5.0",
-		"name": "Angler"
+		"name": "Angler",
+		"price": 900
 	},
 	"161": {
 		"category": "Fish",
 		"description": "A rare fish that thrives in extremely cold conditions.",
 		"minVersion": "1.5.0",
-		"name": "Ice Pip"
+		"name": "Ice Pip",
+		"price": 500
 	},
 	"162": {
 		"category": "Fish",
 		"description": "It can somehow survive in pools of red-hot lava.",
 		"minVersion": "1.5.0",
-		"name": "Lava Eel"
+		"name": "Lava Eel",
+		"price": 700
 	},
 	"163": {
 		"category": "Fish",
 		"description": "The king of all fish! They said he'd never be caught.",
 		"minVersion": "1.5.0",
-		"name": "Legend"
+		"name": "Legend",
+		"price": 5000
 	},
 	"164": {
 		"category": "Fish",
 		"description": "It tries to hide using camouflage.",
 		"minVersion": "1.5.0",
-		"name": "Sandfish"
+		"name": "Sandfish",
+		"price": 75
 	},
 	"165": {
 		"category": "Fish",
 		"description": "It's like a regular carp but with a sharp stinger.",
 		"minVersion": "1.5.0",
-		"name": "Scorpion Carp"
+		"name": "Scorpion Carp",
+		"price": 150
 	},
 	"166": {
 		"category": "Basic",
 		"description": "Wow, it's loaded with treasure! This is sure to fetch a good price.",
 		"minVersion": "1.5.0",
-		"name": "Treasure Chest"
+		"name": "Treasure Chest",
+		"price": 5000
 	},
 	"167": {
 		"category": "Trash",
 		"description": "The flagship product of Joja corporation.",
 		"minVersion": "1.5.0",
-		"name": "Joja Cola"
+		"name": "Joja Cola",
+		"price": 25
 	},
 	"168": {
 		"category": "Trash",
 		"description": "It's junk.",
 		"minVersion": "1.5.0",
-		"name": "Trash"
+		"name": "Trash",
+		"price": 0
 	},
 	"169": {
 		"category": "Trash",
 		"description": "A piece of wood from the sea.",
 		"minVersion": "1.5.0",
-		"name": "Driftwood"
+		"name": "Driftwood",
+		"price": 0
 	},
 	"170": {
 		"category": "Trash",
 		"description": "It looks like someone lost their glasses. They're busted.",
 		"minVersion": "1.5.0",
-		"name": "Broken Glasses"
+		"name": "Broken Glasses",
+		"price": 0
 	},
 	"171": {
 		"category": "Trash",
 		"description": "It's a JojaNet 2.0 trial CD. They must've made a billion of these things.",
 		"minVersion": "1.5.0",
-		"name": "Broken CD"
+		"name": "Broken CD",
+		"price": 0
 	},
 	"172": {
 		"category": "Trash",
 		"description": "This is trash.",
 		"minVersion": "1.5.0",
-		"name": "Soggy Newspaper"
+		"name": "Soggy Newspaper",
+		"price": 0
 	},
 	"174": {
 		"category": "Animal Product",
 		"description": "It's an uncommonly large white egg!",
 		"minVersion": "1.5.0",
-		"name": "Large Egg"
+		"name": "Large Egg",
+		"price": 95
 	},
 	"176": {
 		"category": "Animal Product",
 		"description": "A regular white chicken egg.",
 		"minVersion": "1.5.0",
-		"name": "Egg"
+		"name": "Egg",
+		"price": 50
 	},
 	"178": {
 		"category": "Basic",
 		"description": "Dried grass used as animal food.",
 		"minVersion": "1.5.0",
-		"name": "Hay"
+		"name": "Hay",
+		"price": 0
 	},
 	"180": {
 		"category": "Animal Product",
 		"description": "A regular brown chicken egg.",
 		"minVersion": "1.5.0",
-		"name": "Egg"
+		"name": "Egg",
+		"price": 50
 	},
 	"182": {
 		"category": "Animal Product",
 		"description": "It's an uncommonly large brown egg!",
 		"minVersion": "1.5.0",
-		"name": "Large Egg"
+		"name": "Large Egg",
+		"price": 95
 	},
 	"184": {
 		"category": "Animal Product",
 		"description": "A jug of cow's milk.",
 		"minVersion": "1.5.0",
-		"name": "Milk"
+		"name": "Milk",
+		"price": 125
 	},
 	"186": {
 		"category": "Animal Product",
 		"description": "A large jug of cow's milk.",
 		"minVersion": "1.5.0",
-		"name": "Large Milk"
+		"name": "Large Milk",
+		"price": 190
 	},
 	"188": {
 		"category": "Vegetable",
 		"description": "A juicy little bean with a cool, crisp snap.",
 		"minVersion": "1.5.0",
-		"name": "Green Bean"
+		"name": "Green Bean",
+		"price": 40
 	},
 	"190": {
 		"category": "Vegetable",
 		"description": "Valuable, but slow-growing. Despite its pale color, the florets are packed with nutrients.",
 		"minVersion": "1.5.0",
-		"name": "Cauliflower"
+		"name": "Cauliflower",
+		"price": 175
 	},
 	"191": {
 		"category": "Quest",
 		"description": "A fancy necklace found in the water outside of the bath house. It's still wet...",
 		"minVersion": "1.5.0",
-		"name": "Ornate Necklace"
+		"name": "Ornate Necklace",
+		"price": 0
 	},
 	"192": {
 		"category": "Vegetable",
 		"description": "A widely cultivated tuber.",
 		"minVersion": "1.5.0",
-		"name": "Potato"
+		"name": "Potato",
+		"price": 80
 	},
 	"194": {
 		"category": "Cooking",
 		"description": "Sunny-side up.",
 		"minVersion": "1.5.0",
-		"name": "Fried Egg"
+		"name": "Fried Egg",
+		"price": 35
 	},
 	"195": {
 		"category": "Cooking",
 		"description": "It's super fluffy.",
 		"minVersion": "1.5.0",
-		"name": "Omelet"
+		"name": "Omelet",
+		"price": 125
 	},
 	"196": {
 		"category": "Cooking",
 		"description": "A healthy garden salad.",
 		"minVersion": "1.5.0",
-		"name": "Salad"
+		"name": "Salad",
+		"price": 110
 	},
 	"197": {
 		"category": "Cooking",
 		"description": "It smells great!",
 		"minVersion": "1.5.0",
-		"name": "Cheese Cauliflower"
+		"name": "Cheese Cauliflower",
+		"price": 300
 	},
 	"198": {
 		"category": "Cooking",
 		"description": "Baked fish on a bed of herbs.",
 		"minVersion": "1.5.0",
-		"name": "Baked Fish"
+		"name": "Baked Fish",
+		"price": 100
 	},
 	"199": {
 		"category": "Cooking",
 		"description": "It's fresh and hearty.",
 		"minVersion": "1.5.0",
-		"name": "Parsnip Soup"
+		"name": "Parsnip Soup",
+		"price": 120
 	},
 	"200": {
 		"category": "Cooking",
 		"description": "This is very nutritious.",
 		"minVersion": "1.5.0",
-		"name": "Vegetable Medley"
+		"name": "Vegetable Medley",
+		"price": 120
 	},
 	"201": {
 		"category": "Cooking",
 		"description": "You'll feel ready to take on the world!",
 		"minVersion": "1.5.0",
-		"name": "Complete Breakfast"
+		"name": "Complete Breakfast",
+		"price": 350
 	},
 	"202": {
 		"category": "Cooking",
 		"description": "It's so chewy.",
 		"minVersion": "1.5.0",
-		"name": "Fried Calamari"
+		"name": "Fried Calamari",
+		"price": 150
 	},
 	"203": {
 		"category": "Cooking",
 		"description": "What's inside?",
 		"minVersion": "1.5.0",
-		"name": "Strange Bun"
+		"name": "Strange Bun",
+		"price": 225
 	},
 	"204": {
 		"category": "Cooking",
 		"description": "A special little meal.",
 		"minVersion": "1.5.0",
-		"name": "Lucky Lunch"
+		"name": "Lucky Lunch",
+		"price": 250
 	},
 	"205": {
 		"category": "Cooking",
 		"description": "Earthy and aromatic.",
 		"minVersion": "1.5.0",
-		"name": "Fried Mushroom"
+		"name": "Fried Mushroom",
+		"price": 200
 	},
 	"206": {
 		"category": "Cooking",
 		"description": "It's popular for all the right reasons.",
 		"minVersion": "1.5.0",
-		"name": "Pizza"
+		"name": "Pizza",
+		"price": 300
 	},
 	"207": {
 		"category": "Cooking",
 		"description": "It sure is healthy.",
 		"minVersion": "1.5.0",
-		"name": "Bean Hotpot"
+		"name": "Bean Hotpot",
+		"price": 100
 	},
 	"208": {
 		"category": "Cooking",
 		"description": "Sweet and satisfying... The sugar gives it a hint of caramel.",
 		"minVersion": "1.5.0",
-		"name": "Glazed Yams"
+		"name": "Glazed Yams",
+		"price": 200
 	},
 	"209": {
 		"category": "Cooking",
 		"description": "It's bland and oily.",
 		"minVersion": "1.5.0",
-		"name": "Carp Surprise"
+		"name": "Carp Surprise",
+		"price": 150
 	},
 	"210": {
 		"category": "Cooking",
 		"description": "Crispy and golden-brown!",
 		"minVersion": "1.5.0",
-		"name": "Hashbrowns"
+		"name": "Hashbrowns",
+		"price": 120
 	},
 	"211": {
 		"category": "Cooking",
 		"description": "A double stack of fluffy, soft pancakes.",
 		"minVersion": "1.5.0",
-		"name": "Pancakes"
+		"name": "Pancakes",
+		"price": 80
 	},
 	"212": {
 		"category": "Cooking",
 		"description": "The lemon spritz makes it special.",
 		"minVersion": "1.5.0",
-		"name": "Salmon Dinner"
+		"name": "Salmon Dinner",
+		"price": 300
 	},
 	"213": {
 		"category": "Cooking",
 		"description": "It smells delicious.",
 		"minVersion": "1.5.0",
-		"name": "Fish Taco"
+		"name": "Fish Taco",
+		"price": 500
 	},
 	"214": {
 		"category": "Cooking",
 		"description": "Wow, the breading is perfect.",
 		"minVersion": "1.5.0",
-		"name": "Crispy Bass"
+		"name": "Crispy Bass",
+		"price": 150
 	},
 	"215": {
 		"category": "Cooking",
 		"description": "Spicy breaded peppers filled with cheese.",
 		"minVersion": "1.5.0",
-		"name": "Pepper Poppers"
+		"name": "Pepper Poppers",
+		"price": 200
 	},
 	"216": {
 		"category": "Cooking",
 		"description": "A crusty baguette.",
 		"minVersion": "1.5.0",
-		"name": "Bread"
+		"name": "Bread",
+		"price": 60
 	},
 	"218": {
 		"category": "Cooking",
 		"description": "These flavors are incredible!",
 		"minVersion": "1.5.0",
-		"name": "Tom Kha Soup"
+		"name": "Tom Kha Soup",
+		"price": 250
 	},
 	"219": {
 		"category": "Cooking",
 		"description": "Pretty salty.",
 		"minVersion": "1.5.0",
-		"name": "Trout Soup"
+		"name": "Trout Soup",
+		"price": 100
 	},
 	"220": {
 		"category": "Cooking",
 		"description": "Rich and moist with a thick fudge icing.",
 		"minVersion": "1.5.0",
-		"name": "Chocolate Cake"
+		"name": "Chocolate Cake",
+		"price": 200
 	},
 	"221": {
 		"category": "Cooking",
 		"description": "There's little heart candies on top.",
 		"minVersion": "1.5.0",
-		"name": "Pink Cake"
+		"name": "Pink Cake",
+		"price": 480
 	},
 	"222": {
 		"category": "Cooking",
 		"description": "Mmm, tangy and sweet!",
 		"minVersion": "1.5.0",
-		"name": "Rhubarb Pie"
+		"name": "Rhubarb Pie",
+		"price": 400
 	},
 	"223": {
 		"category": "Cooking",
 		"description": "Very chewy.",
 		"minVersion": "1.5.0",
-		"name": "Cookies"
+		"name": "Cookies",
+		"price": 140
 	},
 	"224": {
 		"category": "Cooking",
 		"description": "An old favorite.",
 		"minVersion": "1.5.0",
-		"name": "Spaghetti"
+		"name": "Spaghetti",
+		"price": 120
 	},
 	"225": {
 		"category": "Cooking",
 		"description": "Greasy but flavorful.",
 		"minVersion": "1.5.0",
-		"name": "Fried Eel"
+		"name": "Fried Eel",
+		"price": 120
 	},
 	"226": {
 		"category": "Cooking",
 		"description": "It's really spicy! Be careful.",
 		"minVersion": "1.5.0",
-		"name": "Spicy Eel"
+		"name": "Spicy Eel",
+		"price": 175
 	},
 	"227": {
 		"category": "Cooking",
 		"description": "Raw fish sliced into thin pieces.",
 		"minVersion": "1.5.0",
-		"name": "Sashimi"
+		"name": "Sashimi",
+		"price": 75
 	},
 	"228": {
 		"category": "Cooking",
 		"description": "Fish and rice wrapped in seaweed.",
 		"minVersion": "1.5.0",
-		"name": "Maki Roll"
+		"name": "Maki Roll",
+		"price": 220
 	},
 	"229": {
 		"category": "Cooking",
 		"description": "Can be used as a vessel for food or eaten by itself.",
 		"minVersion": "1.5.0",
-		"name": "Tortilla"
+		"name": "Tortilla",
+		"price": 50
 	},
 	"230": {
 		"category": "Cooking",
 		"description": "Full of antioxidants.",
 		"minVersion": "1.5.0",
-		"name": "Red Plate"
+		"name": "Red Plate",
+		"price": 400
 	},
 	"231": {
 		"category": "Cooking",
 		"description": "Tangy, cheesy, and wonderful.",
 		"minVersion": "1.5.0",
-		"name": "Eggplant Parmesan"
+		"name": "Eggplant Parmesan",
+		"price": 200
 	},
 	"232": {
 		"category": "Cooking",
 		"description": "It's creamy, sweet, and fun to eat.",
 		"minVersion": "1.5.0",
-		"name": "Rice Pudding"
+		"name": "Rice Pudding",
+		"price": 260
 	},
 	"233": {
 		"category": "Cooking",
 		"description": "It's hard to find someone who doesn't like this.",
 		"minVersion": "1.5.0",
-		"name": "Ice Cream"
+		"name": "Ice Cream",
+		"price": 120
 	},
 	"234": {
 		"category": "Cooking",
 		"description": "It's subtle and refreshing.",
 		"minVersion": "1.5.0",
-		"name": "Blueberry Tart"
+		"name": "Blueberry Tart",
+		"price": 150
 	},
 	"235": {
 		"category": "Cooking",
 		"description": "A taste of the season.",
 		"minVersion": "1.5.0",
-		"name": "Autumn's Bounty"
+		"name": "Autumn's Bounty",
+		"price": 350
 	},
 	"236": {
 		"category": "Cooking",
 		"description": "A seasonal favorite.",
 		"minVersion": "1.5.0",
-		"name": "Pumpkin Soup"
+		"name": "Pumpkin Soup",
+		"price": 300
 	},
 	"237": {
 		"category": "Cooking",
 		"description": "It's a really energizing meal.",
 		"minVersion": "1.5.0",
-		"name": "Super Meal"
+		"name": "Super Meal",
+		"price": 220
 	},
 	"238": {
 		"category": "Cooking",
 		"description": "A festive treat.",
 		"minVersion": "1.5.0",
-		"name": "Cranberry Sauce"
+		"name": "Cranberry Sauce",
+		"price": 120
 	},
 	"239": {
 		"category": "Cooking",
 		"description": "Ahh... the smell of warm bread and sage.",
 		"minVersion": "1.5.0",
-		"name": "Stuffing"
+		"name": "Stuffing",
+		"price": 165
 	},
 	"240": {
 		"category": "Cooking",
 		"description": "This'll keep you going.",
 		"minVersion": "1.5.0",
-		"name": "Farmer's Lunch"
+		"name": "Farmer's Lunch",
+		"price": 150
 	},
 	"241": {
 		"category": "Cooking",
 		"description": "A convenient snack for the explorer.",
 		"minVersion": "1.5.0",
-		"name": "Survival Burger"
+		"name": "Survival Burger",
+		"price": 180
 	},
 	"242": {
 		"category": "Cooking",
 		"description": "This'll keep you warm in the cold sea air.",
 		"minVersion": "1.5.0",
-		"name": "Dish O' The Sea"
+		"name": "Dish O' The Sea",
+		"price": 220
 	},
 	"243": {
 		"category": "Cooking",
 		"description": "This should keep your energy up.",
 		"minVersion": "1.5.0",
-		"name": "Miner's Treat"
+		"name": "Miner's Treat",
+		"price": 200
 	},
 	"244": {
 		"category": "Cooking",
 		"description": "This'll get you digging for more.",
 		"minVersion": "1.5.0",
-		"name": "Roots Platter"
+		"name": "Roots Platter",
+		"price": 100
 	},
 	"245": {
 		"category": "Basic",
 		"description": "Adds sweetness to pastries and candies. Too much can be unhealthy.",
 		"minVersion": "1.5.0",
-		"name": "Sugar"
+		"name": "Sugar",
+		"price": 50
 	},
 	"246": {
 		"category": "Basic",
 		"description": "A common cooking ingredient made from crushed wheat seeds.",
 		"minVersion": "1.5.0",
-		"name": "Wheat Flour"
+		"name": "Wheat Flour",
+		"price": 50
 	},
 	"247": {
 		"category": "Basic",
 		"description": "All purpose cooking oil.",
 		"minVersion": "1.5.0",
-		"name": "Oil"
+		"name": "Oil",
+		"price": 100
 	},
 	"248": {
 		"category": "Vegetable",
 		"description": "Adds a wonderful zestiness to dishes. High quality garlic can be pretty spicy.",
 		"minVersion": "1.5.0",
-		"name": "Garlic"
+		"name": "Garlic",
+		"price": 60
 	},
 	"250": {
 		"category": "Vegetable",
 		"description": "The waxy leaves are great in soups and stir fries.",
 		"minVersion": "1.5.0",
-		"name": "Kale"
+		"name": "Kale",
+		"price": 110
 	},
 	"251": {
 		"category": "Seed",
 		"description": "Takes 20 days to mature. Produces tea leaves during the final week of each season, except winter. No watering necessary!",
 		"minVersion": "1.5.0",
-		"name": "Tea Sapling"
+		"name": "Tea Sapling",
+		"price": 250
 	},
 	"252": {
 		"category": "Fruit",
 		"description": "The stalks are extremely tart, but make a great dessert when sweetened.",
 		"minVersion": "1.5.0",
-		"name": "Rhubarb"
+		"name": "Rhubarb",
+		"price": 220
 	},
 	"253": {
 		"category": "Cooking",
 		"description": "It's more potent than regular coffee!",
 		"minVersion": "1.5.0",
-		"name": "Triple Shot Espresso"
+		"name": "Triple Shot Espresso",
+		"price": 450
 	},
 	"254": {
 		"category": "Fruit",
 		"description": "A cool, sweet summer treat.",
 		"minVersion": "1.5.0",
-		"name": "Melon"
+		"name": "Melon",
+		"price": 250
 	},
 	"256": {
 		"category": "Vegetable",
 		"description": "Rich and slightly tangy, the Tomato has a wide variety of culinary uses.",
 		"minVersion": "1.5.0",
-		"name": "Tomato"
+		"name": "Tomato",
+		"price": 60
 	},
 	"257": {
 		"category": "Forage",
 		"description": "Sought after for its unique nutty flavor.",
 		"minVersion": "1.5.0",
-		"name": "Morel"
+		"name": "Morel",
+		"price": 150
 	},
 	"258": {
 		"category": "Fruit",
 		"description": "A popular berry reported to have many health benefits. The blue skin has the highest nutrient concentration.",
 		"minVersion": "1.5.0",
-		"name": "Blueberry"
+		"name": "Blueberry",
+		"price": 50
 	},
 	"259": {
 		"category": "Vegetable",
 		"description": "The young shoots are an edible specialty.",
 		"minVersion": "1.5.0",
-		"name": "Fiddlehead Fern"
+		"name": "Fiddlehead Fern",
+		"price": 90
 	},
 	"260": {
 		"category": "Fruit",
 		"description": "Fiery hot with a hint of sweetness.",
 		"minVersion": "1.5.0",
-		"name": "Hot Pepper"
+		"name": "Hot Pepper",
+		"price": 40
 	},
 	"261": {
 		"category": "Crafting",
 		"description": "Warp directly to Calico Desert. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Desert"
+		"name": "Warp Totem: Desert",
+		"price": 20
 	},
 	"262": {
 		"category": "Vegetable",
 		"description": "One of the most widely cultivated grains. Makes a great flour for breads and cakes.",
 		"minVersion": "1.5.0",
-		"name": "Wheat"
+		"name": "Wheat",
+		"price": 25
 	},
 	"264": {
 		"category": "Vegetable",
 		"description": "A crisp and refreshing root vegetable with hints of pepper when eaten raw.",
 		"minVersion": "1.5.0",
-		"name": "Radish"
+		"name": "Radish",
+		"price": 90
 	},
 	"265": {
 		"category": "Cooking",
 		"description": "This briny pudding will really get you into the maritime mindset!",
 		"minVersion": "1.5.0",
-		"name": "Seafoam Pudding"
+		"name": "Seafoam Pudding",
+		"price": 300
 	},
 	"266": {
 		"category": "Vegetable",
 		"description": "Often used in salads and coleslaws. The color can range from purple to blue to green-yellow depending on soil conditions.",
 		"minVersion": "1.5.0",
-		"name": "Red Cabbage"
+		"name": "Red Cabbage",
+		"price": 260
 	},
 	"267": {
 		"category": "Fish",
 		"description": "It lives on the bottom, so both eyes are on top of its head.",
 		"minVersion": "1.5.0",
-		"name": "Flounder"
+		"name": "Flounder",
+		"price": 100
 	},
 	"268": {
 		"category": "Fruit",
 		"description": "An extremely juicy fruit that grows in hot, humid weather. Slightly sweet with a sour undertone.",
 		"minVersion": "1.5.0",
-		"name": "Starfruit"
+		"name": "Starfruit",
+		"price": 750
 	},
 	"269": {
 		"category": "Fish",
 		"description": "This shy fish only feels comfortable at night.",
 		"minVersion": "1.5.0",
-		"name": "Midnight Carp"
+		"name": "Midnight Carp",
+		"price": 150
 	},
 	"270": {
 		"category": "Vegetable",
 		"description": "One of the most popular grains. The sweet, fresh cobs are a summer favorite.",
 		"minVersion": "1.5.0",
-		"name": "Corn"
+		"name": "Corn",
+		"price": 50
 	},
 	"271": {
 		"category": "Vegetable",
 		"description": "Rice in its rawest form. Run this through a mill to increase the value.",
 		"minVersion": "1.5.0",
-		"name": "Unmilled Rice"
+		"name": "Unmilled Rice",
+		"price": 30
 	},
 	"272": {
 		"category": "Vegetable",
 		"description": "A rich and wholesome relative of the tomato. Delicious fried or stewed.",
 		"minVersion": "1.5.0",
-		"name": "Eggplant"
+		"name": "Eggplant",
+		"price": 60
 	},
 	"273": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 8 days to mature. Grows faster if planted near a body of water. Harvest with the scythe.",
 		"minVersion": "1.5.0",
-		"name": "Rice Shoot"
+		"name": "Rice Shoot",
+		"price": 20
 	},
 	"274": {
 		"category": "Vegetable",
 		"description": "The bud of a thistle plant. The spiny outer leaves conceal a fleshy, filling interior.",
 		"minVersion": "1.5.0",
-		"name": "Artichoke"
+		"name": "Artichoke",
+		"price": 160
 	},
 	"275": {
 		"category": "Basic",
 		"description": "A blacksmith can open this for you. These troves often contain ancient relics and curiosities.",
 		"minVersion": "1.5.0",
-		"name": "Artifact Trove"
+		"name": "Artifact Trove",
+		"price": 0
 	},
 	"276": {
 		"category": "Vegetable",
 		"description": "A fall favorite, grown for its crunchy seeds and delicately flavored flesh. As a bonus, the hollow shell can be carved into a festive decoration.",
 		"minVersion": "1.5.0",
-		"name": "Pumpkin"
+		"name": "Pumpkin",
+		"price": 320
 	},
 	"277": {
 		"category": "Basic",
 		"description": "A gift that shows you want to stop dating someone.",
 		"minVersion": "1.5.0",
-		"name": "Wilted Bouquet"
+		"name": "Wilted Bouquet",
+		"price": 100
 	},
 	"278": {
 		"category": "Vegetable",
 		"description": "The leafy greens and fibrous stalks are healthy and delicious.",
 		"minVersion": "1.5.0",
-		"name": "Bok Choy"
+		"name": "Bok Choy",
+		"price": 80
 	},
 	"279": {
 		"category": "Cooking",
 		"description": "A rare and powerful candy infused with the essence of the prismatic shard.",
 		"minVersion": "1.5.0",
-		"name": "Magic Rock Candy"
+		"name": "Magic Rock Candy",
+		"price": 5000
 	},
 	"280": {
 		"category": "Vegetable",
 		"description": "A starchy tuber with a lot of culinary versatility.",
 		"minVersion": "1.5.0",
-		"name": "Yam"
+		"name": "Yam",
+		"price": 160
 	},
 	"281": {
 		"category": "Forage",
 		"description": "A tasty mushroom with a fruity smell and slightly peppery flavor.",
 		"minVersion": "1.5.0",
-		"name": "Chanterelle"
+		"name": "Chanterelle",
+		"price": 160
 	},
 	"282": {
 		"category": "Fruit",
 		"description": "These tart red berries are a traditional winter food.",
 		"minVersion": "1.5.0",
-		"name": "Cranberries"
+		"name": "Cranberries",
+		"price": 75
 	},
 	"283": {
 		"category": "Forage",
 		"description": "The leaves and bright red berries make a popular winter decoration.",
 		"minVersion": "1.5.0",
-		"name": "Holly"
+		"name": "Holly",
+		"price": 80
 	},
 	"284": {
 		"category": "Vegetable",
 		"description": "A sweet and earthy root vegetable. As a bonus, the leaves make a great salad.",
 		"minVersion": "1.5.0",
-		"name": "Beet"
+		"name": "Beet",
+		"price": 100
 	},
 	"286": {
 		"category": "Crafting",
 		"description": "Generates a small explosion. Stand back!",
 		"minVersion": "1.5.0",
-		"name": "Cherry Bomb"
+		"name": "Cherry Bomb",
+		"price": 50
 	},
 	"287": {
 		"category": "Crafting",
 		"description": "Generates an explosion. Watch out!",
 		"minVersion": "1.5.0",
-		"name": "Bomb"
+		"name": "Bomb",
+		"price": 50
 	},
 	"288": {
 		"category": "Crafting",
 		"description": "Generates a powerful explosion. Use with extreme caution.",
 		"minVersion": "1.5.0",
-		"name": "Mega Bomb"
+		"name": "Mega Bomb",
+		"price": 50
 	},
 	"289": {
 		"category": "Animal Product",
 		"description": "It may be the world's largest egg.",
 		"minVersion": "1.5.0",
-		"name": "Ostrich Egg"
+		"name": "Ostrich Egg",
+		"price": 600
 	},
 	"290": {
 		"category": "Litter",
 		"description": "Break apart to obtain iron ore.",
 		"minVersion": "1.5.0",
-		"name": "Iron Stone"
+		"name": "Iron Stone",
+		"price": 0
 	},
 	"292": {
 		"category": "Seed",
 		"description": "This can be planted to grow a mahogany tree.",
 		"minVersion": "1.5.0",
-		"name": "Mahogany Seed"
+		"name": "Mahogany Seed",
+		"price": 100
 	},
 	"293": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to decorate your floors.",
 		"minVersion": "1.5.0",
-		"name": "Brick Floor"
+		"name": "Brick Floor",
+		"price": 1
 	},
 	"294": {
 		"category": "Litter",
 		"description": "A broken branch. Chop with an axe to obtain wood.",
 		"minVersion": "1.5.0",
-		"name": "Twig"
+		"name": "Twig",
+		"price": 0
 	},
 	"295": {
 		"category": "Litter",
 		"description": "A broken branch. Chop with an axe to obtain wood.",
 		"minVersion": "1.5.0",
-		"name": "Twig"
+		"name": "Twig",
+		"price": 0
 	},
 	"296": {
 		"category": "Fruit",
 		"description": "A spring-time berry with the flavor of the forest.",
 		"minVersion": "1.5.0",
-		"name": "Salmonberry"
+		"name": "Salmonberry",
+		"price": 5
 	},
 	"297": {
 		"category": "Crafting",
 		"description": "Place this on your farm to start a new patch of grass.",
 		"minVersion": "1.5.0",
-		"name": "Grass Starter"
+		"name": "Grass Starter",
+		"price": 50
 	},
 	"298": {
 		"category": "Crafting",
 		"description": "The most durable type of fence.",
 		"minVersion": "1.5.0",
-		"name": "Hardwood Fence"
+		"name": "Hardwood Fence",
+		"price": 10
 	},
 	"299": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 7 days to grow. Harvest with the scythe.",
 		"minVersion": "1.5.0",
-		"name": "Amaranth Seeds"
+		"name": "Amaranth Seeds",
+		"price": 35
 	},
 	"300": {
 		"category": "Vegetable",
 		"description": "A purple grain cultivated by an ancient civilization.",
 		"minVersion": "1.5.0",
-		"name": "Amaranth"
+		"name": "Amaranth",
+		"price": 150
 	},
 	"301": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis.",
 		"minVersion": "1.5.0",
-		"name": "Grape Starter"
+		"name": "Grape Starter",
+		"price": 30
 	},
 	"302": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
 		"minVersion": "1.5.0",
-		"name": "Hops Starter"
+		"name": "Hops Starter",
+		"price": 30
 	},
 	"303": {
 		"category": "Artisan Goods",
 		"description": "Drink in moderation.",
 		"minVersion": "1.5.0",
-		"name": "Pale Ale"
+		"name": "Pale Ale",
+		"price": 300
 	},
 	"304": {
 		"category": "Vegetable",
 		"description": "A bitter, tangy flower used to flavor beer.",
 		"minVersion": "1.5.0",
-		"name": "Hops"
+		"name": "Hops",
+		"price": 25
 	},
 	"305": {
 		"category": "Animal Product",
 		"description": "A jet-black egg with red flecks. It's warm to the touch.",
 		"minVersion": "1.5.0",
-		"name": "Void Egg"
+		"name": "Void Egg",
+		"price": 65
 	},
 	"306": {
 		"category": "Artisan Goods",
 		"description": "It looks spreadable.",
 		"minVersion": "1.5.0",
-		"name": "Mayonnaise"
+		"name": "Mayonnaise",
+		"price": 190
 	},
 	"307": {
 		"category": "Artisan Goods",
 		"description": "It's a rich, yellow mayonnaise.",
 		"minVersion": "1.5.0",
-		"name": "Duck Mayonnaise"
+		"name": "Duck Mayonnaise",
+		"price": 375
 	},
 	"308": {
 		"category": "Artisan Goods",
 		"description": "A thick, black paste that smells like burnt hair.",
 		"minVersion": "1.5.0",
-		"name": "Void Mayonnaise"
+		"name": "Void Mayonnaise",
+		"price": 275
 	},
 	"309": {
 		"category": "Seed",
 		"description": "This can be planted to grow an oak tree.",
 		"minVersion": "1.5.0",
-		"name": "Acorn"
+		"name": "Acorn",
+		"price": 20
 	},
 	"310": {
 		"category": "Seed",
 		"description": "This can be planted to grow a maple tree.",
 		"minVersion": "1.5.0",
-		"name": "Maple Seed"
+		"name": "Maple Seed",
+		"price": 5
 	},
 	"311": {
 		"category": "Seed",
 		"description": "This can be planted to grow a pine tree.",
 		"minVersion": "1.5.0",
-		"name": "Pine Cone"
+		"name": "Pine Cone",
+		"price": 5
 	},
 	"313": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"314": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"315": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"316": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"317": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"318": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"319": {
 		"category": "Litter",
 		"description": "Might contain refined quartz.",
 		"minVersion": "1.5.0",
-		"name": "Ice Crystal"
+		"name": "Ice Crystal",
+		"price": 0
 	},
 	"320": {
 		"category": "Litter",
 		"description": "Might contain refined quartz.",
 		"minVersion": "1.5.0",
-		"name": "Ice Crystal"
+		"name": "Ice Crystal",
+		"price": 0
 	},
 	"321": {
 		"category": "Litter",
 		"description": "Might contain refined quartz.",
 		"minVersion": "1.5.0",
-		"name": "Ice Crystal"
+		"name": "Ice Crystal",
+		"price": 0
 	},
 	"322": {
 		"category": "Crafting",
 		"description": "Keeps grass and animals contained!",
 		"minVersion": "1.5.0",
-		"name": "Wood Fence"
+		"name": "Wood Fence",
+		"price": 1
 	},
 	"323": {
 		"category": "Crafting",
 		"description": "Lasts longer than a wood fence.",
 		"minVersion": "1.5.0",
-		"name": "Stone Fence"
+		"name": "Stone Fence",
+		"price": 2
 	},
 	"324": {
 		"category": "Crafting",
 		"description": "Lasts longer than a stone fence.",
 		"minVersion": "1.5.0",
-		"name": "Iron Fence"
+		"name": "Iron Fence",
+		"price": 6
 	},
 	"325": {
 		"category": "Crafting",
 		"description": "Allows you to pass through a fence.",
 		"minVersion": "1.5.0",
-		"name": "Gate"
+		"name": "Gate",
+		"price": 4
 	},
 	"326": {
 		"category": "Crafting",
 		"description": "Teaches you dwarvish.",
 		"minVersion": "1.5.0",
-		"name": "Dwarvish Translation Guide"
+		"name": "Dwarvish Translation Guide",
+		"price": 50
 	},
 	"328": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to decorate your floors.",
 		"minVersion": "1.5.0",
-		"name": "Wood Floor"
+		"name": "Wood Floor",
+		"price": 1
 	},
 	"329": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Stone Floor"
+		"name": "Stone Floor",
+		"price": 1
 	},
 	"330": {
 		"category": "Resource",
 		"description": "Used in crafting and construction.",
 		"minVersion": "1.5.0",
-		"name": "Clay"
+		"name": "Clay",
+		"price": 20
 	},
 	"331": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Weathered Floor"
+		"name": "Weathered Floor",
+		"price": 1
 	},
 	"333": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Crystal Floor"
+		"name": "Crystal Floor",
+		"price": 1
 	},
 	"334": {
 		"category": "Resource",
 		"description": "A bar of pure copper.",
 		"minVersion": "1.5.0",
-		"name": "Copper Bar"
+		"name": "Copper Bar",
+		"price": 60
 	},
 	"335": {
 		"category": "Resource",
 		"description": "A bar of pure iron.",
 		"minVersion": "1.5.0",
-		"name": "Iron Bar"
+		"name": "Iron Bar",
+		"price": 120
 	},
 	"336": {
 		"category": "Resource",
 		"description": "A bar of pure gold.",
 		"minVersion": "1.5.0",
-		"name": "Gold Bar"
+		"name": "Gold Bar",
+		"price": 250
 	},
 	"337": {
 		"category": "Resource",
 		"description": "A bar of pure iridium.",
 		"minVersion": "1.5.0",
-		"name": "Iridium Bar"
+		"name": "Iridium Bar",
+		"price": 1000
 	},
 	"338": {
 		"category": "Resource",
 		"description": "A more pure form of quartz.",
 		"minVersion": "1.5.0",
-		"name": "Refined Quartz"
+		"name": "Refined Quartz",
+		"price": 50
 	},
 	"340": {
 		"category": "Artisan Goods",
 		"description": "It's a sweet syrup produced by bees.",
 		"minVersion": "1.5.0",
-		"name": "Honey"
+		"name": "Honey",
+		"price": 100
 	},
 	"341": {
 		"category": "Decor",
 		"description": "Fine porcelain.",
 		"minVersion": "1.5.0",
-		"name": "Tea Set"
+		"name": "Tea Set",
+		"price": 200
 	},
 	"342": {
 		"category": "Artisan Goods",
 		"description": "A jar of your home-made pickles.",
 		"minVersion": "1.5.0",
-		"name": "Pickles"
+		"name": "Pickles",
+		"price": 100
 	},
 	"343": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"344": {
 		"category": "Artisan Goods",
 		"description": "Gooey.",
 		"minVersion": "1.5.0",
-		"name": "Jelly"
+		"name": "Jelly",
+		"price": 160
 	},
 	"346": {
 		"category": "Artisan Goods",
 		"description": "Drink in moderation.",
 		"minVersion": "1.5.0",
-		"name": "Beer"
+		"name": "Beer",
+		"price": 200
 	},
 	"347": {
 		"category": "Seed",
 		"description": "Sow in fall. Takes all season to grow.",
 		"minVersion": "1.5.0",
-		"name": "Rare Seed"
+		"name": "Rare Seed",
+		"price": 200
 	},
 	"348": {
 		"category": "Artisan Goods",
 		"description": "Drink in moderation.",
 		"minVersion": "1.5.0",
-		"name": "Wine"
+		"name": "Wine",
+		"price": 400
 	},
 	"349": {
 		"category": "Crafting",
 		"description": "Restores a lot of energy.",
 		"minVersion": "1.5.0",
-		"name": "Energy Tonic"
+		"name": "Energy Tonic",
+		"price": 500
 	},
 	"350": {
 		"category": "Artisan Goods",
 		"description": "A sweet, nutritious beverage.",
 		"minVersion": "1.5.0",
-		"name": "Juice"
+		"name": "Juice",
+		"price": 150
 	},
 	"351": {
 		"category": "Crafting",
 		"description": "When you've pushed your body too hard, drink this to remove 'Exhaustion'.",
 		"minVersion": "1.5.0",
-		"name": "Muscle Remedy"
+		"name": "Muscle Remedy",
+		"price": 500
 	},
 	"368": {
 		"category": "Fertilizer",
 		"description": "Improves soil quality a little, increasing your chance to grow quality crops. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Basic Fertilizer"
+		"name": "Basic Fertilizer",
+		"price": 2
 	},
 	"369": {
 		"category": "Fertilizer",
 		"description": "Improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Quality Fertilizer"
+		"name": "Quality Fertilizer",
+		"price": 10
 	},
 	"370": {
 		"category": "Fertilizer",
 		"description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Basic Retaining Soil"
+		"name": "Basic Retaining Soil",
+		"price": 4
 	},
 	"371": {
 		"category": "Fertilizer",
 		"description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Quality Retaining Soil"
+		"name": "Quality Retaining Soil",
+		"price": 5
 	},
 	"372": {
 		"category": "Fish",
 		"description": "There's a chewy little guy in there...",
 		"minVersion": "1.5.0",
-		"name": "Clam"
+		"name": "Clam",
+		"price": 50
 	},
 	"373": {
 		"category": "Basic",
 		"description": "It's valuable but has no other purpose.",
 		"minVersion": "1.5.0",
-		"name": "Golden Pumpkin"
+		"name": "Golden Pumpkin",
+		"price": 2500
 	},
 	"376": {
 		"category": "Flower",
 		"description": "In addition to its colorful flower, the Poppy has culinary and medicinal uses.",
 		"minVersion": "1.5.0",
-		"name": "Poppy"
+		"name": "Poppy",
+		"price": 140
 	},
 	"378": {
 		"category": "Resource",
 		"description": "A common ore that can be smelted into bars.",
 		"minVersion": "1.5.0",
-		"name": "Copper Ore"
+		"name": "Copper Ore",
+		"price": 5
 	},
 	"380": {
 		"category": "Resource",
 		"description": "A fairly common ore that can be smelted into bars.",
 		"minVersion": "1.5.0",
-		"name": "Iron Ore"
+		"name": "Iron Ore",
+		"price": 10
 	},
 	"382": {
 		"category": "Resource",
 		"description": "A combustible rock that is useful for crafting and smelting.",
 		"minVersion": "1.5.0",
-		"name": "Coal"
+		"name": "Coal",
+		"price": 15
 	},
 	"384": {
 		"category": "Resource",
 		"description": "A precious ore that can be smelted into bars.",
 		"minVersion": "1.5.0",
-		"name": "Gold Ore"
+		"name": "Gold Ore",
+		"price": 25
 	},
 	"386": {
 		"category": "Resource",
 		"description": "An exotic ore with many curious properties. Can be smelted into bars.",
 		"minVersion": "1.5.0",
-		"name": "Iridium Ore"
+		"name": "Iridium Ore",
+		"price": 100
 	},
 	"388": {
 		"category": "Resource",
 		"description": "A sturdy, yet flexible plant material with a wide variety of uses.",
 		"minVersion": "1.5.0",
-		"name": "Wood"
+		"name": "Wood",
+		"price": 2
 	},
 	"390": {
 		"category": "Resource",
 		"description": "A common material with many uses in crafting and building.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 2
 	},
 	"392": {
 		"category": "Basic",
 		"description": "An ancient shell.",
 		"minVersion": "1.5.0",
-		"name": "Nautilus Shell"
+		"name": "Nautilus Shell",
+		"price": 120
 	},
 	"393": {
 		"category": "Basic",
 		"description": "A colony of tiny creatures that clump together to form beautiful structures.",
 		"minVersion": "1.5.0",
-		"name": "Coral"
+		"name": "Coral",
+		"price": 80
 	},
 	"394": {
 		"category": "Basic",
 		"description": "It's a very beautiful shell.",
 		"minVersion": "1.5.0",
-		"name": "Rainbow Shell"
+		"name": "Rainbow Shell",
+		"price": 300
 	},
 	"395": {
 		"category": "Crafting",
 		"description": "It smells delicious. This is sure to give you a boost.",
 		"minVersion": "1.5.0",
-		"name": "Coffee"
+		"name": "Coffee",
+		"price": 150
 	},
 	"396": {
 		"category": "Fruit",
 		"description": "It fills the air with a pungent aroma.",
 		"minVersion": "1.5.0",
-		"name": "Spice Berry"
+		"name": "Spice Berry",
+		"price": 80
 	},
 	"397": {
 		"category": "Basic",
 		"description": "A slow-moving, spiny creature that some consider a delicacy.",
 		"minVersion": "1.5.0",
-		"name": "Sea Urchin"
+		"name": "Sea Urchin",
+		"price": 160
 	},
 	"398": {
 		"category": "Fruit",
 		"description": "A sweet cluster of fruit.",
 		"minVersion": "1.5.0",
-		"name": "Grape"
+		"name": "Grape",
+		"price": 80
 	},
 	"399": {
 		"category": "Forage",
 		"description": "These grow wild during the spring.",
 		"minVersion": "1.5.0",
-		"name": "Spring Onion"
+		"name": "Spring Onion",
+		"price": 8
 	},
 	"400": {
 		"category": "Fruit",
 		"description": "A sweet, juicy favorite with an appealing red color.",
 		"minVersion": "1.5.0",
-		"name": "Strawberry"
+		"name": "Strawberry",
+		"price": 120
 	},
 	"401": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Straw Floor"
+		"name": "Straw Floor",
+		"price": 1
 	},
 	"402": {
 		"category": "Flower",
 		"description": "A fragrant summer flower.",
 		"minVersion": "1.5.0",
-		"name": "Sweet Pea"
+		"name": "Sweet Pea",
+		"price": 50
 	},
 	"403": {
 		"category": "Crafting",
 		"description": "A quick snack to fuel the hungry forager.",
 		"minVersion": "1.5.0",
-		"name": "Field Snack"
+		"name": "Field Snack",
+		"price": 20
 	},
 	"404": {
 		"category": "Forage",
 		"description": "Slightly nutty, with good texture.",
 		"minVersion": "1.5.0",
-		"name": "Common Mushroom"
+		"name": "Common Mushroom",
+		"price": 40
 	},
 	"405": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Wood Path"
+		"name": "Wood Path",
+		"price": 1
 	},
 	"406": {
 		"category": "Fruit",
 		"description": "Tart and juicy with a pungent aroma.",
 		"minVersion": "1.5.0",
-		"name": "Wild Plum"
+		"name": "Wild Plum",
+		"price": 80
 	},
 	"407": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Gravel Path"
+		"name": "Gravel Path",
+		"price": 1
 	},
 	"408": {
 		"category": "Forage",
 		"description": "That's one big hazelnut!",
 		"minVersion": "1.5.0",
-		"name": "Hazelnut"
+		"name": "Hazelnut",
+		"price": 90
 	},
 	"409": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Crystal Path"
+		"name": "Crystal Path",
+		"price": 1
 	},
 	"410": {
 		"category": "Fruit",
 		"description": "An early-fall treat.",
 		"minVersion": "1.5.0",
-		"name": "Blackberry"
+		"name": "Blackberry",
+		"price": 20
 	},
 	"411": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Cobblestone Path"
+		"name": "Cobblestone Path",
+		"price": 1
 	},
 	"412": {
 		"category": "Forage",
 		"description": "A starchy tuber.",
 		"minVersion": "1.5.0",
-		"name": "Winter Root"
+		"name": "Winter Root",
+		"price": 70
 	},
 	"413": {
 		"category": "Basic",
 		"description": "Can be hatched in a slime incubator.",
 		"minVersion": "1.5.0",
-		"name": "Blue Slime Egg"
+		"name": "Blue Slime Egg",
+		"price": 1750
 	},
 	"414": {
 		"category": "Fruit",
 		"description": "A delicate fruit that pops up from the snow.",
 		"minVersion": "1.5.0",
-		"name": "Crystal Fruit"
+		"name": "Crystal Fruit",
+		"price": 150
 	},
 	"415": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to spruce up your floors.",
 		"minVersion": "1.5.0",
-		"name": "Stepping Stone Path"
+		"name": "Stepping Stone Path",
+		"price": 1
 	},
 	"416": {
 		"category": "Forage",
 		"description": "This little yam was hiding beneath the snow.",
 		"minVersion": "1.5.0",
-		"name": "Snow Yam"
+		"name": "Snow Yam",
+		"price": 100
 	},
 	"417": {
 		"category": "Basic",
 		"description": "It's by far the sweetest thing you've ever smelled.",
 		"minVersion": "1.5.0",
-		"name": "Sweet Gem Berry"
+		"name": "Sweet Gem Berry",
+		"price": 3000
 	},
 	"418": {
 		"category": "Flower",
 		"description": "A flower that can bloom in the winter.",
 		"minVersion": "1.5.0",
-		"name": "Crocus"
+		"name": "Crocus",
+		"price": 60
 	},
 	"419": {
 		"category": "Basic",
 		"description": "An aged fermented liquid used in many cooking recipes.",
 		"minVersion": "1.5.0",
-		"name": "Vinegar"
+		"name": "Vinegar",
+		"price": 100
 	},
 	"420": {
 		"category": "Forage",
 		"description": "A spotted mushroom sometimes found in caves.",
 		"minVersion": "1.5.0",
-		"name": "Red Mushroom"
+		"name": "Red Mushroom",
+		"price": 75
 	},
 	"421": {
 		"category": "Flower",
 		"description": "A common misconception is that the flower turns so it's always facing the sun.",
 		"minVersion": "1.5.0",
-		"name": "Sunflower"
+		"name": "Sunflower",
+		"price": 80
 	},
 	"422": {
 		"category": "Forage",
 		"description": "A rare mushroom found deep in caves.",
 		"minVersion": "1.5.0",
-		"name": "Purple Mushroom"
+		"name": "Purple Mushroom",
+		"price": 250
 	},
 	"423": {
 		"category": "Basic",
 		"description": "A basic grain often served under vegetables.",
 		"minVersion": "1.5.0",
-		"name": "Rice"
+		"name": "Rice",
+		"price": 100
 	},
 	"424": {
 		"category": "Artisan Goods",
 		"description": "It's your basic cheese.",
 		"minVersion": "1.5.0",
-		"name": "Cheese"
+		"name": "Cheese",
+		"price": 230
 	},
 	"425": {
 		"category": "Seed",
 		"description": "Plant in fall. Takes 12 days to produce a mysterious flower. Assorted Colors.",
 		"minVersion": "1.5.0",
-		"name": "Fairy Seeds"
+		"name": "Fairy Seeds",
+		"price": 100
 	},
 	"426": {
 		"category": "Artisan Goods",
 		"description": "Soft cheese made from goat's milk.",
 		"minVersion": "1.5.0",
-		"name": "Goat Cheese"
+		"name": "Goat Cheese",
+		"price": 400
 	},
 	"427": {
 		"category": "Seed",
 		"description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
 		"minVersion": "1.5.0",
-		"name": "Tulip Bulb"
+		"name": "Tulip Bulb",
+		"price": 10
 	},
 	"428": {
 		"category": "Artisan Goods",
 		"description": "A bolt of fine wool cloth.",
 		"minVersion": "1.5.0",
-		"name": "Cloth"
+		"name": "Cloth",
+		"price": 470
 	},
 	"429": {
 		"category": "Seed",
 		"description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
 		"minVersion": "1.5.0",
-		"name": "Jazz Seeds"
+		"name": "Jazz Seeds",
+		"price": 15
 	},
 	"430": {
 		"category": "Basic",
 		"description": "A gourmet type of mushroom with a unique taste.",
 		"minVersion": "1.5.0",
-		"name": "Truffle"
+		"name": "Truffle",
+		"price": 625
 	},
 	"431": {
 		"category": "Seed",
 		"description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
 		"minVersion": "1.5.0",
-		"name": "Sunflower Seeds"
+		"name": "Sunflower Seeds",
+		"price": 20
 	},
 	"432": {
 		"category": "Artisan Goods",
 		"description": "A gourmet cooking ingredient.",
 		"minVersion": "1.5.0",
-		"name": "Truffle Oil"
+		"name": "Truffle Oil",
+		"price": 1065
 	},
 	"433": {
 		"category": "Seed",
 		"description": "Plant in spring or summer to grow a coffee plant. Place five beans in a keg to make coffee.",
 		"minVersion": "1.5.0",
-		"name": "Coffee Bean"
+		"name": "Coffee Bean",
+		"price": 15
 	},
 	"434": {
 		"category": "Crafting",
 		"description": "A mysterious fruit that empowers those who eat it. The flavor is like a dream... a powerful personal experience, yet difficult to describe to others.",
 		"minVersion": "1.5.0",
-		"name": "Stardrop"
+		"name": "Stardrop",
+		"price": 7777
 	},
 	"436": {
 		"category": "Animal Product",
 		"description": "The milk of a goat.",
 		"minVersion": "1.5.0",
-		"name": "Goat Milk"
+		"name": "Goat Milk",
+		"price": 225
 	},
 	"437": {
 		"category": "Basic",
 		"description": "Can be hatched in a slime incubator.",
 		"minVersion": "1.5.0",
-		"name": "Red Slime Egg"
+		"name": "Red Slime Egg",
+		"price": 2500
 	},
 	"438": {
 		"category": "Animal Product",
 		"description": "A gallon of creamy goat's milk.",
 		"minVersion": "1.5.0",
-		"name": "L. Goat Milk"
+		"name": "L. Goat Milk",
+		"price": 345
 	},
 	"439": {
 		"category": "Basic",
 		"description": "Can be hatched in a slime incubator.",
 		"minVersion": "1.5.0",
-		"name": "Purple Slime Egg"
+		"name": "Purple Slime Egg",
+		"price": 5000
 	},
 	"440": {
 		"category": "Animal Product",
 		"description": "Soft, fluffy wool.",
 		"minVersion": "1.5.0",
-		"name": "Wool"
+		"name": "Wool",
+		"price": 340
 	},
 	"441": {
 		"category": "Basic",
 		"description": "Fire this with the slingshot.",
 		"minVersion": "1.5.0",
-		"name": "Explosive Ammo"
+		"name": "Explosive Ammo",
+		"price": 20
 	},
 	"442": {
 		"category": "Animal Product",
 		"description": "It's still warm.",
 		"minVersion": "1.5.0",
-		"name": "Duck Egg"
+		"name": "Duck Egg",
+		"price": 95
 	},
 	"444": {
 		"category": "Animal Product",
 		"description": "It's so colorful.",
 		"minVersion": "1.5.0",
-		"name": "Duck Feather"
+		"name": "Duck Feather",
+		"price": 250
 	},
 	"445": {
 		"category": "Artisan Goods",
 		"description": "The cured roe of a sturgeon fish. Considered to be a luxurious delicacy!",
 		"minVersion": "1.5.0",
-		"name": "Caviar"
+		"name": "Caviar",
+		"price": 500
 	},
 	"446": {
 		"category": "Animal Product",
 		"description": "Some say it's lucky.",
 		"minVersion": "1.5.0",
-		"name": "Rabbit's Foot"
+		"name": "Rabbit's Foot",
+		"price": 565
 	},
 	"447": {
 		"category": "Artisan Goods",
 		"description": "Fish eggs aged in salt to bring out the flavor.",
 		"minVersion": "1.5.0",
-		"name": "Aged Roe"
+		"name": "Aged Roe",
+		"price": 100
 	},
 	"449": {
 		"category": "asdf",
 		"description": "A simple block of stone.",
 		"minVersion": "1.5.0",
-		"name": "Stone Base"
+		"name": "Stone Base",
+		"price": 0
 	},
 	"450": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"452": {
 		"category": "Litter",
 		"description": "A cluster of dry old bushes. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"453": {
 		"category": "Seed",
 		"description": "Plant in summer. Produces a bright red flower in 7 days.",
 		"minVersion": "1.5.0",
-		"name": "Poppy Seeds"
+		"name": "Poppy Seeds",
+		"price": 50
 	},
 	"454": {
 		"category": "Fruit",
 		"description": "It's been dormant for eons.",
 		"minVersion": "1.5.0",
-		"name": "Ancient Fruit"
+		"name": "Ancient Fruit",
+		"price": 550
 	},
 	"455": {
 		"category": "Seed",
 		"description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
 		"minVersion": "1.5.0",
-		"name": "Spangle Seeds"
+		"name": "Spangle Seeds",
+		"price": 25
 	},
 	"456": {
 		"category": "Cooking",
 		"description": "It's a little slimy.",
 		"minVersion": "1.5.0",
-		"name": "Algae Soup"
+		"name": "Algae Soup",
+		"price": 100
 	},
 	"457": {
 		"category": "Cooking",
 		"description": "A delicate broth with a hint of sulfur.",
 		"minVersion": "1.5.0",
-		"name": "Pale Broth"
+		"name": "Pale Broth",
+		"price": 150
 	},
 	"458": {
 		"category": "Basic",
 		"description": "A gift that shows your romantic interest.",
 		"minVersion": "1.5.0",
-		"name": "Bouquet"
+		"name": "Bouquet",
+		"price": 100
 	},
 	"459": {
 		"category": "Artisan Goods",
 		"description": "A fermented beverage made from honey. Drink in moderation.",
 		"minVersion": "1.5.0",
-		"name": "Mead"
+		"name": "Mead",
+		"price": 300
 	},
 	"460": {
 		"category": "Basic",
 		"description": "Give this to the person you want to marry.",
 		"minVersion": "1.5.0",
-		"name": "Mermaid's Pendant"
+		"name": "Mermaid's Pendant",
+		"price": 2500
 	},
 	"461": {
 		"category": "Crafting",
 		"description": "A replica of an ancient pot.",
 		"minVersion": "1.5.0",
-		"name": "Decorative Pot"
+		"name": "Decorative Pot",
+		"price": 200
 	},
 	"463": {
 		"category": "Crafting",
 		"description": "Plays a drum sound when you walk past.",
 		"minVersion": "1.5.0",
-		"name": "Drum Block"
+		"name": "Drum Block",
+		"price": 100
 	},
 	"464": {
 		"category": "Crafting",
 		"description": "Plays a flute sound when you walk past.",
 		"minVersion": "1.5.0",
-		"name": "Flute Block"
+		"name": "Flute Block",
+		"price": 100
 	},
 	"465": {
 		"category": "Fertilizer",
 		"description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 10%. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Speed-Gro"
+		"name": "Speed-Gro",
+		"price": 20
 	},
 	"466": {
 		"category": "Fertilizer",
 		"description": "Stimulates leaf production. Guaranteed to increase growth rate by at least 25%. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Deluxe Speed-Gro"
+		"name": "Deluxe Speed-Gro",
+		"price": 40
 	},
 	"472": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 4 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Parsnip Seeds"
+		"name": "Parsnip Seeds",
+		"price": 10
 	},
 	"473": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
 		"minVersion": "1.5.0",
-		"name": "Bean Starter"
+		"name": "Bean Starter",
+		"price": 30
 	},
 	"474": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
 		"minVersion": "1.5.0",
-		"name": "Cauliflower Seeds"
+		"name": "Cauliflower Seeds",
+		"price": 40
 	},
 	"475": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
 		"minVersion": "1.5.0",
-		"name": "Potato Seeds"
+		"name": "Potato Seeds",
+		"price": 25
 	},
 	"476": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 4 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Garlic Seeds"
+		"name": "Garlic Seeds",
+		"price": 20
 	},
 	"477": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
 		"minVersion": "1.5.0",
-		"name": "Kale Seeds"
+		"name": "Kale Seeds",
+		"price": 35
 	},
 	"478": {
 		"category": "Seed",
 		"description": "Plant these in the spring. Takes 13 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Rhubarb Seeds"
+		"name": "Rhubarb Seeds",
+		"price": 50
 	},
 	"479": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 12 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Melon Seeds"
+		"name": "Melon Seeds",
+		"price": 40
 	},
 	"480": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Tomato Seeds"
+		"name": "Tomato Seeds",
+		"price": 25
 	},
 	"481": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Blueberry Seeds"
+		"name": "Blueberry Seeds",
+		"price": 40
 	},
 	"482": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Pepper Seeds"
+		"name": "Pepper Seeds",
+		"price": 20
 	},
 	"483": {
 		"category": "Seed",
 		"description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
 		"minVersion": "1.5.0",
-		"name": "Wheat Seeds"
+		"name": "Wheat Seeds",
+		"price": 5
 	},
 	"484": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 6 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Radish Seeds"
+		"name": "Radish Seeds",
+		"price": 20
 	},
 	"485": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 9 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Red Cabbage Seeds"
+		"name": "Red Cabbage Seeds",
+		"price": 50
 	},
 	"486": {
 		"category": "Seed",
 		"description": "Plant these in the summer. Takes 13 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Starfruit Seeds"
+		"name": "Starfruit Seeds",
+		"price": 200
 	},
 	"487": {
 		"category": "Seed",
 		"description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Corn Seeds"
+		"name": "Corn Seeds",
+		"price": 75
 	},
 	"488": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Eggplant Seeds"
+		"name": "Eggplant Seeds",
+		"price": 10
 	},
 	"489": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 8 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Artichoke Seeds"
+		"name": "Artichoke Seeds",
+		"price": 15
 	},
 	"490": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 13 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Pumpkin Seeds"
+		"name": "Pumpkin Seeds",
+		"price": 50
 	},
 	"491": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 4 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Bok Choy Seeds"
+		"name": "Bok Choy Seeds",
+		"price": 25
 	},
 	"492": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 10 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Yam Seeds"
+		"name": "Yam Seeds",
+		"price": 30
 	},
 	"493": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 7 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.5.0",
-		"name": "Cranberry Seeds"
+		"name": "Cranberry Seeds",
+		"price": 120
 	},
 	"494": {
 		"category": "Seed",
 		"description": "Plant these in the fall. Takes 6 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Beet Seeds"
+		"name": "Beet Seeds",
+		"price": 10
 	},
 	"495": {
 		"category": "Seed",
 		"description": "An assortment of wild spring seeds.",
 		"minVersion": "1.5.0",
-		"name": "Spring Seeds"
+		"name": "Spring Seeds",
+		"price": 35
 	},
 	"496": {
 		"category": "Seed",
 		"description": "An assortment of wild summer seeds.",
 		"minVersion": "1.5.0",
-		"name": "Summer Seeds"
+		"name": "Summer Seeds",
+		"price": 55
 	},
 	"497": {
 		"category": "Seed",
 		"description": "An assortment of wild fall seeds.",
 		"minVersion": "1.5.0",
-		"name": "Fall Seeds"
+		"name": "Fall Seeds",
+		"price": 45
 	},
 	"498": {
 		"category": "Seed",
 		"description": "An assortment of wild winter seeds.",
 		"minVersion": "1.5.0",
-		"name": "Winter Seeds"
+		"name": "Winter Seeds",
+		"price": 30
 	},
 	"499": {
 		"category": "Seed",
 		"description": "Could these still grow?",
 		"minVersion": "1.5.0",
-		"name": "Ancient Seeds"
+		"name": "Ancient Seeds",
+		"price": 30
 	},
 	"516": {
 		"category": "Ring",
 		"description": "Emits a small, constant light.",
 		"minVersion": "1.5.0",
-		"name": "Small Glow Ring"
+		"name": "Small Glow Ring",
+		"price": 100
 	},
 	"517": {
 		"category": "Ring",
 		"description": "Emits a constant light.",
 		"minVersion": "1.5.0",
-		"name": "Glow Ring"
+		"name": "Glow Ring",
+		"price": 200
 	},
 	"518": {
 		"category": "Ring",
 		"description": "Slightly increases your radius for collecting items.",
 		"minVersion": "1.5.0",
-		"name": "Small Magnet Ring"
+		"name": "Small Magnet Ring",
+		"price": 100
 	},
 	"519": {
 		"category": "Ring",
 		"description": "Increases your radius for collecting items.",
 		"minVersion": "1.5.0",
-		"name": "Magnet Ring"
+		"name": "Magnet Ring",
+		"price": 200
 	},
 	"520": {
 		"category": "Ring",
 		"description": "Prevents damage from slimes.",
 		"minVersion": "1.5.0",
-		"name": "Slime Charmer Ring"
+		"name": "Slime Charmer Ring",
+		"price": 700
 	},
 	"521": {
 		"category": "Ring",
 		"description": "Occasionally infuses the wearer with \"warrior energy\" after slaying a monster.",
 		"minVersion": "1.5.0",
-		"name": "Warrior Ring"
+		"name": "Warrior Ring",
+		"price": 1500
 	},
 	"522": {
 		"category": "Ring",
 		"description": "Gain a little health every time you slay a monster.",
 		"minVersion": "1.5.0",
-		"name": "Vampire Ring"
+		"name": "Vampire Ring",
+		"price": 1500
 	},
 	"523": {
 		"category": "Ring",
 		"description": "Gain a short speed boost whenever you slay a monster.",
 		"minVersion": "1.5.0",
-		"name": "Savage Ring"
+		"name": "Savage Ring",
+		"price": 1500
 	},
 	"524": {
 		"category": "Ring",
 		"description": "Occasionally shields the wearer from damage.",
 		"minVersion": "1.5.0",
-		"name": "Ring of Yoba"
+		"name": "Ring of Yoba",
+		"price": 1500
 	},
 	"525": {
 		"category": "Ring",
 		"description": "Cuts the duration of negative status effects in half.",
 		"minVersion": "1.5.0",
-		"name": "Sturdy Ring"
+		"name": "Sturdy Ring",
+		"price": 1500
 	},
 	"526": {
 		"category": "Ring",
 		"description": "Monsters have a greater chance of dropping loot.",
 		"minVersion": "1.5.0",
-		"name": "Burglar's Ring"
+		"name": "Burglar's Ring",
+		"price": 1500
 	},
 	"527": {
 		"category": "Ring",
 		"description": "Glows, attracts items, and increases attack damage by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Iridium Band"
+		"name": "Iridium Band",
+		"price": 2000
 	},
 	"528": {
 		"category": "Ring",
 		"description": "Plays a random assortment of music you've heard.",
 		"minVersion": "1.5.0",
-		"name": "Jukebox Ring"
+		"name": "Jukebox Ring",
+		"price": 200
 	},
 	"529": {
 		"category": "Ring",
 		"description": "Increases knockback by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Amethyst Ring"
+		"name": "Amethyst Ring",
+		"price": 200
 	},
 	"530": {
 		"category": "Ring",
 		"description": "You feel a little bit safer wearing this.",
 		"minVersion": "1.5.0",
-		"name": "Topaz Ring"
+		"name": "Topaz Ring",
+		"price": 200
 	},
 	"531": {
 		"category": "Ring",
 		"description": "Increases critical strike chance by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Aquamarine Ring"
+		"name": "Aquamarine Ring",
+		"price": 400
 	},
 	"532": {
 		"category": "Ring",
 		"description": "Increases critical strike power by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Jade Ring"
+		"name": "Jade Ring",
+		"price": 400
 	},
 	"533": {
 		"category": "Ring",
 		"description": "Increases weapon speed by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Emerald Ring"
+		"name": "Emerald Ring",
+		"price": 600
 	},
 	"534": {
 		"category": "Ring",
 		"description": "Increases attack by 10%.",
 		"minVersion": "1.5.0",
-		"name": "Ruby Ring"
+		"name": "Ruby Ring",
+		"price": 600
 	},
 	"535": {
 		"category": "Basic",
 		"description": "A blacksmith can break this open for you.",
 		"minVersion": "1.5.0",
-		"name": "Geode"
+		"name": "Geode",
+		"price": 50
 	},
 	"536": {
 		"category": "Basic",
 		"description": "A blacksmith can break this open for you.",
 		"minVersion": "1.5.0",
-		"name": "Frozen Geode"
+		"name": "Frozen Geode",
+		"price": 100
 	},
 	"537": {
 		"category": "Basic",
 		"description": "A blacksmith can break this open for you.",
 		"minVersion": "1.5.0",
-		"name": "Magma Geode"
+		"name": "Magma Geode",
+		"price": 150
 	},
 	"538": {
 		"category": "Mineral",
 		"description": "Its distinctive fluorescence makes it a favorite among rock collectors.",
 		"minVersion": "1.5.0",
-		"name": "Alamite"
+		"name": "Alamite",
+		"price": 150
 	},
 	"539": {
 		"category": "Mineral",
 		"description": "A dark metallic Mineral sought after for its cubic structure.",
 		"minVersion": "1.5.0",
-		"name": "Bixite"
+		"name": "Bixite",
+		"price": 300
 	},
 	"540": {
 		"category": "Mineral",
 		"description": "The best specimens resemble a desert rose.",
 		"minVersion": "1.5.0",
-		"name": "Baryte"
+		"name": "Baryte",
+		"price": 50
 	},
 	"541": {
 		"category": "Mineral",
 		"description": "These crystals are curiously light.",
 		"minVersion": "1.5.0",
-		"name": "Aerinite"
+		"name": "Aerinite",
+		"price": 125
 	},
 	"542": {
 		"category": "Mineral",
 		"description": "This yellow crystal is speckled with shimmering nodules.",
 		"minVersion": "1.5.0",
-		"name": "Calcite"
+		"name": "Calcite",
+		"price": 75
 	},
 	"543": {
 		"category": "Mineral",
 		"description": "It can occur in coral reefs, often near an underwater volcano.",
 		"minVersion": "1.5.0",
-		"name": "Dolomite"
+		"name": "Dolomite",
+		"price": 300
 	},
 	"544": {
 		"category": "Mineral",
 		"description": "The crystals glow bright green when stimulated.",
 		"minVersion": "1.5.0",
-		"name": "Esperite"
+		"name": "Esperite",
+		"price": 100
 	},
 	"545": {
 		"category": "Mineral",
 		"description": "Small amounts are found in human teeth.",
 		"minVersion": "1.5.0",
-		"name": "Fluorapatite"
+		"name": "Fluorapatite",
+		"price": 200
 	},
 	"546": {
 		"category": "Mineral",
 		"description": "Occurs in brilliant clusters.",
 		"minVersion": "1.5.0",
-		"name": "Geminite"
+		"name": "Geminite",
+		"price": 150
 	},
 	"547": {
 		"category": "Mineral",
 		"description": "It grows in a triangular column.",
 		"minVersion": "1.5.0",
-		"name": "Helvite"
+		"name": "Helvite",
+		"price": 450
 	},
 	"548": {
 		"category": "Mineral",
 		"description": "The crystals are so tightly packed it almost looks fuzzy.",
 		"minVersion": "1.5.0",
-		"name": "Jamborite"
+		"name": "Jamborite",
+		"price": 150
 	},
 	"549": {
 		"category": "Mineral",
 		"description": "A high volume of tiny crystals makes it very glittery.",
 		"minVersion": "1.5.0",
-		"name": "Jagoite"
+		"name": "Jagoite",
+		"price": 115
 	},
 	"550": {
 		"category": "Mineral",
 		"description": "The geometric faces are as smooth as glass.",
 		"minVersion": "1.5.0",
-		"name": "Kyanite"
+		"name": "Kyanite",
+		"price": 250
 	},
 	"551": {
 		"category": "Mineral",
 		"description": "The cratered white orbs form a tight cluster.",
 		"minVersion": "1.5.0",
-		"name": "Lunarite"
+		"name": "Lunarite",
+		"price": 200
 	},
 	"552": {
 		"category": "Mineral",
 		"description": "A popular ornamental stone, used in sculpture and to make green paint.",
 		"minVersion": "1.5.0",
-		"name": "Malachite"
+		"name": "Malachite",
+		"price": 100
 	},
 	"553": {
 		"category": "Mineral",
 		"description": "A jet-black crystal that is unusually reflective.",
 		"minVersion": "1.5.0",
-		"name": "Neptunite"
+		"name": "Neptunite",
+		"price": 400
 	},
 	"554": {
 		"category": "Mineral",
 		"description": "Some claim the powdered crystal is a dwarvish delicacy.",
 		"minVersion": "1.5.0",
-		"name": "Lemon Stone"
+		"name": "Lemon Stone",
+		"price": 200
 	},
 	"555": {
 		"category": "Mineral",
 		"description": "The delicate shards form a tiny pink meadow.",
 		"minVersion": "1.5.0",
-		"name": "Nekoite"
+		"name": "Nekoite",
+		"price": 80
 	},
 	"556": {
 		"category": "Mineral",
 		"description": "Despite its high toxicity, this Mineral is widely used in manufacturing and folk medicine.",
 		"minVersion": "1.5.0",
-		"name": "Orpiment"
+		"name": "Orpiment",
+		"price": 80
 	},
 	"557": {
 		"category": "Mineral",
 		"description": "This little guy may be 100,000 years old.",
 		"minVersion": "1.5.0",
-		"name": "Petrified Slime"
+		"name": "Petrified Slime",
+		"price": 120
 	},
 	"558": {
 		"category": "Mineral",
 		"description": "According to legend, angry thunder spirits would throw these stones at one another.",
 		"minVersion": "1.5.0",
-		"name": "Thunder Egg"
+		"name": "Thunder Egg",
+		"price": 100
 	},
 	"559": {
 		"category": "Mineral",
 		"description": "Commonly known as \"Fool's Gold\".",
 		"minVersion": "1.5.0",
-		"name": "Pyrite"
+		"name": "Pyrite",
+		"price": 120
 	},
 	"560": {
 		"category": "Mineral",
 		"description": "An old legend claims these stones are the mosaics of ancient mermaids.",
 		"minVersion": "1.5.0",
-		"name": "Ocean Stone"
+		"name": "Ocean Stone",
+		"price": 220
 	},
 	"561": {
 		"category": "Mineral",
 		"description": "There is an aura of coldness around this crystal.",
 		"minVersion": "1.5.0",
-		"name": "Ghost Crystal"
+		"name": "Ghost Crystal",
+		"price": 200
 	},
 	"562": {
 		"category": "Mineral",
 		"description": "A stripe of shimmering gold gives this gem a warm luster.",
 		"minVersion": "1.5.0",
-		"name": "Tigerseye"
+		"name": "Tigerseye",
+		"price": 275
 	},
 	"563": {
 		"category": "Mineral",
 		"description": "When polished, this stone becomes attractively luminous. Prized by ancient peoples for thousands of years.",
 		"minVersion": "1.5.0",
-		"name": "Jasper"
+		"name": "Jasper",
+		"price": 150
 	},
 	"564": {
 		"category": "Mineral",
 		"description": "Its internal structure causes it to reflect a rainbow of light.",
 		"minVersion": "1.5.0",
-		"name": "Opal"
+		"name": "Opal",
+		"price": 150
 	},
 	"565": {
 		"category": "Mineral",
 		"description": "A rare variety of opal, named for its red spots.",
 		"minVersion": "1.5.0",
-		"name": "Fire Opal"
+		"name": "Fire Opal",
+		"price": 350
 	},
 	"566": {
 		"category": "Mineral",
 		"description": "Some early life forms had bones made from this.",
 		"minVersion": "1.5.0",
-		"name": "Celestine"
+		"name": "Celestine",
+		"price": 125
 	},
 	"567": {
 		"category": "Mineral",
 		"description": "A very popular material for sculptures and construction.",
 		"minVersion": "1.5.0",
-		"name": "Marble"
+		"name": "Marble",
+		"price": 110
 	},
 	"568": {
 		"category": "Mineral",
 		"description": "A common type of stone with red and brown striations.",
 		"minVersion": "1.5.0",
-		"name": "Sandstone"
+		"name": "Sandstone",
+		"price": 60
 	},
 	"569": {
 		"category": "Mineral",
 		"description": "A speckled Mineral that is commonly used in construction.",
 		"minVersion": "1.5.0",
-		"name": "Granite"
+		"name": "Granite",
+		"price": 75
 	},
 	"570": {
 		"category": "Mineral",
 		"description": "Forms near searing hot magma.",
 		"minVersion": "1.5.0",
-		"name": "Basalt"
+		"name": "Basalt",
+		"price": 175
 	},
 	"571": {
 		"category": "Mineral",
 		"description": "A very common type of stone. It's not worth very much.",
 		"minVersion": "1.5.0",
-		"name": "Limestone"
+		"name": "Limestone",
+		"price": 15
 	},
 	"572": {
 		"category": "Mineral",
 		"description": "Because of its relatively soft consistency, this stone is very popular for carving.",
 		"minVersion": "1.5.0",
-		"name": "Soapstone"
+		"name": "Soapstone",
+		"price": 120
 	},
 	"573": {
 		"category": "Mineral",
 		"description": "An iron-based Mineral with interesting magnetic properties.",
 		"minVersion": "1.5.0",
-		"name": "Hematite"
+		"name": "Hematite",
+		"price": 150
 	},
 	"574": {
 		"category": "Mineral",
 		"description": "A fine-grained rock made from ancient clay or mud.",
 		"minVersion": "1.5.0",
-		"name": "Mudstone"
+		"name": "Mudstone",
+		"price": 25
 	},
 	"575": {
 		"category": "Mineral",
 		"description": "A volcanic glass that forms when lava cools rapidly.",
 		"minVersion": "1.5.0",
-		"name": "Obsidian"
+		"name": "Obsidian",
+		"price": 200
 	},
 	"576": {
 		"category": "Mineral",
 		"description": "It's extremely resistant to water, making it a good roofing material.",
 		"minVersion": "1.5.0",
-		"name": "Slate"
+		"name": "Slate",
+		"price": 85
 	},
 	"577": {
 		"category": "Mineral",
 		"description": "An old miner's song suggests these are made from the bones of ancient fairies.",
 		"minVersion": "1.5.0",
-		"name": "Fairy Stone"
+		"name": "Fairy Stone",
+		"price": 250
 	},
 	"578": {
 		"category": "Mineral",
 		"description": "No one knows how these form. Some scientists claim that the microscopic structure displays unnatural regularity.",
 		"minVersion": "1.5.0",
-		"name": "Star Shards"
+		"name": "Star Shards",
+		"price": 500
 	},
 	"579": {
 		"category": "Artifact",
 		"description": "Commonly known as a \"shoulder blade\"... It's unclear what species it belonged to.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Scapula"
+		"name": "Prehistoric Scapula",
+		"price": 100
 	},
 	"580": {
 		"category": "Artifact",
 		"description": "A thick and sturdy leg bone.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Tibia"
+		"name": "Prehistoric Tibia",
+		"price": 100
 	},
 	"581": {
 		"category": "Artifact",
 		"description": "This is definitely a mammalian skull.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Skull"
+		"name": "Prehistoric Skull",
+		"price": 100
 	},
 	"582": {
 		"category": "Artifact",
 		"description": "It's a wonder all these ancient little pieces lasted so long.",
 		"minVersion": "1.5.0",
-		"name": "Skeletal Hand"
+		"name": "Skeletal Hand",
+		"price": 100
 	},
 	"583": {
 		"category": "Artifact",
 		"description": "Little gouge marks on the side suggest that this rib was someone's dinner.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Rib"
+		"name": "Prehistoric Rib",
+		"price": 100
 	},
 	"584": {
 		"category": "Artifact",
 		"description": "A segment of some prehistoric creature's spine.",
 		"minVersion": "1.5.0",
-		"name": "Prehistoric Vertebra"
+		"name": "Prehistoric Vertebra",
+		"price": 100
 	},
 	"585": {
 		"category": "Artifact",
 		"description": "It's pretty short for a tail.",
 		"minVersion": "1.5.0",
-		"name": "Skeletal Tail"
+		"name": "Skeletal Tail",
+		"price": 100
 	},
 	"586": {
 		"category": "Artifact",
 		"description": "This must've washed up ages ago from an ancient coral reef. ",
 		"minVersion": "1.5.0",
-		"name": "Nautilus Fossil"
+		"name": "Nautilus Fossil",
+		"price": 80
 	},
 	"587": {
 		"category": "Artifact",
 		"description": "The relatively short hind legs suggest some kind of primordial toad.",
 		"minVersion": "1.5.0",
-		"name": "Amphibian Fossil"
+		"name": "Amphibian Fossil",
+		"price": 150
 	},
 	"588": {
 		"category": "Artifact",
 		"description": "Palm Fossils are relatively common, but this happens to be a particularly well-preserved specimen.",
 		"minVersion": "1.5.0",
-		"name": "Palm Fossil"
+		"name": "Palm Fossil",
+		"price": 100
 	},
 	"589": {
 		"category": "Artifact",
 		"description": "A long extinct relative of the crab.",
 		"minVersion": "1.5.0",
-		"name": "Trilobite"
+		"name": "Trilobite",
+		"price": 50
 	},
 	"590": {
 		"category": "asdf",
 		"description": "How did you get this in your inventory?",
 		"minVersion": "1.5.0",
-		"name": "Artifact Spot"
+		"name": "Artifact Spot",
+		"price": 0
 	},
 	"591": {
 		"category": "Flower",
 		"description": "The most popular spring flower. Has a very faint sweet smell.",
 		"minVersion": "1.5.0",
-		"name": "Tulip"
+		"name": "Tulip",
+		"price": 30
 	},
 	"593": {
 		"category": "Flower",
 		"description": "A tropical bloom that thrives in the humid summer air. Has a sweet, tangy aroma.",
 		"minVersion": "1.5.0",
-		"name": "Summer Spangle"
+		"name": "Summer Spangle",
+		"price": 90
 	},
 	"595": {
 		"category": "Flower",
 		"description": "An old folk legend suggests that the sweet smell of this flower attracts fairies.",
 		"minVersion": "1.5.0",
-		"name": "Fairy Rose"
+		"name": "Fairy Rose",
+		"price": 290
 	},
 	"597": {
 		"category": "Flower",
 		"description": "The flower grows in a sphere to invite as many butterflies as possible.",
 		"minVersion": "1.5.0",
-		"name": "Blue Jazz"
+		"name": "Blue Jazz",
+		"price": 50
 	},
 	"599": {
 		"category": "Crafting",
 		"description": "Waters the 4 adjacent tiles every morning.",
 		"minVersion": "1.5.0",
-		"name": "Sprinkler"
+		"name": "Sprinkler",
+		"price": 100
 	},
 	"604": {
 		"category": "Cooking",
 		"description": "A traditional holiday treat.",
 		"minVersion": "1.5.0",
-		"name": "Plum Pudding"
+		"name": "Plum Pudding",
+		"price": 260
 	},
 	"605": {
 		"category": "Cooking",
 		"description": "It's cool and refreshing.",
 		"minVersion": "1.5.0",
-		"name": "Artichoke Dip"
+		"name": "Artichoke Dip",
+		"price": 210
 	},
 	"606": {
 		"category": "Cooking",
 		"description": "Julienned vegetables on a bed of rice.",
 		"minVersion": "1.5.0",
-		"name": "Stir Fry"
+		"name": "Stir Fry",
+		"price": 335
 	},
 	"607": {
 		"category": "Cooking",
 		"description": "The roasting process creates a rich forest flavor.",
 		"minVersion": "1.5.0",
-		"name": "Roasted Hazelnuts"
+		"name": "Roasted Hazelnuts",
+		"price": 270
 	},
 	"608": {
 		"category": "Cooking",
 		"description": "Silky pumpkin cream in a flaky crust.",
 		"minVersion": "1.5.0",
-		"name": "Pumpkin Pie"
+		"name": "Pumpkin Pie",
+		"price": 385
 	},
 	"609": {
 		"category": "Cooking",
 		"description": "The radishes are so crisp!",
 		"minVersion": "1.5.0",
-		"name": "Radish Salad"
+		"name": "Radish Salad",
+		"price": 300
 	},
 	"610": {
 		"category": "Cooking",
 		"description": "A delicious combination of summer fruits.",
 		"minVersion": "1.5.0",
-		"name": "Fruit Salad"
+		"name": "Fruit Salad",
+		"price": 450
 	},
 	"611": {
 		"category": "Cooking",
 		"description": "There's nothing quite like it.",
 		"minVersion": "1.5.0",
-		"name": "Blackberry Cobbler"
+		"name": "Blackberry Cobbler",
+		"price": 260
 	},
 	"612": {
 		"category": "Cooking",
 		"description": "It's sweet enough to mask the bitter fruit.",
 		"minVersion": "1.5.0",
-		"name": "Cranberry Candy"
+		"name": "Cranberry Candy",
+		"price": 175
 	},
 	"613": {
 		"category": "Fruit",
 		"description": "A crisp fruit used for juice and cider.",
 		"minVersion": "1.5.0",
-		"name": "Apple"
+		"name": "Apple",
+		"price": 100
 	},
 	"614": {
 		"category": "Artisan Goods",
 		"description": "A pleasant, energizing beverage made from lightly processed tea leaves.",
 		"minVersion": "1.5.0",
-		"name": "Green Tea"
+		"name": "Green Tea",
+		"price": 100
 	},
 	"618": {
 		"category": "Cooking",
 		"description": "Roasted tomatoes on a crisp white bread.",
 		"minVersion": "1.5.0",
-		"name": "Bruschetta"
+		"name": "Bruschetta",
+		"price": 210
 	},
 	"621": {
 		"category": "Crafting",
 		"description": "Waters the 8 adjacent tiles every morning.",
 		"minVersion": "1.5.0",
-		"name": "Quality Sprinkler"
+		"name": "Quality Sprinkler",
+		"price": 450
 	},
 	"628": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Cherry Sapling"
+		"name": "Cherry Sapling",
+		"price": 850
 	},
 	"629": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Apricot Sapling"
+		"name": "Apricot Sapling",
+		"price": 500
 	},
 	"630": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Orange tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Orange Sapling"
+		"name": "Orange Sapling",
+		"price": 1000
 	},
 	"631": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Peach Sapling"
+		"name": "Peach Sapling",
+		"price": 1500
 	},
 	"632": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Pomegranate Sapling"
+		"name": "Pomegranate Sapling",
+		"price": 1500
 	},
 	"633": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
 		"minVersion": "1.5.0",
-		"name": "Apple Sapling"
+		"name": "Apple Sapling",
+		"price": 1000
 	},
 	"634": {
 		"category": "Fruit",
 		"description": "A tender little fruit with a rock-hard pit.",
 		"minVersion": "1.5.0",
-		"name": "Apricot"
+		"name": "Apricot",
+		"price": 50
 	},
 	"635": {
 		"category": "Fruit",
 		"description": "Juicy, tangy, and bursting with sweet summer aroma.",
 		"minVersion": "1.5.0",
-		"name": "Orange"
+		"name": "Orange",
+		"price": 100
 	},
 	"636": {
 		"category": "Fruit",
 		"description": "It's almost fuzzy to the touch.",
 		"minVersion": "1.5.0",
-		"name": "Peach"
+		"name": "Peach",
+		"price": 140
 	},
 	"637": {
 		"category": "Fruit",
 		"description": "Within the fruit are clusters of juicy seeds.",
 		"minVersion": "1.5.0",
-		"name": "Pomegranate"
+		"name": "Pomegranate",
+		"price": 140
 	},
 	"638": {
 		"category": "Fruit",
 		"description": "It's popular, and ripens sooner than most other fruits.",
 		"minVersion": "1.5.0",
-		"name": "Cherry"
+		"name": "Cherry",
+		"price": 80
 	},
 	"645": {
 		"category": "Crafting",
 		"description": "Waters the 24 adjacent tiles every morning.",
 		"minVersion": "1.5.0",
-		"name": "Iridium Sprinkler"
+		"name": "Iridium Sprinkler",
+		"price": 1000
 	},
 	"648": {
 		"category": "Cooking",
 		"description": "It's light, fresh and very healthy.",
 		"minVersion": "1.5.0",
-		"name": "Coleslaw"
+		"name": "Coleslaw",
+		"price": 345
 	},
 	"649": {
 		"category": "Cooking",
 		"description": "A creamy rice dish served with sauteed fern heads. It's a little bland.",
 		"minVersion": "1.5.0",
-		"name": "Fiddlehead Risotto"
+		"name": "Fiddlehead Risotto",
+		"price": 350
 	},
 	"651": {
 		"category": "Cooking",
 		"description": "It has a soothing effect.",
 		"minVersion": "1.5.0",
-		"name": "Poppyseed Muffin"
+		"name": "Poppyseed Muffin",
+		"price": 250
 	},
 	"668": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"670": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"674": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"675": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"676": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"677": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"678": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"679": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"680": {
 		"category": "Basic",
 		"description": "Can be hatched in a slime incubator.",
 		"minVersion": "1.5.0",
-		"name": "Green Slime Egg"
+		"name": "Green Slime Egg",
+		"price": 1000
 	},
 	"681": {
 		"category": "Crafting",
 		"description": "Activate to greatly increase the chance for rain tomorrow. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Rain Totem"
+		"name": "Rain Totem",
+		"price": 20
 	},
 	"682": {
 		"category": "Fish",
 		"description": "The strange waters of the sewer turned this carp into a monstrosity.",
 		"minVersion": "1.5.0",
-		"name": "Mutant Carp"
+		"name": "Mutant Carp",
+		"price": 1000
 	},
 	"684": {
 		"category": "Monster Loot",
 		"description": "It's a juicy wad of bug flesh.",
 		"minVersion": "1.5.0",
-		"name": "Bug Meat"
+		"name": "Bug Meat",
+		"price": 8
 	},
 	"685": {
 		"category": "Bait",
 		"description": "Causes fish to bite faster. Must first be attached to a fishing rod.",
 		"minVersion": "1.5.0",
-		"name": "Bait"
+		"name": "Bait",
+		"price": 1
 	},
 	"686": {
 		"category": "Fishing Tackle",
 		"description": "The shape makes it spin around in the water. Slightly increases the bite-rate when fishing.",
 		"minVersion": "1.5.0",
-		"name": "Spinner"
+		"name": "Spinner",
+		"price": 250
 	},
 	"687": {
 		"category": "Fishing Tackle",
 		"description": "The metal tab and colorful streamers create an enticing spectacle for fish. Increases the bite-rate when fishing.",
 		"minVersion": "1.5.0",
-		"name": "Dressed Spinner"
+		"name": "Dressed Spinner",
+		"price": 500
 	},
 	"688": {
 		"category": "Crafting",
 		"description": "Warp directly to your house. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Farm"
+		"name": "Warp Totem: Farm",
+		"price": 20
 	},
 	"689": {
 		"category": "Crafting",
 		"description": "Warp directly to the mountains. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Mountains"
+		"name": "Warp Totem: Mountains",
+		"price": 20
 	},
 	"690": {
 		"category": "Crafting",
 		"description": "Warp directly to the beach. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Beach"
+		"name": "Warp Totem: Beach",
+		"price": 20
 	},
 	"691": {
 		"category": "Fishing Tackle",
 		"description": "Makes your catch more secure, causing the \"fishing bar\" to cling to your catch. Works best on slow, weak fish.",
 		"minVersion": "1.5.0",
-		"name": "Barbed Hook"
+		"name": "Barbed Hook",
+		"price": 500
 	},
 	"692": {
 		"category": "Fishing Tackle",
 		"description": "Adds weight to your \"fishing bar\", preventing it from bouncing along the bottom.",
 		"minVersion": "1.5.0",
-		"name": "Lead Bobber"
+		"name": "Lead Bobber",
+		"price": 150
 	},
 	"693": {
 		"category": "Fishing Tackle",
 		"description": "Fish don't escape while collecting treasures. Also slightly increases the chance to find treasures.",
 		"minVersion": "1.5.0",
-		"name": "Treasure Hunter"
+		"name": "Treasure Hunter",
+		"price": 250
 	},
 	"694": {
 		"category": "Fishing Tackle",
 		"description": "Causes fish to escape slower when you aren't reeling them in.",
 		"minVersion": "1.5.0",
-		"name": "Trap Bobber"
+		"name": "Trap Bobber",
+		"price": 200
 	},
 	"695": {
 		"category": "Fishing Tackle",
 		"description": "Slightly increases the size of your \"fishing bar\".",
 		"minVersion": "1.5.0",
-		"name": "Cork Bobber"
+		"name": "Cork Bobber",
+		"price": 250
 	},
 	"698": {
 		"category": "Fish",
 		"description": "An ancient bottom-feeder with a dwindling population. Females can live up to 150 years.",
 		"minVersion": "1.5.0",
-		"name": "Sturgeon"
+		"name": "Sturgeon",
+		"price": 200
 	},
 	"699": {
 		"category": "Fish",
 		"description": "A rare hybrid trout that cannot bear offspring of its own.",
 		"minVersion": "1.5.0",
-		"name": "Tiger Trout"
+		"name": "Tiger Trout",
+		"price": 150
 	},
 	"700": {
 		"category": "Fish",
 		"description": "A relative of the catfish that eats a variety of foods off the lake bottom.",
 		"minVersion": "1.5.0",
-		"name": "Bullhead"
+		"name": "Bullhead",
+		"price": 75
 	},
 	"701": {
 		"category": "Fish",
 		"description": "A primarily vegetarian fish that prefers warm water.",
 		"minVersion": "1.5.0",
-		"name": "Tilapia"
+		"name": "Tilapia",
+		"price": 75
 	},
 	"702": {
 		"category": "Fish",
 		"description": "A common freshwater fish known for its voracious appetite.",
 		"minVersion": "1.5.0",
-		"name": "Chub"
+		"name": "Chub",
+		"price": 50
 	},
 	"703": {
 		"category": "Bait",
 		"description": "Increases the chance of finding treasures when fishing. However, fish aren't crazy about the taste.",
 		"minVersion": "1.5.0",
-		"name": "Magnet"
+		"name": "Magnet",
+		"price": 15
 	},
 	"704": {
 		"category": "Fish",
 		"description": "A fierce carnivore with brilliant orange scales.",
 		"minVersion": "1.5.0",
-		"name": "Dorado"
+		"name": "Dorado",
+		"price": 100
 	},
 	"705": {
 		"category": "Fish",
 		"description": "Prefers temperature \"edges\" where cool and warm water meet.",
 		"minVersion": "1.5.0",
-		"name": "Albacore"
+		"name": "Albacore",
+		"price": 75
 	},
 	"706": {
 		"category": "Fish",
 		"description": "Lives in a school at sea, but returns to the rivers to spawn.",
 		"minVersion": "1.5.0",
-		"name": "Shad"
+		"name": "Shad",
+		"price": 60
 	},
 	"707": {
 		"category": "Fish",
 		"description": "A fearsome predator that will eat almost anything it can cram into its mouth.",
 		"minVersion": "1.5.0",
-		"name": "Lingcod"
+		"name": "Lingcod",
+		"price": 120
 	},
 	"708": {
 		"category": "Fish",
 		"description": "A flat fish that lives on the ocean floor.",
 		"minVersion": "1.5.0",
-		"name": "Halibut"
+		"name": "Halibut",
+		"price": 80
 	},
 	"709": {
 		"category": "Resource",
 		"description": "A special kind of wood with superior strength and beauty.",
 		"minVersion": "1.5.0",
-		"name": "Hardwood"
+		"name": "Hardwood",
+		"price": 15
 	},
 	"710": {
 		"category": "Crafting",
 		"description": "Place it in the water, load it with bait, and check the next day to see if you've caught anything. Works in streams, lakes, and the ocean.",
 		"minVersion": "1.5.0",
-		"name": "Crab Pot"
+		"name": "Crab Pot",
+		"price": 50
 	},
 	"715": {
 		"category": "Fish",
 		"description": "A large ocean-dwelling crustacean with a strong tail.",
 		"minVersion": "1.5.0",
-		"name": "Lobster"
+		"name": "Lobster",
+		"price": 120
 	},
 	"716": {
 		"category": "Fish",
 		"description": "A small freshwater relative of the lobster.",
 		"minVersion": "1.5.0",
-		"name": "Crayfish"
+		"name": "Crayfish",
+		"price": 75
 	},
 	"717": {
 		"category": "Fish",
 		"description": "A marine crustacean with two powerful pincers.",
 		"minVersion": "1.5.0",
-		"name": "Crab"
+		"name": "Crab",
+		"price": 100
 	},
 	"718": {
 		"category": "Fish",
 		"description": "A common saltwater clam.",
 		"minVersion": "1.5.0",
-		"name": "Cockle"
+		"name": "Cockle",
+		"price": 50
 	},
 	"719": {
 		"category": "Fish",
 		"description": "A common bivalve that often lives in clusters.",
 		"minVersion": "1.5.0",
-		"name": "Mussel"
+		"name": "Mussel",
+		"price": 30
 	},
 	"720": {
 		"category": "Fish",
 		"description": "A scavenger that feeds off the ocean floor. Widely prized for its meat.",
 		"minVersion": "1.5.0",
-		"name": "Shrimp"
+		"name": "Shrimp",
+		"price": 60
 	},
 	"721": {
 		"category": "Fish",
 		"description": "A wide-ranging mollusc that lives in a spiral shell.",
 		"minVersion": "1.5.0",
-		"name": "Snail"
+		"name": "Snail",
+		"price": 65
 	},
 	"722": {
 		"category": "Fish",
 		"description": "A tiny freshwater snail that lives in a blue shell.",
 		"minVersion": "1.5.0",
-		"name": "Periwinkle"
+		"name": "Periwinkle",
+		"price": 20
 	},
 	"723": {
 		"category": "Fish",
 		"description": "Constantly filters water to find food. In the process, it removes dangerous toxins from the environment.",
 		"minVersion": "1.5.0",
-		"name": "Oyster"
+		"name": "Oyster",
+		"price": 40
 	},
 	"724": {
 		"category": "Artisan Goods",
 		"description": "A sweet syrup with a unique flavor.",
 		"minVersion": "1.5.0",
-		"name": "Maple Syrup"
+		"name": "Maple Syrup",
+		"price": 200
 	},
 	"725": {
 		"category": "Artisan Goods",
 		"description": "A sticky, fragrant substance derived from oak sap.",
 		"minVersion": "1.5.0",
-		"name": "Oak Resin"
+		"name": "Oak Resin",
+		"price": 150
 	},
 	"726": {
 		"category": "Artisan Goods",
 		"description": "A pungent substance derived from pine sap.",
 		"minVersion": "1.5.0",
-		"name": "Pine Tar"
+		"name": "Pine Tar",
+		"price": 100
 	},
 	"727": {
 		"category": "Cooking",
 		"description": "A perfect way to warm yourself after a cold night at sea.",
 		"minVersion": "1.5.0",
-		"name": "Chowder"
+		"name": "Chowder",
+		"price": 135
 	},
 	"728": {
 		"category": "Cooking",
 		"description": "It smells a lot like the sea. Tastes better, though.",
 		"minVersion": "1.5.0",
-		"name": "Fish Stew"
+		"name": "Fish Stew",
+		"price": 175
 	},
 	"729": {
 		"category": "Cooking",
 		"description": "Butter-soaked snails cooked to perfection.",
 		"minVersion": "1.5.0",
-		"name": "Escargot"
+		"name": "Escargot",
+		"price": 125
 	},
 	"730": {
 		"category": "Cooking",
 		"description": "This delicate soup is a secret family recipe of Willy's.",
 		"minVersion": "1.5.0",
-		"name": "Lobster Bisque"
+		"name": "Lobster Bisque",
+		"price": 205
 	},
 	"731": {
 		"category": "Cooking",
 		"description": "It's a sweet doughnut topped with a rich maple glaze.",
 		"minVersion": "1.5.0",
-		"name": "Maple Bar"
+		"name": "Maple Bar",
+		"price": 300
 	},
 	"732": {
 		"category": "Cooking",
 		"description": "Crab, bread crumbs, and egg formed into patties then fried to a golden brown.",
 		"minVersion": "1.5.0",
-		"name": "Crab Cakes"
+		"name": "Crab Cakes",
+		"price": 275
 	},
 	"733": {
 		"category": "Cooking",
 		"description": "A sumptuous appetizer made with freshly-caught shrimp.",
 		"minVersion": "1.5.0",
-		"name": "Shrimp Cocktail"
+		"name": "Shrimp Cocktail",
+		"price": 160
 	},
 	"734": {
 		"category": "Fish",
 		"description": "A very sensitive fish that can only live in pools deep in the forest.",
 		"minVersion": "1.5.0",
-		"name": "Woodskip"
+		"name": "Woodskip",
+		"price": 75
 	},
 	"742": {
 		"category": "Quest",
 		"description": "A family heirloom.",
 		"minVersion": "1.5.0",
-		"name": "Haley's Lost Bracelet"
+		"name": "Haley's Lost Bracelet",
+		"price": 0
 	},
 	"745": {
 		"category": "Seed",
 		"description": "Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that.",
 		"minVersion": "1.5.0",
-		"name": "Strawberry Seeds"
+		"name": "Strawberry Seeds",
+		"price": 0
 	},
 	"746": {
 		"category": "Crafting",
 		"description": "A whimsical fall decoration.",
 		"minVersion": "1.5.0",
-		"name": "Jack-O-Lantern"
+		"name": "Jack-O-Lantern",
+		"price": 0
 	},
 	"747": {
 		"category": "Trash",
 		"description": "Decomposing organic material. It's slimy and unpleasant.",
 		"minVersion": "1.5.0",
-		"name": "Rotten Plant"
+		"name": "Rotten Plant",
+		"price": 0
 	},
 	"748": {
 		"category": "Trash",
 		"description": "Decomposing organic material. It's slimy and unpleasant.",
 		"minVersion": "1.5.0",
-		"name": "Rotten Plant"
+		"name": "Rotten Plant",
+		"price": 0
 	},
 	"749": {
 		"category": "Basic",
 		"description": "A blacksmith can break this open for you. These geodes contain a wide variety of minerals.",
 		"minVersion": "1.5.0",
-		"name": "Omni Geode"
+		"name": "Omni Geode",
+		"price": 0
 	},
 	"750": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"751": {
 		"category": "Litter",
 		"description": "There's copper ore in this stone.",
 		"minVersion": "1.5.0",
-		"name": "Copper Stone"
+		"name": "Copper Stone",
+		"price": 0
 	},
 	"760": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"762": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone, ores, or geodes.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"764": {
 		"category": "Litter",
 		"description": "Break apart to obtain gold ore.",
 		"minVersion": "1.5.0",
-		"name": "Gold Stone"
+		"name": "Gold Stone",
+		"price": 0
 	},
 	"765": {
 		"category": "Litter",
 		"description": "Break apart to obtain iridium ore.",
 		"minVersion": "1.5.0",
-		"name": "Iridium Stone"
+		"name": "Iridium Stone",
+		"price": 0
 	},
 	"766": {
 		"category": "Monster Loot",
 		"description": "A shimmering, gelatinous glob with no smell.",
 		"minVersion": "1.5.0",
-		"name": "Slime"
+		"name": "Slime",
+		"price": 5
 	},
 	"767": {
 		"category": "Monster Loot",
 		"description": "The material is surprisingly delicate.",
 		"minVersion": "1.5.0",
-		"name": "Bat Wing"
+		"name": "Bat Wing",
+		"price": 15
 	},
 	"768": {
 		"category": "Monster Loot",
 		"description": "The glowing face is warm to the touch.",
 		"minVersion": "1.5.0",
-		"name": "Solar Essence"
+		"name": "Solar Essence",
+		"price": 40
 	},
 	"769": {
 		"category": "Monster Loot",
 		"description": "It's quivering with dark energy.",
 		"minVersion": "1.5.0",
-		"name": "Void Essence"
+		"name": "Void Essence",
+		"price": 50
 	},
 	"770": {
 		"category": "Seed",
 		"description": "There's a little bit of everything here. Plant them and see what grows!",
 		"minVersion": "1.5.0",
-		"name": "Mixed Seeds"
+		"name": "Mixed Seeds",
+		"price": 0
 	},
 	"771": {
 		"category": "Resource",
 		"description": "Raw material sourced from plants.",
 		"minVersion": "1.5.0",
-		"name": "Fiber"
+		"name": "Fiber",
+		"price": 1
 	},
 	"772": {
 		"category": "Cooking",
 		"description": "Drink this and weaker monsters will avoid you.",
 		"minVersion": "1.5.0",
-		"name": "Oil of Garlic"
+		"name": "Oil of Garlic",
+		"price": 1000
 	},
 	"773": {
 		"category": "Cooking",
 		"description": "Restores health to full.",
 		"minVersion": "1.5.0",
-		"name": "Life Elixir"
+		"name": "Life Elixir",
+		"price": 250
 	},
 	"774": {
 		"category": "Bait",
 		"description": "A unique recipe from Linus that gives you a chance to catch two fish at once.",
 		"minVersion": "1.5.0",
-		"name": "Wild Bait"
+		"name": "Wild Bait",
+		"price": 15
 	},
 	"775": {
 		"category": "Fish",
 		"description": "Builds a nest on the underside of glaciers.",
 		"minVersion": "1.5.0",
-		"name": "Glacierfish"
+		"name": "Glacierfish",
+		"price": 1000
 	},
 	"784": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"785": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"786": {
 		"category": "Litter",
 		"description": "Ugly weeds. Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"787": {
 		"category": "Resource",
 		"description": "It's fully charged with precious energy.",
 		"minVersion": "1.5.0",
-		"name": "Battery Pack"
+		"name": "Battery Pack",
+		"price": 500
 	},
 	"788": {
 		"category": "Quest",
 		"description": "Robin's been looking everywhere for it.",
 		"minVersion": "1.5.0",
-		"name": "Lost Axe"
+		"name": "Lost Axe",
+		"price": 0
 	},
 	"789": {
 		"category": "Quest",
 		"description": "Better not inspect these too closely.",
 		"minVersion": "1.5.0",
-		"name": "Lucky Purple Shorts"
+		"name": "Lucky Purple Shorts",
+		"price": 0
 	},
 	"790": {
 		"category": "Quest",
 		"description": "The fibers are stained with berry juice.",
 		"minVersion": "1.5.0",
-		"name": "Berry Basket"
+		"name": "Berry Basket",
+		"price": 0
 	},
 	"791": {
 		"category": "Quest",
 		"description": "This is one tough nut to crack, but a professional might be able to break it open.",
 		"minVersion": "1.5.0",
-		"name": "Golden Coconut"
+		"name": "Golden Coconut",
+		"price": 0
 	},
 	"792": {
 		"category": "Litter",
 		"description": "Ugly weeds. Cut to obtain wild seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"793": {
 		"category": "Litter",
 		"description": "Ugly weeds. Cut to obtain wild seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"794": {
 		"category": "Litter",
 		"description": "Ugly weeds. Cut to obtain wild seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"795": {
 		"category": "Fish",
 		"description": "A salmon, twisted by void energy. The fresh meat is jet black, but rapidly turns pink when exposed to air.",
 		"minVersion": "1.5.0",
-		"name": "Void Salmon"
+		"name": "Void Salmon",
+		"price": 150
 	},
 	"796": {
 		"category": "Fish",
 		"description": "He's coated in a very thick layer of slime. He keeps slipping out of your hands!",
 		"minVersion": "1.5.0",
-		"name": "Slimejack"
+		"name": "Slimejack",
+		"price": 100
 	},
 	"797": {
 		"category": "Basic",
 		"description": "A rare treasure from the sea.",
 		"minVersion": "1.5.0",
-		"name": "Pearl"
+		"name": "Pearl",
+		"price": 2500
 	},
 	"798": {
 		"category": "Fish",
 		"description": "A strange and mysterious denizen of the ocean's twilight depths.",
 		"minVersion": "1.5.0",
-		"name": "Midnight Squid"
+		"name": "Midnight Squid",
+		"price": 100
 	},
 	"799": {
 		"category": "Fish",
 		"description": "The huge eyes can detect the faint silhouettes of prey.",
 		"minVersion": "1.5.0",
-		"name": "Spook Fish"
+		"name": "Spook Fish",
+		"price": 220
 	},
 	"800": {
 		"category": "Fish",
 		"description": "This odd creature floats above the ocean floor, consuming any edible material in its path.",
 		"minVersion": "1.5.0",
-		"name": "Blobfish"
+		"name": "Blobfish",
+		"price": 500
 	},
 	"801": {
 		"category": "Ring",
 		"description": "An old Zuzu City tradition... It's used to ask for another farmer's hand in marriage.",
 		"minVersion": "1.5.0",
-		"name": "Wedding Ring"
+		"name": "Wedding Ring",
+		"price": 2000
 	},
 	"802": {
 		"category": "Seed",
 		"description": "Can only be grown indoors. Takes 12 days to mature, and then produces fruit every 3 days.",
 		"minVersion": "1.5.0",
-		"name": "Cactus Seeds"
+		"name": "Cactus Seeds",
+		"price": 0
 	},
 	"803": {
 		"category": "Basic",
 		"description": "A powerful 'milk' of unknown origin...",
 		"minVersion": "1.5.0",
-		"name": "Iridium Milk"
+		"name": "Iridium Milk",
+		"price": 0
 	},
 	"805": {
 		"category": "Fertilizer",
 		"description": "Sprinkle on a wild tree to ensure rapid growth, even in winter. Doesn't work on fruit trees.",
 		"minVersion": "1.5.0",
-		"name": "Tree Fertilizer"
+		"name": "Tree Fertilizer",
+		"price": 10
 	},
 	"807": {
 		"category": "Artisan Goods",
 		"description": "It's thick and creamy, with a vivid green hue. It smells like grass and leather.",
 		"minVersion": "1.5.0",
-		"name": "Dinosaur Mayonnaise"
+		"name": "Dinosaur Mayonnaise",
+		"price": 800
 	},
 	"808": {
 		"category": "Basic",
 		"description": "It's symbolic to the shadow people. As a gift, it signifies the desire to move in together as friends.",
 		"minVersion": "1.5.0",
-		"name": "Void Ghost Pendant"
+		"name": "Void Ghost Pendant",
+		"price": 4500
 	},
 	"809": {
 		"category": "Basic",
 		"description": "Admits one to the movie theater. Giving this to a friend invites them to the movies with you.",
 		"minVersion": "1.5.0",
-		"name": "Movie Ticket"
+		"name": "Movie Ticket",
+		"price": 500
 	},
 	"810": {
 		"category": "Ring",
 		"description": "The top of the ring is made from enchanted crab shell.",
 		"minVersion": "1.5.0",
-		"name": "Crabshell Ring"
+		"name": "Crabshell Ring",
+		"price": 2000
 	},
 	"811": {
 		"category": "Ring",
 		"description": "When you defeat an enemy, they explode.",
 		"minVersion": "1.5.0",
-		"name": "Napalm Ring"
+		"name": "Napalm Ring",
+		"price": 2000
 	},
 	"812": {
 		"category": "Basic",
 		"description": "Fresh fish eggs. These can be aged in a preserves jar to bring out more flavor.",
 		"minVersion": "1.5.0",
-		"name": "Roe"
+		"name": "Roe",
+		"price": 30
 	},
 	"814": {
 		"category": "Basic",
 		"description": "Squid use this ink to confuse would-be predators.",
 		"minVersion": "1.5.0",
-		"name": "Squid Ink"
+		"name": "Squid Ink",
+		"price": 110
 	},
 	"815": {
 		"category": "Vegetable",
 		"description": "The young leaves of the tea plant. Can be brewed into the popular, energizing beverage.",
 		"minVersion": "1.5.0",
-		"name": "Tea Leaves"
+		"name": "Tea Leaves",
+		"price": 50
 	},
 	"816": {
 		"category": "Litter",
 		"description": "Break apart to obtain fossils and bones.",
 		"minVersion": "1.5.0",
-		"name": "Fossil Stone"
+		"name": "Fossil Stone",
+		"price": 0
 	},
 	"817": {
 		"category": "Litter",
 		"description": "Break apart to obtain fossils and bones.",
 		"minVersion": "1.5.0",
-		"name": "Fossil Stone"
+		"name": "Fossil Stone",
+		"price": 0
 	},
 	"818": {
 		"category": "Litter",
 		"description": "Break apart to obtain clay.",
 		"minVersion": "1.5.0",
-		"name": "Clay Stone"
+		"name": "Clay Stone",
+		"price": 0
 	},
 	"819": {
 		"category": "Litter",
 		"description": "Break apart to obtain omni geodes.",
 		"minVersion": "1.5.0",
-		"name": "Omni Geode Stone"
+		"name": "Omni Geode Stone",
+		"price": 0
 	},
 	"820": {
 		"category": "Basic",
 		"description": "It's a perfect specimen!",
 		"minVersion": "1.5.0",
-		"name": "Fossilized Skull"
+		"name": "Fossilized Skull",
+		"price": 100
 	},
 	"821": {
 		"category": "Basic",
 		"description": "A column of interlocking vertebrae.",
 		"minVersion": "1.5.0",
-		"name": "Fossilized Spine"
+		"name": "Fossilized Spine",
+		"price": 100
 	},
 	"822": {
 		"category": "Basic",
 		"description": "This tail has a club-like feature at the tip.",
 		"minVersion": "1.5.0",
-		"name": "Fossilized Tail"
+		"name": "Fossilized Tail",
+		"price": 100
 	},
 	"823": {
 		"category": "Basic",
 		"description": "A thick and sturdy leg bone.",
 		"minVersion": "1.5.0",
-		"name": "Fossilized Leg"
+		"name": "Fossilized Leg",
+		"price": 100
 	},
 	"824": {
 		"category": "Basic",
 		"description": "Long ago, these ribs protected the body of a large animal.",
 		"minVersion": "1.5.0",
-		"name": "Fossilized Ribs"
+		"name": "Fossilized Ribs",
+		"price": 100
 	},
 	"825": {
 		"category": "Basic",
 		"description": "A preserved skull that once belonged to a snake.",
 		"minVersion": "1.5.0",
-		"name": "Snake Skull"
+		"name": "Snake Skull",
+		"price": 100
 	},
 	"826": {
 		"category": "Basic",
 		"description": "It appears this serpent may have been extremely flexible.",
 		"minVersion": "1.5.0",
-		"name": "Snake Vertebrae"
+		"name": "Snake Vertebrae",
+		"price": 100
 	},
 	"827": {
 		"category": "Basic",
 		"description": "The delicate wings have been perfectly preserved.",
 		"minVersion": "1.5.0",
-		"name": "Mummified Bat"
+		"name": "Mummified Bat",
+		"price": 100
 	},
 	"828": {
 		"category": "Basic",
 		"description": "This ancient frog may have lived in the jungle canopy.",
 		"minVersion": "1.5.0",
-		"name": "Mummified Frog"
+		"name": "Mummified Frog",
+		"price": 100
 	},
 	"829": {
 		"category": "Forage",
 		"description": "This sharp, spicy root is said to increase vitality.",
 		"minVersion": "1.5.0",
-		"name": "Ginger"
+		"name": "Ginger",
+		"price": 60
 	},
 	"830": {
 		"category": "Vegetable",
 		"description": "This starchy root is one of the most ancient crops.",
 		"minVersion": "1.5.0",
-		"name": "Taro Root"
+		"name": "Taro Root",
+		"price": 100
 	},
 	"831": {
 		"category": "Seed",
 		"description": "Plant these in warm weather. Takes 10 days to mature. Grows faster if planted near a body of water.",
 		"minVersion": "1.5.0",
-		"name": "Taro Tuber"
+		"name": "Taro Tuber",
+		"price": 20
 	},
 	"832": {
 		"category": "Fruit",
 		"description": "A sweet and tangy tropical treat.",
 		"minVersion": "1.5.0",
-		"name": "Pineapple"
+		"name": "Pineapple",
+		"price": 300
 	},
 	"833": {
 		"category": "Seed",
 		"description": "Plant these in warm weather. Takes 14 days to mature, and keeps producing fruit after that.",
 		"minVersion": "1.5.0",
-		"name": "Pineapple Seeds"
+		"name": "Pineapple Seeds",
+		"price": 240
 	},
 	"834": {
 		"category": "Fruit",
 		"description": "A big, sweet tropical fruit with a unique flavor.",
 		"minVersion": "1.5.0",
-		"name": "Mango"
+		"name": "Mango",
+		"price": 130
 	},
 	"835": {
 		"category": "Seed",
 		"description": "Takes 28 days to produce a mature Mango tree. Bears fruit in the summer, or all year round when planted on Ginger Island.",
 		"minVersion": "1.5.0",
-		"name": "Mango Sapling"
+		"name": "Mango Sapling",
+		"price": 850
 	},
 	"836": {
 		"category": "Fish",
 		"description": "Despite having a toxic stinger, these fish are shy and prefer to avoid humans.",
 		"minVersion": "1.5.0",
-		"name": "Stingray"
+		"name": "Stingray",
+		"price": 180
 	},
 	"837": {
 		"category": "Fish",
 		"description": "An aggressive, predatory fish with venomous spines.",
 		"minVersion": "1.5.0",
-		"name": "Lionfish"
+		"name": "Lionfish",
+		"price": 100
 	},
 	"838": {
 		"category": "Fish",
 		"description": "A brightly colored tropical fish that is popular in aquariums.",
 		"minVersion": "1.5.0",
-		"name": "Blue Discus"
+		"name": "Blue Discus",
+		"price": 120
 	},
 	"839": {
 		"category": "Ring",
 		"description": "When enemies damage you, they will take damage themselves.",
 		"minVersion": "1.5.0",
-		"name": "Thorns Ring"
+		"name": "Thorns Ring",
+		"price": 200
 	},
 	"840": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to decorate your floors.",
 		"minVersion": "1.5.0",
-		"name": "Rustic Plank Floor"
+		"name": "Rustic Plank Floor",
+		"price": 1
 	},
 	"841": {
 		"category": "Decor",
 		"description": "Place on the ground to create paths or to decorate your floors.",
 		"minVersion": "1.5.0",
-		"name": "Stone Walkway Floor"
+		"name": "Stone Walkway Floor",
+		"price": 1
 	},
 	"842": {
 		"category": "asdf",
 		"description": "A damp tattered page torn from an old journal...",
 		"minVersion": "1.5.0",
-		"name": "Journal Scrap"
+		"name": "Journal Scrap",
+		"price": 1
 	},
 	"843": {
 		"category": "Litter",
 		"description": "Break apart to obtain cinder shards.",
 		"minVersion": "1.5.0",
-		"name": "Cinder Shard Stone"
+		"name": "Cinder Shard Stone",
+		"price": 0
 	},
 	"844": {
 		"category": "Litter",
 		"description": "Break apart to obtain cinder shards.",
 		"minVersion": "1.5.0",
-		"name": "Cinder Shard Stone"
+		"name": "Cinder Shard Stone",
+		"price": 0
 	},
 	"845": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"846": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"847": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.5.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"848": {
 		"category": "Resource",
 		"description": "You can feel a warm glow from within this stone.",
 		"minVersion": "1.5.0",
-		"name": "Cinder Shard"
+		"name": "Cinder Shard",
+		"price": 50
 	},
 	"849": {
 		"category": "Litter",
 		"description": "There's copper ore in this stone.",
 		"minVersion": "1.5.0",
-		"name": "Copper Stone"
+		"name": "Copper Stone",
+		"price": 0
 	},
 	"850": {
 		"category": "Litter",
 		"description": "Break apart to obtain iron ore.",
 		"minVersion": "1.5.0",
-		"name": "Iron Stone"
+		"name": "Iron Stone",
+		"price": 0
 	},
 	"851": {
 		"category": "Forage",
 		"description": "A very rare mushroom that lives next to pools of lava.",
 		"minVersion": "1.5.0",
-		"name": "Magma Cap"
+		"name": "Magma Cap",
+		"price": 400
 	},
 	"852": {
 		"category": "Basic",
 		"description": "These are rumored to be the teeth of ancient serpents. The enamel is made of pure iridium!",
 		"minVersion": "1.5.0",
-		"name": "Dragon Tooth"
+		"name": "Dragon Tooth",
+		"price": 500
 	},
 	"856": {
 		"category": "Fishing Tackle",
 		"description": "Increases your chance to catch rare fish.",
 		"minVersion": "1.5.0",
-		"name": "Curiosity Lure"
+		"name": "Curiosity Lure",
+		"price": 500
 	},
 	"857": {
 		"category": "Basic",
 		"description": "Can be hatched in a slime incubator. Use with extreme caution!",
 		"minVersion": "1.5.0",
-		"name": "Tiger Slime Egg"
+		"name": "Tiger Slime Egg",
+		"price": 8000
 	},
 	"858": {
 		"category": "Basic",
 		"description": "A special currency honored by Mr. Qi.",
 		"minVersion": "1.5.0",
-		"name": "Qi Gem"
+		"name": "Qi Gem",
+		"price": 250
 	},
 	"859": {
 		"category": "Ring",
 		"description": "The lunar emblem is said to bring good luck to whoever wears it.",
 		"minVersion": "1.5.0",
-		"name": "Lucky Ring"
+		"name": "Lucky Ring",
+		"price": 200
 	},
 	"860": {
 		"category": "Ring",
 		"description": "Greatly increases your chance to find coffee drinks when slaying monsters.",
 		"minVersion": "1.5.0",
-		"name": "Hot Java Ring"
+		"name": "Hot Java Ring",
+		"price": 200
 	},
 	"861": {
 		"category": "Ring",
 		"description": "Stay invincible for a little while longer after taking damage.",
 		"minVersion": "1.5.0",
-		"name": "Protection Ring"
+		"name": "Protection Ring",
+		"price": 200
 	},
 	"862": {
 		"category": "Ring",
 		"description": "Gain a little bit of energy every time you slay a monster.",
 		"minVersion": "1.5.0",
-		"name": "Soul Sapper Ring"
+		"name": "Soul Sapper Ring",
+		"price": 200
 	},
 	"863": {
 		"category": "Ring",
 		"description": "Once a day, regain some health after being knocked out in combat.",
 		"minVersion": "1.5.0",
-		"name": "Phoenix Ring"
+		"name": "Phoenix Ring",
+		"price": 200
 	},
 	"864": {
 		"category": "Quest",
 		"description": "It's a faded photograph of a soldier...",
 		"minVersion": "1.5.0",
-		"name": "War Memento"
+		"name": "War Memento",
+		"price": 0
 	},
 	"865": {
 		"category": "Quest",
 		"description": "A rare, delicious and savory salt.",
 		"minVersion": "1.5.0",
-		"name": "Gourmet Tomato Salt"
+		"name": "Gourmet Tomato Salt",
+		"price": 0
 	},
 	"866": {
 		"category": "Quest",
 		"description": "A rose that reminds you of the valley. It smells heavenly.",
 		"minVersion": "1.5.0",
-		"name": "Stardew Valley Rose"
+		"name": "Stardew Valley Rose",
+		"price": 0
 	},
 	"867": {
 		"category": "Quest",
 		"description": "It has more buttons than a regular remote. Perfect for the avid TV watcher!",
 		"minVersion": "1.5.0",
-		"name": "Advanced TV Remote"
+		"name": "Advanced TV Remote",
+		"price": 0
 	},
 	"868": {
 		"category": "Quest",
 		"description": "This shard glows with an otherworldly blue light.",
 		"minVersion": "1.5.0",
-		"name": "Arctic Shard"
+		"name": "Arctic Shard",
+		"price": 0
 	},
 	"869": {
 		"category": "Quest",
 		"description": "It's a wriggling, wet worm.",
 		"minVersion": "1.5.0",
-		"name": "Wriggling Worm"
+		"name": "Wriggling Worm",
+		"price": 0
 	},
 	"870": {
 		"category": "Quest",
 		"description": "It's an old pirate's keepsake.",
 		"minVersion": "1.5.0",
-		"name": "Pirate's Locket"
+		"name": "Pirate's Locket",
+		"price": 0
 	},
 	"872": {
 		"category": "Basic",
 		"description": "Sprinkle on kegs, furnaces, and other refining equipment to instantly receive their product.",
 		"minVersion": "1.5.0",
-		"name": "Fairy Dust"
+		"name": "Fairy Dust",
+		"price": 300
 	},
 	"873": {
 		"category": "Cooking",
 		"description": "Drink in moderation.",
 		"minVersion": "1.5.0",
-		"name": "Pi\u00f1a Colada"
+		"name": "Piña Colada",
+		"price": 300
 	},
 	"874": {
 		"category": "Crafting",
 		"description": "The last resort of the hungry cave diver.",
 		"minVersion": "1.5.0",
-		"name": "Bug Steak"
+		"name": "Bug Steak",
+		"price": 50
 	},
 	"875": {
 		"category": "Quest",
 		"description": "A thick, slimy goop that the Wizard wants for some reason.",
 		"minVersion": "1.5.0",
-		"name": "Ectoplasm"
+		"name": "Ectoplasm",
+		"price": 0
 	},
 	"876": {
 		"category": "Quest",
 		"description": "Harvested from the rare and elusive prismatic slime.",
 		"minVersion": "1.5.0",
-		"name": "Prismatic Jelly"
+		"name": "Prismatic Jelly",
+		"price": 0
 	},
 	"877": {
 		"category": "Fishing Tackle",
 		"description": "Boosts the quality of fish that you catch.",
 		"minVersion": "1.5.0",
-		"name": "Quality Bobber"
+		"name": "Quality Bobber",
+		"price": 300
 	},
 	"879": {
 		"category": "Crafting",
 		"description": "Spray this on to draw more monsters out of hiding.",
 		"minVersion": "1.5.0",
-		"name": "Monster Musk"
+		"name": "Monster Musk",
+		"price": 50
 	},
 	"880": {
 		"category": "Ring",
 		"description": "...",
 		"minVersion": "1.5.0",
-		"name": "Combined Ring"
+		"name": "Combined Ring",
+		"price": 100
 	},
 	"881": {
 		"category": "Resource",
 		"description": "A small piece of bone.",
 		"minVersion": "1.5.0",
-		"name": "Bone Fragment"
+		"name": "Bone Fragment",
+		"price": 12
 	},
 	"882": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"883": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"884": {
 		"category": "Litter",
 		"description": "Might contain fibers or mixed seeds.",
 		"minVersion": "1.5.0",
-		"name": "Weeds"
+		"name": "Weeds",
+		"price": 0
 	},
 	"885": {
 		"category": "Seed",
 		"description": "Plant these in any season. Does not require watering. Harvest with the scythe. Takes 7 days to grow.",
 		"minVersion": "1.5.0",
-		"name": "Fiber Seeds"
+		"name": "Fiber Seeds",
+		"price": 5
 	},
 	"886": {
 		"category": "Crafting",
 		"description": "Warp directly to Ginger Island. Consumed on use.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Island"
+		"name": "Warp Totem: Island",
+		"price": 20
 	},
 	"887": {
 		"category": "Ring",
 		"description": "The top of the ring is made from enchanted purple wool.",
 		"minVersion": "1.5.0",
-		"name": "Immunity Band"
+		"name": "Immunity Band",
+		"price": 500
 	},
 	"888": {
 		"category": "Ring",
 		"description": "Emits a constant light, and also increases your radius for collecting items.",
 		"minVersion": "1.5.0",
-		"name": "Glowstone Ring"
+		"name": "Glowstone Ring",
+		"price": 200
 	},
 	"889": {
 		"category": "Fruit",
 		"description": "Mr. Qi has challenged you to ship 500 of these strange melons.",
 		"minVersion": "1.5.0",
-		"name": "Qi Fruit"
+		"name": "Qi Fruit",
+		"price": 1
 	},
 	"890": {
 		"category": "Seed",
 		"description": "Plant these in any season. Water every day to produce a Qi Fruit. Takes 4 days to mature.",
 		"minVersion": "1.5.0",
-		"name": "Qi Bean"
+		"name": "Qi Bean",
+		"price": 1
 	},
 	"891": {
 		"category": "Seed",
 		"description": "Place this on your farm to plant a mushroom tree.",
 		"minVersion": "1.5.0",
-		"name": "Mushroom Tree Seed"
+		"name": "Mushroom Tree Seed",
+		"price": 100
 	},
 	"892": {
 		"category": "Crafting",
 		"description": "Warp to Qi's Arena. Be prepared for a challenge!.",
 		"minVersion": "1.5.0",
-		"name": "Warp Totem: Qi's Arena"
+		"name": "Warp Totem: Qi's Arena",
+		"price": 20
 	},
 	"893": {
 		"category": "Crafting",
 		"description": "An old tradition for celebrations and festivities. Handle with care!",
 		"minVersion": "1.5.0",
-		"name": "Fireworks (Red)"
+		"name": "Fireworks (Red)",
+		"price": 50
 	},
 	"894": {
 		"category": "Crafting",
 		"description": "An old tradition for celebrations and festivities. Handle with care!",
 		"minVersion": "1.5.0",
-		"name": "Fireworks (Purple)"
+		"name": "Fireworks (Purple)",
+		"price": 50
 	},
 	"895": {
 		"category": "Crafting",
 		"description": "An old tradition for celebrations and festivities. Handle with care!",
 		"minVersion": "1.5.0",
-		"name": "Fireworks (Green)"
+		"name": "Fireworks (Green)",
+		"price": 50
 	},
 	"896": {
 		"category": "Crafting",
 		"description": "Forge 3 of these into a Galaxy weapon to unleash its final form.",
 		"minVersion": "1.5.0",
-		"name": "Galaxy Soul"
+		"name": "Galaxy Soul",
+		"price": 5000
 	},
 	"897": {
 		"category": "Quest",
 		"description": "Pierre might be interested in this.",
 		"minVersion": "1.5.0",
-		"name": "Pierre's Missing Stocklist"
+		"name": "Pierre's Missing Stocklist",
+		"price": 0
 	},
 	"898": {
 		"category": "Fish",
 		"description": "He hatched in the warm summer water, and followed in the footsteps of his father.",
 		"minVersion": "1.5.0",
-		"name": "Son of Crimsonfish"
+		"name": "Son of Crimsonfish",
+		"price": 1500
 	},
 	"899": {
 		"category": "Fish",
 		"description": "Uses a bioluminescent dangler to attract prey.",
 		"minVersion": "1.5.0",
-		"name": "Ms. Angler"
+		"name": "Ms. Angler",
+		"price": 900
 	},
 	"900": {
 		"category": "Fish",
 		"description": "The successor to the original Legend.",
 		"minVersion": "1.5.0",
-		"name": "Legend II"
+		"name": "Legend II",
+		"price": 5000
 	},
 	"901": {
 		"category": "Fish",
 		"description": "A carp that spent one too many years in toxic sludge.",
 		"minVersion": "1.5.0",
-		"name": "Radioactive Carp"
+		"name": "Radioactive Carp",
+		"price": 1000
 	},
 	"902": {
 		"category": "Fish",
 		"description": "The original Glacierfish had a son...",
 		"minVersion": "1.5.0",
-		"name": "Glacierfish Jr."
+		"name": "Glacierfish Jr.",
+		"price": 1000
 	},
 	"903": {
 		"category": "Cooking",
 		"description": "A zesty soda known for its soothing effect on the stomach.",
 		"minVersion": "1.5.0",
-		"name": "Ginger Ale"
+		"name": "Ginger Ale",
+		"price": 200
 	},
 	"904": {
 		"category": "Cooking",
 		"description": "A creamy dessert with a wonderful tropical flavor.",
 		"minVersion": "1.5.0",
-		"name": "Banana Pudding"
+		"name": "Banana Pudding",
+		"price": 260
 	},
 	"905": {
 		"category": "Cooking",
 		"description": "Sweet mango and coconut transforms this rice into something very special.",
 		"minVersion": "1.5.0",
-		"name": "Mango Sticky Rice"
+		"name": "Mango Sticky Rice",
+		"price": 250
 	},
 	"906": {
 		"category": "Cooking",
 		"description": "A traditional food with a delicate, sweet flavor when eaten fresh.",
 		"minVersion": "1.5.0",
-		"name": "Poi"
+		"name": "Poi",
+		"price": 400
 	},
 	"907": {
 		"category": "Cooking",
 		"description": "An exotic, fragrant curry served in a pineapple bowl.",
 		"minVersion": "1.5.0",
-		"name": "Tropical Curry"
+		"name": "Tropical Curry",
+		"price": 500
 	},
 	"908": {
 		"category": "Bait",
 		"description": "Allows you to catch fish from any season, time, or weather, from whichever type of water you cast into.",
 		"minVersion": "1.5.0",
-		"name": "Magic Bait"
+		"name": "Magic Bait",
+		"price": 1
 	},
 	"909": {
 		"category": "Resource",
 		"description": "It's glowing with dangerous energy... Can be smelted into bars.",
 		"minVersion": "1.5.0",
-		"name": "Radioactive Ore"
+		"name": "Radioactive Ore",
+		"price": 300
 	},
 	"910": {
 		"category": "Resource",
 		"description": "Known by the Zuzu City Safety Commission to cause irreversible bodily harm.",
 		"minVersion": "1.5.0",
-		"name": "Radioactive Bar"
+		"name": "Radioactive Bar",
+		"price": 3000
 	},
 	"911": {
 		"category": "Crafting",
 		"description": "Playing this flute will summon your horse. Only works outdoors.",
 		"minVersion": "1.5.0",
-		"name": "Horse Flute"
+		"name": "Horse Flute",
+		"price": 3000
 	},
 	"913": {
 		"category": "Basic",
 		"description": "Place on a sprinkler and load with fertilizer to automatically apply it when planting seeds nearby.",
 		"minVersion": "1.5.0",
-		"name": "Enricher"
+		"name": "Enricher",
+		"price": 200
 	},
 	"915": {
 		"category": "Basic",
 		"description": "Place on a sprinkler to increase its watering range.",
 		"minVersion": "1.5.0",
-		"name": "Pressure Nozzle"
+		"name": "Pressure Nozzle",
+		"price": 200
 	},
 	"917": {
 		"category": "Basic",
 		"description": "Just a dash will elevate any dish to extraordinary heights. Automatically applied when cooking.",
 		"minVersion": "1.5.0",
-		"name": "Qi Seasoning"
+		"name": "Qi Seasoning",
+		"price": 200
 	},
 	"918": {
 		"category": "Fertilizer",
 		"description": "Greatly stimulates leaf production. Guaranteed to increase growth rate by at least 33%. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Hyper Speed-Gro"
+		"name": "Hyper Speed-Gro",
+		"price": 70
 	},
 	"919": {
 		"category": "Fertilizer",
 		"description": "Greatly improves soil quality, increasing your chance to grow quality crops. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Deluxe Fertilizer"
+		"name": "Deluxe Fertilizer",
+		"price": 70
 	},
 	"920": {
 		"category": "Fertilizer",
 		"description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
 		"minVersion": "1.5.0",
-		"name": "Deluxe Retaining Soil"
+		"name": "Deluxe Retaining Soil",
+		"price": 30
 	},
 	"921": {
 		"category": "Cooking",
 		"description": "Temporarily protects from debuffs.",
 		"minVersion": "1.5.0",
-		"name": "Squid Ink Ravioli"
+		"name": "Squid Ink Ravioli",
+		"price": 150
 	},
 	"922": {
 		"category": "Crafting",
 		"description": "...",
 		"minVersion": "1.5.0",
-		"name": "SupplyCrate"
+		"name": "SupplyCrate",
+		"price": 1
 	},
 	"923": {
 		"category": "Crafting",
 		"description": "...",
 		"minVersion": "1.5.0",
-		"name": "SupplyCrate"
+		"name": "SupplyCrate",
+		"price": 1
 	},
 	"924": {
 		"category": "Crafting",
 		"description": "...",
 		"minVersion": "1.5.0",
-		"name": "SupplyCrate"
+		"name": "SupplyCrate",
+		"price": 1
 	},
 	"926": {
 		"category": "Crafting",
 		"description": "Use this to create a cooking campfire, allowing you to cook on-the-go!",
 		"minVersion": "1.5.0",
-		"name": "Cookout Kit"
+		"name": "Cookout Kit",
+		"price": 80
 	},
 	"928": {
 		"category": "Animal Product",
 		"description": "A very rare and special egg with a solid gold shell.",
 		"minVersion": "1.5.0",
-		"name": "Golden Egg"
+		"name": "Golden Egg",
+		"price": 500
 	},
 	"BasicCoalNode0": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.6.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"BasicCoalNode1": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.6.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"BlueGrassStarter": {
 		"category": "Crafting",
 		"description": "Place this on your farm to plant a clump of blue grass.",
 		"minVersion": "1.6.0",
-		"name": "Blue Grass Starter"
+		"name": "Blue Grass Starter",
+		"price": 50
 	},
 	"Book_AnimalCatalogue": {
 		"category": "Book",
 		"description": "You can access Marnie's shop when she's not around.",
 		"minVersion": "1.6.0",
-		"name": "Animal Catalogue"
+		"name": "Animal Catalogue",
+		"price": 2000
 	},
 	"Book_Artifact": {
 		"category": "Book",
 		"description": "You will fetch a better price when selling artifacts.",
 		"minVersion": "1.6.0",
-		"name": "Treasure Appraisal Guide"
+		"name": "Treasure Appraisal Guide",
+		"price": 500
 	},
 	"Book_Bombs": {
 		"category": "Book",
 		"description": "Bombs deal 25% less damage to you.",
 		"minVersion": "1.6.0",
-		"name": "Dwarvish Safety Manual"
+		"name": "Dwarvish Safety Manual",
+		"price": 1000
 	},
 	"Book_Crabbing": {
 		"category": "Book",
 		"description": "Crab pots have a 25% chance to yield double.",
 		"minVersion": "1.6.0",
-		"name": "The Art O' Crabbing"
+		"name": "The Art O' Crabbing",
+		"price": 1000
 	},
 	"Book_Defense": {
 		"category": "Book",
 		"description": "Gain +1 Defense.",
 		"minVersion": "1.6.0",
-		"name": "Jack Be Nimble, Jack Be Thick"
+		"name": "Jack Be Nimble, Jack Be Thick",
+		"price": 500
 	},
 	"Book_Diamonds": {
 		"category": "Book",
 		"description": "All stones have a chance to drop a diamond when mined by hand.",
 		"minVersion": "1.6.0",
-		"name": "The Diamond Hunter"
+		"name": "The Diamond Hunter",
+		"price": 1000
 	},
 	"Book_Friendship": {
 		"category": "Book",
 		"description": "You become friends with people a little faster.",
 		"minVersion": "1.6.0",
-		"name": "Friendship 101"
+		"name": "Friendship 101",
+		"price": 3000
 	},
 	"Book_Grass": {
 		"category": "Book",
 		"description": "You will now run a lot faster through grass and crops.",
 		"minVersion": "1.6.0",
-		"name": "Ol' Slitherlegs"
+		"name": "Ol' Slitherlegs",
+		"price": 1000
 	},
 	"Book_Horse": {
 		"category": "Book",
 		"description": "You gain a little extra speed when riding a horse.",
 		"minVersion": "1.6.0",
-		"name": "Horse: The Book"
+		"name": "Horse: The Book",
+		"price": 1000
 	},
 	"Book_Marlon": {
 		"category": "Book",
 		"description": "You get a 50% discount on Marlon's item retrieval service.",
 		"minVersion": "1.6.0",
-		"name": "Mapping Cave Systems"
+		"name": "Mapping Cave Systems",
+		"price": 4000
 	},
 	"Book_Mystery": {
 		"category": "Book",
 		"description": "You have a slightly greater chance to find Mystery Boxes.",
 		"minVersion": "1.6.0",
-		"name": "Book of Mysteries"
+		"name": "Book of Mysteries",
+		"price": 3000
 	},
 	"Book_PriceCatalogue": {
 		"category": "Book",
 		"description": "You can now see the value of your items.",
 		"minVersion": "1.6.0",
-		"name": "Price Catalogue"
+		"name": "Price Catalogue",
+		"price": 1000
 	},
 	"Book_QueenOfSauce": {
 		"category": "Book",
 		"description": "Learn any Queen Of Sauce recipes that you don't already know.",
 		"minVersion": "1.6.0",
-		"name": "Queen Of Sauce Cookbook"
+		"name": "Queen Of Sauce Cookbook",
+		"price": 10000
 	},
 	"Book_Roe": {
 		"category": "Book",
 		"description": "Fishing treasure chests have a chance to yield roe.",
 		"minVersion": "1.6.0",
-		"name": "Jewels Of The Sea"
+		"name": "Jewels Of The Sea",
+		"price": 800
 	},
 	"Book_Speed": {
 		"category": "Book",
 		"description": "You run a little bit faster.",
 		"minVersion": "1.6.0",
-		"name": "Way Of The Wind pt. 1"
+		"name": "Way Of The Wind pt. 1",
+		"price": 5000
 	},
 	"Book_Speed2": {
 		"category": "Book",
 		"description": "You run a little bit faster.",
 		"minVersion": "1.6.0",
-		"name": "Way Of The Wind pt. 2"
+		"name": "Way Of The Wind pt. 2",
+		"price": 10000
 	},
 	"Book_Trash": {
 		"category": "Book",
 		"description": "You have a greater chance to find items in the trash.",
 		"minVersion": "1.6.0",
-		"name": "The Alleyway Buffet"
+		"name": "The Alleyway Buffet",
+		"price": 3000
 	},
 	"Book_Void": {
 		"category": "Book",
 		"description": "Monsters have a small chance to drop double loot.",
 		"minVersion": "1.6.0",
-		"name": "Monster Compendium"
+		"name": "Monster Compendium",
+		"price": 2000
 	},
 	"Book_WildSeeds": {
 		"category": "Book",
 		"description": "Weeds have a greater chance to yield mixed seeds.",
 		"minVersion": "1.6.0",
-		"name": "Raccoon Journal"
+		"name": "Raccoon Journal",
+		"price": 1000
 	},
 	"Book_Woodcutting": {
 		"category": "Book",
 		"description": "Felled trees have a 5% chance to yield double the wood.",
 		"minVersion": "1.6.0",
-		"name": "Woody's Secret"
+		"name": "Woody's Secret",
+		"price": 500
 	},
 	"Broccoli": {
 		"category": "Vegetable",
 		"description": "The flowering head of a broccoli plant. The tiny buds give it a unique texture.",
 		"minVersion": "1.6.0",
-		"name": "Broccoli"
+		"name": "Broccoli",
+		"price": 70
 	},
 	"BroccoliSeeds": {
 		"category": "Seed",
 		"description": "Plant in the fall. Takes 8 days to mature, and continues to produce after first harvest.",
 		"minVersion": "1.6.0",
-		"name": "Broccoli Seeds"
+		"name": "Broccoli Seeds",
+		"price": 40
 	},
 	"ButterflyPowder": {
 		"category": "Basic",
 		"description": "Sprinkle on a pet to remove them from your farm. The process is irreversible.",
 		"minVersion": "1.6.0",
-		"name": "Butterfly Powder"
+		"name": "Butterfly Powder",
+		"price": 0
 	},
 	"CalicoEgg": {
 		"category": "Basic",
 		"description": "A unique egg that can be found during the Desert Festival.",
 		"minVersion": "1.6.0",
-		"name": "Calico Egg"
+		"name": "Calico Egg",
+		"price": 0
 	},
 	"CalicoEggStone_0": {
 		"category": "Litter",
 		"description": "Break apart to obtain Calico Eggs.",
 		"minVersion": "1.6.0",
-		"name": "Calico Egg Stone"
+		"name": "Calico Egg Stone",
+		"price": 0
 	},
 	"CalicoEggStone_1": {
 		"category": "Litter",
 		"description": "Break apart to obtain Calico Eggs.",
 		"minVersion": "1.6.0",
-		"name": "Calico Egg Stone"
+		"name": "Calico Egg Stone",
+		"price": 0
 	},
 	"CalicoEggStone_2": {
 		"category": "Litter",
 		"description": "Break apart to obtain Calico Eggs.",
 		"minVersion": "1.6.0",
-		"name": "Calico Egg Stone"
+		"name": "Calico Egg Stone",
+		"price": 0
 	},
 	"Carrot": {
 		"category": "Vegetable",
 		"description": "A fast-growing, colorful tuber that makes for a great snack.",
 		"minVersion": "1.6.0",
-		"name": "Carrot"
+		"name": "Carrot",
+		"price": 35
 	},
 	"CarrotSeeds": {
 		"category": "Seed",
 		"description": "Plant in the spring. Takes 3 days to grow.",
 		"minVersion": "1.6.0",
-		"name": "Carrot Seeds"
+		"name": "Carrot Seeds",
+		"price": 15
 	},
 	"CaveJelly": {
 		"category": "Fish",
 		"description": "A rare jelly found in underground lakes.",
 		"minVersion": "1.6.0",
-		"name": "Cave Jelly"
+		"name": "Cave Jelly",
+		"price": 180
 	},
 	"ChallengeBait": {
 		"category": "Bait",
 		"description": "A \"perfect\" catch yields triple the fish. However, each time a fish escapes the \"fishing bar\", the catch is reduced.",
 		"minVersion": "1.6.0",
-		"name": "Challenge Bait"
+		"name": "Challenge Bait",
+		"price": 1
 	},
 	"DeluxeBait": {
 		"category": "Bait",
 		"description": "Causes fish to bite even faster and increases size of the \"fishing bar\".",
 		"minVersion": "1.6.0",
-		"name": "Deluxe Bait"
+		"name": "Deluxe Bait",
+		"price": 1
 	},
 	"DriedFruit": {
 		"category": "Artisan Goods",
 		"description": "Chewy pieces of dried fruit.",
 		"minVersion": "1.6.0",
-		"name": "Dried Fruit"
+		"name": "Dried Fruit",
+		"price": 25
 	},
 	"DriedMushrooms": {
 		"category": "Artisan Goods",
 		"description": "A package of gourmet mushrooms.",
 		"minVersion": "1.6.0",
-		"name": "Dried Mushrooms"
+		"name": "Dried Mushrooms",
+		"price": 25
 	},
 	"FarAwayStone": {
 		"category": "Basic",
 		"description": "A stone of unknown origins. Looks like it could be placed into something.",
 		"minVersion": "1.6.0",
-		"name": "Far Away Stone"
+		"name": "Far Away Stone",
+		"price": 500
 	},
 	"Goby": {
 		"category": "Fish",
 		"description": "Some types of Gobies can climb up waterfalls.",
 		"minVersion": "1.6.0",
-		"name": "Goby"
+		"name": "Goby",
+		"price": 150
 	},
 	"GoldCoin": {
 		"category": "Basic",
 		"description": "1 Gold coin.",
 		"minVersion": "1.6.0",
-		"name": "Gold Coin"
+		"name": "Gold Coin",
+		"price": 1
 	},
 	"GoldenAnimalCracker": {
 		"category": "asdf",
 		"description": "Give this to a farm animal to permanently double its produce yield. Doesn't work on pigs.",
 		"minVersion": "1.6.0",
-		"name": "Golden Animal Cracker"
+		"name": "Golden Animal Cracker",
+		"price": 1000
 	},
 	"GoldenBobber": {
 		"category": "Quest",
 		"description": "Willy is looking for this.",
 		"minVersion": "1.6.0",
-		"name": "Golden Bobber"
+		"name": "Golden Bobber",
+		"price": 0
 	},
 	"GoldenMysteryBox": {
 		"category": "Basic",
 		"description": "A blacksmith can open this for you. Who knows what might be inside?",
 		"minVersion": "1.6.0",
-		"name": "Golden Mystery Box"
+		"name": "Golden Mystery Box",
+		"price": 0
 	},
 	"GreenRainWeeds0": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds1": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds2": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds3": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds4": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds5": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds6": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"GreenRainWeeds7": {
 		"category": "Litter",
 		"description": null,
 		"minVersion": "1.6.0",
-		"name": "Green Rain Weeds"
+		"name": "Green Rain Weeds",
+		"price": 0
 	},
 	"MixedFlowerSeeds": {
 		"category": "Seed",
 		"description": "An assortment of flower seeds. Plant them and see what grows!",
 		"minVersion": "1.6.0",
-		"name": "Mixed Flower Seeds"
+		"name": "Mixed Flower Seeds",
+		"price": 0
 	},
 	"Moss": {
 		"category": "Resource",
 		"description": "A special type of plant that grows in shady areas.",
 		"minVersion": "1.6.0",
-		"name": "Moss"
+		"name": "Moss",
+		"price": 5
 	},
 	"MossSoup": {
 		"category": "Cooking",
 		"description": "It's thick and slimy, but edible.",
 		"minVersion": "1.6.0",
-		"name": "Moss Soup"
+		"name": "Moss Soup",
+		"price": 80
 	},
 	"MossySeed": {
 		"category": "Seed",
 		"description": "This can be planted to grow rare wild trees.",
 		"minVersion": "1.6.0",
-		"name": "Mossy Seed"
+		"name": "Mossy Seed",
+		"price": 100
 	},
 	"MysteryBox": {
 		"category": "Basic",
 		"description": "A blacksmith can open this for you. Who knows what might be inside?",
 		"minVersion": "1.6.0",
-		"name": "Mystery Box"
+		"name": "Mystery Box",
+		"price": 0
 	},
 	"MysticSyrup": {
 		"category": "Artisan Goods",
 		"description": "A very rare syrup that is said to have magic properties.",
 		"minVersion": "1.6.0",
-		"name": "Mystic Syrup"
+		"name": "Mystic Syrup",
+		"price": 1000
 	},
 	"MysticTreeSeed": {
 		"category": "Seed",
 		"description": "This can be planted to grow a special tree.",
 		"minVersion": "1.6.0",
-		"name": "Mystic Tree Seed"
+		"name": "Mystic Tree Seed",
+		"price": 100
 	},
 	"PetLicense": {
 		"category": "Basic",
 		"description": "Invite a new pet into your home. If you don't have enough outdoor pet bowls for your pets, they will become upset.",
 		"minVersion": "1.6.0",
-		"name": "Pet License"
+		"name": "Pet License",
+		"price": 0
 	},
 	"PotOfGold": {
 		"category": "interactive",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.6.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"Powdermelon": {
 		"category": "Fruit",
 		"description": "Named for the powdery coating that forms on the surface, this melon is crisp and sweet, with a delicate flavor.",
 		"minVersion": "1.6.0",
-		"name": "Powdermelon"
+		"name": "Powdermelon",
+		"price": 60
 	},
 	"PowdermelonSeeds": {
 		"category": "Seed",
 		"description": "This special melon grows in the winter. Takes 7 days to grow.",
 		"minVersion": "1.6.0",
-		"name": "Powdermelon Seeds"
+		"name": "Powdermelon Seeds",
+		"price": 20
 	},
 	"PrizeTicket": {
 		"category": "Basic",
 		"description": "Bring this to the prize machine in Lewis' house for a special reward.",
 		"minVersion": "1.6.0",
-		"name": "Prize Ticket"
+		"name": "Prize Ticket",
+		"price": 1
 	},
 	"PurpleBook": {
 		"category": "Skill Book",
 		"description": "Read this to gain some experience in all skills.",
 		"minVersion": "1.6.0",
-		"name": "Book Of Stars"
+		"name": "Book Of Stars",
+		"price": 2500
 	},
 	"Raisins": {
 		"category": "Artisan Goods",
 		"description": "It's said to be the Junimos' favorite food.",
 		"minVersion": "1.6.0",
-		"name": "Raisins"
+		"name": "Raisins",
+		"price": 600
 	},
 	"RiverJelly": {
 		"category": "Fish",
 		"description": "A rare jelly found in freshwater.",
 		"minVersion": "1.6.0",
-		"name": "River Jelly"
+		"name": "River Jelly",
+		"price": 125
 	},
 	"SeaJelly": {
 		"category": "Fish",
 		"description": "A rare jelly found in the ocean.",
 		"minVersion": "1.6.0",
-		"name": "Sea Jelly"
+		"name": "Sea Jelly",
+		"price": 200
 	},
 	"SeedSpot": {
 		"category": "asdf",
 		"description": "How did you get this in your inventory?",
 		"minVersion": "1.6.0",
-		"name": "Artifact Spot"
+		"name": "Artifact Spot",
+		"price": 0
 	},
 	"SkillBook_0": {
 		"category": "Skill Book",
 		"description": "Read this to gain some farming experience.",
 		"minVersion": "1.6.0",
-		"name": "Stardew Valley Almanac"
+		"name": "Stardew Valley Almanac",
+		"price": 500
 	},
 	"SkillBook_1": {
 		"category": "Skill Book",
 		"description": "Read this to gain some fishing experience.",
 		"minVersion": "1.6.0",
-		"name": "Bait And Bobber"
+		"name": "Bait And Bobber",
+		"price": 500
 	},
 	"SkillBook_2": {
 		"category": "Skill Book",
 		"description": "Read this to gain some foraging experience.",
 		"minVersion": "1.6.0",
-		"name": "Woodcutter's Weekly"
+		"name": "Woodcutter's Weekly",
+		"price": 500
 	},
 	"SkillBook_3": {
 		"category": "Skill Book",
 		"description": "Read this to gain some mining experience.",
 		"minVersion": "1.6.0",
-		"name": "Mining Monthly"
+		"name": "Mining Monthly",
+		"price": 500
 	},
 	"SkillBook_4": {
 		"category": "Skill Book",
 		"description": "Read this to gain some combat experience.",
 		"minVersion": "1.6.0",
-		"name": "Combat Quarterly"
+		"name": "Combat Quarterly",
+		"price": 500
 	},
 	"SmokedFish": {
 		"category": "Artisan Goods",
 		"description": "A whole fish, smoked to perfection.",
 		"minVersion": "1.6.0",
-		"name": "Smoked Fish"
+		"name": "Smoked Fish",
+		"price": 25
 	},
 	"SonarBobber": {
 		"category": "Fishing Tackle",
 		"description": "Shows what fish is on the line before it's caught.",
 		"minVersion": "1.6.0",
-		"name": "Sonar Bobber"
+		"name": "Sonar Bobber",
+		"price": 250
 	},
 	"SpecificBait": {
 		"category": "Bait",
 		"description": "Increases your chance to catch {0}.",
 		"minVersion": "1.6.0",
-		"name": "Bait"
+		"name": "Bait",
+		"price": 5
 	},
 	"StardropTea": {
 		"category": "Basic",
 		"description": "A very special gift that would delight anyone.",
 		"minVersion": "1.6.0",
-		"name": "Stardrop Tea"
+		"name": "Stardrop Tea",
+		"price": 77
 	},
 	"SummerSquash": {
 		"category": "Vegetable",
 		"description": "A curved yellow squash that is harvested while immature, and still tender.",
 		"minVersion": "1.6.0",
-		"name": "Summer Squash"
+		"name": "Summer Squash",
+		"price": 45
 	},
 	"SummerSquashSeeds": {
 		"category": "Seed",
 		"description": "Plant in the summer. Takes 6 days to grow, and continues to produce after first harvest.",
 		"minVersion": "1.6.0",
-		"name": "Summer Squash Seeds"
+		"name": "Summer Squash Seeds",
+		"price": 20
 	},
 	"TentKit": {
 		"category": "Crafting",
 		"description": "Use this to deploy a one-time-use tent for sleeping. Can only be used outdoors.",
 		"minVersion": "1.6.0",
-		"name": "Tent Kit"
+		"name": "Tent Kit",
+		"price": 200
 	},
 	"TreasureTotem": {
 		"category": "Crafting",
 		"description": "Use on diggable terrain to summon a ring of treasure spots.",
 		"minVersion": "1.6.0",
-		"name": "Treasure Totem"
+		"name": "Treasure Totem",
+		"price": 20
 	},
 	"TroutDerbyTag": {
 		"category": "Basic",
 		"description": "Turn this in to the Trout Derby booth for a reward.",
 		"minVersion": "1.6.0",
-		"name": "Golden Tag"
+		"name": "Golden Tag",
+		"price": 0
 	},
 	"VolcanoCoalNode0": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.6.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"VolcanoCoalNode1": {
 		"category": "Litter",
 		"description": "Break apart to obtain stone with a chance of coal.",
 		"minVersion": "1.6.0",
-		"name": "Stone"
+		"name": "Stone",
+		"price": 0
 	},
 	"VolcanoGoldNode": {
 		"category": "Litter",
 		"description": "Break apart to obtain gold ore.",
 		"minVersion": "1.6.0",
-		"name": "Gold Stone"
+		"name": "Gold Stone",
+		"price": 0
 	}
 }
