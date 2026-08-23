@@ -275,9 +275,8 @@ function walkBuilding(
 
 	// sheds/barns/coops/cabins; FarmHouse and Greenhouse are top-level locations
 	if (building.indoors && typeof building.indoors === "object") {
-		const label = `${parentLocation} > ${
-			building.buildingType?.toString() ?? "Building"
-		}`;
+		const label = `${parentLocation} > ${building.buildingType?.toString() ?? "Building"
+			}`;
 		records.push(...walkLocation(building.indoors, prefix, label));
 	}
 
@@ -388,25 +387,27 @@ function readFruitTree(
 	else if (age <= -224) quality = 2;
 	else if (age <= -112) quality = 1;
 
-	// 1.6: fruit items + treeId; 1.5: indexOfFruit + fruitsOnTree
-	const fruitItems = GetListOrEmpty(tree.fruit, "Item").filter(
+	// 1.6 repeats <fruit> once per fruit held; 1.5 used indexOfFruit + fruitsOnTree
+	const fruitItems = GetListOrEmpty(tree, "fruit").filter(
 		(item) => item && typeof item === "object" && item.name !== undefined,
 	);
 	let fruitId = "";
 	let count = 0;
-	if (tree.fruit !== undefined && tree.fruit !== null) {
+	if (fruitItems.length > 0) {
 		count = fruitItems.reduce(
 			(sum, item) => sum + (Number(item.stack) || 1),
 			0,
 		);
-		if (fruitItems[0]?.itemId !== undefined) {
+		if (fruitItems[0].itemId !== undefined && fruitItems[0].itemId !== null) {
 			fruitId = deweaponize(fruitItems[0].itemId.toString()).value;
-		} else if (tree.treeId !== undefined && tree.treeId !== null) {
-			fruitId = fruitTreeData[tree.treeId.toString()]?.fruitId ?? "";
 		}
-	} else if (tree.indexOfFruit !== undefined) {
+	} else if (typeof tree.indexOfFruit === "number") {
 		fruitId = tree.indexOfFruit.toString();
 		count = Number(tree.fruitsOnTree) || 0;
+	}
+	// a bare tree still needs its species for the income estimate
+	if (!fruitId && tree.treeId !== undefined && tree.treeId !== null) {
+		fruitId = fruitTreeData[tree.treeId.toString()]?.fruitId ?? "";
 	}
 	if (!fruitId) return null;
 
@@ -459,7 +460,9 @@ function walkAnimals(loc: any, location: string): ItemRecord[] {
 		if (!animal || typeof animal !== "object") continue;
 
 		const species = animal.type?.toString() ?? "Animal";
-		const price = Number(animal.price) || 0;
+		// 1.6 doesn't serialise <price>; fall back to the species' base value
+		const price =
+			Number(animal.price) || farmAnimalData[species]?.sellPrice || 0;
 		const friendship = Number(animal.friendshipTowardFarmer) || 0;
 		const sellPrice = Math.floor(price * (friendship / 1000 + 0.3));
 		const age = Number(animal.age) || 0;
