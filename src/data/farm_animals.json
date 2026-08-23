@@ -1,100 +1,100 @@
 {
-  "Blue Chicken": {
-    "produceId": "176",
-    "daysToProduce": 1,
-    "daysToMature": 3,
-    "sellPrice": 800,
-    "house": "Coop"
-  },
-  "Brown Chicken": {
-    "produceId": "180",
-    "daysToProduce": 1,
-    "daysToMature": 3,
-    "sellPrice": 800,
-    "house": "Coop"
-  },
-  "Brown Cow": {
-    "produceId": "184",
-    "daysToProduce": 1,
-    "daysToMature": 5,
-    "sellPrice": 1500,
-    "house": "Barn"
-  },
-  "Dinosaur": {
-    "produceId": "107",
-    "daysToProduce": 7,
-    "daysToMature": 0,
-    "sellPrice": 1000,
-    "house": "Coop"
-  },
-  "Duck": {
-    "produceId": "442",
-    "daysToProduce": 2,
-    "daysToMature": 5,
-    "sellPrice": 1200,
-    "house": "Coop"
-  },
-  "Goat": {
-    "produceId": "436",
-    "daysToProduce": 2,
-    "daysToMature": 5,
-    "sellPrice": 4000,
-    "house": "Barn"
-  },
-  "Golden Chicken": {
-    "produceId": "928",
-    "daysToProduce": 1,
-    "daysToMature": 3,
-    "sellPrice": 800,
-    "house": "Coop"
-  },
-  "Ostrich": {
-    "produceId": "289",
-    "daysToProduce": 7,
-    "daysToMature": 7,
-    "sellPrice": 16000,
-    "house": "Barn"
-  },
-  "Pig": {
-    "produceId": "430",
-    "daysToProduce": 1,
-    "daysToMature": 10,
-    "sellPrice": 16000,
-    "house": "Barn"
-  },
-  "Rabbit": {
-    "produceId": "440",
-    "daysToProduce": 4,
-    "daysToMature": 6,
-    "sellPrice": 8000,
-    "house": "Coop"
-  },
-  "Sheep": {
-    "produceId": "440",
-    "daysToProduce": 3,
-    "daysToMature": 4,
-    "sellPrice": 8000,
-    "house": "Barn"
-  },
-  "Void Chicken": {
-    "produceId": "305",
-    "daysToProduce": 1,
-    "daysToMature": 3,
-    "sellPrice": 800,
-    "house": "Coop"
-  },
-  "White Chicken": {
-    "produceId": "176",
-    "daysToProduce": 1,
-    "daysToMature": 3,
-    "sellPrice": 800,
-    "house": "Coop"
-  },
-  "White Cow": {
-    "produceId": "184",
-    "daysToProduce": 1,
-    "daysToMature": 5,
-    "sellPrice": 1500,
-    "house": "Barn"
-  }
+	"Blue Chicken": {
+		"produceId": "176",
+		"daysToProduce": 1,
+		"daysToMature": 3,
+		"sellPrice": 800,
+		"house": "Coop"
+	},
+	"Brown Chicken": {
+		"produceId": "180",
+		"daysToProduce": 1,
+		"daysToMature": 3,
+		"sellPrice": 800,
+		"house": "Coop"
+	},
+	"Brown Cow": {
+		"produceId": "184",
+		"daysToProduce": 1,
+		"daysToMature": 5,
+		"sellPrice": 1500,
+		"house": "Barn"
+	},
+	"Dinosaur": {
+		"produceId": "107",
+		"daysToProduce": 7,
+		"daysToMature": 0,
+		"sellPrice": 1000,
+		"house": "Coop"
+	},
+	"Duck": {
+		"produceId": "442",
+		"daysToProduce": 2,
+		"daysToMature": 5,
+		"sellPrice": 1200,
+		"house": "Coop"
+	},
+	"Goat": {
+		"produceId": "436",
+		"daysToProduce": 2,
+		"daysToMature": 5,
+		"sellPrice": 4000,
+		"house": "Barn"
+	},
+	"Golden Chicken": {
+		"produceId": "928",
+		"daysToProduce": 1,
+		"daysToMature": 3,
+		"sellPrice": 800,
+		"house": "Coop"
+	},
+	"Ostrich": {
+		"produceId": "289",
+		"daysToProduce": 7,
+		"daysToMature": 7,
+		"sellPrice": 16000,
+		"house": "Barn"
+	},
+	"Pig": {
+		"produceId": "430",
+		"daysToProduce": 1,
+		"daysToMature": 10,
+		"sellPrice": 16000,
+		"house": "Barn"
+	},
+	"Rabbit": {
+		"produceId": "440",
+		"daysToProduce": 4,
+		"daysToMature": 6,
+		"sellPrice": 8000,
+		"house": "Coop"
+	},
+	"Sheep": {
+		"produceId": "440",
+		"daysToProduce": 3,
+		"daysToMature": 4,
+		"sellPrice": 8000,
+		"house": "Barn"
+	},
+	"Void Chicken": {
+		"produceId": "305",
+		"daysToProduce": 1,
+		"daysToMature": 3,
+		"sellPrice": 800,
+		"house": "Coop"
+	},
+	"White Chicken": {
+		"produceId": "176",
+		"daysToProduce": 1,
+		"daysToMature": 3,
+		"sellPrice": 800,
+		"house": "Coop"
+	},
+	"White Cow": {
+		"produceId": "184",
+		"daysToProduce": 1,
+		"daysToMature": 5,
+		"sellPrice": 1500,
+		"house": "Barn"
+	}
 }

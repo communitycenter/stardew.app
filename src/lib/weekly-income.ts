@@ -19,7 +19,7 @@ const TAPPER_DAYS: Record<string, number> = {
 	"725": 7, // Oak Resin
 	"726": 5, // Pine Tar
 	"92": 1, // Sap (Mahogany)
-	MysticSyrup: 7,
+	"MysticSyrup": 7,
 };
 
 const SOLAR_PANEL_ID = "231";
@@ -33,11 +33,6 @@ interface MachineData {
 
 const machineData = machines as Record<string, MachineData>;
 const objectData = objects as Record<string, { price?: number }>;
-
-export interface WeeklyIncomeEstimate {
-	total: number; // long-run average gold per in-game week from everything producing
-	hasTimingData: boolean; // false when machine records predate machineId capture (re-upload needed)
-}
 
 function weeklyRate(value: number, cycleDays: number): number {
 	if (value <= 0 || cycleDays <= 0) return 0;
@@ -58,7 +53,7 @@ function expectedHarvestValue(record: ItemRecord): number {
 
 function cropWeeklyContribution(record: ItemRecord): number {
 	const regrow = cropData[record.itemId]?.regrowDays ?? -1;
-	const cycleDays = regrow > 0 ? regrow : record.growthDays ?? 0;
+	const cycleDays = regrow > 0 ? regrow : (record.growthDays ?? 0);
 	return weeklyRate(expectedHarvestValue(record), cycleDays);
 }
 
@@ -121,23 +116,14 @@ export function weeklyContribution(record: ItemRecord): number {
 	}
 }
 
-/** Long-run weekly income from everything currently producing. Fish ponds not included. */
-export function estimateWeeklyIncome(items: ItemsRet): WeeklyIncomeEstimate {
+/**
+ * Long-run average gold per in-game week from everything currently producing.
+ * Fish ponds not included.
+ */
+export function estimateWeeklyIncome(items: ItemsRet): number {
 	let total = 0;
-	let machineRecords = 0;
-	let identifiedRecords = 0;
-
 	for (const record of items.world) {
 		total += weeklyContribution(record);
-
-		if (record.source === "machine") {
-			machineRecords++;
-			if (record.machineId !== undefined) identifiedRecords++;
-		}
 	}
-
-	return {
-		total,
-		hasTimingData: machineRecords === 0 || identifiedRecords > 0,
-	};
+	return total;
 }

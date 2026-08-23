@@ -1,452 +1,452 @@
 {
-  "16": {
-    "name": "Wild Horseradish",
-    "seedId": "495",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "24": {
-    "name": "Parsnip",
-    "seedId": "472",
-    "growthDays": 4,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "90": {
-    "name": "Cactus Fruit",
-    "seedId": "802",
-    "growthDays": 12,
-    "regrowDays": 3,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "188": {
-    "name": "Green Bean",
-    "seedId": "473",
-    "growthDays": 10,
-    "regrowDays": 3,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "190": {
-    "name": "Cauliflower",
-    "seedId": "474",
-    "growthDays": 12,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "192": {
-    "name": "Potato",
-    "seedId": "475",
-    "growthDays": 6,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.2
-  },
-  "248": {
-    "name": "Garlic",
-    "seedId": "476",
-    "growthDays": 4,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "250": {
-    "name": "Kale",
-    "seedId": "477",
-    "growthDays": 6,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "252": {
-    "name": "Rhubarb",
-    "seedId": "478",
-    "growthDays": 13,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "254": {
-    "name": "Melon",
-    "seedId": "479",
-    "growthDays": 12,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "256": {
-    "name": "Tomato",
-    "seedId": "480",
-    "growthDays": 11,
-    "regrowDays": 4,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.05
-  },
-  "258": {
-    "name": "Blueberry",
-    "seedId": "481",
-    "growthDays": 13,
-    "regrowDays": 4,
-    "minHarvest": 3,
-    "maxHarvest": 3,
-    "extraHarvestChance": 0.02
-  },
-  "260": {
-    "name": "Hot Pepper",
-    "seedId": "482",
-    "growthDays": 5,
-    "regrowDays": 3,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.03
-  },
-  "262": {
-    "name": "Wheat",
-    "seedId": "483",
-    "growthDays": 4,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "264": {
-    "name": "Radish",
-    "seedId": "484",
-    "growthDays": 6,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "266": {
-    "name": "Red Cabbage",
-    "seedId": "485",
-    "growthDays": 9,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "268": {
-    "name": "Starfruit",
-    "seedId": "486",
-    "growthDays": 13,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "270": {
-    "name": "Corn",
-    "seedId": "487",
-    "growthDays": 14,
-    "regrowDays": 4,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "271": {
-    "name": "Unmilled Rice",
-    "seedId": "273",
-    "growthDays": 8,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.1
-  },
-  "272": {
-    "name": "Eggplant",
-    "seedId": "488",
-    "growthDays": 5,
-    "regrowDays": 5,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.002
-  },
-  "274": {
-    "name": "Artichoke",
-    "seedId": "489",
-    "growthDays": 8,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "276": {
-    "name": "Pumpkin",
-    "seedId": "490",
-    "growthDays": 13,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "278": {
-    "name": "Bok Choy",
-    "seedId": "491",
-    "growthDays": 4,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "280": {
-    "name": "Yam",
-    "seedId": "492",
-    "growthDays": 10,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "282": {
-    "name": "Cranberries",
-    "seedId": "493",
-    "growthDays": 7,
-    "regrowDays": 5,
-    "minHarvest": 2,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.1
-  },
-  "284": {
-    "name": "Beet",
-    "seedId": "494",
-    "growthDays": 6,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "300": {
-    "name": "Amaranth",
-    "seedId": "299",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "304": {
-    "name": "Hops",
-    "seedId": "302",
-    "growthDays": 11,
-    "regrowDays": 1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "376": {
-    "name": "Poppy",
-    "seedId": "453",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "396": {
-    "name": "Spice Berry",
-    "seedId": "496",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "398": {
-    "name": "Grape",
-    "seedId": "301",
-    "growthDays": 10,
-    "regrowDays": 3,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "400": {
-    "name": "Strawberry",
-    "seedId": "745",
-    "growthDays": 8,
-    "regrowDays": 4,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.02
-  },
-  "404": {
-    "name": "Common Mushroom",
-    "seedId": "497",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "412": {
-    "name": "Winter Root",
-    "seedId": "498",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "417": {
-    "name": "Sweet Gem Berry",
-    "seedId": "347",
-    "growthDays": 24,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "421": {
-    "name": "Sunflower",
-    "seedId": "431",
-    "growthDays": 8,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "433": {
-    "name": "Coffee Bean",
-    "seedId": "433",
-    "growthDays": 10,
-    "regrowDays": 2,
-    "minHarvest": 4,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.02
-  },
-  "454": {
-    "name": "Ancient Fruit",
-    "seedId": "499",
-    "growthDays": 28,
-    "regrowDays": 7,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "591": {
-    "name": "Tulip",
-    "seedId": "427",
-    "growthDays": 6,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "593": {
-    "name": "Summer Spangle",
-    "seedId": "455",
-    "growthDays": 8,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "595": {
-    "name": "Fairy Rose",
-    "seedId": "425",
-    "growthDays": 12,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "597": {
-    "name": "Blue Jazz",
-    "seedId": "429",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "771": {
-    "name": "Fiber",
-    "seedId": "885",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 4,
-    "maxHarvest": 7,
-    "extraHarvestChance": 0.01
-  },
-  "830": {
-    "name": "Taro Root",
-    "seedId": "831",
-    "growthDays": 10,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "832": {
-    "name": "Pineapple",
-    "seedId": "833",
-    "growthDays": 14,
-    "regrowDays": 7,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "889": {
-    "name": "Qi Fruit",
-    "seedId": "890",
-    "growthDays": 4,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "Broccoli": {
-    "name": "Broccoli",
-    "seedId": "BroccoliSeeds",
-    "growthDays": 8,
-    "regrowDays": 4,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "Carrot": {
-    "name": "Carrot",
-    "seedId": "CarrotSeeds",
-    "growthDays": 3,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "Powdermelon": {
-    "name": "Powdermelon",
-    "seedId": "PowdermelonSeeds",
-    "growthDays": 7,
-    "regrowDays": -1,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  },
-  "SummerSquash": {
-    "name": "Summer Squash",
-    "seedId": "SummerSquashSeeds",
-    "growthDays": 6,
-    "regrowDays": 3,
-    "minHarvest": 1,
-    "maxHarvest": 1,
-    "extraHarvestChance": 0.0
-  }
+	"16": {
+		"name": "Wild Horseradish",
+		"seedId": "495",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"24": {
+		"name": "Parsnip",
+		"seedId": "472",
+		"growthDays": 4,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"90": {
+		"name": "Cactus Fruit",
+		"seedId": "802",
+		"growthDays": 12,
+		"regrowDays": 3,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"188": {
+		"name": "Green Bean",
+		"seedId": "473",
+		"growthDays": 10,
+		"regrowDays": 3,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"190": {
+		"name": "Cauliflower",
+		"seedId": "474",
+		"growthDays": 12,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"192": {
+		"name": "Potato",
+		"seedId": "475",
+		"growthDays": 6,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.2
+	},
+	"248": {
+		"name": "Garlic",
+		"seedId": "476",
+		"growthDays": 4,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"250": {
+		"name": "Kale",
+		"seedId": "477",
+		"growthDays": 6,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"252": {
+		"name": "Rhubarb",
+		"seedId": "478",
+		"growthDays": 13,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"254": {
+		"name": "Melon",
+		"seedId": "479",
+		"growthDays": 12,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"256": {
+		"name": "Tomato",
+		"seedId": "480",
+		"growthDays": 11,
+		"regrowDays": 4,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.05
+	},
+	"258": {
+		"name": "Blueberry",
+		"seedId": "481",
+		"growthDays": 13,
+		"regrowDays": 4,
+		"minHarvest": 3,
+		"maxHarvest": 3,
+		"extraHarvestChance": 0.02
+	},
+	"260": {
+		"name": "Hot Pepper",
+		"seedId": "482",
+		"growthDays": 5,
+		"regrowDays": 3,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.03
+	},
+	"262": {
+		"name": "Wheat",
+		"seedId": "483",
+		"growthDays": 4,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"264": {
+		"name": "Radish",
+		"seedId": "484",
+		"growthDays": 6,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"266": {
+		"name": "Red Cabbage",
+		"seedId": "485",
+		"growthDays": 9,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"268": {
+		"name": "Starfruit",
+		"seedId": "486",
+		"growthDays": 13,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"270": {
+		"name": "Corn",
+		"seedId": "487",
+		"growthDays": 14,
+		"regrowDays": 4,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"271": {
+		"name": "Unmilled Rice",
+		"seedId": "273",
+		"growthDays": 8,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.1
+	},
+	"272": {
+		"name": "Eggplant",
+		"seedId": "488",
+		"growthDays": 5,
+		"regrowDays": 5,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.002
+	},
+	"274": {
+		"name": "Artichoke",
+		"seedId": "489",
+		"growthDays": 8,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"276": {
+		"name": "Pumpkin",
+		"seedId": "490",
+		"growthDays": 13,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"278": {
+		"name": "Bok Choy",
+		"seedId": "491",
+		"growthDays": 4,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"280": {
+		"name": "Yam",
+		"seedId": "492",
+		"growthDays": 10,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"282": {
+		"name": "Cranberries",
+		"seedId": "493",
+		"growthDays": 7,
+		"regrowDays": 5,
+		"minHarvest": 2,
+		"maxHarvest": 2,
+		"extraHarvestChance": 0.1
+	},
+	"284": {
+		"name": "Beet",
+		"seedId": "494",
+		"growthDays": 6,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"300": {
+		"name": "Amaranth",
+		"seedId": "299",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"304": {
+		"name": "Hops",
+		"seedId": "302",
+		"growthDays": 11,
+		"regrowDays": 1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"376": {
+		"name": "Poppy",
+		"seedId": "453",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"396": {
+		"name": "Spice Berry",
+		"seedId": "496",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"398": {
+		"name": "Grape",
+		"seedId": "301",
+		"growthDays": 10,
+		"regrowDays": 3,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"400": {
+		"name": "Strawberry",
+		"seedId": "745",
+		"growthDays": 8,
+		"regrowDays": 4,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.02
+	},
+	"404": {
+		"name": "Common Mushroom",
+		"seedId": "497",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"412": {
+		"name": "Winter Root",
+		"seedId": "498",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"417": {
+		"name": "Sweet Gem Berry",
+		"seedId": "347",
+		"growthDays": 24,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"421": {
+		"name": "Sunflower",
+		"seedId": "431",
+		"growthDays": 8,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"433": {
+		"name": "Coffee Bean",
+		"seedId": "433",
+		"growthDays": 10,
+		"regrowDays": 2,
+		"minHarvest": 4,
+		"maxHarvest": 4,
+		"extraHarvestChance": 0.02
+	},
+	"454": {
+		"name": "Ancient Fruit",
+		"seedId": "499",
+		"growthDays": 28,
+		"regrowDays": 7,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"591": {
+		"name": "Tulip",
+		"seedId": "427",
+		"growthDays": 6,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"593": {
+		"name": "Summer Spangle",
+		"seedId": "455",
+		"growthDays": 8,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"595": {
+		"name": "Fairy Rose",
+		"seedId": "425",
+		"growthDays": 12,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"597": {
+		"name": "Blue Jazz",
+		"seedId": "429",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"771": {
+		"name": "Fiber",
+		"seedId": "885",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 4,
+		"maxHarvest": 7,
+		"extraHarvestChance": 0.01
+	},
+	"830": {
+		"name": "Taro Root",
+		"seedId": "831",
+		"growthDays": 10,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"832": {
+		"name": "Pineapple",
+		"seedId": "833",
+		"growthDays": 14,
+		"regrowDays": 7,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"889": {
+		"name": "Qi Fruit",
+		"seedId": "890",
+		"growthDays": 4,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"Broccoli": {
+		"name": "Broccoli",
+		"seedId": "BroccoliSeeds",
+		"growthDays": 8,
+		"regrowDays": 4,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"Carrot": {
+		"name": "Carrot",
+		"seedId": "CarrotSeeds",
+		"growthDays": 3,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"Powdermelon": {
+		"name": "Powdermelon",
+		"seedId": "PowdermelonSeeds",
+		"growthDays": 7,
+		"regrowDays": -1,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	},
+	"SummerSquash": {
+		"name": "Summer Squash",
+		"seedId": "SummerSquashSeeds",
+		"growthDays": 6,
+		"regrowDays": 3,
+		"minHarvest": 1,
+		"maxHarvest": 1,
+		"extraHarvestChance": 0.0
+	}
 }

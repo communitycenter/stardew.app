@@ -9,13 +9,13 @@ import {
 	parseGeneral,
 	parseItems,
 	parseMonsters,
-	parseWorldItems,
 	parseMuseum,
 	parsePerfection,
 	parsePowers,
 	parseRarecrows,
 	parseShipping,
 	parseSocial,
+	parseWorldItems,
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseAnimals } from "./parsers/animals";

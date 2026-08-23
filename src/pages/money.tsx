@@ -25,31 +25,37 @@ export default function Money() {
 	const [search, setSearch] = useState("");
 	const [openRegions, setOpenRegions] = useState<string[]>();
 
-	const netWorth = useMemo(() => {
-		if (!activePlayer?.items) return null;
-		return calculateNetWorth(activePlayer.items);
-	}, [activePlayer]);
+	// saves uploaded before the items column existed hydrate it as {}
+	const items = activePlayer?.items?.money ? activePlayer.items : null;
 
-	const weeklyIncome = useMemo(() => {
-		if (!activePlayer?.items) return null;
-		return estimateWeeklyIncome(activePlayer.items);
-	}, [activePlayer]);
-
-	const breakdown = useMemo(() => {
-		if (!activePlayer?.items) return [];
-		return buildBreakdown(activePlayer.items);
-	}, [activePlayer]);
+	const netWorth = useMemo(
+		() => (items ? calculateNetWorth(items) : null),
+		[items],
+	);
+	const weeklyIncome = useMemo(
+		() => (items ? estimateWeeklyIncome(items) : 0),
+		[items],
+	);
+	const breakdown = useMemo(
+		() => (items ? buildBreakdown(items) : []),
+		[items],
+	);
 
 	const query = search.trim().toLowerCase();
 	const visibleRegions = useMemo(() => {
 		if (!query) return breakdown;
 		return breakdown
-			.map((region) => ({
-				...region,
-				rows: region.rows.filter((row) =>
+			.map((region) => {
+				const rows = region.rows.filter((row) =>
 					row.name.toLowerCase().includes(query),
-				),
-			}))
+				);
+				return {
+					...region,
+					rows,
+					value: rows.reduce((sum, row) => sum + row.value, 0),
+					weekly: rows.reduce((sum, row) => sum + row.weekly, 0),
+				};
+			})
 			.filter((region) => region.rows.length > 0);
 	}, [breakdown, query]);
 
@@ -62,7 +68,10 @@ export default function Money() {
 		<>
 			<Head>
 				<title>Stardew Valley Money Tracker | stardew.app</title>
-				<meta name="title" content="Stardew Valley Money Tracker | stardew.app" />
+				<meta
+					name="title"
+					content="Stardew Valley Money Tracker | stardew.app"
+				/>
 				<meta
 					name="description"
 					content="Track your net worth in Stardew Valley. See the total value of your save — your gold plus everything your items would sell for, from chests and fridges to kegs and casks still in progress. Work towards the 10,000,000g Golden Clock and perfection."
@@ -94,16 +103,10 @@ export default function Money() {
 									<p className="text-4xl font-bold tabular-nums text-amber-500 dark:text-amber-400 sm:text-5xl">
 										{gold(netWorth.total)}
 									</p>
-									{weeklyIncome?.hasTimingData ? (
-										<p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-amber-600/90 dark:text-amber-500/90">
-											<ArrowTrendingUpIcon className="h-4 w-4" />
-											{gold(weeklyIncome.total)} / week estimated income
-										</p>
-									) : (
-										<p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
-											Re-upload your save file to estimate weekly income
-										</p>
-									)}
+									<p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-amber-600/90 dark:text-amber-500/90">
+										<ArrowTrendingUpIcon className="h-4 w-4" />
+										{gold(weeklyIncome)} / week estimated income
+									</p>
 								</>
 							) : (
 								<CardDescription className="mt-1 max-w-md text-center">

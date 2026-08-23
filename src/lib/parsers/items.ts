@@ -207,8 +207,7 @@ function walkObject(obj: any, prefix: string, location: string): ItemRecord[] {
 				if (isTrue(obj.readyForHarvest)) held.readyForHarvest = true;
 				if (typeof obj.daysToMature === "number")
 					held.daysToMature = obj.daysToMature;
-				if (typeof obj.agingRate === "number")
-					held.agingRate = obj.agingRate;
+				if (typeof obj.agingRate === "number") held.agingRate = obj.agingRate;
 				records.push(held);
 			}
 		}

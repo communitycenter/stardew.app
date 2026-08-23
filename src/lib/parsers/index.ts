@@ -23,11 +23,11 @@ export {
 	parseGeneral,
 	parseItems,
 	parseMonsters,
-	parseWorldItems,
 	parseMuseum,
 	parsePerfection,
 	parsePowers,
 	parseRarecrows,
 	parseShipping,
 	parseSocial,
+	parseWorldItems,
 };

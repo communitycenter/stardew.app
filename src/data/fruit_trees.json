@@ -1,34 +1,34 @@
 {
-  "69": {
-    "name": "Banana",
-    "fruitId": "91"
-  },
-  "628": {
-    "name": "Cherry",
-    "fruitId": "638"
-  },
-  "629": {
-    "name": "Apricot",
-    "fruitId": "634"
-  },
-  "630": {
-    "name": "Orange",
-    "fruitId": "635"
-  },
-  "631": {
-    "name": "Peach",
-    "fruitId": "636"
-  },
-  "632": {
-    "name": "Pomegranate",
-    "fruitId": "637"
-  },
-  "633": {
-    "name": "Apple",
-    "fruitId": "613"
-  },
-  "835": {
-    "name": "Mango",
-    "fruitId": "834"
-  }
+	"69": {
+		"name": "Banana",
+		"fruitId": "91"
+	},
+	"628": {
+		"name": "Cherry",
+		"fruitId": "638"
+	},
+	"629": {
+		"name": "Apricot",
+		"fruitId": "634"
+	},
+	"630": {
+		"name": "Orange",
+		"fruitId": "635"
+	},
+	"631": {
+		"name": "Peach",
+		"fruitId": "636"
+	},
+	"632": {
+		"name": "Pomegranate",
+		"fruitId": "637"
+	},
+	"633": {
+		"name": "Apple",
+		"fruitId": "613"
+	},
+	"835": {
+		"name": "Mango",
+		"fruitId": "834"
+	}
 }

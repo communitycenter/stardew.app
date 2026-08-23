@@ -254,47 +254,10 @@ Below are some incredible people that the website wouldn't be without today!
 
 ## Local Development Setup
 
-The app runs on Cloudflare Workers (via OpenNext) and reaches MySQL through a
-Cloudflare **Hyperdrive** binding. In local development, Wrangler/Miniflare
-emulate Hyperdrive and connect to a local MySQL instance using a connection
-string you provide via environment variables.
-
 1. Run `bun install` to install project dependencies.
-
-2. Set up a local MySQL database. With Homebrew:
-
-   ```
-   brew install mysql
-   brew services start mysql
-   # The Hyperdrive emulator requires a password, so give root one:
-   mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"
-   mysql -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS stardew;"
-   ```
-
-3. Copy `.env.local.example` to `.env.local`. You need the same MySQL connection
-   string under three variables (the app, drizzle-kit, and Wrangler each read a
-   different one). For the Homebrew setup above:
-
-   ```
-   DATABASE_URL="mysql://root:password@127.0.0.1:3306/stardew"
-   CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="mysql://root:password@127.0.0.1:3306/stardew"
-   WRANGLER_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="mysql://root:password@127.0.0.1:3306/stardew"
-   NEXT_PUBLIC_DEVELOPMENT=1
-   ```
-
-   > Note: the Hyperdrive emulator rejects connection strings without a password,
-   > so you cannot use a passwordless local MySQL user.
-
-4. Sync the schema into the database:
-
-   ```
-   bunx drizzle-kit push
-   ```
-
-   > Use `push` (not `migrate`). The committed migration files under
-   > `src/drizzle/` can lag behind `src/db/schema.ts`; `push` applies the current
-   > schema directly so the `Saves` table gets every column the app expects.
-
+2. Copy `.env.local.example` to `.env.local` and update the MySQL credentials.
+3. Ensure MySQL is running locally.
+4. Run `bun run prepLocalEnv` to create the database and sync the schema.
 5. Run `bun run dev` to start the Next.js dev server at http://localhost:3000.
 
 ### Testing against Cloudflare Workers locally

@@ -1,8 +1,4 @@
-import type {
-	ItemRecord,
-	ItemSourceType,
-	ItemsRet,
-} from "@/lib/parsers/items";
+import type { ItemRecord, ItemSourceType, ItemsRet } from "@/lib/parsers/items";
 
 // per Object.sellToStorePrice
 const QUALITY_MULTIPLIERS: Record<number, number> = {
@@ -18,10 +14,35 @@ export interface NetWorthBreakdown {
 	itemsValue: number;
 	bySource: Partial<Record<ItemSourceType, number>>;
 	pricedCount: number; // item records that contributed value
-	unpricedCount: number; // records with no usable price (tools, weapons, hats...)
+	unpricedCount: number; // records that are unsellable or have no price
+}
+
+// Object subclasses that are ordinary items once picked up. Everything else —
+// big craftables, furniture, wallpaper, equipment, tools, weapons — can't go in
+// the shipping bin (see Object.canBeShipped) and doesn't count towards net worth.
+const SELLABLE_TYPES = new Set([
+	"Object",
+	"ColoredObject",
+	"Fence",
+	"Torch",
+	"CrabPot",
+]);
+
+/** Whether a record can be sold at all, regardless of its price. */
+export function isSellable(item: ItemRecord): boolean {
+	if (item.bigCraftable) return false;
+	switch (item.source) {
+		case "crop": // harvests are ordinary objects
+		case "fruitTree":
+		case "animal": // sold to Marnie
+			return true;
+		default:
+			return SELLABLE_TYPES.has(item.type);
+	}
 }
 
 export function itemValue(item: ItemRecord): number {
+	if (!isSellable(item)) return 0;
 	if (typeof item.basePrice !== "number" || item.basePrice <= 0) return 0;
 	const multiplier = QUALITY_MULTIPLIERS[item.quality] ?? 1;
 	return Math.floor(item.basePrice * multiplier) * item.stack;

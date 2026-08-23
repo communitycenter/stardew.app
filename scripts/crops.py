@@ -23,13 +23,16 @@ def get_crops() -> dict[str, Crop]:
         obj = OBJECTS.get(harvest_id)
         name = obj["name"] if obj else harvest_id
 
+        min_harvest = value.get("HarvestMinStack", 1)
+
         output[harvest_id] = {
             "name": name,
             "seedId": seed_id,
             "growthDays": sum(value["DaysInPhase"]),
             "regrowDays": value.get("RegrowDays", -1),
-            "minHarvest": value.get("HarvestMinStack", 1),
-            "maxHarvest": value.get("HarvestMaxStack", 1),
+            "minHarvest": min_harvest,
+            # per Crop.harvest, the max is never below the min
+            "maxHarvest": max(min_harvest, value.get("HarvestMaxStack", 1)),
             "extraHarvestChance": value.get("ExtraHarvestChance", 0.0),
         }
 

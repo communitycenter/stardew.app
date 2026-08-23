@@ -56,8 +56,9 @@ function locationLabel(record: ItemRecord): string {
 function rowName(record: ItemRecord): string {
 	switch (record.source) {
 		case "crop":
-			return `${record.name} (${record.readyForHarvest ? "ready to harvest" : "growing"
-				})`;
+			return `${record.name} (${
+				record.readyForHarvest ? "ready to harvest" : "growing"
+			})`;
 		case "fruitTree":
 			return `${record.name} (on tree)`;
 		case "machine":
