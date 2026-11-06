@@ -7,7 +7,6 @@ if (process.env.NODE_ENV === "development") {
 const nextConfig = {
 	reactStrictMode: true,
 	typescript: { ignoreBuildErrors: true },
-	eslint: { ignoreDuringBuilds: true },
 	rewrites: async () => {
 		return [
 			{
