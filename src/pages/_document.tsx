@@ -14,6 +14,18 @@ export default function Document() {
 					data-domain="stardew.app"
 					src="https://plausible.verbose.faith/js/script.js"
 				></script>
+				<script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-ZQ1S7PVCX9"
+				></script>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ZQ1S7PVCX9');`,
+					}}
+				/>
 
 				<meta charSet="utf-8" />
 				<meta
