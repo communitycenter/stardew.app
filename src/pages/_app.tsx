@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
 
 import { Sidebar } from "@/components/sidebar";
-import { Topbar, User } from "@/components/top-bar";
+import { Topbar, type User } from "@/components/top-bar";
 import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -13,7 +13,7 @@ import { PreferencesProvider } from "@/contexts/preferences-context";
 import { fetchJson } from "@/lib/fetch";
 
 import ErrorBoundary from "@/components/error-boundary";
-import { NextAccessBanner } from "@/components/next-access-banner";
+import { NewSiteInvite } from "@/components/new-site-invite";
 import useSWR from "swr";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
 									<ErrorBoundary>
 										<Component {...pageProps} />
 									</ErrorBoundary>
-									<NextAccessBanner user={api.data} />
+									<NewSiteInvite user={api.data} />
 									<Toaster richColors />
 								</div>
 							</div>

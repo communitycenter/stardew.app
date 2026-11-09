@@ -1,0 +1,78 @@
+/* Item tiles orbiting the logo, the same as the new site's welcome. Each
+   tile rides one ellipse, offset by its index; tiles in the back half sit
+   behind the logo, shrink and dim, so the orbit reads as depth. */
+
+@property --orbit-angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@keyframes orbit {
+	to {
+		--orbit-angle: 360deg;
+	}
+}
+
+@keyframes orbit-in {
+	from {
+		opacity: 0;
+		scale: 0.94;
+	}
+}
+
+.orbit {
+	--orbit-rx: 118px;
+	--orbit-ry: 48px;
+	--orbit-duration: 32s;
+	position: absolute;
+	inset: 0;
+	animation: orbit-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 640px) {
+	.orbit {
+		--orbit-rx: 172px;
+		--orbit-ry: 54px;
+	}
+}
+
+.orbiter {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%)
+		translate(
+			calc(cos(var(--orbit-angle)) * var(--orbit-rx)),
+			calc(sin(var(--orbit-angle)) * var(--orbit-ry))
+		)
+		scale(calc(0.88 + 0.14 * sin(var(--orbit-angle))));
+	opacity: calc(0.82 + 0.18 * sin(var(--orbit-angle)));
+	z-index: calc(sin(var(--orbit-angle)) * 10);
+	animation: orbit var(--orbit-duration) linear infinite;
+	animation-delay: calc(
+		var(--orbit-index) / var(--orbit-count) * var(--orbit-duration) * -1
+	);
+}
+
+.logo {
+	animation: bob 5s ease-in-out infinite;
+}
+
+@keyframes bob {
+	50% {
+		translate: 0 -4px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.orbit,
+	.logo {
+		animation: none;
+	}
+
+	/* Paused at their offsets, so the tiles still ring the logo. */
+	.orbiter {
+		animation-play-state: paused;
+	}
+}
