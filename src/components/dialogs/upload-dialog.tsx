@@ -7,6 +7,7 @@ import {
 	DialogTitle,
 } from "@/components/ui/dialog";
 import { PlayersContext } from "@/contexts/players-context";
+import { getDroppedFiles } from "@/lib/dropped-files";
 import { parseSaveFile } from "@/lib/file";
 import type { FilePickerWindow, SaveFileHandle } from "@/types/save-sync";
 import { play } from "cuelume";
@@ -248,6 +249,15 @@ export const UploadDialog = ({ open, setOpen }: Props) => {
 							<Dropzone
 								noClick
 								useFsAccessApi={false}
+								getFilesFromEvent={getDroppedFiles}
+								onError={(error) => {
+									console.error("Save drop failed:", error);
+									play("error");
+									toast.error("We couldn't read that file", {
+										description:
+											"Try dragging the save file in again, straight from your Saves folder.",
+									});
+								}}
 								onDrop={(acceptedFiles) => {
 									handleIncomingFile(
 										acceptedFiles[0] as File & { handle?: SaveFileHandle },
