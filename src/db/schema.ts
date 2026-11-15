@@ -1,27 +1,28 @@
-import { index, json, mysqlTable, varchar } from "drizzle-orm/mysql-core";
+import {
+	datetime,
+	index,
+	json,
+	mysqlTable,
+	primaryKey,
+	varchar,
+} from "drizzle-orm/mysql-core";
 
-export const users = mysqlTable(
-	"Users",
-	{
-		id: varchar("id", { length: 64 }).notNull().unique().primaryKey(),
-		discord_id: varchar("discord_id", { length: 191 }).notNull().unique(),
-		cookie_secret: varchar("cookie_secret", { length: 191 }).notNull().unique(),
-		discord_avatar: varchar("discord_avatar", { length: 64 }).notNull(),
-		discord_name: varchar("discord_name", { length: 64 }).notNull(),
-	},
-	(table) => {
-		return {
-			id: index("Users_id").on(table.id),
-			discord_id: index("Users_discord_id").on(table.discord_id),
-		};
-	},
-);
+// Mirrors the live production tables. Production schema changes are applied
+// by hand (see src/db/sql/), not with drizzle-kit migrate.
+
+export const users = mysqlTable("Users", {
+	id: varchar("id", { length: 64 }).notNull().primaryKey(),
+	discord_id: varchar("discord_id", { length: 191 }).notNull().unique(),
+	cookie_secret: varchar("cookie_secret", { length: 191 }).notNull().unique(),
+	discord_avatar: varchar("discord_avatar", { length: 64 }).notNull(),
+	discord_name: varchar("discord_name", { length: 64 }).notNull(),
+});
 
 export const saves = mysqlTable(
 	"Saves",
 	{
-		_id: varchar("_id", { length: 64 }).notNull().unique(),
-		user_id: varchar("user_id", { length: 64 }).notNull().unique().primaryKey(),
+		_id: varchar("_id", { length: 32 }).notNull(),
+		user_id: varchar("user_id", { length: 64 }).notNull(),
 		general: json("general").notNull().default({}),
 		fishing: json("fishing").notNull().default({}),
 		cooking: json("cooking").notNull().default({}),
@@ -38,10 +39,13 @@ export const saves = mysqlTable(
 		bundles: json("bundles").notNull().default([]),
 		rarecrows: json("rarecrows").notNull().default([]),
 		animals: json("animals").notNull().default({}),
+		// Last write to this save (UTC). NULL = not written since 2026-11-14,
+		// when tracking began. The column also has ON UPDATE CURRENT_TIMESTAMP
+		// in MySQL; writes set it explicitly too.
+		updated_at: datetime("updated_at", { mode: "string" }),
 	},
-	(table) => {
-		return {
-			user_id: index("Saves_user_id").on(table.user_id),
-		};
-	},
+	(table) => [
+		primaryKey({ columns: [table._id, table.user_id] }),
+		index("Saves_user_id").on(table.user_id),
+	],
 );

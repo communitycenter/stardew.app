@@ -1,9 +1,9 @@
 import { withDb } from "$db";
 import * as schema from "$drizzle/schema";
 import { applyPlayerPatch } from "@/lib/player-patch";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Player, getUID } from ".";
+import { Player, SaveField, getUID, saveFields } from ".";
 
 function parseRequestBody<T>(body: unknown): T {
 	if (typeof body === "string") {
@@ -12,25 +12,6 @@ function parseRequestBody<T>(body: unknown): T {
 
 	return body as T;
 }
-
-const mergeableFields = [
-	"general",
-	"bundles",
-	"fishing",
-	"cooking",
-	"crafting",
-	"shipping",
-	"museum",
-	"social",
-	"monsters",
-	"walnuts",
-	"notes",
-	"scraps",
-	"perfection",
-	"powers",
-	"rarecrows",
-	"animals",
-] as const satisfies ReadonlyArray<keyof Player>;
 
 async function patch(req: NextApiRequest, res: NextApiResponse) {
 	return withDb(async (db) => {
@@ -42,45 +23,48 @@ async function patch(req: NextApiRequest, res: NextApiResponse) {
 		const playerId = req.query.playerId as string | undefined;
 		if (!playerId) return res.status(400).end();
 
-		const uid = await getUID(req, res, db);
 		const player = parseRequestBody<Player>(req.body);
 		if (!player) return res.status(400).end();
 
+		const fields = saveFields.filter((field) =>
+			Object.prototype.hasOwnProperty.call(player, field),
+		);
+		if (fields.length === 0) {
+			return res.status(400).json({ error: "No update fields provided" });
+		}
+
+		const uid = await getUID(req, res, db);
+
 		try {
+			const where = and(
+				eq(schema.saves._id, playerId),
+				eq(schema.saves.user_id, uid),
+			);
+
+			// Read only the columns being patched; a full save is ~24 KB of JSON.
 			const [existingSave] = await db
-				.select()
-				.from(schema.saves)
-				.where(
-					and(eq(schema.saves._id, playerId), eq(schema.saves.user_id, uid)),
+				.select(
+					Object.fromEntries(
+						fields.map((field) => [field, schema.saves[field]]),
+					) as Record<SaveField, (typeof schema.saves)[SaveField]>,
 				)
+				.from(schema.saves)
+				.where(where)
 				.limit(1);
 
 			if (!existingSave) {
 				return res.status(404).json({ error: "Save not found" });
 			}
 
-			const updates = mergeableFields.reduce(
-				(acc, field) => {
-					if (!Object.prototype.hasOwnProperty.call(player, field)) {
-						return acc;
-					}
-
-					acc[field] = applyPlayerPatch(existingSave[field], player[field]);
-					return acc;
-				},
-				{} as Partial<Record<(typeof mergeableFields)[number], unknown>>,
-			);
-
-			if (Object.keys(updates).length === 0) {
-				return res.status(400).json({ error: "No update fields provided" });
+			const updates: Partial<Record<SaveField, unknown>> = {};
+			for (const field of fields) {
+				updates[field] = applyPlayerPatch(existingSave[field], player[field]);
 			}
 
 			await db
 				.update(schema.saves)
-				.set(updates)
-				.where(
-					and(eq(schema.saves._id, playerId), eq(schema.saves.user_id, uid)),
-				);
+				.set({ ...updates, updated_at: sql`CURRENT_TIMESTAMP` })
+				.where(where);
 
 			res.status(204).end();
 		} catch (e) {

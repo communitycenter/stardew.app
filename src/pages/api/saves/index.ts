@@ -4,7 +4,7 @@ import * as schema from "$drizzle/schema";
 import { getServerCookieDomain } from "@/lib/cookies";
 import { getCookie, setCookie } from "cookies-next";
 import crypto from "crypto";
-import { and, eq } from "drizzle-orm";
+import { and, eq, getTableColumns, sql } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
 
 type Data = Record<string, any>;
@@ -49,11 +49,54 @@ export interface Player {
 	animals?: object;
 }
 
-export async function getUID(
+export const saveFields = [
+	"general",
+	"bundles",
+	"fishing",
+	"cooking",
+	"crafting",
+	"shipping",
+	"museum",
+	"social",
+	"monsters",
+	"walnuts",
+	"notes",
+	"scraps",
+	"perfection",
+	"powers",
+	"rarecrows",
+	"animals",
+] as const satisfies ReadonlyArray<keyof Player>;
+
+export type SaveField = (typeof saveFields)[number];
+
+// Columns returned to the client. updated_at is internal bookkeeping.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { updated_at: _updatedAt, ...saveColumns } = getTableColumns(
+	schema.saves,
+);
+
+function pickSaveFields(player: Player) {
+	const picked: Partial<Record<SaveField, unknown>> = {};
+	for (const field of saveFields) {
+		if (Object.prototype.hasOwnProperty.call(player, field)) {
+			picked[field] = player[field];
+		}
+	}
+	return picked;
+}
+
+export type Session = {
+	uid: string;
+	/** The signed-in user, when the request carries a valid token. */
+	user?: typeof schema.users.$inferSelect;
+};
+
+export async function getSession(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>,
 	db: Db,
-): Promise<string> {
+): Promise<Session> {
 	let uid = getCookie("uid", { req, res });
 	if (uid && typeof uid === "string") {
 		// Only authenticated users (those with a token cookie) need a DB lookup.
@@ -75,9 +118,10 @@ export async function getUID(
 					res.status(400);
 					throw new Error(`User is not authenticated (valid token: ${valid})`);
 				}
+				return { uid, user };
 			}
 		}
-		return uid as string;
+		return { uid };
 	} else {
 		console.log("Generating new UID...");
 		uid = crypto.randomBytes(16).toString("hex");
@@ -88,7 +132,15 @@ export async function getUID(
 			domain: getServerCookieDomain(req),
 		});
 	}
-	return uid;
+	return { uid };
+}
+
+export async function getUID(
+	req: NextApiRequest,
+	res: NextApiResponse<Data>,
+	db: Db,
+): Promise<string> {
+	return (await getSession(req, res, db)).uid;
 }
 
 // magic functions dreamt up by me, i think they're secure lol, i use them a lot - Leah
@@ -122,7 +174,10 @@ export const verifyToken = (token: string, key: string) => {
 };
 
 async function getPlayersByUid(db: Db, uid: string) {
-	return db.select().from(schema.saves).where(eq(schema.saves.user_id, uid));
+	return db
+		.select(saveColumns)
+		.from(schema.saves)
+		.where(eq(schema.saves.user_id, uid));
 }
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
@@ -153,18 +208,21 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
 			for (const player of players) {
 				if (!player._id) continue;
 
+				// Only known save columns, so a client can't write updated_at
+				// (or anything else) directly.
+				const fields = pickSaveFields(player);
 				await db
 					.insert(schema.saves)
 					.values({
+						...fields,
 						_id: player._id,
 						user_id: uid,
-						...player,
+						updated_at: sql`CURRENT_TIMESTAMP`,
 					})
 					.onDuplicateKeyUpdate({
-						set: {
-							user_id: uid,
-							...player,
-						},
+						// Bump even when the data is unchanged: an upload means the
+						// save is still in use.
+						set: { ...fields, updated_at: sql`CURRENT_TIMESTAMP` },
 					});
 			}
 
