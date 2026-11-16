@@ -1,0 +1,585 @@
+{
+	"-4": [
+		{ "type": "fish", "text": "Catch any fish with a fishing rod or crab pot" }
+	],
+	"-5": [
+		{
+			"type": "animal",
+			"text": "Collect from Chickens, Ducks, Void Chickens, Golden Chickens or Ostriches"
+		},
+		{ "type": "shop", "text": "Krobus sells Void Eggs" }
+	],
+	"-6": [
+		{
+			"type": "animal",
+			"text": "Milk a Cow or Goat with a Milk Pail (Marnie's Ranch)"
+		}
+	],
+	"-777": [
+		{ "type": "craft", "text": "Craft any seasonal Wild Seeds recipe" },
+		{ "type": "shop", "text": "Traveling Cart (random stock)" }
+	],
+	"16": [
+		{ "type": "forage", "text": "Forage in Spring" },
+		{ "type": "crop", "text": "Grow from Spring Seeds" }
+	],
+	"18": [
+		{ "type": "forage", "text": "Forage in Spring" },
+		{ "type": "crop", "text": "Grow from Spring Seeds" },
+		{ "type": "shop", "text": "Pierre's stand at the Flower Dance (Spring 24)" }
+	],
+	"20": [
+		{ "type": "forage", "text": "Forage in Spring" },
+		{ "type": "crop", "text": "Grow from Spring Seeds" }
+	],
+	"22": [
+		{ "type": "forage", "text": "Forage in Spring" },
+		{ "type": "crop", "text": "Grow from Spring Seeds" }
+	],
+	"24": [
+		{
+			"type": "crop",
+			"text": "Grow from Parsnip Seeds (Pierre's or JojaMart, Spring)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Spring" }
+	],
+	"62": [
+		{ "type": "mining", "text": "Gem nodes in The Mines" },
+		{ "type": "machine", "text": "Duplicate one in a Crystalarium" },
+		{ "type": "fish", "text": "Fishing treasure chests" }
+	],
+	"72": [
+		{
+			"type": "mining",
+			"text": "Diamond nodes in The Mines (floor 50+) and Skull Cavern"
+		},
+		{ "type": "mining", "text": "Omni Geodes" },
+		{ "type": "machine", "text": "Duplicate one in a Crystalarium" }
+	],
+	"78": [
+		{
+			"type": "mining",
+			"text": "Forage on the floors of The Mines and from crates and barrels"
+		}
+	],
+	"82": [
+		{ "type": "mining", "text": "Mine floors 80+ and Magma Geodes" },
+		{ "type": "machine", "text": "Duplicate one in a Crystalarium" }
+	],
+	"84": [
+		{ "type": "mining", "text": "Mine floors 40-79 and Frozen Geodes" },
+		{ "type": "machine", "text": "Duplicate one in a Crystalarium" }
+	],
+	"86": [
+		{ "type": "mining", "text": "Mine floors 1-39 and Geodes" },
+		{ "type": "machine", "text": "Duplicate one in a Crystalarium" }
+	],
+	"88": [
+		{ "type": "forage", "text": "Forage in the Calico Desert" },
+		{ "type": "island", "text": "Shake palm trees on Ginger Island" },
+		{ "type": "shop", "text": "Sandy's Oasis shop" }
+	],
+	"91": [
+		{
+			"type": "island",
+			"text": "Banana Tree (Banana Sapling from the Island Trader)"
+		}
+	],
+	"92": [{ "type": "tree", "text": "Chop down trees" }],
+	"93": [{ "type": "craft", "text": "Craft a Torch" }],
+	"114": [
+		{ "type": "other", "text": "Dig up artifact spots" },
+		{ "type": "fish", "text": "Fishing treasure chests" }
+	],
+	"122": [
+		{
+			"type": "mining",
+			"text": "Artifact found in The Mines (crates, monsters) and Artifact Troves"
+		}
+	],
+	"188": [
+		{
+			"type": "crop",
+			"text": "Grow from Bean Starter (Pierre's or JojaMart, Spring)"
+		}
+	],
+	"190": [
+		{
+			"type": "crop",
+			"text": "Grow from Cauliflower Seeds (Pierre's or JojaMart, Spring)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Spring" }
+	],
+	"192": [
+		{
+			"type": "crop",
+			"text": "Grow from Potato Seeds (Pierre's or JojaMart, Spring)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Spring" }
+	],
+	"194": [{ "type": "cook", "text": "Cook a Fried Egg" }],
+	"195": [{ "type": "cook", "text": "Cook an Omelet" }],
+	"210": [{ "type": "cook", "text": "Cook Hashbrowns" }],
+	"211": [{ "type": "cook", "text": "Cook Pancakes" }],
+	"216": [
+		{ "type": "cook", "text": "Cook Bread" },
+		{ "type": "shop", "text": "Stardrop Saloon" }
+	],
+	"229": [{ "type": "cook", "text": "Cook a Tortilla" }],
+	"245": [
+		{ "type": "shop", "text": "Pierre's General Store or JojaMart" },
+		{ "type": "machine", "text": "Put Beets in the Mill" }
+	],
+	"246": [
+		{ "type": "shop", "text": "Pierre's General Store or JojaMart" },
+		{ "type": "machine", "text": "Put Wheat in the Mill" }
+	],
+	"247": [
+		{ "type": "shop", "text": "Pierre's General Store" },
+		{
+			"type": "machine",
+			"text": "Oil Maker with Corn, Sunflowers or Sunflower Seeds"
+		}
+	],
+	"248": [
+		{
+			"type": "crop",
+			"text": "Grow from Garlic Seeds (Pierre's, Spring, Year 2+)"
+		},
+		{ "type": "machine", "text": "Put Garlic in a Seed Maker for more seeds" }
+	],
+	"250": [
+		{
+			"type": "crop",
+			"text": "Grow from Kale Seeds (Pierre's or JojaMart, Spring)"
+		}
+	],
+	"252": [
+		{ "type": "crop", "text": "Grow from Rhubarb Seeds (Oasis, Spring)" },
+		{ "type": "island", "text": "Mixed Seeds planted on Ginger Island" }
+	],
+	"254": [
+		{
+			"type": "crop",
+			"text": "Grow from Melon Seeds (Pierre's or JojaMart, Summer)"
+		},
+		{ "type": "island", "text": "Mixed Seeds planted on Ginger Island" }
+	],
+	"256": [
+		{
+			"type": "crop",
+			"text": "Grow from Tomato Seeds (Pierre's or JojaMart, Summer)"
+		}
+	],
+	"257": [
+		{ "type": "forage", "text": "Forage in the Secret Woods in Spring" },
+		{ "type": "machine", "text": "Mushroom Cave or Mushroom Log" }
+	],
+	"258": [
+		{
+			"type": "crop",
+			"text": "Grow from Blueberry Seeds (Pierre's, Summer)"
+		},
+		{ "type": "island", "text": "Mixed Seeds planted on Ginger Island" }
+	],
+	"259": [{ "type": "forage", "text": "Forage in the Secret Woods in Summer" }],
+	"260": [
+		{
+			"type": "crop",
+			"text": "Grow from Pepper Seeds (Pierre's or JojaMart, Summer)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Summer" }
+	],
+	"264": [
+		{
+			"type": "crop",
+			"text": "Grow from Radish Seeds (Pierre's or JojaMart, Summer)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Summer" }
+	],
+	"266": [
+		{
+			"type": "crop",
+			"text": "Grow from Red Cabbage Seeds (Pierre's, Summer, Year 2+)"
+		}
+	],
+	"270": [
+		{
+			"type": "crop",
+			"text": "Grow from Corn Seeds (Pierre's or JojaMart, Summer and Fall)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Summer or Fall" }
+	],
+	"272": [
+		{
+			"type": "crop",
+			"text": "Grow from Eggplant Seeds (Pierre's or JojaMart, Fall)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Fall" }
+	],
+	"274": [
+		{
+			"type": "crop",
+			"text": "Grow from Artichoke Seeds (Pierre's, Fall, Year 2+)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Fall" }
+	],
+	"276": [
+		{
+			"type": "crop",
+			"text": "Grow from Pumpkin Seeds (Pierre's or JojaMart, Fall)"
+		},
+		{ "type": "crop", "text": "Mixed Seeds planted in Fall" }
+	],
+	"278": [
+		{
+			"type": "crop",
+			"text": "Grow from Bok Choy Seeds (Pierre's or JojaMart, Fall)"
+		}
+	],
+	"280": [
+		{
+			"type": "crop",
+			"text": "Grow from Yam Seeds (Pierre's or JojaMart, Fall)"
+		}
+	],
+	"281": [
+		{ "type": "forage", "text": "Forage in the Secret Woods in Fall" },
+		{ "type": "machine", "text": "Mushroom Cave or Mushroom Log" }
+	],
+	"282": [
+		{
+			"type": "crop",
+			"text": "Grow from Cranberry Seeds (Pierre's or JojaMart, Fall)"
+		}
+	],
+	"284": [{ "type": "crop", "text": "Grow from Beet Seeds (Oasis, Fall)" }],
+	"292": [
+		{
+			"type": "tree",
+			"text": "Mahogany Trees and trees in the Secret Woods"
+		}
+	],
+	"300": [
+		{
+			"type": "crop",
+			"text": "Grow from Amaranth Seeds (Pierre's or JojaMart, Fall)"
+		}
+	],
+	"306": [{ "type": "machine", "text": "Put an Egg in a Mayonnaise Machine" }],
+	"308": [
+		{
+			"type": "machine",
+			"text": "Put a Void Egg in a Mayonnaise Machine (Void Eggs: Void Chickens or Krobus)"
+		}
+	],
+	"309": [{ "type": "tree", "text": "Shake or chop Oak Trees" }],
+	"310": [{ "type": "tree", "text": "Shake or chop Maple Trees" }],
+	"311": [{ "type": "tree", "text": "Shake or chop Pine Trees" }],
+	"330": [
+		{ "type": "other", "text": "Hoe dirt or dig up artifact spots" },
+		{ "type": "mining", "text": "Break rocks and crates in The Mines" }
+	],
+	"334": [
+		{ "type": "machine", "text": "Smelt 5 Copper Ore + 1 Coal in a Furnace" }
+	],
+	"335": [
+		{ "type": "machine", "text": "Smelt 5 Iron Ore + 1 Coal in a Furnace" }
+	],
+	"336": [
+		{ "type": "machine", "text": "Smelt 5 Gold Ore + 1 Coal in a Furnace" }
+	],
+	"337": [
+		{ "type": "machine", "text": "Smelt 5 Iridium Ore + 1 Coal in a Furnace" }
+	],
+	"338": [
+		{
+			"type": "machine",
+			"text": "Smelt Quartz or Fire Quartz in a Furnace"
+		},
+		{
+			"type": "machine",
+			"text": "Recycling Machine (Broken Glasses, Broken CD)"
+		}
+	],
+	"340": [{ "type": "machine", "text": "Bee House" }],
+	"372": [{ "type": "forage", "text": "Forage on the Beach" }],
+	"376": [
+		{
+			"type": "crop",
+			"text": "Grow from Poppy Seeds (Pierre's or JojaMart, Summer)"
+		},
+		{
+			"type": "crop",
+			"text": "Mixed Flower Seeds planted in Summer or on Ginger Island"
+		}
+	],
+	"378": [
+		{ "type": "mining", "text": "Copper nodes, Mine floors 1-39" },
+		{ "type": "shop", "text": "Clint's Blacksmith" }
+	],
+	"380": [
+		{ "type": "mining", "text": "Iron nodes, Mine floors 40-79" },
+		{ "type": "shop", "text": "Clint's Blacksmith" }
+	],
+	"382": [
+		{ "type": "mining", "text": "The Mines (rocks, crates, Dust Sprites)" },
+		{ "type": "machine", "text": "Charcoal Kiln (Wood)" },
+		{ "type": "shop", "text": "Clint's Blacksmith" }
+	],
+	"384": [
+		{ "type": "mining", "text": "Gold nodes, Mine floors 80+" },
+		{ "type": "shop", "text": "Clint's Blacksmith (Year 2+)" }
+	],
+	"386": [
+		{ "type": "mining", "text": "Iridium nodes in Skull Cavern" },
+		{ "type": "mining", "text": "Omni Geodes and the Volcano Dungeon" }
+	],
+	"388": [
+		{ "type": "tree", "text": "Chop down trees" },
+		{ "type": "shop", "text": "Robin's Carpenter Shop" }
+	],
+	"390": [
+		{ "type": "mining", "text": "Break rocks" },
+		{ "type": "shop", "text": "Robin's Carpenter Shop" }
+	],
+	"393": [{ "type": "forage", "text": "Forage on the Beach" }],
+	"395": [
+		{ "type": "machine", "text": "Put 5 Coffee Beans in a Keg" },
+		{ "type": "shop", "text": "Stardrop Saloon" }
+	],
+	"396": [
+		{ "type": "forage", "text": "Forage in Summer" },
+		{ "type": "crop", "text": "Grow from Summer Seeds" }
+	],
+	"397": [
+		{
+			"type": "forage",
+			"text": "Forage in the Beach tide pools (after repairing the bridge)"
+		}
+	],
+	"398": [
+		{ "type": "forage", "text": "Forage in Summer" },
+		{ "type": "crop", "text": "Grow from Summer Seeds" },
+		{ "type": "crop", "text": "Grow from Grape Starter (Pierre's, Fall)" }
+	],
+	"402": [
+		{ "type": "forage", "text": "Forage in Summer" },
+		{ "type": "crop", "text": "Grow from Summer Seeds" }
+	],
+	"404": [
+		{
+			"type": "forage",
+			"text": "Forage in Fall, or the Secret Woods in Spring"
+		},
+		{ "type": "crop", "text": "Grow from Fall Seeds" },
+		{ "type": "machine", "text": "Mushroom Cave or Mushroom Log" }
+	],
+	"406": [
+		{ "type": "forage", "text": "Forage in Fall" },
+		{ "type": "crop", "text": "Grow from Fall Seeds" }
+	],
+	"408": [
+		{ "type": "forage", "text": "Forage in Fall" },
+		{ "type": "crop", "text": "Grow from Fall Seeds" }
+	],
+	"410": [
+		{
+			"type": "forage",
+			"text": "Forage in Fall, or pick bushes during Blackberry Season (Fall 8-11)"
+		},
+		{ "type": "crop", "text": "Grow from Fall Seeds" }
+	],
+	"412": [
+		{
+			"type": "forage",
+			"text": "Hoe dirt or dig artifact spots in Winter"
+		},
+		{ "type": "crop", "text": "Grow from Winter Seeds" }
+	],
+	"414": [
+		{ "type": "forage", "text": "Forage in Winter" },
+		{ "type": "crop", "text": "Grow from Winter Seeds" }
+	],
+	"416": [
+		{
+			"type": "forage",
+			"text": "Hoe dirt or dig artifact spots in Winter"
+		},
+		{ "type": "crop", "text": "Grow from Winter Seeds" }
+	],
+	"418": [
+		{ "type": "forage", "text": "Forage in Winter" },
+		{ "type": "crop", "text": "Grow from Winter Seeds" }
+	],
+	"419": [
+		{ "type": "shop", "text": "Pierre's General Store" },
+		{ "type": "machine", "text": "Put Rice in a Keg" }
+	],
+	"420": [
+		{
+			"type": "forage",
+			"text": "Forage in The Mines and the Secret Woods (Summer, Fall)"
+		},
+		{ "type": "machine", "text": "Mushroom Cave or Mushroom Log" }
+	],
+	"422": [
+		{ "type": "mining", "text": "Forage in The Mines (floors 80+)" },
+		{ "type": "machine", "text": "Mushroom Cave or Mushroom Log" }
+	],
+	"423": [
+		{ "type": "shop", "text": "Pierre's General Store" },
+		{ "type": "machine", "text": "Put Unmilled Rice in the Mill" }
+	],
+	"424": [{ "type": "machine", "text": "Put Milk in a Cheese Press" }],
+	"427": [
+		{
+			"type": "shop",
+			"text": "Pierre's General Store or JojaMart (Spring)"
+		},
+		{
+			"type": "crop",
+			"text": "Mixed Flower Seeds planted in Spring (then a Seed Maker)"
+		},
+		{ "type": "shop", "text": "Traveling Cart (random stock)" }
+	],
+	"428": [{ "type": "machine", "text": "Put Wool in a Loom" }],
+	"429": [
+		{
+			"type": "shop",
+			"text": "Pierre's General Store or JojaMart (Spring)"
+		},
+		{
+			"type": "crop",
+			"text": "Mixed Flower Seeds planted in Spring (then a Seed Maker)"
+		},
+		{ "type": "shop", "text": "Traveling Cart (random stock)" }
+	],
+	"432": [
+		{ "type": "machine", "text": "Put a Truffle (from Pigs) in an Oil Maker" }
+	],
+	"453": [
+		{
+			"type": "shop",
+			"text": "Pierre's General Store or JojaMart (Summer)"
+		},
+		{
+			"type": "crop",
+			"text": "Mixed Flower Seeds planted in Summer or on Ginger Island (then a Seed Maker)"
+		}
+	],
+	"455": [
+		{
+			"type": "shop",
+			"text": "Pierre's General Store or JojaMart (Summer)"
+		},
+		{
+			"type": "crop",
+			"text": "Mixed Flower Seeds planted in Summer or on Ginger Island (then a Seed Maker)"
+		}
+	],
+	"567": [{ "type": "mining", "text": "Frozen Geodes and Mine floors 40-79" }],
+	"595": [
+		{
+			"type": "crop",
+			"text": "Grow from Fairy Seeds (Pierre's or JojaMart, Fall)"
+		},
+		{ "type": "crop", "text": "Mixed Flower Seeds planted in Fall" }
+	],
+	"597": [
+		{
+			"type": "crop",
+			"text": "Grow from Jazz Seeds (Pierre's or JojaMart, Spring)"
+		},
+		{ "type": "crop", "text": "Mixed Flower Seeds planted in Spring" }
+	],
+	"613": [
+		{ "type": "tree", "text": "Apple Tree (sapling from Pierre's)" },
+		{ "type": "other", "text": "Farm Cave with Fruit Bats" }
+	],
+	"634": [
+		{ "type": "tree", "text": "Apricot Tree (sapling from Pierre's)" },
+		{ "type": "other", "text": "Farm Cave with Fruit Bats" }
+	],
+	"684": [{ "type": "monster", "text": "Kill bugs and flies in The Mines" }],
+	"685": [
+		{ "type": "craft", "text": "Craft Bait or use a Bait Maker" },
+		{ "type": "shop", "text": "Willy's Fish Shop" }
+	],
+	"709": [
+		{ "type": "tree", "text": "Chop Large Stumps and Hollow Logs" },
+		{ "type": "tree", "text": "Chop Mahogany Trees" }
+	],
+	"766": [{ "type": "monster", "text": "Kill Slimes" }],
+	"767": [{ "type": "monster", "text": "Kill Bats in The Mines" }],
+	"768": [
+		{ "type": "monster", "text": "Kill Ghosts, Metal Heads and Mummies" },
+		{ "type": "shop", "text": "Krobus (Sewers)" }
+	],
+	"769": [
+		{ "type": "monster", "text": "Kill Shadow Brutes and Shadow Shamans" },
+		{ "type": "shop", "text": "Krobus (Sewers)" }
+	],
+	"770": [
+		{ "type": "other", "text": "Cut weeds with a Scythe" },
+		{ "type": "machine", "text": "Seed Maker (random bonus)" },
+		{ "type": "shop", "text": "Krobus on Thursdays" }
+	],
+	"771": [
+		{ "type": "other", "text": "Cut weeds with a Scythe" },
+		{ "type": "crop", "text": "Grow from Fiber Seeds" }
+	],
+	"787": [
+		{ "type": "machine", "text": "Lightning Rod during storms" },
+		{ "type": "machine", "text": "Solar Panel" }
+	],
+	"814": [
+		{ "type": "monster", "text": "Kill Squid Kids in The Mines" },
+		{ "type": "fish", "text": "Squid in a Fish Pond" }
+	],
+	"829": [{ "type": "island", "text": "Dig up wild Ginger on Ginger Island" }],
+	"830": [{ "type": "island", "text": "Grow from Taro Tuber (Island Trader)" }],
+	"832": [
+		{ "type": "island", "text": "Grow from Pineapple Seeds (Island Trader)" },
+		{ "type": "island", "text": "Mixed Seeds planted on Ginger Island" }
+	],
+	"834": [
+		{
+			"type": "island",
+			"text": "Mango Tree (Mango Sapling from the Island Trader)"
+		}
+	],
+	"848": [
+		{ "type": "mining", "text": "Cinder Shard nodes in the Volcano Dungeon" }
+	],
+	"852": [
+		{ "type": "mining", "text": "Chests and monsters in the Volcano Dungeon" }
+	],
+	"881": [
+		{ "type": "mining", "text": "Bone nodes in The Mines and on Ginger Island" }
+	],
+	"909": [
+		{
+			"type": "mining",
+			"text": "Skull Cavern and the Dangerous Mines (Shrine of Challenge)"
+		}
+	],
+	"910": [
+		{
+			"type": "machine",
+			"text": "Smelt 5 Radioactive Ore + 1 Coal in a Furnace"
+		}
+	],
+	"724": [{ "type": "machine", "text": "Tapper on a Maple Tree" }],
+	"725": [{ "type": "machine", "text": "Tapper on an Oak Tree" }],
+	"726": [{ "type": "machine", "text": "Tapper on a Pine Tree" }],
+	"Moss": [
+		{
+			"type": "tree",
+			"text": "Collect from mossy trees with a Scythe or Axe"
+		}
+	],
+	"MysticSyrup": [{ "type": "machine", "text": "Tapper on a Mystic Tree" }],
+	"(BC)13": [{ "type": "craft", "text": "Craft a Furnace" }],
+	"(BC)154": [{ "type": "craft", "text": "Craft a Worm Bin" }]
+}

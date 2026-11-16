@@ -1,3 +1,4 @@
+import type { InventoryRet } from "./inventory";
 import { GetListOrEmpty, GetStatValue, isPlayerFormatUpdated } from "../utils";
 
 function msToTime(time: number): string {
@@ -301,6 +302,8 @@ export interface GeneralRet {
 	platform?: "PC" | "Mobile" | "Console";
 	date?: DateRet;
 	weather?: Weather;
+	/** Owned counts of recipe ingredients (backpack + all storage). */
+	inventory?: InventoryRet;
 }
 
 // worldState is read straight from a user-uploaded save file (untyped XML),

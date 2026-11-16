@@ -28,6 +28,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Toggle } from "@/components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
 
@@ -101,6 +102,7 @@ export default function Cooking() {
 	} = useMultiSelect();
 
 	const [_seasonFilter, setSeasonFilter] = useState("all");
+	const [onlyMissing, setOnlyMissing] = useState(false);
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -424,6 +426,16 @@ export default function Cooking() {
 									</ToggleGroup>
 								</div>
 								<div className="flex gap-2">
+									{activePlayer?.general?.inventory && (
+										<Toggle
+											variant="outline"
+											pressed={onlyMissing}
+											onPressedChange={setOnlyMissing}
+											aria-label="Only show ingredients you still need"
+										>
+											Still need
+										</Toggle>
+									)}
 									<FilterSearch
 										_filter={_seasonFilter}
 										title={"Seasons"}
@@ -447,6 +459,7 @@ export default function Cooking() {
 								playerRecipes={playerRecipes}
 								filterKnown={_filter}
 								filterSeason={_seasonFilter}
+								onlyMissing={onlyMissing}
 								searchText={ingredientSearch}
 							/>
 						</TabsContent>

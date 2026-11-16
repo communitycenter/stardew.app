@@ -17,6 +17,7 @@ import {
 } from "@/lib/parsers";
 import { GetListOrEmpty, getAllFarmhands } from "@/lib/utils";
 import { parseAnimals } from "./parsers/animals";
+import { parseInventory, parseSharedInventory } from "./parsers/inventory";
 import { parseNotes } from "./parsers/notes";
 import { parseRaccoon } from "./parsers/raccoon";
 import { parseScraps } from "./parsers/scraps";
@@ -130,25 +131,31 @@ export function parseSaveFile(xml: string) {
 			saveFile.SaveGame.timesFedRaccoons,
 		);
 
+		// chests, fridges, etc. are shared by every player on the farm
+		const sharedInventory = parseSharedInventory(saveFile.SaveGame, prefix);
+
 		players.forEach((player) => {
 			// in here is where we'll call all our parsers and create the player object we'll use
 			let processedPlayer = {
 				_id: player.UniqueMultiplayerID,
-				general: parseGeneral(
-					player,
-					saveFile.SaveGame.whichFarm.toString(),
-					version,
-					platform,
-					{
-						currentSeason: saveFile.SaveGame.currentSeason,
-						dayOfMonth: saveFile.SaveGame.dayOfMonth,
-						year: saveFile.SaveGame.year,
-						isRaining: saveFile.SaveGame.isRaining,
-						isSnowing: saveFile.SaveGame.isSnowing,
-						isLightning: saveFile.SaveGame.isLightning,
-						isDebrisWeather: saveFile.SaveGame.isDebrisWeather,
-					},
-				),
+				general: {
+					...parseGeneral(
+						player,
+						saveFile.SaveGame.whichFarm.toString(),
+						version,
+						platform,
+						{
+							currentSeason: saveFile.SaveGame.currentSeason,
+							dayOfMonth: saveFile.SaveGame.dayOfMonth,
+							year: saveFile.SaveGame.year,
+							isRaining: saveFile.SaveGame.isRaining,
+							isSnowing: saveFile.SaveGame.isSnowing,
+							isLightning: saveFile.SaveGame.isLightning,
+							isDebrisWeather: saveFile.SaveGame.isDebrisWeather,
+						},
+					),
+					inventory: parseInventory(player, sharedInventory, prefix),
+				},
 				bundles: parsedBundles,
 				fishing: parseFishing(player, version),
 				cooking: parseCooking(player, version),
