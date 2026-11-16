@@ -28,7 +28,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Toggle } from "@/components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { canMakeRecipe } from "@/lib/can-make";
 import { cn } from "@/lib/utils";
 
 import { IngredientList } from "@/components/ingredient-list";
@@ -101,6 +103,7 @@ export default function Cooking() {
 	} = useMultiSelect();
 
 	const [_seasonFilter, setSeasonFilter] = useState("all");
+	const [onlyMissing, setOnlyMissing] = useState(false);
 
 	useEffect(() => {
 		if (activePlayer) {
@@ -134,6 +137,20 @@ export default function Cooking() {
 		return Object.values(activePlayer.cooking.recipes).filter((r) => r === 1)
 			.length;
 	}, [activePlayer]);
+
+	// known recipes the player has every ingredient for right now
+	const readyIDs = useMemo(() => {
+		const inventory = activePlayer?.general?.inventory;
+		if (!inventory) return new Set<string>();
+
+		return new Set(
+			Object.values(recipes)
+				.filter((r) => playerRecipes[r.itemID] === 1)
+				.filter((r) => semverGte(gameVersion, r.minVersion))
+				.filter((r) => canMakeRecipe(r, inventory))
+				.map((r) => r.itemID),
+		);
+	}, [activePlayer, playerRecipes, gameVersion]);
 
 	const getAchievementProgress = (name: string) => {
 		let completed = false;
@@ -297,6 +314,17 @@ export default function Cooking() {
 										/>
 										<span className="align-middle">Cooked ({cookedCount})</span>
 									</ToggleGroupItem>
+									{activePlayer?.general?.inventory && (
+										<ToggleGroupItem
+											value="ready"
+											aria-label="Show Ready to Make"
+										>
+											<span className="inline-block h-4 w-4 rounded-full border border-green-900 bg-green-500/50 align-middle" />
+											<span className="align-middle">
+												Ready to make ({readyIDs.size})
+											</span>
+										</ToggleGroupItem>
+									)}
 								</ToggleGroup>
 								<div className="flex flex-row items-center gap-2">
 									<Button
@@ -369,6 +397,9 @@ export default function Cooking() {
 												r.itemID in playerRecipes &&
 												playerRecipes[r.itemID] === 2
 											);
+										} else if (_filter === "ready") {
+											// known, not made yet, and every ingredient is owned
+											return readyIDs.has(r.itemID);
 										} else return true; // all recipes
 									})
 									.map((f, index, filteredRecipes) => (
@@ -424,6 +455,16 @@ export default function Cooking() {
 									</ToggleGroup>
 								</div>
 								<div className="flex gap-2">
+									{activePlayer?.general?.inventory && (
+										<Toggle
+											variant="outline"
+											pressed={onlyMissing}
+											onPressedChange={setOnlyMissing}
+											aria-label="Only show ingredients you still need"
+										>
+											Still need
+										</Toggle>
+									)}
 									<FilterSearch
 										_filter={_seasonFilter}
 										title={"Seasons"}
@@ -447,6 +488,7 @@ export default function Cooking() {
 								playerRecipes={playerRecipes}
 								filterKnown={_filter}
 								filterSeason={_seasonFilter}
+								onlyMissing={onlyMissing}
 								searchText={ingredientSearch}
 							/>
 						</TabsContent>
